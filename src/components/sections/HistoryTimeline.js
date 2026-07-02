@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Title, SimpleGrid, Timeline, Text, Anchor, Badge, Stack } from '@mantine/core';
+import { Container, Title, SimpleGrid, Timeline, Text, Anchor, Badge, Group, Stack } from '@mantine/core';
 import { IconSchool, IconBriefcase } from '@tabler/icons-react';
 
 function Column({ col, icon }) {
@@ -11,9 +11,16 @@ function Column({ col, icon }) {
       <Timeline active={items.length} bulletSize={22} lineWidth={2} color="brand">
         {items.map((item, i) => (
           <Timeline.Item key={`${item.title}-${i}`} bullet={icon} title={item.title}>
-            <Badge variant="light" color="gray" mb={6}>
-              {item.date}
-            </Badge>
+            <Group gap={6} mb={6}>
+              <Badge variant="light" color="gray">
+                {item.date}
+              </Badge>
+              {item.tag && (
+                <Badge variant="dot" color="indigo" size="sm">
+                  {item.tag}
+                </Badge>
+              )}
+            </Group>
             {item.subtitle && (
               <Text fz="sm" fw={600} c="brand.6">
                 {item.subtitle}

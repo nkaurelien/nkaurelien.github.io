@@ -66,7 +66,8 @@
             },
             {
                 "title": "Sylen-IT Services",
-                "subtitle": "Angular / TypeScript Developer (freelance)",
+                "subtitle": "Angular / TypeScript Developer",
+                "tag": "Freelance",
                 "date": "Nov 2022 - July 2023",
                 "text": "API integration and UI redesign for the Coface project (BPCE Group), fully remote. Document search built around Elasticsearch. Stack: Angular, Laravel, RxJS."
             },
@@ -101,13 +102,15 @@
             },
             {
                 "title": "MEFOR SHOP",
-                "subtitle": "Freelance Web Developer",
+                "subtitle": "Web Developer",
+                "tag": "Freelance",
                 "date": "Apr. 2020 - June 2020",
                 "text": "MEFOR SHOP e-commerce website, an online store in Cameroon."
             },
             {
                 "title": "MCS IT",
-                "subtitle": "Fullstack Developer Laravel / Angular / Vue.js (full remote)",
+                "subtitle": "Fullstack Developer Laravel / Angular / Vue.js",
+                "tag": "Professional internship",
                 "date": "June 2018 - Oct 2020",
                 "text": "Development of an e-commerce platform for parcel and meal delivery (Design Thinking, OOP, clean code): Angular app with Social Auth, courier mobile app (Flutter), POS backoffice, Google Maps/Places & Firebase integrations, Kubernetes clusters on GCP, GitLab + Laravel Envoy / Ansible CI/CD.",
                 "button": {
