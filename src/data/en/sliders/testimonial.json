@@ -2,40 +2,53 @@
     "title": "Recommendations",
     "items": [
         {
-            "name": "Dr Albert MAMBO",
-            "image": "/img/testimonials/face-mambo.png",
-            "role": "Regional Delegate for Public Health for the Littoral",
-            "text": "Their exemplary work on MAMALPRO has greatly improved our public health platforms. Their technical expertise, professionalism and speed of response have been essential to optimize our communication and data management.",
-            "rating": 5
-        },
-        {
             "name": "Rose YEMELI",
             "image": "/img/testimonials/face-yemeli.png",
             "role": "Director YSO Conseils - CEO Smart Data Pay",
             "link": "https://www.linkedin.com/in/rose-yemeli/",
             "text": "His expertise in web development and software engineering has revolutionized our HR platform through AI. His professionalism and ability to solve complex problems have been essential in the design of our AI platform.",
-            "rating": 5
+            "rating": 5,
+            "active": true
         },
         {
             "name": "Hervé Franck ELOUNDOU",
             "role": "SAP S/4HANA EAM, CPI & Field Service Management Consultant | Odoo",
             "link": "https://www.linkedin.com/in/herve-franck-eloundou/",
             "text": "I had the opportunity to work with Aurelien for over a year. Technically very strong, with a great capacity for analysis and design in software development — I recommend him if you need to build a web and/or mobile application.",
-            "rating": 5
+            "rating": 5,
+            "active": false
+        },
+        {
+            "name": "Dr Albert MAMBO",
+            "image": "/img/testimonials/face-mambo.png",
+            "role": "Regional Delegate for Public Health for the Littoral",
+            "text": "Their exemplary work on MAMALPRO has greatly improved our public health platforms. Their technical expertise, professionalism and speed of response have been essential to optimize our communication and data management.",
+            "rating": 5,
+            "active": false
         },
         {
             "name": "Moses Tamunang",
             "image": "/img/testimonials/face-2.jpg",
             "role": "Director Logasoft Corp",
-            "text": "His technical expertise and creativity have been crucial to the success of our projects. His professionalism and ability to solve complex problems make him an invaluable asset to any team. One of the best developers I have worked with",
-            "rating": 4
+            "text": "His technical expertise and creativity have been crucial to the success of our projects. His professionalism and ability to solve complex problems make him an invaluable asset to any team. One of the best developers I have worked with.",
+            "rating": 4,
+            "active": false
         },
         {
-            "name": "Gerardin Dongmo",
-            "image": "/img/testimonials/face-3.jpg",
-            "role": "Owner MEFOR SHOP",
-            "text": "Thanks to his expertise and professionalism, our e-commerce site has gained in performance and attractiveness. His responsiveness and ability to quickly resolve problems have been essential to our online success.",
-            "rating": 4
+            "name": "Fernand Hervé",
+            "role": "Founder of MCS · Consultant at Capgemini",
+            "link": "https://www.linkedin.com/in/fernand-herv%C3%A9-a917ab27/",
+            "text": "",
+            "rating": 5,
+            "active": false
+        },
+        {
+            "name": "Carlson N. NDANGA",
+            "role": "IT & Business Systems Analyst | ERP, ServiceNow & M365 | Power BI & Fabric | Automation & AI-Enabled Insights",
+            "link": "https://www.linkedin.com/in/carlson-nche-ndanga/",
+            "text": "",
+            "rating": 5,
+            "active": false
         }
     ]
 }
