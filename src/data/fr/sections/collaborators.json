@@ -1,0 +1,17 @@
+{
+    "title": "Collaborations",
+    "subtitle": "Quelques personnes avec qui j'ai eu le plaisir de travailler",
+    "items": [
+        {
+            "name": "Martin MBODY",
+            "role": "Développeur Web | Laravel | React | Next.js",
+            "link": "https://www.linkedin.com/in/martin-mbody-867b06115/"
+        },
+        {
+            "name": "Rose YEMELI",
+            "role": "Consultante Paie & SIRH | Experte IA & Automatisation",
+            "image": "/img/testimonials/face-yemeli.png",
+            "link": "https://www.linkedin.com/in/rose-yemeli/"
+        }
+    ]
+}

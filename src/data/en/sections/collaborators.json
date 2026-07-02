@@ -1,0 +1,17 @@
+{
+    "title": "Collaborations",
+    "subtitle": "A few people I had the pleasure of working with",
+    "items": [
+        {
+            "name": "Martin MBODY",
+            "role": "Web Developer | Laravel | React | Next.js",
+            "link": "https://www.linkedin.com/in/martin-mbody-867b06115/"
+        },
+        {
+            "name": "Rose YEMELI",
+            "role": "Payroll & HRIS Consultant | AI & Automation Expert",
+            "image": "/img/testimonials/face-yemeli.png",
+            "link": "https://www.linkedin.com/in/rose-yemeli/"
+        }
+    ]
+}
