@@ -60,14 +60,14 @@
             },
             {
                 "title": "MAMALPRO",
-                "subtitle": "Développeur web & DevOps / Consultant",
+                "subtitle": "Développeur web & DevOps",
+                "tag": "Freelance",
                 "date": "Sep. 2021 - Nov. 2023",
                 "text": "Plateforme web de tests Covid-19 — plateforme officielle CAN Total Energies 2021 Cameroun, pour la Délégation Régionale de la Santé Publique pour le Littoral / MINSANTE."
             },
             {
                 "title": "Sylen-IT Services",
                 "subtitle": "Développeur Angular / TypeScript",
-                "tag": "Freelance",
                 "date": "Nov 2022 - Juillet 2023",
                 "text": "Intégration d'API et refonte de l'interface utilisateur (IHM) pour le projet Coface du Groupe BPCE, en full télétravail. Recherche de documents autour d'Elasticsearch. Techno : Angular, Laravel, RxJS."
             },
@@ -97,12 +97,13 @@
             {
                 "title": "SAS Inimov",
                 "subtitle": "Développeur Fullstack Laravel / Ionic",
+                "tag": "Freelance",
                 "date": "Déc. 2020 - Fév. 2021",
                 "text": "Développement d'une plateforme e-commerce de livraison et d'une application mobile de fidélisation."
             },
             {
                 "title": "MEFOR SHOP",
-                "subtitle": "Développeur web",
+                "subtitle": "Consultant",
                 "tag": "Freelance",
                 "date": "Avr. 2020 - Jui. 2020",
                 "text": "Site web e-commerce MEFOR SHOP, site de vente au Cameroun."

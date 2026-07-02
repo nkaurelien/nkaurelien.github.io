@@ -60,14 +60,14 @@
             },
             {
                 "title": "MAMALPRO",
-                "subtitle": "Web & DevOps Developer / Consultant",
+                "subtitle": "Web & DevOps Developer",
+                "tag": "Freelance",
                 "date": "Sep. 2021 - Nov. 2023",
                 "text": "Covid-19 testing web platform — official platform for AFCON Total Energies 2021 Cameroon, for the Regional Public Health Delegation of Littoral / MINSANTE."
             },
             {
                 "title": "Sylen-IT Services",
                 "subtitle": "Angular / TypeScript Developer",
-                "tag": "Freelance",
                 "date": "Nov 2022 - July 2023",
                 "text": "API integration and UI redesign for the Coface project (BPCE Group), fully remote. Document search built around Elasticsearch. Stack: Angular, Laravel, RxJS."
             },
@@ -97,12 +97,13 @@
             {
                 "title": "SAS Inimov",
                 "subtitle": "Fullstack Developer Laravel / Ionic",
+                "tag": "Freelance",
                 "date": "Dec. 2020 - Feb. 2021",
                 "text": "Development of a delivery e-commerce platform and a mobile loyalty application."
             },
             {
                 "title": "MEFOR SHOP",
-                "subtitle": "Web Developer",
+                "subtitle": "Consultant",
                 "tag": "Freelance",
                 "date": "Apr. 2020 - June 2020",
                 "text": "MEFOR SHOP e-commerce website, an online store in Cameroon."
