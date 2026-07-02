@@ -1,0 +1,10 @@
+{
+    "title": "Envoyez moi un message",
+    "form": {
+        "name": "Nom",
+        "email": "Email",
+        "subject": "Objet",
+        "message": "Message",
+        "send_message": "Envoyer Message"
+    }
+}

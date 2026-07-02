@@ -1,0 +1,19 @@
+{
+    "title": "Recommendations",
+    "items": [
+        {
+            "name": "Dr Albert MAMBO",
+            "image": "/img/testimonials/face-mambo.png",
+            "role": "Délégué Régional de la Santé Publique pour le Littoral",
+            "text": "Son travail exemplaire sur MAMALPRO a grandement amélioré nos plateformes de santé publique. Leur expertise technique, leur professionnalisme et leur rapidité de réponse ont été essentiels pour optimiser notre communication et notre gestion des données.",
+            "rating": 5
+        },
+        {
+            "name": "Rose YEMELI",
+            "image": "/img/testimonials/face-yemeli.png",
+            "role": "Directrice YSO Conseils - CEO Smart Data Pay",
+            "text": "Son expertise en développement web et en ingénierie logicielle a révolutionné notre plateforme RH grâce à l’IA. Son professionnalisme et sa capacité à résoudre des problèmes complexes ont été essentiels dans la conception de notre plateforme d’IA.",
+            "rating": 5
+        }
+    ]
+}

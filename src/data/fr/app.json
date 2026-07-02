@@ -1,0 +1,266 @@
+{
+    "settings": {
+        "siteName": "Aurelien NKUMBE",
+        "siteDescription": "Aurelien NKUMBE, Développeur full-stack polyvalent, autonome et collaboratif, passionné par le DevOps, la MOE et les nouvelles technologies. Expérimenté en développement logiciel, administration système et mise en production, je suis motivé par les défis et prêt à contribuer au succès de votre entreprise.",
+        "formspreeURL": "https://formspree.io/f/your_api_key",
+        "mailchimp": {
+            "url": "",
+            "key": ""
+        },
+        "perPage": 6
+    },
+    "metadatas": {
+        "titles": {
+            "home": "Accueil",
+            "history": "Historique",
+            "projects": "Projets",
+            "contact": "Contact"
+        },
+        "descriptions": {
+            "home": "Aurelien NKUMBE, Génie Logiciel et Développeur Web FullStack",
+            "history": "Parcours académique et expériences porfessionelles",
+            "projects": "Quelques projets réalisés",
+            "contact": "contacter Aurelien NKUMBE ou envoyer un message"
+        }
+    },
+    "profile": {
+        "avatar": "/img/me/face-1.png",
+        "name": "Aurelien NKUMBE",
+        "role": "Génie Logiciel <br>Développeur Web FullStack",
+        "info": [
+            {
+                "label": "Pays",
+                "value": "France"
+            },
+            {
+                "label": "Ville",
+                "value": "Paris | Cergy"
+            }
+        ],
+        "skills": {
+            "language": [
+                {
+                    "label": "Francais",
+                    "value": "1"
+                },
+                {
+                    "label": "Anglais",
+                    "value": "0.3"
+                },
+                {
+                    "label": "Allemand",
+                    "value": "0.2"
+                }
+            ],
+            "hard": [
+                {
+                    "label": "HTML 5",
+                    "value": "0.95"
+                },
+                {
+                    "label": "CSS 3",
+                    "value": "0.85"
+                },
+                {
+                    "label": "Javascript",
+                    "value": "0.7"
+
+                },
+                {
+                    "label": "Typecript",
+                    "value": "0.65"
+                },
+                {
+                    "label": "Bootstrap CSS",
+                    "value": "0.85"
+                },
+                {
+                    "label": "Tailwind CSS",
+                    "value": "0.6"
+                },
+                {
+                    "label": "PHP (Laravel)",
+                    "value": "0.85"
+                },
+                {
+                    "label": "JQuery JS, Ajax",
+                    "value": "0.85"
+                },
+                {
+                    "label": "Angular JS",
+                    "value": "0.75"
+                },
+                {
+                    "label": "Inertia JS",
+                    "value": "0.65"
+                },
+                {
+                    "label": "React JS / Next JS",
+                    "value": "0.45"
+                },
+                {
+                    "label": "Java",
+                    "value": "0.2"
+                },
+                {
+                    "label": "Python",
+                    "value": "0.6"
+                },
+                {
+                    "label": "MySQL",
+                    "value": "0.8"
+                },
+                {
+                    "label": "PostgreSQL",
+                    "value": "0.65"
+                },
+                {
+                    "label": "Oracle",
+                    "value": "0.35"
+                },
+                {
+                    "label": "Git",
+                    "value": "0.6"
+                },
+                {
+                    "label": "Gitlab CI",
+                    "value": "0.6"
+                },
+                {
+                    "label": "Docker, Compose",
+                    "value": "0.7"
+                },
+                {
+                    "label": "Ansible",
+                    "value": "0.6"
+                },
+                {
+                    "label": "Terraform",
+                    "value": "0.6"
+                }
+            ],
+            "knowledge": [
+                {
+                    "label": "Eslint, Prettier"
+                },
+                {
+                    "label": "Webpack, Vite JS"
+                },
+                {
+                    "label": "Langchain, Guardrails, Transformer"
+                },
+                {
+                    "label": "PySpark, Panda, BeautifulSouop"
+                },
+                {
+                    "label": "Supabase, Elastic Search"
+                },
+                {
+                    "label": "Figma, Photoshop, Illustrator"
+                },
+                {
+                    "label": "Make, Zapier"
+                }
+            ]
+        },
+        "resume":[
+            {
+                "file": "https://linktr.ee/nkaurelien",
+                "label": "CV Dév Full stack Angular - PHP - Python | Devops"
+            }
+        ]
+    },
+    "header": {
+        "topBackground": "/img/me/bg.png",
+        "menu": [
+            {
+                "label": "Accueil",
+                "link": "/",
+                "children": 0
+            },
+            {
+                "label": "Historique",
+                "link": "/history",
+                "children": 0
+            },
+            {
+                "label": "Projets",
+                "link": "/projects",
+                "children": 0
+            },
+            {
+                "label": "Contact",
+                "link": "/contact",
+                "children": 0
+            },
+            {
+                "label": "Agenda",
+                "link": "https://calendly.com/nkaurelien",
+                "children": 0,
+                "external": true
+            },
+            {
+                "label": "Blog",
+                "link": "https://medium.com/@nkaurelien",
+                "children": 0,
+                "external": true
+            }
+        ]
+    },
+    "footer": {
+        "copy": "© 2024. Tous Droits Réservés.",
+        "developer": "Par <b>Aurelien NKUMBE</b> (@nkaurelien)"
+    },
+    "social": [
+        {
+            "link": "https://linkedin.com/in/nkaurelien",
+            "icon": "Linkedin",
+            "title": "Linkedin"
+        },
+        {
+            "link": "https://medium.com/@nkaurelien",
+            "icon": "Newspaper",
+            "title": "Medium"
+        },
+        {
+            "link": "https://huggingface.co/nkaurelien",
+            "icon": "Smile",
+            "title": "Huggingface"
+        },
+        {
+            "link": "https://github.com/nkaurelien",
+            "icon": "Github",
+            "title": "Github"
+        },
+        {
+            "link": "https://x.com/AstridNkumbe",
+            "icon": "Twitter",
+            "title": "Twitter"
+        },
+        {
+            "link": "https://www.pappers.fr/entreprise/nkumbe-enongene-astrid-aurelien-922034632",
+            "icon": "Building2",
+            "title": "Pappers"
+        }
+    ],
+    "projects": {
+        "title": "Projets",
+        "all_categories": "Toutes Catégories",
+        "view_more": "Voir Plus",
+        "categories": [
+            {
+                "name": "Sites Web",
+                "slug": "websites"
+            },
+            {
+                "name": "Applications Web",
+                "slug": "web-applications"
+            }
+        ]
+    },
+    "not_found": {
+        "number": "404",
+        "title": "Page Non Trouvée !",
+        "description": "La page demandée n'a pas été trouvée"
+    }
+}

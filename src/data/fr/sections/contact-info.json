@@ -1,0 +1,29 @@
+{
+    "title": "Informations de contact",
+    "items": [
+        {
+            "info": [
+                {
+                    "label": "Pays",
+                    "value": "France"
+                },
+                {
+                    "label": "Adresse",
+                    "value": "Paris | Cergy"
+                }
+            ]
+        },
+        {
+            "info": [
+                {
+                    "label": "Email",
+                    "value": "nkumbeaurelien@hotmail.com"
+                },
+                {
+                    "label": "Téléphone",
+                    "value": "+33 744 584 562"
+                }
+            ]
+        }
+    ]
+}

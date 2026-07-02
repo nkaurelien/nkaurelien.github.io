@@ -1,0 +1,73 @@
+---
+#preview
+title: Mefor Shop
+image: /img/projects/mefor-shop/1.png
+category: Web Applications
+category_slug: web-applications
+#portfolio image size for masonry layout: horizontal, vertical, square
+masonrySize: horizontal
+
+#full details
+description:
+  title: Description
+  content: "<p>MEFOR SHOP e-commerce website, sales site in Cameroon.</p>"
+  button:
+    label: View
+    link: https://www.mefor-shop.com
+
+details:
+  title: Project details
+  items:
+    - label: Begin Date
+      value: Apr. 2020
+
+    - label: End Date
+      value:  Jul. 2020
+
+    - label: Status
+      value: Completed
+
+    - label: Client
+      value: Mefor Shop
+
+    - label: Location
+      value: Douala (Cameroon)
+
+carousel:
+  - image: /img/projects/mefor-shop/1.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/2.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/3.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/4.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/5.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/6.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/7.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/8.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/9.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/10.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/11.png
+    alt: image
+
+  - image: /img/projects/mefor-shop/12.png
+    alt: image
+
+---

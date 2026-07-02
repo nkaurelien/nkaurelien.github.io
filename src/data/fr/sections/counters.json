@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "label": "Années d'expérience",
+            "value": "5",
+            "valueAfter": "+"
+        },
+        {
+            "label": "Projets réalisés",
+            "value": "10",
+            "valueAfter": "+"
+        },
+        {
+            "label": "Repertoires",
+            "value": "20",
+            "valueAfter": "+"
+        }
+    ]
+}

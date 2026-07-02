@@ -1,0 +1,29 @@
+{
+    "title": "Mes Services",
+    "items": [
+        {
+            "title": "Développement Web",
+            "text": "Développement web de sites web ou d'applications web, de l'analyse à la maintenance en passant par la documentation. Le tout dans le respect des normes et spécifications de l'ingénierie logicielle.",
+            "button": {
+                "link": "/contact",
+                "label": "Order now"
+            }
+        },
+        {
+            "title": "Analyse, Audit & Conseil",
+            "text": "Évaluation des besoins techniques et proposition de solutions adaptées. Conseils sur l'architecture logicielle, la sécurité et les choix technologiques. Débogage et résolution des problèmes techniques.",
+            "button": {
+                "link": "/contact",
+                "label": "Order now"
+            }
+        },
+        {
+            "title": "Formation & Documentation",
+            "text": "Formation d'équipes internes, d'individus ou d'apprenants sur les nouvelles technologies et plateformes. Rédaction de documentations techniques (spécifications, documentation de code, etc.) et de guides d'utilisation.",
+            "button": {
+                "link": "/contact",
+                "label": "Order now"
+            }
+        }
+    ]
+}

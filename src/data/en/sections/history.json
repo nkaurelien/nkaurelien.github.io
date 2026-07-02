@@ -1,0 +1,97 @@
+{
+    "col1": {
+        "title": "Education",
+        "items": [
+            {
+                "title": "IONIS STM - France",
+                "subtitle": "Alternating Student",
+                "date": "Oct 2022 - Dec 2024",
+                "text": "MSc (Master of Science) AI & MANAGEMENT",
+                "button": {
+                    "link": "/files/ionis-certificate.jpg",
+                    "type": "image",
+                    "label": "RNCP Level 7 Certification (Eu)"
+                }
+            },
+            {
+                "title": "AICS-Cameroon",
+                "subtitle": "Student",
+                "date": "Oct 2014 - Oct 2017",
+                "text": "Software Engineering > Analysis and design of information systems",
+                "button": {
+                    "link": "/files/iai-certificate.jpg",
+                    "type": "image",
+                    "label": "Diploma Certificate"
+                }
+            },
+            {
+                "title": "Technical Shool of Douala Koumassi (LTDK)",
+                "subtitle": "Student",
+                "date": "Jun 2011",
+                "text": "Baccalaureate series F2 (Electronics)"
+            }
+        ]
+    },
+    "col2": {
+        "title": "Experience",
+        "items": [
+            {
+                "title": "Smart Data Pay (Alternating Contract)",
+                "subtitle": "Freelance Web Developer",
+                "date": "Oct 2023 - Sept 2024",
+                "text": "Intelligent assistant to understand and master payroll, labor law, and collective agreements in France.",
+                "button": {
+                    "type": "link",
+                    "link": "https://ai.smartdatapay.com",
+                    "label": "View the site (Still in build phase)"
+                }
+            },
+            {
+                "title": "Sylen-IT Services (Alternating Contract)",
+                "subtitle": "Freelance Web Developer",
+                "date": "Nov 2022 - Jul 2023",
+                "text": "API integration and User Interface (UI) redesign for the Coface project of the BPCE Group in Full Remote Work. Tech: Angular and Laravel.\n\n\n\n"
+            },
+            {
+                "title": "KOREE - Freelance",
+                "subtitle": "LEAD Backend (PHP/Laravel) and Mobile (Flutter) Developer",
+                "date": "Dec 2021 - Jun 2022",
+                "text": "Design and development of a customer loyalty platform. You are paid and rewarded with cashback for spending. tech",
+                "button": {
+                    "type": "link",
+                    "link": "https://koree.africa",
+                    "label": "View the site"
+                }
+            },
+            {
+                "title": "MAMALPRO",
+                "subtitle": "Web Developer & DevOps / Consultant",
+                "date": "Sep 2021 - Nov 2023",
+                "text": "Web platform for COVID-19 tests - Official platform CAN Total Energies 2021 Cameroon. On behalf of the Regional Delegation of Public Health for the Littoral / MINISTERY OF HEALTH in Cameroon."
+            },
+            {
+                "title": "MEFOR SHOP",
+                "subtitle": "Freelance Web Developer",
+                "date": "Apr 2020 - Jul 2020",
+                "text": "MEFOR SHOP e-commerce website, sales site in Cameroon."
+            },
+            {
+                "title": "MULTI CANAL SERVICES (MCS)",
+                "subtitle": "Lead Fullstack Developer",
+                "date": "Jan 2019 - Mar 2020",
+                "text": "Online sales and parcel delivery platform."
+            },
+            {
+                "title": "MULTI CANAL SERVICES (MCS)",
+                "subtitle": "Web Developer (Internship)",
+                "date": "Jan 2019 - Mar 2020",
+                "text": "",
+                "button": {
+                    "type": "link",
+                    "link": "https://livraison-express.com",
+                    "label": "View the site"
+                }
+            }
+        ]
+    }
+}

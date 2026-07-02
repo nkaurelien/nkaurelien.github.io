@@ -1,0 +1,20 @@
+{
+    "items": [
+        {
+            "image": "/img/brands/drspl.png",
+            "alt": "DRSPL"
+        },
+        {
+            "image": "/img/brands/yso-conseils.jpg",
+            "alt": "YSO Conseils"
+        },
+        {
+            "image": "/img/brands/smart-data-pay.png",
+            "alt": "Smart Data Pay"
+        },
+        {
+            "image": "/img/brands/mefor-shop.png",
+            "alt": "Mefor Shop"
+        }
+    ]
+}

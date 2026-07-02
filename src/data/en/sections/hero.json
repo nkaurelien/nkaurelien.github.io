@@ -1,0 +1,22 @@
+{
+    "bg_image": "/img/me/bg.png",
+    "title": "Hello, <br/>Welcome home",
+    "subtitle": {
+        "start": "&lt;<i>code</i>&gt; I ",
+        "rotates": [
+            "analyze information systems.",
+            "write specifications.",
+            "design and develop web applications.",
+            "write software documentation and manuals."
+        ],
+        "end": "&lt;/<i>code</i>&gt;"
+    },
+    "button": {
+        "link": "/projects",
+        "label": "Explore now"
+    },
+    "photo": {
+        "url": "img/me/face-1.png",
+        "alt": "Aurelien NKUMBE"
+    }
+}

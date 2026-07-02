@@ -1,0 +1,118 @@
+---
+#preview
+title: PAYR
+image: /img/projects/payr/1.png
+category: Web Applications
+category_slug: web-applications
+#portfolio image size for masonry layout: horizontal, vertical, square
+masonrySize: horizontal
+
+#full details
+description:
+  title: Description
+  content: "<p>Payroll and human resources management web application for Cameroon.</p>"
+  button:
+    label: View
+    link: https://www.payr.com
+
+details:
+  title: Project details
+  items:
+    - label: Begin Date
+      value: Jun. 2023
+
+    - label: End Date
+      value:  /
+
+    - label: Status
+      value: In Progress
+
+    - label: Client
+      value: /
+
+    - label: Location
+      value: Cameroon
+
+carousel:
+  - image: /img/projects/payr/1.png
+    alt: image
+
+  - image: /img/projects/payr/2.png
+    alt: image
+
+  - image: /img/projects/payr/3.png
+    alt: image
+
+  - image: /img/projects/payr/4.png
+    alt: image
+
+  - image: /img/projects/payr/5.png
+    alt: image
+
+  - image: /img/projects/payr/6.png
+    alt: image
+
+  - image: /img/projects/payr/7.png
+    alt: image
+
+  - image: /img/projects/payr/8.png
+    alt: image
+
+  - image: /img/projects/payr/9.png
+    alt: image
+
+  - image: /img/projects/payr/10.png
+    alt: image
+
+  - image: /img/projects/payr/11.png
+    alt: image
+
+  - image: /img/projects/payr/12.png
+    alt: image
+      
+  - image: /img/projects/payr/13.png
+    alt: image
+
+  - image: /img/projects/payr/14.png
+    alt: image
+
+  - image: /img/projects/payr/15.png
+    alt: image
+
+  - image: /img/projects/payr/16.png
+    alt: image
+
+  - image: /img/projects/payr/17.png
+    alt: image
+
+  - image: /img/projects/payr/18.png
+    alt: image
+
+  - image: /img/projects/payr/19.png
+    alt: image
+
+  - image: /img/projects/payr/20.png
+    alt: image
+
+  - image: /img/projects/payr/21.png
+    alt: image
+
+  - image: /img/projects/payr/22.png
+    alt: image
+
+  - image: /img/projects/payr/23.png
+    alt: image
+
+  - image: /img/projects/payr/24.png
+    alt: image
+      
+  - image: /img/projects/payr/25.png
+    alt: image
+
+  - image: /img/projects/payr/26.png
+    alt: image
+
+  - image: /img/projects/payr/27.png
+    alt: image
+
+---

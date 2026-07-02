@@ -1,0 +1,78 @@
+---
+#preview
+title: Team Barca 237 Douala
+image: /img/projects/team-barca/1.png
+category: Websites
+category_slug: websites
+#portfolio image size for masonry layout: horizontal, vertical, square
+masonrySize: horizontal
+
+#full details
+description:
+  title: Description
+  content: "<p>Website (+ admin space) of Team Barca 237 Douala, a non-profit sports association.</p>"
+  button:
+    label: View
+    link: https://www.team-barca-douala.com
+
+details:
+  title: Project details
+  items:
+    - label: Begin Date
+      value: Sep. 2022
+
+    - label: End Date
+      value:  /
+
+    - label: Status
+      value: Incomplete
+
+    - label: Client
+      value: Association Team Barca 237 Douala
+
+    - label: Location
+      value: Douala (Cameroon)
+
+carousel:
+  - image: /img/projects/team-barca/1.png
+    alt: image
+
+  - image: /img/projects/team-barca/2.png
+    alt: image
+
+  - image: /img/projects/team-barca/3.png
+    alt: image
+
+  - image: /img/projects/team-barca/4.png
+    alt: image
+
+  - image: /img/projects/team-barca/5.png
+    alt: image
+
+  - image: /img/projects/team-barca/6.png
+    alt: image
+
+  - image: /img/projects/team-barca/7.png
+    alt: image
+
+  - image: /img/projects/team-barca/8.png
+    alt: image
+    
+  - image: /img/projects/team-barca/9.png
+    alt: image
+    
+  - image: /img/projects/team-barca/10.png
+    alt: image
+    
+  - image: /img/projects/team-barca/11.png
+    alt: image
+    
+  - image: /img/projects/team-barca/12.png
+    alt: image
+    
+  - image: /img/projects/team-barca/13.png
+    alt: image
+
+  - image: /img/projects/team-barca/14.png
+    alt: image
+---

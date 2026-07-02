@@ -1,0 +1,29 @@
+{
+    "title": "My Services",
+    "items": [
+        {
+            "title": "Web Development",
+            "text": "Web development of websites or web applications, from analysis to maintenance through documentation. All while respecting the standards and specifications of software engineering.",
+            "button": {
+                "link": "/contact",
+                "label": "Order now"
+            }
+        },
+        {
+            "title": "Analysis, Audit & Advice",
+            "text": "Assessment of technical needs and proposal of suitable solutions. Advice on software architecture, security and technological choices. Debugging and resolving technical issues.",
+            "button": {
+                "link": "/contact",
+                "label": "Order now"
+            }
+        },
+        {
+            "title": "Formation & Documentation",
+            "text": "Training of internal teams, individuals or learners on new technologies and platforms. Writing of technical documentation (specifications, code documentation, etc.) and user guides.",
+            "button": {
+                "link": "/contact",
+                "label": "Order now"
+            }
+        }
+    ]
+}

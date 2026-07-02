@@ -1,0 +1,99 @@
+{
+    "col1": {
+        "title": "Formation",
+        "items": [
+
+            {
+                "title": "IONIS STM - France",
+                "subtitle": "Etudiant en alternance",
+                "date": "Oct 2022 - Dec 2024",
+                "text": "MSc (Master of Science) IA & MANAGEMENT",
+                "button": {
+                    "link": "/files/ionis-certificate.jpg",
+                    "type": "image",
+                    "label": "Certification RNCP de niveau 7 (Eu)"
+                }
+            },
+            {
+                "title": "IAI - Cameroun",
+                "subtitle": "Etudiant",
+                "date": "Oct 2014 - Oct 2017",
+                "text": "Ingénieur de Travaux Informatiques option Génie Logiciel > Analyse et conception des systèmes d'information",
+                "button": {
+                    "link": "/files/iai-certificate.jpg",
+                    "type": "image",
+                    "label": "Attestation Diplome"
+                }
+            },
+            {
+                "title": "Lycée Technique Douala Koumassi (LTDK)",
+                "subtitle": "Elève",
+                "date": "Juin 2011",
+                "text": "Baccalauréat série F2 (Electronique)"
+            }
+        ]
+    },
+    "col2": {
+        "title": "Expérience",
+        "items": [
+            {
+                "title": "Smart Data Pay (Contrat d'alternance)",
+                "subtitle": "Développeur web freelance",
+                "date": "Oct 2023 - Sept 2024",
+                "text": "Assistant intelligent pour comprendre et maitriser la paie, le droit du travail et les conventions collectives en France.",
+                "button": {
+                    "type": "link",
+                    "link": "https://ai.smartdatapay.com",
+                    "label": "Voir le site (Toujours phase de build)"
+                }
+            },
+            {
+                "title": "Sylen-IT Services (Contrat d'alternance)",
+                "subtitle": "Développeur web freelance",
+                "date": "Nov 2022 - Juillet 2023",
+                "text": "Intégration d'API et Refonte de l’interface utilisateur (IHM) pour le projet Coface du Groupe BPCE en Full Télétravail. Techno: Angular et Laravel.\n\n\n\n"
+            },
+            {
+                "title": "KOREE - Freelance",
+                "subtitle": "LEAD Développeur Backend (PHP/Laravel) et Mobile (Flutter)",
+                "date": "Dec 2021 - juin 2022",
+                "text": "Conception et développement d’une plateforme de fidélisation de la clientèle. Vous êtes payé et récompensé par cashback pour dépenser. tech",
+                "button": {
+                    "type": "link",
+                    "link": "https://koree.africa",
+                    "label": "Voir le site"
+                }
+            },
+            {
+                "title": "MAMALPRO",
+                "subtitle": "Développeur web & Devops / Consultant",
+                "date": "Sep. 2021 - Nov. 2023",
+                "text": "Plateforme web de tests Covid-19 - Plateforme officielle CAN Total Energies 2021 Cameroun. Pour le compte de la Délegation Regionale de la Santé Publique pour le Littoral / MINSANTE au Cameroun."
+            },
+            {
+                "title": "MEFOR SHOP",
+                "subtitle": "Développeur web freelance",
+                "date": "Avr. 2020 - Jui. 2020",
+                "text": "Site web e-commerce MEFOR SHOP, site de vente au Cameroun."
+            },
+
+            {
+                "title": "MULTI CANAL SERVICES (MCS)",
+                "subtitle": "Lead Développeur Fullstack",
+                "date": "Jan. 2019 - Mar. 2020",
+                "text": "Plateforme de vente en ligne et de livraison de colis."
+            },
+            {
+                "title": "MULTI CANAL SERVICES (MCS)",
+                "subtitle": "Développeur Web (Stage)",
+                "date": "Jan. 2019 - Mar. 2020",
+                "text": "",
+                "button": {
+                    "type": "link",
+                    "link": "https://livraison-express.com",
+                    "label": "Voir le site"
+                }
+            }
+        ]
+    }
+}
