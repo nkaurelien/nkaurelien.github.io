@@ -3,32 +3,38 @@
         "title": "Education",
         "items": [
             {
+                "title": "WILOW - Paris",
+                "subtitle": "Professional training",
+                "date": "Jan 2025 - Mar 2025",
+                "text": "webMethods 10.x training: Integration Server & Designer, installation (shell scripts & Command Central), IS administration, service development (File Polling, REST API)."
+            },
+            {
                 "title": "IONIS STM - France",
-                "subtitle": "Alternating Student",
+                "subtitle": "Work-study student",
                 "date": "Oct 2022 - Dec 2024",
-                "text": "MSc (Master of Science) AI & MANAGEMENT",
+                "text": "MSc (Master of Science) AI & Management — Expert in Computer Engineering",
                 "button": {
                     "link": "/files/ionis-certificate.jpg",
                     "type": "image",
-                    "label": "RNCP Level 7 Certification (Eu)"
+                    "label": "RNCP Level 7 certification (EU)"
                 }
             },
             {
-                "title": "AICS-Cameroon",
+                "title": "IAI - Cameroon",
                 "subtitle": "Student",
                 "date": "Oct 2014 - Oct 2017",
-                "text": "Software Engineering > Analysis and design of information systems",
+                "text": "Software Engineering degree > Analysis and design of information systems",
                 "button": {
                     "link": "/files/iai-certificate.jpg",
                     "type": "image",
-                    "label": "Diploma Certificate"
+                    "label": "Diploma certificate"
                 }
             },
             {
-                "title": "Technical Shool of Douala Koumassi (LTDK)",
+                "title": "Douala Koumassi Technical High School (LTDK)",
                 "subtitle": "Student",
-                "date": "Jun 2011",
-                "text": "Baccalaureate series F2 (Electronics)"
+                "date": "June 2011",
+                "text": "Baccalaureate F2 (Electronics)"
             }
         ]
     },
@@ -36,60 +42,78 @@
         "title": "Experience",
         "items": [
             {
-                "title": "Smart Data Pay (Alternating Contract)",
-                "subtitle": "Freelance Web Developer",
+                "title": "DATA2INNOV",
+                "subtitle": "Fullstack Software Engineer (Lead / Tech Lead)",
+                "date": "May 2025 - Present",
+                "text": "Fullstack development (Next.js / FastAPI) of patient & doctor healthcare apps compliant with FHIR/HL7. Collection and interpretation of physiological data from connected devices (EmotiBit-ESP32, Withings, Bangle.js), real-time pipelines (Logstash, WebSockets, ELK), Flutter mobile PoC (BLE/WiFi). Continuous integration & delivery (GitLab CI, Docker, Ansible). Technical mentoring of teams in Tunisia."
+            },
+            {
+                "title": "YSO Conseils / KAZAC — Smart Data Pay",
+                "subtitle": "Fullstack Web, AI & Tech Lead Engineer",
                 "date": "Oct 2023 - Sept 2024",
-                "text": "Intelligent assistant to understand and master payroll, labor law, and collective agreements in France.",
+                "text": "Built a RAG chatbot (Next.js, OpenAI, Ollama, LiteLLM, LangChain) — an intelligent assistant for payroll, labour law and collective agreements in France. Fullstack Laravel development (Filament, Livewire), SAAS automation (Make/N8N), CI/CD on Azure.",
                 "button": {
                     "type": "link",
                     "link": "https://ai.smartdatapay.com",
-                    "label": "View the site (Still in build phase)"
-                }
-            },
-            {
-                "title": "Sylen-IT Services (Alternating Contract)",
-                "subtitle": "Freelance Web Developer",
-                "date": "Nov 2022 - Jul 2023",
-                "text": "API integration and User Interface (UI) redesign for the Coface project of the BPCE Group in Full Remote Work. Tech: Angular and Laravel.\n\n\n\n"
-            },
-            {
-                "title": "KOREE - Freelance",
-                "subtitle": "LEAD Backend (PHP/Laravel) and Mobile (Flutter) Developer",
-                "date": "Dec 2021 - Jun 2022",
-                "text": "Design and development of a customer loyalty platform. You are paid and rewarded with cashback for spending. tech",
-                "button": {
-                    "type": "link",
-                    "link": "https://koree.africa",
-                    "label": "View the site"
+                    "label": "Visit site"
                 }
             },
             {
                 "title": "MAMALPRO",
-                "subtitle": "Web Developer & DevOps / Consultant",
-                "date": "Sep 2021 - Nov 2023",
-                "text": "Web platform for COVID-19 tests - Official platform CAN Total Energies 2021 Cameroon. On behalf of the Regional Delegation of Public Health for the Littoral / MINISTERY OF HEALTH in Cameroon."
+                "subtitle": "Web & DevOps Developer / Consultant",
+                "date": "Sep. 2021 - Nov. 2023",
+                "text": "Covid-19 testing web platform — official platform for AFCON Total Energies 2021 Cameroon, for the Regional Public Health Delegation of Littoral / MINSANTE."
+            },
+            {
+                "title": "Sylen-IT Services",
+                "subtitle": "Angular / TypeScript Developer (freelance)",
+                "date": "Nov 2022 - July 2023",
+                "text": "API integration and UI redesign for the Coface project (BPCE Group), fully remote. Document search built around Elasticsearch. Stack: Angular, Laravel, RxJS."
+            },
+            {
+                "title": "SCB Cameroon (Attijariwafa Bank Group)",
+                "subtitle": "Programmer Analyst - Project Lead (AMOE)",
+                "date": "Apr. 2022 - Sept. 2022",
+                "text": "Digital transformation of a top-3 Cameroonian bank: secure REST APIs (JWT), KONG reverse proxy, LDAP + RBAC authentication against the AD, intranet portal for business apps, automated PDF account-statement delivery, Argo CD deployment on Kubernetes."
+            },
+            {
+                "title": "KOREE",
+                "subtitle": "Lead Backend Developer (PHP/Laravel) & Mobile (Flutter)",
+                "date": "Dec 2021 - June 2022",
+                "text": "Design and development of a customer loyalty platform (top-3 Fintech startup in Central Africa): secure RESTful APIs (JWT), cloud integrations (AWS, GCP, Stripe), GitLab + Ansible CI/CD, vulnerability scanning (Snyk).",
+                "button": {
+                    "type": "link",
+                    "link": "https://koree.africa",
+                    "label": "Visit site"
+                }
+            },
+            {
+                "title": "LAB2VIEW",
+                "subtitle": "Fullstack Developer Laravel / Vue.js / Electron.js",
+                "date": "Feb. 2021 - Oct. 2021",
+                "text": "Cross-platform desktop app (Electron.js) for stock and point-of-sale management, powered by a RESTful API: automatic updates and release publishing, multi-tenant architecture and SAAS version, AWS EC2 / Plesk deployment."
+            },
+            {
+                "title": "SAS Inimov",
+                "subtitle": "Fullstack Developer Laravel / Ionic",
+                "date": "Dec. 2020 - Feb. 2021",
+                "text": "Development of a delivery e-commerce platform and a mobile loyalty application."
             },
             {
                 "title": "MEFOR SHOP",
                 "subtitle": "Freelance Web Developer",
-                "date": "Apr 2020 - Jul 2020",
-                "text": "MEFOR SHOP e-commerce website, sales site in Cameroon."
+                "date": "Apr. 2020 - June 2020",
+                "text": "MEFOR SHOP e-commerce website, an online store in Cameroon."
             },
             {
-                "title": "MULTI CANAL SERVICES (MCS)",
-                "subtitle": "Lead Fullstack Developer",
-                "date": "Jan 2019 - Mar 2020",
-                "text": "Online sales and parcel delivery platform."
-            },
-            {
-                "title": "MULTI CANAL SERVICES (MCS)",
-                "subtitle": "Web Developer (Internship)",
-                "date": "Jan 2019 - Mar 2020",
-                "text": "",
+                "title": "MCS IT",
+                "subtitle": "Fullstack Developer Laravel / Angular / Vue.js (full remote)",
+                "date": "June 2018 - Oct 2020",
+                "text": "Development of an e-commerce platform for parcel and meal delivery (Design Thinking, OOP, clean code): Angular app with Social Auth, courier mobile app (Flutter), POS backoffice, Google Maps/Places & Firebase integrations, Kubernetes clusters on GCP, GitLab + Laravel Envoy / Ansible CI/CD.",
                 "button": {
                     "type": "link",
                     "link": "https://livraison-express.com",
-                    "label": "View the site"
+                    "label": "Visit site"
                 }
             }
         ]

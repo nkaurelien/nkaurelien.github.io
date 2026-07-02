@@ -2,12 +2,17 @@
     "col1": {
         "title": "Formation",
         "items": [
-
+            {
+                "title": "WILOW - Paris",
+                "subtitle": "Formation professionnelle",
+                "date": "Jan 2025 - Mar 2025",
+                "text": "Formation webMethods 10.x : Integration Server & Designer, installation (shell scripts & Command Central), administration IS, développement de services (File Polling, REST API)."
+            },
             {
                 "title": "IONIS STM - France",
                 "subtitle": "Etudiant en alternance",
                 "date": "Oct 2022 - Dec 2024",
-                "text": "MSc (Master of Science) IA & MANAGEMENT",
+                "text": "MSc (Master of Science) IA & MANAGEMENT — Expert en Ingénierie Informatique",
                 "button": {
                     "link": "/files/ionis-certificate.jpg",
                     "type": "image",
@@ -37,27 +42,45 @@
         "title": "Expérience",
         "items": [
             {
-                "title": "Smart Data Pay (Contrat d'alternance)",
-                "subtitle": "Développeur web freelance",
+                "title": "DATA2INNOV",
+                "subtitle": "Ingénieur Développeur Fullstack (Lead / MOE)",
+                "date": "Mai 2025 - Présent",
+                "text": "Développement fullstack (Next.js / FastAPI) d'applications santé patient & médecin conformes FHIR/HL7. Collecte et interprétation de données physiologiques issues d'objets connectés (EmotiBit-ESP32, Withings, Bangle.js), pipelines temps réel (Logstash, WebSockets, ELK), POC mobile Flutter (BLE/WiFi). Intégration & déploiement continus (GitLab CI, Docker, Ansible). Accompagnement technique des équipes en Tunisie."
+            },
+            {
+                "title": "YSO Conseils / KAZAC — Smart Data Pay",
+                "subtitle": "Ingénieur Développeur Fullstack Web, IA & MOE",
                 "date": "Oct 2023 - Sept 2024",
-                "text": "Assistant intelligent pour comprendre et maitriser la paie, le droit du travail et les conventions collectives en France.",
+                "text": "Développement d'un chatbot RAG (Next.js, OpenAI, Ollama, LiteLLM, LangChain) — assistant intelligent pour la paie, le droit du travail et les conventions collectives en France. Développement fullstack Laravel (Filament, Livewire), automatisation SAAS (Make/N8N), CI/CD sur Azure.",
                 "button": {
                     "type": "link",
                     "link": "https://ai.smartdatapay.com",
-                    "label": "Voir le site (Toujours phase de build)"
+                    "label": "Voir le site"
                 }
             },
             {
-                "title": "Sylen-IT Services (Contrat d'alternance)",
-                "subtitle": "Développeur web freelance",
-                "date": "Nov 2022 - Juillet 2023",
-                "text": "Intégration d'API et Refonte de l’interface utilisateur (IHM) pour le projet Coface du Groupe BPCE en Full Télétravail. Techno: Angular et Laravel.\n\n\n\n"
+                "title": "MAMALPRO",
+                "subtitle": "Développeur web & DevOps / Consultant",
+                "date": "Sep. 2021 - Nov. 2023",
+                "text": "Plateforme web de tests Covid-19 — plateforme officielle CAN Total Energies 2021 Cameroun, pour la Délégation Régionale de la Santé Publique pour le Littoral / MINSANTE."
             },
             {
-                "title": "KOREE - Freelance",
-                "subtitle": "LEAD Développeur Backend (PHP/Laravel) et Mobile (Flutter)",
-                "date": "Dec 2021 - juin 2022",
-                "text": "Conception et développement d’une plateforme de fidélisation de la clientèle. Vous êtes payé et récompensé par cashback pour dépenser. tech",
+                "title": "Sylen-IT Services",
+                "subtitle": "Développeur Angular / TypeScript (freelance)",
+                "date": "Nov 2022 - Juillet 2023",
+                "text": "Intégration d'API et refonte de l'interface utilisateur (IHM) pour le projet Coface du Groupe BPCE, en full télétravail. Recherche de documents autour d'Elasticsearch. Techno : Angular, Laravel, RxJS."
+            },
+            {
+                "title": "SCB Cameroun (Groupe Attijariwafa Bank)",
+                "subtitle": "Analyste Programmeur - Chef de projet (AMOE)",
+                "date": "Avr. 2022 - Sept. 2022",
+                "text": "Transformation numérique d'une banque du top 3 camerounais : APIs REST sécurisées (JWT), reverse proxy KONG, authentification LDAP + RBAC sur l'AD, portail intranet d'accès aux applications métiers, distribution automatisée de relevés de comptes PDF, déploiement d'Argo CD sur Kubernetes."
+            },
+            {
+                "title": "KOREE",
+                "subtitle": "Lead Développeur Backend (PHP/Laravel) & Mobile (Flutter)",
+                "date": "Déc 2021 - Juin 2022",
+                "text": "Conception et développement d'une plateforme de fidélisation client (top 3 startup Fintech d'Afrique centrale) : APIs RESTful sécurisées (JWT), intégrations cloud (AWS, GCP, Stripe), CI/CD GitLab + Ansible, analyse de vulnérabilités (Snyk).",
                 "button": {
                     "type": "link",
                     "link": "https://koree.africa",
@@ -65,10 +88,16 @@
                 }
             },
             {
-                "title": "MAMALPRO",
-                "subtitle": "Développeur web & Devops / Consultant",
-                "date": "Sep. 2021 - Nov. 2023",
-                "text": "Plateforme web de tests Covid-19 - Plateforme officielle CAN Total Energies 2021 Cameroun. Pour le compte de la Délegation Regionale de la Santé Publique pour le Littoral / MINSANTE au Cameroun."
+                "title": "LAB2VIEW",
+                "subtitle": "Développeur Fullstack Laravel / Vue.js / Electron.js",
+                "date": "Fév. 2021 - Oct. 2021",
+                "text": "Application multiplateforme (Electron.js) de gestion de stock et de caisses, dotée d'une API RESTful : mise à jour automatique et publication des releases, architecture multi-tenant et version SAAS, déploiement AWS EC2 / Plesk."
+            },
+            {
+                "title": "SAS Inimov",
+                "subtitle": "Développeur Fullstack Laravel / Ionic",
+                "date": "Déc. 2020 - Fév. 2021",
+                "text": "Développement d'une plateforme e-commerce de livraison et d'une application mobile de fidélisation."
             },
             {
                 "title": "MEFOR SHOP",
@@ -76,18 +105,11 @@
                 "date": "Avr. 2020 - Jui. 2020",
                 "text": "Site web e-commerce MEFOR SHOP, site de vente au Cameroun."
             },
-
             {
-                "title": "MULTI CANAL SERVICES (MCS)",
-                "subtitle": "Lead Développeur Fullstack",
-                "date": "Jan. 2019 - Mar. 2020",
-                "text": "Plateforme de vente en ligne et de livraison de colis."
-            },
-            {
-                "title": "MULTI CANAL SERVICES (MCS)",
-                "subtitle": "Développeur Web (Stage)",
-                "date": "Jan. 2019 - Mar. 2020",
-                "text": "",
+                "title": "MCS IT",
+                "subtitle": "Développeur Full Stack Laravel / Angular / Vue.js (full remote)",
+                "date": "Juin 2018 - Oct 2020",
+                "text": "Développement d'une plateforme e-commerce de livraison de colis et de repas (Design Thinking, POO, clean code) : app Angular + Social Auth, app mobile coursiers (Flutter), backoffice POS, intégrations Google Maps/Places & Firebase, clusters Kubernetes sur GCP, CI/CD GitLab + Laravel Envoy / Ansible.",
                 "button": {
                     "type": "link",
                     "link": "https://livraison-express.com",
