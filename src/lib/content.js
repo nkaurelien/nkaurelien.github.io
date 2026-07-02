@@ -11,6 +11,10 @@ export async function getSection(locale, name) {
   return (await import(`../data/${locale}/sections/${name}.json`)).default;
 }
 
+export async function getSlider(locale, name) {
+  return (await import(`../data/${locale}/sliders/${name}.json`)).default;
+}
+
 // Charge les projets actifs (fichiers *.md, hors *.md.off) depuis /public/projects/<locale>.
 export function getProjects(locale) {
   const dir = path.join(process.cwd(), 'public', 'projects', locale);

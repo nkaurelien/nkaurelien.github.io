@@ -1,19 +1,40 @@
 {
-    "title": "Recommendations",
+    "title": "Recommandations",
     "items": [
         {
             "name": "Dr Albert MAMBO",
             "image": "/img/testimonials/face-mambo.png",
             "role": "Délégué Régional de la Santé Publique pour le Littoral",
-            "text": "Son travail exemplaire sur MAMALPRO a grandement amélioré nos plateformes de santé publique. Leur expertise technique, leur professionnalisme et leur rapidité de réponse ont été essentiels pour optimiser notre communication et notre gestion des données.",
+            "text": "Son travail exemplaire sur MAMALPRO a grandement amélioré nos plateformes de santé publique. Son expertise technique, son professionnalisme et sa rapidité de réponse ont été essentiels pour optimiser notre communication et notre gestion des données.",
             "rating": 5
         },
         {
             "name": "Rose YEMELI",
             "image": "/img/testimonials/face-yemeli.png",
             "role": "Directrice YSO Conseils - CEO Smart Data Pay",
-            "text": "Son expertise en développement web et en ingénierie logicielle a révolutionné notre plateforme RH grâce à l’IA. Son professionnalisme et sa capacité à résoudre des problèmes complexes ont été essentiels dans la conception de notre plateforme d’IA.",
+            "text": "Son expertise en développement web et en ingénierie logicielle a révolutionné notre plateforme RH grâce à l'IA. Son professionnalisme et sa capacité à résoudre des problèmes complexes ont été essentiels dans la conception de notre plateforme d'IA.",
             "rating": 5
+        },
+        {
+            "name": "Hervé Franck ELOUNDOU",
+            "role": "Consultant SAP S/4HANA EAM, CPI & Field Service Management | Odoo",
+            "link": "https://www.linkedin.com/in/herve-franck-eloundou/",
+            "text": "J'ai eu la possibilité de travailler avec Aurelien pendant plus d'un an. Très bon techniquement et ayant une forte capacité d'analyse et de conception dans le domaine du développement informatique, je le recommande si vous avez besoin dans la mise en place d'une application web et/ou mobile.",
+            "rating": 5
+        },
+        {
+            "name": "Moses Tamunang",
+            "image": "/img/testimonials/face-2.jpg",
+            "role": "Directeur Logasoft Corp",
+            "text": "Son expertise technique et sa créativité ont été déterminantes dans la réussite de nos projets. Son professionnalisme et sa capacité à résoudre des problèmes complexes en font un atout précieux pour n'importe quelle équipe. L'un des meilleurs développeurs avec qui j'ai travaillé.",
+            "rating": 4
+        },
+        {
+            "name": "Gerardin Dongmo",
+            "image": "/img/testimonials/face-3.jpg",
+            "role": "Propriétaire MEFOR SHOP",
+            "text": "Grâce à son expertise et son professionnalisme, notre site e-commerce a gagné en performance et en attractivité. Sa réactivité et sa capacité à résoudre rapidement les problèmes ont été essentielles à notre réussite en ligne.",
+            "rating": 4
         }
     ]
 }
