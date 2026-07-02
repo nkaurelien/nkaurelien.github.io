@@ -35,7 +35,9 @@ export function getProjects(locale) {
         description: data.description?.content || '',
         link: data.description?.button?.link || null,
         linkLabel: data.description?.button?.label || 'Voir',
+        active: data.active !== false,
         content,
       };
-    });
+    })
+    .filter(p => p.active);
 }

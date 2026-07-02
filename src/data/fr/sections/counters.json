@@ -3,17 +3,20 @@
         {
             "label": "Années d'expérience",
             "value": "7",
-            "valueAfter": "+"
+            "valueAfter": "+",
+            "active": true
         },
         {
             "label": "Projets réalisés",
             "value": "15",
-            "valueAfter": "+"
+            "valueAfter": "+",
+            "active": true
         },
         {
             "label": "Repertoires",
             "value": "30",
-            "valueAfter": "+"
+            "valueAfter": "+",
+            "active": true
         }
     ]
 }

@@ -1,7 +1,7 @@
 import { Container, SimpleGrid, Stack, Text } from '@mantine/core';
 
 export default function Counters({ counters }) {
-  const items = counters?.items || [];
+  const items = (counters?.items || []).filter(i => i.active !== false);
 
   return (
     <div className="section-muted">

@@ -16,7 +16,7 @@
             "link": "https://www.linkedin.com/in/herve-franck-eloundou/",
             "text": "J'ai eu la possibilité de travailler avec Aurelien pendant plus d'un an. Très bon techniquement et ayant une forte capacité d'analyse et de conception dans le domaine du développement informatique, je le recommande si vous avez besoin dans la mise en place d'une application web et/ou mobile.",
             "rating": 5,
-            "active": false
+            "active": true
         },
         {
             "name": "Dr Albert MAMBO",
@@ -24,23 +24,23 @@
             "role": "Délégué Régional de la Santé Publique pour le Littoral",
             "text": "Son travail exemplaire sur MAMALPRO a grandement amélioré nos plateformes de santé publique. Son expertise technique, son professionnalisme et sa rapidité de réponse ont été essentiels pour optimiser notre communication et notre gestion des données.",
             "rating": 5,
-            "active": false
-        },
-        {
-            "name": "Moses Tamunang",
-            "image": "/img/testimonials/face-2.jpg",
-            "role": "Directeur Logasoft Corp",
-            "text": "Son expertise technique et sa créativité ont été déterminantes dans la réussite de nos projets. Son professionnalisme et sa capacité à résoudre des problèmes complexes en font un atout précieux pour n'importe quelle équipe. L'un des meilleurs développeurs avec qui j'ai travaillé.",
-            "rating": 4,
-            "active": false
+            "active": true
         },
         {
             "name": "Fernand Hervé",
             "role": "Fondateur de MCS · Consultant chez Capgemini",
             "link": "https://www.linkedin.com/in/fernand-herv%C3%A9-a917ab27/",
+            "text": "Son expertise technique et sa créativité ont été déterminantes dans la réussite de nos projets. Son professionnalisme et sa capacité à résoudre des problèmes complexes en font un atout précieux pour n'importe quelle équipe. L'un des meilleurs développeurs avec qui j'ai travaillé.",
+            "rating": 5,
+            "active": true
+        },
+        {
+            "name": "Magalie Gauze-Sanga",
+            "role": "Women Tech Entrepreneur · CEO Koree",
+            "link": "https://www.linkedin.com/in/gsmagalie/",
             "text": "",
             "rating": 5,
-            "active": false
+            "active": true
         },
         {
             "name": "Carlson N. NDANGA",
@@ -48,7 +48,7 @@
             "link": "https://www.linkedin.com/in/carlson-nche-ndanga/",
             "text": "",
             "rating": 5,
-            "active": false
+            "active": true
         }
     ]
 }

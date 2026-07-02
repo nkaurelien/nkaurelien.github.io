@@ -7,7 +7,8 @@
                 "subtitle": "Professional training",
                 "tag": "Full remote",
                 "date": "Jan 2025 - Mar 2025",
-                "text": "webMethods 10.x training: Integration Server & Designer, installation (shell scripts & Command Central), IS administration, service development (File Polling, REST API)."
+                "text": "webMethods 10.x training: Integration Server & Designer, installation (shell scripts & Command Central), IS administration, service development (File Polling, REST API).",
+                "active": true
             },
             {
                 "title": "IONIS STM - France",
@@ -18,7 +19,8 @@
                     "link": "/files/ionis-certificate.jpg",
                     "type": "image",
                     "label": "RNCP Level 7 certification (EU)"
-                }
+                },
+                "active": true
             },
             {
                 "title": "IAI - Cameroon",
@@ -29,13 +31,15 @@
                     "link": "/files/iai-certificate.jpg",
                     "type": "image",
                     "label": "Diploma certificate"
-                }
+                },
+                "active": true
             },
             {
                 "title": "Douala Koumassi Technical High School (LTDK)",
                 "subtitle": "Student",
                 "date": "June 2011",
-                "text": "Baccalaureate F2 (Electronics)"
+                "text": "Baccalaureate F2 (Electronics)",
+                "active": true
             }
         ]
     },
@@ -46,7 +50,8 @@
                 "title": "DATA2INNOV",
                 "subtitle": "Fullstack Software Engineer (Lead / Tech Lead)",
                 "date": "May 2025 - Present",
-                "text": "Fullstack development (Next.js / FastAPI) of patient & doctor healthcare apps compliant with FHIR/HL7. Collection and interpretation of physiological data from connected devices (EmotiBit-ESP32, Withings, Bangle.js), real-time pipelines (Logstash, WebSockets, ELK), Flutter mobile PoC (BLE/WiFi). Continuous integration & delivery (GitLab CI, Docker, Ansible). Technical mentoring of teams in Tunisia."
+                "text": "Fullstack development (Next.js / FastAPI) of patient & doctor healthcare apps compliant with FHIR/HL7. Collection and interpretation of physiological data from connected devices (EmotiBit-ESP32, Withings, Bangle.js), real-time pipelines (Logstash, WebSockets, ELK), Flutter mobile PoC (BLE/WiFi). Continuous integration & delivery (GitLab CI, Docker, Ansible). Technical mentoring of teams in Tunisia.",
+                "active": true
             },
             {
                 "title": "YSO Conseils / KAZAC — Smart Data Pay",
@@ -57,26 +62,30 @@
                     "type": "link",
                     "link": "https://smartdatapay.com/",
                     "label": "Visit site"
-                }
+                },
+                "active": true
             },
             {
                 "title": "MAMALPRO",
                 "subtitle": "Web & DevOps Developer",
                 "tag": "Freelance",
                 "date": "Sep. 2021 - Nov. 2023",
-                "text": "Covid-19 testing web platform — official platform for AFCON Total Energies 2021 Cameroon, for the Regional Public Health Delegation of Littoral / MINSANTE."
+                "text": "Covid-19 testing web platform — official platform for AFCON Total Energies 2021 Cameroon, for the Regional Public Health Delegation of Littoral / MINSANTE.",
+                "active": true
             },
             {
                 "title": "Sylen-IT Services",
                 "subtitle": "Angular / TypeScript Developer",
                 "date": "Nov 2022 - July 2023",
-                "text": "API integration and UI redesign for the Coface project (BPCE Group), fully remote. Document search built around Elasticsearch. Stack: Angular, Laravel, RxJS."
+                "text": "API integration and UI redesign for the Coface project (BPCE Group), fully remote. Document search built around Elasticsearch. Stack: Angular, Laravel, RxJS.",
+                "active": true
             },
             {
                 "title": "SCB Cameroon (Attijariwafa Bank Group)",
                 "subtitle": "Programmer Analyst - Project Lead (AMOE)",
                 "date": "Apr. 2022 - Sept. 2022",
-                "text": "Digital transformation of a top-3 Cameroonian bank: secure REST APIs (JWT), KONG reverse proxy, LDAP + RBAC authentication against the AD, intranet portal for business apps, automated PDF account-statement delivery, Argo CD deployment on Kubernetes."
+                "text": "Digital transformation of a top-3 Cameroonian bank: secure REST APIs (JWT), KONG reverse proxy, LDAP + RBAC authentication against the AD, intranet portal for business apps, automated PDF account-statement delivery, Argo CD deployment on Kubernetes.",
+                "active": true
             },
             {
                 "title": "KOREE",
@@ -87,27 +96,31 @@
                     "type": "link",
                     "link": "https://koree.africa",
                     "label": "Visit site"
-                }
+                },
+                "active": true
             },
             {
                 "title": "LAB2VIEW",
                 "subtitle": "Fullstack Developer Laravel / Vue.js / Electron.js",
                 "date": "Feb. 2021 - Oct. 2021",
-                "text": "Cross-platform desktop app (Electron.js) for stock and point-of-sale management, powered by a RESTful API: automatic updates and release publishing, multi-tenant architecture and SAAS version, AWS EC2 / Plesk deployment."
+                "text": "Cross-platform desktop app (Electron.js) for stock and point-of-sale management, powered by a RESTful API: automatic updates and release publishing, multi-tenant architecture and SAAS version, AWS EC2 / Plesk deployment.",
+                "active": true
             },
             {
                 "title": "SAS Inimov",
                 "subtitle": "Fullstack Developer Laravel / Ionic",
                 "tag": "Freelance",
                 "date": "Dec. 2020 - Feb. 2021",
-                "text": "Development of a delivery e-commerce platform and a mobile loyalty application."
+                "text": "Development of a delivery e-commerce platform and a mobile loyalty application.",
+                "active": true
             },
             {
                 "title": "MEFOR SHOP",
                 "subtitle": "Consultant",
                 "tag": "Freelance",
                 "date": "Apr. 2020 - June 2020",
-                "text": "Technical guidance and advisory to the lead developer, plus support with the deployment / hosting of the MEFOR SHOP e-commerce platform (online store in Cameroon)."
+                "text": "Technical guidance and advisory to the lead developer, plus support with the deployment / hosting of the MEFOR SHOP e-commerce platform (online store in Cameroon).",
+                "active": true
             },
             {
                 "title": "MCS IT",
@@ -119,7 +132,8 @@
                     "type": "link",
                     "link": "https://livraison-express.com",
                     "label": "Visit site"
-                }
+                },
+                "active": true
             }
         ]
     }

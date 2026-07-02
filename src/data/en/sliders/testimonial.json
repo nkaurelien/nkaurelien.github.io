@@ -16,7 +16,7 @@
             "link": "https://www.linkedin.com/in/herve-franck-eloundou/",
             "text": "I had the opportunity to work with Aurelien for over a year. Technically very strong, with a great capacity for analysis and design in software development — I recommend him if you need to build a web and/or mobile application.",
             "rating": 5,
-            "active": false
+            "active": true
         },
         {
             "name": "Dr Albert MAMBO",
@@ -24,23 +24,23 @@
             "role": "Regional Delegate for Public Health for the Littoral",
             "text": "Their exemplary work on MAMALPRO has greatly improved our public health platforms. Their technical expertise, professionalism and speed of response have been essential to optimize our communication and data management.",
             "rating": 5,
-            "active": false
-        },
-        {
-            "name": "Moses Tamunang",
-            "image": "/img/testimonials/face-2.jpg",
-            "role": "Director Logasoft Corp",
-            "text": "His technical expertise and creativity have been crucial to the success of our projects. His professionalism and ability to solve complex problems make him an invaluable asset to any team. One of the best developers I have worked with.",
-            "rating": 4,
-            "active": false
+            "active": true
         },
         {
             "name": "Fernand Hervé",
             "role": "Founder of MCS · Consultant at Capgemini",
             "link": "https://www.linkedin.com/in/fernand-herv%C3%A9-a917ab27/",
+            "text": "His technical expertise and creativity have been crucial to the success of our projects. His professionalism and ability to solve complex problems make him an invaluable asset to any team. One of the best developers I have worked with.",
+            "rating": 5,
+            "active": true
+        },
+        {
+            "name": "Magalie Gauze-Sanga",
+            "role": "Women Tech Entrepreneur · CEO Koree",
+            "link": "https://www.linkedin.com/in/gsmagalie/",
             "text": "",
             "rating": 5,
-            "active": false
+            "active": true
         },
         {
             "name": "Carlson N. NDANGA",
@@ -48,7 +48,7 @@
             "link": "https://www.linkedin.com/in/carlson-nche-ndanga/",
             "text": "",
             "rating": 5,
-            "active": false
+            "active": true
         }
     ]
 }

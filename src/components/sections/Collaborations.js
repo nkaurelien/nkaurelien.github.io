@@ -3,7 +3,7 @@ import { IconBrandLinkedin } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
 
 export default function Collaborations({ collaborators }) {
-  const items = collaborators?.items || [];
+  const items = (collaborators?.items || []).filter(i => i.active !== false);
   if (items.length === 0) return null;
 
   return (

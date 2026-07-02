@@ -17,8 +17,9 @@ function Stars({ rating = 5 }) {
 }
 
 export default function Testimonials({ testimonials }) {
-  // N'affiche que les recommandations explicitement activees (active === true).
-  const items = (testimonials?.items || []).filter(t => t.active === true);
+  // Visible sauf si active === false, et seulement si une citation est presente
+  // (evite d'afficher une carte de recommandation vide).
+  const items = (testimonials?.items || []).filter(t => t.active !== false && (t.text || '').trim().length > 0);
   if (items.length === 0) return null;
 
   return (

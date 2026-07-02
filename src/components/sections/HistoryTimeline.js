@@ -4,7 +4,7 @@ import { Container, Title, SimpleGrid, Timeline, Text, Anchor, Badge, Group, Sta
 import { IconSchool, IconBriefcase } from '@tabler/icons-react';
 
 function Column({ col, icon }) {
-  const items = col?.items || [];
+  const items = (col?.items || []).filter(i => i.active !== false);
   return (
     <Stack gap="md">
       <Title order={3}>{col?.title}</Title>

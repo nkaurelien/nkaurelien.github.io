@@ -5,13 +5,15 @@
         {
             "name": "Martin MBODY",
             "role": "Web Developer | Laravel | React | Next.js",
-            "link": "https://www.linkedin.com/in/martin-mbody-867b06115/"
+            "link": "https://www.linkedin.com/in/martin-mbody-867b06115/",
+            "active": true
         },
         {
             "name": "Rose YEMELI",
             "role": "Payroll & HRIS Consultant | AI & Automation Expert",
             "image": "/img/testimonials/face-yemeli.png",
-            "link": "https://www.linkedin.com/in/rose-yemeli/"
+            "link": "https://www.linkedin.com/in/rose-yemeli/",
+            "active": true
         }
     ]
 }

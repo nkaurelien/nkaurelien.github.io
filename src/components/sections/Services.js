@@ -4,7 +4,7 @@ import { IconCode, IconSearch, IconBook } from '@tabler/icons-react';
 const ICONS = [IconCode, IconSearch, IconBook];
 
 export default function Services({ services }) {
-  const items = services?.items || [];
+  const items = (services?.items || []).filter(i => i.active !== false);
 
   return (
     <Container size="lg" py={64}>
