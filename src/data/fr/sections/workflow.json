@@ -4,7 +4,7 @@
     "groups": [
         {
             "title": "Environnement local",
-            "items": ["macOS", "zsh", "VS Code & JetBrains", "mise-en-place (versions d'outils)", "Docker / Compose", "Vagrant / VMware", "Ansible (provisioning)", "Makefile (commandes unifiées)"],
+            "items": ["macOS, Ubuntu & Fedora", "zsh / fish", "VS Code & JetBrains", "mise-en-place (versions d'outils)", "Docker / Compose", "Vagrant / VMware", "Ansible (provisioning)", "Makefile (commandes unifiées)"],
             "active": true
         },
         {
