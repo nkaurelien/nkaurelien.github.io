@@ -27,7 +27,9 @@ export default function ProjectDetail({ locale, project }) {
 
       {project.image && <Image src={withBase(project.image)} alt={project.title} radius="lg" mb="lg" />}
 
-      {project.description && <Text c="dimmed" mb="lg" dangerouslySetInnerHTML={{ __html: project.description }} />}
+      {project.description && (
+        <Text component="div" c="dimmed" mb="lg" dangerouslySetInnerHTML={{ __html: project.description }} />
+      )}
 
       {details?.items?.length > 0 && (
         <Card withBorder radius="lg" padding="lg" mb="lg">
