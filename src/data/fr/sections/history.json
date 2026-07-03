@@ -51,7 +51,8 @@
                 "subtitle": "Ingénieur Développeur Fullstack (Lead / MOE)",
                 "date": "Mai 2025 - Présent",
                 "text": "Développement fullstack (Next.js / FastAPI) d'applications santé patient & médecin conformes FHIR/HL7. Collecte et interprétation de données physiologiques issues d'objets connectés (EmotiBit-ESP32, Withings, Bangle.js), pipelines temps réel (Logstash, WebSockets, ELK), POC mobile Flutter (BLE/WiFi). Intégration & déploiement continus (GitLab CI, Docker, Ansible). Accompagnement technique des équipes en Tunisie.",
-                "active": true
+                "active": true,
+                "tag": "CDI · Interne"
             },
             {
                 "title": "KAMITBRAINS IT",

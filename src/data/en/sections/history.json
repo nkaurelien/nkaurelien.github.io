@@ -51,7 +51,8 @@
                 "subtitle": "Fullstack Software Engineer (Lead / Tech Lead)",
                 "date": "May 2025 - Present",
                 "text": "Fullstack development (Next.js / FastAPI) of patient & doctor healthcare apps compliant with FHIR/HL7. Collection and interpretation of physiological data from connected devices (EmotiBit-ESP32, Withings, Bangle.js), real-time pipelines (Logstash, WebSockets, ELK), Flutter mobile PoC (BLE/WiFi). Continuous integration & delivery (GitLab CI, Docker, Ansible). Technical mentoring of teams in Tunisia.",
-                "active": true
+                "active": true,
+                "tag": "Permanent · In-house"
             },
             {
                 "title": "KAMITBRAINS IT",
