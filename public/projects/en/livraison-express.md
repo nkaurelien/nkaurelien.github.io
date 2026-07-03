@@ -2,6 +2,7 @@
 title: Livraison Express
 category: Web Applications
 category_slug: web-applications
+image: /img/projects/livraison-express/1.png
 description:
   title: Description
   content: "<p>E-commerce platform for parcel and meal delivery by Multi Canal Services (MCS). A full ecosystem: customer website and admin console (Angular), courier and address-book mobile apps (Flutter), API and POS synchronization (Odoo), stock management and infrastructure as code.</p>"
@@ -21,4 +22,7 @@ details:
       value: Full Stack Developer
     - label: Stack
       value: Angular, Flutter, Node.js, Laravel, Odoo, GCP / Kubernetes, GitLab CI
+carousel:
+  - image: /img/projects/livraison-express/1.png
+    alt: Livraison Express
 ---

@@ -2,6 +2,7 @@
 title: Koree
 category: Applications Web
 category_slug: web-applications
+image: /img/projects/koree/1.png
 description:
   title: Description
   content: "<p>Plateforme de fidélisation client avec cashback (top 3 des startups Fintech d'Afrique centrale). Backend API sécurisé, applications mobiles vendeur et clientèle (Flutter), scan de tickets par OCR et console web d'administration. J'y ai été architecte et développeur principal, et l'un des tout premiers ingénieurs.</p>"
@@ -19,4 +20,7 @@ details:
       value: Lead Développeur Backend & Mobile · Architecte
     - label: Stack
       value: PHP / Laravel, Flutter, OCR, Stripe, Elasticsearch, AWS / GCP, Snyk, GitLab CI
+carousel:
+  - image: /img/projects/koree/1.png
+    alt: Koree
 ---
