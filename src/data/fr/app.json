@@ -254,6 +254,10 @@
             {
                 "name": "Applications Web",
                 "slug": "web-applications"
+            },
+            {
+                "name": "Données & IA",
+                "slug": "data-ai"
             }
         ]
     },
