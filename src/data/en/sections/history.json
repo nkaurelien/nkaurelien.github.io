@@ -15,11 +15,6 @@
                 "subtitle": "Work-study student",
                 "date": "Oct 2022 - Dec 2024",
                 "text": "MSc (Master of Science) AI & Management — Expert in Computer Engineering",
-                "button": {
-                    "link": "/files/ionis-certificate.jpg",
-                    "type": "image",
-                    "label": "RNCP Level 7 certification (EU)"
-                },
                 "active": true
             },
             {
@@ -27,11 +22,6 @@
                 "subtitle": "Student",
                 "date": "Oct 2014 - Oct 2017",
                 "text": "Software Engineering degree > Analysis and design of information systems",
-                "button": {
-                    "link": "/files/iai-certificate.jpg",
-                    "type": "image",
-                    "label": "Diploma certificate"
-                },
                 "active": true
             },
             {
