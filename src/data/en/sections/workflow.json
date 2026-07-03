@@ -1,0 +1,21 @@
+{
+    "title": "My dev environment & rituals",
+    "subtitle": "How I work day to day",
+    "groups": [
+        {
+            "title": "Local environment",
+            "items": ["macOS", "zsh", "VS Code & JetBrains", "mise-en-place (tool versions)", "Docker / Compose", "Makefile (unified commands)"],
+            "active": true
+        },
+        {
+            "title": "Everyday tools",
+            "items": ["Git / GitLab", "Postman / Insomnia", "REST Client (.http)", "MkDocs (documentation)", "Claude Code (agentic dev)", "GitHub Spec Kit (SDD)"],
+            "active": true
+        },
+        {
+            "title": "Rituals & quality",
+            "items": ["Clean code & SOLID", "Lint & format (ESLint, Prettier, Ruff)", "Pre-commit hooks", "Conventional commits", "Gitflow — MR to develop", "Code reviews & retrospectives"],
+            "active": true
+        }
+    ]
+}
