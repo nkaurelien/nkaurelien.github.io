@@ -26,6 +26,12 @@
             "image": "/img/testimonials/face-yemeli.png",
             "link": "https://www.linkedin.com/in/rose-yemeli/",
             "active": true
+        },
+        {
+            "name": "Idrissou Ngouen",
+            "role": "Directeur artistique (Tameri) · Graphic designer, illustrateur & digital painter",
+            "link": "https://www.behance.net/ngwenidrisd6e4",
+            "active": true
         }
     ]
 }
