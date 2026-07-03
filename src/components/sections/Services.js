@@ -16,9 +16,15 @@ export default function Services({ services }) {
 
   return (
     <Container size="lg" py={64}>
-      <Title order={2} ta="center" mb="xl">
+      <Title order={2} ta="center">
         {services?.title || 'Mes Services'}
       </Title>
+      {services?.subtitle && (
+        <Text ta="center" c="dimmed" mt="xs" mb="xl" maw={720} mx="auto">
+          {services.subtitle}
+        </Text>
+      )}
+      {!services?.subtitle && <div style={{ marginBottom: 'var(--mantine-spacing-xl)' }} />}
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
         {items.map(item => {
           const Icon = ICONS[item.icon] || IconStar;

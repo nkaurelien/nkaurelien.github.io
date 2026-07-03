@@ -1,5 +1,14 @@
 {
     "title": "Envoyez moi un message",
+    "availability": {
+        "title": "Disponibilité",
+        "items": [
+            "Ouvert à la relocalisation et aux nouvelles opportunités",
+            "Missions longue durée",
+            "Ouvert aux ESN — rejoindre ensuite le client final est un plus",
+            "Projets challengeants"
+        ]
+    },
     "form": {
         "name": "Nom",
         "email": "Email",

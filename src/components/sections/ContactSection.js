@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { Container, Title, SimpleGrid, TextInput, Textarea, Button, Stack, Text, Group, ThemeIcon, Anchor, Alert } from '@mantine/core';
+import { Container, Title, SimpleGrid, TextInput, Textarea, Button, Stack, Text, Group, ThemeIcon, Anchor, Alert, Card, Badge } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { IconMail, IconMapPin, IconBrandLinkedin, IconShieldLock } from '@tabler/icons-react';
+import { IconMail, IconMapPin, IconBrandLinkedin, IconShieldLock, IconBriefcase, IconCheck } from '@tabler/icons-react';
 import { features } from '@/config/features';
 
 // Clef de site hCaptcha. Par defaut : clef de TEST publique hCaptcha
@@ -52,6 +52,30 @@ export default function ContactSection({ contact }) {
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={48}>
         <Stack gap="lg">
           <Text c="dimmed">{contact?.text || 'Une question, un projet ? Écrivez-moi, je vous réponds rapidement.'}</Text>
+
+          {contact?.availability?.items?.length > 0 && (
+            <Card withBorder radius="lg" padding="lg">
+              <Group gap="xs" mb="sm">
+                <ThemeIcon size="md" radius="xl" variant="light" color="teal">
+                  <IconBriefcase size={16} />
+                </ThemeIcon>
+                <Text fw={700}>{contact.availability.title || 'Disponibilité'}</Text>
+                <Badge color="teal" variant="light" size="sm">
+                  Ouvert
+                </Badge>
+              </Group>
+              <Stack gap="xs">
+                {contact.availability.items.map(item => (
+                  <Group key={item} gap="xs" wrap="nowrap" align="flex-start">
+                    <ThemeIcon size={18} radius="xl" variant="light" color="teal" mt={2}>
+                      <IconCheck size={11} />
+                    </ThemeIcon>
+                    <Text fz="sm">{item}</Text>
+                  </Group>
+                ))}
+              </Stack>
+            </Card>
+          )}
 
           {!verified ? (
             <Alert variant="light" color="brand" icon={<IconShieldLock size={18} />} radius="md">

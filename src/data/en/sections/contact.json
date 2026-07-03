@@ -1,5 +1,14 @@
 {
     "title": "Send me a message",
+    "availability": {
+        "title": "Availability",
+        "items": [
+            "Open to relocation and new opportunities",
+            "Long-term missions",
+            "Open to consulting firms (ESN) — later joining the end client is a plus",
+            "Challenging projects"
+        ]
+    },
     "form": {
         "name": "Name",
         "email": "Email",
