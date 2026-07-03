@@ -25,6 +25,8 @@ details:
       value: Fullstack developer
     - label: Stack
       value: Angular, NestJS, TypeScript, CouchDB, MinIO (S3), Redis, OIDC, imgproxy, Docker
+    - label: Mockups
+      value: Initial UI concept (does not faithfully reflect the implemented design)
 carousel:
   - image: /img/projects/tameribig/1.jpg
     alt: Tameri BIG — Beautiful Inspiration Ground
@@ -38,4 +40,12 @@ carousel:
     alt: Tameri BIG — logo
   - image: /img/projects/tameribig/6.png
     alt: Tameri BIG
+  - image: /img/projects/tameribig/7.jpg
+    alt: Initial UI mockup — feed
+  - image: /img/projects/tameribig/8.jpg
+    alt: Initial UI mockup — content validation
+  - image: /img/projects/tameribig/9.jpg
+    alt: Initial UI mockup — gallery
+  - image: /img/projects/tameribig/10.jpg
+    alt: Initial UI mockup — monitoring
 ---
