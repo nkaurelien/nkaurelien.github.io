@@ -2,7 +2,7 @@
 title: Tameri BIG
 category: Web Applications
 category_slug: web-applications
-image: /img/projects/tameribig/1.jpg
+image: /img/projects/tameribig/hero-banner.jpg
 description:
   title: Description
   content: "<p>Community content-sharing platform — <em>“Images, videos, audios and creations the way we love them, from home”</em> (Beautiful Inspiration Ground). A project started with classmates during my studies, then modernised into a NestJS 11 / Angular monorepo. OIDC authentication (Zitadel / SuperTokens), MinIO (S3) object storage, CouchDB, Redis cache and image processing (imgproxy).</p>"
@@ -28,24 +28,24 @@ details:
     - label: Mockups
       value: Initial UI concept (does not faithfully reflect the implemented design)
 carousel:
-  - image: /img/projects/tameribig/1.jpg
+  - image: /img/projects/tameribig/hero-banner.jpg
     alt: Tameri BIG — Beautiful Inspiration Ground
-  - image: /img/projects/tameribig/2.jpg
+  - image: /img/projects/tameribig/types-banner.jpg
     alt: Tameri BIG — Images, videos, audios, creations
-  - image: /img/projects/tameribig/3.jpg
+  - image: /img/projects/tameribig/brain.jpg
     alt: Tameri BIG — Brain
-  - image: /img/projects/tameribig/4.jpg
+  - image: /img/projects/tameribig/intro.jpg
     alt: Tameri BIG — intro
-  - image: /img/projects/tameribig/5.png
+  - image: /img/projects/tameribig/logo.png
     alt: Tameri BIG — logo
-  - image: /img/projects/tameribig/6.png
+  - image: /img/projects/tameribig/kora.png
     alt: Tameri BIG
-  - image: /img/projects/tameribig/7.jpg
+  - image: /img/projects/tameribig/ui-feed.jpg
     alt: Initial UI mockup — feed
-  - image: /img/projects/tameribig/8.jpg
+  - image: /img/projects/tameribig/ui-validation.jpg
     alt: Initial UI mockup — content validation
-  - image: /img/projects/tameribig/9.jpg
+  - image: /img/projects/tameribig/ui-gallery.jpg
     alt: Initial UI mockup — gallery
-  - image: /img/projects/tameribig/10.jpg
+  - image: /img/projects/tameribig/ui-monitoring.jpg
     alt: Initial UI mockup — monitoring
 ---
