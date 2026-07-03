@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Container, Title, Text, Button, Group, Box } from '@mantine/core';
+import { Container, Title, Text, Button, Group, Box, Badge } from '@mantine/core';
 
 function decode(str = '') {
   return str
@@ -27,6 +27,24 @@ export default function Hero({ locale, hero }) {
       <Container size="lg">
         <Group justify="space-between" align="center" wrap="wrap">
           <Box style={{ flex: '1 1 340px', maxWidth: 620 }}>
+            {hero?.badge && (
+              <Badge
+                size="lg"
+                radius="sm"
+                variant="white"
+                c="teal.7"
+                mb="md"
+                leftSection={
+                  <Box
+                    component="span"
+                    w={8}
+                    h={8}
+                    style={{ borderRadius: '50%', background: 'var(--mantine-color-teal-6)', display: 'inline-block' }}
+                  />
+                }>
+                {hero.badge}
+              </Badge>
+            )}
             <Title order={1} fz={{ base: 34, sm: 48 }} lh={1.1} dangerouslySetInnerHTML={{ __html: decode(hero?.title) }} />
             <Text mt="lg" fz={{ base: 18, sm: 22 }} fw={500} style={{ minHeight: 34 }}>
               <span style={{ opacity: 0.7 }}>{decode(hero?.subtitle?.start)}</span>
