@@ -5,6 +5,7 @@ import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { Container, Title, SimpleGrid, TextInput, Textarea, Button, Stack, Text, Group, ThemeIcon, Anchor, Alert } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconMail, IconMapPin, IconBrandLinkedin, IconShieldLock } from '@tabler/icons-react';
+import { features } from '@/config/features';
 
 // Clef de site hCaptcha. Par defaut : clef de TEST publique hCaptcha
 // (a remplacer par ta vraie clef via NEXT_PUBLIC_HCAPTCHA_SITEKEY).
@@ -15,8 +16,10 @@ const EMAIL = ['nkumbeaurelien', 'hotmail.com'].join('@');
 const LINKEDIN = 'https://www.linkedin.com/in/nkaurelien/';
 
 export default function ContactSection({ contact }) {
+  const captchaEnabled = features.contactHcaptcha;
   const [mounted, setMounted] = useState(false);
-  const [verified, setVerified] = useState(false);
+  // Flag desactive : coordonnees affichees directement, envoi actif, pas de captcha.
+  const [verified, setVerified] = useState(!captchaEnabled);
   const captchaRef = useRef(null);
 
   // hCaptcha ne se rend que cote client (evite les soucis de prerender statique).

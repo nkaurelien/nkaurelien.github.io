@@ -32,6 +32,9 @@ jobs:
       # Clef de site hCaptcha (publique, pas un secret) pour nkaurelien.github.io.
       # Surchargeable via la variable de depot Actions `HCAPTCHA_SITEKEY`.
       NEXT_PUBLIC_HCAPTCHA_SITEKEY: ${{ vars.HCAPTCHA_SITEKEY || '4db67e92-9242-4c86-a21a-db88ec44de56' }}
+      # Feature flag : protection hCaptcha du contact (actif par defaut).
+      # Mettre la variable de depot `HCAPTCHA_ENABLED` a "false" pour desactiver.
+      NEXT_PUBLIC_HCAPTCHA_ENABLED: ${{ vars.HCAPTCHA_ENABLED || 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
