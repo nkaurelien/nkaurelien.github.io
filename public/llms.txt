@@ -1,0 +1,38 @@
+# Astrid-Aurélien NKUMBE ENONGENE (@nkaurelien)
+
+> Développeur'Ops fullstack polyvalent (7+ ans) — DevSecOps, SysOps, Data & IA. Basé en région parisienne (Cameroun d'origine). En poste en CDI interne chez DATA2INNOV (santé IoT, FHIR/HL7) et ouvert aux opportunités (relocalisation, missions longue durée, ESN, projets challengeants). Fondateur de KAMITBRAINS IT.
+
+Ce fichier aide les assistants IA à comprendre le profil d'Aurelien NKUMBE et son site portfolio (Next.js + Mantine, bilingue FR/EN, hébergé sur GitHub Pages).
+
+## À propos
+- [Bio & parcours complet (about.md)](https://nkaurelien.github.io/about.md) : biographie, parcours narratif, expériences, projets, compétences, réseau et contact.
+
+## Pages du site
+- [Accueil FR](https://nkaurelien.github.io/fr/) : hero, services, compétences, environnement & rituels, compteurs, recommandations, collaborations.
+- [Accueil EN](https://nkaurelien.github.io/en/) : English version of the home page.
+- [Historique / parcours](https://nkaurelien.github.io/fr/history/) : expériences professionnelles et formation, avec badges de statut (CDI, freelance, stage, auto-entrepreneur).
+- [Projets](https://nkaurelien.github.io/fr/projects/) : réalisations filtrables par catégorie (Sites Web, Applications Web, Données & IA), avec année.
+- [Contact](https://nkaurelien.github.io/fr/contact/) : disponibilité (relocalisation, longue durée, ESN, projets challengeants) et formulaire.
+
+## Faits clés
+- Rôle : Développeur'Ops fullstack polyvalent, Tech Lead / MOE (7+ ans).
+- Poste actuel : CDI · Interne chez DATA2INNOV (depuis mai 2025) — santé IoT, FHIR/HL7.
+- Entreprise : KAMITBRAINS IT (EI, SIRET 92203463200013, créée le 01/12/2022, programmation informatique).
+- Disponibilité : ouvert à la relocalisation et aux opportunités, missions longue durée, ESN (rejoindre le client final ensuite est un plus), projets challengeants.
+- Spécialités : fullstack (Next.js/React, FastAPI/Laravel, Flutter), DevSecOps & Cloud, IA & RAG (LangChain, OpenAI/Ollama), IoT santé (FHIR/HL7), développement augmenté par l'IA (Claude agentic, GitHub Spec Kit / Spec-Driven Development).
+- Langues : Français (natif), Anglais (technique/pro), Allemand (B1).
+
+## Liens externes
+- [LinkedIn](https://www.linkedin.com/in/nkaurelien/)
+- [GitHub](https://github.com/nkaurelien)
+- [GitLab](https://gitlab.com/nkaurelien)
+- [Hugging Face](https://huggingface.co/nkaurelien)
+- [Linktree](https://linktr.ee/nkaurelien)
+- [Email](mailto:nkumbeaurelien@hotmail.com)
+
+## Projets notables
+- Tameri BIG (2019, réactualisé 2024-2025) — plateforme de partage de contenus « Beautiful Inspiration Ground » (Angular, NestJS 11, CouchDB, MinIO, OIDC).
+- Smart Data Pay IA (2024) — chatbot RAG paie & droit du travail (Next.js, OpenAI, Ollama, LiteLLM, LangChain).
+- Koree (2021) — plateforme Fintech de fidélisation à cashback (architecte & dev principal).
+- Livraison Express (2018) — e-commerce de livraison (Angular, Flutter, Odoo).
+- Fiches Travail — Dataset RAG (2023) — dataset Hugging Face (snapshot, non maintenu).
