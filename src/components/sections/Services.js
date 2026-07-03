@@ -1,7 +1,14 @@
 import { Container, Title, SimpleGrid, Card, Text, ThemeIcon } from '@mantine/core';
-import { IconCode, IconSearch, IconBook } from '@tabler/icons-react';
+import { IconCode, IconServerCog, IconRobot, IconActivityHeartbeat, IconSitemap, IconSchool, IconStar } from '@tabler/icons-react';
 
-const ICONS = [IconCode, IconSearch, IconBook];
+const ICONS = {
+  code: IconCode,
+  devops: IconServerCog,
+  ai: IconRobot,
+  iot: IconActivityHeartbeat,
+  architecture: IconSitemap,
+  training: IconSchool,
+};
 
 export default function Services({ services }) {
   const items = (services?.items || []).filter(i => i.active !== false);
@@ -11,9 +18,9 @@ export default function Services({ services }) {
       <Title order={2} ta="center" mb="xl">
         {services?.title || 'Mes Services'}
       </Title>
-      <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg">
-        {items.map((item, i) => {
-          const Icon = ICONS[i % ICONS.length];
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+        {items.map(item => {
+          const Icon = ICONS[item.icon] || IconStar;
           return (
             <Card key={item.title} withBorder radius="lg" padding="xl" shadow="sm">
               <ThemeIcon size={54} radius="md" variant="light" color="brand" mb="md">

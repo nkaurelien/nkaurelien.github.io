@@ -1,0 +1,36 @@
+{
+    "title": "Skills & Tech Stack",
+    "subtitle": "The technologies and methods I work with every day",
+    "groups": [
+        {
+            "title": "Languages & Frameworks",
+            "items": ["Python", "FastAPI", "PHP / Laravel", "TypeScript", "Node.js", "NestJS"],
+            "active": true
+        },
+        {
+            "title": "Frontend",
+            "items": ["Next.js", "React", "Angular", "Vue.js", "Flutter", "Electron", "Mantine UI"],
+            "active": true
+        },
+        {
+            "title": "DevSecOps & Cloud",
+            "items": ["Docker", "GitLab CI/CD", "Ansible", "Terraform", "Kubernetes", "Nginx", "AWS", "GCP", "Azure", "Snyk"],
+            "active": true
+        },
+        {
+            "title": "Data, AI & IoT",
+            "items": ["LangChain", "LiteLLM", "OpenAI / Ollama", "PySpark", "ELK", "Kafka", "IoT (EmotiBit, Withings)", "FHIR / HL7"],
+            "active": true
+        },
+        {
+            "title": "Databases",
+            "items": ["PostgreSQL", "MySQL", "MongoDB", "CouchDB", "Oracle", "Supabase", "Firebase"],
+            "active": true
+        },
+        {
+            "title": "Methods & Tools",
+            "items": ["UML / 2TUP / Merise", "Agile (Scrum, XP)", "Clean code / SOLID", "Git", "MkDocs", "Figma"],
+            "active": true
+        }
+    ]
+}

@@ -2,30 +2,39 @@
     "title": "My Services",
     "items": [
         {
-            "title": "Web Development",
-            "text": "Web development of websites or web applications, from analysis to maintenance through documentation. All while respecting the standards and specifications of software engineering.",
-            "button": {
-                "link": "/contact",
-                "label": "Order now"
-            },
+            "icon": "code",
+            "title": "Fullstack Web & Mobile Development",
+            "text": "Design and development of high-performance web and mobile apps, from analysis to production: Next.js / React, FastAPI / Laravel, Flutter.",
             "active": true
         },
         {
-            "title": "Analysis, Audit & Advice",
-            "text": "Assessment of technical needs and proposal of suitable solutions. Advice on software architecture, security and technological choices. Debugging and resolving technical issues.",
-            "button": {
-                "link": "/contact",
-                "label": "Order now"
-            },
+            "icon": "devops",
+            "title": "DevSecOps & Cloud",
+            "text": "Industrialization and deployment: GitLab CI/CD, Docker, Ansible, Terraform, Kubernetes, observability (ELK) and application security (Snyk, static analysis).",
             "active": true
         },
         {
-            "title": "Formation & Documentation",
-            "text": "Training of internal teams, individuals or learners on new technologies and platforms. Writing of technical documentation (specifications, code documentation, etc.) and user guides.",
-            "button": {
-                "link": "/contact",
-                "label": "Order now"
-            },
+            "icon": "ai",
+            "title": "AI & RAG Applications",
+            "text": "Development of AI-augmented assistants and business chatbots: LangChain, LiteLLM, OpenAI / Ollama and vector knowledge bases.",
+            "active": true
+        },
+        {
+            "icon": "iot",
+            "title": "IoT & Health Data",
+            "text": "Integration of connected devices (EmotiBit, Withings) and real-time pipelines, compliant with the FHIR / HL7 healthcare standards.",
+            "active": true
+        },
+        {
+            "icon": "architecture",
+            "title": "Architecture, Audit & Tech Lead",
+            "text": "Analysis and design (UML), technology choices, security, Tech Lead / project ownership role, code reviews and complex problem solving.",
+            "active": true
+        },
+        {
+            "icon": "training",
+            "title": "Training & Documentation",
+            "text": "Upskilling of teams and learners on web / cloud technologies, plus writing technical documentation and user guides.",
             "active": true
         }
     ]

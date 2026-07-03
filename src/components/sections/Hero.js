@@ -33,11 +33,16 @@ export default function Hero({ locale, hero }) {
               {rotates[index]}
               <span style={{ opacity: 0.7 }}>{decode(hero?.subtitle?.end)}</span>
             </Text>
-            {hero?.button && (
-              <Button mt="xl" size="md" radius="xl" variant="white" c="brand.7" component={Link} href={`/${locale}${hero.button.link}`}>
-                {hero.button.label}
+            <Group mt="xl" gap="sm">
+              {hero?.button && (
+                <Button size="md" radius="xl" variant="white" c="brand.7" component={Link} href={`/${locale}${hero.button.link}`}>
+                  {hero.button.label}
+                </Button>
+              )}
+              <Button size="md" radius="xl" variant="outline" color="white" component={Link} href={`/${locale}/contact`}>
+                {locale === 'en' ? 'Contact me' : 'Me contacter'}
               </Button>
-            )}
+            </Group>
           </Box>
 
           {hero?.photo?.url && (

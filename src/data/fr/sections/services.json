@@ -2,30 +2,39 @@
     "title": "Mes Services",
     "items": [
         {
-            "title": "Développement Web",
-            "text": "Développement web de sites web ou d'applications web, de l'analyse à la maintenance en passant par la documentation. Le tout dans le respect des normes et spécifications de l'ingénierie logicielle.",
-            "button": {
-                "link": "/contact",
-                "label": "Order now"
-            },
+            "icon": "code",
+            "title": "Développement Fullstack Web & Mobile",
+            "text": "Conception et développement d'applications web et mobiles performantes, de l'analyse à la mise en production : Next.js / React, FastAPI / Laravel, Flutter.",
             "active": true
         },
         {
-            "title": "Analyse, Audit & Conseil",
-            "text": "Évaluation des besoins techniques et proposition de solutions adaptées. Conseils sur l'architecture logicielle, la sécurité et les choix technologiques. Débogage et résolution des problèmes techniques.",
-            "button": {
-                "link": "/contact",
-                "label": "Order now"
-            },
+            "icon": "devops",
+            "title": "DevSecOps & Cloud",
+            "text": "Industrialisation et déploiement : CI/CD GitLab, Docker, Ansible, Terraform, Kubernetes, observabilité (ELK) et sécurité applicative (Snyk, analyse statique).",
             "active": true
         },
         {
+            "icon": "ai",
+            "title": "IA & Applications RAG",
+            "text": "Développement d'assistants et de chatbots métiers augmentés par l'IA : LangChain, LiteLLM, OpenAI / Ollama et bases de connaissances vectorielles.",
+            "active": true
+        },
+        {
+            "icon": "iot",
+            "title": "IoT & Données de santé",
+            "text": "Intégration d'objets connectés (EmotiBit, Withings) et de pipelines temps réel, conformes aux normes FHIR / HL7 du domaine de la santé.",
+            "active": true
+        },
+        {
+            "icon": "architecture",
+            "title": "Architecture, Audit & MOE",
+            "text": "Analyse et conception (UML), choix technologiques, sécurité, rôle de Tech Lead / maître d'œuvre, revue de code et résolution de problèmes complexes.",
+            "active": true
+        },
+        {
+            "icon": "training",
             "title": "Formation & Documentation",
-            "text": "Formation d'équipes internes, d'individus ou d'apprenants sur les nouvelles technologies et plateformes. Rédaction de documentations techniques (spécifications, documentation de code, etc.) et de guides d'utilisation.",
-            "button": {
-                "link": "/contact",
-                "label": "Order now"
-            },
+            "text": "Montée en compétence d'équipes et d'apprenants sur les technologies web / cloud, et rédaction de documentations techniques et guides d'utilisation.",
             "active": true
         }
     ]
