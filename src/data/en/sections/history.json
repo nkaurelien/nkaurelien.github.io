@@ -72,9 +72,9 @@
                 "date": "Oct 2023 - Sept 2024",
                 "text": "Built a RAG chatbot (Next.js, OpenAI, Ollama, LiteLLM, LangChain) — an intelligent assistant for payroll, labour law and collective agreements in France. Fullstack Laravel development (Filament, Livewire), SAAS automation (Make/N8N), CI/CD on Azure.",
                 "button": {
-                    "type": "link",
-                    "link": "https://smartdatapay.com/",
-                    "label": "Visit site"
+                    "type": "project",
+                    "link": "/projects/smart-data-pay-ia",
+                    "label": "View project"
                 },
                 "active": true
             },

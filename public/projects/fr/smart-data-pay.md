@@ -1,11 +1,11 @@
 ---
 title: Smart Data Pay
-category: Applications Web
-category_slug: web-applications
-image: /img/projects/smart-data-pay-ia/1.png
+category: Sites Web
+category_slug: websites
+image: /img/projects/smart-data-pay/1.png
 description:
   title: Description
-  content: "<p>Assistant intelligent (chatbot RAG / IA) pour comprendre et maîtriser la paie, le droit du travail et les conventions collectives en France, ainsi que son site vitrine. J'ai travaillé sur les premières versions des deux, avec un accent particulier sur le chatbot RAG (Next.js, OpenAI, Ollama, LiteLLM, LangChain).</p>"
+  content: "<p>Site vitrine de Smart Data Pay : présentation de la solution et de l'assistant IA de paie. J'ai travaillé sur les premières versions.</p>"
   button:
     label: Voir le site
     link: https://smartdatapay.com/
@@ -19,58 +19,10 @@ details:
     - label: Client
       value: YSO Conseils
     - label: Rôle
-      value: Développeur — premières versions (accent chatbot RAG IA)
-    - label: Stack
-      value: Next.js, OpenAI, Ollama, LiteLLM, LangChain, Laravel
+      value: Développeur — premières versions
     - label: Lieu
       value: France
 carousel:
-  - image: /img/projects/smart-data-pay-ia/1.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/2.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/3.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/4.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/5.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/6.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/7.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/8.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/9.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/10.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/11.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/12.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/13.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/14.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/15.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/16.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/17.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/18.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/19.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/20.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/21.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/22.png
-    alt: Smart Data Pay
-  - image: /img/projects/smart-data-pay-ia/23.png
-    alt: Smart Data Pay
   - image: /img/projects/smart-data-pay/1.png
     alt: Smart Data Pay
   - image: /img/projects/smart-data-pay/2.png
