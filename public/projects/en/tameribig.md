@@ -1,11 +1,11 @@
 ---
-title: Tameri
+title: Tameri BIG
 category: Web Applications
 category_slug: web-applications
 image: /img/projects/tameribig/1.jpg
 description:
   title: Description
-  content: "<p>Community content-sharing platform (images, photos, videos, audio) — “the sharing web”, branded <em>Beautiful Inspiration Ground</em>. A project started with classmates during my studies, then modernised into a NestJS 11 / Angular monorepo. OIDC authentication (Zitadel / SuperTokens), MinIO (S3) object storage, CouchDB, Redis cache and image processing (imgproxy).</p>"
+  content: "<p>Community content-sharing platform — <em>“Images, videos, audios and creations the way we love them, from home”</em> (Beautiful Inspiration Ground). A project started with classmates during my studies, then modernised into a NestJS 11 / Angular monorepo. OIDC authentication (Zitadel / SuperTokens), MinIO (S3) object storage, CouchDB, Redis cache and image processing (imgproxy).</p>"
   button:
     label: View code
     link: https://github.com/nkaurelien/tameribig-webapp-angular-nestjs
@@ -27,11 +27,15 @@ details:
       value: Angular, NestJS, TypeScript, CouchDB, MinIO (S3), Redis, OIDC, imgproxy, Docker
 carousel:
   - image: /img/projects/tameribig/1.jpg
-    alt: Tameri Brain
+    alt: Tameri BIG — Beautiful Inspiration Ground
   - image: /img/projects/tameribig/2.jpg
-    alt: Tameri — intro
-  - image: /img/projects/tameribig/3.png
-    alt: Tameri — Beautiful Inspiration Ground
-  - image: /img/projects/tameribig/4.png
-    alt: Tameri
+    alt: Tameri BIG — Images, videos, audios, creations
+  - image: /img/projects/tameribig/3.jpg
+    alt: Tameri BIG — Brain
+  - image: /img/projects/tameribig/4.jpg
+    alt: Tameri BIG — intro
+  - image: /img/projects/tameribig/5.png
+    alt: Tameri BIG — logo
+  - image: /img/projects/tameribig/6.png
+    alt: Tameri BIG
 ---
