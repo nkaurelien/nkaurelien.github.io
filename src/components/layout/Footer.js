@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Group, Text, ActionIcon, Stack } from '@mantine/core';
+import { Container, Group, Text, ActionIcon, Stack, Anchor } from '@mantine/core';
 import { IconBrandLinkedin, IconBrandMedium, IconBrandGithub, IconBrandX, IconMoodSmile, IconBuilding, IconWorld } from '@tabler/icons-react';
 
 const ICONS = {
@@ -43,6 +43,15 @@ export default function Footer({ app }) {
                 </ActionIcon>
               );
             })}
+          </Group>
+          <Group gap="xs" justify="center">
+            <Anchor href="/about.md" fz="xs" c="dimmed">
+              À propos détaillé
+            </Anchor>
+            <Text c="dimmed">·</Text>
+            <Anchor href="/llms.txt" fz="xs" c="dimmed">
+              llms.txt
+            </Anchor>
           </Group>
           <Text size="sm" c="dimmed" ta="center">
             {stripHtml(footer.copy)} {stripHtml(footer.developer)}

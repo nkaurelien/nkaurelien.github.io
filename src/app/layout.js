@@ -17,6 +17,9 @@ export default function RootLayout({ children }) {
       <head>
         <ColorSchemeScript defaultColorScheme="light" />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        {/* Documents lisibles par les humains et les IA (llms.txt, bio Markdown). */}
+        <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
+        <link rel="alternate" type="text/markdown" title="À propos (Markdown)" href="/about.md" />
       </head>
       <body>{children}</body>
     </html>
