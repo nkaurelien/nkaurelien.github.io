@@ -4,10 +4,11 @@
     "subtitle": {
         "start": "&lt;<i>code</i>&gt; ",
         "rotates": [
-            "J'analyse les systèmes d'information.",
-            "Je rédige des cachier de charges.",
-            "Je conçois et développe des applications web.",
-            "Je rédige des documentations et manuels"
+            "Développeur'Ops fullstack polyvalent.",
+            "J'analyse et je conçois des systèmes d'information.",
+            "Je conçois et développe des applications web & mobiles.",
+            "Je booste le SDLC avec l'IA agentique (Claude).",
+            "Je pratique le Spec-Driven Development (GitHub Spec Kit)."
         ],
         "end": "&lt;/<i>code</i>&gt;"
     },

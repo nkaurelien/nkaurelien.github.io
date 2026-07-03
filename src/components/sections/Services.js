@@ -1,10 +1,11 @@
 import { Container, Title, SimpleGrid, Card, Text, ThemeIcon } from '@mantine/core';
-import { IconCode, IconServerCog, IconRobot, IconActivityHeartbeat, IconSitemap, IconSchool, IconStar } from '@tabler/icons-react';
+import { IconCode, IconServerCog, IconRobot, IconSparkles, IconActivityHeartbeat, IconSitemap, IconSchool, IconStar } from '@tabler/icons-react';
 
 const ICONS = {
   code: IconCode,
   devops: IconServerCog,
   ai: IconRobot,
+  aidev: IconSparkles,
   iot: IconActivityHeartbeat,
   architecture: IconSitemap,
   training: IconSchool,

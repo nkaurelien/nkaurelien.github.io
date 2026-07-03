@@ -23,6 +23,11 @@
             "active": true
         },
         {
+            "title": "Développement augmenté par l'IA",
+            "items": ["Claude (agentic dev)", "Claude Code", "GitHub Spec Kit", "Spec-Driven Development", "MCP", "Prompt engineering"],
+            "active": true
+        },
+        {
             "title": "Bases de données",
             "items": ["PostgreSQL", "MySQL", "MongoDB", "CouchDB", "Oracle", "Supabase", "Firebase"],
             "active": true

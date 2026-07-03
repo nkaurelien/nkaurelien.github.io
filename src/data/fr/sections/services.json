@@ -20,6 +20,12 @@
             "active": true
         },
         {
+            "icon": "aidev",
+            "title": "Développement augmenté par l'IA & agentique",
+            "text": "J'accélère et je fiabilise tout le cycle de développement (SDLC) grâce au dev agentique (Claude) et au Spec-Driven Development (GitHub Spec Kit) : de la spécification à la livraison, avec qualité et vélocité.",
+            "active": true
+        },
+        {
             "icon": "iot",
             "title": "IoT & Données de santé",
             "text": "Intégration d'objets connectés (EmotiBit, Withings) et de pipelines temps réel, conformes aux normes FHIR / HL7 du domaine de la santé.",
