@@ -13,7 +13,7 @@
             "active": true
         },
         {
-            "label": "Repositories",
+            "label": "Git repositories",
             "value": "30",
             "valueAfter": "+",
             "active": true

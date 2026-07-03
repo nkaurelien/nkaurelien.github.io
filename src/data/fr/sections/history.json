@@ -15,14 +15,24 @@
                 "subtitle": "Etudiant en alternance",
                 "date": "Oct 2022 - Dec 2024",
                 "text": "MSc (Master of Science) IA & MANAGEMENT — Expert en Ingénierie Informatique",
-                "active": true
+                "active": true,
+                "button": {
+                    "link": "/files/ionis-certificate.jpg",
+                    "type": "image",
+                    "label": "Certification RNCP de niveau 7 (Eu)"
+                }
             },
             {
                 "title": "IAI - Cameroun",
                 "subtitle": "Etudiant",
                 "date": "Oct 2014 - Oct 2017",
                 "text": "Ingénieur de Travaux Informatiques option Génie Logiciel > Analyse et conception des systèmes d'information",
-                "active": true
+                "active": true,
+                "button": {
+                    "link": "/files/iai-certificate.jpg",
+                    "type": "image",
+                    "label": "Attestation Diplome"
+                }
             },
             {
                 "title": "Lycée Technique Douala Koumassi (LTDK)",

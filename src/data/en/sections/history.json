@@ -15,14 +15,24 @@
                 "subtitle": "Work-study student",
                 "date": "Oct 2022 - Dec 2024",
                 "text": "MSc (Master of Science) AI & Management — Expert in Computer Engineering",
-                "active": true
+                "active": true,
+                "button": {
+                    "link": "/files/ionis-certificate.jpg",
+                    "type": "image",
+                    "label": "RNCP Level 7 certification (EU)"
+                }
             },
             {
                 "title": "IAI - Cameroon",
                 "subtitle": "Student",
                 "date": "Oct 2014 - Oct 2017",
                 "text": "Software Engineering degree > Analysis and design of information systems",
-                "active": true
+                "active": true,
+                "button": {
+                    "link": "/files/iai-certificate.jpg",
+                    "type": "image",
+                    "label": "Diploma certificate"
+                }
             },
             {
                 "title": "Douala Koumassi Technical High School (LTDK)",
