@@ -1,12 +1,47 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Burger, Container, Drawer, Group, Stack, Button, Anchor, Text } from '@mantine/core';
+import {
+  Burger,
+  Container,
+  Drawer,
+  Group,
+  Stack,
+  Button,
+  Anchor,
+  Text,
+  ActionIcon,
+  useMantineColorScheme,
+  useComputedColorScheme,
+} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { IconSun, IconMoonStars } from '@tabler/icons-react';
 
 function localizedHref(locale, link) {
   return `/${locale}${link === '/' ? '' : link}` || `/${locale}`;
+}
+
+function ColorSchemeToggle() {
+  const { setColorScheme } = useMantineColorScheme();
+  const computed = useComputedColorScheme('light', { getInitialValueInEffect: true });
+  // 1er rendu (serveur + hydratation) en "clair" pour eviter un mismatch ;
+  // on bascule sur l'etat reel apres montage.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && computed === 'dark';
+  return (
+    <ActionIcon
+      variant="default"
+      size="lg"
+      radius="xl"
+      onClick={() => setColorScheme(computed === 'dark' ? 'light' : 'dark')}
+      title={isDark ? 'Mode clair' : 'Mode sombre'}
+      aria-label="Basculer le thème">
+      {isDark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
+    </ActionIcon>
+  );
 }
 
 function LocaleSwitcher({ locale }) {
@@ -28,42 +63,38 @@ export default function Header({ locale, app }) {
   const renderLink = (item, onClick) => {
     if (item.external) {
       return (
-        <Anchor key={item.label} href={item.link} target="_blank" rel="noopener noreferrer" fw={500} c="dark" onClick={onClick}>
+        <Anchor key={item.label} href={item.link} target="_blank" rel="noopener noreferrer" fw={500} c="var(--mantine-color-text)" onClick={onClick}>
           {item.label}
         </Anchor>
       );
     }
     return (
-      <Anchor key={item.label} component={Link} href={localizedHref(locale, item.link)} fw={500} c="dark" onClick={onClick}>
+      <Anchor key={item.label} component={Link} href={localizedHref(locale, item.link)} fw={500} c="var(--mantine-color-text)" onClick={onClick}>
         {item.label}
       </Anchor>
     );
   };
 
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        background: 'rgba(255,255,255,0.9)',
-        backdropFilter: 'blur(8px)',
-        borderBottom: '1px solid var(--mantine-color-gray-2)',
-      }}>
+    <header className="site-header">
       <Container size="lg" h={64}>
         <Group h="100%" justify="space-between">
           <Anchor component={Link} href={`/${locale}`} underline="never">
-            <Text fw={800} size="lg" c="brand.7">
-              Aurelien<span style={{ color: 'var(--mantine-color-gray-6)' }}>.NKUMBE</span>
+            <Text fw={800} size="lg" c="brand.6">
+              Aurelien<span style={{ color: 'var(--mantine-color-dimmed)' }}>.NKUMBE</span>
             </Text>
           </Anchor>
 
           <Group gap="lg" visibleFrom="sm">
             {menu.map(item => renderLink(item))}
             <LocaleSwitcher locale={locale} />
+            <ColorSchemeToggle />
           </Group>
 
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Group gap="xs" hiddenFrom="sm">
+            <ColorSchemeToggle />
+            <Burger opened={opened} onClick={toggle} size="sm" />
+          </Group>
         </Group>
       </Container>
 

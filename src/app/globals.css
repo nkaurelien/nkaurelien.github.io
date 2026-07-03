@@ -22,5 +22,20 @@ a {
 }
 
 .section-muted {
-  background: var(--mantine-color-gray-0);
+  background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: light-dark(rgba(255, 255, 255, 0.85), rgba(20, 21, 23, 0.85));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--mantine-color-default-border);
+}
+
+.site-footer {
+  border-top: 1px solid var(--mantine-color-default-border);
+  background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+  margin-top: 48px;
 }

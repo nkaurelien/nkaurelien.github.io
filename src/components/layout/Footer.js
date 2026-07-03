@@ -22,12 +22,7 @@ export default function Footer({ app }) {
   const footer = app?.footer || {};
 
   return (
-    <footer
-      style={{
-        borderTop: '1px solid var(--mantine-color-gray-2)',
-        background: 'var(--mantine-color-gray-0)',
-        marginTop: 48,
-      }}>
+    <footer className="site-footer">
       <Container size="lg" py="xl">
         <Stack align="center" gap="md">
           <Group gap="xs">
