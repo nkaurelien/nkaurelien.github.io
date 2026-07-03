@@ -2,6 +2,7 @@
 title: Smart Data Pay AI
 category: Web Applications
 category_slug: web-applications
+year: 2024
 image: /img/projects/smart-data-pay-ia/1.png
 description:
   title: Description

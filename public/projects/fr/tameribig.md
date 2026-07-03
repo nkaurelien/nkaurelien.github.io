@@ -2,6 +2,7 @@
 title: Tameri BIG
 category: Applications Web
 category_slug: web-applications
+year: 2019
 image: /img/projects/tameribig/hero-banner.jpg
 description:
   title: Description

@@ -2,6 +2,7 @@
 title: Livraison Express
 category: Applications Web
 category_slug: web-applications
+year: 2018
 image: /img/projects/livraison-express/1.png
 description:
   title: Description

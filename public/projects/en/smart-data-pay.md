@@ -2,6 +2,7 @@
 title: Smart Data Pay
 category: Websites
 category_slug: websites
+year: 2024
 image: /img/projects/smart-data-pay/1.png
 description:
   title: Description

@@ -45,11 +45,18 @@ export default function ProjectDetail({ locale, project }) {
 
       <Group justify="space-between" align="center" mt="md" mb="lg" wrap="wrap">
         <Title order={1}>{project.title}</Title>
-        {project.category && (
-          <Badge size="lg" variant="light" color="brand">
-            {project.category}
-          </Badge>
-        )}
+        <Group gap="xs" wrap="nowrap">
+          {project.category && (
+            <Badge size="lg" variant="light" color="brand">
+              {project.category}
+            </Badge>
+          )}
+          {project.year && (
+            <Text fz="sm" fw={600} c="dimmed">
+              {project.year}
+            </Text>
+          )}
+        </Group>
       </Group>
 
       {project.image && <Image src={withBase(project.image)} alt={project.title} radius="lg" mb="lg" />}

@@ -2,6 +2,7 @@
 title: Kamitbrains
 category: Sites Web
 category_slug: websites
+year: 2022
 image: /img/projects/kamitbrains/1.png
 description:
   title: Description

@@ -2,6 +2,7 @@
 title: Koree
 category: Applications Web
 category_slug: web-applications
+year: 2021
 image: /img/projects/koree/1.png
 description:
   title: Description

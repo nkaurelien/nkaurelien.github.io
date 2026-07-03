@@ -2,6 +2,7 @@
 title: Fiches Travail — Dataset RAG
 category: Données & IA
 category_slug: data-ai
+year: 2023
 description:
   title: Description
   content: "<p>Jeu de données (dataset Hugging Face) issu de mon travail sur le chatbot RAG chez YSO Conseils / KAZAC (Smart Data Pay). Il rassemble des fiches sur la paie, le droit du travail et les conventions collectives, destinées à alimenter une base de connaissances vectorielle. Note : les données ne sont pas tenues à jour (snapshot).</p>"

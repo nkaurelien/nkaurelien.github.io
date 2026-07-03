@@ -32,6 +32,7 @@ export function getProjects(locale) {
         image: data.image || '',
         category: data.category || '',
         categorySlug: data.category_slug || '',
+        year: data.year || '',
         description: data.description?.content || '',
         link: data.description?.button?.link || null,
         linkLabel: data.description?.button?.label || 'Voir',

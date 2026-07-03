@@ -52,13 +52,20 @@ export default function ProjectsGrid({ projects, meta, locale }) {
                   <Image src={withBase(p.image)} alt={p.title} h={180} fit="cover" />
                 </Card.Section>
               )}
-              <Group justify="space-between" mt="md" mb="xs">
+              <Group justify="space-between" mt="md" mb="xs" wrap="nowrap">
                 <Text fw={700}>{p.title}</Text>
-                {p.category && (
-                  <Badge variant="light" color="brand">
-                    {p.category}
-                  </Badge>
-                )}
+                <Group gap={6} wrap="nowrap">
+                  {p.category && (
+                    <Badge variant="light" color="brand">
+                      {p.category}
+                    </Badge>
+                  )}
+                  {p.year && (
+                    <Text fz="xs" fw={600} c="dimmed">
+                      {p.year}
+                    </Text>
+                  )}
+                </Group>
               </Group>
               <Text fz="sm" c="dimmed" lineClamp={3}>
                 {stripHtml(p.description)}

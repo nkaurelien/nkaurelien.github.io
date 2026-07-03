@@ -2,6 +2,7 @@
 title: Fiches Travail — RAG Dataset
 category: Data & AI
 category_slug: data-ai
+year: 2023
 description:
   title: Description
   content: "<p>Dataset (hosted on Hugging Face) produced during my work on the RAG chatbot at YSO Conseils / KAZAC (Smart Data Pay). It gathers sheets on payroll, labour law and collective agreements, meant to feed a vector knowledge base. Note: the data is not kept up to date (snapshot).</p>"

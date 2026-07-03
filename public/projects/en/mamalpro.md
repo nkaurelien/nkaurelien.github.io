@@ -4,6 +4,7 @@ title: Mamalpro
 image: /img/projects/mamalpro/1.png
 category: Web Applications
 category_slug: web-applications
+year: 2021
 #portfolio image size for masonry layout: horizontal, vertical, square
 masonrySize: horizontal
 
