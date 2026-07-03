@@ -64,7 +64,6 @@
                 {
                     "label": "Javascript",
                     "value": "0.7"
-
                 },
                 {
                     "label": "Typecript",
@@ -163,7 +162,7 @@
                 }
             ]
         },
-        "resume":[
+        "resume": [
             {
                 "file": "https://linktr.ee/nkaurelien",
                 "label": "CV Dév Full stack Angular - PHP - Python | Devops"
@@ -209,7 +208,7 @@
     },
     "footer": {
         "copy": "© 2024. Tous Droits Réservés.",
-        "developer": "Par <b>Aurelien NKUMBE</b> (@nkaurelien)"
+        "developer": "Par <b>Aurelien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT — Auto-entrepreneur (SIRET 92203463200013)"
     },
     "social": [
         {

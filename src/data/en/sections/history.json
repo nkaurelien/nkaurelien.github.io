@@ -54,6 +54,19 @@
                 "active": true
             },
             {
+                "title": "KAMITBRAINS IT",
+                "subtitle": "Founder & Developer",
+                "tag": "Self-employed",
+                "date": "Dec. 2022 - Present",
+                "text": "My self-employed company (computer programming, SIRET 92203463200013), registered in France. Design, development and hosting of web projects, and the framework for my freelance work.",
+                "button": {
+                    "type": "project",
+                    "link": "/projects/kamitbrains",
+                    "label": "View project"
+                },
+                "active": true
+            },
+            {
                 "title": "YSO Conseils / KAZAC — Smart Data Pay",
                 "subtitle": "Fullstack Web, AI & Tech Lead Engineer",
                 "date": "Oct 2023 - Sept 2024",

@@ -54,6 +54,19 @@
                 "active": true
             },
             {
+                "title": "KAMITBRAINS IT",
+                "subtitle": "Fondateur & Développeur",
+                "tag": "Auto-entrepreneur",
+                "date": "Déc. 2022 - Présent",
+                "text": "Ma structure d'auto-entrepreneur (programmation informatique, SIRET 92203463200013), créée en France. Conception, développement et hébergement de projets web, et cadre de mes missions en indépendant.",
+                "button": {
+                    "type": "project",
+                    "link": "/projects/kamitbrains",
+                    "label": "Voir le projet"
+                },
+                "active": true
+            },
+            {
                 "title": "YSO Conseils / KAZAC — Smart Data Pay",
                 "subtitle": "Ingénieur Développeur Fullstack Web, IA & MOE",
                 "date": "Oct 2023 - Sept 2024",
