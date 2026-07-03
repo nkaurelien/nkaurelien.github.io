@@ -18,6 +18,16 @@
             "active": true
         },
         {
+            "title": "Security & Network",
+            "items": ["Reverse proxy (Nginx, Kong)", "HTTP security headers", "TLS / HTTPS (Let's Encrypt)", "JWT / OAuth2", "LDAP + RBAC", "Rate limiting / anti-DDoS"],
+            "active": true
+        },
+        {
+            "title": "System Administration (SysOps)",
+            "items": ["Ubuntu / Linux", "systemd", "Bash / shell scripts", "Cron", "Supervisor", "SSH", "ISPConfig / Plesk", "Monitoring & logs"],
+            "active": true
+        },
+        {
             "title": "Data, AI & IoT",
             "items": ["LangChain", "LiteLLM", "OpenAI / Ollama", "PySpark", "ELK", "Kafka", "IoT (EmotiBit, Withings)", "FHIR / HL7"],
             "active": true
