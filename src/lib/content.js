@@ -41,3 +41,28 @@ export function getProjects(locale) {
     })
     .filter(p => p.active);
 }
+
+// Liste des slugs de projets actifs (pour generateStaticParams).
+export function getProjectSlugs(locale) {
+  return getProjects(locale).map(p => p.slug);
+}
+
+// Charge un projet complet (description, details, carousel) par slug.
+export function getProject(locale, slug) {
+  const fp = path.join(process.cwd(), 'public', 'projects', locale, `${slug}.md`);
+  if (!fs.existsSync(fp)) return null;
+  const { data, content } = matter(fs.readFileSync(fp, 'utf-8'));
+  return {
+    slug,
+    title: data.title || '',
+    image: data.image || '',
+    category: data.category || '',
+    categorySlug: data.category_slug || '',
+    description: data.description?.content || '',
+    link: data.description?.button?.link || null,
+    linkLabel: data.description?.button?.label || 'Voir le site',
+    details: data.details || null,
+    carousel: data.carousel || [],
+    content,
+  };
+}

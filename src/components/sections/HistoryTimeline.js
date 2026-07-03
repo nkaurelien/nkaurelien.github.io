@@ -1,9 +1,27 @@
 'use client';
 
+import Link from 'next/link';
 import { Container, Title, SimpleGrid, Timeline, Text, Anchor, Badge, Group, Stack } from '@mantine/core';
 import { IconSchool, IconBriefcase } from '@tabler/icons-react';
 
-function Column({ col, icon }) {
+function HistoryButton({ button, locale }) {
+  if (!button?.link) return null;
+  const isInternal = button.type === 'project' || button.link.startsWith('/');
+  if (isInternal) {
+    return (
+      <Anchor component={Link} href={`/${locale}${button.link}`} fz="sm" fw={500} mt={4} display="inline-block">
+        {button.label} →
+      </Anchor>
+    );
+  }
+  return (
+    <Anchor href={button.link} target="_blank" rel="noopener noreferrer" fz="sm" fw={500} mt={4} display="inline-block">
+      {button.label} →
+    </Anchor>
+  );
+}
+
+function Column({ col, icon, locale }) {
   const items = (col?.items || []).filter(i => i.active !== false);
   return (
     <Stack gap="md">
@@ -29,11 +47,7 @@ function Column({ col, icon }) {
             <Text fz="sm" c="dimmed" mt={4} style={{ whiteSpace: 'pre-line' }}>
               {item.text}
             </Text>
-            {item.button?.link && (
-              <Anchor href={item.button.link} target="_blank" rel="noopener noreferrer" fz="sm" fw={500} mt={4} display="inline-block">
-                {item.button.label} →
-              </Anchor>
-            )}
+            <HistoryButton button={item.button} locale={locale} />
           </Timeline.Item>
         ))}
       </Timeline>
@@ -41,12 +55,12 @@ function Column({ col, icon }) {
   );
 }
 
-export default function HistoryTimeline({ history }) {
+export default function HistoryTimeline({ history, locale }) {
   return (
     <Container size="lg" py={64}>
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={48}>
-        <Column col={history?.col1} icon={<IconSchool size={12} />} />
-        <Column col={history?.col2} icon={<IconBriefcase size={12} />} />
+        <Column col={history?.col1} icon={<IconSchool size={12} />} locale={locale} />
+        <Column col={history?.col2} icon={<IconBriefcase size={12} />} locale={locale} />
       </SimpleGrid>
     </Container>
   );

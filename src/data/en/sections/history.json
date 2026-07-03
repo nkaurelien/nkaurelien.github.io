@@ -93,9 +93,9 @@
                 "date": "Dec 2021 - June 2022",
                 "text": "Design and development of a customer loyalty platform (top-3 Fintech startup in Central Africa): secure RESTful APIs (JWT), cloud integrations (AWS, GCP, Stripe), GitLab + Ansible CI/CD, vulnerability scanning (Snyk).",
                 "button": {
-                    "type": "link",
-                    "link": "https://koree.africa",
-                    "label": "Visit site"
+                    "type": "project",
+                    "link": "/projects/koree",
+                    "label": "View project"
                 },
                 "active": true
             },
@@ -129,9 +129,9 @@
                 "date": "June 2018 - Oct 2020",
                 "text": "Development of an e-commerce platform for parcel and meal delivery (Design Thinking, OOP, clean code): Angular app with Social Auth, courier mobile app (Flutter), POS backoffice, Google Maps/Places & Firebase integrations, Kubernetes clusters on GCP, GitLab + Laravel Envoy / Ansible CI/CD.",
                 "button": {
-                    "type": "link",
-                    "link": "https://livraison-express.com",
-                    "label": "Visit site"
+                    "type": "project",
+                    "link": "/projects/livraison-express",
+                    "label": "View project"
                 },
                 "active": true
             }

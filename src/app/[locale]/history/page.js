@@ -17,7 +17,7 @@ export default async function HistoryPage({ params }) {
           {title}
         </Title>
       </Container>
-      <HistoryTimeline history={history} />
+      <HistoryTimeline history={history} locale={locale} />
     </>
   );
 }

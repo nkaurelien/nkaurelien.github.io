@@ -9,5 +9,5 @@ export default async function ProjectsPage({ params }) {
   const app = await getApp(locale);
   const projects = getProjects(locale);
 
-  return <ProjectsGrid projects={projects} meta={app?.projects} />;
+  return <ProjectsGrid projects={projects} meta={app?.projects} locale={locale} />;
 }
