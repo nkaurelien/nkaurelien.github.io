@@ -9,6 +9,9 @@ description:
   button:
     label: Visit site
     link: https://kamitbrains.fr/
+links:
+  - label: Facebook
+    url: https://www.facebook.com/kamitbrains/
 details:
   title: Project details
   items:

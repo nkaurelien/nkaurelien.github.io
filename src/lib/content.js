@@ -61,6 +61,7 @@ export function getProject(locale, slug) {
     description: data.description?.content || '',
     link: data.description?.button?.link || null,
     linkLabel: data.description?.button?.label || 'Voir le site',
+    links: data.links || [],
     details: data.details || null,
     carousel: data.carousel || [],
     content,

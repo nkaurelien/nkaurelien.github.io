@@ -1,12 +1,39 @@
 import Link from 'next/link';
 import { Container, Title, Badge, Text, Button, Group, Stack, SimpleGrid, Image, Card, Anchor } from '@mantine/core';
-import { IconArrowLeft, IconExternalLink } from '@tabler/icons-react';
+import {
+  IconArrowLeft,
+  IconExternalLink,
+  IconBrandFacebook,
+  IconBrandLinkedin,
+  IconBrandX,
+  IconBrandGithub,
+  IconBrandGitlab,
+  IconBrandInstagram,
+  IconBrandYoutube,
+} from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
+
+const LINK_ICONS = {
+  facebook: IconBrandFacebook,
+  linkedin: IconBrandLinkedin,
+  twitter: IconBrandX,
+  x: IconBrandX,
+  github: IconBrandGithub,
+  gitlab: IconBrandGitlab,
+  instagram: IconBrandInstagram,
+  youtube: IconBrandYoutube,
+};
+
+function linkIcon(label = '') {
+  const Icon = LINK_ICONS[label.trim().toLowerCase()] || IconExternalLink;
+  return <Icon size={16} />;
+}
 
 export default function ProjectDetail({ locale, project }) {
   const backLabel = locale === 'en' ? 'Back to projects' : 'Retour aux projets';
   const details = project.details;
   const carousel = project.carousel || [];
+  const links = project.links || [];
 
   return (
     <Container size="md" py={48}>
@@ -27,9 +54,7 @@ export default function ProjectDetail({ locale, project }) {
 
       {project.image && <Image src={withBase(project.image)} alt={project.title} radius="lg" mb="lg" />}
 
-      {project.description && (
-        <Text component="div" c="dimmed" mb="lg" dangerouslySetInnerHTML={{ __html: project.description }} />
-      )}
+      {project.description && <Text component="div" c="dimmed" mb="lg" dangerouslySetInnerHTML={{ __html: project.description }} />}
 
       {details?.items?.length > 0 && (
         <Card withBorder radius="lg" padding="lg" mb="lg">
@@ -59,18 +84,34 @@ export default function ProjectDetail({ locale, project }) {
         </SimpleGrid>
       )}
 
-      {project.link && (
-        <Button
-          component="a"
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          color="brand"
-          radius="md"
-          rightSection={<IconExternalLink size={16} />}>
-          {project.linkLabel}
-        </Button>
-      )}
+      <Group gap="sm">
+        {project.link && (
+          <Button
+            component="a"
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            color="brand"
+            radius="md"
+            rightSection={<IconExternalLink size={16} />}>
+            {project.linkLabel}
+          </Button>
+        )}
+        {links.map(l => (
+          <Button
+            key={l.url}
+            component="a"
+            href={l.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="light"
+            color="brand"
+            radius="md"
+            leftSection={linkIcon(l.label)}>
+            {l.label}
+          </Button>
+        ))}
+      </Group>
     </Container>
   );
 }
