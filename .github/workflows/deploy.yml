@@ -29,9 +29,9 @@ jobs:
     # User-site nkaurelien.github.io : servi a la racine -> basePath vide (defaut).
     # Pour un domaine perso, ajouter un fichier public/CNAME.
     env:
-      # Clef de site hCaptcha (publique, pas un secret). Par defaut, la clef de TEST.
-      # Cree ta cle sur https://dashboard.hcaptcha.com puis renseigne-la ici.
-      NEXT_PUBLIC_HCAPTCHA_SITEKEY: ${{ vars.HCAPTCHA_SITEKEY || '10000000-ffff-ffff-ffff-000000000001' }}
+      # Clef de site hCaptcha (publique, pas un secret) pour nkaurelien.github.io.
+      # Surchargeable via la variable de depot Actions `HCAPTCHA_SITEKEY`.
+      NEXT_PUBLIC_HCAPTCHA_SITEKEY: ${{ vars.HCAPTCHA_SITEKEY || '4db67e92-9242-4c86-a21a-db88ec44de56' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
