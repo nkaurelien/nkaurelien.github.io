@@ -19,7 +19,7 @@ export default function Company({ company, locale }) {
 
   return (
     <Box
-      className={hasBg ? undefined : "section-muted"}
+      className={hasBg ? undefined : 'section-muted'}
       py={80}
       c={hasBg ? 'white' : undefined}
       style={{
@@ -31,24 +31,28 @@ export default function Company({ company, locale }) {
         minHeight: 'calc(100vh - var(--header-height) - 130px)',
         display: 'flex',
         alignItems: 'center',
-      }}
-    >
+      }}>
       <Container size="lg" style={{ width: '100%' }}>
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing={40} align="center">
           {/* Column 1: Logo & Company Description */}
           <Stack gap="lg">
             <Group>
-              <Badge size="lg" radius="sm" variant={hasBg ? "filled" : "light"} color="indigo" leftSection={<IconBriefcase size={14} />}>
+              <Badge size="lg" radius="sm" variant={hasBg ? 'filled' : 'light'} color="indigo" leftSection={<IconBriefcase size={14} />}>
                 {company.badge || 'Structure Freelance'}
               </Badge>
             </Group>
-            
+
             <Title order={2} fz={{ base: 28, sm: 36 }} lh={1.2}>
               {company.title}
             </Title>
-            
-            <Text fz="md" c={hasBg ? "gray.3" : "dimmed"} style={{ fontSize: '1.1rem', lineHeight: '1.6' }} dangerouslySetInnerHTML={{ __html: company.description }} />
-            
+
+            <Text
+              fz="md"
+              c={hasBg ? 'gray.3' : 'dimmed'}
+              style={{ fontSize: '1.1rem', lineHeight: '1.6' }}
+              dangerouslySetInnerHTML={{ __html: company.description }}
+            />
+
             <Group gap="sm" mt="md">
               {company.button && (
                 <Button
@@ -61,8 +65,7 @@ export default function Company({ company, locale }) {
                   variant="filled"
                   color={hasBg ? 'white' : 'indigo'}
                   c={hasBg ? 'indigo.8' : undefined}
-                  rightSection={<IconExternalLink size={16} />}
-                >
+                  rightSection={<IconExternalLink size={16} />}>
                   {company.button.label}
                 </Button>
               )}
@@ -73,8 +76,7 @@ export default function Company({ company, locale }) {
                   size="md"
                   radius="xl"
                   variant="outline"
-                  color={hasBg ? 'white' : 'indigo'}
-                >
+                  color={hasBg ? 'white' : 'indigo'}>
                   {company.buttonProject.label}
                 </Button>
               )}
@@ -82,11 +84,24 @@ export default function Company({ company, locale }) {
           </Stack>
 
           {/* Column 2: Logo image and Core values */}
-          <Paper withBorder radius="xl" p="xl" shadow="md" style={{ background: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-7))' }}>
+          <Paper
+            withBorder
+            radius="xl"
+            p="xl"
+            shadow="md"
+            style={{ background: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-7))' }}>
             <Stack gap="xl">
               {/* Logo display */}
               <Group justify="center" py="md">
-                <Box style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '16px', borderRadius: '50%', background: 'light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6))' }}>
+                <Box
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '16px',
+                    borderRadius: '50%',
+                    background: 'light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6))',
+                  }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={withBase(company.image || '/img/logos/kamitbrains.svg')}

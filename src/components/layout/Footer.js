@@ -22,13 +22,14 @@ export default function Footer({ app }) {
   const social = app?.social || [];
   const footer = app?.footer || {};
 
-  const renderDeveloper = (text) => {
+  const renderDeveloper = text => {
     if (!text) return null;
     const target = 'KAMITBRAINS IT';
     const parts = text.split(target);
     if (parts.length === 2) {
       return (
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap', justifyContent: 'center', verticalAlign: 'middle' }}>
+        <span
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap', justifyContent: 'center', verticalAlign: 'middle' }}>
           <span dangerouslySetInnerHTML={{ __html: parts[0] }} />
           <Anchor
             href="https://kamitbrains.fr/"
@@ -36,8 +37,7 @@ export default function Footer({ app }) {
             rel="noopener noreferrer"
             c="brand.6"
             fw={700}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', verticalAlign: 'middle' }}
-          >
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', verticalAlign: 'middle' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={withBase('/img/logos/kamitbrains.svg')}
