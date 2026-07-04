@@ -15,6 +15,7 @@ import {
   ActionIcon,
   useMantineColorScheme,
   useComputedColorScheme,
+  Divider,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
@@ -59,17 +60,31 @@ function LocaleSwitcher({ locale }) {
 export default function Header({ locale, app }) {
   const [opened, { toggle, close }] = useDisclosure(false);
   const menu = app?.header?.menu || [];
+  const pathname = usePathname() || `/${locale}`;
+
+  const isActive = link => {
+    if (link === '/') {
+      return pathname === `/${locale}` || pathname === `/${locale}/`;
+    }
+    const localized = localizedHref(locale, link);
+    return pathname === localized || pathname.startsWith(localized + '/');
+  };
 
   const renderLink = (item, onClick) => {
-    if (item.external) {
-      return (
-        <Anchor key={item.label} href={item.link} target="_blank" rel="noopener noreferrer" fw={500} c="var(--mantine-color-text)" onClick={onClick}>
-          {item.label}
-        </Anchor>
-      );
-    }
+    const active = !item.external && isActive(item.link);
+    const linkHref = item.external ? item.link : localizedHref(locale, item.link);
+    const classNames = `nav-link ${active ? 'nav-link-active' : ''}`.trim();
+
     return (
-      <Anchor key={item.label} component={Link} href={localizedHref(locale, item.link)} fw={500} c="var(--mantine-color-text)" onClick={onClick}>
+      <Anchor
+        key={item.label}
+        component={item.external ? 'a' : Link}
+        href={linkHref}
+        target={item.external ? '_blank' : undefined}
+        rel={item.external ? 'noopener noreferrer' : undefined}
+        className={classNames}
+        onClick={onClick}
+        underline="never">
         {item.label}
       </Anchor>
     );
@@ -85,23 +100,40 @@ export default function Header({ locale, app }) {
             </Text>
           </Anchor>
 
-          <Group gap="lg" visibleFrom="sm">
-            {menu.map(item => renderLink(item))}
+          <Group gap="xs" visibleFrom="md">
+            {menu.flatMap(item => {
+              const link = renderLink(item);
+              if (item.label === 'Contact') {
+                return [link, <Divider key="divider-contact" orientation="vertical" h={16} style={{ alignSelf: 'center' }} />];
+              }
+              return [link];
+            })}
             <LocaleSwitcher locale={locale} />
             <ColorSchemeToggle />
           </Group>
 
-          <Group gap="xs" hiddenFrom="sm">
+          <Group gap="xs" hiddenFrom="md">
             <ColorSchemeToggle />
             <Burger opened={opened} onClick={toggle} size="sm" />
           </Group>
         </Group>
       </Container>
 
-      <Drawer opened={opened} onClose={close} title="Menu" hiddenFrom="sm" position="right">
-        <Stack gap="md">
-          {menu.map(item => renderLink(item, close))}
-          <LocaleSwitcher locale={locale} />
+      <Drawer opened={opened} onClose={close} title="Menu" hiddenFrom="md" position="right" size="xs">
+        <Stack gap="md" mt="md">
+          {menu.flatMap(item => {
+            const link = renderLink(item, close);
+            if (item.label === 'Contact') {
+              return [link, <Divider key="divider-contact" my="xs" />];
+            }
+            return [link];
+          })}
+          <Group justify="space-between" mt="lg" pt="md" style={{ borderTop: '1px solid var(--mantine-color-default-border)' }}>
+            <Text fz="sm" c="dimmed">
+              Langue
+            </Text>
+            <LocaleSwitcher locale={locale} />
+          </Group>
         </Stack>
       </Drawer>
     </header>

@@ -12,6 +12,39 @@ function decode(str = '') {
     .replace(/<\/?i>/g, '');
 }
 
+function renderSubtitleContent(start, end, sentence) {
+  if (!sentence) return null;
+  const words = sentence.split(' ');
+
+  if (words.length <= 1) {
+    return (
+      <span style={{ whiteSpace: 'nowrap' }}>
+        <span style={{ opacity: 0.7 }}>{decode(start)}</span>
+        {sentence}
+        <span style={{ opacity: 0.7 }}>{decode(end)}</span>
+      </span>
+    );
+  }
+
+  const firstWord = words[0];
+  const lastWord = words[words.length - 1];
+  const middleText = words.slice(1, -1).join(' ');
+
+  return (
+    <>
+      <span style={{ whiteSpace: 'nowrap' }}>
+        <span style={{ opacity: 0.7 }}>{decode(start)}</span>
+        {firstWord}
+      </span>
+      {middleText ? ` ${middleText} ` : ' '}
+      <span style={{ whiteSpace: 'nowrap' }}>
+        {lastWord}
+        <span style={{ opacity: 0.7 }}>{decode(end)}</span>
+      </span>
+    </>
+  );
+}
+
 export default function Hero({ locale, hero }) {
   const rotates = hero?.subtitle?.rotates || [];
   const [index, setIndex] = useState(0);
@@ -46,10 +79,10 @@ export default function Hero({ locale, hero }) {
               </Badge>
             )}
             <Title order={1} fz={{ base: 34, sm: 48 }} lh={1.1} dangerouslySetInnerHTML={{ __html: decode(hero?.title) }} />
-            <Text mt="lg" fz={{ base: 18, sm: 22 }} fw={500} style={{ minHeight: 34 }}>
-              <span style={{ opacity: 0.7 }}>{decode(hero?.subtitle?.start)}</span>
-              {rotates[index]}
-              <span style={{ opacity: 0.7 }}>{decode(hero?.subtitle?.end)}</span>
+            <Text mt="lg" fz={{ base: 18, sm: 22 }} fw={500} mih={{ base: 90, xs: 70, sm: 45 }} style={{ lineHeight: '1.4' }}>
+              <span key={index} className="rotate-text-anim">
+                {renderSubtitleContent(hero?.subtitle?.start, hero?.subtitle?.end, rotates[index])}
+              </span>
             </Text>
             <Group mt="xl" gap="sm">
               {hero?.button && (

@@ -39,3 +39,44 @@ a {
   background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
   margin-top: 48px;
 }
+
+/* premium header navigation link styles */
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--mantine-color-text);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--mantine-color-brand-6) !important;
+  background: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6));
+}
+
+.nav-link-active {
+  font-weight: 700;
+  color: var(--mantine-color-brand-6) !important;
+  background: light-dark(var(--mantine-color-brand-0), rgba(79, 70, 229, 0.15));
+}
+
+/* Subtitle typewriter rotation animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rotate-text-anim {
+  display: inline-block;
+  animation: fade-in-up 0.4s ease forwards;
+}
