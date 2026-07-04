@@ -1,6 +1,16 @@
+'use client';
+
+import { useRef } from 'react';
 import { Container, Title, Text, SimpleGrid, Card, Avatar, Group, Stack, ThemeIcon } from '@mantine/core';
 import { IconBrandLinkedin, IconBrandBehance, IconBrandGithub, IconBrandGitlab, IconWorld } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 // Choisit l'icone selon la plateforme du lien.
 function linkMeta(url = '') {
@@ -13,16 +23,49 @@ function linkMeta(url = '') {
 }
 
 export default function Collaborations({ collaborators }) {
+  const containerRef = useRef(null);
   const items = (collaborators?.items || []).filter(i => i.active !== false);
+
+  useGSAP(
+    () => {
+      gsap.from('.collab-title, .collab-subtitle', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: 'power2.out',
+      });
+
+      gsap.from('.collab-card', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power3.out',
+      });
+    },
+    { scope: containerRef }
+  );
+
   if (items.length === 0) return null;
 
   return (
-    <Container size="lg" py={64}>
-      <Title order={2} ta="center">
+    <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
+      <Title className="collab-title" order={2} ta="center">
         {collaborators?.title || 'Collaborations'}
       </Title>
       {collaborators?.subtitle && (
-        <Text ta="center" c="dimmed" mt="xs" mb="xl">
+        <Text className="collab-subtitle" ta="center" c="dimmed" mt="xs" mb="xl">
           {collaborators.subtitle}
         </Text>
       )}
@@ -33,6 +76,7 @@ export default function Collaborations({ collaborators }) {
           return (
             <Card
               key={item.name}
+              className="collab-card"
               component="a"
               href={item.link}
               target="_blank"
