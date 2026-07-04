@@ -1,19 +1,15 @@
 {
-    "title": "Envoyez moi un message",
+    "title": "Me contacter",
     "availability": {
         "title": "Disponibilité",
         "items": [
-            "Ouvert à la relocalisation et aux nouvelles opportunités",
+            "Mobilité : Toute la France (grandes métropoles)",
             "Missions longue durée",
             "Ouvert aux ESN — rejoindre ensuite le client final est un plus",
             "Projets challengeants"
         ]
     },
-    "form": {
-        "name": "Nom",
-        "email": "Email",
-        "subject": "Objet",
-        "message": "Message",
-        "send_message": "Envoyer Message"
-    }
+    "whatsapp_label": "Discuter sur WhatsApp",
+    "phone_label": "Téléphone",
+    "location": "Paris · Cergy, Île-de-France (Résidence) | Strasbourg · Nantes · Marseille (Réseau de contact)"
 }

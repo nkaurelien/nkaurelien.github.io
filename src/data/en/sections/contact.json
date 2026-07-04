@@ -1,19 +1,15 @@
 {
-    "title": "Send me a message",
+    "title": "Contact me",
     "availability": {
         "title": "Availability",
         "items": [
-            "Open to relocation and new opportunities",
+            "Mobility: Anywhere in France (major metropolitan areas)",
             "Long-term missions",
             "Open to consulting firms (ESN) — later joining the end client is a plus",
             "Challenging projects"
         ]
     },
-    "form": {
-        "name": "Name",
-        "email": "Email",
-        "subject": "Subject",
-        "message": "Message",
-        "send_message": "Send Message"
-    }
+    "whatsapp_label": "Chat on WhatsApp",
+    "phone_label": "Phone",
+    "location": "Paris · Cergy, Île-de-France (Residence) | Strasbourg · Nantes · Marseille (Contact networks)"
 }

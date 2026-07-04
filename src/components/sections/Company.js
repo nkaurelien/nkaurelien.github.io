@@ -35,25 +35,25 @@ export default function Company({ company, locale }) {
       <Container size="lg" style={{ width: '100%' }}>
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing={40} align="center">
           {/* Column 1: Logo & Company Description */}
-          <Stack gap="lg">
-            <Group>
+          <Stack gap="lg" align="flex-start" style={{ textAlign: 'left' }}>
+            <Group justify="flex-start">
               <Badge size="lg" radius="sm" variant={hasBg ? 'filled' : 'light'} color="indigo" leftSection={<IconBriefcase size={14} />}>
                 {company.badge || 'Structure Freelance'}
               </Badge>
             </Group>
 
-            <Title order={2} fz={{ base: 28, sm: 36 }} lh={1.2}>
+            <Title order={2} fz={{ base: 28, sm: 36 }} lh={1.2} style={{ textAlign: 'left', width: '100%' }}>
               {company.title}
             </Title>
 
             <Text
               fz="md"
               c={hasBg ? 'gray.3' : 'dimmed'}
-              style={{ fontSize: '1.1rem', lineHeight: '1.6' }}
+              style={{ fontSize: '1.1rem', lineHeight: '1.6', textAlign: 'left', width: '100%' }}
               dangerouslySetInnerHTML={{ __html: company.description }}
             />
 
-            <Group gap="sm" mt="md">
+            <Group gap="sm" mt="md" justify="flex-start">
               {company.button && (
                 <Button
                   component="a"
@@ -89,8 +89,11 @@ export default function Company({ company, locale }) {
             radius="xl"
             p="xl"
             shadow="md"
-            c="var(--mantine-color-text)"
-            style={{ background: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-7))' }}>
+            style={{
+              background: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-7))',
+              color: 'var(--mantine-color-text)',
+              width: '100%',
+            }}>
             <Stack gap="xl">
               {/* Logo display */}
               <Group justify="center" py="md">
@@ -119,11 +122,11 @@ export default function Company({ company, locale }) {
                     <ThemeIcon size={28} radius="xl" variant="light" color="indigo" style={{ flexShrink: 0, marginTop: '2px' }}>
                       <IconCircleCheck size={18} />
                     </ThemeIcon>
-                    <Box>
-                      <Text fw={700} fz="md" mb={2}>
+                    <Box style={{ flex: 1, textAlign: 'left' }}>
+                      <Text fw={700} fz="md" mb={2} style={{ color: 'var(--mantine-color-text)', textAlign: 'left' }}>
                         {item.title}
                       </Text>
-                      <Text fz="sm" c="dimmed">
+                      <Text fz="sm" c="dimmed" style={{ textAlign: 'left' }}>
                         {item.text}
                       </Text>
                     </Box>

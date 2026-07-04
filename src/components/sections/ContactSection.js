@@ -2,56 +2,39 @@
 
 import { useEffect, useRef, useState } from 'react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { Container, Title, SimpleGrid, TextInput, Textarea, Button, Stack, Text, Group, ThemeIcon, Anchor, Alert, Card, Badge } from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { IconMail, IconMapPin, IconBrandLinkedin, IconShieldLock, IconBriefcase, IconCheck } from '@tabler/icons-react';
+import { Container, Title, SimpleGrid, Button, Stack, Text, Group, ThemeIcon, Anchor, Alert, Card, Badge } from '@mantine/core';
+import { IconMail, IconMapPin, IconBrandLinkedin, IconShieldLock, IconBriefcase, IconCheck, IconPhone, IconBrandWhatsapp } from '@tabler/icons-react';
 import { features } from '@/config/features';
 
 // Clef de site hCaptcha. Par defaut : clef de TEST publique hCaptcha
-// (a remplacer par ta vraie clef via NEXT_PUBLIC_HCAPTCHA_SITEKEY).
 const SITEKEY = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY || '10000000-ffff-ffff-ffff-000000000001';
 
 // Coordonnees assemblees a l'execution (jamais en clair dans le HTML statique).
 const EMAIL = ['nkumbeaurelien', 'hotmail.com'].join('@');
 const LINKEDIN = 'https://www.linkedin.com/in/nkaurelien/';
+const PHONE = '+33744584562';
+const DISPLAY_PHONE = '+33 7 44 58 45 62';
 
 export default function ContactSection({ contact }) {
   const captchaEnabled = features.contactHcaptcha;
   const [mounted, setMounted] = useState(false);
-  // Flag desactive : coordonnees affichees directement, envoi actif, pas de captcha.
   const [verified, setVerified] = useState(!captchaEnabled);
   const captchaRef = useRef(null);
 
-  // hCaptcha ne se rend que cote client (evite les soucis de prerender statique).
   useEffect(() => setMounted(true), []);
-
-  const form = useForm({
-    initialValues: { name: '', email: '', subject: '', message: '' },
-    validate: {
-      name: v => (v.trim().length < 2 ? 'Nom requis' : null),
-      email: v => (/^\S+@\S+\.\S+$/.test(v) ? null : 'Email invalide'),
-      message: v => (v.trim().length < 10 ? 'Message trop court' : null),
-    },
-  });
-
-  // Export statique : pas de backend. Une fois le hCaptcha resolu, on ouvre le
-  // client mail pre-rempli (mailto). L'adresse n'existe qu'apres verification.
-  const handleSubmit = values => {
-    if (!verified) return;
-    const subject = encodeURIComponent(values.subject || `Contact de ${values.name}`);
-    const body = encodeURIComponent(`${values.message}\n\n— ${values.name} (${values.email})`);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-  };
 
   return (
     <Container size="lg" py={64}>
       <Title order={2} ta="center" mb="xl">
-        {contact?.title || 'Contact'}
+        {contact?.title || 'Me contacter'}
       </Title>
 
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={48}>
+        {/* Left Column: Availabilities & Basic Info */}
         <Stack gap="lg">
-          <Text c="dimmed">{contact?.text || 'Une question, un projet ? Écrivez-moi, je vous réponds rapidement.'}</Text>
+          <Text c="dimmed">
+            {contact?.text || 'Vous pouvez me contacter directement pour discuter de vos projets, opportunités de recrutement ou collaborations.'}
+          </Text>
 
           {contact?.availability?.items?.length > 0 && (
             <Card withBorder radius="lg" padding="lg">
@@ -77,56 +60,100 @@ export default function ContactSection({ contact }) {
             </Card>
           )}
 
-          {!verified ? (
-            <Alert variant="light" color="brand" icon={<IconShieldLock size={18} />} radius="md">
-              <Text fz="sm" mb="sm">
-                Mes coordonnées sont protégées contre les robots. Validez le contrôle ci-dessous pour les afficher.
-              </Text>
-              {mounted && <HCaptcha ref={captchaRef} sitekey={SITEKEY} onVerify={() => setVerified(true)} onExpire={() => setVerified(false)} />}
-            </Alert>
-          ) : (
-            <>
-              <Group>
-                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
-                  <IconMail size={20} />
-                </ThemeIcon>
-                <Anchor href={`mailto:${EMAIL}`}>{EMAIL}</Anchor>
-              </Group>
-              <Group>
-                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
-                  <IconBrandLinkedin size={20} />
-                </ThemeIcon>
-                <Anchor href={LINKEDIN} target="_blank" rel="noopener noreferrer">
-                  linkedin.com/in/nkaurelien
-                </Anchor>
-              </Group>
-            </>
-          )}
-
-          <Group>
-            <ThemeIcon size="lg" radius="md" variant="light" color="brand">
+          <Group align="flex-start" wrap="nowrap">
+            <ThemeIcon size="lg" radius="md" variant="light" color="brand" style={{ marginTop: '2px' }}>
               <IconMapPin size={20} />
             </ThemeIcon>
-            <Text>Paris · Cergy, France</Text>
+            <Stack gap={2}>
+              {contact?.location ? (
+                contact.location.split('|').map((part, idx) => (
+                  <Text key={idx} fz="sm" fw={idx === 0 ? 500 : undefined} c={idx === 0 ? undefined : 'dimmed'}>
+                    {part.trim()}
+                  </Text>
+                ))
+              ) : (
+                <Text fz="sm">Paris · Île-de-France (Résidence)</Text>
+              )}
+            </Stack>
           </Group>
         </Stack>
 
-        <form onSubmit={form.onSubmit(handleSubmit)}>
-          <Stack gap="md">
-            <TextInput label="Nom" placeholder="Votre nom" {...form.getInputProps('name')} />
-            <TextInput label="Email" placeholder="vous@exemple.com" {...form.getInputProps('email')} />
-            <TextInput label="Sujet" placeholder="Objet du message" {...form.getInputProps('subject')} />
-            <Textarea label="Message" placeholder="Votre message…" minRows={4} autosize {...form.getInputProps('message')} />
-            <Button type="submit" color="brand" radius="md" disabled={!verified}>
-              Envoyer
-            </Button>
-            {!verified && (
-              <Text fz="xs" c="dimmed">
-                Validez le contrôle anti-robots (à gauche) pour activer l’envoi.
+        {/* Right Column: Protected Contact Info Card */}
+        <Card withBorder radius="xl" p="xl" shadow="md" style={{ display: 'flex', justifyContent: 'center' }}>
+          {!verified ? (
+            <Stack align="center" gap="md" py="lg" style={{ width: '100%' }}>
+              <ThemeIcon size="xl" radius="md" variant="light" color="indigo">
+                <IconShieldLock size={28} />
+              </ThemeIcon>
+              <Text fz="sm" ta="center" c="dimmed" style={{ maxWidth: 320 }}>
+                Mes coordonnées sont protégées contre les spams et les robots. Validez le contrôle ci-dessous pour les afficher.
               </Text>
-            )}
-          </Stack>
-        </form>
+              {mounted && (
+                <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                  <HCaptcha ref={captchaRef} sitekey={SITEKEY} onVerify={() => setVerified(true)} onExpire={() => setVerified(false)} />
+                </div>
+              )}
+            </Stack>
+          ) : (
+            <Stack gap="lg" py="sm">
+              <Group wrap="nowrap">
+                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
+                  <IconMail size={20} />
+                </ThemeIcon>
+                <Stack gap={2}>
+                  <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
+                    Email
+                  </Text>
+                  <Anchor href={`mailto:${EMAIL}`} fz="md" fw={500}>
+                    {EMAIL}
+                  </Anchor>
+                </Stack>
+              </Group>
+
+              <Group wrap="nowrap">
+                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
+                  <IconBrandLinkedin size={20} />
+                </ThemeIcon>
+                <Stack gap={2}>
+                  <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
+                    LinkedIn
+                  </Text>
+                  <Anchor href={LINKEDIN} target="_blank" rel="noopener noreferrer" fz="md" fw={500}>
+                    linkedin.com/in/nkaurelien
+                  </Anchor>
+                </Stack>
+              </Group>
+
+              <Group wrap="nowrap">
+                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
+                  <IconPhone size={20} />
+                </ThemeIcon>
+                <Stack gap={2}>
+                  <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
+                    {contact?.phone_label || 'Téléphone'}
+                  </Text>
+                  <Anchor href={`tel:${PHONE}`} fz="md" fw={500}>
+                    {DISPLAY_PHONE}
+                  </Anchor>
+                </Stack>
+              </Group>
+
+              <Button
+                component="a"
+                href={`https://wa.me/${PHONE.replace('+', '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                color="green"
+                size="md"
+                radius="xl"
+                leftSection={<IconBrandWhatsapp size={20} />}
+                mt="md"
+                fullWidth>
+                {contact?.whatsapp_label || 'Discuter sur WhatsApp'}
+              </Button>
+            </Stack>
+          )}
+        </Card>
       </SimpleGrid>
     </Container>
   );
