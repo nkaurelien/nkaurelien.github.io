@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container, Title, Text, Button, Group, Box, Badge } from '@mantine/core';
+import { withBase } from '@/lib/asset';
 
 function decode(str = '') {
   return str
@@ -23,7 +24,18 @@ export default function Hero({ locale, hero }) {
   }, [rotates.length]);
 
   return (
-    <Box className="hero-gradient" c="white" py={80}>
+    <Box
+      className="hero-gradient"
+      c="white"
+      py={80}
+      style={{
+        backgroundImage: hero?.bg_image
+          ? `linear-gradient(135deg, rgba(49, 46, 129, 0.85) 0%, rgba(79, 70, 229, 0.85) 55%, rgba(99, 102, 241, 0.85) 100%), url(${withBase(hero.bg_image)})`
+          : undefined,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       <Container size="lg">
         <Group justify="space-between" align="center" wrap="wrap">
           <Box style={{ flex: '1 1 340px', maxWidth: 620 }}>
