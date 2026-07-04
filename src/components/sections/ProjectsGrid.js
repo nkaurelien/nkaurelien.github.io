@@ -18,7 +18,7 @@ export default function ProjectsGrid({ projects, meta, locale }) {
 
   return (
     <Container size="lg" py={64}>
-      <Title order={2} ta="center" mb="lg">
+      <Title order={1} ta="center" mb="xl">
         {meta?.title || 'Projets'}
       </Title>
 

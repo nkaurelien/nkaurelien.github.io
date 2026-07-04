@@ -80,3 +80,19 @@ a {
   display: inline-block;
   animation: fade-in-up 0.4s ease forwards;
 }
+
+/* Premium homepage photo container styles */
+.hero-photo-container {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-photo-container:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 30px 50px -12px rgba(0, 0, 0, 0.45) !important;
+}
+
+.hero-photo-container:hover .hero-photo-img {
+  transform: scale(1.06);
+}

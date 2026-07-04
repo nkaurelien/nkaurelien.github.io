@@ -97,15 +97,60 @@ export default function Hero({ locale, hero }) {
           </Box>
 
           {hero?.photo?.url && (
-            <Box style={{ flex: '0 0 auto' }}>
-              <Image
-                src={`/${hero.photo.url.replace(/^\//, '')}`}
-                alt={hero.photo.alt || 'Aurelien NKUMBE'}
-                width={320}
-                height={320}
-                style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
-                priority
+            <Box
+              className="hero-photo-container"
+              style={{
+                flex: '0 0 auto',
+                position: 'relative',
+                display: 'inline-block',
+                borderRadius: '32px',
+                padding: '12px',
+                background: 'rgba(255, 255, 255, 0.06)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                boxShadow: 'var(--mantine-shadow-xl)',
+              }}>
+              {/* Radial glow glow behind the photo */}
+              <Box
+                style={{
+                  position: 'absolute',
+                  top: '-15%',
+                  left: '-15%',
+                  right: '-15%',
+                  bottom: '-15%',
+                  background: 'radial-gradient(circle, rgba(129, 140, 248, 0.35) 0%, rgba(99, 102, 241, 0) 70%)',
+                  filter: 'blur(20px)',
+                  zIndex: 0,
+                  pointerEvents: 'none',
+                }}
               />
+
+              <Box
+                style={{
+                  borderRadius: '24px',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  zIndex: 1,
+                  display: 'block',
+                  lineHeight: 0,
+                  border: '2px solid rgba(255, 255, 255, 0.25)',
+                }}>
+                <Image
+                  src={`/${hero.photo.url.replace(/^\//, '')}`}
+                  alt={hero.photo.alt || 'Aurelien NKUMBE'}
+                  width={280}
+                  height={280}
+                  className="hero-photo-img"
+                  style={{
+                    objectFit: 'cover',
+                    maxWidth: '100%',
+                    height: 'auto',
+                    transition: 'transform 0.5s ease',
+                    display: 'block',
+                  }}
+                  priority
+                />
+              </Box>
             </Box>
           )}
         </Group>

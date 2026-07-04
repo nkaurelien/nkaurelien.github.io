@@ -25,7 +25,7 @@ export default function ContactSection({ contact }) {
 
   return (
     <Container size="lg" py={64}>
-      <Title order={2} ta="center" mb="xl">
+      <Title order={1} ta="center" mb="xl">
         {contact?.title || 'Me contacter'}
       </Title>
 
