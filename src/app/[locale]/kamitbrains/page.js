@@ -17,5 +17,5 @@ export default async function KamitbrainsPage({ params }) {
 
   const company = await getSection(locale, 'company');
 
-  return <Company company={company} />;
+  return <Company company={company} locale={locale} />;
 }

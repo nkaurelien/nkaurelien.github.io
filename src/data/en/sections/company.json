@@ -4,6 +4,7 @@
     "badge": "My Freelance Entity",
     "description": "Established in December 2022 in France, <b>KAMITBRAINS IT</b> is my self-employed structure (Entreprise Individuelle, SIRET 92203463200013) dedicated to the design, development, and hosting of advanced software solutions. It allows me to collaborate autonomously, flexibly, and professionally with companies of all sizes.",
     "image": "/img/logos/kamitbrains.svg",
+    "bg_image": "/img/me/slide.png",
     "items": [
         {
             "title": "Flexibility & Autonomy",

@@ -4,6 +4,7 @@
     "badge": "Mon Activité Freelance",
     "description": "Créée en décembre 2022 en France, <b>KAMITBRAINS IT</b> est ma structure d'auto-entrepreneur (Entreprise Individuelle, SIRET 92203463200013) dédiée à la conception, au développement et à l'hébergement de solutions informatiques de pointe. Elle me permet de collaborer de manière autonome, flexible et professionnelle avec des entreprises de toutes tailles.",
     "image": "/img/logos/kamitbrains.svg",
+    "bg_image": "/img/me/slide.png",
     "items": [
         {
             "title": "Flexibilité & Autonomie",
