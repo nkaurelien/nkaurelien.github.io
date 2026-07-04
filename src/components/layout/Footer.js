@@ -38,6 +38,7 @@ export default function Footer({ app }) {
             fw={700}
             style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', verticalAlign: 'middle' }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={withBase('/img/logos/kamitbrains.svg')}
               alt="KAMITBRAINS IT Logo"

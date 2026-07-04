@@ -87,6 +87,7 @@ export default function Company({ company, locale }) {
               {/* Logo display */}
               <Group justify="center" py="md">
                 <Box style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '16px', borderRadius: '50%', background: 'light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6))' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={withBase(company.image || '/img/logos/kamitbrains.svg')}
                     alt={company.title}
