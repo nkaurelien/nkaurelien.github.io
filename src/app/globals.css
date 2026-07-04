@@ -96,3 +96,123 @@ a {
 .hero-photo-container:hover .hero-photo-img {
   transform: scale(1.06);
 }
+
+/* Premium Animocons-inspired SVG icon micro-interactions */
+
+/* 1. Social Icons in Footer: Pop & Rotate */
+.site-footer a {
+  transition: all 0.3s ease;
+}
+
+.site-footer a .tabler-icon {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.site-footer a:hover .tabler-icon {
+  transform: scale(1.22) rotate(12deg);
+}
+
+/* 2. Theme Toggle in Header: Rotate */
+header button .tabler-icon {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header button:hover .tabler-icon {
+  transform: rotate(35deg) scale(1.12);
+}
+
+/* 3. Contact Items: Slide & Pop */
+.contact-item-group {
+  cursor: pointer;
+}
+
+.contact-item-group .tabler-icon {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
+}
+
+.contact-item-group:hover .tabler-icon {
+  transform: scale(1.18) translateY(-2px);
+}
+
+/* 4. General Action Buttons / WhatsApp: Bounce left section */
+.mantine-Button-root .mantine-Button-inner {
+  transition: all 0.2s ease;
+}
+
+.mantine-Button-root:hover .tabler-icon {
+  animation: icon-bounce-x 0.8s ease infinite alternate;
+}
+
+@keyframes icon-bounce-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(4px);
+  }
+}
+
+/* Kamitbrains / Company Page Animocons-style interactions */
+
+/* 1. Briefcase Swing (Bell ring style) */
+.mantine-Badge-root:hover .tabler-icon-briefcase {
+  animation: swing-bell 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform-origin: center center;
+}
+
+@keyframes swing-bell {
+  0% { transform: rotate(0); }
+  15% { transform: rotate(15deg); }
+  30% { transform: rotate(-12deg); }
+  45% { transform: rotate(8deg); }
+  60% { transform: rotate(-6deg); }
+  75% { transform: rotate(3deg); }
+  100% { transform: rotate(0); }
+}
+
+/* 2. Checkmarks spring scale and line slide */
+.kamitbrains-list-item {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.kamitbrains-list-item:hover {
+  transform: translateX(6px);
+  background: light-dark(rgba(0, 0, 0, 0.02), rgba(255, 255, 255, 0.02));
+}
+
+.kamitbrains-list-item .tabler-icon-circle-check {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.kamitbrains-list-item:hover .tabler-icon-circle-check {
+  transform: scale(1.24) rotate(10deg);
+  color: var(--mantine-color-indigo-6) !important;
+}
+
+/* 3. Central Logo Hover Animation */
+.kamitbrains-logo-container {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kamitbrains-logo-container:hover {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: var(--mantine-shadow-md);
+  background: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5)) !important;
+}
+
+.kamitbrains-logo-container img {
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.kamitbrains-logo-container:hover img {
+  transform: scale(1.1) rotate(-6deg);
+}
+
+/* Force mo.js parents to render on top of Mantine layers */
+.mojs-parent {
+  z-index: 99999 !important;
+  pointer-events: none !important;
+}
+

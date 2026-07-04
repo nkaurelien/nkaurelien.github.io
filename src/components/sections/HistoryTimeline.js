@@ -1,8 +1,16 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
 import { Container, Title, SimpleGrid, Timeline, Text, Anchor, Badge, Group, Stack } from '@mantine/core';
 import { IconSchool, IconBriefcase } from '@tabler/icons-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 function HistoryButton({ button, locale }) {
   if (!button?.link) return null;
@@ -25,7 +33,9 @@ function Column({ col, icon, locale }) {
   const items = (col?.items || []).filter(i => i.active !== false);
   return (
     <Stack gap="md">
-      <Title order={3}>{col?.title}</Title>
+      <Title className="timeline-col-title" order={3}>
+        {col?.title}
+      </Title>
       <Timeline active={items.length} bulletSize={22} lineWidth={2} color="brand">
         {items.map((item, i) => (
           <Timeline.Item key={`${item.title}-${i}`} bullet={icon} title={item.title}>
@@ -56,8 +66,44 @@ function Column({ col, icon, locale }) {
 }
 
 export default function HistoryTimeline({ history, locale }) {
+  const containerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      // Animate column titles
+      gsap.from('.timeline-col-title', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: 'power3.out',
+      });
+
+      // Animate timeline nodes (bullets and contents)
+      gsap.from('.mantine-Timeline-item', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        x: -15,
+        y: 20,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: 'power3.out',
+      });
+    },
+    { scope: containerRef }
+  );
+
   return (
-    <Container size="lg" py={64}>
+    <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={48}>
         <Column col={history?.col1} icon={<IconSchool size={12} />} locale={locale} />
         <Column col={history?.col2} icon={<IconBriefcase size={12} />} locale={locale} />

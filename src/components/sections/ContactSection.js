@@ -5,6 +5,8 @@ import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { Container, Title, SimpleGrid, Button, Stack, Text, Group, ThemeIcon, Anchor, Alert, Card, Badge } from '@mantine/core';
 import { IconMail, IconMapPin, IconBrandLinkedin, IconShieldLock, IconBriefcase, IconCheck, IconPhone, IconBrandWhatsapp } from '@tabler/icons-react';
 import { features } from '@/config/features';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 // Clef de site hCaptcha. Par defaut : clef de TEST publique hCaptcha
 const SITEKEY = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY || '10000000-ffff-ffff-ffff-000000000001';
@@ -20,18 +22,35 @@ export default function ContactSection({ contact }) {
   const [mounted, setMounted] = useState(false);
   const [verified, setVerified] = useState(!captchaEnabled);
   const captchaRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => setMounted(true), []);
 
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+      tl.fromTo('.contact-title', { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
+        .fromTo('.contact-left-col > *', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.12 }, '-=0.4')
+        .fromTo(
+          '.contact-right-card',
+          { scale: 0.96, opacity: 0, y: 30 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.9, ease: 'back.out(1.1)' },
+          '-=0.55'
+        );
+    },
+    { scope: containerRef }
+  );
+
   return (
-    <Container size="lg" py={64}>
-      <Title order={1} ta="center" mb="xl">
+    <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
+      <Title className="contact-title" order={1} ta="center" mb="xl">
         {contact?.title || 'Me contacter'}
       </Title>
 
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={48}>
         {/* Left Column: Availabilities & Basic Info */}
-        <Stack gap="lg">
+        <Stack className="contact-left-col" gap="lg">
           <Text c="dimmed">
             {contact?.text || 'Vous pouvez me contacter directement pour discuter de vos projets, opportunités de recrutement ou collaborations.'}
           </Text>
@@ -79,7 +98,7 @@ export default function ContactSection({ contact }) {
         </Stack>
 
         {/* Right Column: Protected Contact Info Card */}
-        <Card withBorder radius="xl" p="xl" shadow="md" style={{ display: 'flex', justifyContent: 'center' }}>
+        <Card className="contact-right-card" withBorder radius="xl" p="xl" shadow="md" style={{ display: 'flex', justifyContent: 'center' }}>
           {!verified ? (
             <Stack align="center" gap="md" py="lg" style={{ width: '100%' }}>
               <ThemeIcon size="xl" radius="md" variant="light" color="indigo">
@@ -96,7 +115,7 @@ export default function ContactSection({ contact }) {
             </Stack>
           ) : (
             <Stack gap="lg" py="sm">
-              <Group wrap="nowrap">
+              <Group wrap="nowrap" className="contact-item-group">
                 <ThemeIcon size="lg" radius="md" variant="light" color="brand">
                   <IconMail size={20} />
                 </ThemeIcon>
@@ -110,7 +129,7 @@ export default function ContactSection({ contact }) {
                 </Stack>
               </Group>
 
-              <Group wrap="nowrap">
+              <Group wrap="nowrap" className="contact-item-group">
                 <ThemeIcon size="lg" radius="md" variant="light" color="brand">
                   <IconBrandLinkedin size={20} />
                 </ThemeIcon>
@@ -124,7 +143,7 @@ export default function ContactSection({ contact }) {
                 </Stack>
               </Group>
 
-              <Group wrap="nowrap">
+              <Group wrap="nowrap" className="contact-item-group">
                 <ThemeIcon size="lg" radius="md" variant="light" color="brand">
                   <IconPhone size={20} />
                 </ThemeIcon>

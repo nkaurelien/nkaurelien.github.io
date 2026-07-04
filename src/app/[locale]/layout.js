@@ -8,6 +8,7 @@ import { theme } from '@/theme';
 import { getApp } from '@/lib/content';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import ClientEffects from '@/components/layout/ClientEffects';
 
 export function generateStaticParams() {
   return routing.locales.map(locale => ({ locale }));
@@ -32,6 +33,7 @@ export default async function LocaleLayout({ children, params }) {
         <Header locale={locale} app={app} />
         <main>{children}</main>
         <Footer app={app} />
+        <ClientEffects />
       </MantineProvider>
     </NextIntlClientProvider>
   );
