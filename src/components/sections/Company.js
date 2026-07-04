@@ -89,6 +89,7 @@ export default function Company({ company, locale }) {
             radius="xl"
             p="xl"
             shadow="md"
+            c="var(--mantine-color-text)"
             style={{ background: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-7))' }}>
             <Stack gap="xl">
               {/* Logo display */}
