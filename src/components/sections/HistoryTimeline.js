@@ -84,19 +84,21 @@ export default function HistoryTimeline({ history, locale }) {
         ease: 'power3.out',
       });
 
-      // Animate timeline nodes (bullets and contents)
-      gsap.from('.mantine-Timeline-item', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        x: -15,
-        y: 20,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'power3.out',
+      // Animate timeline nodes (bullets and contents) individually as they scroll into view
+      const items = containerRef.current.querySelectorAll('.mantine-Timeline-item');
+      items.forEach(item => {
+        gsap.from(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          opacity: 0,
+          x: -20,
+          y: 15,
+          duration: 0.6,
+          ease: 'power2.out',
+        });
       });
     },
     { scope: containerRef }
