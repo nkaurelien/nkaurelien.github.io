@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Container, Title, Text, Button, Group, Box, Badge, SimpleGrid, Paper, Stack, ThemeIcon } from '@mantine/core';
-import { IconCircleCheck, IconExternalLink, IconBriefcase } from '@tabler/icons-react';
+import { Container, Title, Text, Button, Group, Box, Badge, SimpleGrid, Paper, Stack, ThemeIcon, Tooltip } from '@mantine/core';
+import { IconCircleCheck, IconExternalLink, IconBriefcase, IconPlayerPause } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
 
 function localizedHref(locale, link) {
@@ -36,6 +36,28 @@ export default function Company({ company, locale }) {
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing={40} align="center">
           {/* Column 1: Logo & Company Description */}
           <Stack gap="lg" align="flex-start" style={{ textAlign: 'left' }}>
+            {company.status === 'PAUSE' && (
+              <Tooltip label={company.status_tooltip || 'Activité temporairement en pause'} position="top" withArrow>
+                <Group
+                  gap={6}
+                  style={{
+                    background: 'rgba(247, 103, 7, 0.2)',
+                    backdropFilter: 'blur(4px)',
+                    padding: '4px 10px',
+                    borderRadius: '6px',
+                    border: '1px solid rgba(247, 103, 7, 0.4)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    cursor: 'help',
+                  }}>
+                  <IconPlayerPause size={14} color="#f76707" style={{ fill: '#f76707' }} />
+                  <Text fw={800} fz="xs" style={{ color: '#ff922b', letterSpacing: '1px', lineHeight: 1, textTransform: 'uppercase' }}>
+                    {company.status_label || 'En pause'}
+                  </Text>
+                </Group>
+              </Tooltip>
+            )}
+
             <Group justify="flex-start">
               <Badge size="lg" radius="sm" variant={hasBg ? 'filled' : 'light'} color="indigo" leftSection={<IconBriefcase size={14} />}>
                 {company.badge || 'Structure Freelance'}

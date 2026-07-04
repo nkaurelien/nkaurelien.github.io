@@ -1,7 +1,10 @@
 {
     "title": "KAMITBRAINS IT",
     "subtitle": "IT engineering & independent consulting services",
-    "badge": "Freelance Entity (On Hold)",
+    "badge": "My Freelance Entity",
+    "status": "PAUSE",
+    "status_label": "On Hold",
+    "status_tooltip": "Activity temporarily on hold due to my current permanent employment contract.",
     "description": "Established in December 2022 in France, <b>KAMITBRAINS IT</b> is my self-employed structure (Entreprise Individuelle, SIRET 92203463200013) dedicated to the design, development, and hosting of advanced software solutions.<br/><br/><b>Current Status:</b> My independent activity is temporarily on hold (inactive status) due to my current permanent employment contract (CDI).",
     "image": "/img/logos/kamitbrains.svg",
     "bg_image": "/img/me/slide.png",
