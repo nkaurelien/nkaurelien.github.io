@@ -2,6 +2,7 @@
 
 import { Container, Group, Text, ActionIcon, Stack, Anchor } from '@mantine/core';
 import { IconBrandLinkedin, IconBrandMedium, IconBrandGithub, IconBrandX, IconMoodSmile, IconBuilding, IconWorld } from '@tabler/icons-react';
+import { withBase } from '@/lib/asset';
 
 const ICONS = {
   Linkedin: IconBrandLinkedin,
@@ -20,6 +21,36 @@ function stripHtml(str = '') {
 export default function Footer({ app }) {
   const social = app?.social || [];
   const footer = app?.footer || {};
+
+  const renderDeveloper = (text) => {
+    if (!text) return null;
+    const target = 'KAMITBRAINS IT';
+    const parts = text.split(target);
+    if (parts.length === 2) {
+      return (
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap', justifyContent: 'center', verticalAlign: 'middle' }}>
+          <span dangerouslySetInnerHTML={{ __html: parts[0] }} />
+          <Anchor
+            href="https://kamitbrains.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            c="brand.6"
+            fw={700}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', verticalAlign: 'middle' }}
+          >
+            <img
+              src={withBase('/img/logos/kamitbrains.svg')}
+              alt="KAMITBRAINS IT Logo"
+              style={{ height: '14px', width: 'auto', display: 'inline-block', verticalAlign: 'middle' }}
+            />
+            <span>KAMITBRAINS IT</span>
+          </Anchor>
+          <span dangerouslySetInnerHTML={{ __html: parts[1] }} />
+        </span>
+      );
+    }
+    return <span dangerouslySetInnerHTML={{ __html: text }} />;
+  };
 
   return (
     <footer className="site-footer">
@@ -54,7 +85,7 @@ export default function Footer({ app }) {
             </Anchor>
           </Group>
           <Text size="sm" c="dimmed" ta="center">
-            {stripHtml(footer.copy)} {stripHtml(footer.developer)}
+            {stripHtml(footer.copy)} {renderDeveloper(footer.developer)}
           </Text>
         </Stack>
       </Container>

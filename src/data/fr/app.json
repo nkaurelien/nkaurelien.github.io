@@ -183,6 +183,11 @@
                 "children": 0
             },
             {
+                "label": "Kamitbrains",
+                "link": "/kamitbrains",
+                "children": 0
+            },
+            {
                 "label": "Projets",
                 "link": "/projects",
                 "children": 0

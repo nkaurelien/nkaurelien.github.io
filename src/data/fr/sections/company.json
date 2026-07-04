@@ -1,0 +1,29 @@
+{
+    "title": "KAMITBRAINS IT",
+    "subtitle": "Services d'ingénierie informatique & prestations en indépendant",
+    "badge": "Mon Activité Freelance",
+    "description": "Créée en décembre 2022 en France, <b>KAMITBRAINS IT</b> est ma structure d'auto-entrepreneur (Entreprise Individuelle, SIRET 92203463200013) dédiée à la conception, au développement et à l'hébergement de solutions informatiques de pointe. Elle me permet de collaborer de manière autonome, flexible et professionnelle avec des entreprises de toutes tailles.",
+    "image": "/img/logos/kamitbrains.svg",
+    "items": [
+        {
+            "title": "Flexibilité & Autonomie",
+            "text": "Collaboration sous forme de prestations de services, de portage salarial ou de contrats freelance adaptés à vos besoins."
+        },
+        {
+            "title": "Cadre Légal & Clarté",
+            "text": "Structure immatriculée en France, assurance responsabilité civile professionnelle et facturation simplifiée."
+        },
+        {
+            "title": "Hébergement & Maintenance",
+            "text": "Hébergement sécurisé de vos applications et suivi de maintenance sur le long terme."
+        }
+    ],
+    "button": {
+        "label": "Visiter le site officiel",
+        "link": "https://kamitbrains.fr/"
+    },
+    "buttonProject": {
+        "label": "Voir les détails du projet",
+        "link": "/projects/kamitbrains"
+    }
+}
