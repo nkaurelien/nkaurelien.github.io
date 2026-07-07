@@ -138,10 +138,10 @@ export default function Hero({ locale, hero }) {
   return (
     <Box component="section" ref={containerRef} className="hero-gradient" c="white" py={80} style={{ overflow: 'hidden' }}>
       <Container size="lg">
-        <Group justify="space-between" align="center" wrap="wrap">
+        <Group justify={{ base: 'center', md: 'space-between' }} align="center" wrap="wrap">
           <Box style={{ flex: '1 1 340px', maxWidth: 620 }}>
             {hero?.badge && (
-              <Group gap="sm" mb="md" className="hero-badge-group">
+              <Group gap="sm" mb="md" className="hero-badge-group" justify={{ base: 'center', md: 'flex-start' }}>
                 <Badge
                   className="hero-badge"
                   size="lg"
@@ -195,19 +195,27 @@ export default function Hero({ locale, hero }) {
                 )}
               </Group>
             )}
-            <Title className="hero-title" order={1} fz={{ base: 34, sm: 48 }} lh={1.1} dangerouslySetInnerHTML={{ __html: decode(hero?.title) }} />
+            <Title
+              className="hero-title"
+              order={1}
+              fz={{ base: 34, sm: 48 }}
+              lh={1.1}
+              ta={{ base: 'center', md: 'left' }}
+              dangerouslySetInnerHTML={{ __html: decode(hero?.title) }}
+            />
             <Text
               className="hero-subtitle"
               mt="lg"
               fz={{ base: 18, sm: 22 }}
               fw={500}
               mih={{ base: 90, xs: 70, sm: 45 }}
+              ta={{ base: 'center', md: 'left' }}
               style={{ lineHeight: '1.4' }}>
               <span key={index} className="rotate-text-anim">
                 {renderSubtitleContent(hero?.subtitle?.start, hero?.subtitle?.end, rotates[index])}
               </span>
             </Text>
-            <Group mt="xl" gap="sm">
+            <Group mt="xl" gap="sm" justify={{ base: 'center', md: 'flex-start' }}>
               {hero?.button && (
                 <Button
                   className="hero-btn"
@@ -229,6 +237,8 @@ export default function Hero({ locale, hero }) {
           {hero?.photo?.url && (
             <Box
               className="hero-photo-container hero-photo-wrapper"
+              mx={{ base: 'auto', md: 0 }}
+              mt={{ base: 'xl', md: 0 }}
               style={{
                 flex: '0 0 auto',
                 position: 'relative',
