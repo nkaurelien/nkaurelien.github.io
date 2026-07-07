@@ -216,3 +216,28 @@ header button:hover .tabler-icon {
   pointer-events: none !important;
 }
 
+/* Status badge blinking/pulse animation */
+@keyframes status-pulse {
+  0% {
+    transform: scale(0.92);
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.8);
+  }
+  70% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 6px rgba(45, 212, 191, 0);
+  }
+  100% {
+    transform: scale(0.92);
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0);
+  }
+}
+
+.status-dot-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--mantine-color-teal-5);
+  animation: status-pulse 2s infinite;
+}
+

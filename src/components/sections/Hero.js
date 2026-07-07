@@ -141,34 +141,59 @@ export default function Hero({ locale, hero }) {
         <Group justify="space-between" align="center" wrap="wrap">
           <Box style={{ flex: '1 1 340px', maxWidth: 620 }}>
             {hero?.badge && (
-              <Box mb="md">
+              <Group gap="sm" mb="md" className="hero-badge-group">
                 <Badge
                   className="hero-badge"
                   size="lg"
                   radius="sm"
                   variant="white"
                   c="teal.7"
-                  mb={hero?.badge_detail ? 6 : 0}
-                  leftSection={
-                    <Box
-                      component="span"
-                      w={8}
-                      h={8}
-                      style={{ borderRadius: '50%', background: 'var(--mantine-color-teal-6)', display: 'inline-block' }}
-                    />
-                  }>
+                  leftSection={<span className="status-dot-pulse" />}
+                  styles={{
+                    root: {
+                      height: 28,
+                      paddingLeft: 10,
+                      paddingRight: 10,
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                    },
+                    inner: {
+                      textTransform: 'none',
+                      fontWeight: 600,
+                      fontSize: '0.85rem',
+                      letterSpacing: 0.2,
+                    },
+                  }}>
                   {hero.badge}
                 </Badge>
                 {hero?.badge_detail && (
-                  <Text
-                    size="xs"
-                    c="rgba(255, 255, 255, 0.8)"
-                    style={{ letterSpacing: 0.5, fontWeight: 500, display: 'block' }}
-                    className="hero-badge-detail">
+                  <Badge
+                    className="hero-badge-detail"
+                    size="lg"
+                    radius="sm"
+                    variant="outline"
+                    color="white"
+                    leftSection={<span style={{ marginRight: 2 }}>📍</span>}
+                    styles={{
+                      root: {
+                        height: 28,
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                        color: '#ffffff',
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                      },
+                      inner: {
+                        textTransform: 'none',
+                        fontWeight: 500,
+                        fontSize: '0.85rem',
+                        letterSpacing: 0.2,
+                      },
+                    }}>
                     {hero.badge_detail}
-                  </Text>
+                  </Badge>
                 )}
-              </Box>
+              </Group>
             )}
             <Title className="hero-title" order={1} fz={{ base: 34, sm: 48 }} lh={1.1} dangerouslySetInnerHTML={{ __html: decode(hero?.title) }} />
             <Text
