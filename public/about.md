@@ -139,7 +139,7 @@ audit & MOE · formation & documentation.
 
 ## Contact & liens
 
-- **Site** : https://nkaurelien.github.io · https://nkaurelien.kamitbrains.fr
+- **Site** : https://nkaurelien.github.io
 - **Email** : nkumbeaurelien@hotmail.com
 - **LinkedIn** : https://www.linkedin.com/in/nkaurelien/
 - **GitHub** : https://github.com/nkaurelien
