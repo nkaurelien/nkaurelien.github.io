@@ -24,12 +24,17 @@
         },
         {
             "title": "Administration système (SysOps)",
-            "items": ["Ubuntu / Linux", "systemd", "Bash / shell scripts", "Cron", "Supervisor", "SSH", "ISPConfig / Plesk", "Monitoring & logs"],
+            "items": ["Ubuntu / Linux", "systemd", "Bash / shell scripts", "Cron", "Supervisor", "SSH", "ISPConfig / Plesk"],
+            "active": true
+        },
+        {
+            "title": "Observabilité (Run)",
+            "items": ["Grafana", "Loki", "Alloy", "Netdata", "Prometheus", "SigNoz", "ELK", "Sentry"],
             "active": true
         },
         {
             "title": "Data, IA & IoT",
-            "items": ["LangChain", "LiteLLM", "OpenAI / Ollama", "PySpark", "ELK", "Kafka", "IoT (EmotiBit, Withings)", "FHIR / HL7"],
+            "items": ["LangChain", "LiteLLM", "OpenAI / Ollama", "Streamlit", "PySpark", "ELK", "Kafka", "IoT (EmotiBit, Withings)", "FHIR / HL7"],
             "active": true
         },
         {
