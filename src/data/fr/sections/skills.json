@@ -19,7 +19,7 @@
         },
         {
             "title": "Sécurité & Réseau",
-            "items": ["Reverse proxy (Nginx, Kong)", "En-têtes de sécurité HTTP", "TLS / HTTPS (Let's Encrypt)", "JWT / OAuth2", "LDAP + RBAC", "Rate limiting / anti-DDoS"],
+            "items": ["Reverse proxy (Nginx, Traefik, Kong)", "En-têtes de sécurité HTTP", "TLS / HTTPS (Let's Encrypt)", "JWT / OAuth2", "LDAP + RBAC", "Rate limiting / anti-DDoS"],
             "active": true
         },
         {
