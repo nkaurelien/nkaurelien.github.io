@@ -60,7 +60,7 @@ export default function Collaborations({ collaborators }) {
   if (items.length === 0) return null;
 
   return (
-    <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
+    <Container component="section" ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
       <Title className="collab-title" order={2} ta="center">
         {collaborators?.title || 'Collaborations'}
       </Title>

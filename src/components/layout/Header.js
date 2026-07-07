@@ -100,7 +100,7 @@ export default function Header({ locale, app }) {
             </Text>
           </Anchor>
 
-          <Group gap="xs" visibleFrom="md">
+          <Group component="nav" gap="xs" visibleFrom="md">
             {menu.flatMap(item => {
               const link = renderLink(item);
               if (item.label === 'Contact') {
@@ -120,7 +120,7 @@ export default function Header({ locale, app }) {
       </Container>
 
       <Drawer opened={opened} onClose={close} title="Menu" hiddenFrom="md" position="right" size="xs">
-        <Stack gap="md" mt="md">
+        <Stack component="nav" gap="md" mt="md">
           {menu.flatMap(item => {
             const link = renderLink(item, close);
             if (item.label === 'Contact') {

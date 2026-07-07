@@ -31,7 +31,7 @@ export default function ProjectsGrid({ projects, meta, locale }) {
   );
 
   return (
-    <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
+    <Container component="section" ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
       <Title className="projects-title" order={1} ta="center" mb="xl">
         {meta?.title || 'Projets'}
       </Title>
@@ -60,7 +60,7 @@ export default function ProjectsGrid({ projects, meta, locale }) {
       ) : (
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
           {filtered.map(p => (
-            <Card key={p.slug} withBorder radius="lg" padding="lg" shadow="sm" className="projects-card">
+            <Card key={p.slug} component="article" withBorder radius="lg" padding="lg" shadow="sm" className="projects-card">
               {p.image && (
                 <Card.Section component={Link} href={`/${locale}/projects/${p.slug}`}>
                   <Image src={withBase(p.image)} alt={p.title} h={180} fit="cover" />

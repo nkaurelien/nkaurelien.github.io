@@ -34,7 +34,7 @@ export default function Counters({ counters }) {
   );
 
   return (
-    <div className="section-muted">
+    <section className="section-muted">
       <Container ref={containerRef} size="lg" py={56} style={{ overflow: 'hidden' }}>
         <SimpleGrid cols={{ base: 1, xs: 3 }} spacing="xl">
           {items.map(item => (
@@ -50,6 +50,6 @@ export default function Counters({ counters }) {
           ))}
         </SimpleGrid>
       </Container>
-    </div>
+    </section>
   );
 }

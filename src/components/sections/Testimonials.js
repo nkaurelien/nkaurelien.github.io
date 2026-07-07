@@ -63,7 +63,7 @@ export default function Testimonials({ testimonials }) {
   if (items.length === 0) return null;
 
   return (
-    <div className="section-muted">
+    <section className="section-muted">
       <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
         <Title className="testimonials-title" order={2} ta="center" mb="xl">
           {testimonials?.title || 'Recommandations'}
@@ -71,7 +71,7 @@ export default function Testimonials({ testimonials }) {
 
         <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
           {items.map(item => (
-            <Card className="testimonials-card" key={item.name} withBorder radius="lg" padding="lg" shadow="sm">
+            <Card className="testimonials-card" component="article" key={item.name} withBorder radius="lg" padding="lg" shadow="sm">
               <Group justify="space-between" wrap="nowrap" align="flex-start">
                 <Group wrap="nowrap">
                   <Avatar src={item.image ? withBase(item.image) : undefined} name={item.name} color="brand" radius="xl" size="lg" />
@@ -108,6 +108,6 @@ export default function Testimonials({ testimonials }) {
           ))}
         </SimpleGrid>
       </Container>
-    </div>
+    </section>
   );
 }

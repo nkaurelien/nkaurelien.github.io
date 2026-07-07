@@ -48,7 +48,7 @@ export default function Skills({ skills }) {
   if (groups.length === 0) return null;
 
   return (
-    <div className="section-muted">
+    <section className="section-muted">
       <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
         <Title className="skills-title" order={2} ta="center">
           {skills?.title || 'Compétences'}
@@ -62,7 +62,7 @@ export default function Skills({ skills }) {
 
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
           {groups.map(group => (
-            <Card className="skills-card" key={group.title} withBorder radius="lg" padding="lg" shadow="sm">
+            <Card className="skills-card" component="article" key={group.title} withBorder radius="lg" padding="lg" shadow="sm">
               <Text fw={700} mb="sm">
                 {group.title}
               </Text>
@@ -77,6 +77,6 @@ export default function Skills({ skills }) {
           ))}
         </SimpleGrid>
       </Container>
-    </div>
+    </section>
   );
 }

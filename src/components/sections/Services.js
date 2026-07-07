@@ -44,7 +44,7 @@ export default function Services({ services }) {
   );
 
   return (
-    <Container ref={containerRef} size="lg" py={64}>
+    <Container component="section" ref={containerRef} size="lg" py={64}>
       <Title order={2} ta="center">
         {services?.title || 'Mes Services'}
       </Title>
@@ -58,7 +58,7 @@ export default function Services({ services }) {
         {items.map(item => {
           const Icon = ICONS[item.icon] || IconStar;
           return (
-            <Card key={item.title} withBorder radius="lg" padding="xl" shadow="sm" className="service-card">
+            <Card key={item.title} component="article" withBorder radius="lg" padding="xl" shadow="sm" className="service-card">
               <ThemeIcon size={54} radius="md" variant="light" color="brand" mb="md">
                 <Icon size={28} />
               </ThemeIcon>

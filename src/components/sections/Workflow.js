@@ -49,7 +49,7 @@ export default function Workflow({ workflow }) {
   if (groups.length === 0) return null;
 
   return (
-    <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
+    <Container component="section" ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
       <Title className="workflow-title" order={2} ta="center">
         {workflow?.title || 'Environnement & rituels'}
       </Title>
@@ -62,7 +62,7 @@ export default function Workflow({ workflow }) {
 
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
         {groups.map(group => (
-          <Card className="workflow-card" key={group.title} withBorder radius="lg" padding="lg" shadow="sm">
+          <Card className="workflow-card" component="article" key={group.title} withBorder radius="lg" padding="lg" shadow="sm">
             <Text fw={700} mb="md">
               {group.title}
             </Text>

@@ -136,7 +136,7 @@ export default function Hero({ locale, hero }) {
   );
 
   return (
-    <Box ref={containerRef} className="hero-gradient" c="white" py={80} style={{ overflow: 'hidden' }}>
+    <Box component="section" ref={containerRef} className="hero-gradient" c="white" py={80} style={{ overflow: 'hidden' }}>
       <Container size="lg">
         <Group justify="space-between" align="center" wrap="wrap">
           <Box style={{ flex: '1 1 340px', maxWidth: 620 }}>
