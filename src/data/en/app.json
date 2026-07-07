@@ -199,7 +199,8 @@
             },
             {
                 "label": "Agenda",
-                "link": "https://calendly.com/nkaurelien",
+                "link": "https://calendly.com/nkumbe-aurelien/30-minute-meeting-clone",
+                "oldLink": "https://calendly.com/nkaurelien",
                 "children": 0,
                 "external": true
             },
