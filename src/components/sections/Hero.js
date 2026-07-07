@@ -160,7 +160,11 @@ export default function Hero({ locale, hero }) {
                   {hero.badge}
                 </Badge>
                 {hero?.badge_detail && (
-                  <Text size="xs" c="rgba(255, 255, 255, 0.8)" style={{ letterSpacing: 0.5, fontWeight: 500, display: 'block' }} className="hero-badge-detail">
+                  <Text
+                    size="xs"
+                    c="rgba(255, 255, 255, 0.8)"
+                    style={{ letterSpacing: 0.5, fontWeight: 500, display: 'block' }}
+                    className="hero-badge-detail">
                     {hero.badge_detail}
                   </Text>
                 )}
