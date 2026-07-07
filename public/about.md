@@ -1,7 +1,7 @@
 # Astrid-Aurélien NKUMBE ENONGENE — À propos
 
 > Développeur'Ops fullstack polyvalent (7+ ans) — DevSecOps · SysOps · Data & IA.
-> En poste (CDI interne) et **ouvert aux opportunités**.
+> En poste (CDI interne) et **ouvert aux opportunités** (dans toute la France).
 
 **Aurelien NKUMBE** (`@nkaurelien`) est un développeur full-stack polyvalent, autonome et
 collaboratif, passionné par le DevOps, la MOE et les nouvelles technologies. Originaire de

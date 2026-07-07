@@ -141,23 +141,30 @@ export default function Hero({ locale, hero }) {
         <Group justify="space-between" align="center" wrap="wrap">
           <Box style={{ flex: '1 1 340px', maxWidth: 620 }}>
             {hero?.badge && (
-              <Badge
-                className="hero-badge"
-                size="lg"
-                radius="sm"
-                variant="white"
-                c="teal.7"
-                mb="md"
-                leftSection={
-                  <Box
-                    component="span"
-                    w={8}
-                    h={8}
-                    style={{ borderRadius: '50%', background: 'var(--mantine-color-teal-6)', display: 'inline-block' }}
-                  />
-                }>
-                {hero.badge}
-              </Badge>
+              <Box mb="md">
+                <Badge
+                  className="hero-badge"
+                  size="lg"
+                  radius="sm"
+                  variant="white"
+                  c="teal.7"
+                  mb={hero?.badge_detail ? 6 : 0}
+                  leftSection={
+                    <Box
+                      component="span"
+                      w={8}
+                      h={8}
+                      style={{ borderRadius: '50%', background: 'var(--mantine-color-teal-6)', display: 'inline-block' }}
+                    />
+                  }>
+                  {hero.badge}
+                </Badge>
+                {hero?.badge_detail && (
+                  <Text size="xs" c="rgba(255, 255, 255, 0.8)" style={{ letterSpacing: 0.5, fontWeight: 500, display: 'block' }} className="hero-badge-detail">
+                    {hero.badge_detail}
+                  </Text>
+                )}
+              </Box>
             )}
             <Title className="hero-title" order={1} fz={{ base: 34, sm: 48 }} lh={1.1} dangerouslySetInnerHTML={{ __html: decode(hero?.title) }} />
             <Text

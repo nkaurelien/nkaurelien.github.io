@@ -1,6 +1,7 @@
 {
     "bg_image": "/img/me/bg.png",
     "badge": "Ouvert aux opportunités",
+    "badge_detail": "dans toute la France",
     "title": "Hello, <br/>Bienvenue chez moi",
     "subtitle": {
         "start": "&lt;<i>code</i>&gt; ",
