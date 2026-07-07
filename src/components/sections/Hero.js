@@ -138,7 +138,7 @@ export default function Hero({ locale, hero }) {
   return (
     <Box component="section" ref={containerRef} className="hero-gradient" c="white" py={80} style={{ overflow: 'hidden' }}>
       <Container size="lg">
-        <Group justify={{ base: 'center', md: 'space-between' }} align="center" wrap="wrap">
+        <Group justify={{ base: 'center', md: 'space-between' }} align="center" wrap="wrap" className="hero-parent-group">
           <Box style={{ flex: '1 1 340px', maxWidth: 620 }}>
             {hero?.badge && (
               <Group gap="sm" mb="md" className="hero-badge-group" justify={{ base: 'center', md: 'flex-start' }}>
@@ -215,7 +215,7 @@ export default function Hero({ locale, hero }) {
                 {renderSubtitleContent(hero?.subtitle?.start, hero?.subtitle?.end, rotates[index])}
               </span>
             </Text>
-            <Group mt="xl" gap="sm" justify={{ base: 'center', md: 'flex-start' }}>
+            <Group mt="xl" gap="sm" justify={{ base: 'center', md: 'flex-start' }} className="hero-buttons-group">
               {hero?.button && (
                 <Button
                   className="hero-btn"

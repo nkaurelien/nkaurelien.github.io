@@ -241,3 +241,29 @@ header button:hover .tabler-icon {
   animation: status-pulse 2s infinite;
 }
 
+/* Responsive Mobile Centering for Hero Section */
+@media (max-width: 991px) {
+  .hero-parent-group {
+    justify-content: center !important;
+  }
+  .hero-badge-group {
+    justify-content: center !important;
+  }
+  .hero-buttons-group {
+    justify-content: center !important;
+  }
+  .hero-title {
+    text-align: center !important;
+  }
+  .hero-subtitle {
+    text-align: center !important;
+  }
+  .hero-photo-wrapper {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 24px !important;
+    display: block !important;
+    max-width: fit-content;
+  }
+}
+
