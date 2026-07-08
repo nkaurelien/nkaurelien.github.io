@@ -68,7 +68,7 @@ export default function ChatClient({ locale }) {
     content: t.welcome,
   };
 
-  const { messages, input, handleInputChange, handleSubmit, setInput, setMessages, isLoading } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, setInput, setMessages, isLoading, append } = useChat({
     api: '/api/chat',
     initialMessages: [welcomeMessage],
   });
@@ -89,17 +89,12 @@ export default function ChatClient({ locale }) {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  // Submit suggestion immediately on click
-  const handleSuggestionClick = async suggestion => {
-    setInput(suggestion);
-    // Submit in next tick to allow setInput state to propagate
-    setTimeout(() => {
-      const event = new Event('submit', { cancelable: true, bubbles: true });
-      const form = document.querySelector('#chat-form');
-      if (form) {
-        form.dispatchEvent(event);
-      }
-    }, 50);
+  // Submit suggestion immediately on click using SDK append
+  const handleSuggestionClick = suggestion => {
+    append({
+      role: 'user',
+      content: suggestion,
+    });
   };
 
   const handleClearChat = () => {
@@ -277,14 +272,16 @@ export default function ChatClient({ locale }) {
         }}>
         <form id="chat-form" onSubmit={handleSubmit} style={{ width: '100%' }}>
           <TextInput
-            value={input}
+            value={input || ''}
             onChange={handleInputChange}
             placeholder={t.placeholder}
             radius="xl"
             size="lg"
+            leftSectionPointerEvents="none"
+            rightSectionPointerEvents="auto"
             leftSection={<IconRobot size={20} style={{ color: 'var(--mantine-color-blue-filled)', marginLeft: '12px' }} />}
             rightSection={
-              <ActionIcon type="submit" color="blue" size="lg" radius="xl" disabled={!input?.trim() || isLoading} style={{ marginRight: '6px' }}>
+              <ActionIcon type="submit" color="blue" size="lg" radius="xl" disabled={isLoading} style={{ marginRight: '6px' }}>
                 <IconSend size={16} />
               </ActionIcon>
             }
@@ -301,9 +298,6 @@ export default function ChatClient({ locale }) {
                   borderColor: 'var(--mantine-color-blue-filled)',
                   boxShadow: '0 0 12px rgba(34, 139, 230, 0.25), 0 8px 32px rgba(0, 0, 0, 0.15)',
                 },
-              },
-              section: {
-                pointerEvents: 'none',
               },
             }}
           />
