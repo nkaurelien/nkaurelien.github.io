@@ -2,11 +2,40 @@
 
 import { useEffect, useRef, useState } from 'react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { Container, Title, SimpleGrid, Button, Stack, Text, Group, ThemeIcon, Anchor, Alert, Card, Badge } from '@mantine/core';
-import { IconMail, IconMapPin, IconBrandLinkedin, IconShieldLock, IconBriefcase, IconCheck, IconPhone, IconBrandWhatsapp } from '@tabler/icons-react';
+import {
+  Container,
+  Title,
+  SimpleGrid,
+  Button,
+  Stack,
+  Text,
+  Group,
+  ThemeIcon,
+  Anchor,
+  Alert,
+  Card,
+  Badge,
+  TextInput,
+  Textarea,
+  Divider,
+} from '@mantine/core';
+import {
+  IconMail,
+  IconMapPin,
+  IconBrandLinkedin,
+  IconShieldLock,
+  IconBriefcase,
+  IconCheck,
+  IconPhone,
+  IconBrandWhatsapp,
+  IconSend,
+  IconAlertCircle,
+} from '@tabler/icons-react';
 import { features } from '@/config/features';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { db } from '@/lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 // Clef de site hCaptcha. Par defaut : clef de TEST publique hCaptcha
 const SITEKEY = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY || '10000000-ffff-ffff-ffff-000000000001';
@@ -24,7 +53,41 @@ export default function ContactSection({ contact }) {
   const captchaRef = useRef(null);
   const containerRef = useRef(null);
 
+  // Form states
+  const [formName, setFormName] = useState('');
+  const [formEmail, setFormEmail] = useState('');
+  const [formMessage, setFormMessage] = useState('');
+  const [sending, setSending] = useState(false);
+  const [sendSuccess, setSendSuccess] = useState(false);
+  const [sendError, setSendError] = useState(null);
+
   useEffect(() => setMounted(true), []);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (!formName || !formEmail || !formMessage) return;
+    setSending(true);
+    setSendError(null);
+    setSendSuccess(false);
+
+    try {
+      await addDoc(collection(db, 'messages'), {
+        name: formName,
+        email: formEmail,
+        message: formMessage,
+        createdAt: new Date().toISOString(),
+        read: false,
+      });
+      setSendSuccess(true);
+      setFormName('');
+      setFormEmail('');
+      setFormMessage('');
+    } catch (err) {
+      setSendError(err.message || "Une erreur est survenue lors de l'envoi.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   useGSAP(
     () => {
@@ -98,14 +161,14 @@ export default function ContactSection({ contact }) {
         </Stack>
 
         {/* Right Column: Protected Contact Info Card */}
-        <Card className="contact-right-card" withBorder radius="xl" p="xl" shadow="md" style={{ display: 'flex', justifyContent: 'center' }}>
+        <Card className="contact-right-card" withBorder radius="xl" p="xl" shadow="md">
           {!verified ? (
             <Stack align="center" gap="md" py="lg" style={{ width: '100%' }}>
               <ThemeIcon size="xl" radius="md" variant="light" color="indigo">
                 <IconShieldLock size={28} />
               </ThemeIcon>
               <Text fz="sm" ta="center" c="dimmed" style={{ maxWidth: 320 }}>
-                Mes coordonnées sont protégées contre les spams et les robots. Validez le contrôle ci-dessous pour les afficher.
+                Mes coordonnées et le formulaire de contact sont protégés. Validez le contrôle ci-dessous pour y accéder.
               </Text>
               {mounted && (
                 <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -114,62 +177,116 @@ export default function ContactSection({ contact }) {
               )}
             </Stack>
           ) : (
-            <Stack gap="lg" py="sm">
-              <Group wrap="nowrap" className="contact-item-group">
-                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
-                  <IconMail size={20} />
-                </ThemeIcon>
-                <Stack gap={2}>
-                  <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
-                    Email
+            <Stack gap="lg" style={{ width: '100%' }}>
+              <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+                <Stack gap="sm">
+                  <Text fw={700} fz="lg">
+                    {contact?.form_title || 'Envoyer un message direct'}
                   </Text>
-                  <Anchor href={`mailto:${EMAIL}`} fz="md" fw={500}>
-                    {EMAIL}
-                  </Anchor>
-                </Stack>
-              </Group>
 
-              <Group wrap="nowrap" className="contact-item-group">
-                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
-                  <IconBrandLinkedin size={20} />
-                </ThemeIcon>
-                <Stack gap={2}>
-                  <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
-                    LinkedIn
-                  </Text>
-                  <Anchor href={LINKEDIN} target="_blank" rel="noopener noreferrer" fz="md" fw={500}>
-                    linkedin.com/in/nkaurelien
-                  </Anchor>
-                </Stack>
-              </Group>
+                  {sendSuccess && (
+                    <Alert icon={<IconCheck size={16} />} title="Succès" color="green" radius="md">
+                      {'Votre message a été envoyé avec succès ! Je vous répondrai dès que possible.'}
+                    </Alert>
+                  )}
 
-              <Group wrap="nowrap" className="contact-item-group">
-                <ThemeIcon size="lg" radius="md" variant="light" color="brand">
-                  <IconPhone size={20} />
-                </ThemeIcon>
-                <Stack gap={2}>
-                  <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
-                    {contact?.phone_label || 'Téléphone'}
-                  </Text>
-                  <Anchor href={`tel:${PHONE}`} fz="md" fw={500}>
-                    {DISPLAY_PHONE}
-                  </Anchor>
-                </Stack>
-              </Group>
+                  {sendError && (
+                    <Alert icon={<IconAlertCircle size={16} />} title="Erreur" color="red" radius="md">
+                      {sendError}
+                    </Alert>
+                  )}
 
-              <Button
-                component="a"
-                href={`https://wa.me/${PHONE.replace('+', '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                color="green"
-                size="md"
-                radius="xl"
-                leftSection={<IconBrandWhatsapp size={20} />}
-                mt="md"
-                fullWidth>
-                {contact?.whatsapp_label || 'Discuter sur WhatsApp'}
-              </Button>
+                  <TextInput
+                    label="Votre nom"
+                    placeholder="Jean Dupont"
+                    value={formName}
+                    onChange={e => setFormName(e.target.value)}
+                    required
+                    disabled={sending}
+                  />
+                  <TextInput
+                    label="Votre e-mail"
+                    placeholder="jean.dupont@example.com"
+                    type="email"
+                    value={formEmail}
+                    onChange={e => setFormEmail(e.target.value)}
+                    required
+                    disabled={sending}
+                  />
+                  <Textarea
+                    label="Votre message"
+                    placeholder="Bonjour, je vous contacte au sujet de..."
+                    minRows={4}
+                    value={formMessage}
+                    onChange={e => setFormMessage(e.target.value)}
+                    required
+                    disabled={sending}
+                  />
+                  <Button type="submit" color="indigo" loading={sending} leftSection={<IconSend size={16} />} fullWidth mt="xs">
+                    Envoyer le message
+                  </Button>
+                </Stack>
+              </form>
+
+              <Divider label="OU" labelPosition="center" my="xs" />
+
+              <Stack gap="sm">
+                <Group wrap="nowrap" className="contact-item-group">
+                  <ThemeIcon size="lg" radius="md" variant="light" color="brand">
+                    <IconMail size={20} />
+                  </ThemeIcon>
+                  <Stack gap={2}>
+                    <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
+                      Email
+                    </Text>
+                    <Anchor href={`mailto:${EMAIL}`} fz="sm" fw={500}>
+                      {EMAIL}
+                    </Anchor>
+                  </Stack>
+                </Group>
+
+                <Group wrap="nowrap" className="contact-item-group">
+                  <ThemeIcon size="lg" radius="md" variant="light" color="brand">
+                    <IconBrandLinkedin size={20} />
+                  </ThemeIcon>
+                  <Stack gap={2}>
+                    <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
+                      LinkedIn
+                    </Text>
+                    <Anchor href={LINKEDIN} target="_blank" rel="noopener noreferrer" fz="sm" fw={500}>
+                      linkedin.com/in/nkaurelien
+                    </Anchor>
+                  </Stack>
+                </Group>
+
+                <Group wrap="nowrap" className="contact-item-group">
+                  <ThemeIcon size="lg" radius="md" variant="light" color="brand">
+                    <IconPhone size={20} />
+                  </ThemeIcon>
+                  <Stack gap={2}>
+                    <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
+                      {contact?.phone_label || 'Téléphone'}
+                    </Text>
+                    <Anchor href={`tel:${PHONE}`} fz="sm" fw={500}>
+                      {DISPLAY_PHONE}
+                    </Anchor>
+                  </Stack>
+                </Group>
+
+                <Button
+                  component="a"
+                  href={`https://wa.me/${PHONE.replace('+', '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="green"
+                  size="md"
+                  radius="xl"
+                  leftSection={<IconBrandWhatsapp size={20} />}
+                  mt="xs"
+                  fullWidth>
+                  {contact?.whatsapp_label || 'Discuter sur WhatsApp'}
+                </Button>
+              </Stack>
             </Stack>
           )}
         </Card>

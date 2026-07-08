@@ -20,7 +20,7 @@ export default async function Page({ params }) {
       <h1>Todos ({locale})</h1>
       {error && <p style={{ color: 'red' }}>Error: {error.message}</p>}
       <ul>
-        {todos?.map((todo) => (
+        {todos?.map(todo => (
           <li key={todo.id}>{todo.name}</li>
         ))}
       </ul>

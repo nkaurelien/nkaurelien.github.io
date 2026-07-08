@@ -19,6 +19,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
+import { useAuth } from '@/context/AuthContext';
 
 function localizedHref(locale, link) {
   return `/${locale}${link === '/' ? '' : link}` || `/${locale}`;
@@ -58,9 +59,19 @@ function LocaleSwitcher({ locale }) {
 }
 
 export default function Header({ locale, app }) {
+  const { user } = useAuth();
   const [opened, { toggle, close }] = useDisclosure(false);
   const menu = app?.header?.menu || [];
   const pathname = usePathname() || `/${locale}`;
+
+  const menuWithAdmin = [...menu];
+  if (user) {
+    menuWithAdmin.push({
+      label: 'Admin',
+      link: '/admin',
+      external: false,
+    });
+  }
 
   const isActive = link => {
     if (link === '/') {
@@ -101,7 +112,7 @@ export default function Header({ locale, app }) {
           </Anchor>
 
           <Group component="nav" gap="xs" visibleFrom="md">
-            {menu.flatMap(item => {
+            {menuWithAdmin.flatMap(item => {
               const link = renderLink(item);
               if (item.label === 'Contact') {
                 return [link, <Divider key="divider-contact" orientation="vertical" h={16} style={{ alignSelf: 'center' }} />];
@@ -121,7 +132,7 @@ export default function Header({ locale, app }) {
 
       <Drawer opened={opened} onClose={close} title="Menu" hiddenFrom="md" position="right" size="xs">
         <Stack component="nav" gap="md" mt="md">
-          {menu.flatMap(item => {
+          {menuWithAdmin.flatMap(item => {
             const link = renderLink(item, close);
             if (item.label === 'Contact') {
               return [link, <Divider key="divider-contact" my="xs" />];

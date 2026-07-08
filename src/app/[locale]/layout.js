@@ -9,6 +9,7 @@ import { getApp } from '@/lib/content';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientEffects from '@/components/layout/ClientEffects';
+import { AuthContextProvider } from '@/context/AuthContext';
 
 export function generateStaticParams() {
   return routing.locales.map(locale => ({ locale }));
@@ -30,10 +31,12 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <MantineProvider theme={theme} defaultColorScheme="light">
-        <Header locale={locale} app={app} />
-        <main>{children}</main>
-        <Footer app={app} />
-        <ClientEffects />
+        <AuthContextProvider>
+          <Header locale={locale} app={app} />
+          <main>{children}</main>
+          <Footer app={app} />
+          <ClientEffects />
+        </AuthContextProvider>
       </MantineProvider>
     </NextIntlClientProvider>
   );
