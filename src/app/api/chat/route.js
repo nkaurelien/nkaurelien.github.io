@@ -21,17 +21,36 @@ const embeddings = new HuggingFaceTransformersEmbeddings({
 
 export const runtime = 'nodejs'; // Use nodejs environment to allow ONNX runtime execution
 
+// Helper to safely extract text content from both string and Vercel AI SDK multi-part formats
+const getMessageText = content => {
+  if (content === null || content === undefined) return '';
+  if (typeof content === 'string') return content;
+  if (Array.isArray(content)) {
+    return content
+      .map(part => {
+        if (!part) return '';
+        if (typeof part === 'string') return part;
+        if (typeof part === 'object') {
+          return part.text || '';
+        }
+        return '';
+      })
+      .join('');
+  }
+  return '';
+};
+
 export async function POST(req) {
   try {
     const { messages } = await req.json();
-    const latestMessage = messages[messages.length - 1]?.content || '';
+    const latestMessageText = getMessageText(messages[messages.length - 1]?.content || '');
 
     let context = '';
 
-    if (latestMessage.trim().length > 0) {
-      console.log(`[Genkit BFF] Calculating query embedding for: "${latestMessage}"`);
+    if (latestMessageText.trim().length > 0) {
+      console.log(`[Genkit BFF] Calculating query embedding for: "${latestMessageText}"`);
       // Compute 384-dim embedding for user query
-      const queryVector = await embeddings.embedQuery(latestMessage);
+      const queryVector = await embeddings.embedQuery(latestMessageText);
 
       console.log('[Genkit BFF] Querying matching embeddings in Supabase...');
       // Run similarity match on pgvector
@@ -70,7 +89,7 @@ ${context || 'Aucune information contextuelle spécifique trouvée en base de do
       if (m.role === 'system') role = 'system';
       return {
         role,
-        content: [{ text: m.content }],
+        content: [{ text: getMessageText(m.content) }],
       };
     });
 
