@@ -1,37 +1,30 @@
 'use client';
 
 import { useChat } from '@ai-sdk/react';
-import { useClipboard } from '@mantine/hooks';
 import { useEffect, useRef, useState } from 'react';
 import {
   Container,
-  Paper,
   Text,
-  TextInput,
-  ActionIcon,
-  ScrollArea,
   Group,
   Stack,
   Title,
   Badge,
   Tooltip,
+  ActionIcon,
   SimpleGrid,
   UnstyledButton,
-  Box,
-  Avatar,
+  Paper,
 } from '@mantine/core';
 import {
-  IconSend,
   IconTrash,
   IconRobot,
-  IconUser,
   IconMessage2Code,
   IconSparkles,
-  IconCopy,
-  IconCheck,
-  IconThumbUp,
-  IconThumbDown,
 } from '@tabler/icons-react';
+
+// Modular components (SDP style)
+import ChatBox from '@/components/chat/ChatBox';
+import ChatInput from '@/components/chat/ChatInput';
 
 const TRANSLATIONS = {
   fr: {
@@ -76,25 +69,6 @@ const TRANSLATIONS = {
   },
 };
 
-// Helper to safely extract text content from both string and Vercel AI SDK multi-part formats
-const getMessageText = content => {
-  if (content === null || content === undefined) return '';
-  if (typeof content === 'string') return content;
-  if (Array.isArray(content)) {
-    return content
-      .map(part => {
-        if (!part) return '';
-        if (typeof part === 'string') return part;
-        if (typeof part === 'object') {
-          return part.text || '';
-        }
-        return '';
-      })
-      .join('');
-  }
-  return '';
-};
-
 export default function ChatClient({ locale }) {
   const t = TRANSLATIONS[locale] || TRANSLATIONS.fr;
 
@@ -105,8 +79,8 @@ export default function ChatClient({ locale }) {
   };
 
   // Vercel AI SDK 4.x/7.x useChat hook
-  const { messages, setMessages, sendMessage, status, stop } = useChat({
-    api: '/api/chat',
+  const { messages, setMessages, sendMessage, status } = useChat({
+    api: '/api/chat/',
     initialMessages: [welcomeMessage],
   });
 
@@ -116,9 +90,6 @@ export default function ChatClient({ locale }) {
 
   // Manage feedback rating states: { [messageId]: 'up' | 'down' }
   const [ratings, setRatings] = useState({});
-
-  // Clipboard utility
-  const clipboard = useClipboard({ timeout: 2000 });
 
   const viewportRef = useRef(null);
 
@@ -171,6 +142,7 @@ export default function ChatClient({ locale }) {
 
   return (
     <Container size="md" py="xl" style={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 100px)', position: 'relative' }}>
+      
       {/* Top Header Row */}
       <Group justify="space-between" mb="xl" align="center">
         <Group gap="xs">
@@ -199,17 +171,16 @@ export default function ChatClient({ locale }) {
           // 1. Centered Landing View (SmartDataPay Style)
           <Stack align="center" justify="center" gap="xl" style={{ flex: 1, marginTop: '5vh' }}>
             <Stack align="center" gap="xs">
-              <div
-                style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(34, 139, 230, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '10px',
-                }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(34, 139, 230, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '10px'
+              }}>
                 <IconRobot size={36} style={{ color: 'var(--mantine-color-blue-filled)' }} />
               </div>
               <Title order={2} ta="center">
@@ -224,7 +195,11 @@ export default function ChatClient({ locale }) {
             <Stack style={{ width: '100%', maxWidth: '640px' }} gap="md">
               <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
                 {t.suggestions.map((suggestion, index) => (
-                  <UnstyledButton key={index} onClick={() => handleSuggestionClick(suggestion)} style={{ height: '100%' }}>
+                  <UnstyledButton
+                    key={index}
+                    onClick={() => handleSuggestionClick(suggestion)}
+                    style={{ height: '100%' }}
+                  >
                     <Paper
                       withBorder
                       p="md"
@@ -236,7 +211,8 @@ export default function ChatClient({ locale }) {
                         transition: 'all 0.2s ease',
                         cursor: 'pointer',
                       }}
-                      className="suggestion-card">
+                      className="suggestion-card"
+                    >
                       <Group gap="xs" align="flex-start" wrap="nowrap">
                         <IconSparkles size={16} style={{ color: 'var(--mantine-color-blue-filled)', marginTop: '2px', flexShrink: 0 }} />
                         <Text size="xs" fw={500} style={{ lineHeight: 1.4 }}>
@@ -247,168 +223,33 @@ export default function ChatClient({ locale }) {
                   </UnstyledButton>
                 ))}
               </SimpleGrid>
-
+              
               <Text size="11px" c="dimmed" ta="center" mt="xs">
                 {t.tip}
               </Text>
             </Stack>
           </Stack>
         ) : (
-          // 2. Chat Timeline View (SmartDataPay RAG UI adapted to Mantine)
-          <ScrollArea style={{ flex: 1, paddingRight: '10px', height: '100%' }} viewportRef={viewportRef} type="auto">
-            <Stack gap="lg" py="md">
-              {messages.map(message => {
-                const isUser = message.role === 'user';
-                return (
-                  <Stack key={message.id} gap="xs" style={{ width: '100%' }}>
-                    <Paper
-                      withBorder
-                      p="md"
-                      radius="md"
-                      style={{
-                        backgroundColor: isUser ? 'var(--mantine-color-gray-light)' : 'var(--mantine-color-blue-light)',
-                        borderColor: isUser ? 'var(--mantine-color-gray-light-border)' : 'var(--mantine-color-blue-light-border)',
-                      }}>
-                      <Group align="flex-start" gap="sm" wrap="nowrap">
-                        {isUser ? (
-                          <Avatar radius="xl" size="md" color="gray" variant="filled">
-                            <IconUser size={18} />
-                          </Avatar>
-                        ) : (
-                          <Avatar radius="xl" size="md" color="blue" variant="filled">
-                            <IconRobot size={18} />
-                          </Avatar>
-                        )}
-
-                        <Stack gap="xs" style={{ flex: 1 }}>
-                          <Text fw={600} size="sm" style={{ lineHeight: 1.1 }}>
-                            {isUser ? t.userLabel : t.aiLabel}
-                          </Text>
-                          <Text size="sm" style={{ whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
-                            {getMessageText(message.content)}
-                          </Text>
-                        </Stack>
-                      </Group>
-                    </Paper>
-
-                    {/* Interactive Action Row for AI Responses (excluding the welcome root message) */}
-                    {!isUser && message.id !== 'welcome' && (
-                      <Group gap="xs" px="md" style={{ color: 'var(--mantine-color-dimmed)' }}>
-                        <Tooltip label="Utile">
-                          <ActionIcon
-                            variant="subtle"
-                            color={ratings[message.id] === 'up' ? 'blue' : 'gray'}
-                            onClick={() => handleRateMessage(message.id, 'up')}
-                            size="sm">
-                            <IconThumbUp size={14} />
-                          </ActionIcon>
-                        </Tooltip>
-
-                        <Tooltip label="Pas utile">
-                          <ActionIcon
-                            variant="subtle"
-                            color={ratings[message.id] === 'down' ? 'red' : 'gray'}
-                            onClick={() => handleRateMessage(message.id, 'down')}
-                            size="sm">
-                            <IconThumbDown size={14} />
-                          </ActionIcon>
-                        </Tooltip>
-
-                        <Tooltip label={clipboard.copied ? t.copied : t.copy}>
-                          <ActionIcon
-                            variant="subtle"
-                            color={clipboard.copied ? 'teal' : 'gray'}
-                            onClick={() => clipboard.copy(getMessageText(message.content))}
-                            size="sm">
-                            {clipboard.copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
-                          </ActionIcon>
-                        </Tooltip>
-                      </Group>
-                    )}
-                  </Stack>
-                );
-              })}
-
-              {/* Loading Indicator */}
-              {isLoading && (
-                <Paper
-                  withBorder
-                  p="md"
-                  radius="md"
-                  style={{
-                    backgroundColor: 'var(--mantine-color-blue-light)',
-                    borderColor: 'var(--mantine-color-blue-light-border)',
-                    alignSelf: 'flex-start',
-                    width: '100%',
-                  }}>
-                  <Group align="flex-start" gap="sm" wrap="nowrap">
-                    <Avatar radius="xl" size="md" color="blue" variant="filled">
-                      <IconRobot size={18} />
-                    </Avatar>
-                    <Stack gap="xs" style={{ flex: 1 }}>
-                      <Text fw={600} size="sm" style={{ lineHeight: 1.1 }}>
-                        {t.aiLabel}
-                      </Text>
-                      <Group gap={6} py="xs">
-                        <span className="dot-typing" />
-                        <span className="dot-typing" />
-                        <span className="dot-typing" />
-                      </Group>
-                    </Stack>
-                  </Group>
-                </Paper>
-              )}
-            </Stack>
-          </ScrollArea>
+          // 2. Modular Chat Box
+          <ChatBox
+            messages={messages}
+            isLoading={isLoading}
+            ratings={ratings}
+            onRateMessage={handleRateMessage}
+            t={t}
+            viewportRef={viewportRef}
+          />
         )}
       </div>
 
-      {/* 3. Bottom Centered Fixed Input Bar using Mantine Box */}
-      <Box
-        style={{
-          position: 'fixed',
-          bottom: '24px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '100%',
-          maxWidth: '800px',
-          paddingLeft: 'var(--mantine-spacing-md)',
-          paddingRight: 'var(--mantine-spacing-md)',
-          zIndex: 100,
-        }}>
-        <form id="chat-form" onSubmit={handleSubmit} style={{ width: '100%' }}>
-          <TextInput
-            value={input}
-            onChange={handleInputChange}
-            placeholder={t.placeholder}
-            radius="xl"
-            size="lg"
-            leftSectionPointerEvents="none"
-            rightSectionPointerEvents="auto"
-            leftSection={<IconRobot size={20} style={{ color: 'var(--mantine-color-blue-filled)', marginLeft: '12px' }} />}
-            rightSection={
-              <ActionIcon type="submit" color="blue" size="lg" radius="xl" variant="filled" style={{ marginRight: '6px' }}>
-                <IconSend size={16} />
-              </ActionIcon>
-            }
-            styles={{
-              input: {
-                backgroundColor: 'var(--mantine-color-body)',
-                border: '1px solid var(--mantine-color-default-border)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08)',
-                color: 'inherit',
-                paddingLeft: '48px',
-                paddingRight: '48px',
-                height: '54px',
-                '&:focus': {
-                  borderColor: 'var(--mantine-color-blue-filled)',
-                  boxShadow: '0 0 12px rgba(34, 139, 230, 0.25), 0 8px 32px rgba(0, 0, 0, 0.15)',
-                },
-              },
-            }}
-          />
-        </form>
-      </Box>
+      {/* 3. Modular Chat Input Bar */}
+      <ChatInput
+        input={input}
+        onChange={handleInputChange}
+        onSubmit={handleSubmit}
+        placeholder={t.placeholder}
+        isLoading={isLoading}
+      />
 
       {/* Global CSS hover animations */}
       <style jsx global>{`
