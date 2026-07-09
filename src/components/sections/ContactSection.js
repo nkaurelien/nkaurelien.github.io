@@ -34,8 +34,6 @@ import {
 import { features } from '@/config/features';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { db } from '@/lib/firebase';
-import { collection, addDoc } from 'firebase/firestore';
 
 // Clef de site hCaptcha. Par defaut : clef de TEST publique hCaptcha
 const SITEKEY = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY || '10000000-ffff-ffff-ffff-000000000001';
@@ -60,24 +58,31 @@ export default function ContactSection({ contact }) {
   const [sending, setSending] = useState(false);
   const [sendSuccess, setSendSuccess] = useState(false);
   const [sendError, setSendError] = useState(null);
+  const [captchaToken, setCaptchaToken] = useState(null);
 
   useEffect(() => setMounted(true), []);
 
   const handleSubmit = async e => {
     e.preventDefault();
     if (!formName || !formEmail || !formMessage) return;
+    if (captchaEnabled && !captchaToken) {
+      setSendError('Merci de valider le captcha avant d’envoyer.');
+      return;
+    }
     setSending(true);
     setSendError(null);
     setSendSuccess(false);
 
     try {
-      await addDoc(collection(db, 'messages'), {
-        name: formName,
-        email: formEmail,
-        message: formMessage,
-        createdAt: new Date().toISOString(),
-        read: false,
+      // Envoi vérifié côté serveur (hCaptcha siteverify + écriture firebase-admin).
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formName, email: formEmail, message: formMessage, token: captchaToken }),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Une erreur est survenue lors de l'envoi.");
+
       setSendSuccess(true);
       setFormName('');
       setFormEmail('');
@@ -85,6 +90,10 @@ export default function ContactSection({ contact }) {
     } catch (err) {
       setSendError(err.message || "Une erreur est survenue lors de l'envoi.");
     } finally {
+      // Les tokens hCaptcha sont à usage unique -> reset après chaque envoi.
+      captchaRef.current?.resetCaptcha?.();
+      setCaptchaToken(null);
+      if (captchaEnabled) setVerified(false);
       setSending(false);
     }
   };
@@ -172,7 +181,22 @@ export default function ContactSection({ contact }) {
               </Text>
               {mounted && (
                 <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                  <HCaptcha ref={captchaRef} sitekey={SITEKEY} onVerify={() => setVerified(true)} onExpire={() => setVerified(false)} />
+                  <HCaptcha
+                    ref={captchaRef}
+                    sitekey={SITEKEY}
+                    onVerify={token => {
+                      setCaptchaToken(token);
+                      setVerified(true);
+                    }}
+                    onExpire={() => {
+                      setCaptchaToken(null);
+                      setVerified(false);
+                    }}
+                    onError={() => {
+                      setCaptchaToken(null);
+                      setVerified(false);
+                    }}
+                  />
                 </div>
               )}
             </Stack>
