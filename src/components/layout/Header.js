@@ -115,7 +115,7 @@ export default function Header({ locale, app }) {
             {menuWithAdmin.flatMap(item => {
               const link = renderLink(item);
               if (item.label === 'Contact') {
-                return [link, <Divider key="divider-contact" orientation="vertical" h={16} style={{ alignSelf: 'center' }} />];
+                return [<Divider key="divider-contact" orientation="vertical" h={16} style={{ alignSelf: 'center' }} />, link];
               }
               return [link];
             })}
@@ -135,7 +135,7 @@ export default function Header({ locale, app }) {
           {menuWithAdmin.flatMap(item => {
             const link = renderLink(item, close);
             if (item.label === 'Contact') {
-              return [link, <Divider key="divider-contact" my="xs" />];
+              return [<Divider key="divider-contact" my="xs" />, link];
             }
             return [link];
           })}
