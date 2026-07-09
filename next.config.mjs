@@ -1,5 +1,8 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
+// Validate environment variables at build/startup (t3-env).
+import './src/env.mjs';
+
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.js');
 
 // basePath pilote le deploiement :

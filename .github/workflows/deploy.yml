@@ -1,17 +1,12 @@
 name: Deploy website to GitHub Pages
 
+# NOTE: Auto-deploy désactivé — le site est désormais déployé sur Vercel
+# (l'app inclut des Route Handlers serveur `/api/chat` incompatibles avec
+#  l'export statique GitHub Pages). Ce workflow reste lançable manuellement
+# (workflow_dispatch) mais ne se déclenche plus sur `push`. Pour ré-activer
+# l'export statique Pages, il faudrait retirer/isoler la route `/api/chat`
+# et remettre `output: 'export'` dans next.config.mjs.
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'src/**'
-      - 'public/**'
-      - 'package.json'
-      - 'yarn.lock'
-      - 'next.config.mjs'
-      - 'postcss.config.mjs'
-      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
