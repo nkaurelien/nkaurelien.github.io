@@ -211,9 +211,9 @@
             },
             {
                 "label": "Blog",
-                "link": "https://medium.com/@nkaurelien",
+                "link": "/blog",
                 "children": 0,
-                "external": true
+                "external": false
             }
         ]
     },
