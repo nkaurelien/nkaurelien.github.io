@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Genkit Developer UI artifacts (trace store, etc.)
 .genkit/
+
+# Secrets files (sensitive credentials, API keys, etc.)
+.secrets/
