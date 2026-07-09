@@ -54,7 +54,7 @@ Puisque vous possédez une clé API Gemini, vous pouvez également générer des
 
 ### Configuration dans `.env.local`
 ```env
-GEMINI_API_KEY="REDACTED_GEMINI_KEY"
+GEMINI_API_KEY="your-gemini-api-key"
 ```
 
 ### Code d'intégration Node.js (Sans installer `@google/genai`)
