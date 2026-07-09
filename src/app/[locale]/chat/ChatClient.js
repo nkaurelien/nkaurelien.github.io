@@ -153,6 +153,7 @@ export default function ChatClient({ locale }) {
   }, [messages, chatEndpointIsLoading]);
 
   const handleSuggestionClick = suggestion => {
+    if (chatEndpointIsLoading) return;
     sdkSendMessage({ text: suggestion });
   };
 
@@ -180,7 +181,7 @@ export default function ChatClient({ locale }) {
           </Badge>
           {hasExchanges && (
             <Tooltip label={t.clear}>
-              <ActionIcon variant="subtle" color="gray" onClick={handleClearChat} size="md" radius="md">
+              <ActionIcon variant="subtle" color="gray" onClick={handleClearChat} size="md" radius="md" disabled={chatEndpointIsLoading}>
                 <IconTrash size={16} />
               </ActionIcon>
             </Tooltip>
@@ -222,6 +223,7 @@ export default function ChatClient({ locale }) {
                     key={index}
                     onClick={() => handleSuggestionClick(suggestion)}
                     style={{ height: '100%' }}
+                    disabled={chatEndpointIsLoading}
                   >
                     <Paper
                       withBorder
@@ -232,7 +234,9 @@ export default function ChatClient({ locale }) {
                         backgroundColor: 'rgba(255, 255, 255, 0.02)',
                         border: '1px solid rgba(255, 255, 255, 0.1)',
                         transition: 'all 0.2s ease',
-                        cursor: 'pointer',
+                        cursor: chatEndpointIsLoading ? 'not-allowed' : 'pointer',
+                        opacity: chatEndpointIsLoading ? 0.5 : 1,
+                        pointerEvents: chatEndpointIsLoading ? 'none' : 'auto',
                       }}
                       className="suggestion-card"
                     >

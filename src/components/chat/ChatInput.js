@@ -22,11 +22,12 @@ export default function ChatInput({ placeholder, input, setInput, sendMessage, h
           placeholder={placeholder}
           radius="xl"
           size="lg"
+          disabled={isLoading}
           leftSectionPointerEvents="none"
           rightSectionPointerEvents="auto"
           leftSection={<IconRobot size={20} style={{ color: 'var(--mantine-color-blue-filled)', marginLeft: '12px' }} />}
           rightSection={
-            <ActionIcon type="submit" color="blue" size="lg" radius="xl" variant="filled" style={{ marginRight: '6px' }}>
+            <ActionIcon type="submit" color="blue" size="lg" radius="xl" variant="filled" disabled={isLoading} style={{ marginRight: '6px' }}>
               <IconSend size={16} />
             </ActionIcon>
           }
