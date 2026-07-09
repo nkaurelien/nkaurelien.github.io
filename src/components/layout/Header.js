@@ -18,7 +18,7 @@ import {
   Divider,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconSun, IconMoonStars } from '@tabler/icons-react';
+import { IconSun, IconMoonStars, IconSparkles } from '@tabler/icons-react';
 import { useAuth } from '@/context/AuthContext';
 
 function localizedHref(locale, link) {
@@ -85,6 +85,26 @@ export default function Header({ locale, app }) {
     const active = !item.external && isActive(item.link);
     const linkHref = item.external ? item.link : localizedHref(locale, item.link);
     const classNames = `nav-link ${active ? 'nav-link-active' : ''}`.trim();
+
+    // Met en avant l'Assistant IA (fonctionnalité phare) : bouton pill dégradé + icône.
+    if (!item.external && item.link === '/chat') {
+      return (
+        <Button
+          key={item.label}
+          component={Link}
+          href={linkHref}
+          onClick={onClick}
+          size="xs"
+          radius="xl"
+          variant="gradient"
+          gradient={{ from: 'blue', to: 'cyan', deg: 45 }}
+          leftSection={<IconSparkles size={14} />}
+          className="ai-nav-btn"
+          style={{ fontWeight: 600, boxShadow: '0 2px 12px rgba(34, 139, 230, 0.35)' }}>
+          {item.label}
+        </Button>
+      );
+    }
 
     return (
       <Anchor

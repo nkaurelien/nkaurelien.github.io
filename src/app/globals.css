@@ -64,6 +64,17 @@ a {
   background: light-dark(var(--mantine-color-brand-0), rgba(79, 70, 229, 0.15));
 }
 
+/* Bouton "Assistant IA" — mise en avant (pill dégradé) */
+.ai-nav-btn {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+.ai-nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(34, 139, 230, 0.5) !important;
+}
+
 /* Subtitle typewriter rotation animation */
 @keyframes fade-in-up {
   from {
