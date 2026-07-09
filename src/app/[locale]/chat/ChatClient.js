@@ -21,6 +21,8 @@ const TRANSLATIONS = {
     userLabel: 'Vous',
     aiLabel: 'Jamila (IA)',
     tip: 'Astuce : Cliquez sur une suggestion ci-dessus pour démarrer instantanément.',
+    privacy:
+      "Assistante IA. Vos messages sont traités par une IA pour répondre à partir d'une base de connaissances publique sur Aurélien. Ne partagez pas d'informations personnelles ou sensibles.",
     welcome: "Bonjour ! Je suis Jamila, l'assistante IA d'Aurélien. Que puis-je faire pour vous aujourd'hui ?",
     copy: 'Copier',
     copied: 'Copié !',
@@ -41,6 +43,8 @@ const TRANSLATIONS = {
     userLabel: 'You',
     aiLabel: 'Jamila (AI)',
     tip: 'Tip: Click on a suggestion above to start instantly.',
+    privacy:
+      'AI assistant. Your messages are processed by an AI to answer from a public knowledge base about Aurélien. Please do not share personal or sensitive information.',
     welcome: "Hello! I am Jamila, Aurélien's AI assistant. How can I help you today?",
     copy: 'Copy',
     copied: 'Copied!',
@@ -259,6 +263,7 @@ export default function ChatClient({ locale }) {
         sendMessage={sendMessage}
         handleInputChange={handleInputChange}
         isLoading={chatEndpointIsLoading}
+        privacyNotice={t.privacy}
       />
 
       {/* Global CSS hover animations */}

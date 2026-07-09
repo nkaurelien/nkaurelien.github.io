@@ -1,7 +1,7 @@
-import { Box, TextInput, ActionIcon } from '@mantine/core';
+import { Box, TextInput, ActionIcon, Text } from '@mantine/core';
 import { IconRobot, IconSend } from '@tabler/icons-react';
 
-export default function ChatInput({ placeholder, input, setInput, sendMessage, handleInputChange, isLoading }) {
+export default function ChatInput({ placeholder, input, setInput, sendMessage, handleInputChange, isLoading, privacyNotice }) {
   return (
     <Box
       style={{
@@ -48,6 +48,11 @@ export default function ChatInput({ placeholder, input, setInput, sendMessage, h
           }}
         />
       </form>
+      {privacyNotice && (
+        <Text size="10px" c="dimmed" ta="center" mt={6} style={{ lineHeight: 1.3, opacity: 0.85 }}>
+          {privacyNotice}
+        </Text>
+      )}
     </Box>
   );
 }
