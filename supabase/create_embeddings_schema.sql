@@ -7,7 +7,9 @@ create table if not exists public.content_sections (
   title text not null,
   category text not null check (category in ('ABOUT', 'PROJECT', 'EXPERIENCE')),
   description text,
-  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  -- Une seule section par catégorie -> rend l'ingestion (ON CONFLICT) idempotente
+  constraint content_sections_category_key unique (category)
 );
 
 -- Create ContentEntry table
