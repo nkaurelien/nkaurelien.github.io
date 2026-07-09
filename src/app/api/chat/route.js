@@ -104,13 +104,16 @@ ${context || 'Aucune information contextuelle spécifique trouvée en base de do
     const stream = new ReadableStream({
       async start(controller) {
         try {
+          let fullText = '';
           for await (const chunk of responseStream.stream) {
             if (chunk.text) {
+              fullText += chunk.text;
               // Vercel AI SDK Data Stream protocol format for text chunks: 0:JSON_string\n
               const formattedChunk = `0:${JSON.stringify(chunk.text)}\n`;
               controller.enqueue(formattedChunk);
             }
           }
+          console.log(`\n[Genkit BFF] Full LLM Response:\n${fullText}\n`);
         } catch (streamError) {
           console.error('[Genkit BFF] Streaming error:', streamError);
           // Send error chunk format (3:error_message\n)
