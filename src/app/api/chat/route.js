@@ -169,7 +169,7 @@ export async function POST(req) {
       const { data: documents, error } = await supabase.rpc('match_embeddings', {
         query_embedding: `[${queryVector.join(',')}]`,
         match_threshold: 0.15,
-        match_count: 5,
+        match_count: 8,
       });
 
       if (error) {

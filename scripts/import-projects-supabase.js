@@ -105,12 +105,16 @@ async function run() {
             title: data.title || slug,
             image: data.image || '',
             category: data.category || '',
+            year: '',
             tech: '',
             descriptions: {},
             markdowns: {},
+            details: {},
             tags: [],
           };
         }
+
+        parsedProjects[slug].year = data.year || parsedProjects[slug].year;
 
         // Parse tech stack
         const stackItem = data.details?.items?.find(item => item.label === 'Stack');
@@ -118,6 +122,11 @@ async function run() {
           parsedProjects[slug].tech = stackItem.value;
           parsedProjects[slug].tags = stackItem.value.split(',').map(t => t.trim());
         }
+
+        // Capture the structured details (Période, Statut, Rôle, Stack…) — c'est là
+        // que vit l'essentiel du contenu projet (le corps markdown est souvent vide).
+        const detailsItems = data.details?.items || [];
+        parsedProjects[slug].details[loc] = detailsItems.map(it => `${it.label}: ${it.value}`).join('. ');
 
         parsedProjects[slug].descriptions[loc] = stripHtml(data.description?.content || '');
         parsedProjects[slug].markdowns[loc] = content;
@@ -158,8 +167,8 @@ ${proj.markdowns.en || ''}`;
         }
       }
 
-      if (hasEmbedding) {
-        console.log(`Skipping project: ${proj.title} (Already embedded. Delete row in database manually to force recalculation).`);
+      if (hasEmbedding && process.env.REEMBED !== '1') {
+        console.log(`Skipping project: ${proj.title} (Already embedded. Run with REEMBED=1 to force recalculation).`);
         continue;
       }
 
@@ -178,7 +187,21 @@ ${proj.markdowns.en || ''}`;
       // Generate embedding vectors using LangChain RecursiveCharacterTextSplitter
       // Include Title, Category, Tech Stack in every chunk prefix to preserve context for similarity search queries
       const metaPrefix = `Title: ${proj.title}. Category: ${proj.category}. Technologies: ${proj.tech}.`;
-      const mainBody = `Description (FR): ${proj.descriptions.fr || ''}. Description (EN): ${proj.descriptions.en || ''}`;
+      // Embed the FULL project content — descriptions + structured details (Période,
+      // Statut, Rôle, Stack…) + markdown bodies. L'essentiel vit dans le frontmatter
+      // (`details`), le corps markdown étant souvent vide.
+      const mainBody = [
+        proj.year && `Année: ${proj.year}`,
+        proj.descriptions.fr && `Description (FR): ${proj.descriptions.fr}`,
+        proj.details.fr && `Détails (FR): ${proj.details.fr}`,
+        proj.descriptions.en && `Description (EN): ${proj.descriptions.en}`,
+        proj.details.en && `Détails (EN): ${proj.details.en}`,
+        stripHtml(proj.markdowns.fr || ''),
+        stripHtml(proj.markdowns.en || ''),
+      ]
+        .filter(Boolean)
+        .join('\n\n')
+        .trim();
 
       console.log(`Splitting project text body into chunks using LangChain...`);
       const bodyChunks = await splitter.splitText(mainBody);
@@ -283,8 +306,8 @@ ${proj.markdowns.en || ''}`;
         }
       }
 
-      if (docHasEmbedding) {
-        console.log(`Skipping document: ${docTitle} (Already embedded. Delete row in database manually to force recalculation).`);
+      if (docHasEmbedding && process.env.REEMBED !== '1') {
+        console.log(`Skipping document: ${docTitle} (Already embedded. Run with REEMBED=1 to force recalculation).`);
         continue;
       }
 

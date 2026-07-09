@@ -1,4 +1,4 @@
-.PHONY: dev build format db-schema db-seed db-query db-studio db-pull db-generate
+.PHONY: dev build format db-schema db-seed db-reseed db-query db-studio db-pull db-generate
 
 # Start the local development server
 dev:
@@ -19,6 +19,10 @@ db-schema:
 # Seed the Supabase database with projects and generate vector embeddings
 db-seed:
 	node scripts/import-projects-supabase.js
+
+# Force re-embedding of ALL projects/docs (recalcule même les entrées existantes)
+db-reseed:
+	REEMBED=1 node scripts/import-projects-supabase.js
 
 # Send an SQL query to Supabase via Prisma (usage: make db-query Q="SELECT count(*) FROM vector_embeddings")
 db-query:
