@@ -1,7 +1,8 @@
 'use client';
 
 import { useChat } from '@ai-sdk/react';
-import { useEffect, useRef } from 'react';
+import { useClipboard } from '@mantine/hooks';
+import { useEffect, useRef, useState } from 'react';
 import {
   Container,
   Paper,
@@ -17,8 +18,20 @@ import {
   SimpleGrid,
   UnstyledButton,
   Box,
+  Avatar,
 } from '@mantine/core';
-import { IconSend, IconTrash, IconRobot, IconUser, IconMessage2Code, IconSparkles } from '@tabler/icons-react';
+import {
+  IconSend,
+  IconTrash,
+  IconRobot,
+  IconUser,
+  IconMessage2Code,
+  IconSparkles,
+  IconCopy,
+  IconCheck,
+  IconThumbUp,
+  IconThumbDown,
+} from '@tabler/icons-react';
 
 const TRANSLATIONS = {
   fr: {
@@ -32,6 +45,8 @@ const TRANSLATIONS = {
     aiLabel: 'Aurélien (IA)',
     tip: 'Astuce : Cliquez sur une suggestion ci-dessus pour démarrer instantanément.',
     welcome: "Bonjour ! Je suis le jumeau numérique d'Aurélien. Que puis-je faire pour vous aujourd'hui ?",
+    copy: 'Copier',
+    copied: 'Copié !',
     suggestions: [
       'Quels sont tes projets en IA et RAG ?',
       'Parle-moi de ton parcours chez Koree.',
@@ -50,6 +65,8 @@ const TRANSLATIONS = {
     aiLabel: 'Aurélien (AI)',
     tip: 'Tip: Click on a suggestion above to start instantly.',
     welcome: "Hello! I am Aurélien's AI twin. How can I help you today?",
+    copy: 'Copy',
+    copied: 'Copied!',
     suggestions: [
       'What are your AI and RAG projects?',
       'Tell me about your journey at Koree.',
@@ -57,6 +74,25 @@ const TRANSLATIONS = {
       'What are your DevSecOps skills?',
     ],
   },
+};
+
+// Helper to safely extract text content from both string and Vercel AI SDK multi-part formats
+const getMessageText = content => {
+  if (content === null || content === undefined) return '';
+  if (typeof content === 'string') return content;
+  if (Array.isArray(content)) {
+    return content
+      .map(part => {
+        if (!part) return '';
+        if (typeof part === 'string') return part;
+        if (typeof part === 'object') {
+          return part.text || '';
+        }
+        return '';
+      })
+      .join('');
+  }
+  return '';
 };
 
 export default function ChatClient({ locale }) {
@@ -68,10 +104,21 @@ export default function ChatClient({ locale }) {
     content: t.welcome,
   };
 
-  const { messages, input, handleInputChange, handleSubmit, setInput, setMessages, isLoading, append } = useChat({
+  // Vercel AI SDK 4.x/7.x useChat hook
+  const { messages, setMessages, sendMessage, status, stop } = useChat({
     api: '/api/chat',
     initialMessages: [welcomeMessage],
   });
+
+  // Manage text input state locally (required in modern Vercel AI SDK version 4.x/7.x)
+  const [input, setInput] = useState('');
+  const isLoading = status === 'streaming' || status === 'submitted';
+
+  // Manage feedback rating states: { [messageId]: 'up' | 'down' }
+  const [ratings, setRatings] = useState({});
+
+  // Clipboard utility
+  const clipboard = useClipboard({ timeout: 2000 });
 
   const viewportRef = useRef(null);
 
@@ -89,17 +136,34 @@ export default function ChatClient({ locale }) {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  // Submit suggestion immediately on click using SDK append
+  const handleInputChange = e => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!input.trim() || isLoading) return;
+
+    sendMessage({ text: input });
+    setInput('');
+  };
+
+  // Submit suggestion immediately on click using native sendMessage
   const handleSuggestionClick = suggestion => {
-    append({
-      role: 'user',
-      content: suggestion,
-    });
+    sendMessage({ text: suggestion });
   };
 
   const handleClearChat = () => {
     setMessages([welcomeMessage]);
     setInput('');
+    setRatings({});
+  };
+
+  const handleRateMessage = (id, ratingType) => {
+    setRatings(prev => ({
+      ...prev,
+      [id]: prev[id] === ratingType ? null : ratingType,
+    }));
   };
 
   // Determine if the conversation has active exchanges beyond the initial welcome message
@@ -132,7 +196,7 @@ export default function ChatClient({ locale }) {
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '100px' }}>
         {!hasExchanges ? (
-          // 1. Centered Landing View (Like Smart Data Pay)
+          // 1. Centered Landing View (SmartDataPay Style)
           <Stack align="center" justify="center" gap="xl" style={{ flex: 1, marginTop: '5vh' }}>
             <Stack align="center" gap="xs">
               <div
@@ -190,67 +254,109 @@ export default function ChatClient({ locale }) {
             </Stack>
           </Stack>
         ) : (
-          // 2. Chat Timeline View (Messages Stream)
+          // 2. Chat Timeline View (SmartDataPay RAG UI adapted to Mantine)
           <ScrollArea style={{ flex: 1, paddingRight: '10px', height: '100%' }} viewportRef={viewportRef} type="auto">
             <Stack gap="lg" py="md">
               {messages.map(message => {
                 const isUser = message.role === 'user';
                 return (
-                  <Group key={message.id} justify={isUser ? 'flex-end' : 'flex-start'} align="flex-start" gap="xs">
-                    {!isUser && (
-                      <ActionIcon variant="light" color="blue" radius="xl" size="md" style={{ marginTop: '4px' }}>
-                        <IconRobot size={16} />
-                      </ActionIcon>
+                  <Stack key={message.id} gap="xs" style={{ width: '100%' }}>
+                    <Paper
+                      withBorder
+                      p="md"
+                      radius="md"
+                      style={{
+                        backgroundColor: isUser ? 'rgba(255, 255, 255, 0.01)' : 'rgba(34, 139, 230, 0.05)',
+                        borderColor: isUser ? 'rgba(255, 255, 255, 0.07)' : 'rgba(34, 139, 230, 0.15)',
+                      }}>
+                      <Group align="flex-start" gap="sm" wrap="nowrap">
+                        {isUser ? (
+                          <Avatar radius="xl" size="md" color="gray">
+                            <IconUser size={18} />
+                          </Avatar>
+                        ) : (
+                          <Avatar radius="xl" size="md" color="blue" variant="light">
+                            <IconRobot size={18} />
+                          </Avatar>
+                        )}
+
+                        <Stack gap="xs" style={{ flex: 1 }}>
+                          <Text fw={600} size="sm" style={{ lineHeight: 1.1 }}>
+                            {isUser ? t.userLabel : t.aiLabel}
+                          </Text>
+                          <Text size="sm" style={{ whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
+                            {getMessageText(message.content)}
+                          </Text>
+                        </Stack>
+                      </Group>
+                    </Paper>
+
+                    {/* Interactive Action Row for AI Responses (excluding the welcome root message) */}
+                    {!isUser && message.id !== 'welcome' && (
+                      <Group gap="xs" px="md" style={{ color: 'var(--mantine-color-dimmed)' }}>
+                        <Tooltip label="Utile">
+                          <ActionIcon
+                            variant="subtle"
+                            color={ratings[message.id] === 'up' ? 'blue' : 'gray'}
+                            onClick={() => handleRateMessage(message.id, 'up')}
+                            size="sm">
+                            <IconThumbUp size={14} />
+                          </ActionIcon>
+                        </Tooltip>
+
+                        <Tooltip label="Pas utile">
+                          <ActionIcon
+                            variant="subtle"
+                            color={ratings[message.id] === 'down' ? 'red' : 'gray'}
+                            onClick={() => handleRateMessage(message.id, 'down')}
+                            size="sm">
+                            <IconThumbDown size={14} />
+                          </ActionIcon>
+                        </Tooltip>
+
+                        <Tooltip label={clipboard.copied ? t.copied : t.copy}>
+                          <ActionIcon
+                            variant="subtle"
+                            color={clipboard.copied ? 'teal' : 'gray'}
+                            onClick={() => clipboard.copy(getMessageText(message.content))}
+                            size="sm">
+                            {clipboard.copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
+                          </ActionIcon>
+                        </Tooltip>
+                      </Group>
                     )}
-                    <div style={{ maxWidth: '75%' }}>
-                      <Paper
-                        p="md"
-                        radius="lg"
-                        style={{
-                          backgroundColor: isUser ? 'var(--mantine-color-blue-filled)' : 'rgba(255, 255, 255, 0.05)',
-                          color: isUser ? '#fff' : 'inherit',
-                          border: isUser ? 'none' : '1px solid rgba(255, 255, 255, 0.1)',
-                          borderTopLeftRadius: !isUser ? '0' : 'lg',
-                          borderTopRightRadius: isUser ? '0' : 'lg',
-                        }}>
-                        <Text size="sm" style={{ whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
-                          {message.content}
-                        </Text>
-                      </Paper>
-                      <Text size="10px" c="dimmed" ta={isUser ? 'right' : 'left'} mt={4} px={4}>
-                        {isUser ? t.userLabel : t.aiLabel}
-                      </Text>
-                    </div>
-                    {isUser && (
-                      <ActionIcon variant="light" color="gray" radius="xl" size="md" style={{ marginTop: '4px' }}>
-                        <IconUser size={16} />
-                      </ActionIcon>
-                    )}
-                  </Group>
+                  </Stack>
                 );
               })}
 
               {/* Loading Indicator */}
               {isLoading && (
-                <Group justify="flex-start" align="center" gap="xs">
-                  <ActionIcon variant="light" color="blue" radius="xl" size="md">
-                    <IconRobot size={16} />
-                  </ActionIcon>
-                  <Paper
-                    p="sm"
-                    radius="lg"
-                    style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderTopLeftRadius: '0',
-                    }}>
-                    <Group gap={6}>
-                      <span className="dot-typing" />
-                      <span className="dot-typing" />
-                      <span className="dot-typing" />
-                    </Group>
-                  </Paper>
-                </Group>
+                <Paper
+                  withBorder
+                  p="md"
+                  radius="md"
+                  style={{
+                    backgroundColor: 'rgba(34, 139, 230, 0.05)',
+                    borderColor: 'rgba(34, 139, 230, 0.15)',
+                    alignSelf: 'flex-start',
+                    width: '100%',
+                  }}>
+                  <Group align="flex-start" gap="sm" wrap="nowrap">
+                    <Avatar radius="xl" size="md" color="blue" variant="light">
+                      <IconRobot size={18} />
+                    </Avatar>
+                    <Stack gap="xs" style={{ flex: 1 }}>
+                      <Text fw={600} size="sm" style={{ lineHeight: 1.1 }}>
+                        {t.aiLabel}
+                      </Text>
+                      <Group gap={6} py="xs">
+                        <span className="dot-typing" />
+                        <span className="dot-typing" />
+                        <span className="dot-typing" />
+                      </Group>
+                    </Stack>
+                  </Group>
+                </Paper>
               )}
             </Stack>
           </ScrollArea>
@@ -272,7 +378,7 @@ export default function ChatClient({ locale }) {
         }}>
         <form id="chat-form" onSubmit={handleSubmit} style={{ width: '100%' }}>
           <TextInput
-            value={input || ''}
+            value={input}
             onChange={handleInputChange}
             placeholder={t.placeholder}
             radius="xl"
@@ -281,7 +387,7 @@ export default function ChatClient({ locale }) {
             rightSectionPointerEvents="auto"
             leftSection={<IconRobot size={20} style={{ color: 'var(--mantine-color-blue-filled)', marginLeft: '12px' }} />}
             rightSection={
-              <ActionIcon type="submit" color="blue" size="lg" radius="xl" disabled={isLoading} style={{ marginRight: '6px' }}>
+              <ActionIcon type="submit" color="blue" size="lg" radius="xl" variant="filled" style={{ marginRight: '6px' }}>
                 <IconSend size={16} />
               </ActionIcon>
             }
