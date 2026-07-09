@@ -39,3 +39,6 @@ next-env.d.ts
 .specify/
 .claude-flow/
 .mcp.json
+
+# Genkit Developer UI artifacts (trace store, etc.)
+.genkit/
