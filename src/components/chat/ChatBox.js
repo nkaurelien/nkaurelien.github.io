@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ScrollArea, Stack, Paper, Group, Avatar, Text, Tooltip, ActionIcon } from '@mantine/core';
 import { IconUser, IconRobot, IconThumbUp, IconThumbDown, IconCopy, IconCheck } from '@tabler/icons-react';
 import { useClipboard } from '@mantine/hooks';
@@ -6,7 +7,6 @@ import { useClipboard } from '@mantine/hooks';
 const getMessageText = (message) => {
   if (!message) return '';
 
-  // 1. If content is available, parse it (handles welcome messages and assistant stream)
   if (message.content) {
     if (typeof message.content === 'string') return message.content;
     if (Array.isArray(message.content)) {
@@ -21,7 +21,6 @@ const getMessageText = (message) => {
     }
   }
 
-  // 2. If content is undefined/empty, check parts (handles user messages sent via sendMessage)
   if (Array.isArray(message.parts)) {
     return message.parts
       .map(part => {
@@ -35,12 +34,30 @@ const getMessageText = (message) => {
   return '';
 };
 
-export default function ChatBox({ messages, isLoading, ratings, onRateMessage, t, viewportRef }) {
+export default function ChatBox({ messages = [], user, responseLoading, viewportRef }) {
   const clipboard = useClipboard({ timeout: 2000 });
+  const [ratings, setRatings] = useState({});
+
+  const handleRateMessage = (id, ratingType) => {
+    setRatings(prev => ({
+      ...prev,
+      [id]: prev[id] === ratingType ? null : ratingType,
+    }));
+  };
+
+  const isEnglish = messages[0]?.content?.includes('Hello') || false;
+  const labels = {
+    userLabel: isEnglish ? 'You' : 'Vous',
+    aiLabel: isEnglish ? 'Aurélien (AI)' : 'Aurélien (IA)',
+    copy: isEnglish ? 'Copy' : 'Copier',
+    copied: isEnglish ? 'Copied!' : 'Copié !',
+    helpful: isEnglish ? 'Helpful' : 'Utile',
+    notHelpful: isEnglish ? 'Not helpful' : 'Pas utile',
+  };
 
   return (
     <ScrollArea
-      style={{ flex: 1, paddingRight: '10px', height: '100%' }}
+      style={{ flex: 1, paddingRight: '10px', height: '400px' }}
       viewportRef={viewportRef}
       type="auto"
     >
@@ -75,7 +92,7 @@ export default function ChatBox({ messages, isLoading, ratings, onRateMessage, t
 
                   <Stack gap="xs" style={{ flex: 1 }}>
                     <Text fw={600} size="sm" style={{ lineHeight: 1.1 }}>
-                      {isUser ? t.userLabel : t.aiLabel}
+                      {isUser ? labels.userLabel : labels.aiLabel}
                     </Text>
                     <Text size="sm" style={{ whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
                       {getMessageText(message)}
@@ -87,29 +104,29 @@ export default function ChatBox({ messages, isLoading, ratings, onRateMessage, t
               {/* Interactive Action Row for AI Responses (excluding the welcome root message) */}
               {!isUser && message.id !== 'welcome' && (
                 <Group gap="xs" px="md" style={{ color: 'var(--mantine-color-dimmed)' }}>
-                  <Tooltip label={t.copy === 'Copy' ? 'Helpful' : 'Utile'}>
+                  <Tooltip label={labels.helpful}>
                     <ActionIcon
                       variant="subtle"
                       color={ratings[message.id] === 'up' ? 'blue' : 'gray'}
-                      onClick={() => onRateMessage(message.id, 'up')}
+                      onClick={() => handleRateMessage(message.id, 'up')}
                       size="sm"
                     >
                       <IconThumbUp size={14} />
                     </ActionIcon>
                   </Tooltip>
 
-                  <Tooltip label={t.copy === 'Copy' ? 'Not helpful' : 'Pas utile'}>
+                  <Tooltip label={labels.notHelpful}>
                     <ActionIcon
                       variant="subtle"
                       color={ratings[message.id] === 'down' ? 'red' : 'gray'}
-                      onClick={() => onRateMessage(message.id, 'down')}
+                      onClick={() => handleRateMessage(message.id, 'down')}
                       size="sm"
                     >
                       <IconThumbDown size={14} />
                     </ActionIcon>
                   </Tooltip>
 
-                  <Tooltip label={clipboard.copied ? t.copied : t.copy}>
+                  <Tooltip label={clipboard.copied ? labels.copied : labels.copy}>
                     <ActionIcon
                       variant="subtle"
                       color={clipboard.copied ? 'teal' : 'gray'}
@@ -126,7 +143,7 @@ export default function ChatBox({ messages, isLoading, ratings, onRateMessage, t
         })}
 
         {/* Loading Indicator */}
-        {isLoading && (
+        {responseLoading && (
           <Paper
             withBorder
             p="md"
@@ -144,7 +161,7 @@ export default function ChatBox({ messages, isLoading, ratings, onRateMessage, t
               </Avatar>
               <Stack gap="xs" style={{ flex: 1 }}>
                 <Text fw={600} size="sm" style={{ lineHeight: 1.1 }}>
-                  {t.aiLabel}
+                  {labels.aiLabel}
                 </Text>
                 <Group gap={6} py="xs">
                   <span className="dot-typing" />

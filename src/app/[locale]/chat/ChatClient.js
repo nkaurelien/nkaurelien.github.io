@@ -1,6 +1,6 @@
 'use client';
 
-import { useChat } from '@ai-sdk/react';
+import { useChat as useChatSdk } from '@ai-sdk/react';
 import { useEffect, useRef, useState } from 'react';
 import {
   Container,
@@ -69,6 +69,40 @@ const TRANSLATIONS = {
   },
 };
 
+// Custom adapter hook to emulate the older Vercel AI SDK useChat signature on top of version 4.x
+const useChat = ({ api, initialMessages }) => {
+  const [input, setInput] = useState('');
+  const { messages, setMessages, sendMessage: sdkSendMessage, status } = useChatSdk({
+    api,
+    initialMessages,
+  });
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!input.trim()) return;
+
+    sdkSendMessage({ text: input });
+    setInput('');
+  };
+
+  const isLoading = status === 'streaming' || status === 'submitted';
+
+  return {
+    messages,
+    input,
+    setInput,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+    setMessages,
+    sdkSendMessage, // exposed for instant suggestion clicks
+  };
+};
+
 export default function ChatClient({ locale }) {
   const t = TRANSLATIONS[locale] || TRANSLATIONS.fr;
 
@@ -78,22 +112,33 @@ export default function ChatClient({ locale }) {
     content: t.welcome,
   };
 
-  // Vercel AI SDK 4.x/7.x useChat hook
-  const { messages, setMessages, sendMessage, status } = useChat({
-    api: '/api/chat/',
+  const apiEndPoint = '/api/chat/';
+
+  // 1. Hook initialized exactly like your ChatbotView
+  const {
+    messages,
+    input,
+    setInput,
+    handleInputChange,
+    handleSubmit,
+    isLoading: chatEndpointIsLoading,
+    setMessages,
+    sdkSendMessage,
+  } = useChat({
     initialMessages: [welcomeMessage],
+    api: apiEndPoint,
   });
 
-  // Manage text input state locally (required in modern Vercel AI SDK version 4.x/7.x)
-  const [input, setInput] = useState('');
-  const isLoading = status === 'streaming' || status === 'submitted';
-
-  // Manage feedback rating states: { [messageId]: 'up' | 'down' }
-  const [ratings, setRatings] = useState({});
+  // 2. SendMessage wrapper exactly like your ChatbotView
+  const sendMessage = async e => {
+    e.preventDefault();
+    handleSubmit(e);
+    setInput('');
+  };
 
   const viewportRef = useRef(null);
 
-  // Scroll to bottom whenever messages change
+  // Scroll to bottom when messages stream
   const scrollToBottom = () => {
     if (viewportRef.current) {
       viewportRef.current.scrollTo({
@@ -105,39 +150,17 @@ export default function ChatClient({ locale }) {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, isLoading]);
+  }, [messages, chatEndpointIsLoading]);
 
-  const handleInputChange = e => {
-    setInput(e.target.value);
-  };
-
-  const handleSubmit = e => {
-    if (e && e.preventDefault) e.preventDefault();
-    if (!input.trim() || isLoading) return;
-
-    sendMessage({ text: input });
-    setInput('');
-  };
-
-  // Submit suggestion immediately on click using native sendMessage
   const handleSuggestionClick = suggestion => {
-    sendMessage({ text: suggestion });
+    sdkSendMessage({ text: suggestion });
   };
 
   const handleClearChat = () => {
     setMessages([welcomeMessage]);
     setInput('');
-    setRatings({});
   };
 
-  const handleRateMessage = (id, ratingType) => {
-    setRatings(prev => ({
-      ...prev,
-      [id]: prev[id] === ratingType ? null : ratingType,
-    }));
-  };
-
-  // Determine if the conversation has active exchanges beyond the initial welcome message
   const hasExchanges = messages.length > 1;
 
   return (
@@ -168,7 +191,7 @@ export default function ChatClient({ locale }) {
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '100px' }}>
         {!hasExchanges ? (
-          // 1. Centered Landing View (SmartDataPay Style)
+          // Landing suggestions view (SmartDataPay Style)
           <Stack align="center" justify="center" gap="xl" style={{ flex: 1, marginTop: '5vh' }}>
             <Stack align="center" gap="xs">
               <div style={{
@@ -230,25 +253,23 @@ export default function ChatClient({ locale }) {
             </Stack>
           </Stack>
         ) : (
-          // 2. Modular Chat Box
+          // 3. Render exact SDP Box
           <ChatBox
             messages={messages}
-            isLoading={isLoading}
-            ratings={ratings}
-            onRateMessage={handleRateMessage}
-            t={t}
+            responseLoading={chatEndpointIsLoading}
             viewportRef={viewportRef}
           />
         )}
       </div>
 
-      {/* 3. Modular Chat Input Bar */}
+      {/* 4. Render exact SDP Input */}
       <ChatInput
-        input={input}
-        onChange={handleInputChange}
-        onSubmit={handleSubmit}
         placeholder={t.placeholder}
-        isLoading={isLoading}
+        input={input}
+        setInput={setInput}
+        sendMessage={sendMessage}
+        handleInputChange={handleInputChange}
+        isLoading={chatEndpointIsLoading}
       />
 
       {/* Global CSS hover animations */}

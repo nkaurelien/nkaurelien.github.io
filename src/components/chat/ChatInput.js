@@ -1,7 +1,7 @@
 import { Box, TextInput, ActionIcon } from '@mantine/core';
 import { IconRobot, IconSend } from '@tabler/icons-react';
 
-export default function ChatInput({ input, onChange, onSubmit, placeholder, isLoading }) {
+export default function ChatInput({ placeholder, input, setInput, sendMessage, handleInputChange, isLoading }) {
   return (
     <Box
       style={{
@@ -15,10 +15,10 @@ export default function ChatInput({ input, onChange, onSubmit, placeholder, isLo
         paddingRight: 'var(--mantine-spacing-md)',
         zIndex: 100,
       }}>
-      <form id="chat-form" onSubmit={onSubmit} style={{ width: '100%' }}>
+      <form id="chat-form" onSubmit={sendMessage} style={{ width: '100%' }}>
         <TextInput
           value={input}
-          onChange={onChange}
+          onChange={handleInputChange}
           placeholder={placeholder}
           radius="xl"
           size="lg"
