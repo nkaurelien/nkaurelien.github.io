@@ -266,16 +266,16 @@ export default function ChatClient({ locale }) {
                       p="md"
                       radius="md"
                       style={{
-                        backgroundColor: isUser ? 'rgba(255, 255, 255, 0.01)' : 'rgba(34, 139, 230, 0.05)',
-                        borderColor: isUser ? 'rgba(255, 255, 255, 0.07)' : 'rgba(34, 139, 230, 0.15)',
+                        backgroundColor: isUser ? 'var(--mantine-color-gray-light)' : 'var(--mantine-color-blue-light)',
+                        borderColor: isUser ? 'var(--mantine-color-gray-light-border)' : 'var(--mantine-color-blue-light-border)',
                       }}>
                       <Group align="flex-start" gap="sm" wrap="nowrap">
                         {isUser ? (
-                          <Avatar radius="xl" size="md" color="gray">
+                          <Avatar radius="xl" size="md" color="gray" variant="filled">
                             <IconUser size={18} />
                           </Avatar>
                         ) : (
-                          <Avatar radius="xl" size="md" color="blue" variant="light">
+                          <Avatar radius="xl" size="md" color="blue" variant="filled">
                             <IconRobot size={18} />
                           </Avatar>
                         )}
@@ -336,13 +336,13 @@ export default function ChatClient({ locale }) {
                   p="md"
                   radius="md"
                   style={{
-                    backgroundColor: 'rgba(34, 139, 230, 0.05)',
-                    borderColor: 'rgba(34, 139, 230, 0.15)',
+                    backgroundColor: 'var(--mantine-color-blue-light)',
+                    borderColor: 'var(--mantine-color-blue-light-border)',
                     alignSelf: 'flex-start',
                     width: '100%',
                   }}>
                   <Group align="flex-start" gap="sm" wrap="nowrap">
-                    <Avatar radius="xl" size="md" color="blue" variant="light">
+                    <Avatar radius="xl" size="md" color="blue" variant="filled">
                       <IconRobot size={18} />
                     </Avatar>
                     <Stack gap="xs" style={{ flex: 1 }}>
