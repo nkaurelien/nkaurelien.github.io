@@ -2,22 +2,36 @@ import { ScrollArea, Stack, Paper, Group, Avatar, Text, Tooltip, ActionIcon } fr
 import { IconUser, IconRobot, IconThumbUp, IconThumbDown, IconCopy, IconCheck } from '@tabler/icons-react';
 import { useClipboard } from '@mantine/hooks';
 
-// Helper to safely extract text content from both string and Vercel AI SDK multi-part formats
-const getMessageText = (content) => {
-  if (content === null || content === undefined) return '';
-  if (typeof content === 'string') return content;
-  if (Array.isArray(content)) {
-    return content
+// Helper to safely extract text content from both content (assistant) and parts (user) properties
+const getMessageText = (message) => {
+  if (!message) return '';
+
+  // 1. If content is available, parse it (handles welcome messages and assistant stream)
+  if (message.content) {
+    if (typeof message.content === 'string') return message.content;
+    if (Array.isArray(message.content)) {
+      return message.content
+        .map(part => {
+          if (!part) return '';
+          if (typeof part === 'string') return part;
+          if (typeof part === 'object') return part.text || '';
+          return '';
+        })
+        .join('');
+    }
+  }
+
+  // 2. If content is undefined/empty, check parts (handles user messages sent via sendMessage)
+  if (Array.isArray(message.parts)) {
+    return message.parts
       .map(part => {
         if (!part) return '';
-        if (typeof part === 'string') return part;
-        if (typeof part === 'object') {
-          return part.text || '';
-        }
+        if (part.type === 'text') return part.text || '';
         return '';
       })
       .join('');
   }
+
   return '';
 };
 
@@ -64,7 +78,7 @@ export default function ChatBox({ messages, isLoading, ratings, onRateMessage, t
                       {isUser ? t.userLabel : t.aiLabel}
                     </Text>
                     <Text size="sm" style={{ whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
-                      {getMessageText(message.content)}
+                      {getMessageText(message)}
                     </Text>
                   </Stack>
                 </Group>
@@ -99,7 +113,7 @@ export default function ChatBox({ messages, isLoading, ratings, onRateMessage, t
                     <ActionIcon
                       variant="subtle"
                       color={clipboard.copied ? 'teal' : 'gray'}
-                      onClick={() => clipboard.copy(getMessageText(message.content))}
+                      onClick={() => clipboard.copy(getMessageText(message))}
                       size="sm"
                     >
                       {clipboard.copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
