@@ -4,7 +4,15 @@ import { googleAI } from '@genkit-ai/google-genai';
 import { anthropic } from '@genkit-ai/anthropic';
 import { createClient } from '@supabase/supabase-js';
 import { HuggingFaceTransformersEmbeddings } from '@langchain/community/embeddings/huggingface_transformers';
+import { env as transformersEnv } from '@huggingface/transformers';
 import { env } from '@/env';
+
+// Vercel/serverless : le filesystem est en lecture seule SAUF /tmp. Par défaut le
+// modèle d'embedding tente d'écrire son cache dans node_modules/.cache -> ENOENT.
+// - allowLocalModels=false : pas de modèle bundlé, on télécharge depuis le Hub
+// - cacheDir=/tmp : seul répertoire writable en Lambda (éphémère entre cold starts)
+transformersEnv.allowLocalModels = false;
+transformersEnv.cacheDir = '/tmp/hf-transformers-cache';
 
 // 1. Initialize Supabase Client
 const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL;
@@ -111,6 +119,8 @@ const embeddings = new HuggingFaceTransformersEmbeddings({
 });
 
 export const runtime = 'nodejs'; // Use nodejs environment to allow ONNX runtime execution
+// Marge pour le cold start (1er appel télécharge le modèle d'embedding ~90 Mo dans /tmp).
+export const maxDuration = 60;
 
 // Extract text from a raw content value (string, or array of string/{text} parts)
 const contentToText = value => {
