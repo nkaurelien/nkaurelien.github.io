@@ -1,18 +1,24 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { routing } from '../i18n/routing';
+
+// Garde défensive : une locale inconnue (ex. `/robots.txt` capturé par [locale])
+// produirait un import de chemin invalide -> MODULE_NOT_FOUND (crash 500).
+// On retombe sur la locale par défaut pour ne jamais planter le chargement.
+const safeLocale = locale => (routing.locales.includes(locale) ? locale : routing.defaultLocale);
 
 // Charge les donnees JSON d'une locale (app + une section).
 export async function getApp(locale) {
-  return (await import(`../data/${locale}/app.json`)).default;
+  return (await import(`../data/${safeLocale(locale)}/app.json`)).default;
 }
 
 export async function getSection(locale, name) {
-  return (await import(`../data/${locale}/sections/${name}.json`)).default;
+  return (await import(`../data/${safeLocale(locale)}/sections/${name}.json`)).default;
 }
 
 export async function getSlider(locale, name) {
-  return (await import(`../data/${locale}/sliders/${name}.json`)).default;
+  return (await import(`../data/${safeLocale(locale)}/sliders/${name}.json`)).default;
 }
 
 // Charge les projets actifs (fichiers *.md, hors *.md.off) depuis /public/projects/<locale>.
