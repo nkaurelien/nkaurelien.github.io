@@ -39,12 +39,14 @@ function formatDate(date, locale) {
 }
 
 function ArticleCard({ article, t }) {
+  // Article local (markdown du site) → lien interne ; article Medium → lien externe.
+  const isLocal = article.source === 'local';
+  const linkProps = isLocal
+    ? { component: Link, href: `/${t.__locale}${article.link}` }
+    : { component: 'a', href: article.link, target: '_blank', rel: 'noopener noreferrer' };
   return (
     <Card
-      component="a"
-      href={article.link}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...linkProps}
       withBorder
       padding="lg"
       radius="md"
