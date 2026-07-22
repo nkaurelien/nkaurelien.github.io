@@ -1,13 +1,17 @@
 name: Deploy website to GitHub Pages
 
-# NOTE: Auto-deploy désactivé — le site est désormais déployé sur Vercel
-# (l'app inclut des Route Handlers serveur `/api/chat` incompatibles avec
-#  l'export statique GitHub Pages). Ce workflow reste lançable manuellement
-# (workflow_dispatch) mais ne se déclenche plus sur `push`. Pour ré-activer
-# l'export statique Pages, il faudrait retirer/isoler la route `/api/chat`
-# et remettre `output: 'export'` dans next.config.mjs.
+# NOTE: le site est déployé sur Vercel (https://nkaurelien.kamitbrains.fr —
+# l'app inclut des Route Handlers serveur incompatibles avec l'export statique).
+# GitHub Pages ne sert plus qu'une PAGE DE REDIRECTION (redirect-page/) qui
+# préserve le chemin : nkaurelien.github.io/fr/blog/... → kamitbrains.fr/fr/blog/...
+# (index.html = accueil, 404.html = tout lien profond de l'ancien snapshot).
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'redirect-page/**'
+      - '.github/workflows/deploy.yml'
 
 permissions:
   contents: read
@@ -19,53 +23,26 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    # User-site nkaurelien.github.io : servi a la racine -> basePath vide (defaut).
-    # Pour un domaine perso, ajouter un fichier public/CNAME.
-    env:
-      # Clef de site hCaptcha (publique, pas un secret) pour nkaurelien.github.io.
-      # Surchargeable via la variable de depot Actions `HCAPTCHA_SITEKEY`.
-      NEXT_PUBLIC_HCAPTCHA_SITEKEY: ${{ vars.HCAPTCHA_SITEKEY || '4db67e92-9242-4c86-a21a-db88ec44de56' }}
-      # Feature flag : protection hCaptcha du contact (actif par defaut).
-      # Mettre la variable de depot `HCAPTCHA_ENABLED` a "false" pour desactiver.
-      NEXT_PUBLIC_HCAPTCHA_ENABLED: ${{ vars.HCAPTCHA_ENABLED || 'true' }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: yarn
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build static export
-        run: yarn build
 
       - name: Disable Jekyll processing
-        run: touch ./out/.nojekyll
+        run: touch ./redirect-page/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload redirect page
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: redirect-page
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
