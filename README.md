@@ -1,7 +1,7 @@
 # nkaurelien.github.io
 
 Site personnel / portfolio d'**Aurelien NKUMBE** — déployé sur GitHub Pages à l'adresse
-[https://nkaurelien.github.io](https://nkaurelien.github.io).
+[https://nkaurelien.kamitbrains.fr](https://nkaurelien.kamitbrains.fr).
 
 ## Stack
 

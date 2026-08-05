@@ -5,14 +5,14 @@
 Ce fichier aide les assistants IA à comprendre le profil d'Aurelien NKUMBE et son site portfolio (Next.js + Mantine, bilingue FR/EN, hébergé sur GitHub Pages).
 
 ## À propos
-- [Bio & parcours complet (about.md)](https://nkaurelien.github.io/about.md) : biographie, parcours narratif, expériences, projets, compétences, réseau et contact.
+- [Bio & parcours complet (about.md)](https://nkaurelien.kamitbrains.fr/about.md) : biographie, parcours narratif, expériences, projets, compétences, réseau et contact.
 
 ## Pages du site
-- [Accueil FR](https://nkaurelien.github.io/fr/) : hero, services, compétences, environnement & rituels, compteurs, recommandations, collaborations.
-- [Accueil EN](https://nkaurelien.github.io/en/) : English version of the home page.
-- [Historique / parcours](https://nkaurelien.github.io/fr/history/) : expériences professionnelles et formation, avec badges de statut (CDI, freelance, stage, auto-entrepreneur).
-- [Projets](https://nkaurelien.github.io/fr/projects/) : réalisations filtrables par catégorie (Sites Web, Applications Web, Données & IA), avec année.
-- [Contact](https://nkaurelien.github.io/fr/contact/) : disponibilité (relocalisation, longue durée, ESN, projets challengeants) et formulaire.
+- [Accueil FR](https://nkaurelien.kamitbrains.fr/fr/) : hero, services, compétences, environnement & rituels, compteurs, recommandations, collaborations.
+- [Accueil EN](https://nkaurelien.kamitbrains.fr/en/) : English version of the home page.
+- [Historique / parcours](https://nkaurelien.kamitbrains.fr/fr/history/) : expériences professionnelles et formation, avec badges de statut (CDI, freelance, stage, auto-entrepreneur).
+- [Projets](https://nkaurelien.kamitbrains.fr/fr/projects/) : réalisations filtrables par catégorie (Sites Web, Applications Web, Données & IA), avec année.
+- [Contact](https://nkaurelien.kamitbrains.fr/fr/contact/) : disponibilité (relocalisation, longue durée, ESN, projets challengeants) et formulaire.
 
 ## Faits clés
 - Rôle : Développeur'Ops fullstack polyvalent, Tech Lead / MOE (7+ ans).

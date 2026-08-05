@@ -3,7 +3,7 @@ name: Deploy website to GitHub Pages
 # NOTE: le site est déployé sur Vercel (https://nkaurelien.kamitbrains.fr —
 # l'app inclut des Route Handlers serveur incompatibles avec l'export statique).
 # GitHub Pages ne sert plus qu'une PAGE DE REDIRECTION (redirect-page/) qui
-# préserve le chemin : nkaurelien.github.io/fr/blog/... → kamitbrains.fr/fr/blog/...
+# préserve le chemin : nkaurelien.github.io/fr/blog/... → nkaurelien.kamitbrains.fr/fr/blog/...
 # (index.html = accueil, 404.html = tout lien profond de l'ancien snapshot).
 on:
   workflow_dispatch:
