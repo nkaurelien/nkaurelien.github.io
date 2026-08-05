@@ -482,9 +482,6 @@ export default function AdminClient({ locale, localProjects = [] }) {
             <Text size="xs" c="dimmed" ta="center">
               {translations.signedAs} <strong>{user.email}</strong>
             </Text>
-            <Text size="xs" c="red" ta="center" mt={4}>
-              Admin requis : <strong>{adminEmail}</strong>
-            </Text>
           </Paper>
 
           <Stack gap="xs">

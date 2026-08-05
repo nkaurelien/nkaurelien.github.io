@@ -2,8 +2,8 @@
 
 import { useChat as useChatSdk } from '@ai-sdk/react';
 import { useEffect, useRef, useState } from 'react';
-import { Container, Text, Group, Stack, Title, Badge, Tooltip, ActionIcon, SimpleGrid, UnstyledButton, Paper } from '@mantine/core';
-import { IconTrash, IconRobot, IconMessage2Code, IconSparkles } from '@tabler/icons-react';
+import { Container, Text, Group, Stack, Title, Badge, Tooltip, ActionIcon, SimpleGrid, UnstyledButton, Paper, Button, Avatar, Menu } from '@mantine/core';
+import { IconTrash, IconRobot, IconMessage2Code, IconSparkles, IconBrandGoogle, IconLogout } from '@tabler/icons-react';
 
 // Modular components (SDP style)
 import ChatBox from '@/components/chat/ChatBox';
@@ -26,6 +26,9 @@ const TRANSLATIONS = {
     welcome: "Bonjour ! Je suis Jamila, l'assistante IA d'Aurélien. Que puis-je faire pour vous aujourd'hui ?",
     copy: 'Copier',
     copied: 'Copié !',
+    signIn: 'Se présenter',
+    signInHint: 'Connectez-vous pour préremplir le formulaire de contact.',
+    signOut: 'Se déconnecter',
     suggestions: [
       'Qui est Aurélien NKUMBE ?',
       'Quels sont ses projets en IA et RAG ?',
@@ -52,6 +55,9 @@ const TRANSLATIONS = {
     welcome: "Hello! I am Jamila, Aurélien's AI assistant. How can I help you today?",
     copy: 'Copy',
     copied: 'Copied!',
+    signIn: 'Introduce yourself',
+    signInHint: 'Sign in to pre-fill the contact form.',
+    signOut: 'Sign out',
     suggestions: [
       'Who is Aurélien NKUMBE?',
       'What are his AI and RAG projects?',
@@ -106,7 +112,15 @@ const useChat = ({ api, initialMessages }) => {
 
 export default function ChatClient({ locale }) {
   const t = TRANSLATIONS[locale] || TRANSLATIONS.fr;
-  const { user } = useAuth();
+  const { user, signInWithGoogle, signOutUser } = useAuth();
+
+  const handleGuestSignIn = async () => {
+    try {
+      await signInWithGoogle();
+    } catch (err) {
+      console.error('Guest sign-in failed:', err);
+    }
+  };
 
   const welcomeMessage = {
     id: 'welcome',
@@ -217,6 +231,43 @@ export default function ChatClient({ locale }) {
               <Text size="sm" c="dimmed" ta="center" style={{ maxWidth: '520px', lineHeight: 1.5 }}>
                 {t.description}
               </Text>
+
+              {/* Identité invité (centrée) : préremplit ensuite le formulaire de contact. */}
+              {user ? (
+                <Menu position="bottom" shadow="md" width={220} withinPortal>
+                  <Menu.Target>
+                    <UnstyledButton>
+                      <Group gap={8} wrap="nowrap" mt="xs">
+                        <Avatar src={user.photoURL || undefined} size={28} radius="xl" color="blue">
+                          {(user.displayName || user.email || '?').charAt(0).toUpperCase()}
+                        </Avatar>
+                        <Text size="sm" fw={500} style={{ maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {user.displayName || user.email}
+                        </Text>
+                      </Group>
+                    </UnstyledButton>
+                  </Menu.Target>
+                  <Menu.Dropdown>
+                    <Menu.Label style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</Menu.Label>
+                    <Menu.Item color="red" leftSection={<IconLogout size={16} />} onClick={() => signOutUser().catch(() => {})}>
+                      {t.signOut}
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                </Menu>
+              ) : (
+                <Tooltip label={t.signInHint}>
+                  <Button
+                    size="sm"
+                    radius="xl"
+                    variant="light"
+                    color="blue"
+                    leftSection={<IconBrandGoogle size={16} />}
+                    onClick={handleGuestSignIn}
+                    mt="xs">
+                    {t.signIn}
+                  </Button>
+                </Tooltip>
+              )}
             </Stack>
 
             {/* Suggestions Grid (2x2) */}

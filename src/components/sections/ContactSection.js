@@ -32,6 +32,7 @@ import {
   IconAlertCircle,
 } from '@tabler/icons-react';
 import { features } from '@/config/features';
+import { useAuth } from '@/context/AuthContext';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -45,6 +46,7 @@ const PHONE = '+33744584562';
 const DISPLAY_PHONE = '+33 7 44 58 45 62';
 
 export default function ContactSection({ contact }) {
+  const { user } = useAuth();
   const captchaEnabled = features.contactHcaptcha;
   const [mounted, setMounted] = useState(false);
   const [verified, setVerified] = useState(!captchaEnabled);
@@ -61,6 +63,14 @@ export default function ContactSection({ contact }) {
   const [captchaToken, setCaptchaToken] = useState(null);
 
   useEffect(() => setMounted(true), []);
+
+  // Invité identifié (connexion via la page chat) : on préremplit le formulaire
+  // dès que le captcha est validé, sans écraser une saisie déjà commencée.
+  useEffect(() => {
+    if (!verified || !user) return;
+    if (user.displayName) setFormName(prev => prev || user.displayName);
+    if (user.email) setFormEmail(prev => prev || user.email);
+  }, [verified, user]);
 
   const handleSubmit = async e => {
     e.preventDefault();

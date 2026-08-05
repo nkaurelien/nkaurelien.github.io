@@ -1,5 +1,4 @@
 import { adminDb } from '@/lib/firebase-admin';
-import { FieldValue } from 'firebase-admin/firestore';
 
 export const runtime = 'nodejs';
 
@@ -59,11 +58,13 @@ export async function POST(req) {
       return json({ error: 'Service de contact momentanément indisponible.' }, 503);
     }
 
+    // createdAt en ISO string : l'admin (AdminClient) fait `new Date(msg.createdAt)`,
+    // ce qui ne parse pas un Timestamp Firestore -> on stocke une string standard.
     await adminDb.collection('messages').add({
       name: cleanName,
       email: cleanEmail,
       message: cleanMessage,
-      createdAt: FieldValue.serverTimestamp(),
+      createdAt: new Date().toISOString(),
       read: false,
       source: 'contact-form',
     });

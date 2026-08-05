@@ -193,6 +193,12 @@
                 "children": 0
             },
             {
+                "label": "Blog",
+                "link": "/blog",
+                "children": 0,
+                "external": false
+            },
+            {
                 "label": "AI Assistant",
                 "link": "/chat",
                 "children": 0
@@ -208,12 +214,6 @@
                 "oldLink": "https://calendly.com/nkaurelien",
                 "children": 0,
                 "external": true
-            },
-            {
-                "label": "Blog",
-                "link": "/blog",
-                "children": 0,
-                "external": false
             }
         ]
     },

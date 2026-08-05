@@ -1,0 +1,42 @@
+rules_version = '2';
+
+// Règles de sécurité Firestore du portfolio.
+// À appliquer via la console Firebase (Firestore -> Règles -> coller -> Publier)
+// ou via la CLI : `firebase deploy --only firestore:rules`.
+//
+// Modèle de sécurité :
+//   - `projects`  : lecture PUBLIQUE (grille du portfolio, ProjectsGrid.js),
+//                   écriture réservée à l'admin.
+//   - `messages`  : totalement privés. La création passe UNIQUEMENT par le
+//                   serveur via firebase-admin (/api/contact), qui contourne
+//                   ces règles ; lecture / passage lu-non-lu / suppression
+//                   réservés à l'admin (boîte de réception de l'espace admin).
+//   - tout le reste (documents, etc.) : admin uniquement.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // L'admin est identifié par son e-mail authentifié.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'nkumbeaurelien@hotmail.com';
+    }
+
+    // Projets : lus par tout le monde, modifiés par l'admin seul.
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Messages de contact : jamais exposés au client public.
+    // Création côté serveur (admin SDK) uniquement -> interdite côté client.
+    match /messages/{messageId} {
+      allow read, update, delete: if isAdmin();
+      allow create: if false;
+    }
+
+    // Filet de sécurité : tout autre document est réservé à l'admin.
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
