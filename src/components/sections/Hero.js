@@ -281,7 +281,7 @@ export default function Hero({ locale, hero }) {
                 position: 'relative',
                 display: 'inline-block',
               }}>
-              {/* Badge flottant 1: Senior Tech Lead */}
+              {/* Badge flottant 1: Senior Fullstack Engineer */}
               <Box
                 className="hero-floating-badge"
                 style={{
@@ -299,11 +299,11 @@ export default function Hero({ locale, hero }) {
                   transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}>
                 <Text size="xs" fw={700} c="teal.4" style={{ display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
-                  <span>⚡</span> Senior Tech Lead
+                  <span>⚡</span> Senior Fullstack Engineer
                 </Text>
               </Box>
 
-              {/* Badge flottant 2: Architecte IA & RAG */}
+              {/* Badge flottant 2: Fullstack & AI Engineer */}
               <Box
                 className="hero-floating-badge"
                 style={{
@@ -321,7 +321,7 @@ export default function Hero({ locale, hero }) {
                   transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}>
                 <Text size="xs" fw={700} c="cyan.4" style={{ display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
-                  <span>🤖</span> Architecte IA & RAG
+                  <span>🚀</span> Fullstack & AI Engineer
                 </Text>
               </Box>
 
