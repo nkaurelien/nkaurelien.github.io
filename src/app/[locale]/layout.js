@@ -9,6 +9,7 @@ import { getApp } from '@/lib/content';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientEffects from '@/components/layout/ClientEffects';
+import CvFloatingButton from '@/components/layout/CvFloatingButton';
 import { AuthContextProvider } from '@/context/AuthContext';
 
 export function generateStaticParams() {
@@ -36,6 +37,7 @@ export default async function LocaleLayout({ children, params }) {
           <main>{children}</main>
           <Footer app={app} />
           <ClientEffects />
+          <CvFloatingButton />
         </AuthContextProvider>
       </MantineProvider>
     </NextIntlClientProvider>

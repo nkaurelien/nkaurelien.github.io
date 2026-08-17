@@ -3,7 +3,7 @@
 import { useChat as useChatSdk } from '@ai-sdk/react';
 import { useEffect, useRef, useState } from 'react';
 import { Container, Text, Group, Stack, Title, Badge, Tooltip, ActionIcon, SimpleGrid, UnstyledButton, Paper, Button, Avatar, Menu } from '@mantine/core';
-import { IconTrash, IconRobot, IconMessage2Code, IconSparkles, IconBrandGoogle, IconLogout } from '@tabler/icons-react';
+import { IconTrash, IconRobot, IconMessage2Code, IconSparkles, IconBrandGoogle, IconLogout, IconDownload } from '@tabler/icons-react';
 
 // Modular components (SDP style)
 import ChatBox from '@/components/chat/ChatBox';
@@ -30,13 +30,13 @@ const TRANSLATIONS = {
     signInHint: 'Connectez-vous pour préremplir le formulaire de contact.',
     signOut: 'Se déconnecter',
     suggestions: [
+      'Comment télécharger son CV en PDF ?',
       'Qui est Aurélien NKUMBE ?',
       'Quels sont ses projets en IA et RAG ?',
       'Sur quoi travaille-t-il chez DATA2INNOV ?',
       'Quelles sont ses compétences DevSecOps ?',
       'Parle-moi de son parcours (Koree, Smart Data Pay...).',
       'A-t-il un blog ? Où lire ses articles ?',
-      'Quelles technologies maîtrise-t-il ?',
       'Comment le contacter ou prendre rendez-vous ?',
     ],
   },
@@ -59,13 +59,13 @@ const TRANSLATIONS = {
     signInHint: 'Sign in to pre-fill the contact form.',
     signOut: 'Sign out',
     suggestions: [
+      'How can I download his CV in PDF?',
       'Who is Aurélien NKUMBE?',
       'What are his AI and RAG projects?',
       'What is he working on at DATA2INNOV?',
       'What are his DevSecOps skills?',
       'Tell me about his career (Koree, Smart Data Pay...).',
       'Does he have a blog? Where can I read his articles?',
-      'Which technologies does he master?',
       'How can I contact him or book a meeting?',
     ],
   },
@@ -196,6 +196,17 @@ export default function ChatClient({ locale }) {
           <Badge color="green" variant="dot" size="md">
             {t.statusOnline}
           </Badge>
+          <Button
+            component="a"
+            href="/cv.pdf"
+            download="CV_Aurelien_NKUMBE.pdf"
+            variant="light"
+            color="teal"
+            size="xs"
+            radius="xl"
+            leftSection={<IconDownload size={14} />}>
+            {locale === 'en' ? 'CV PDF' : 'CV PDF'}
+          </Button>
           {hasExchanges && (
             <Tooltip label={t.clear}>
               <ActionIcon variant="subtle" color="gray" onClick={handleClearChat} size="md" radius="md" disabled={chatEndpointIsLoading}>

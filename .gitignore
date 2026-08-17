@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Secrets files (sensitive credentials, API keys, etc.)
 .secrets/
+
+# Root temporary PDF builds (tracked under public/ and datasources/)
+/*.pdf

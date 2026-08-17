@@ -1,0 +1,90 @@
+@page {
+  size: A4;
+  margin: 1.5cm 1.8cm;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #1e293b;
+  background-color: #ffffff;
+}
+
+h1 {
+  font-size: 20pt;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 0;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+p strong, h1 + p {
+  color: #3b82f6;
+  font-size: 11pt;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 12pt;
+  font-weight: 700;
+  color: #1e40af;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 3px;
+  margin-top: 14pt;
+  margin-bottom: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+h3 {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 10pt;
+  margin-bottom: 2pt;
+  page-break-after: avoid;
+}
+
+h3 + em {
+  display: block;
+  font-size: 9pt;
+  color: #64748b;
+  margin-bottom: 6pt;
+  font-style: normal;
+  font-weight: 500;
+}
+
+ul {
+  margin-top: 4pt;
+  margin-bottom: 8pt;
+  padding-left: 16pt;
+}
+
+li {
+  margin-bottom: 3pt;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #cbd5e1;
+  margin: 12pt 0;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+code {
+  background-color: #f1f5f9;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 9pt;
+}
+
+.experience, section {
+  page-break-inside: avoid;
+}

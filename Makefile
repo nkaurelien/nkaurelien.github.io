@@ -1,4 +1,4 @@
-.PHONY: dev build format db-schema db-seed db-reseed db-query db-studio db-pull db-generate
+.PHONY: dev build format pdf db-schema db-seed db-reseed db-query db-studio db-pull db-generate
 
 # Start the local development server
 dev:
@@ -11,6 +11,10 @@ build:
 # Format source files with Prettier
 format:
 	yarn format
+
+# Generate PDF from cv.md
+pdf:
+	node scripts/build-pdf.js
 
 # Apply SQL schema migrations to the Supabase database
 db-schema:
@@ -39,3 +43,11 @@ db-pull:
 # Regenerate the local Prisma Client (src/generated/prisma)
 db-generate:
 	npx prisma generate
+
+# Build the production Docker image (including Pandoc & Weasyprint PDF generation)
+docker-build:
+	docker build -t nkaurelien-website:latest .
+
+# Run the containerized app via docker-compose
+docker-up:
+	docker compose up --build -d

@@ -18,6 +18,7 @@
     "db:studio": "prisma studio",
     "db:query": "node scripts/db-query.js",
     "embed": "node scripts/import-projects-supabase.js",
+    "pdf": "node scripts/build-pdf.js",
     "genkit:dev": "genkit start --non-interactive -- yarn dev",
     "genkit:flows": "genkit start --non-interactive -- tsx --watch src/genkit/dev.mjs"
   },
