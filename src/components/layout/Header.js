@@ -65,8 +65,17 @@ export default function Header({ locale, app }) {
   const { user, signOutUser } = useAuth();
   const router = useRouter();
   const [opened, { toggle, close }] = useDisclosure(false);
+  const [scrolled, setScrolled] = useState(false);
   const menu = app?.header?.menu || [];
   const pathname = usePathname() || `/${locale}`;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -194,14 +203,33 @@ export default function Header({ locale, app }) {
   );
 
   return (
-    <header className="site-header">
+    <header
+      className={`site-header ${scrolled ? 'site-header-scrolled' : ''}`}
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        transition: 'all 0.3s ease',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.88)' : 'transparent',
+        boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.06)' : 'none',
+        borderBottom: scrolled ? '1px solid var(--mantine-color-default-border)' : '1px solid transparent',
+      }}>
       <Container size="lg" h={64}>
         <Group h="100%" justify="space-between" wrap="nowrap">
-          <Anchor component={Link} href={`/${locale}`} underline="never" style={{ flexShrink: 0 }}>
-            <Text fw={800} size="lg" c="brand.6" style={{ whiteSpace: 'nowrap' }}>
-              Aurelien<span style={{ color: 'var(--mantine-color-dimmed)' }}>.NKUMBE</span>
-            </Text>
-          </Anchor>
+          <Group gap="xs" align="center">
+            <Anchor component={Link} href={`/${locale}`} underline="never" style={{ flexShrink: 0 }}>
+              <Text fw={800} size="lg" c="brand.6" style={{ whiteSpace: 'nowrap' }}>
+                Aurelien<span style={{ color: 'var(--mantine-color-dimmed)' }}>.NKUMBE</span>
+              </Text>
+            </Anchor>
+            <Group gap={6} align="center" style={{ padding: '2px 8px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+              <span className="status-dot-pulse" style={{ backgroundColor: '#10b981', width: 7, height: 7, borderRadius: '50%', display: 'inline-block' }} />
+              <Text size="11px" fw={600} c="teal.7" style={{ letterSpacing: 0.2 }}>
+                Disponible
+              </Text>
+            </Group>
+          </Group>
 
           <Group component="nav" gap="xs" visibleFrom="md" wrap="nowrap">
             {menuWithAdmin.flatMap(item => {

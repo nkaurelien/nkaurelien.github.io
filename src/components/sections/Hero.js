@@ -232,6 +232,56 @@ export default function Hero({ locale, hero }) {
                 {locale === 'en' ? 'Contact me' : 'Me contacter'}
               </Button>
             </Group>
+
+            {/* Rangée de badges de Stack Technique */}
+            <Group mt="lg" gap={6} justify={{ base: 'center', md: 'flex-start' }} className="hero-tech-pills">
+              {['FastAPI', 'Next.js 15', 'React', 'Python', 'DevSecOps', 'Docker', 'Laravel'].map(tech => (
+                <Badge
+                  key={tech}
+                  size="sm"
+                  radius="xl"
+                  variant="filled"
+                  color="rgba(255, 255, 255, 0.12)"
+                  style={{
+                    color: '#ffffff',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    backdropFilter: 'blur(4px)',
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    fontSize: '0.75rem',
+                  }}>
+                  {tech}
+                </Badge>
+              ))}
+            </Group>
+
+            {/* Métriques d'impact percutantes */}
+            <Group mt="xl" gap="xl" justify={{ base: 'center', md: 'flex-start' }} className="hero-metrics">
+              <Box>
+                <Text fw={800} fz={{ base: 22, sm: 26 }} c="white" style={{ lineHeight: 1 }}>
+                  7+
+                </Text>
+                <Text size="xs" c="rgba(255, 255, 255, 0.75)" mt={2}>
+                  {locale === 'en' ? 'Years Exp.' : "Ans d'expérience"}
+                </Text>
+              </Box>
+              <Box style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.2)', paddingLeft: 16 }}>
+                <Text fw={800} fz={{ base: 22, sm: 26 }} c="white" style={{ lineHeight: 1 }}>
+                  20+
+                </Text>
+                <Text size="xs" c="rgba(255, 255, 255, 0.75)" mt={2}>
+                  {locale === 'en' ? 'Projects Delivered' : 'Projets Web & IA'}
+                </Text>
+              </Box>
+              <Box style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.2)', paddingLeft: 16 }}>
+                <Text fw={800} fz={{ base: 22, sm: 26 }} c="white" style={{ lineHeight: 1 }}>
+                  100k+
+                </Text>
+                <Text size="xs" c="rgba(255, 255, 255, 0.75)" mt={2}>
+                  {locale === 'en' ? 'Users & Records' : 'Utilisateurs & Relevés'}
+                </Text>
+              </Box>
+            </Group>
           </Box>
 
           {hero?.photo?.url && (
@@ -250,6 +300,44 @@ export default function Hero({ locale, hero }) {
                 border: '1px solid rgba(255, 255, 255, 0.15)',
                 boxShadow: 'var(--mantine-shadow-xl)',
               }}>
+              {/* Badge flottant 1: Senior Tech Lead */}
+              <Box
+                style={{
+                  position: 'absolute',
+                  top: -12,
+                  right: -16,
+                  zIndex: 10,
+                  background: 'rgba(15, 23, 42, 0.85)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: '16px',
+                  padding: '6px 12px',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.25)',
+                }}>
+                <Text size="xs" fw={700} c="teal.4" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <span>⚡</span> Senior Tech Lead
+                </Text>
+              </Box>
+
+              {/* Badge flottant 2: Architecte IA & RAG */}
+              <Box
+                style={{
+                  position: 'absolute',
+                  bottom: -12,
+                  left: -16,
+                  zIndex: 10,
+                  background: 'rgba(15, 23, 42, 0.85)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: '16px',
+                  padding: '6px 12px',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.25)',
+                }}>
+                <Text size="xs" fw={700} c="cyan.4" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <span>🤖</span> Architecte IA & RAG
+                </Text>
+              </Box>
+
               {/* Radial glow glow behind the photo */}
               <Box
                 style={{
