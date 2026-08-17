@@ -4,8 +4,8 @@
     "items": [
         {
             "icon": "code",
-            "title": "Développement Fullstack Web & Mobile",
-            "text": "Conception et développement d'applications web et mobiles performantes, de l'analyse à la mise en production : Next.js / React, FastAPI / Laravel, Flutter.",
+            "title": "Tech Lead & Développement Fullstack",
+            "text": "Conception, architecture et développement d'applications web et mobiles performantes, de l'analyse à la mise en production : Next.js / React / Angular, FastAPI / Laravel, Flutter.",
             "active": true
         },
         {
