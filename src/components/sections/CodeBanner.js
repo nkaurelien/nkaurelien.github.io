@@ -58,30 +58,34 @@ export default function CodeBanner({ hero }) {
   return (
     <Box
       component="section"
-      py={20}
+      pb={{ base: 40, md: 54 }}
+      pt={{ base: 10, md: 15 }}
       style={{
-        background: 'var(--mantine-color-body)',
-        borderTop: '1px solid var(--mantine-color-default-border)',
-        borderBottom: '1px solid var(--mantine-color-default-border)',
+        position: 'relative',
+        background: 'linear-gradient(180deg, #534be8 0%, rgba(99, 102, 241, 0.75) 25%, rgba(99, 102, 241, 0.15) 65%, var(--mantine-color-body) 100%)',
+        marginTop: '-2px',
+        overflow: 'hidden',
       }}>
       <Container size="lg">
         <Box
-          py={14}
-          px={24}
+          py={16}
+          px={{ base: 20, sm: 32 }}
           style={{
             maxWidth: 820,
             margin: '0 auto',
-            background: 'var(--mantine-color-default-hover)',
-            border: '1px solid var(--mantine-color-default-border)',
-            borderRadius: '20px',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
+            background: 'light-dark(rgba(255, 255, 255, 0.92), rgba(26, 27, 30, 0.92))',
+            border: '1.5px solid rgba(99, 102, 241, 0.25)',
+            borderRadius: '24px',
+            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(99, 102, 241, 0.15)',
             textAlign: 'center',
+            backdropFilter: 'blur(16px)',
+            transition: 'all 0.3s ease',
           }}>
           <Text
             fz={{ base: 14, sm: 17 }}
             fw={600}
             c="var(--mantine-color-text)"
-            style={{ lineHeight: '1.4', fontFamily: 'monospace, var(--mantine-font-family)' }}>
+            style={{ lineHeight: '1.45', fontFamily: 'var(--mantine-font-family-monospace, monospace)' }}>
             <span key={index} className="rotate-text-anim">
               {renderSubtitleContent(hero?.subtitle?.start, hero?.subtitle?.end, rotates[index])}
             </span>

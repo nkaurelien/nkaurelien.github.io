@@ -19,6 +19,7 @@ import {
   useMantineColorScheme,
   useComputedColorScheme,
   Divider,
+  Box,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconSun, IconMoonStars, IconSparkles, IconChevronDown, IconLayoutDashboard, IconLogout, IconDownload } from '@tabler/icons-react';
@@ -215,34 +216,33 @@ export default function Header({ locale, app }) {
         boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.06)' : 'none',
         borderBottom: scrolled ? '1px solid var(--mantine-color-default-border)' : '1px solid transparent',
       }}>
-      <Container size="lg" h={64}>
-        <Group h="100%" justify="space-between" wrap="nowrap">
-          <Group gap="xs" align="center">
-            <Anchor component={Link} href={`/${locale}`} underline="never" style={{ flexShrink: 0 }}>
+      <Container fluid h={64} px={{ base: 'md', sm: 'xl', md: 32 }}>
+        <Group h="100%" justify="space-between" wrap="nowrap" align="center">
+          {/* 1. Logo à Gauche */}
+          <Box style={{ flex: '1 1 0', minWidth: 0 }}>
+            <Anchor component={Link} href={`/${locale}`} underline="never" style={{ display: 'inline-block' }}>
               <Text fw={800} size="lg" c="brand.6" style={{ whiteSpace: 'nowrap' }}>
                 Aurelien<span style={{ color: 'var(--mantine-color-dimmed)' }}>.NKUMBE</span>
               </Text>
             </Anchor>
-            <Group gap={6} align="center" style={{ padding: '2px 8px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
-              <span className="status-dot-pulse" style={{ backgroundColor: '#10b981', width: 7, height: 7, borderRadius: '50%', display: 'inline-block' }} />
-              <Text size="11px" fw={600} c="teal.7" style={{ letterSpacing: 0.2 }}>
-                Disponible
-              </Text>
-            </Group>
-          </Group>
+          </Box>
 
-          <Group component="nav" gap="xs" visibleFrom="md" wrap="nowrap">
+          {/* 2. Navigation Principale Centrée au milieu */}
+          <Group component="nav" gap="xs" visibleFrom="md" wrap="nowrap" justify="center" style={{ flex: '0 1 auto' }}>
             {menuWithAdmin.flatMap(item => {
               if (item.label === 'Admin') {
                 return [renderAdminMenu()];
               }
               const link = renderLink(item);
-              // Sépare le bloc "Explorer" du bloc "Échanger" (démarre à l'Assistant IA).
               if (item.link === '/chat') {
                 return [<Divider key="divider-engage" orientation="vertical" h={16} style={{ alignSelf: 'center' }} />, link];
               }
               return [link];
             })}
+          </Group>
+
+          {/* 3. Actions / Outils à Droite */}
+          <Group gap="xs" visibleFrom="md" wrap="nowrap" justify="flex-end" style={{ flex: '1 1 0', minWidth: 0 }}>
             {user && !isAdminUser && renderUserMenu()}
             <Menu position="bottom-end" shadow="md" width={280} withinPortal>
               <Menu.Target>
@@ -284,6 +284,7 @@ export default function Header({ locale, app }) {
             <ColorSchemeToggle />
           </Group>
 
+          {/* Menu Burger sur mobile */}
           <Group gap="xs" hiddenFrom="md">
             <ColorSchemeToggle />
             <Burger opened={opened} onClick={toggle} size="sm" />

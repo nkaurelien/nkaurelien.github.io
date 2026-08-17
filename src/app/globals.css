@@ -21,6 +21,11 @@ a {
   background: linear-gradient(135deg, #312e81 0%, #4f46e5 55%, #6366f1 100%);
 }
 
+.hero-floating-badge:hover {
+  transform: translateY(-5px) scale(1.08) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(129, 140, 248, 0.4) !important;
+}
+
 .section-muted {
   background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
 }
