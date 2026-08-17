@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { getSection, getSlider } from '@/lib/content';
 import { getMediumArticles, MEDIUM_PROFILE_URL } from '@/lib/medium';
 import Hero from '@/components/sections/Hero';
+import CodeBanner from '@/components/sections/CodeBanner';
 import Services from '@/components/sections/Services';
 import Skills from '@/components/sections/Skills';
 import Workflow from '@/components/sections/Workflow';
@@ -31,6 +32,7 @@ export default async function HomePage({ params }) {
   return (
     <>
       <Hero locale={locale} hero={hero} />
+      <CodeBanner hero={hero} />
       <Services services={services} />
       <Skills skills={skills} />
       <Workflow workflow={workflow} />
