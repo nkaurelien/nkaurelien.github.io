@@ -194,25 +194,25 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
         }}>
         {/* Header personnalisé avec contrôles & téléchargement */}
         <Box p="md" style={{ borderBottom: '1px solid var(--mantine-color-default-border)', backgroundColor: 'var(--mantine-color-default-hover)' }}>
-          <Group justify="space-between" align="center" wrap="wrap" gap="sm">
-            <Group gap="xs">
-              <IconEye size={20} style={{ color: 'var(--mantine-color-teal-6)' }} />
-              <Box>
-                <Group gap={8} align="center">
-                  <Text fw={700} size="md" style={{ lineHeight: 1.2 }}>
+          <Group justify="space-between" align="center" wrap="nowrap" gap="sm">
+            <Group gap="xs" style={{ flex: 1, minWidth: 0 }} wrap="nowrap">
+              <IconEye size={20} style={{ color: 'var(--mantine-color-teal-6)', flexShrink: 0 }} />
+              <Box style={{ flex: 1, minWidth: 0 }}>
+                <Group gap={8} align="center" wrap="nowrap">
+                  <Text fw={700} size="md" truncate="end" style={{ lineHeight: 1.2, flex: 1, minWidth: 0 }}>
                     {selectedCv.title}
                   </Text>
-                  <Badge size="xs" variant="light" color="teal">
+                  <Badge size="xs" variant="light" color="teal" style={{ flexShrink: 0 }}>
                     {selectedCv.badge}
                   </Badge>
                 </Group>
-                <Text size="xs" c="dimmed">
+                <Text size="xs" c="dimmed" truncate="end">
                   Prévisualisation Markdown interactive & export PDF
                 </Text>
               </Box>
             </Group>
 
-            <Group gap="xs">
+            <Group gap="xs" wrap="nowrap" style={{ flexShrink: 0 }}>
               <Tooltip label={clipboard.copied ? 'Copié !' : 'Copier le Markdown'} withArrow>
                 <ActionIcon variant="light" color={clipboard.copied ? 'teal' : 'gray'} onClick={() => clipboard.copy(content)} size="md" radius="md">
                   {clipboard.copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
