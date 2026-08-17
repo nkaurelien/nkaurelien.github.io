@@ -5,43 +5,43 @@
         {
             "icon": "code",
             "title": "Tech Lead & Développement Fullstack",
-            "text": "Conception, architecture et développement d'applications web et mobiles performantes, de l'analyse à la mise en production : Next.js / React / Angular, FastAPI / Laravel, Flutter.",
+            "text": "Conception, architecture et développement d'applications web & mobiles performantes : Next.js 15, React, Angular, FastAPI, Laravel, Flutter, REST API & OAuth2.",
             "active": true
         },
         {
             "icon": "devops",
             "title": "DevSecOps & Cloud",
-            "text": "Industrialisation et déploiement : CI/CD GitLab, Docker, Ansible, Terraform, Kubernetes, observabilité (ELK) et sécurité applicative (Snyk, analyse statique).",
+            "text": "Industrialisation et déploiement cloud : CI/CD GitLab, Docker, Ansible, Terraform, Kubernetes, observabilité (Grafana, Loki, ELK) et sécurité applicative (Snyk, SAST).",
             "active": true
         },
         {
             "icon": "ai",
             "title": "IA & Applications RAG",
-            "text": "Développement d'assistants et de chatbots métiers augmentés par l'IA : LangChain, LiteLLM, OpenAI / Ollama et bases de connaissances vectorielles.",
+            "text": "Développement d'assistants et chatbots métiers augmentés par l'IA : LangChain, LiteLLM, OpenAI, Ollama / Qwen, bases vectorielles (Qdrant, pgvector) & RAG.",
             "active": true
         },
         {
             "icon": "aidev",
-            "title": "Développement augmenté par l'IA & agentique",
-            "text": "J'accélère et je fiabilise tout le cycle de développement (SDLC) grâce au dev agentique (Claude) et au Spec-Driven Development (GitHub Spec Kit) : de la spécification à la livraison, avec qualité et vélocité.",
+            "title": "Développement Augmenté par l'IA & Agentique",
+            "text": "Accélération du cycle SDLC via le dev agentique (Claude 3.7 / Claude Code, Antigravity) et le Spec-Driven Development (GitHub SpecKit) : de la spec à la prod.",
             "active": true
         },
         {
             "icon": "iot",
-            "title": "IoT & Données de santé",
-            "text": "Intégration d'objets connectés (EmotiBit, Withings) et de pipelines temps réel, conformes aux normes FHIR / HL7 du domaine de la santé.",
+            "title": "IoT & Pipelines Temps Réel",
+            "text": "Pipelines de données streaming (Redpanda / Apache Kafka), captation d'objets connectés (EmotiBit, Withings) et conformité santé (FHIR / HL7).",
             "active": true
         },
         {
             "icon": "architecture",
             "title": "Architecture, Audit & MOE",
-            "text": "Analyse et conception (UML), choix technologiques, sécurité, rôle de Tech Lead / maître d'œuvre, revue de code et résolution de problèmes complexes.",
+            "text": "Analyse et modélisation d'architecture (UML, Merise), audits de performance et sécurité, choix technologiques, rôle de Tech Lead et revue de code.",
             "active": true
         },
         {
             "icon": "training",
-            "title": "Formation & Documentation",
-            "text": "Montée en compétence d'équipes et d'apprenants sur les technologies web / cloud, et rédaction de documentations techniques et guides d'utilisation.",
+            "title": "Formation & Documentation Technique",
+            "text": "Montée en compétence d'équipes (Web, DevSecOps, IA), spécifications d'API (OpenAPI / Swagger, Postman) et rédactions de guides techniques.",
             "active": true
         }
     ]

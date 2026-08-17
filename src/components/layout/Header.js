@@ -20,6 +20,7 @@ import {
   useComputedColorScheme,
   Divider,
   Box,
+  Badge,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconSun, IconMoonStars, IconSparkles, IconChevronDown, IconLayoutDashboard, IconLogout, IconDownload } from '@tabler/icons-react';

@@ -5,43 +5,43 @@
         {
             "icon": "code",
             "title": "Tech Lead & Fullstack Development",
-            "text": "Design, architecture, and development of high-performance web and mobile apps, from analysis to production: Next.js / React / Angular, FastAPI / Laravel, Flutter.",
+            "text": "Design, architecture, and development of high-performance web & mobile apps: Next.js 15, React, Angular, FastAPI, Laravel, Flutter, REST API & OAuth2.",
             "active": true
         },
         {
             "icon": "devops",
             "title": "DevSecOps & Cloud",
-            "text": "Industrialization and deployment: GitLab CI/CD, Docker, Ansible, Terraform, Kubernetes, observability (ELK) and application security (Snyk, static analysis).",
+            "text": "Industrialization & cloud deployment: GitLab CI/CD, Docker, Ansible, Terraform, Kubernetes, observability (Grafana, Loki, ELK) and application security (Snyk, SAST).",
             "active": true
         },
         {
             "icon": "ai",
             "title": "AI & RAG Applications",
-            "text": "Development of AI-augmented assistants and business chatbots: LangChain, LiteLLM, OpenAI / Ollama and vector knowledge bases.",
+            "text": "Development of AI-augmented assistants and chatbots: LangChain, LiteLLM, OpenAI, Ollama / Qwen, vector databases (Qdrant, pgvector) & RAG pipelines.",
             "active": true
         },
         {
             "icon": "aidev",
             "title": "AI-Augmented & Agentic Development",
-            "text": "I speed up and strengthen the whole software lifecycle (SDLC) through agentic development (Claude) and Spec-Driven Development (GitHub Spec Kit): from spec to delivery, with quality and velocity.",
+            "text": "Accelerating the SDLC lifecycle via agentic dev (Claude 3.7 / Claude Code, Antigravity) and Spec-Driven Development (GitHub SpecKit): from spec to production.",
             "active": true
         },
         {
             "icon": "iot",
-            "title": "IoT & Health Data",
-            "text": "Integration of connected devices (EmotiBit, Withings) and real-time pipelines, compliant with the FHIR / HL7 healthcare standards.",
+            "title": "IoT & Real-Time Pipelines",
+            "text": "Real-time streaming data pipelines (Redpanda / Apache Kafka), connected sensor integration (EmotiBit, Withings) and healthcare standards (FHIR / HL7).",
             "active": true
         },
         {
             "icon": "architecture",
             "title": "Architecture, Audit & Tech Lead",
-            "text": "Analysis and design (UML), technology choices, security, Tech Lead / project ownership role, code reviews and complex problem solving.",
+            "text": "Architecture modeling (UML, Merise), performance & security audits, tech stack selection, Tech Lead role and deep code reviews.",
             "active": true
         },
         {
             "icon": "training",
-            "title": "Training & Documentation",
-            "text": "Upskilling of teams and learners on web / cloud technologies, plus writing technical documentation and user guides.",
+            "title": "Training & Technical Documentation",
+            "text": "Upskilling teams (Web, DevSecOps, AI), API specifications (OpenAPI / Swagger, Postman), technical documentation, and best practice workshops.",
             "active": true
         }
     ]
