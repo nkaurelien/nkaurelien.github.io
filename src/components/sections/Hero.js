@@ -203,18 +203,7 @@ export default function Hero({ locale, hero }) {
               ta={{ base: 'center', md: 'left' }}
               dangerouslySetInnerHTML={{ __html: decode(hero?.title) }}
             />
-            <Text
-              className="hero-subtitle"
-              mt="lg"
-              fz={{ base: 18, sm: 22 }}
-              fw={500}
-              mih={{ base: 90, xs: 70, sm: 45 }}
-              ta={{ base: 'center', md: 'left' }}
-              style={{ lineHeight: '1.4' }}>
-              <span key={index} className="rotate-text-anim">
-                {renderSubtitleContent(hero?.subtitle?.start, hero?.subtitle?.end, rotates[index])}
-              </span>
-            </Text>
+
             <Group mt="xl" gap="sm" justify={{ base: 'center', md: 'flex-start' }} className="hero-buttons-group">
               {hero?.button && (
                 <Button
@@ -382,6 +371,34 @@ export default function Hero({ locale, hero }) {
             </Box>
           )}
         </Group>
+
+        {/* Bandeau défilant <code>...</code> centré au bas de la section Hero */}
+        {rotates.length > 0 && (
+          <Box
+            mt={44}
+            py={12}
+            px={24}
+            style={{
+              maxWidth: 780,
+              margin: '44px auto 0',
+              background: 'rgba(15, 23, 42, 0.45)',
+              backdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255, 255, 255, 0.18)',
+              borderRadius: '24px',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+              textAlign: 'center',
+            }}>
+            <Text
+              className="hero-subtitle"
+              fz={{ base: 15, sm: 18 }}
+              fw={600}
+              style={{ lineHeight: '1.4', color: '#e2e8f0' }}>
+              <span key={index} className="rotate-text-anim">
+                {renderSubtitleContent(hero?.subtitle?.start, hero?.subtitle?.end, rotates[index])}
+              </span>
+            </Text>
+          </Box>
+        )}
       </Container>
     </Box>
   );
