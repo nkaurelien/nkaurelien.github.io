@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container, Title, Text, Button, Group, Box, Badge, Stack } from '@mantine/core';
+import CodeBanner from './CodeBanner';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -125,7 +126,8 @@ export default function Hero({ locale, hero }) {
       ref={containerRef}
       className="hero-gradient"
       c="white"
-      py={{ base: 50, sm: 70, md: 90 }}
+      pt={{ base: 50, sm: 75, md: 95 }}
+      pb={{ base: 70, sm: 105, md: 135 }}
       style={{ overflow: 'hidden' }}>
       <Container size="lg">
         <Group justify={{ base: 'center', md: 'space-between' }} align="center" wrap="wrap" className="hero-parent-group" w="100%">
@@ -213,28 +215,6 @@ export default function Hero({ locale, hero }) {
                 </Button>
               </Group>
 
-              {/* Rangée de badges de Stack Technique */}
-              <Group mt="xs" gap={6} justify={{ base: 'center', md: 'flex-start' }} className="hero-tech-pills">
-                {['FastAPI', 'Next.js 15', 'React', 'Python', 'DevSecOps', 'Docker', 'Laravel'].map(tech => (
-                  <Badge
-                    key={tech}
-                    size="sm"
-                    radius="xl"
-                    variant="filled"
-                    color="rgba(255, 255, 255, 0.12)"
-                    style={{
-                      color: '#ffffff',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                      backdropFilter: 'blur(4px)',
-                      textTransform: 'none',
-                      fontWeight: 500,
-                      fontSize: '0.75rem',
-                    }}>
-                    {tech}
-                  </Badge>
-                ))}
-              </Group>
-
               {/* Métriques d'impact percutantes */}
               <Group mt="sm" gap="xl" justify={{ base: 'center', md: 'flex-start' }} className="hero-metrics">
                 <Box>
@@ -262,6 +242,31 @@ export default function Hero({ locale, hero }) {
                   </Text>
                 </Box>
               </Group>
+
+              {/* Écosystème & Stack de Confiance (Style SkyMedia : Petits badges rectangles discrets) */}
+              <Box mt="xs" pt="xs" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', width: '100%' }}>
+                <Text size="xs" fw={600} c="rgba(255, 255, 255, 0.65)" tt="uppercase" style={{ letterSpacing: 0.8 }} mb={6}>
+                  {locale === 'en' ? 'Core Ecosystem' : 'Écosystème & Stack de Confiance'}
+                </Text>
+                <Group gap="xs" align="center" wrap="wrap" justify={{ base: 'center', md: 'flex-start' }}>
+                  {['🤖 Claude IA', '⚙️ SpecKit', '⚛️ Next.js 15', '🅰️ Angular', '🔴 Laravel', '⚡ REST API', '⚡ FastAPI', '🔐 OAuth2', '🔒 DevSecOps', '🐳 Docker', '🦊 GitLab CI', '🧱 Terraform'].map(partner => (
+                    <Text
+                      key={partner}
+                      size="xs"
+                      fw={600}
+                      c="rgba(255, 255, 255, 0.9)"
+                      style={{
+                        padding: '3px 9px',
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        borderRadius: '6px',
+                        border: '1px solid rgba(255, 255, 255, 0.18)',
+                        fontSize: '0.72rem',
+                      }}>
+                      {partner}
+                    </Text>
+                  ))}
+                </Group>
+              </Box>
             </Stack>
           </Box>
 
@@ -275,27 +280,21 @@ export default function Hero({ locale, hero }) {
                 flex: '0 0 auto',
                 position: 'relative',
                 display: 'inline-block',
-                borderRadius: '30px',
-                padding: '10px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                backdropFilter: 'blur(12px)',
-                border: '1.5px solid rgba(255, 255, 255, 0.22)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.3)',
               }}>
               {/* Badge flottant 1: Senior Tech Lead */}
               <Box
                 className="hero-floating-badge"
                 style={{
                   position: 'absolute',
-                  top: -10,
+                  top: -12,
                   right: -12,
                   zIndex: 10,
-                  background: 'rgba(15, 23, 42, 0.92)',
+                  background: 'rgba(15, 23, 42, 0.95)',
                   backdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(16, 185, 129, 0.45)',
+                  border: '1px solid rgba(16, 185, 129, 0.5)',
                   borderRadius: '16px',
-                  padding: '6px 13px',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.35)',
+                  padding: '6px 14px',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
                   cursor: 'pointer',
                   transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}>
@@ -309,15 +308,15 @@ export default function Hero({ locale, hero }) {
                 className="hero-floating-badge"
                 style={{
                   position: 'absolute',
-                  bottom: -10,
+                  bottom: -12,
                   left: -12,
                   zIndex: 10,
-                  background: 'rgba(15, 23, 42, 0.92)',
+                  background: 'rgba(15, 23, 42, 0.95)',
                   backdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(6, 182, 212, 0.45)',
+                  border: '1px solid rgba(6, 182, 212, 0.5)',
                   borderRadius: '16px',
-                  padding: '6px 13px',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.35)',
+                  padding: '6px 14px',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
                   cursor: 'pointer',
                   transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}>
@@ -326,42 +325,44 @@ export default function Hero({ locale, hero }) {
                 </Text>
               </Box>
 
-              {/* Radial glow background aura */}
+              {/* Halo d'ambiance diffus en arrière-plan */}
               <Box
                 style={{
                   position: 'absolute',
-                  top: '-15%',
-                  left: '-15%',
-                  right: '-15%',
-                  bottom: '-15%',
+                  top: '-8%',
+                  left: '-8%',
+                  right: '-8%',
+                  bottom: '-8%',
                   background: 'radial-gradient(circle, rgba(129, 140, 248, 0.45) 0%, rgba(99, 102, 241, 0) 70%)',
-                  filter: 'blur(24px)',
+                  filter: 'blur(20px)',
                   zIndex: 0,
                   pointerEvents: 'none',
                 }}
               />
 
+              {/* Photo Épurée Sans Cadre (Intégration directe avec ombre profonde) */}
               <Box
                 style={{
-                  borderRadius: '22px',
+                  borderRadius: '24px',
                   overflow: 'hidden',
                   position: 'relative',
                   zIndex: 1,
                   display: 'block',
                   lineHeight: 0,
-                  border: '1.5px solid rgba(255, 255, 255, 0.3)',
-                  boxShadow: 'inset 0 0 20px rgba(0, 0, 0, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 32px 75px -12px rgba(0, 0, 0, 0.65), 0 12px 30px -8px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.3)',
                 }}>
                 <Image
                   src={`/${hero.photo.url.replace(/^\//, '')}`}
                   alt={hero.photo.alt || 'Aurelien NKUMBE'}
-                  width={260}
-                  height={290}
+                  width={290}
+                  height={350}
                   className="hero-photo-img"
                   style={{
                     objectFit: 'cover',
                     maxWidth: '100%',
-                    height: '290px',
+                    width: '290px',
+                    height: '350px',
                     transition: 'transform 0.5s ease',
                     display: 'block',
                   }}

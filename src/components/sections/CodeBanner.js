@@ -56,33 +56,25 @@ export default function CodeBanner({ hero }) {
   if (!rotates || rotates.length === 0) return null;
 
   return (
-    <Box
-      component="section"
-      pb={{ base: 40, md: 54 }}
-      pt={{ base: 10, md: 15 }}
-      style={{
-        position: 'relative',
-        background: 'linear-gradient(180deg, #534be8 0%, rgba(99, 102, 241, 0.75) 25%, rgba(99, 102, 241, 0.15) 65%, var(--mantine-color-body) 100%)',
-        marginTop: '-2px',
-        overflow: 'hidden',
-      }}>
+    <Box component="div" style={{ position: 'relative', zIndex: 30, width: '100%', marginTop: '-32px', marginBottom: '16px' }}>
       <Container size="lg">
         <Box
-          py={16}
-          px={{ base: 20, sm: 32 }}
+          py={14}
+          px={{ base: 18, sm: 30 }}
           style={{
-            maxWidth: 820,
+            maxWidth: 800,
             margin: '0 auto',
-            background: 'light-dark(rgba(255, 255, 255, 0.92), rgba(26, 27, 30, 0.92))',
-            border: '1.5px solid rgba(99, 102, 241, 0.25)',
+            position: 'relative',
+            zIndex: 30,
+            background: 'light-dark(rgba(255, 255, 255, 0.98), rgba(15, 23, 42, 0.96))',
+            border: '2px solid rgba(255, 255, 255, 0.95)',
             borderRadius: '24px',
-            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(99, 102, 241, 0.15)',
+            boxShadow: '0 24px 50px rgba(15, 23, 42, 0.35), 0 10px 25px rgba(0, 0, 0, 0.25)',
             textAlign: 'center',
             backdropFilter: 'blur(16px)',
-            transition: 'all 0.3s ease',
           }}>
           <Text
-            fz={{ base: 14, sm: 17 }}
+            fz={{ base: 14, sm: 16 }}
             fw={600}
             c="var(--mantine-color-text)"
             style={{ lineHeight: '1.45', fontFamily: 'var(--mantine-font-family-monospace, monospace)' }}>

@@ -44,7 +44,7 @@ export default function Services({ services }) {
   );
 
   return (
-    <Container component="section" ref={containerRef} size="lg" py={64}>
+    <Container component="section" ref={containerRef} size="lg" pt={{ base: 60, sm: 80, md: 100 }} pb={64}>
       <Title order={2} ta="center">
         {services?.title || 'Mes Services'}
       </Title>
