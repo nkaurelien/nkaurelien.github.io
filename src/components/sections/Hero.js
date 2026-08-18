@@ -7,6 +7,7 @@ import { Container, Title, Text, Button, Group, Box, Badge, Stack } from '@manti
 import CodeBanner from './CodeBanner';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import VantaWaveBackground from '../layout/VantaWaveBackground';
 
 function decode(str = '') {
   return str
@@ -128,8 +129,18 @@ export default function Hero({ locale, hero }) {
       c="white"
       pt={{ base: 50, sm: 75, md: 95 }}
       pb={{ base: 70, sm: 105, md: 135 }}
-      style={{ overflow: 'hidden' }}>
-      <Container size="lg">
+      style={{ overflow: 'hidden', position: 'relative' }}>
+      <VantaWaveBackground
+        effectType="fog"
+        highlightColor="#ff6f0f"
+        midtoneColor="#ff5032"
+        lowlightColor="#463b72"
+        baseColor="#1e1b4b"
+        speed={1.2}
+        zoom={0.95}
+        opacity={0.85}
+      />
+      <Container size="lg" style={{ position: 'relative', zIndex: 1 }}>
         <Group justify={{ base: 'center', md: 'space-between' }} align="center" wrap="wrap" className="hero-parent-group" w="100%">
           <Box style={{ flex: '1 1 340px', maxWidth: 600 }}>
             {hero?.badge && (
