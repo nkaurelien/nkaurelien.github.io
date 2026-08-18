@@ -5,7 +5,7 @@ import { Container, Title, Text, SimpleGrid, Card, Badge, Group } from '@mantine
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { animate, stagger } from 'animejs';
+import { animate, stagger, spring } from 'animejs';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -36,15 +36,15 @@ export default function Skills({ skills }) {
           start: 'top 80%',
           toggleActions: 'play none none none',
           onEnter: () => {
-            // Anime.js v4 stagger animation on badges inside cards when section enters viewport
+            // Anime.js v4 animate(target, options) stagger animation on badges inside cards
             const badges = containerRef.current?.querySelectorAll('.anime-skill-badge');
             if (badges && badges.length > 0) {
-              animate({
-                targets: badges,
-                scale: [0.7, 1],
+              animate(badges, {
+                scale: [0.5, 1],
                 opacity: [0, 1],
-                delay: stagger(40, { from: 'start' }),
-                easing: 'spring(1, 80, 10, 0)',
+                delay: stagger(40),
+                duration: 600,
+                ease: 'outBack',
               });
             }
           },
@@ -60,12 +60,11 @@ export default function Skills({ skills }) {
   );
 
   const handleBadgeHover = e => {
-    animate({
-      targets: e.currentTarget,
-      scale: [1, 1.15, 1],
-      rotate: [0, 5, -3, 0],
-      duration: 650,
-      easing: 'spring(1, 90, 8, 0)',
+    animate(e.currentTarget, {
+      scale: [1, 1.22, 1],
+      rotate: [0, 6, -4, 0],
+      duration: 600,
+      ease: spring({ mass: 1, stiffness: 120, damping: 10 }),
     });
   };
 
@@ -100,7 +99,7 @@ export default function Skills({ skills }) {
                     radius="sm"
                     size="md"
                     onMouseEnter={handleBadgeHover}
-                    style={{ cursor: 'pointer', transition: 'box-shadow 0.2s ease' }}>
+                    style={{ cursor: 'pointer', display: 'inline-block', transition: 'box-shadow 0.2s ease' }}>
                     {tech}
                   </Badge>
                 ))}
