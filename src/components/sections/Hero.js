@@ -8,6 +8,7 @@ import CodeBanner from './CodeBanner';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import VantaWaveBackground from '../layout/VantaWaveBackground';
+import anime from 'animejs';
 
 function decode(str = '') {
   return str
@@ -266,12 +267,23 @@ export default function Hero({ locale, hero }) {
                       size="xs"
                       fw={600}
                       c="rgba(255, 255, 255, 0.9)"
+                      onMouseEnter={e => {
+                        anime({
+                          targets: e.currentTarget,
+                          scale: [1, 1.15, 1],
+                          translateY: [0, -3, 0],
+                          duration: 600,
+                          easing: 'spring(1, 90, 10, 0)',
+                        });
+                      }}
                       style={{
                         padding: '3px 9px',
                         background: 'rgba(255, 255, 255, 0.08)',
                         borderRadius: '6px',
                         border: '1px solid rgba(255, 255, 255, 0.18)',
                         fontSize: '0.72rem',
+                        cursor: 'pointer',
+                        display: 'inline-block',
                       }}>
                       {partner}
                     </Text>
