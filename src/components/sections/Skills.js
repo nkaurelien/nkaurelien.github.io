@@ -59,15 +59,6 @@ export default function Skills({ skills }) {
     { scope: containerRef }
   );
 
-  const handleBadgeHover = e => {
-    animate(e.currentTarget, {
-      translateY: [0, -2, 0],
-      scale: [1, 1.04, 1],
-      duration: 350,
-      ease: 'outQuad',
-    });
-  };
-
   if (groups.length === 0) return null;
 
   return (
@@ -97,9 +88,7 @@ export default function Skills({ skills }) {
                     variant="light"
                     color="brand"
                     radius="sm"
-                    size="md"
-                    onMouseEnter={handleBadgeHover}
-                    style={{ cursor: 'pointer', display: 'inline-block', transition: 'all 0.2s ease' }}>
+                    size="md">
                     {tech}
                   </Badge>
                 ))}
