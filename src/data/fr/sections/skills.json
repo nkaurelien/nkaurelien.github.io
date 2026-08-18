@@ -1,55 +1,55 @@
 {
     "title": "Compétences & Stack technique",
-    "subtitle": "Les technologies et méthodes que je pratique au quotidien",
+    "subtitle": "Les technologies, frameworks et méthodes que je maîtrise et pratique au quotidien",
     "groups": [
         {
-            "title": "Langages & Frameworks",
-            "items": ["Python", "FastAPI", "PHP / Laravel", "TypeScript", "Node.js", "NestJS"],
+            "title": "Langages & Frameworks Backend",
+            "items": ["Python 3.12", "FastAPI", "PHP 8.x (Laravel)", "Filament PHP", "TypeScript", "Node.js", "NestJS", "Livewire & AlpineJS"],
             "active": true
         },
         {
-            "title": "Frontend",
-            "items": ["Next.js", "React", "Angular", "Vue.js", "Flutter", "Electron", "Mantine UI"],
+            "title": "Frontend & Mobile",
+            "items": ["Next.js 15", "React", "Angular 14+", "Vue.js", "Flutter (Dart)", "Electron.js", "Mantine UI", "Tailwind CSS"],
             "active": true
         },
         {
-            "title": "DevSecOps & Cloud",
-            "items": ["Docker", "GitLab CI/CD", "Ansible", "Terraform", "Kubernetes", "Nginx", "AWS", "GCP", "Azure", "Snyk"],
+            "title": "DevSecOps & Cloud Native",
+            "items": ["Docker & Compose", "Docker Swarm", "Kubernetes", "Argo CD", "GitLab CI/CD", "GitHub Actions", "Ansible", "Terraform", "AWS", "GCP", "Azure", "Snyk (SAST)"],
             "active": true
         },
         {
-            "title": "Sécurité & Réseau",
-            "items": ["Reverse proxy (Nginx, Traefik, Kong)", "En-têtes de sécurité HTTP", "TLS / HTTPS (Let's Encrypt)", "JWT / OAuth2", "LDAP + RBAC", "Rate limiting / anti-DDoS"],
+            "title": "IA, RAG & Data Engineering",
+            "items": ["RAG (Architecture)", "Fine-tuning LLM", "LangChain", "LiteLLM", "OpenAI API / Ollama", "PySpark 3 & Databricks", "BeautifulSoup (Scraping)", "Google Cloud Vision API"],
             "active": true
         },
         {
-            "title": "Administration système (SysOps)",
-            "items": ["Ubuntu / Linux", "systemd", "Bash / shell scripts", "Cron", "Supervisor", "SSH", "ISPConfig / Plesk"],
+            "title": "IoT, Santé & Streaming",
+            "items": ["Normes FHIR / HL7", "Apache Kafka", "Redpanda", "IoT (EmotiBit, ESP32, Bangle.js)", "Withings Cloud API", "WebSockets", "Bluetooth Low Energy (BLE)"],
             "active": true
         },
         {
-            "title": "Observabilité (Run)",
-            "items": ["Grafana", "Loki", "Alloy", "Netdata", "Prometheus", "SigNoz", "ELK", "Sentry"],
+            "title": "Bases de Données & Vectoriel",
+            "items": ["PostgreSQL", "Supabase (pgvector)", "Qdrant", "Elasticsearch", "MySQL", "CouchDB", "MongoDB Atlas", "Oracle 23ai", "Airtable"],
             "active": true
         },
         {
-            "title": "Data, IA & IoT",
-            "items": ["LangChain", "LiteLLM", "OpenAI / Ollama", "Streamlit", "PySpark", "ELK", "Kafka", "IoT (EmotiBit, Withings)", "FHIR / HL7"],
+            "title": "Sécurité, Gateway & Réseau",
+            "items": ["Kong API Gateway", "Reverse proxy (Nginx, Traefik)", "Auth0 / OAuth2 / JWT", "Active Directory (LDAP + RBAC)", "Let's Encrypt TLS", "Rate Limiting & Anti-DDoS"],
             "active": true
         },
         {
-            "title": "Développement augmenté par l'IA",
-            "items": ["Claude (agentic dev)", "Claude Code", "GitHub Spec Kit", "Spec-Driven Development", "MCP", "Prompt engineering"],
+            "title": "Observabilité & Supervision",
+            "items": ["SigNoz (APM)", "ELK (Logstash, Elasticsearch, Kibana)", "Grafana & Loki", "Prometheus", "Sentry & Netdata"],
             "active": true
         },
         {
-            "title": "Bases de données",
-            "items": ["PostgreSQL", "MySQL", "MongoDB", "CouchDB", "Oracle", "Supabase", "Firebase"],
+            "title": "Développement Augmenté par l'IA",
+            "items": ["Antigravity IDE & agy CLI", "Claude Code (Agentic Dev)", "GitHub SpecKit (SDD)", "MCP (Model Context Protocol)", "Prompt Engineering & Evaluation"],
             "active": true
         },
         {
-            "title": "Méthodes & Outils",
-            "items": ["UML / 2TUP / Merise", "Agile (Scrum, XP)", "Clean code / SOLID", "Git", "MkDocs", "Figma"],
+            "title": "Méthodes, Outils & Conduite de projet",
+            "items": ["Clean Code & SOLID", "UML / 2TUP / Merise", "Agile (Scrum, Kanban, XP)", "justfile & Makefile", "Talend Open Studio", "Cloudcraft & Figma", "MkDocs & TypeSpec"],
             "active": true
         }
     ]

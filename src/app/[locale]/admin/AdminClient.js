@@ -44,6 +44,10 @@ import {
   IconFiles,
   IconHome,
   IconRefresh,
+  IconExternalLink,
+  IconFileText,
+  IconFileTypePdf,
+  IconCode,
 } from '@tabler/icons-react';
 import { useAuth } from '@/context/AuthContext';
 import { uploadFile, deleteFile } from '@/lib/storage';
@@ -846,93 +850,162 @@ export default function AdminClient({ locale, localProjects = [] }) {
           </Card>
         </Tabs.Panel>
 
-        {/* Tab 3: Storage File Manager */}
+        {/* Tab 3: Hub Gestionnaire des CVs & Documents */}
         <Tabs.Panel value="files">
-          <Card shadow="xs" p="lg" radius="md" withBorder>
-            <Title order={4} mb="sm">
-              Gestionnaire de documents (Firebase Storage)
-            </Title>
-            <Text size="sm" c="dimmed" mb="md">
-              Uploadez vos CVs, attestations et documents à partager. Les fichiers sont directement stockés dans Firebase Storage.
-            </Text>
-
-            <Paper withBorder p="md" radius="md" mb="xl">
-              <Group gap="md" align="center">
-                <Button variant="default" onClick={() => document.getElementById('admin-doc-input').click()}>
-                  Sélectionner un document
-                </Button>
-                <input id="admin-doc-input" type="file" style={{ display: 'none' }} onChange={e => setDocFile(e.target.files[0])} />
-                {docFile && (
-                  <Text size="xs" fw={500}>
-                    {docFile.name} ({(docFile.size / 1024).toFixed(1)} KB)
+          <Stack gap="lg">
+            {/* Section 1: CVs Officiels du Portfolio */}
+            <Card shadow="xs" p="lg" radius="md" withBorder>
+              <Group justify="space-between" align="flex-start" mb="md">
+                <Box>
+                  <Group gap="xs">
+                    <Title order={4}>📄 CVs & Documents Officiels de Production</Title>
+                    <Badge color="green" variant="light">
+                      En ligne sur GitHub Pages
+                    </Badge>
+                  </Group>
+                  <Text size="sm" c="dimmed" mt={4}>
+                    Retrouvez l'ensemble des 6 déclinaisons de CVs PDF, Markdown et le standard JSON Resume servis par le portfolio.
                   </Text>
-                )}
-                {docFile && (
-                  <Button color="indigo" onClick={handleDocUpload} loading={docUploading} leftSection={<IconUpload size={14} />}>
-                    Uploader
-                  </Button>
-                )}
+                </Box>
               </Group>
 
-              {docUploading && (
-                <Stack gap="xs" mt="sm">
-                  <Progress value={docProgress} color="indigo" size="xs" animated />
-                  <Text size="xs" ta="right">
-                    {docProgress}%
-                  </Text>
-                </Stack>
-              )}
-            </Paper>
-
-            {uploadedDocs.length === 0 ? (
-              <Text size="sm" c="dimmed" ta="center" py="xl">
-                Aucun document téléversé pour le moment.
-              </Text>
-            ) : (
               <div style={{ overflowX: 'auto' }}>
-                <Table verticalSpacing="xs">
+                <Table verticalSpacing="sm" highlightOnHover>
                   <Table.Thead>
                     <Table.Tr>
-                      <Table.Th>Nom du document</Table.Th>
-                      <Table.Th>Date</Table.Th>
-                      <Table.Th>Taille</Table.Th>
+                      <Table.Th>Déclinaison du CV</Table.Th>
+                      <Table.Th>Type & Format</Table.Th>
+                      <Table.Th>Lien Direct (Nouvel Onglet)</Table.Th>
                       <Table.Th>Actions</Table.Th>
                     </Table.Tr>
                   </Table.Thead>
                   <Table.Tbody>
-                    {uploadedDocs.map((doc, idx) => (
+                    {[
+                      {
+                        title: 'CV Principal (Complet)',
+                        badge: 'Complet',
+                        color: 'blue',
+                        pdf: '/cv.pdf',
+                        md: '/cv.md',
+                      },
+                      {
+                        title: 'CV Synthétique (1 Page)',
+                        badge: '1 Page',
+                        color: 'teal',
+                        pdf: '/cv-lite.pdf',
+                        md: '/cv-lite.md',
+                      },
+                      {
+                        title: 'Dossier de Compétences (ESN / Conseil)',
+                        badge: 'ESN/Conseil',
+                        color: 'grape',
+                        pdf: '/dossier-de-competences.pdf',
+                        md: '/dossier-de-competences.md',
+                      },
+                      {
+                        title: 'CV Spécialité Dev Fullstack',
+                        badge: 'Python/React',
+                        color: 'cyan',
+                        pdf: '/cv-fullstack.pdf',
+                        md: '/cv-fullstack.md',
+                      },
+                      {
+                        title: 'CV Spécialité Angular & Laravel',
+                        badge: 'PHP/Angular',
+                        color: 'red',
+                        pdf: '/cv-angular-laravel.pdf',
+                        md: '/cv-angular-laravel.md',
+                      },
+                      {
+                        title: 'CV Spécialité Lead DevSecOps',
+                        badge: 'DevSecOps',
+                        color: 'orange',
+                        pdf: '/cv-devops.pdf',
+                        md: '/cv-devops.md',
+                      },
+                      {
+                        title: 'Standard JSON Resume (DoYouBuzz Sync)',
+                        badge: 'JSON Resume',
+                        color: 'indigo',
+                        json: '/cv.json',
+                      },
+                    ].map((item, idx) => (
                       <Table.Tr key={idx}>
-                        <Table.Td style={{ maxWidth: '250px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          <Group gap="xs" wrap="nowrap">
-                            <IconFileFilled size={18} style={{ color: 'var(--mantine-color-indigo-4)' }} />
-                            <Text
-                              size="sm"
-                              component="a"
-                              href={doc.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ cursor: 'pointer', color: 'var(--mantine-color-indigo-6)', textDecoration: 'underline' }}>
-                              {doc.name}
+                        <Table.Td>
+                          <Group gap="xs">
+                            {item.json ? <IconCode size={18} color="var(--mantine-color-indigo-6)" /> : <IconFileTypePdf size={18} color="var(--mantine-color-blue-6)" />}
+                            <Text size="sm" fw={600}>
+                              {item.title}
                             </Text>
+                            <Badge size="xs" color={item.color} variant="light">
+                              {item.badge}
+                            </Badge>
                           </Group>
                         </Table.Td>
-                        <Table.Td>{doc.uploadedAt}</Table.Td>
                         <Table.Td>
-                          <Text size="xs" c="dimmed">
-                            {doc.size}
-                          </Text>
+                          {item.json ? (
+                            <Badge size="xs" variant="outline" color="indigo">
+                              JSON Standard
+                            </Badge>
+                          ) : (
+                            <Group gap={4}>
+                              <Badge size="xs" variant="outline" color="blue">
+                                PDF
+                              </Badge>
+                              <Badge size="xs" variant="outline" color="gray">
+                                MD
+                              </Badge>
+                            </Group>
+                          )}
                         </Table.Td>
                         <Table.Td>
                           <Group gap="xs">
+                            {item.pdf && (
+                              <Text
+                                size="xs"
+                                component="a"
+                                href={item.pdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: 'var(--mantine-color-blue-6)', textDecoration: 'underline' }}>
+                                {item.pdf} ↗
+                              </Text>
+                            )}
+                            {item.json && (
+                              <Text
+                                size="xs"
+                                component="a"
+                                href={item.json}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: 'var(--mantine-color-indigo-6)', textDecoration: 'underline' }}>
+                                {item.json} ↗
+                              </Text>
+                            )}
+                          </Group>
+                        </Table.Td>
+                        <Table.Td>
+                          <Group gap="xs">
+                            <Button
+                              size="xs"
+                              variant="light"
+                              color="blue"
+                              component="a"
+                              href={item.pdf || item.json}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              leftSection={<IconExternalLink size={12} />}>
+                              Ouvrir
+                            </Button>
                             <ActionIcon
                               variant="light"
-                              color={copiedIndex === idx ? 'green' : 'gray'}
+                              color={copiedIndex === `static-${idx}` ? 'green' : 'gray'}
                               size="sm"
-                              onClick={() => copyLink(doc.url, idx)}>
-                              {copiedIndex === idx ? <IconCheck size={14} /> : <IconCopy size={14} />}
-                            </ActionIcon>
-                            <ActionIcon variant="light" color="red" size="sm" onClick={() => handleDocDelete(doc.path, idx)}>
-                              <IconTrash size={14} />
+                              onClick={() => {
+                                const fullUrl = `${window.location.origin}${item.pdf || item.json}`;
+                                copyLink(fullUrl, `static-${idx}`);
+                              }}>
+                              {copiedIndex === `static-${idx}` ? <IconCheck size={14} /> : <IconCopy size={14} />}
                             </ActionIcon>
                           </Group>
                         </Table.Td>
@@ -941,8 +1014,105 @@ export default function AdminClient({ locale, localProjects = [] }) {
                   </Table.Tbody>
                 </Table>
               </div>
-            )}
-          </Card>
+            </Card>
+
+            {/* Section 2: Storage Cloud Externe (Firebase Storage) */}
+            <Card shadow="xs" p="lg" radius="md" withBorder>
+              <Title order={4} mb="sm">
+                ☁️ Documents Complémentaires & Attestations (Firebase Storage)
+              </Title>
+              <Text size="sm" c="dimmed" mb="md">
+                Téléversez vos diplômes, certifications (WILOW, Ionis-STM, IAI) ou pièces jointes spécifiques à partager avec les recruteurs.
+              </Text>
+
+              <Paper withBorder p="md" radius="md" mb="xl">
+                <Group gap="md" align="center">
+                  <Button variant="default" onClick={() => document.getElementById('admin-doc-input').click()}>
+                    Sélectionner un document
+                  </Button>
+                  <input id="admin-doc-input" type="file" style={{ display: 'none' }} onChange={e => setDocFile(e.target.files[0])} />
+                  {docFile && (
+                    <Text size="xs" fw={500}>
+                      {docFile.name} ({(docFile.size / 1024).toFixed(1)} KB)
+                    </Text>
+                  )}
+                  {docFile && (
+                    <Button color="indigo" onClick={handleDocUpload} loading={docUploading} leftSection={<IconUpload size={14} />}>
+                      Uploader sur Firebase
+                    </Button>
+                  )}
+                </Group>
+
+                {docUploading && (
+                  <Stack gap="xs" mt="sm">
+                    <Progress value={docProgress} color="indigo" size="xs" animated />
+                    <Text size="xs" ta="right">
+                      {docProgress}%
+                    </Text>
+                  </Stack>
+                )}
+              </Paper>
+
+              {uploadedDocs.length === 0 ? (
+                <Text size="sm" c="dimmed" ta="center" py="xl">
+                  Aucun document complémentaire téléversé sur Firebase Storage pour le moment.
+                </Text>
+              ) : (
+                <div style={{ overflowX: 'auto' }}>
+                  <Table verticalSpacing="xs">
+                    <Table.Thead>
+                      <Table.Tr>
+                        <Table.Th>Nom du document</Table.Th>
+                        <Table.Th>Date</Table.Th>
+                        <Table.Th>Taille</Table.Th>
+                        <Table.Th>Actions</Table.Th>
+                      </Table.Tr>
+                    </Table.Thead>
+                    <Table.Tbody>
+                      {uploadedDocs.map((doc, idx) => (
+                        <Table.Tr key={idx}>
+                          <Table.Td style={{ maxWidth: '250px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            <Group gap="xs" wrap="nowrap">
+                              <IconFileFilled size={18} style={{ color: 'var(--mantine-color-indigo-4)' }} />
+                              <Text
+                                size="sm"
+                                component="a"
+                                href={doc.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ cursor: 'pointer', color: 'var(--mantine-color-indigo-6)', textDecoration: 'underline' }}>
+                                {doc.name}
+                              </Text>
+                            </Group>
+                          </Table.Td>
+                          <Table.Td>{doc.uploadedAt}</Table.Td>
+                          <Table.Td>
+                            <Text size="xs" c="dimmed">
+                              {doc.size}
+                            </Text>
+                          </Table.Td>
+                          <Table.Td>
+                            <Group gap="xs">
+                              <ActionIcon
+                                variant="light"
+                                color={copiedIndex === idx ? 'green' : 'gray'}
+                                size="sm"
+                                onClick={() => copyLink(doc.url, idx)}>
+                                {copiedIndex === idx ? <IconCheck size={14} /> : <IconCopy size={14} />}
+                              </ActionIcon>
+                              <ActionIcon variant="light" color="red" size="sm" onClick={() => handleDocDelete(doc.path, idx)}>
+                                <IconTrash size={14} />
+                              </ActionIcon>
+                            </Group>
+                          </Table.Td>
+                        </Table.Tr>
+                      ))}
+                    </Table.Tbody>
+                  </Table>
+                </div>
+              )}
+            </Card>
+          </Stack>
         </Tabs.Panel>
 
         {/* Tab 5: Messages Manager */}

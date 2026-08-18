@@ -18,6 +18,10 @@ build:
 pdf:
     node scripts/build-pdf.js
 
+# Convertit un export DoYouBuzz vers le standard JSON Resume (public/cv.json)
+cv-convert input="":
+    node scripts/convertDoYouBuzz.js "{{input}}"
+
 # Formate le code source avec Prettier
 format:
     yarn format

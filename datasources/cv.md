@@ -1,7 +1,7 @@
 # Astrid-Aurélien NKUMBE ENONGENE
 **Senior Fullstack Engineer & Tech Lead — Spécialiste IA/RAG & DevSecOps**
 
-- **Téléphones** : +33 7 44 58 45 62 / +33 7 44 92 97 42
+- **Téléphone** : +33 7 44 58 45 62
 - **Email** : nkumbeaurelien@hotmail.com
 - **Localisation** : Région Parisienne (Cergy / Paris) — Mobile France entière & Remote
 - **Portfolio** : [nkaurelien.kamitbrains.fr](https://nkaurelien.kamitbrains.fr)

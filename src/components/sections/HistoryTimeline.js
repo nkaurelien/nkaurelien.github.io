@@ -2,8 +2,8 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
-import { Container, Title, Timeline, Text, Anchor, Badge, Group, Stack, Grid, Paper, Box, Button } from '@mantine/core';
-import { IconSchool, IconBriefcase, IconDownload, IconCertificate } from '@tabler/icons-react';
+import { Container, Title, Timeline, Text, Anchor, Badge, Group, Stack, Grid, Paper, Box, Button, ActionIcon } from '@mantine/core';
+import { IconSchool, IconBriefcase, IconDownload, IconCertificate, IconArrowUpRight } from '@tabler/icons-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -130,19 +130,32 @@ export default function HistoryTimeline({ history, locale }) {
                 </Text>
               </Group>
               <Text size="xs" c="dimmed" mb="sm">
-                {locale === 'en' ? 'Download full PDF resume and certificates.' : 'Téléchargez le CV complet et le dossier de compétences.'}
+                {locale === 'en' ? 'Open full PDF resume in a new tab or download.' : 'Ouvrez le CV complet dans un nouvel onglet ou téléchargez-le.'}
               </Text>
-              <Button
-                component="a"
-                href="/cv.pdf"
-                download="CV_Aurelien_NKUMBE.pdf"
-                variant="light"
-                color="teal"
-                fullWidth
-                size="xs"
-                leftSection={<IconDownload size={14} />}>
-                {locale === 'en' ? 'Download CV (PDF)' : 'Télécharger le CV (PDF)'}
-              </Button>
+              <Group gap="xs">
+                <Button
+                  component="a"
+                  href="/cv.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="filled"
+                  color="teal"
+                  style={{ flex: 1 }}
+                  size="xs"
+                  rightSection={<IconArrowUpRight size={14} />}>
+                  {locale === 'en' ? 'Open Resume (PDF)' : 'Ouvrir le CV (PDF)'}
+                </Button>
+                <ActionIcon
+                  component="a"
+                  href="/cv.pdf"
+                  download="CV_Aurelien_NKUMBE.pdf"
+                  variant="light"
+                  color="teal"
+                  size="input-xs"
+                  aria-label="Télécharger CV PDF">
+                  <IconDownload size={14} />
+                </ActionIcon>
+              </Group>
             </Paper>
           </Stack>
         </Grid.Col>

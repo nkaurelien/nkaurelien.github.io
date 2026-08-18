@@ -4,17 +4,40 @@
     "groups": [
         {
             "title": "Local environment",
-            "items": ["macOS, Ubuntu & Fedora", "zsh / fish", "VS Code & JetBrains", "mise-en-place (tool versions)", "Docker / Compose", "Vagrant / VMware", "Ansible (provisioning)", "Makefile (unified commands)"],
+            "items": [
+                "macOS, Ubuntu & Linux",
+                "zsh / fish terminal",
+                "VS Code & Antigravity IDE / agy CLI",
+                "justfile (Modern command runner)",
+                "mise-en-place (tool version manager)",
+                "Docker, Compose & Swarm",
+                "Ansible (provisioning & automation)",
+                "Makefile & Bash/Python scripts"
+            ],
             "active": true
         },
         {
             "title": "Everyday tools",
-            "items": ["Git / GitLab", "Postman / Insomnia", "REST Client (.http)", "MkDocs (documentation)", "Claude Code (agentic dev)", "GitHub Spec Kit (SDD)"],
+            "items": [
+                "Git / GitLab / GitHub Actions",
+                "Postman / Insomnia & REST Client",
+                "MkDocs & TypeSpec (API docs)",
+                "Claude Code & Antigravity (agentic dev)",
+                "GitHub SpecKit (Spec-Driven Dev)",
+                "Snyk & SigNoz / ELK (DevSecOps & Observability)"
+            ],
             "active": true
         },
         {
             "title": "Rituals & quality",
-            "items": ["Clean code & SOLID", "Lint & format (ESLint, Prettier, Ruff)", "Pre-commit hooks", "Conventional commits", "Gitflow — MR to develop", "Code reviews & retrospectives"],
+            "items": [
+                "Clean Code & SOLID Architecture",
+                "Linting & Formatting (ESLint, Prettier, Ruff)",
+                "Pre-commit hooks & Husky",
+                "Conventional Commits & Semantic Versioning",
+                "GitFlow & Systematic code reviews",
+                "Team retrospectives & Agile mentoring"
+            ],
             "active": true
         }
     ]

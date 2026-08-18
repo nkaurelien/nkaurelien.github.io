@@ -52,7 +52,7 @@ const SEARCH_INDEX = [
   // Services
   {
     id: 'serv-fullstack',
-    type: 'Services',
+    type: 'Expertise',
     category: 'Engineering',
     title: 'Tech Lead & Développement Fullstack',
     description: 'Conception et architecture d’applications web & mobiles : Next.js 15, React, Angular, FastAPI, Laravel, Flutter.',
@@ -61,7 +61,7 @@ const SEARCH_INDEX = [
   },
   {
     id: 'serv-devsecops',
-    type: 'Services',
+    type: 'Expertise',
     category: 'Cloud & Infra',
     title: 'DevSecOps & Cloud Native',
     description: 'CI/CD GitLab, Docker, Ansible, Terraform, Kubernetes, observabilité (Grafana, Loki, ELK) et Snyk.',
@@ -70,7 +70,7 @@ const SEARCH_INDEX = [
   },
   {
     id: 'serv-ai',
-    type: 'Services',
+    type: 'Expertise',
     category: 'Intelligence Artificielle',
     title: 'IA & Applications RAG',
     description: 'Assistants et chatbots métiers : LangChain, LiteLLM, OpenAI, Ollama / Qwen, Qdrant, pgvector.',
@@ -79,7 +79,7 @@ const SEARCH_INDEX = [
   },
   {
     id: 'serv-agentic',
-    type: 'Services',
+    type: 'Expertise',
     category: 'IA Agentique',
     title: 'Développement Augmenté par l’IA & Agentique',
     description: 'Dev agentique (Claude 3.7 / Claude Code, Antigravity) et Spec-Driven Development (GitHub SpecKit).',
@@ -88,7 +88,7 @@ const SEARCH_INDEX = [
   },
   {
     id: 'serv-iot',
-    type: 'Services',
+    type: 'Expertise',
     category: 'IoT & Streaming',
     title: 'IoT & Pipelines Temps Réel',
     description: 'Data streaming avec Redpanda / Apache Kafka, objets connectés (EmotiBit, Withings) et FHIR/HL7.',
@@ -146,7 +146,7 @@ const SEARCH_INDEX = [
   },
 ];
 
-const TAG_PILLS = ['Tous', 'Projets', 'Services', 'Stack & Tech', 'Blog'];
+const TAG_PILLS = ['Tous', 'Projets', 'Expertise', 'Stack & Tech', 'Blog'];
 
 export default function SearchAside({ opened, onClose, locale = 'fr' }) {
   const [query, setQuery] = useState('');
@@ -288,7 +288,7 @@ export default function SearchAside({ opened, onClose, locale = 'fr' }) {
                     transition: 'all 0.2s ease',
                   }}>
                   <Group justify="space-between" align="flex-start" wrap="nowrap" mb={4}>
-                    <Badge size="xs" variant="outline" color={item.type === 'Projets' ? 'teal' : item.type === 'Services' ? 'indigo' : item.type === 'Blog' ? 'orange' : 'cyan'}>
+                    <Badge size="xs" variant="outline" color={item.type === 'Projets' ? 'teal' : item.type === 'Expertise' ? 'indigo' : item.type === 'Blog' ? 'orange' : 'cyan'}>
                       {item.type}
                     </Badge>
                     <IconArrowUpRight size={14} style={{ opacity: 0.6 }} />

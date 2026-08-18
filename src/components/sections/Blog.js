@@ -2,8 +2,8 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Container, Title, Text, Card, Image, Badge, Group, Button, Stack, Box, TextInput, UnstyledButton, ActionIcon, Grid, Paper, Divider } from '@mantine/core';
-import { IconArrowUpRight, IconNews, IconArrowRight, IconSearch, IconX, IconFilter, IconTag, IconBrandMedium } from '@tabler/icons-react';
+import { Container, Title, Text, Card, Image, Badge, Group, Button, Stack, Box, TextInput, UnstyledButton, ActionIcon, Grid, Paper, Divider, ThemeIcon } from '@mantine/core';
+import { IconArrowUpRight, IconNews, IconArrowRight, IconSearch, IconX, IconFilter, IconTag, IconBrandMedium, IconBulb, IconClock, IconBook, IconWriting } from '@tabler/icons-react';
 
 const LABELS = {
   fr: {
@@ -47,6 +47,114 @@ function formatDate(date, locale) {
   } catch {
     return '';
   }
+}
+
+const UPCOMING_ARTICLES = [
+  {
+    title: "Du Monolithe au RAG : Ingestion vectorielle & RAG de +500 documents RH/Paie",
+    category: "IA & RAG",
+    project: "SmartDataPay (YSO Conseils / KAZAC)",
+    status: "En rédaction",
+    excerpt: "Retour d'expérience sur la création d'un pipeline ETL d'ingestion (Chunking, Embeddings Supabase pgvector / Qdrant) et l'intégration combinée d'OpenAI (GPT-4o) et Ollama (Llama 3 local) sous Next.js & LangChain.",
+    tags: ["LangChain", "LiteLLM", "OpenAI", "Ollama", "pgvector", "Python"],
+    targetDate: "Bientôt sur Medium",
+  },
+  {
+    title: "Télésanté & IoT : Collecter des flux de constantes physiologiques en temps réel (FHIR / HL7)",
+    category: "IoT & Santé",
+    project: "DATA2INNOV (Projet Santé Connectée)",
+    status: "Planifié",
+    excerpt: "Architecture d'acquisition temps réel avec capteurs IoT médicaux (EmotiBit, ESP32, Bangle.js, Withings Cloud API), application mobile Flutter BLE/Wi-Fi et observabilité SigNoz / ELK sous Docker Swarm.",
+    tags: ["FastAPI", "FHIR/HL7", "Flutter", "WebSockets", "Kafka", "SigNoz"],
+    targetDate: "Prochainement",
+  },
+  {
+    title: "Sécuriser une API bancaire critique avec Kong API Gateway & Active Directory LDAP",
+    category: "Banque & Security",
+    project: "SCB Cameroun (Attijariwafa Bank)",
+    status: "Planifié",
+    excerpt: "Comment router, appliquer du rate-limiting anti-DDoS et authentifier par LDAP/RBAC d'entreprise la distribution de +100 000 relevés de comptes chiffrés par email.",
+    tags: ["Kong Gateway", "Vue.js", "Laravel", "LDAP", "Kubernetes", "Argo CD"],
+    targetDate: "Prochainement",
+  },
+  {
+    title: "Flutter & Google Cloud Vision API : Scanner des tickets de caisse en FinTech",
+    category: "FinTech & Mobile",
+    project: "Korée Africa FinTech",
+    status: "Idée / Brouillon",
+    excerpt: "Implémentation de l'OCR mobile pour l'attribution automatique de cashback, gestion de l'authentification biométrique et notifications push avec fallbacks hybrides (OneSignal / AWS SNS).",
+    tags: ["Flutter", "Dart", "Google Cloud Vision", "Laravel", "AWS SNS", "Snyk"],
+    targetDate: "Brouillon",
+  },
+  {
+    title: "Dev Agentique & Spec-Driven Development : Automatiser son SDLC avec Claude Code & SpecKit",
+    category: "Dev & IA",
+    project: "Antigravity & GitHub SpecKit",
+    status: "En rédaction",
+    excerpt: "Comment structurer des spécifications formelles (Markdown Spec, Plan, Tasks) et orchestrer des agents IA avec MCP (Model Context Protocol) et justfile pour produire du code zéro-dette.",
+    tags: ["Claude Code", "Antigravity", "GitHub SpecKit", "MCP", "justfile"],
+    targetDate: "Bientôt sur Medium",
+  },
+  {
+    title: "Monorepo Frontend sans Nx : Organiser 5 applications Angular dans un repository unique",
+    category: "Architecture Web",
+    project: "Multi Canal Services & BPCE Coface",
+    status: "Idée / Brouillon",
+    excerpt: "Astuces d'architecture dans angular.json, optimisation de la taille des bundles (Tree shaking, Lazy loading) et pre-rendering SEO avec Puppeteer Headless.",
+    tags: ["Angular", "TypeScript", "RxJS", "Puppeteer", "Pnpm", "Cypress"],
+    targetDate: "Brouillon",
+  },
+];
+
+function UpcomingArticleCard({ article, locale }) {
+  return (
+    <Card
+      withBorder
+      padding="md"
+      radius="lg"
+      style={{
+        backgroundColor: 'var(--mantine-color-body)',
+        borderLeft: '4px solid var(--mantine-color-indigo-5)',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      }}>
+      <Stack gap="xs">
+        <Group justify="space-between" align="center">
+          <Group gap="xs">
+            <Badge variant="filled" color="indigo" size="xs" radius="sm">
+              💡 {article.category}
+            </Badge>
+            <Badge variant="dot" color={article.status === 'En rédaction' ? 'green' : 'orange'} size="xs">
+              {article.status}
+            </Badge>
+          </Group>
+          <Badge variant="outline" color="gray" size="xs">
+            {article.targetDate}
+          </Badge>
+        </Group>
+
+        <Text fw={700} size="sm" lineClamp={2} style={{ lineHeight: 1.35 }}>
+          {article.title}
+        </Text>
+
+        <Text size="xs" c="dimmed" lineClamp={3} style={{ lineHeight: 1.45 }}>
+          {article.excerpt}
+        </Text>
+
+        <Group justify="space-between" align="center" mt={4}>
+          <Text size="xs" fw={600} c="dimmed">
+            📌 Projet lié : <span style={{ color: 'var(--mantine-color-text)' }}>{article.project}</span>
+          </Text>
+          <Group gap={4}>
+            {article.tags.slice(0, 3).map(tag => (
+              <Badge key={tag} size="xs" variant="light" color="gray" radius="xs">
+                {tag}
+              </Badge>
+            ))}
+          </Group>
+        </Group>
+      </Stack>
+    </Card>
+  );
 }
 
 function FeaturedArticleCard({ article, t }) {
@@ -495,6 +603,40 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
               ))}
             </Stack>
           )}
+
+          {/* Section : Roadmap & Idées d'Articles à Paraître sur Medium */}
+          <Paper withBorder p="lg" radius="xl" mt={40} style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
+            <Stack gap="md">
+              <Group justify="space-between" align="center">
+                <Group gap="xs">
+                  <ThemeIcon color="indigo" size="md" radius="md" variant="light">
+                    <IconBulb size={18} />
+                  </ThemeIcon>
+                  <Box>
+                    <Title order={4} size="h5">
+                      💡 Prochains Articles & Roadmap de Rédaction Medium
+                    </Title>
+                    <Text size="xs" c="dimmed">
+                      Idées de sujets techniques et retours d'expérience en cours de rédaction basés sur mes projets réels.
+                    </Text>
+                  </Box>
+                </Group>
+                <Badge color="indigo" variant="outline" size="sm">
+                  {UPCOMING_ARTICLES.length} sujets en préparation
+                </Badge>
+              </Group>
+
+              <Divider />
+
+              <Grid gutter="md">
+                {UPCOMING_ARTICLES.map((article, idx) => (
+                  <Grid.Col key={idx} span={{ base: 12, sm: 6 }}>
+                    <UpcomingArticleCard article={article} locale={locale} />
+                  </Grid.Col>
+                ))}
+              </Grid>
+            </Stack>
+          </Paper>
         </Grid.Col>
       </Grid>
     </Container>

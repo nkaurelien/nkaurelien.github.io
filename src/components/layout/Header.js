@@ -23,7 +23,7 @@ import {
   Badge,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconSun, IconMoonStars, IconSparkles, IconChevronDown, IconLayoutDashboard, IconLogout, IconDownload } from '@tabler/icons-react';
+import { IconSun, IconMoonStars, IconSparkles, IconChevronDown, IconLayoutDashboard, IconLogout, IconDownload, IconArrowUpRight } from '@tabler/icons-react';
 import { useAuth } from '@/context/AuthContext';
 
 function localizedHref(locale, link) {
@@ -261,22 +261,22 @@ export default function Header({ locale, app }) {
               <Menu.Dropdown>
                 <Menu.Label>Mes CV & Dossiers de compétences</Menu.Label>
                 <Menu.Divider />
-                <Menu.Item component="a" href="/cv.pdf" download="CV_Aurelien_NKUMBE.pdf" leftSection={<IconDownload size={14} />}>
+                <Menu.Item component="a" href="/cv.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Principal (Complet)
                 </Menu.Item>
-                <Menu.Item component="a" href="/cv-lite.pdf" download="CV_Aurelien_NKUMBE_Lite.pdf" leftSection={<IconDownload size={14} />}>
+                <Menu.Item component="a" href="/cv-lite.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Synthétique (1 Page)
                 </Menu.Item>
-                <Menu.Item component="a" href="/dossier-de-competences.pdf" download="Dossier_de_Competences_Aurelien_NKUMBE.pdf" leftSection={<IconDownload size={14} />}>
+                <Menu.Item component="a" href="/dossier-de-competences.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   Dossier de Compétences (ESN)
                 </Menu.Item>
-                <Menu.Item component="a" href="/cv-fullstack.pdf" download="CV_Aurelien_NKUMBE_Fullstack.pdf" leftSection={<IconDownload size={14} />}>
+                <Menu.Item component="a" href="/cv-fullstack.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Dev Fullstack (Python/React)
                 </Menu.Item>
-                <Menu.Item component="a" href="/cv-angular-laravel.pdf" download="CV_Aurelien_NKUMBE_Angular_Laravel.pdf" leftSection={<IconDownload size={14} />}>
+                <Menu.Item component="a" href="/cv-angular-laravel.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Dev Angular & Laravel PHP
                 </Menu.Item>
-                <Menu.Item component="a" href="/cv-devops.pdf" download="CV_Aurelien_NKUMBE_DevOps.pdf" leftSection={<IconDownload size={14} />}>
+                <Menu.Item component="a" href="/cv-devops.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Lead DevSecOps & Cloud
                 </Menu.Item>
               </Menu.Dropdown>

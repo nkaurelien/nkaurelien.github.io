@@ -4,17 +4,40 @@
     "groups": [
         {
             "title": "Environnement local",
-            "items": ["macOS, Ubuntu & Fedora", "zsh / fish", "VS Code & JetBrains", "mise-en-place (versions d'outils)", "Docker / Compose", "Vagrant / VMware", "Ansible (provisioning)", "Makefile (commandes unifiées)"],
+            "items": [
+                "macOS, Ubuntu & Linux",
+                "zsh / fish terminal",
+                "VS Code & Antigravity IDE / agy CLI",
+                "justfile (Runner de commandes moderne)",
+                "mise-en-place (gestionnaire de versions)",
+                "Docker, Compose & Swarm",
+                "Ansible (provisioning & automatisation)",
+                "Makefile & scripts Bash/Python"
+            ],
             "active": true
         },
         {
             "title": "Outils du quotidien",
-            "items": ["Git / GitLab", "Postman / Insomnia", "REST Client (.http)", "MkDocs (documentation)", "Claude Code (dev agentique)", "GitHub Spec Kit (SDD)"],
+            "items": [
+                "Git / GitLab / GitHub Actions",
+                "Postman / Insomnia & REST Client",
+                "MkDocs & TypeSpec (documentation API)",
+                "Claude Code & Antigravity (dev agentique)",
+                "GitHub SpecKit (Spec-Driven Dev)",
+                "Snyk & SigNoz / ELK (DevSecOps & Observabilité)"
+            ],
             "active": true
         },
         {
             "title": "Rituels & qualité",
-            "items": ["Clean code & SOLID", "Lint & format (ESLint, Prettier, Ruff)", "Pre-commit hooks", "Conventional commits", "Gitflow — MR vers develop", "Revues de code & rétrospectives"],
+            "items": [
+                "Clean Code & Architecture SOLID",
+                "Linting & Formating (ESLint, Prettier, Ruff)",
+                "Pre-commit hooks & Huski",
+                "Conventional Commits & Semantic Versioning",
+                "GitFlow & Revues de code systématiques",
+                "Rétrospectives d'équipe & Mentorat Agile"
+            ],
             "active": true
         }
     ]

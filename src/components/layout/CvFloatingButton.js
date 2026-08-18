@@ -13,6 +13,7 @@ import {
   IconCodeAsterisk,
   IconChevronUp,
   IconEye,
+  IconArrowUpRight,
 } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
 import CvPreviewModal from '@/components/layout/CvPreviewModal';
@@ -145,6 +146,19 @@ export default function CvFloatingButton() {
                     </Text>
                   </Box>
                   <Group gap={4} wrap="nowrap">
+                    <Tooltip label={isEnglish ? 'Open PDF in new tab (copiable link)' : 'Ouvrir PDF dans un nouvel onglet (lien copiable)'} withinPortal>
+                      <ActionIcon
+                        component="a"
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={e => e.stopPropagation()}
+                        variant="subtle"
+                        color="blue"
+                        size="xs">
+                        <IconArrowUpRight size={14} />
+                      </ActionIcon>
+                    </Tooltip>
                     <Tooltip label={isEnglish ? 'Direct PDF download' : 'Télécharger PDF direct'} withinPortal>
                       <ActionIcon
                         component="a"
@@ -170,14 +184,15 @@ export default function CvFloatingButton() {
             <Menu.Item
               component="a"
               href="/cv.json"
-              download="CV_Aurelien_NKUMBE.json"
+              target="_blank"
+              rel="noopener noreferrer"
               leftSection={<IconCodeAsterisk size={16} style={{ color: 'var(--mantine-color-dimmed)' }} />}
               py={6}
               px="xs"
               style={{ borderRadius: 8 }}>
               <Group justify="space-between" wrap="nowrap">
                 <Text size="xs" c="dimmed" fw={500}>
-                  {isEnglish ? 'JSON Resume Format' : 'Format JSON Resume (DoYouBuzz)'}
+                  {isEnglish ? 'JSON Resume Format (Open/Copy)' : 'Format JSON Resume (Ouvrir/Copier)'}
                 </Text>
                 <Badge size="xs" variant="outline" color="gray">
                   JSON
