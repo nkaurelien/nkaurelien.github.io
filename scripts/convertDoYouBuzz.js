@@ -20,7 +20,7 @@ function convertDoYouBuzzToJSONResume(dybData) {
     profiles: [
       { network: 'GitHub', username: 'nkaurelien', url: 'https://github.com/nkaurelien' },
       { network: 'LinkedIn', username: 'nkaurelien', url: 'https://www.linkedin.com/in/nkaurelien/' },
-      { network: 'DoYouBuzz', username: owner.slug || 'nkumbe', url: owner.url || 'https://www.doyoubuzz.com/nkumbe-enongene-astrid-aurelien' }
+      { network: 'DoYouBuzz', username: 'astrid-aurelien-nkumbe-enongene', url: 'https://www.doyoubuzz.com/astrid-aurelien-nkumbe-enongene' }
     ]
   };
 
