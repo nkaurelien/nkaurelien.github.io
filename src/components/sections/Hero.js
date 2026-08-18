@@ -8,7 +8,7 @@ import CodeBanner from './CodeBanner';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import VantaWaveBackground from '../layout/VantaWaveBackground';
-import anime from 'animejs';
+import { animate } from 'animejs';
 
 function decode(str = '') {
   return str
@@ -268,7 +268,7 @@ export default function Hero({ locale, hero }) {
                       fw={600}
                       c="rgba(255, 255, 255, 0.9)"
                       onMouseEnter={e => {
-                        anime({
+                        animate({
                           targets: e.currentTarget,
                           scale: [1, 1.15, 1],
                           translateY: [0, -3, 0],

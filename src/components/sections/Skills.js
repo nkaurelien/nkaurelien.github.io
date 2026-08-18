@@ -5,7 +5,7 @@ import { Container, Title, Text, SimpleGrid, Card, Badge, Group } from '@mantine
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import anime from 'animejs';
+import { animate, stagger } from 'animejs';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -36,14 +36,14 @@ export default function Skills({ skills }) {
           start: 'top 80%',
           toggleActions: 'play none none none',
           onEnter: () => {
-            // Anime.js stagger animation on badges inside cards when section enters viewport
+            // Anime.js v4 stagger animation on badges inside cards when section enters viewport
             const badges = containerRef.current?.querySelectorAll('.anime-skill-badge');
             if (badges && badges.length > 0) {
-              anime({
+              animate({
                 targets: badges,
                 scale: [0.7, 1],
                 opacity: [0, 1],
-                delay: anime.stagger(40, { from: 'start' }),
+                delay: stagger(40, { from: 'start' }),
                 easing: 'spring(1, 80, 10, 0)',
               });
             }
@@ -60,7 +60,7 @@ export default function Skills({ skills }) {
   );
 
   const handleBadgeHover = e => {
-    anime({
+    animate({
       targets: e.currentTarget,
       scale: [1, 1.15, 1],
       rotate: [0, 5, -3, 0],
