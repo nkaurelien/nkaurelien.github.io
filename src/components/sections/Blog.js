@@ -49,7 +49,8 @@ function formatDate(date, locale) {
   }
 }
 
-function ArticleListItem({ article, t }) {
+function FeaturedArticleCard({ article, t }) {
+  if (!article) return null;
   const isLocal = article.source === 'local';
   const linkProps = isLocal
     ? { component: Link, href: `/${t.__locale}${article.link}` }
@@ -60,6 +61,130 @@ function ArticleListItem({ article, t }) {
       {...linkProps}
       withBorder
       padding="lg"
+      radius="xl"
+      className="blog-featured-card"
+      style={{
+        transition: 'all 0.25s ease',
+        cursor: 'pointer',
+        textDecoration: 'none',
+        color: 'inherit',
+      }}>
+      <Grid align="center" gutter={{ base: 'md', sm: 'xl' }}>
+        {article.thumbnail && (
+          <Grid.Col span={{ base: 12, sm: 5 }}>
+            <Box
+              style={{
+                height: 180,
+                borderRadius: 14,
+                overflow: 'hidden',
+                display: 'block',
+              }}>
+              <Image
+                src={article.thumbnail}
+                h={180}
+                w="100%"
+                fit="cover"
+                alt={article.title}
+                fallbackSrc="https://placehold.co/600x320?text=Article"
+              />
+            </Box>
+          </Grid.Col>
+        )}
+        <Grid.Col span={{ base: 12, sm: article.thumbnail ? 7 : 12 }}>
+          <Stack gap="xs">
+            <Group justify="space-between" align="center">
+              <Badge variant="filled" color="blue" size="xs" radius="sm">
+                📌 {t.__locale === 'en' ? 'FEATURED' : 'À LA UNE'}
+              </Badge>
+              <Text size="xs" c="dimmed" fw={600}>
+                {formatDate(article.date, t.__locale)}
+              </Text>
+            </Group>
+
+            <Title order={4} style={{ lineHeight: 1.3 }}>
+              {article.title}
+            </Title>
+
+            <Text size="sm" c="dimmed" lineClamp={2} style={{ lineHeight: 1.45 }}>
+              {article.excerpt}
+            </Text>
+
+            <Group justify="space-between" align="center" mt="xs">
+              {article.categories?.length > 0 && (
+                <Group gap={4}>
+                  {article.categories.slice(0, 3).map(cat => (
+                    <Badge key={cat} size="xs" variant="light" color="blue" radius="sm">
+                      {cat}
+                    </Badge>
+                  ))}
+                </Group>
+              )}
+              <Group gap={4} c="blue" style={{ fontWeight: 700, fontSize: '13px' }}>
+                {t.read}
+                <IconArrowUpRight size={15} />
+              </Group>
+            </Group>
+          </Stack>
+        </Grid.Col>
+      </Grid>
+    </Card>
+  );
+}
+
+function CompactArticleRow({ article, t }) {
+  const isLocal = article.source === 'local';
+  const linkProps = isLocal
+    ? { component: Link, href: `/${t.__locale}${article.link}` }
+    : { component: 'a', href: article.link, target: '_blank', rel: 'noopener noreferrer' };
+
+  return (
+    <Paper
+      {...linkProps}
+      withBorder
+      p="sm"
+      radius="md"
+      style={{
+        transition: 'all 0.2s ease',
+        cursor: 'pointer',
+        textDecoration: 'none',
+        color: 'inherit',
+      }}>
+      <Group justify="space-between" align="center" wrap="nowrap">
+        <Group gap="sm" wrap="nowrap" style={{ flex: 1, minWidth: 0 }}>
+          <Text size="xs" c="dimmed" fw={600} style={{ flexShrink: 0, width: 85 }}>
+            {formatDate(article.date, t.__locale)}
+          </Text>
+          <Text size="sm" fw={600} lineClamp={1} style={{ flex: 1 }}>
+            {article.title}
+          </Text>
+        </Group>
+
+        <Group gap="xs" wrap="nowrap" style={{ flexShrink: 0 }}>
+          {article.categories?.[0] && (
+            <Badge size="xs" variant="subtle" color="gray" visibleFrom="xs">
+              {article.categories[0]}
+            </Badge>
+          )}
+          <ActionIcon size="sm" variant="subtle" color="blue">
+            <IconArrowUpRight size={14} />
+          </ActionIcon>
+        </Group>
+      </Group>
+    </Paper>
+  );
+}
+
+function ArticleListItem({ article, t }) {
+  const isLocal = article.source === 'local';
+  const linkProps = isLocal
+    ? { component: Link, href: `/${t.__locale}${article.link}` }
+    : { component: 'a', href: article.link, target: '_blank', rel: 'noopener noreferrer' };
+
+  return (
+    <Card
+      {...linkProps}
+      withBorder
+      padding="md"
       radius="lg"
       className="blog-card"
       style={{
@@ -68,28 +193,29 @@ function ArticleListItem({ article, t }) {
         textDecoration: 'none',
         color: 'inherit',
       }}>
-      <Group align="center" wrap="nowrap" gap={{ base: 'md', sm: 'xl' }}>
+      <Group align="center" wrap={{ base: 'wrap', sm: 'nowrap' }} gap={{ base: 'md', sm: 'lg' }}>
         {article.thumbnail && (
           <Box
             style={{
-              width: 150,
-              height: 100,
+              width: '100%',
+              maxWidth: 150,
+              height: 95,
               flexShrink: 0,
-              borderRadius: 12,
+              borderRadius: 10,
               overflow: 'hidden',
               display: 'block',
             }}>
             <Image
               src={article.thumbnail}
-              h={100}
-              w={150}
+              h={95}
+              w="100%"
               fit="cover"
               alt={article.title}
               fallbackSrc="https://placehold.co/600x320?text=Article"
             />
           </Box>
         )}
-        <Stack gap={6} style={{ flex: 1, minWidth: 0 }}>
+        <Stack gap={4} style={{ flex: 1, minWidth: 0 }}>
           <Group justify="space-between" align="center" wrap="nowrap">
             <Text size="xs" c="dimmed" fw={600}>
               {formatDate(article.date, t.__locale)}
@@ -104,15 +230,15 @@ function ArticleListItem({ article, t }) {
               </Group>
             )}
           </Group>
-          <Text fw={700} size="md" lineClamp={1} style={{ lineHeight: 1.35 }}>
+          <Text fw={700} size="sm" lineClamp={1} style={{ lineHeight: 1.35 }}>
             {article.title}
           </Text>
-          <Text size="sm" c="dimmed" lineClamp={2} style={{ lineHeight: 1.45 }}>
+          <Text size="xs" c="dimmed" lineClamp={2} style={{ lineHeight: 1.4 }}>
             {article.excerpt}
           </Text>
-          <Group gap={4} mt={2} c="blue" style={{ fontWeight: 600, fontSize: '13px' }}>
+          <Group gap={4} mt={2} c="blue" style={{ fontWeight: 600, fontSize: '12px' }}>
             {t.read}
-            <IconArrowUpRight size={14} />
+            <IconArrowUpRight size={13} />
           </Group>
         </Stack>
       </Group>
@@ -122,11 +248,15 @@ function ArticleListItem({ article, t }) {
 
 export default function Blog({ articles = [], locale = 'fr', compact = false, profileUrl = 'https://medium.com/@nkaurelien' }) {
   const t = { ...(LABELS[locale] || LABELS.fr), __locale: locale };
-  const list = compact ? articles.slice(0, 3) : articles;
+  const list = articles;
   const MEDIUM_PROFILE_URL = profileUrl;
 
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTag, setActiveTag] = useState('Tous');
+
+  // Mode compact (Accueil): 1er article à la une + 3 articles suivants en ligne compacte
+  const featuredArticle = list[0];
+  const compactOthers = list.slice(1, 4);
 
   // Extraction dynamique des catégories avec comptage
   const availableTags = useMemo(() => {
@@ -142,7 +272,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
     ];
   }, [articles]);
 
-  // Filtrage combiné (Recherche textuelle + Tag sélectionné)
+  // Filtrage combiné pour la page dédiée uniquement
   const filteredArticles = useMemo(() => {
     return list.filter(article => {
       if (activeTag !== 'Tous' && !article.categories?.includes(activeTag)) {
@@ -160,8 +290,61 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
     });
   }, [list, activeTag, searchQuery]);
 
+  // MODE COMPACT (Page d'accueil) : 1 carte à la une + liste compacte épurée
+  if (compact) {
+    return (
+      <Container size="md" py={50}>
+        <Stack align="center" gap="xs" mb="lg">
+          <Group gap={6} c="blue">
+            <IconNews size={18} />
+            <Text fw={700} size="sm" tt="uppercase" style={{ letterSpacing: '1px' }}>
+              {t.kicker}
+            </Text>
+          </Group>
+          <Title order={3} ta="center">
+            {t.title}
+          </Title>
+          <Text c="dimmed" ta="center" size="sm" style={{ maxWidth: 520, lineHeight: 1.5 }}>
+            {t.subtitle}
+          </Text>
+        </Stack>
+
+        <Stack gap="md">
+          {/* Article #1 à la une */}
+          <FeaturedArticleCard article={featuredArticle} t={t} />
+
+          {/* Articles suivants en format ligne compacte */}
+          {compactOthers.length > 0 && (
+            <Stack gap="xs">
+              {compactOthers.map(article => (
+                <CompactArticleRow key={article.link} article={article} t={t} />
+              ))}
+            </Stack>
+          )}
+        </Stack>
+
+        <Group justify="center" mt="xl" gap="md">
+          <Button component={Link} href={`/${locale}/blog`} variant="filled" size="sm" rightSection={<IconArrowRight size={16} />}>
+            {t.seeAll}
+          </Button>
+          <Button
+            component="a"
+            href={MEDIUM_PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="subtle"
+            size="sm"
+            rightSection={<IconArrowUpRight size={16} />}>
+            {t.onMedium}
+          </Button>
+        </Group>
+      </Container>
+    );
+  }
+
+  // MODE COMPLET (Page /blog dédiée) : 2 colonnes avec Aside recherche + tag pills à gauche
   return (
-    <Container size="lg" py={compact ? 'xl' : 60}>
+    <Container size="lg" py={60}>
       <Stack align="center" gap="xs" mb="xl">
         <Group gap={6} c="blue">
           <IconNews size={18} />
@@ -169,7 +352,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
             {t.kicker}
           </Text>
         </Group>
-        <Title order={compact ? 3 : 2} ta="center">
+        <Title order={2} ta="center">
           {t.title}
         </Title>
         <Text c="dimmed" ta="center" size="sm" style={{ maxWidth: 560, lineHeight: 1.5 }}>
@@ -311,14 +494,6 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
                 <ArticleListItem key={article.link} article={article} t={t} />
               ))}
             </Stack>
-          )}
-
-          {compact && (
-            <Group justify="center" mt="xl">
-              <Button component={Link} href={`/${locale}/blog`} variant="filled" rightSection={<IconArrowRight size={16} />}>
-                {t.seeAll}
-              </Button>
-            </Group>
           )}
         </Grid.Col>
       </Grid>
