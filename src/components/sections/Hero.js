@@ -269,10 +269,10 @@ export default function Hero({ locale, hero }) {
                       c="rgba(255, 255, 255, 0.9)"
                       onMouseEnter={e => {
                         animate(e.currentTarget, {
-                          scale: [1, 1.25, 1],
-                          translateY: [0, -5, 0],
-                          duration: 550,
-                          ease: spring({ mass: 1, stiffness: 120, damping: 10 }),
+                          scale: [1, 1.03, 1],
+                          translateY: [0, -2, 0],
+                          duration: 350,
+                          ease: 'outQuad',
                         });
                       }}
                       style={{

@@ -5,7 +5,7 @@ import { Container, Title, Text, SimpleGrid, Card, Badge, Group } from '@mantine
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { animate, stagger, spring } from 'animejs';
+import { animate, stagger } from 'animejs';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -36,15 +36,15 @@ export default function Skills({ skills }) {
           start: 'top 80%',
           toggleActions: 'play none none none',
           onEnter: () => {
-            // Anime.js v4 animate(target, options) stagger animation on badges inside cards
+            // Subtle Anime.js entrance stagger
             const badges = containerRef.current?.querySelectorAll('.anime-skill-badge');
             if (badges && badges.length > 0) {
               animate(badges, {
-                scale: [0.5, 1],
+                translateY: [6, 0],
                 opacity: [0, 1],
-                delay: stagger(40),
-                duration: 600,
-                ease: 'outBack',
+                delay: stagger(30),
+                duration: 450,
+                ease: 'outCubic',
               });
             }
           },
@@ -61,10 +61,10 @@ export default function Skills({ skills }) {
 
   const handleBadgeHover = e => {
     animate(e.currentTarget, {
-      scale: [1, 1.22, 1],
-      rotate: [0, 6, -4, 0],
-      duration: 600,
-      ease: spring({ mass: 1, stiffness: 120, damping: 10 }),
+      translateY: [0, -2, 0],
+      scale: [1, 1.04, 1],
+      duration: 350,
+      ease: 'outQuad',
     });
   };
 
@@ -99,7 +99,7 @@ export default function Skills({ skills }) {
                     radius="sm"
                     size="md"
                     onMouseEnter={handleBadgeHover}
-                    style={{ cursor: 'pointer', display: 'inline-block', transition: 'box-shadow 0.2s ease' }}>
+                    style={{ cursor: 'pointer', display: 'inline-block', transition: 'all 0.2s ease' }}>
                     {tech}
                   </Badge>
                 ))}
