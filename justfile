@@ -22,6 +22,10 @@ pdf:
 cv-convert input="":
     node scripts/convertDoYouBuzz.js "{{input}}"
 
+# Synchronise le CV directement via l'API REST DoYouBuzz (GET https://api.doyoubuzz.com/cv/:id)
+cv-api-sync cv_id key="":
+    node scripts/sync-doyoubuzz-api.js "{{cv_id}}" "{{key}}"
+
 # Formate le code source avec Prettier
 format:
     yarn format
