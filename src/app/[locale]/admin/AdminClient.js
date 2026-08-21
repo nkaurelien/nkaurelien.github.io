@@ -6,6 +6,7 @@ import {
   Container,
   Grid,
   Card,
+  Box,
   Text,
   Button,
   TextInput,
@@ -864,7 +865,7 @@ export default function AdminClient({ locale, localProjects = [] }) {
                     </Badge>
                   </Group>
                   <Text size="sm" c="dimmed" mt={4}>
-                    Retrouvez l'ensemble des 6 déclinaisons de CVs PDF, Markdown et le standard JSON Resume servis par le portfolio.
+                    Retrouvez l&apos;ensemble des 6 déclinaisons de CVs PDF, Markdown et le standard JSON Resume servis par le portfolio.
                   </Text>
                 </Box>
               </Group>
@@ -933,7 +934,11 @@ export default function AdminClient({ locale, localProjects = [] }) {
                       <Table.Tr key={idx}>
                         <Table.Td>
                           <Group gap="xs">
-                            {item.json ? <IconCode size={18} color="var(--mantine-color-indigo-6)" /> : <IconFileTypePdf size={18} color="var(--mantine-color-blue-6)" />}
+                            {item.json ? (
+                              <IconCode size={18} color="var(--mantine-color-indigo-6)" />
+                            ) : (
+                              <IconFileTypePdf size={18} color="var(--mantine-color-blue-6)" />
+                            )}
                             <Text size="sm" fw={600}>
                               {item.title}
                             </Text>

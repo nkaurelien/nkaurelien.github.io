@@ -146,7 +146,9 @@ export default function CvFloatingButton() {
                     </Text>
                   </Box>
                   <Group gap={4} wrap="nowrap">
-                    <Tooltip label={isEnglish ? 'Open PDF in new tab (copiable link)' : 'Ouvrir PDF dans un nouvel onglet (lien copiable)'} withinPortal>
+                    <Tooltip
+                      label={isEnglish ? 'Open PDF in new tab (copiable link)' : 'Ouvrir PDF dans un nouvel onglet (lien copiable)'}
+                      withinPortal>
                       <ActionIcon
                         component="a"
                         href={item.href}
@@ -211,12 +213,7 @@ export default function CvFloatingButton() {
       </Box>
 
       {/* Modal de prévisualisation Markdown interactive & téléchargement PDF */}
-      <CvPreviewModal
-        opened={modalOpened}
-        onClose={() => setModalOpened(false)}
-        activeCvId={activeCvId}
-        onSelectCvId={id => setActiveCvId(id)}
-      />
+      <CvPreviewModal opened={modalOpened} onClose={() => setModalOpened(false)} activeCvId={activeCvId} onSelectCvId={id => setActiveCvId(id)} />
     </>
   );
 }

@@ -260,7 +260,20 @@ export default function Hero({ locale, hero }) {
                   {locale === 'en' ? 'Core Ecosystem' : 'Écosystème & Stack de Confiance'}
                 </Text>
                 <Group gap="xs" align="center" wrap="wrap" justify={{ base: 'center', md: 'flex-start' }}>
-                  {['🤖 Claude IA', '⚙️ SpecKit', '⚛️ Next.js 15', '🅰️ Angular', '🔴 Laravel', '⚡ REST API', '⚡ FastAPI', '🔐 OAuth2', '🔒 DevSecOps', '🐳 Docker', '🦊 GitLab CI', '🧱 Terraform'].map(partner => (
+                  {[
+                    '🤖 Claude IA',
+                    '⚙️ SpecKit',
+                    '⚛️ Next.js 15',
+                    '🅰️ Angular',
+                    '🔴 Laravel',
+                    '⚡ REST API',
+                    '⚡ FastAPI',
+                    '🔐 OAuth2',
+                    '🔒 DevSecOps',
+                    '🐳 Docker',
+                    '🦊 GitLab CI',
+                    '🧱 Terraform',
+                  ].map(partner => (
                     <Text
                       key={partner}
                       size="xs"

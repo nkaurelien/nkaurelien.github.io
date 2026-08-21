@@ -2,7 +2,22 @@
 
 import { useChat as useChatSdk } from '@ai-sdk/react';
 import { useEffect, useRef, useState } from 'react';
-import { Container, Text, Group, Stack, Title, Badge, Tooltip, ActionIcon, SimpleGrid, UnstyledButton, Paper, Button, Avatar, Menu } from '@mantine/core';
+import {
+  Container,
+  Text,
+  Group,
+  Stack,
+  Title,
+  Badge,
+  Tooltip,
+  ActionIcon,
+  SimpleGrid,
+  UnstyledButton,
+  Paper,
+  Button,
+  Avatar,
+  Menu,
+} from '@mantine/core';
 import { IconTrash, IconRobot, IconMessage2Code, IconSparkles, IconBrandGoogle, IconLogout, IconDownload } from '@tabler/icons-react';
 
 // Modular components (SDP style)

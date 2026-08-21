@@ -2,8 +2,39 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Container, Title, Text, Card, Image, Badge, Group, Button, Stack, Box, TextInput, UnstyledButton, ActionIcon, Grid, Paper, Divider, ThemeIcon } from '@mantine/core';
-import { IconArrowUpRight, IconNews, IconArrowRight, IconSearch, IconX, IconFilter, IconTag, IconBrandMedium, IconBulb, IconClock, IconBook, IconWriting } from '@tabler/icons-react';
+import {
+  Container,
+  Title,
+  Text,
+  Card,
+  Image,
+  Badge,
+  Group,
+  Button,
+  Stack,
+  Box,
+  TextInput,
+  UnstyledButton,
+  ActionIcon,
+  Grid,
+  Paper,
+  Divider,
+  ThemeIcon,
+} from '@mantine/core';
+import {
+  IconArrowUpRight,
+  IconNews,
+  IconArrowRight,
+  IconSearch,
+  IconX,
+  IconFilter,
+  IconTag,
+  IconBrandMedium,
+  IconBulb,
+  IconClock,
+  IconBook,
+  IconWriting,
+} from '@tabler/icons-react';
 
 const LABELS = {
   fr: {
@@ -51,58 +82,64 @@ function formatDate(date, locale) {
 
 const UPCOMING_ARTICLES = [
   {
-    title: "Du Monolithe au RAG : Ingestion vectorielle & RAG de +500 documents RH/Paie",
-    category: "IA & RAG",
-    project: "SmartDataPay (YSO Conseils / KAZAC)",
-    status: "En rédaction",
-    excerpt: "Retour d'expérience sur la création d'un pipeline ETL d'ingestion (Chunking, Embeddings Supabase pgvector / Qdrant) et l'intégration combinée d'OpenAI (GPT-4o) et Ollama (Llama 3 local) sous Next.js & LangChain.",
-    tags: ["LangChain", "LiteLLM", "OpenAI", "Ollama", "pgvector", "Python"],
-    targetDate: "Bientôt sur Medium",
+    title: 'Du Monolithe au RAG : Ingestion vectorielle & RAG de +500 documents RH/Paie',
+    category: 'IA & RAG',
+    project: 'SmartDataPay (YSO Conseils / KAZAC)',
+    status: 'En rédaction',
+    excerpt:
+      "Retour d'expérience sur la création d'un pipeline ETL d'ingestion (Chunking, Embeddings Supabase pgvector / Qdrant) et l'intégration combinée d'OpenAI (GPT-4o) et Ollama (Llama 3 local) sous Next.js & LangChain.",
+    tags: ['LangChain', 'LiteLLM', 'OpenAI', 'Ollama', 'pgvector', 'Python'],
+    targetDate: 'Bientôt sur Medium',
   },
   {
-    title: "Télésanté & IoT : Collecter des flux de constantes physiologiques en temps réel (FHIR / HL7)",
-    category: "IoT & Santé",
-    project: "DATA2INNOV (Projet Santé Connectée)",
-    status: "Planifié",
-    excerpt: "Architecture d'acquisition temps réel avec capteurs IoT médicaux (EmotiBit, ESP32, Bangle.js, Withings Cloud API), application mobile Flutter BLE/Wi-Fi et observabilité SigNoz / ELK sous Docker Swarm.",
-    tags: ["FastAPI", "FHIR/HL7", "Flutter", "WebSockets", "Kafka", "SigNoz"],
-    targetDate: "Prochainement",
+    title: 'Télésanté & IoT : Collecter des flux de constantes physiologiques en temps réel (FHIR / HL7)',
+    category: 'IoT & Santé',
+    project: 'DATA2INNOV (Projet Santé Connectée)',
+    status: 'Planifié',
+    excerpt:
+      "Architecture d'acquisition temps réel avec capteurs IoT médicaux (EmotiBit, ESP32, Bangle.js, Withings Cloud API), application mobile Flutter BLE/Wi-Fi et observabilité SigNoz / ELK sous Docker Swarm.",
+    tags: ['FastAPI', 'FHIR/HL7', 'Flutter', 'WebSockets', 'Kafka', 'SigNoz'],
+    targetDate: 'Prochainement',
   },
   {
-    title: "Sécuriser une API bancaire critique avec Kong API Gateway & Active Directory LDAP",
-    category: "Banque & Security",
-    project: "SCB Cameroun (Attijariwafa Bank)",
-    status: "Planifié",
-    excerpt: "Comment router, appliquer du rate-limiting anti-DDoS et authentifier par LDAP/RBAC d'entreprise la distribution de +100 000 relevés de comptes chiffrés par email.",
-    tags: ["Kong Gateway", "Vue.js", "Laravel", "LDAP", "Kubernetes", "Argo CD"],
-    targetDate: "Prochainement",
+    title: 'Sécuriser une API bancaire critique avec Kong API Gateway & Active Directory LDAP',
+    category: 'Banque & Security',
+    project: 'SCB Cameroun (Attijariwafa Bank)',
+    status: 'Planifié',
+    excerpt:
+      "Comment router, appliquer du rate-limiting anti-DDoS et authentifier par LDAP/RBAC d'entreprise la distribution de +100 000 relevés de comptes chiffrés par email.",
+    tags: ['Kong Gateway', 'Vue.js', 'Laravel', 'LDAP', 'Kubernetes', 'Argo CD'],
+    targetDate: 'Prochainement',
   },
   {
-    title: "Flutter & Google Cloud Vision API : Scanner des tickets de caisse en FinTech",
-    category: "FinTech & Mobile",
-    project: "Korée Africa FinTech",
-    status: "Idée / Brouillon",
-    excerpt: "Implémentation de l'OCR mobile pour l'attribution automatique de cashback, gestion de l'authentification biométrique et notifications push avec fallbacks hybrides (OneSignal / AWS SNS).",
-    tags: ["Flutter", "Dart", "Google Cloud Vision", "Laravel", "AWS SNS", "Snyk"],
-    targetDate: "Brouillon",
+    title: 'Flutter & Google Cloud Vision API : Scanner des tickets de caisse en FinTech',
+    category: 'FinTech & Mobile',
+    project: 'Korée Africa FinTech',
+    status: 'Idée / Brouillon',
+    excerpt:
+      "Implémentation de l'OCR mobile pour l'attribution automatique de cashback, gestion de l'authentification biométrique et notifications push avec fallbacks hybrides (OneSignal / AWS SNS).",
+    tags: ['Flutter', 'Dart', 'Google Cloud Vision', 'Laravel', 'AWS SNS', 'Snyk'],
+    targetDate: 'Brouillon',
   },
   {
-    title: "Dev Agentique & Spec-Driven Development : Automatiser son SDLC avec Claude Code & SpecKit",
-    category: "Dev & IA",
-    project: "Antigravity & GitHub SpecKit",
-    status: "En rédaction",
-    excerpt: "Comment structurer des spécifications formelles (Markdown Spec, Plan, Tasks) et orchestrer des agents IA avec MCP (Model Context Protocol) et justfile pour produire du code zéro-dette.",
-    tags: ["Claude Code", "Antigravity", "GitHub SpecKit", "MCP", "justfile"],
-    targetDate: "Bientôt sur Medium",
+    title: 'Dev Agentique & Spec-Driven Development : Automatiser son SDLC avec Claude Code & SpecKit',
+    category: 'Dev & IA',
+    project: 'Antigravity & GitHub SpecKit',
+    status: 'En rédaction',
+    excerpt:
+      'Comment structurer des spécifications formelles (Markdown Spec, Plan, Tasks) et orchestrer des agents IA avec MCP (Model Context Protocol) et justfile pour produire du code zéro-dette.',
+    tags: ['Claude Code', 'Antigravity', 'GitHub SpecKit', 'MCP', 'justfile'],
+    targetDate: 'Bientôt sur Medium',
   },
   {
-    title: "Monorepo Frontend sans Nx : Organiser 5 applications Angular dans un repository unique",
-    category: "Architecture Web",
-    project: "Multi Canal Services & BPCE Coface",
-    status: "Idée / Brouillon",
-    excerpt: "Astuces d'architecture dans angular.json, optimisation de la taille des bundles (Tree shaking, Lazy loading) et pre-rendering SEO avec Puppeteer Headless.",
-    tags: ["Angular", "TypeScript", "RxJS", "Puppeteer", "Pnpm", "Cypress"],
-    targetDate: "Brouillon",
+    title: 'Monorepo Frontend sans Nx : Organiser 5 applications Angular dans un repository unique',
+    category: 'Architecture Web',
+    project: 'Multi Canal Services & BPCE Coface',
+    status: 'Idée / Brouillon',
+    excerpt:
+      "Astuces d'architecture dans angular.json, optimisation de la taille des bundles (Tree shaking, Lazy loading) et pre-rendering SEO avec Puppeteer Headless.",
+    tags: ['Angular', 'TypeScript', 'RxJS', 'Puppeteer', 'Pnpm', 'Cypress'],
+    targetDate: 'Brouillon',
   },
 ];
 
@@ -313,14 +350,7 @@ function ArticleListItem({ article, t }) {
               overflow: 'hidden',
               display: 'block',
             }}>
-            <Image
-              src={article.thumbnail}
-              h={95}
-              w="100%"
-              fit="cover"
-              alt={article.title}
-              fallbackSrc="https://placehold.co/600x320?text=Article"
-            />
+            <Image src={article.thumbnail} h={95} w="100%" fit="cover" alt={article.title} fallbackSrc="https://placehold.co/600x320?text=Article" />
           </Box>
         )}
         <Stack gap={4} style={{ flex: 1, minWidth: 0 }}>
@@ -374,10 +404,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
         counts[cat] = (counts[cat] || 0) + 1;
       });
     });
-    return [
-      { name: 'Tous', count: articles.length },
-      ...Object.entries(counts).map(([name, count]) => ({ name, count })),
-    ];
+    return [{ name: 'Tous', count: articles.length }, ...Object.entries(counts).map(([name, count]) => ({ name, count }))];
   }, [articles]);
 
   // Filtrage combiné pour la page dédiée uniquement
@@ -617,7 +644,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
                       💡 Prochains Articles & Roadmap de Rédaction Medium
                     </Title>
                     <Text size="xs" c="dimmed">
-                      Idées de sujets techniques et retours d'expérience en cours de rédaction basés sur mes projets réels.
+                      Idées de sujets techniques et retours d&apos;expérience en cours de rédaction basés sur mes projets réels.
                     </Text>
                   </Box>
                 </Group>

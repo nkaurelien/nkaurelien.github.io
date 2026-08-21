@@ -2,8 +2,7 @@ import { adminDb } from '@/lib/firebase-admin';
 
 export const runtime = 'nodejs';
 
-const json = (data, status = 200) =>
-  new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
+const json = (data, status = 200) => new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 
 const clip = (value, max) =>
   String(value ?? '')

@@ -2,21 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import {
-  Drawer,
-  TextInput,
-  Group,
-  Stack,
-  Text,
-  Badge,
-  Card,
-  UnstyledButton,
-  ActionIcon,
-  Box,
-  Kbd,
-  ScrollArea,
-  Divider,
-} from '@mantine/core';
+import { Drawer, TextInput, Group, Stack, Text, Badge, Card, UnstyledButton, ActionIcon, Box, Kbd, ScrollArea, Divider } from '@mantine/core';
 import { IconSearch, IconX, IconArrowUpRight, IconRocket, IconNews, IconTools, IconCode, IconAdjustmentsHorizontal } from '@tabler/icons-react';
 
 const SEARCH_INDEX = [
@@ -288,7 +274,10 @@ export default function SearchAside({ opened, onClose, locale = 'fr' }) {
                     transition: 'all 0.2s ease',
                   }}>
                   <Group justify="space-between" align="flex-start" wrap="nowrap" mb={4}>
-                    <Badge size="xs" variant="outline" color={item.type === 'Projets' ? 'teal' : item.type === 'Expertise' ? 'indigo' : item.type === 'Blog' ? 'orange' : 'cyan'}>
+                    <Badge
+                      size="xs"
+                      variant="outline"
+                      color={item.type === 'Projets' ? 'teal' : item.type === 'Expertise' ? 'indigo' : item.type === 'Blog' ? 'orange' : 'cyan'}>
                       {item.type}
                     </Badge>
                     <IconArrowUpRight size={14} style={{ opacity: 0.6 }} />

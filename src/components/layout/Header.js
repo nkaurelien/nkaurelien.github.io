@@ -23,7 +23,16 @@ import {
   Badge,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconSun, IconMoonStars, IconSparkles, IconChevronDown, IconLayoutDashboard, IconLogout, IconDownload, IconArrowUpRight } from '@tabler/icons-react';
+import {
+  IconSun,
+  IconMoonStars,
+  IconSparkles,
+  IconChevronDown,
+  IconLayoutDashboard,
+  IconLogout,
+  IconDownload,
+  IconArrowUpRight,
+} from '@tabler/icons-react';
 import { useAuth } from '@/context/AuthContext';
 
 function localizedHref(locale, link) {
@@ -164,9 +173,7 @@ export default function Header({ locale, app }) {
           </UnstyledButton>
         </Menu.Target>
         <Menu.Dropdown>
-          {user?.email && (
-            <Menu.Label style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</Menu.Label>
-          )}
+          {user?.email && <Menu.Label style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</Menu.Label>}
           <Menu.Item component={Link} href={localizedHref(locale, '/admin')} leftSection={<IconLayoutDashboard size={16} />}>
             Espace admin
           </Menu.Item>
@@ -194,9 +201,7 @@ export default function Header({ locale, app }) {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        {user?.email && (
-          <Menu.Label style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</Menu.Label>
-        )}
+        {user?.email && <Menu.Label style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</Menu.Label>}
         <Menu.Item color="red" leftSection={<IconLogout size={16} />} onClick={handleLogout}>
           Se déconnecter
         </Menu.Item>
@@ -267,13 +272,28 @@ export default function Header({ locale, app }) {
                 <Menu.Item component="a" href="/cv-lite.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Synthétique (1 Page)
                 </Menu.Item>
-                <Menu.Item component="a" href="/dossier-de-competences.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
+                <Menu.Item
+                  component="a"
+                  href="/dossier-de-competences.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}>
                   Dossier de Compétences (ESN)
                 </Menu.Item>
-                <Menu.Item component="a" href="/cv-fullstack.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
+                <Menu.Item
+                  component="a"
+                  href="/cv-fullstack.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}>
                   CV Dev Fullstack (Python/React)
                 </Menu.Item>
-                <Menu.Item component="a" href="/cv-angular-laravel.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
+                <Menu.Item
+                  component="a"
+                  href="/cv-angular-laravel.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}>
                   CV Dev Angular & Laravel PHP
                 </Menu.Item>
                 <Menu.Item component="a" href="/cv-devops.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>

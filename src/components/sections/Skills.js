@@ -82,13 +82,7 @@ export default function Skills({ skills }) {
               </Text>
               <Group gap="xs">
                 {(group.items || []).map(tech => (
-                  <Badge
-                    key={tech}
-                    className="anime-skill-badge"
-                    variant="light"
-                    color="brand"
-                    radius="sm"
-                    size="md">
+                  <Badge key={tech} className="anime-skill-badge" variant="light" color="brand" radius="sm" size="md">
                     {tech}
                   </Badge>
                 ))}
