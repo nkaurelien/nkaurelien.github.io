@@ -39,7 +39,7 @@ Ingénieur et Technical Lead diplômé d'un **MSc (Master of Science) en IA & Ma
 | **IA & Data Engineering** | RAG (Retrieval-Augmented Generation), Fine-tuning LLM, OpenAI API, Ollama, LangChain, LiteLLM, PySpark 3, ELK (Logstash, Elasticsearch, Kibana), SigNoz, BeautifulSoup | **3+ ans (Avancé)** |
 | **IoT & Normes Santé** | Normes FHIR / HL7, EmotiBit, ESP32, Bangle.js, Withings Cloud API, Bluetooth Low Energy (BLE), Wi-Fi, Arduino IDE | **2+ ans (Avancé)** |
 | **Bases de Données & Data** | PostgreSQL, MySQL, CouchDB, MongoDB Atlas, Elasticsearch, Oracle 23ai, Supabase (pgvector), Airtable, Redis, Qdrant, Milvus | **7+ ans (Expert)** |
-| **Méthodes & Qualité Code** | Clean Code, SOLID, POO, Design Patterns, UML, 2TUP, Merise, TDD (PEST, PHPUnit, Cypress), SAST/DAST, GitFlow, Agile (Scrum/Kanban) | **7+ ans (Expert)** |
+| **Méthodes, Doc & Qualité** | Clean Code, SOLID, POO, Design Patterns, UML, 2TUP, Merise, Documentation technique (MkDocs, OpenAPI / Swagger, Postman), TDD (PEST, PHPUnit, Cypress), SAST/DAST, GitFlow, Agile (Scrum/Kanban) | **7+ ans (Expert)** |
 
 ---
 
@@ -183,4 +183,3 @@ Conception et développement d'une plateforme intégrée de commande en ligne et
 - **2022 – 2024** : **MSc (Master of Science) IA & Management / Expert en Ingénierie Informatique** — Ionis-STM France *(Certification RNCP de niveau 7 Européen)*
 - **2014 – 2017** : **Ingénieur de Travaux Informatiques (option Génie Logiciel)** — Institut Africain de l'Informatique (IAI) *(Parcours Ingénieur spécialisé L3 / M1)*
 - **2008 – 2011** : **Baccalauréat Technique Série F2 (Électronique)** — Lycée Technique Douala Koumassi (LTDK)
-

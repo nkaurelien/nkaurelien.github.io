@@ -41,7 +41,7 @@
         {
             "icon": "training",
             "title": "Training & Technical Documentation",
-            "text": "Upskilling teams (Web, DevSecOps, AI), API specifications (OpenAPI / Swagger, Postman), technical documentation, and best practice workshops.",
+            "text": "Upskilling teams (Web, DevSecOps, AI), technical documentation (MkDocs), API specifications (OpenAPI / Swagger, Postman), and architecture guidebooks.",
             "active": true
         }
     ]

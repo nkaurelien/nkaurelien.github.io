@@ -41,7 +41,7 @@
         {
             "icon": "training",
             "title": "Formation & Documentation Technique",
-            "text": "Montée en compétence d'équipes (Web, DevSecOps, IA), spécifications d'API (OpenAPI / Swagger, Postman) et rédactions de guides techniques.",
+            "text": "Montée en compétence d'équipes (Web, DevSecOps, IA), documentation technique (MkDocs), spécifications d'API (OpenAPI / Swagger, Postman) et rédactions de guides d'architecture.",
             "active": true
         }
     ]

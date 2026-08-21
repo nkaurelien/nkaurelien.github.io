@@ -21,7 +21,7 @@ Ingénieur Développeur Fullstack avec **plus de 7 ans d'expérience** dans la c
 - **IA & Data** : RAG, LangChain, LiteLLM, OpenAI API, Ollama, Vector DBs, PySpark, ELK.
 - **Mobile & Desktop** : Flutter, Electron.js.
 - **Bases de Données** : PostgreSQL, MySQL, CouchDB, MongoDB, Elasticsearch, Supabase, Redis.
-- **DevOps & Outils** : Docker, GitLab CI/CD, Nginx, Postman, Git, Vite, Jest.
+- **DevOps, Doc & Outils** : Docker, GitLab CI/CD, Nginx, MkDocs, OpenAPI / Postman, Git, Vite, Jest.
 
 ---
 

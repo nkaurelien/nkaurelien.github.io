@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
-    "name": "Astrid Aurelien NKUMBE ENONGENE",
-    "label": "Développeur fullstack",
+    "name": "Astrid-Aurélien NKUMBE ENONGENE",
+    "label": "Senior Fullstack Engineer & Tech Lead — Spécialiste IA/RAG & DevSecOps",
     "email": "nkumbeaurelien@hotmail.com",
-    "phone": "07 44 58 45 62",
-    "url": "https://www.doyoubuzz.com/astrid-aurelien-nkumbe-enongene",
-    "summary": "Senior Fullstack Engineer et Technical Lead avec plus de 7 ans d'expérience dans la conception, l'architecture et le déploiement d'applications web, mobiles, IoT et IA.",
+    "phone": "+33 7 44 58 45 62",
+    "url": "https://nkaurelien.kamitbrains.fr",
+    "summary": "Senior Fullstack Engineer et Technical Lead avec plus de 7 ans d'expérience dans la conception, l'architecture et le déploiement d'applications web, mobiles, IoT et IA. Spécialisé en DevSecOps, architectures logicielles propres (Clean Code, SOLID), intégration d'intelligences artificielles (RAG, LLM agentique, LangChain) et systèmes de santé connectés aux normes FHIR / HL7.",
     "location": {
-      "city": "Paris / Cergy",
+      "city": "Cergy / Paris",
       "countryCode": "FR",
       "region": "Région Parisienne — Mobile France entière & Remote"
     },
@@ -24,468 +24,196 @@
         "url": "https://www.linkedin.com/in/nkaurelien/"
       },
       {
-        "network": "DoYouBuzz",
-        "username": "astrid-aurelien-nkumbe-enongene",
-        "url": "https://www.doyoubuzz.com/astrid-aurelien-nkumbe-enongene"
+        "network": "Medium",
+        "username": "nkaurelien",
+        "url": "https://medium.com/@nkaurelien"
       }
     ]
   },
   "work": [
     {
       "name": "DATA2INNOV",
-      "position": "Ingénieur développeur fullstack",
+      "position": "Ingénieur développeur fullstack (Lead Tech)",
       "startDate": "2025-05-01",
       "endDate": null,
-      "summary": "En tant que développeur fullstack polyvalent et Lead, mission de conduire et de participer à la réalisation des projets de l’entreprise dans le domaine du web, des données et de l’IoT conformes à la norme FHIR/HL7 du domaine de la santé.",
+      "summary": "Plateforme de santé connectée et collecte de données physiologiques conforme aux normes FHIR/HL7.",
       "highlights": [
-        "Développement Fullstack (Next.js / FastAPI) des applications pour patient et docteur : gestion des équipements IT du patient, collecte, interprétation et présentation des données physiologiques de santé issues des IoT et intégration des APIs IoT en cloud (Withings).",
-        "Recherche de nouvelles solutions IoT, de nouvelles données de santé à intégrer et de solutions architecturales et logicielles robustes pour stabiliser et observer la plateforme tech des applications.",
-        "- JSON-RPC",
-        "- Kafka",
-        "- Signoz",
-        "- Docker Swarm",
-        "Développement d’une POC d’application mobile (Flutter) pour connecter les équipements IoT via BLE et Wi-Fi et synchroniser les données en temps réel avec le pipeline Logstash d’intégration de données.",
-        "Intégration continue (test, build, stockage des images Docker) et déploiement continu des applications sur les serveurs virtuels avec Docker Compose et Ansible dans le pipeline Gitlab CI.",
-        "Mise à jour des équipements EmotiBit dans Arduino IDE.",
-        "Accompagnement technique des équipes en Tunisie dans le développement web et les bonnes pratiques."
+        "Architecture et développement Fullstack (Next.js / FastAPI) d'applications patient et médecin.",
+        "Collecte, traitement et restitution temps réel de métriques physiologiques issues d'objets connectés (Withings Cloud API, EmotiBit, ESP32).",
+        "Définition d'architectures robustes & observabilité : JSON-RPC, Kafka, SigNoz, Docker Swarm.",
+        "Développement d'un POC d'application mobile Flutter pour l'acquisition BLE/Wi-Fi et la synchronisation continue vers Logstash.",
+        "Mise en place du pipeline CI/CD GitLab (tests, builds, registre d'images Docker, déploiement Ansible / Docker Compose).",
+        "Mentorat et accompagnement technique des équipes de développement web."
       ],
-      "keywords": [
-        "FastAPI",
-        "Python",
-        "Next.js",
-        "HL7",
-        "FHIR",
-        "Mantine UI",
-        "Arduino",
-        "WebSockets",
-        "CouchDB",
-        "Flutter",
-        "ELK (Elasticsearch",
-        "Kibana",
-        "Logstash)",
-        "Gitlab",
-        "Docker",
-        "Nginx",
-        "Ubuntu",
-        "Postman",
-        "EmotiBit",
-        "ESP32",
-        "Bangle.js",
-        "Withings",
-        "Docker Compose",
-        "Ansible",
-        "Kafka",
-        "Signoz",
-        "CI/CD",
-        "DevOps"
-      ]
+      "keywords": ["FastAPI", "Python", "Next.js", "HL7", "FHIR", "Mantine UI", "Arduino", "WebSockets", "CouchDB", "Flutter", "ELK", "Gitlab", "Docker", "Withings", "Kafka", "SigNoz", "Ansible", "CI/CD", "DevOps"]
     },
     {
       "name": "YSO Conseils / KAZAC",
       "position": "Ingénieur développeur fullstack WEB, IA et MOE",
       "startDate": "2023-10-01",
       "endDate": "2024-09-01",
-      "summary": "Développement d’un chatbot RAG pour les gestionnaires de paie (SmartDataPay) et développement fullstack / Nocode / Automatisation pour un expert en gestion de paie et RH.",
+      "summary": "Développement du Chatbot RAG (SmartDataPay) pour les gestionnaires de paie et automatisation RH.",
       "highlights": [
-        "Développement Fullstack : Filament PHP, Livewire/AlpineJS sur Laravel et base de données (BaaS) (Airtable, Postgres), authentification en SaaS Auth0, Chatbot RAG (Next.js, OpenAI, Ollama, LiteLLM, Langchain).",
-        "Extraction et transformation des fichiers (JSON, Word, Markdown, PDF) pour l’intégration dans la base de connaissance (base de données vectorielle / embeddings) et la page web statique servant d’index.",
-        "Intégration continue et déploiement continu avec Gitlab CI, Cloud Azure.",
-        "Intégrations des services externes par API GraphQL et RESTful, des services cloud IA (Azure, Google), intégration des outils nocode (monétisation, abonnement).",
-        "Automatisation en SaaS sur Make et développement de prototype en Nocode.",
-        "Étude d’un projet d’application web de refonte du logiciel Silea (top logiciel de paie en France) dopé à l’IA.",
-        "MOE : Participation à l’étude détaillée en tant que référent technique."
+        "Développement Fullstack : Filament PHP, Livewire/AlpineJS, Laravel, PostgreSQL, Airtable, Auth0.",
+        "Création du Chatbot RAG (Next.js, OpenAI, Ollama, LiteLLM, LangChain) et pipeline ETL documentaire pour l'indexation vectorielle de +500 documents RH/Paie (PDF, Word, Markdown, JSON).",
+        "Intégration de services IA Cloud (Azure, Google) et automatisation SaaS via Make / N8N.",
+        "Assistance à la Maîtrise d'Œuvre (MOE) pour l'étude de refonte IA du logiciel de paie Silea."
       ],
-      "keywords": [
-        "Laravel",
-        "Python",
-        "Next.js",
-        "Filament PHP",
-        "Livewire",
-        "AlpineJS",
-        "OpenAI",
-        "Ollama",
-        "LiteLLM",
-        "Langchain",
-        "BeautifulSoup",
-        "Spark",
-        "Azure",
-        "Docker",
-        "Databricks Notebook",
-        "Supabase",
-        "Gitlab",
-        "Airtable",
-        "Firebase Hosting",
-        "Ubuntu",
-        "Nginx",
-        "Auth0",
-        "Postman",
-        "MkDocs",
-        "Make (N8N)",
-        "CI/CD",
-        "Nocode",
-        "Agile"
-      ]
+      "keywords": ["Laravel", "Filament PHP", "Next.js", "Python", "LangChain", "LiteLLM", "OpenAI", "Ollama", "Supabase", "Azure", "Docker", "Make", "GitLab CI"]
     },
     {
       "name": "SYLEN-IT SERVICES",
-      "position": "Développeur Angular/TypeScript",
+      "position": "Développeur Angular / TypeScript (Indépendant)",
       "startDate": "2022-11-01",
       "endDate": "2023-07-01",
-      "summary": "Refonte d’interfaces existantes de l’application Coface dans un nouveau framework CSS (de la BPCE) et développement d’une application de recherche et organisation de documents autour d’Elasticsearch. Mission en tant que professionnel indépendant.",
+      "summary": "Refonte des interfaces métiers (Coface / BPCE) et moteur de recherche documentaire Elasticsearch.",
       "highlights": [
-        "Refonte de la structure d’arborescence physique du projet pour mieux organiser le code.",
-        "Intégration des vues de l’application dans le framework CSS propriétaire de l’entreprise.",
-        "Intégration de l’API REST d’Elasticsearch.",
-        "Mise à jour des versions d’Angular dans les applications ainsi que les dépendances.",
-        "Élaboration des tests et recette de travaux.",
-        "Revues de code, typage, correction des bugs, intégration continue et perspectives d’amélioration en fin de sprint (rétrospective)."
+        "Refonte UX/UI d'applications Angular avec intégration du Design System propriétaire BPCE.",
+        "Intégration de l'API REST Elasticsearch pour la recherche documentaire en temps réel.",
+        "Migrations de versions Angular et refactoring du code legacy."
       ],
-      "keywords": [
-        "Angular",
-        "Elasticsearch",
-        "RxJS",
-        "Git",
-        "Citrix",
-        "Azure DevOps",
-        "ESLint",
-        "Prettier",
-        "Pnpm",
-        "Agile",
-        "Scrum"
-      ]
+      "keywords": ["Angular", "TypeScript", "RxJS", "Elasticsearch", "Azure DevOps", "ESLint", "Pnpm"]
     },
     {
       "name": "Korée",
       "position": "Développeur Backend PHP / Flutter (Lead Tech)",
       "startDate": "2021-12-01",
       "endDate": "2023-09-01",
-      "summary": "Conception et développement d’une plateforme de fidélisation de la clientèle pour une startup Fintech classée dans le Top 3 en Afrique centrale.",
+      "summary": "Startup Fintech de fidélisation et cashback classée dans le Top 3 en Afrique centrale.",
       "highlights": [
-        "Préparation physique et architecturale des projets web et mobiles (reverse engineering : génération de code et remplissage des données en base de données).",
-        "Création d’API Web totalement RESTful, sécurisées et modernes : JWT, ApiResources.",
-        "Création des bouchons de données des tests et des serveurs mocks sur Postman (Insomnia).",
-        "Intégration des services tiers cloud : TextTrack ORC, SQS, S3 ; de notifications SMS (SNS+SQS) ; de push notification ; de paiement en ligne ; disque cloud (S3/Google Cloud Storage).",
-        "Optimisation des APIs : mise en cache des requêtes et indexation des tables pour la recherche full text (Laravel Scout), traitement par lot avec le Scheduler Laravel.",
-        "DevOps : gestion du code sur Git, intégration continue, déploiement continu (Gitlab + Ansible + scripts) et rollback des applications sur cloud et machines virtuelles, création d’images Docker dans le Gitlab Registry.",
-        "Analyse statique SAST, détection de vulnérabilité dans les packages avec Snyk.",
-        "Enregistrement des logs et traces d’application (Google Cloud Monitoring, Laravel Telescope).",
-        "MOE : Analyse/Recommandation technico-fonctionnelle détaillée et design, Lead développeur agile."
+        "Architecture et développement des APIs RESTful hautement sécurisées (JWT, ApiResources).",
+        "Intégration des services Cloud : AWS SQS/S3, push notifications, passerelles SMS & paiements mobiles (Mobile Money / Stripe).",
+        "Optimisation des performances : mise en cache, indexation Laravel Scout, traitements différés (Scheduler/Queues).",
+        "Implémentation du pipeline DevSecOps : GitLab CI, Ansible, analyses SAST Snyk, Docker Registry."
       ],
-      "keywords": [
-        "PHP 8.1",
-        "Laravel",
-        "Flutter",
-        "MySQL",
-        "Elasticsearch",
-        "Stripe",
-        "OneSignal",
-        "PEST",
-        "PHPUnit",
-        "AWS",
-        "Google Cloud",
-        "Docker",
-        "Ubuntu",
-        "Spatie Permissions",
-        "iSeed",
-        "Scout",
-        "Cashier",
-        "Gitlab Container Registry",
-        "Snyk",
-        "Ansible",
-        "Postman",
-        "Insomnia",
-        "Agile",
-        "DevSecOps",
-        "CI/CD"
-      ]
+      "keywords": ["PHP 8.1", "Laravel", "Flutter", "MySQL", "Elasticsearch", "Stripe", "AWS", "GCP", "Docker", "Snyk", "Ansible"]
     },
     {
-      "name": "Société Commerciale de Banque Cameroun (SCB Cameroun)",
-      "position": "Analyste programmeur - Chef de projet (AMOE)",
+      "name": "Société Commerciale de Banque Cameroun (Attijariwafa Bank)",
+      "position": "Analyste Programmeur / Chef de Projet (AMOE)",
       "startDate": "2022-04-01",
       "endDate": "2022-09-01",
-      "summary": "Filiale du Groupe Attijariwafa Bank, participation à la transformation numérique de la banque dans la réalisation de projets critiques et de conformité.",
+      "summary": "Projets stratégiques de numérisation et de conformité bancaire.",
       "highlights": [
-        "Design et documentation OpenAPI / Développement d’APIs REST sécurisées JWT et mise en place d’un prototype de système de renforcement de la sécurité par reverse proxy KONG (limitation de l’accès, blacklistage, load balancing, protection DDoS, etc.).",
-        "Design/Conception du portail web (intranet) d’accès aux applications métiers et du BackOffice pour la gestion des relevés de comptes.",
-        "Développement fullstack autonome et maître d’œuvre sur les projets de développement des applications métiers.",
-        "Mise en place de l’authentification LDAP + RBAC interrogeant l’Active Directory de l’entreprise.",
-        "Création des mails avec pièces jointes protégées par mot de passe et lien de téléchargement signé à usage unique.",
-        "Découpage et assemblage des relevés de comptes en PDF ; mise en place des moyens de distribution périodiques des mails et monitoring des envois et échecs (in App).",
-        "Installation d’un serveur HP Proliant et déploiement de Argo CD sur Kubernetes.",
-        "Mise en place des recommandations de sécurité du RSSI au sein des applications.",
-        "Assistance à la gestion de projets et suivi des activités.",
-        "Documentation et notes techniques dans GLPI (base de connaissance documentaire).",
-        "Rédaction de comptes rendus, cahiers de tests et cahiers des charges."
+        "Architecture & sécurisation des APIs REST avec Kong API Gateway (load balancing, rate limiting, protection DDoS).",
+        "Développement fullstack du portail Intranet bancaire et du BackOffice de gestion des relevés de comptes.",
+        "Authentification centralisée LDAP + RBAC sur Active Directory d'entreprise.",
+        "Automatisation du découpage PDF et de la distribution périodique chiffrée par email de +100k relevés de comptes."
       ],
-      "keywords": [
-        "Vue.js",
-        "Laravel",
-        "LDAP",
-        "RBAC",
-        "JWT",
-        "KONG",
-        "Git",
-        "VMware ESXi",
-        "Ubuntu",
-        "Supervisor",
-        "MySQL",
-        "Visual Paradigm",
-        "IBM Lotus Notes",
-        "CLENotes",
-        "Portainer",
-        "Docker",
-        "Docker Compose",
-        "Argo CD",
-        "MS Project",
-        "Excel",
-        "GLPI",
-        "HP Proliant ML110 Gen2",
-        "Postman",
-        "Insomnia",
-        "Agile",
-        "AMOE"
-      ]
+      "keywords": ["Vue.js", "Laravel", "LDAP", "RBAC", "Kong Gateway", "Docker", "Argo CD", "Kubernetes", "MySQL"]
     },
     {
       "name": "LAB2VIEW",
-      "position": "Développeur Fullstack Laravel / Vue.js / Electron.js (multiplateformes)",
+      "position": "Développeur Fullstack Laravel / Vue.js / Electron.js",
       "startDate": "2021-02-01",
       "endDate": "2021-10-01",
-      "summary": "Développement d’une application de gestion multiplateforme pour la gestion de stock et des caisses avec Electron.js.",
+      "summary": "Application desktop/cross-platform de gestion commerciale et point de vente (POS).",
       "highlights": [
-        "Développement et mise en production d’une application multiplateforme (Electron.js) dotée d’une API RESTful pour la gestion de boutique et petit commerce ; installation du setup et formation à l’usage chez les clients finaux.",
-        "Mise en place de la fonction de mise à jour automatique et publication des Releases/build (intégration continue) sur GitHub.",
-        "Développement/déploiement des bibliothèques PHP Composer dans le GitLab Packages Repository.",
-        "Conception logique et statique avec UML/2TUP et architecturale (AWS Cloudcraft) des prototypes d’application et d’une version SaaS de l’application.",
-        "Mise en place d’une fonction de sauvegarde synchronisée et de base de données multi-tenant.",
-        "Administration des serveurs PLESK et déploiement manuel en cloud AWS EC2."
+        "Développement de l'application Electron.js / Vue.js avec système d'auto-update via GitHub Releases.",
+        "Conception d'architecture multi-tenant et scripts de sauvegarde automatique Cloud AWS EC2."
       ],
-      "keywords": [
-        "Vue.js",
-        "Electron.js",
-        "Node.js",
-        "Laravel",
-        "Laravel Spatie",
-        "Bootstrap",
-        "MySQL",
-        "Slack",
-        "Git Bitbucket",
-        "AWS EC2",
-        "Plesk",
-        "Prettier",
-        "Postman",
-        "Cloudcraft",
-        "Visual Paradigm",
-        "VS Code",
-        "Gitlab Packages Repository",
-        "UML",
-        "2TUP",
-        "CI/CD"
-      ]
+      "keywords": ["Vue.js", "Electron.js", "Node.js", "Laravel", "MySQL", "AWS EC2", "Plesk"]
     },
     {
       "name": "MCS IT",
-      "position": "Développeur Full Stack Laravel / Angular / Vue.js (Full remote)",
+      "position": "Développeur Fullstack Laravel / Angular / Vue.js",
       "startDate": "2018-06-01",
       "endDate": "2020-10-01",
-      "summary": "Développement d’une plateforme e-commerce pour la livraison de colis et de repas dans une approche Design Thinking, la POO et le clean code.",
+      "summary": "Plateforme e-commerce et solution de livraison rapide (Livraison Express).",
       "highlights": [
-        "Conception des couches de l’application par UML, création de jeux de données en base de données (Laravel Seeder/Faker).",
-        "Développement de l’application e-commerce Frontend avec Angular et Bootstrap incluant le Social Auth (Socialite) et de l’application mobile de coursiers de livraison avec Flutter.",
-        "Développement de l’interface de gestion des ventes, POS graphique pour le backoffice et gestion de course en Backend avec Bootstrap, Inertia.js, Vue.js.",
-        "Développement d’API REST, intégration de services (Google Places API, Maps et Firebase) et mise en production sur Google Cloud ou en VM.",
-        "Administration des serveurs et services Linux avec IspConfig.",
-        "Génération de code / reverse engineering (Craftable, CRUD Generator, iSeed, Migration).",
-        "Intégration de services cloud, création de cluster K8s, des groupes de machines virtuelles sur GCP et autres environnements sur Heroku.",
-        "Intégration continue et déploiement continu avec GitLab et Laravel Envoy, puis Ansible.",
-        "Installation des applications de collaboration, gestion des projets et gestion du temps : Odoo.",
-        "Accompagnement des développeurs juniors et stagiaires dans le clean code et la POO."
+        "Développement des applications Web (Angular/Bootstrap) et Mobile livreurs (Flutter).",
+        "Back-office de gestion des ventes et POS graphique avec Vue.js / Inertia.js.",
+        "Déploiement sur GCP, orchestration Docker Compose / Ansible et mentorat d'équipe."
       ],
-      "keywords": [
-        "Angular",
-        "Laravel",
-        "Vue.js",
-        "Flutter",
-        "MongoDB",
-        "Firestore",
-        "Stripe",
-        "Google Maps",
-        "Google Places",
-        "Ansible",
-        "GCP",
-        "Heroku",
-        "Firebase",
-        "GitLab",
-        "Laravel Envoy",
-        "Linux",
-        "CRON",
-        "Supervisor",
-        "Docker Compose",
-        "PHPUnit",
-        "Visual Paradigm",
-        "IspConfig",
-        "Odoo",
-        "Socialite",
-        "Design Thinking",
-        "POO",
-        "Clean Code",
-        "CI/CD",
-        "Agile"
-      ]
+      "keywords": ["Angular", "Laravel", "Vue.js", "Flutter", "MongoDB", "GCP", "Firebase", "Docker"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "momopay",
+      "description": "Package/SDK d'intégration automatisée des paiements mobiles (Mobile Money).",
+      "keywords": ["PHP", "Mobile Money", "Fintech"]
+    },
+    {
+      "name": "couchdb-manager",
+      "description": "Interface de gestion, sauvegarde, restauration et synchronisation CouchDB.",
+      "keywords": ["Python", "Streamlit", "CouchDB"]
+    },
+    {
+      "name": "fhir-nextjs-starter",
+      "description": "Starter kit de santé connectée avec intégration des normes FHIR/HL7.",
+      "keywords": ["Next.js", "TypeScript", "FHIR", "HL7"]
+    },
+    {
+      "name": "webmethods-devops-portfolio",
+      "description": "Automatisation d'infrastructures d'intégration webMethods 10.x.",
+      "keywords": ["Terraform", "Ansible", "Docker", "webMethods"]
     }
   ],
   "education": [
     {
       "institution": "WILOW",
-      "area": "Formation à WebMethods 10.x",
-      "studyType": "Formation à WebMethods 10.x",
+      "area": "WebMethods 10.x",
+      "studyType": "Formation professionnelle",
       "startDate": "2025-01-01",
-      "endDate": "2025-01-01",
-      "summary": "Formation WebMethods : IS & Designer, Installation shell scripts & Command Central, Administration IS, Développement de services : File Pooling, REST API."
+      "endDate": "2025-03-01",
+      "description": "IS & Designer, Installation shell scripts & Command Central, Administration IS, développement de services REST / File Pooling."
     },
     {
       "institution": "Ionis-STM",
-      "area": "Expert en Ingénierie Informatique – MSc IA & Management (RNCP Niveau 7)",
-      "studyType": "Expert en Ingénierie Informatique – MSc IA & Management (RNCP Niveau 7)",
-      "startDate": "2022-01-01",
-      "endDate": "2024-01-01",
-      "summary": "Master of Science en IA & Management, Expert en Ingénierie Informatique, RNCP Niveau 7."
+      "area": "Expert en Ingénierie Informatique – MSc IA & Management",
+      "studyType": "Master of Science (RNCP Niveau 7)",
+      "startDate": "2022-10-01",
+      "endDate": "2024-12-01",
+      "description": "Master of Science en IA & Management, Expert en Ingénierie Informatique."
     },
     {
-      "institution": "Institut Africain de l’Informatique (ACSI)",
-      "area": "Ingénieur des travaux en Analyse et Conception des Systèmes d’Informations",
-      "studyType": "Ingénieur des travaux en Analyse et Conception des Systèmes d’Informations",
+      "institution": "Institut Africain de l'Informatique (IAI / ACSI)",
+      "area": "Analyse et Conception des Systèmes d'Informations",
+      "studyType": "Ingénieur des Travaux",
       "startDate": "2014-01-01",
       "endDate": "2017-01-01",
-      "summary": "Formation en analyse et conception des systèmes d’informations au Cameroun."
+      "description": "Formation d'ingénieur en analyse et conception logicielle."
     }
   ],
   "skills": [
     {
-      "name": "Gestion de projet & Maîtrise d’œuvre",
-      "keywords": [
-        "Tech Lead / Lead Développeur",
-        "Analyse et conception technico-fonctionnelle (UML, 2TUP, Merise)",
-        "Accompagnement et mentorat d’équipes",
-        "Rédaction de documentation technique (cahiers des charges, comptes rendus)"
-      ]
-    },
-    {
-      "name": "Développement & Architecture logicielle",
-      "keywords": [
-        "Développement fullstack (Backend + Frontend)",
-        "Intégration et déploiement continus (CI/CD)",
-        "Intégration de services tiers et APIs",
-        "Ingénierie des données et IA (RAG, LLM)",
-        "Sécurité applicative (JWT, LDAP, RBAC, Snyk, KONG)",
-        "Développement mobile (Flutter)"
-      ]
-    },
-    {
       "name": "Langages de programmation",
-      "keywords": [
-        "Python",
-        "PHP",
-        "TypeScript",
-        "JavaScript",
-        "Dart (Flutter)"
-      ]
+      "keywords": ["Python", "PHP", "TypeScript", "JavaScript", "Dart", "SQL"]
     },
     {
-      "name": "Frameworks",
-      "keywords": [
-        "Laravel",
-        "FastAPI",
-        "Next.js",
-        "Angular",
-        "Vue.js",
-        "Nest.js",
-        "Electron.js",
-        "Langchain / LiteLLM"
-      ]
+      "name": "Frameworks Backend & Frontend",
+      "keywords": ["FastAPI", "Laravel", "Next.js", "Angular", "Vue.js", "Nest.js", "Electron.js", "Flutter", "Mantine UI"]
     },
     {
-      "name": "Base de données",
-      "keywords": [
-        "MySQL",
-        "PostgreSQL",
-        "MongoDB",
-        "CouchDB",
-        "Elasticsearch",
-        "Oracle 23ai",
-        "Airtable"
-      ]
+      "name": "DevOps & Cloud",
+      "keywords": ["Docker", "Docker Swarm", "Kubernetes", "Argo CD", "Ansible", "Terraform", "GitLab CI", "Nginx", "Snyk", "AWS", "GCP", "Azure"]
     },
     {
-      "name": "DevOps",
-      "keywords": [
-        "Docker / Docker Compose",
-        "Gitlab CI",
-        "Ansible",
-        "Terraform",
-        "Kubernetes / Argo CD",
-        "Snyk"
-      ]
+      "name": "IA & Data Engineering",
+      "keywords": ["RAG", "LLM", "OpenAI", "Ollama", "LangChain", "LiteLLM", "PySpark", "Bases vectorielles", "ELK Stack"]
     },
     {
-      "name": "Cloud",
-      "keywords": [
-        "AWS (EC2, S3, SQS, SNS)",
-        "Google Cloud Platform",
-        "Azure",
-        "Firebase",
-        "Heroku"
-      ]
+      "name": "IoT & Santé",
+      "keywords": ["FHIR / HL7", "EmotiBit", "ESP32", "Withings API", "BLE", "Wi-Fi", "Arduino IDE"]
     },
     {
-      "name": "IA",
-      "keywords": [
-        "OpenAI / Ollama",
-        "RAG (Retrieval-Augmented Generation)",
-        "PySpark",
-        "Embeddings / bases vectorielles"
-      ]
+      "name": "Bases de Données",
+      "keywords": ["PostgreSQL", "MySQL", "CouchDB", "MongoDB", "Elasticsearch", "Oracle 23ai", "Supabase", "Airtable"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Français",
+      "fluency": "Langue maternelle"
     },
     {
-      "name": "IoT",
-      "keywords": [
-        "EmotiBit / ESP32",
-        "Bangle.js",
-        "Withings API",
-        "BLE / Wi-Fi",
-        "Arduino IDE"
-      ]
+      "language": "Anglais",
+      "fluency": "Bon niveau technique (lecture/rédaction de docs et spécifications)"
     },
     {
-      "name": "Méthodes",
-      "keywords": [
-        "Agile / Scrum / XP",
-        "Design Thinking",
-        "Clean Code / SOLID / POO",
-        "UML / 2TUP / Merise"
-      ]
-    },
-    {
-      "name": "Outils",
-      "keywords": [
-        "Git",
-        "Postman / Insomnia",
-        "VS Code",
-        "Nginx",
-        "Linux / Ubuntu",
-        "Make (N8N)",
-        "ELK Stack"
-      ]
-    },
-    {
-      "name": "Soft skills",
-      "keywords": [
-        "Autonomie et rigueur",
-        "Curiosité et adaptabilité",
-        "Travail en équipe et mentorat",
-        "Amélioration continue"
-      ]
+      "language": "Allemand",
+      "fluency": "Niveau B1"
     }
   ]
 }
