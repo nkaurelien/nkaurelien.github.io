@@ -1,5 +1,5 @@
 ---
-tags: project ,agency ,showcase ,website
+tags: project, agency, showcase, website
 title: Kamitbrains
 category: Websites
 category_slug: websites

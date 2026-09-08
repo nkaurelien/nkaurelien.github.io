@@ -1,5 +1,5 @@
 ---
-tags: cv ,resume ,summary ,profile
+tags: cv, resume, summary, profile
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE

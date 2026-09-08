@@ -1,5 +1,5 @@
 ---
-tags: project ,e-commerce ,logistics ,delivery
+tags: project, e-commerce, logistics, delivery
 title: Livraison Express
 category: Applications Web
 category_slug: web-applications

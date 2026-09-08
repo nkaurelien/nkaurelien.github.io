@@ -1,5 +1,5 @@
 ---
-tags: project ,fintech ,cashback ,mobile ,startup
+tags: project, fintech, cashback, mobile, startup
 title: Koree
 category: Applications Web
 category_slug: web-applications

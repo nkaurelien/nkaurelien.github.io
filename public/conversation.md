@@ -1,5 +1,5 @@
 ---
-tags: faq ,interview ,bio ,q-and-a
+tags: faq, interview, bio, q-and-a
 ---
 
 # FAQ — Aurelien NKUMBE

@@ -1,5 +1,5 @@
 ---
-tags: database ,schema ,graphql ,tables
+tags: database, schema, graphql, tables
 ---
 
 type Profile @table {

@@ -1,5 +1,5 @@
 ---
-tags: devops ,security ,wireguard ,self-hosted ,ssh ,vpn
+tags: devops, security, wireguard, self-hosted, ssh, vpn
 title: "Du tunnel SSH au mesh VPN : n'exposer aucun service interne, sans sacrifier l'accès ops"
 date: 2026-07-22
 categories: [DevOps, Sécurité, WireGuard, Self-hosted]

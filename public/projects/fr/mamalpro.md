@@ -1,5 +1,5 @@
 ---
-tags: project ,health ,covid-19 ,minsante ,web-application
+tags: project, health, covid-19, minsante, web-application
 #preview
 title: Mamalpro
 image: /img/projects/mamalpro/1.png

@@ -1,5 +1,5 @@
 ---
-tags: profile ,bio ,about ,tech-lead ,devops
+tags: profile, bio, about, tech-lead, devops
 ---
 
 # À propos d'Aurélien NKUMBE — profil complet

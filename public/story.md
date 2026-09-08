@@ -1,5 +1,5 @@
 ---
-tags: bio ,story ,career ,journey
+tags: bio, story, career, journey
 ---
 
 # Mon histoire — Aurelien NKUMBE

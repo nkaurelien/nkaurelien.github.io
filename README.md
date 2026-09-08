@@ -1,5 +1,5 @@
 ---
-tags: readme ,documentation ,nextjs ,portfolio
+tags: readme, documentation, nextjs, portfolio
 ---
 
 # nkaurelien.github.io

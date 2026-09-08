@@ -1,5 +1,5 @@
 ---
-tags: cv ,resume ,profile ,tech-lead ,devops ,fullstack
+tags: cv, resume, profile, tech-lead, devops, fullstack
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE
