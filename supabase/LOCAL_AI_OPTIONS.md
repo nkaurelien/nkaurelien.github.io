@@ -1,5 +1,5 @@
 ---
-tags: supabase, ai, ollama, genkit, gemini, local-ai
+tags: supabase ,ai ,ollama ,genkit ,gemini ,local-ai
 ---
 
 # Options IA locales & Cloud : Ollama (M4 Local), Firebase Genkit & Gemini API

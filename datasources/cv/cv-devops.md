@@ -1,5 +1,5 @@
 ---
-tags: cv, resume, devops, sysops, docker, kubernetes, ansible
+tags: cv ,resume ,devops ,sysops ,docker ,kubernetes ,ansible
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE

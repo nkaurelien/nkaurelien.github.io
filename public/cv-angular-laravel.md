@@ -1,5 +1,5 @@
 ---
-tags: cv, resume, angular, laravel, php, typescript
+tags: cv ,resume ,angular ,laravel ,php ,typescript
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE

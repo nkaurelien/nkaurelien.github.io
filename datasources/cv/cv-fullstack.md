@@ -1,5 +1,5 @@
 ---
-tags: cv, resume, fullstack, react, nodejs, python
+tags: cv ,resume ,fullstack ,react ,nodejs ,python
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE

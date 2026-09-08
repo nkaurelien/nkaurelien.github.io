@@ -1,5 +1,5 @@
 ---
-tags: profile, bio, about, tech-lead, devops
+tags: profile ,bio ,about ,tech-lead ,devops
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE — À propos

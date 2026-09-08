@@ -1,5 +1,5 @@
 ---
-tags: project, rag, ai, dataset, data
+tags: project ,rag ,ai ,dataset ,data
 title: Fiches Travail — RAG Dataset
 category: Data & AI
 category_slug: data-ai

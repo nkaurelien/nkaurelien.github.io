@@ -1,5 +1,5 @@
 ---
-tags: supabase, ai, gemini, embeddings, llm
+tags: supabase ,ai ,gemini ,embeddings ,llm
 ---
 
 # Alternative : Intégration des Embeddings Google Gemini

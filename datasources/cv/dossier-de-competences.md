@@ -1,5 +1,5 @@
 ---
-tags: skills, expertise, cv, career, devops
+tags: skills ,expertise ,cv ,career ,devops
 ---
 
 # DOSSIER DE COMPÉTENCES & D'EXPERTISE EXHAUSTIF
