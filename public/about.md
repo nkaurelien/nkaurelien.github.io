@@ -1,3 +1,7 @@
+---
+tags: profile, bio, about, tech-lead, devops
+---
+
 # Astrid-Aurélien NKUMBE ENONGENE — À propos
 
 > Développeur'Ops fullstack polyvalent (7+ ans) — DevSecOps · SysOps · Data & IA.

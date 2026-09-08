@@ -1,4 +1,5 @@
 ---
+tags: project, payroll, hr, website
 title: Smart Data Pay
 category: Websites
 category_slug: websites

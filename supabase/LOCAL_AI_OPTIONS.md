@@ -1,3 +1,7 @@
+---
+tags: supabase, ai, ollama, genkit, gemini, local-ai
+---
+
 # Options IA locales & Cloud : Ollama (M4 Local), Firebase Genkit & Gemini API
 
 Votre **Mac mini M4** est un outil extrêmement puissant doté de moteurs neuronaux accélérés (NPU) et d'un GPU unifié très rapide. Vous pouvez en tirer parti pour faire tourner des modèles d'IA en local à pleine vitesse.

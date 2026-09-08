@@ -1,3 +1,7 @@
+---
+tags: readme, documentation, nextjs, portfolio
+---
+
 # nkaurelien.github.io
 
 Site personnel / portfolio d'**Aurelien NKUMBE** — déployé sur GitHub Pages à l'adresse

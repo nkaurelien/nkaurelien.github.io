@@ -1,4 +1,5 @@
 ---
+tags: project, web-application, content-sharing
 title: Tameri BIG
 category: Applications Web
 category_slug: web-applications

@@ -1,3 +1,7 @@
+---
+tags: database, schema, graphql, tables
+---
+
 type Profile @table {
   name: String!
   bioSummary: String!

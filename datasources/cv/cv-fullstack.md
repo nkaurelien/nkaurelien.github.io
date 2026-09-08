@@ -1,3 +1,7 @@
+---
+tags: cv, resume, fullstack, react, nodejs, python
+---
+
 # Astrid-Aurélien NKUMBE ENONGENE
 **Senior Fullstack Engineer (Python / Next.js / React / Node.js)**
 

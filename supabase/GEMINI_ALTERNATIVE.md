@@ -1,3 +1,7 @@
+---
+tags: supabase, ai, gemini, embeddings, llm
+---
+
 # Alternative : Intégration des Embeddings Google Gemini
 
 Ce document explique comment migrer du modèle local gratuit `@xenova/transformers` (dimensions 384) vers le SDK officiel **Google Gen AI** en utilisant le modèle d'embeddings haut de gamme de Google (**`text-embedding-004`**, dimensions 768).

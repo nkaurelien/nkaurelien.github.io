@@ -1,3 +1,7 @@
+---
+tags: profile, bio, about, tech-lead, devops
+---
+
 # À propos d'Aurélien NKUMBE — profil complet
 
 > Fiche profil factuelle et structurée d'Astrid-Aurélien NKUMBE ENONGENE (alias « nkaurelien »), Développeur'Ops full-stack et Tech Lead. Complète le récit « Mon histoire ».

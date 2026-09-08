@@ -1,3 +1,7 @@
+---
+tags: cv, resume, devops, sysops, docker, kubernetes, ansible
+---
+
 # Astrid-Aurélien NKUMBE ENONGENE
 **Lead DevSecOps Engineer & Cloud Infrastructure Architect**
 

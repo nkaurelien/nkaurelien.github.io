@@ -1,3 +1,7 @@
+---
+tags: skills, expertise, cv, career, devops
+---
+
 # DOSSIER DE COMPÉTENCES & D'EXPERTISE EXHAUSTIF
 **Astrid-Aurélien NKUMBE ENONGENE**  
 *Senior Fullstack Engineer · Technical Lead · Architecte IA & DevSecOps*

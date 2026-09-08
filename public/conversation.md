@@ -1,3 +1,7 @@
+---
+tags: faq, interview, bio, q-and-a
+---
+
 # FAQ — Aurelien NKUMBE
 
 > Questions fréquentes (recruteurs, clients, IA). Réponses courtes et factuelles.

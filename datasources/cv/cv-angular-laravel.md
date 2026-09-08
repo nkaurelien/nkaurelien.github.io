@@ -1,3 +1,7 @@
+---
+tags: cv, resume, angular, laravel, php, typescript
+---
+
 # Astrid-Aurélien NKUMBE ENONGENE
 **Spécialiste Développeur Angular & Laravel PHP / TypeScript**
 

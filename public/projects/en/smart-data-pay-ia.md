@@ -1,4 +1,5 @@
 ---
+tags: project, ai, rag, payroll, chatbot
 title: Smart Data Pay AI
 category: Web Applications
 category_slug: web-applications

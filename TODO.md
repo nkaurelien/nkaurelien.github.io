@@ -1,3 +1,7 @@
+---
+tags: todo, firebase, admin, tasks
+---
+
 # TODO - Intégration Firebase & Améliorations Espace Admin
 
 Ce fichier récapitule les tâches accomplies concernant l'intégration de Firebase, ainsi que les pistes de développement futur pour l'espace d'administration.

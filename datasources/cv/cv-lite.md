@@ -1,3 +1,7 @@
+---
+tags: cv, resume, summary, profile
+---
+
 # Astrid-Aurélien NKUMBE ENONGENE
 **Senior Fullstack Engineer & Tech Lead**
 Paris / Cergy (Mobile France entière & Remote) | +33 7 44 58 45 62 | nkumbeaurelien@hotmail.com | [nkaurelien.kamitbrains.fr](https://nkaurelien.kamitbrains.fr) | [LinkedIn](https://www.linkedin.com/in/nkaurelien/) | [GitHub](https://github.com/nkaurelien)

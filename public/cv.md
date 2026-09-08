@@ -1,3 +1,7 @@
+---
+tags: cv, resume, profile, tech-lead, devops, fullstack
+---
+
 # Astrid-Aurélien NKUMBE ENONGENE
 **Senior Fullstack Engineer & Tech Lead — Spécialiste IA/RAG & DevSecOps**
 

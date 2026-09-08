@@ -1,3 +1,7 @@
+---
+tags: bio, story, career, journey
+---
+
 # Mon histoire — Aurelien NKUMBE
 
 > Le récit, à la première personne : d'où je viens, ce qui m'anime, et où je vais.
