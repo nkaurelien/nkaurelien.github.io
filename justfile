@@ -6,13 +6,23 @@
 default:
     @just --list
 
-# Lance le serveur de développement local
-dev:
-    yarn dev
+# Lance le serveur de développement local (ex: just dev ou just dev 3000)
+dev port="3000":
+    yarn dev -p {{port}}
 
 # Compile la version de production Next.js
 build:
     yarn build
+
+# Déploie en production sur Vercel
+deploy:
+    npx vercel --prod
+
+# Commit et push sur Git (ex: just commit "mon message")
+commit msg="chore: update portfolio":
+    git add .
+    git commit -m "{{msg}}"
+    git push
 
 # Génère le CV PDF (cv.md -> public/cv.pdf) via Pandoc et Weasyprint
 pdf:
