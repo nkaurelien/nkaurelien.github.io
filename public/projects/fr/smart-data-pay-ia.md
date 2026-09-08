@@ -73,4 +73,5 @@ carousel:
     alt: Smart Data Pay IA
   - image: /img/projects/smart-data-pay-ia/23.png
     alt: Smart Data Pay IA
+lang: fr
 ---

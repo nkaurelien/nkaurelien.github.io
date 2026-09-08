@@ -5,6 +5,7 @@ date: 2026-07-22
 categories: [DevOps, Sécurité, WireGuard, Self-hosted]
 excerpt: "Comment une stack auto-hébergée peut rester joignable pour l'équipe avec une surface d'attaque quasi nulle — et quand Tailscale ou Headscale deviennent le bon investissement."
 # medium: <url après migration manuelle>
+lang: fr
 ---
 
 # Du tunnel SSH au mesh VPN : n'exposer aucun service interne, sans sacrifier l'accès ops

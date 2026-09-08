@@ -26,4 +26,5 @@ details:
       value: Paie, droit du travail, conventions collectives
     - label: Usage
       value: Base de connaissances vectorielle (RAG)
+lang: fr
 ---

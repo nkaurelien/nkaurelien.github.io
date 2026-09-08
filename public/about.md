@@ -1,5 +1,8 @@
 ---
+title: "À propos d’Aurélien NKUMBE — Profil complet"
+description: "Fiche profil factuelle et structurée d’Aurélien NKUMBE (alias nkaurelien)"
 tags: profile, bio, about, tech-lead, devops
+lang: fr
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE — À propos

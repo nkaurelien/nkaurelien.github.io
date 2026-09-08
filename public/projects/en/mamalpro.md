@@ -107,4 +107,5 @@ carousel:
 
   - image: /img/projects/mamalpro/24.png
     alt: image
+lang: en
 ---

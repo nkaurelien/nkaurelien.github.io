@@ -1,5 +1,8 @@
 ---
+title: "Astrid-Aurélien NKUMBE ENONGENE — CV"
+description: "Curriculum Vitae de Senior Software Engineer, Backend & DevSecOps"
 tags: cv, resume, profile, tech-lead, devops, fullstack
+lang: fr
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE

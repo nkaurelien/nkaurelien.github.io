@@ -1,5 +1,8 @@
 ---
+title: "CV DevSecOps — Aurélien NKUMBE"
+description: "CV spécialisé DevSecOps, SysOps, Docker, Kubernetes & Ansible"
 tags: cv, resume, devops, sysops, docker, kubernetes, ansible
+lang: fr
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE

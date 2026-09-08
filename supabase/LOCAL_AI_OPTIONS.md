@@ -1,5 +1,8 @@
 ---
+title: "Options IA locales & Cloud (Ollama, Genkit, Gemini)"
+description: "Guide d’intégration Ollama, Firebase Genkit et Gemini API sur Mac M4"
 tags: supabase, ai, ollama, genkit, gemini, local-ai
+lang: fr
 ---
 
 # Options IA locales & Cloud : Ollama (M4 Local), Firebase Genkit & Gemini API

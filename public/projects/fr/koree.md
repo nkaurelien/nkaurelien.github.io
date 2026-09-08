@@ -25,4 +25,5 @@ details:
 carousel:
   - image: /img/projects/koree/1.png
     alt: Koree
+lang: fr
 ---

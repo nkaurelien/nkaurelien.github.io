@@ -27,4 +27,5 @@ details:
 carousel:
   - image: /img/projects/livraison-express/1.png
     alt: Livraison Express
+lang: en
 ---

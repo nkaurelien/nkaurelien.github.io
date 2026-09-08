@@ -1,5 +1,8 @@
 ---
+title: "CV Synthétique — Aurélien NKUMBE"
+description: "Résumé du profil professionnel d’Aurélien NKUMBE"
 tags: cv, resume, summary, profile
+lang: fr
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE

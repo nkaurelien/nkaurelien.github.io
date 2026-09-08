@@ -26,4 +26,5 @@ details:
       value: Payroll, labour law, collective agreements
     - label: Usage
       value: Vector knowledge base (RAG)
+lang: en
 ---

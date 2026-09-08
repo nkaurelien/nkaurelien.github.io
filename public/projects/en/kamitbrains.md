@@ -32,4 +32,5 @@ carousel:
     alt: Kamitbrains
   - image: /img/projects/kamitbrains/2.png
     alt: Kamitbrains
+lang: en
 ---

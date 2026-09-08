@@ -1,5 +1,8 @@
 ---
+title: "FAQ & Échanges — Aurélien NKUMBE"
+description: "Réponses aux questions fréquentes sur le parcours et les expertises"
 tags: faq, interview, bio, q-and-a
+lang: fr
 ---
 
 # FAQ — Aurelien NKUMBE

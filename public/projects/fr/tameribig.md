@@ -50,4 +50,5 @@ carousel:
     alt: Maquette UI initiale — galerie
   - image: /img/projects/tameribig/ui-monitoring.jpg
     alt: Maquette UI initiale — monitoring
+lang: fr
 ---

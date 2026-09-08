@@ -1,5 +1,8 @@
 ---
+title: "CV Fullstack — Aurélien NKUMBE"
+description: "CV spécialisé Fullstack (React, Next.js, FastAPI, Node.js, Python)"
 tags: cv, resume, fullstack, react, nodejs, python
+lang: fr
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE

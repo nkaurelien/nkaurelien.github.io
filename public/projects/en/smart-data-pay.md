@@ -43,4 +43,5 @@ carousel:
     alt: Smart Data Pay
   - image: /img/projects/smart-data-pay/9.png
     alt: Smart Data Pay
+lang: en
 ---

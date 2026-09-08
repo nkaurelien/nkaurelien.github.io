@@ -50,4 +50,5 @@ carousel:
     alt: Initial UI mockup — gallery
   - image: /img/projects/tameribig/ui-monitoring.jpg
     alt: Initial UI mockup — monitoring
+lang: en
 ---

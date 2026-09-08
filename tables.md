@@ -1,5 +1,8 @@
 ---
+title: "Schemas GraphQL & Tables"
+description: "Définition des types et tables de base de données"
 tags: database, schema, graphql, tables
+lang: fr
 ---
 
 type Profile @table {

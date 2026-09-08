@@ -1,5 +1,8 @@
 ---
+title: "TODO — Intégration Firebase & Espace Admin"
+description: "Liste des tâches à réaliser pour l’espace administration et Firebase"
 tags: todo, firebase, admin, tasks
+lang: fr
 ---
 
 # TODO - Intégration Firebase & Améliorations Espace Admin

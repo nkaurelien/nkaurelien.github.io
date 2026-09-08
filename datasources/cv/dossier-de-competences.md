@@ -1,5 +1,8 @@
 ---
+title: "Dossier de Compétences — Aurélien NKUMBE"
+description: "Dossier d’expertise technique détaillé (DevSecOps, Cloud, IA, Fullstack)"
 tags: skills, expertise, cv, career, devops
+lang: fr
 ---
 
 # DOSSIER DE COMPÉTENCES & D'EXPERTISE EXHAUSTIF

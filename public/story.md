@@ -1,5 +1,8 @@
 ---
+title: "Mon Histoire — Aurélien NKUMBE"
+description: "Récit du parcours personnel et professionnel d’Aurélien NKUMBE"
 tags: bio, story, career, journey
+lang: fr
 ---
 
 # Mon histoire — Aurelien NKUMBE

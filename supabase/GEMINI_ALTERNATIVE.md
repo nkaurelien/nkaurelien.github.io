@@ -1,5 +1,8 @@
 ---
+title: "Alternative Embeddings Google Gemini"
+description: "Guide d’utilisation des Embeddings Google Gemini pour la recherche sémantique"
 tags: supabase, ai, gemini, embeddings, llm
+lang: fr
 ---
 
 # Alternative : Intégration des Embeddings Google Gemini
