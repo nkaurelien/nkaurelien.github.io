@@ -15,7 +15,15 @@ export default function ChatInput({ placeholder, input, setInput, sendMessage, h
         paddingRight: 'var(--mantine-spacing-md)',
         zIndex: 100,
       }}>
-      <form id="chat-form" onSubmit={sendMessage} style={{ width: '100%' }}>
+      <form
+        id="chat-form"
+        onSubmit={e => {
+          if (typeof window !== 'undefined' && input?.trim()) {
+            window.umami?.track('chat_query_submit', { length: input.trim().length });
+          }
+          sendMessage(e);
+        }}
+        style={{ width: '100%' }}>
         <TextInput
           value={input}
           onChange={handleInputChange}

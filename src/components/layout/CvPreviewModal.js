@@ -106,6 +106,10 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
   useEffect(() => {
     if (!opened || !selectedCv) return;
 
+    if (typeof window !== 'undefined') {
+      window.umami?.track('cv_preview_open', { cvId: selectedCv.id, title: selectedCv.title });
+    }
+
     setLoading(true);
     fetch(selectedCv.mdUrl)
       .then(res => {
@@ -135,6 +139,9 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
 
   // Clic sur le bouton de téléchargement
   const handleDownloadClick = () => {
+    if (typeof window !== 'undefined') {
+      window.umami?.track('cv_pdf_download_click', { cvId: selectedCv.id });
+    }
     if (emailCaptured) {
       triggerPdfDownload(selectedCv.pdfUrl, selectedCv.downloadName);
     } else {
@@ -214,7 +221,17 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
 
             <Group gap="xs" wrap="nowrap" style={{ flexShrink: 0 }}>
               <Tooltip label={clipboard.copied ? 'Copié !' : 'Copier le Markdown'} withArrow>
-                <ActionIcon variant="light" color={clipboard.copied ? 'teal' : 'gray'} onClick={() => clipboard.copy(content)} size="md" radius="md">
+                <ActionIcon
+                  variant="light"
+                  color={clipboard.copied ? 'teal' : 'gray'}
+                  onClick={() => {
+                    clipboard.copy(content);
+                    if (typeof window !== 'undefined') {
+                      window.umami?.track('cv_copy_markdown', { cvId: selectedCv.id });
+                    }
+                  }}
+                  size="md"
+                  radius="md">
                   {clipboard.copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
                 </ActionIcon>
               </Tooltip>
@@ -240,7 +257,12 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
           <Box mt="md" style={{ overflowX: 'auto' }}>
             <SegmentedControl
               value={selectedCv.id}
-              onChange={val => onSelectCvId && onSelectCvId(val)}
+              onChange={val => {
+                if (typeof window !== 'undefined') {
+                  window.umami?.track('cv_version_select', { cvId: val });
+                }
+                onSelectCvId && onSelectCvId(val);
+              }}
               data={CV_OPTIONS.map(c => ({ label: c.label, value: c.id }))}
               size="xs"
               radius="md"

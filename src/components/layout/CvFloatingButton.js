@@ -135,7 +135,18 @@ export default function CvFloatingButton() {
             <Menu.Divider />
 
             {cvList.map((item, idx) => (
-              <Menu.Item key={idx} onClick={() => handleOpenPreview(item.id)} leftSection={item.icon} py={8} px="xs" style={{ borderRadius: 8 }}>
+              <Menu.Item
+                key={idx}
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.umami?.track('cv_fab_menu_select', { cvId: item.id, title: item.title });
+                  }
+                  handleOpenPreview(item.id);
+                }}
+                leftSection={item.icon}
+                py={8}
+                px="xs"
+                style={{ borderRadius: 8 }}>
                 <Group justify="space-between" wrap="nowrap" gap={4}>
                   <Box style={{ flex: 1, minWidth: 0 }}>
                     <Text size="sm" fw={600} style={{ lineHeight: 1.2 }}>
@@ -154,7 +165,12 @@ export default function CvFloatingButton() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={e => e.stopPropagation()}
+                        onClick={e => {
+                          e.stopPropagation();
+                          if (typeof window !== 'undefined') {
+                            window.umami?.track('cv_pdf_open_new_tab', { cvId: item.id });
+                          }
+                        }}
                         variant="subtle"
                         color="blue"
                         size="xs">
@@ -166,7 +182,12 @@ export default function CvFloatingButton() {
                         component="a"
                         href={item.href}
                         download={item.download}
-                        onClick={e => e.stopPropagation()}
+                        onClick={e => {
+                          e.stopPropagation();
+                          if (typeof window !== 'undefined') {
+                            window.umami?.track('cv_pdf_direct_download', { cvId: item.id });
+                          }
+                        }}
                         variant="subtle"
                         color="teal"
                         size="xs">
