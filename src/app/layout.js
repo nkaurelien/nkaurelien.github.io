@@ -20,6 +20,12 @@ export default function RootLayout({ children }) {
         {/* Documents lisibles par les humains et les IA (llms.txt, bio Markdown). */}
         <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
         <link rel="alternate" type="text/markdown" title="À propos (Markdown)" href="/about.md" />
+        {/* Tracking Umami Analytics */}
+        <script
+          defer
+          src="https://umami.kamitbrains.fr/script.js"
+          data-website-id="37569a74-7d82-44fc-b839-525d4604c9b8"
+        />
       </head>
       <body>{children}</body>
     </html>
