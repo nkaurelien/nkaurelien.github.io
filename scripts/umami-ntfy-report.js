@@ -3,19 +3,18 @@ require('dotenv').config({ path: '.env' });
 
 /**
  * Script d'automatisation des rapports Umami vers ntfy.
- * S'authentifie sur l'API Umami, récupère les statistiques (vues, visiteurs, événements),
+ * S'authentifie sur l'API Umami v2, récupère les statistiques (vues, visiteurs, événements),
  * et génère une synthèse transmise directement via notification push ntfy.
  */
 
 const UMAMI_URL = (process.env.UMAMI_URL || 'https://umami.kamitbrains.fr').replace(/\/$/, '');
-const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || '37569a74-7d82-44fc-b839-525d4604c9b8';
 const UMAMI_USERNAME = process.env.UMAMI_USERNAME || 'admin';
 const UMAMI_PASSWORD = process.env.UMAMI_PASSWORD;
 const NTFY_TOPIC_URL = process.env.NTFY_TOPIC_URL;
 
 async function loginUmami() {
   if (!UMAMI_PASSWORD) {
-    throw new Error('UMAMI_PASSWORD non configuré dans .env.local');
+    throw new Error('UMAMI_PASSWORD non configuré.');
   }
 
   const res = await fetch(`${UMAMI_URL}/api/auth/login`, {
@@ -32,31 +31,49 @@ async function loginUmami() {
   return data.token;
 }
 
-async function getStats(token, startAt, endAt) {
-  const url = `${UMAMI_URL}/api/websites/${UMAMI_WEBSITE_ID}/stats?startAt=${startAt}&endAt=${endAt}`;
+async function getWebsites(token) {
+  const res = await fetch(`${UMAMI_URL}/api/websites`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Erreur récupération liste des sites: ${res.status}`);
+  }
+
+  const data = await res.json();
+  return Array.isArray(data) ? data : (data.data || []);
+}
+
+async function getStats(token, websiteId, startAt, endAt) {
+  const url = `${UMAMI_URL}/api/websites/${websiteId}/stats?startAt=${startAt}&endAt=${endAt}`;
   const res = await fetch(url, {
     headers: { Authorization: `Bearer ${token}` },
   });
 
   if (!res.ok) {
-    throw new Error(`Erreur récupération stats: ${res.status}`);
+    throw new Error(`Erreur récupération stats pour site ${websiteId}: ${res.status}`);
   }
 
   return res.json();
+}
+
+function extractVal(stat) {
+  if (typeof stat === 'number') return stat;
+  if (typeof stat === 'object' && stat !== null && 'value' in stat) return stat.value || 0;
+  return Number(stat) || 0;
 }
 
 async function sendNtfyReport(reportText) {
   if (!NTFY_TOPIC_URL) {
     console.log('\n--- RAPPORT SYNTHÈSE (Console) ---');
     console.log(reportText);
-    console.log('\n(Ajoutez NTFY_TOPIC_URL dans .env.local pour recevoir ce rapport sur votre téléphone)');
     return;
   }
 
   const res = await fetch(NTFY_TOPIC_URL, {
     method: 'POST',
     headers: {
-      Title: '📊 Rapport Analytics Umami (nkaurelien.kamitbrains.fr)',
+      Title: 'Rapport Analytics Umami (nkaurelien.kamitbrains.fr)',
       Priority: 'default',
       Tags: 'bar_chart,chart_with_upwards_trend',
       'Content-Type': 'text/plain; charset=utf-8',
@@ -78,24 +95,41 @@ async function run() {
     const token = await loginUmami();
     console.log('🔑 Authentification Umami réussie.');
 
+    const websites = await getWebsites(token);
+    console.log(`🌐 Nombre de sites trouvés: ${websites.length}`);
+
     // Période : 7 derniers jours
     const endAt = Date.now();
     const startAt = endAt - 7 * 24 * 60 * 60 * 1000;
 
-    const stats = await getStats(token, startAt, endAt);
+    let reportLines = [`📈 Bilan des 7 derniers jours :`];
 
-    const reportText = [
-      `📈 Bilan des 7 derniers jours :`,
-      `• Pages vues : ${stats.pageviews?.value || 0}`,
-      `• Visiteurs uniques : ${stats.visitors?.value || 0}`,
-      `• Sessions : ${stats.visits?.value || 0}`,
-      `• Temps moyen : ${Math.round((stats.totaltime?.value || 0) / (stats.visits?.value || 1))}s`,
-      `• Taux de rebond : ${Math.round((stats.bounces?.value || 0) / (stats.visits?.value || 1) * 100)}%`,
-    ].join('\n');
+    for (const site of websites) {
+      const rawStats = await getStats(token, site.id, startAt, endAt);
+      
+      const pageviews = extractVal(rawStats.pageviews);
+      const visitors = extractVal(rawStats.visitors);
+      const visits = extractVal(rawStats.visits);
+      const bounces = extractVal(rawStats.bounces);
+      const totaltime = extractVal(rawStats.totaltime);
 
-    await sendNtfyReport(reportText);
+      const avgTime = visits > 0 ? Math.round(totaltime / visits) : 0;
+      const bounceRate = visits > 0 ? Math.round((bounces / visits) * 100) : 0;
+
+      reportLines.push(
+        `\n🌐 Site: ${site.name} (${site.domain})`,
+        `• Pages vues : ${pageviews}`,
+        `• Visiteurs uniques : ${visitors}`,
+        `• Sessions : ${visits}`,
+        `• Temps moyen : ${avgTime}s`,
+        `• Taux de rebond : ${bounceRate}%`
+      );
+    }
+
+    await sendNtfyReport(reportLines.join('\n'));
   } catch (err) {
     console.error('❌ Erreur exécution du rapport:', err.message);
+    process.exit(1);
   }
 }
 
