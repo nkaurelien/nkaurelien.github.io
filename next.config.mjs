@@ -8,7 +8,7 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.js');
 // basePath pilote le deploiement :
 //  - vide  -> domaine perso ou repo nkaurelien.github.io
 //  - /nkaurelien -> GitHub Pages du repo `nkaurelien` (sous-chemin)
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const umamiTargetUrl = (process.env.UMAMI_URL || process.env.UMAMI_SERVER_URL || '').replace(/\/$/, '');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -20,10 +20,11 @@ const nextConfig = {
     unoptimized: true,
   },
   async rewrites() {
+    if (!umamiTargetUrl) return [];
     return [
       {
         source: '/stats/:match*',
-        destination: 'https://umami.kamitbrains.fr/:match*',
+        destination: `${umamiTargetUrl}/:match*`,
       },
     ];
   },

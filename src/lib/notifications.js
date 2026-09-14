@@ -3,9 +3,9 @@
  * et d'événements serveur Umami (Server-Side Events).
  */
 
-const UMAMI_URL = process.env.UMAMI_URL || 'https://umami.kamitbrains.fr';
-const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || '37569a74-7d82-44fc-b839-525d4604c9b8';
-const NTFY_TOPIC_URL = process.env.NTFY_TOPIC_URL; // ex: https://ntfy.sh/nkaurelien-notifications ou https://ntfy.kamitbrains.fr/portfolio
+const UMAMI_URL = process.env.UMAMI_URL || process.env.UMAMI_SERVER_URL;
+const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+const NTFY_TOPIC_URL = process.env.NTFY_TOPIC_URL; // ex: https://ntfy.sh/nkaurelien-notifications
 
 /**
  * Envoie une notification push instantanée vers un serveur ntfy.
@@ -45,6 +45,10 @@ export async function sendNtfyNotification({ title, message, priority = 'default
  * Envoie un événement serveur à l'API Umami (/api/send) selon la documentation Umami Server-Side Events.
  */
 export async function sendUmamiServerEvent({ name, url = '/api', data = {}, hostname = 'nkaurelien.kamitbrains.fr' }) {
+  if (!UMAMI_URL || !UMAMI_WEBSITE_ID) {
+    console.log('[umami-sse] Événement ignoré (UMAMI_URL ou UMAMI_WEBSITE_ID non configuré).');
+    return false;
+  }
   try {
     const endpoint = `${UMAMI_URL.replace(/\/$/, '')}/api/send`;
     const payload = {

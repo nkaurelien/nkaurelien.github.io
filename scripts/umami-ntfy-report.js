@@ -7,12 +7,15 @@ require('dotenv').config({ path: '.env' });
  * et génère une synthèse transmise directement via notification push ntfy.
  */
 
-const UMAMI_URL = (process.env.UMAMI_URL || 'https://umami.kamitbrains.fr').replace(/\/$/, '');
+const UMAMI_URL = (process.env.UMAMI_URL || process.env.UMAMI_SERVER_URL || '').replace(/\/$/, '');
 const UMAMI_USERNAME = process.env.UMAMI_USERNAME || 'admin';
 const UMAMI_PASSWORD = process.env.UMAMI_PASSWORD;
 const NTFY_TOPIC_URL = process.env.NTFY_TOPIC_URL;
 
 async function loginUmami() {
+  if (!UMAMI_URL) {
+    throw new Error('UMAMI_URL non configuré dans l\'environnement.');
+  }
   if (!UMAMI_PASSWORD) {
     throw new Error('UMAMI_PASSWORD non configuré.');
   }
