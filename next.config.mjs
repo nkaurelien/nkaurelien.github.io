@@ -19,6 +19,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/stats/:match*',
+        destination: 'https://umami.kamitbrains.fr/:match*',
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
