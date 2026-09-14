@@ -1,4 +1,5 @@
 import { adminDb } from '@/lib/firebase-admin';
+import { sendNtfyNotification, sendUmamiServerEvent } from '@/lib/notifications';
 
 export const runtime = 'nodejs';
 
@@ -68,6 +69,21 @@ export async function POST(req) {
       read: false,
       source: 'contact-form',
     });
+
+    // Notifications serveur asynchrones (ntfy + Umami SSE)
+    Promise.allSettled([
+      sendNtfyNotification({
+        title: `📩 Nouveau message de ${cleanName}`,
+        message: `De : ${cleanEmail}\n\n"${cleanMessage.slice(0, 300)}${cleanMessage.length > 300 ? '…' : ''}"`,
+        priority: 'high',
+        tags: ['email', 'contact_form'],
+      }),
+      sendUmamiServerEvent({
+        name: 'contact_submit',
+        url: '/contact',
+        data: { name: cleanName, email: cleanEmail },
+      }),
+    ]);
 
     return json({ ok: true });
   } catch (err) {

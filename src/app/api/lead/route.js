@@ -1,4 +1,5 @@
 import { adminDb } from '@/lib/firebase-admin';
+import { sendNtfyNotification, sendUmamiServerEvent } from '@/lib/notifications';
 
 export const runtime = 'nodejs';
 
@@ -35,6 +36,21 @@ export async function POST(req) {
     } else {
       console.warn('[lead-api] adminDb non configuré, enregistrement silencieux.');
     }
+
+    // Notifications serveur (ntfy push + Umami SSE)
+    Promise.allSettled([
+      sendNtfyNotification({
+        title: `📄 Téléchargement CV (${cleanCvId})`,
+        message: `Email : ${cleanEmail}\nNom : ${cleanName || 'N/C'}\nEntreprise : ${cleanCompany || 'N/C'}`,
+        priority: 'default',
+        tags: ['file_folder', 'cv_download'],
+      }),
+      sendUmamiServerEvent({
+        name: 'cv_download',
+        url: `/cv/${cleanCvId}`,
+        data: { email: cleanEmail, cvId: cleanCvId, company: cleanCompany },
+      }),
+    ]);
 
     return json({ ok: true });
   } catch (err) {
