@@ -121,7 +121,12 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                     <ActionIcon
                       variant="subtle"
                       color={ratings[message.id] === 'up' ? 'blue' : 'gray'}
-                      onClick={() => handleRateMessage(message.id, 'up')}
+                      onClick={() => {
+                        handleRateMessage(message.id, 'up');
+                        if (typeof window !== 'undefined') {
+                          window.umami?.track('chat_feedback_thumb_up', { messageId: message.id });
+                        }
+                      }}
                       size="sm">
                       <IconThumbUp size={14} />
                     </ActionIcon>
@@ -131,7 +136,12 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                     <ActionIcon
                       variant="subtle"
                       color={ratings[message.id] === 'down' ? 'red' : 'gray'}
-                      onClick={() => handleRateMessage(message.id, 'down')}
+                      onClick={() => {
+                        handleRateMessage(message.id, 'down');
+                        if (typeof window !== 'undefined') {
+                          window.umami?.track('chat_feedback_thumb_down', { messageId: message.id });
+                        }
+                      }}
                       size="sm">
                       <IconThumbDown size={14} />
                     </ActionIcon>

@@ -273,7 +273,15 @@ export default function ContactSection({ contact }) {
                     <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
                       Email
                     </Text>
-                    <Anchor href={`mailto:${EMAIL}`} fz="sm" fw={500}>
+                    <Anchor
+                      href={`mailto:${EMAIL}`}
+                      fz="sm"
+                      fw={500}
+                      onClick={() => {
+                        if (typeof window !== 'undefined') {
+                          window.umami?.track('email_direct_click');
+                        }
+                      }}>
                       {EMAIL}
                     </Anchor>
                   </Stack>
@@ -287,7 +295,17 @@ export default function ContactSection({ contact }) {
                     <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
                       LinkedIn
                     </Text>
-                    <Anchor href={LINKEDIN} target="_blank" rel="noopener noreferrer" fz="sm" fw={500}>
+                    <Anchor
+                      href={LINKEDIN}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      fz="sm"
+                      fw={500}
+                      onClick={() => {
+                        if (typeof window !== 'undefined') {
+                          window.umami?.track('linkedin_profile_click');
+                        }
+                      }}>
                       linkedin.com/in/nkaurelien
                     </Anchor>
                   </Stack>
@@ -301,7 +319,15 @@ export default function ContactSection({ contact }) {
                     <Text fz="xs" c="dimmed" style={{ lineHeight: 1 }}>
                       {contact?.phone_label || 'Téléphone'}
                     </Text>
-                    <Anchor href={`tel:${PHONE}`} fz="sm" fw={500}>
+                    <Anchor
+                      href={`tel:${PHONE}`}
+                      fz="sm"
+                      fw={500}
+                      onClick={() => {
+                        if (typeof window !== 'undefined') {
+                          window.umami?.track('phone_direct_click');
+                        }
+                      }}>
                       {DISPLAY_PHONE}
                     </Anchor>
                   </Stack>
@@ -312,6 +338,11 @@ export default function ContactSection({ contact }) {
                   href={`https://wa.me/${PHONE.replace('+', '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.umami?.track('whatsapp_click');
+                    }
+                  }}
                   color="green"
                   size="md"
                   radius="xl"

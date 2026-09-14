@@ -79,7 +79,15 @@ export default function ProjectsGrid({ projects, meta, locale }) {
 
       {categories.length > 0 && (
         <Group className="projects-chips" justify="center" mb="xl">
-          <Chip.Group multiple={false} value={active} onChange={setActive}>
+          <Chip.Group
+            multiple={false}
+            value={active}
+            onChange={val => {
+              setActive(val);
+              if (typeof window !== 'undefined' && val) {
+                window.umami?.track('project_category_filter', { category: val });
+              }
+            }}>
             <Group justify="center" gap="xs">
               <Chip value="all" variant="filled" color="brand">
                 {meta?.all_categories || 'Toutes'}
@@ -106,8 +114,13 @@ export default function ProjectsGrid({ projects, meta, locale }) {
                 <Card.Section
                   component={p.isDynamic ? 'div' : Link}
                   href={p.isDynamic ? undefined : `/${locale}/projects/${p.slug}`}
-                  onClick={p.isDynamic ? () => setSelectedProject(p) : undefined}
-                  style={{ cursor: p.isDynamic ? 'pointer' : undefined }}>
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.umami?.track('project_card_click', { slug: p.slug, title: p.title });
+                    }
+                    if (p.isDynamic) setSelectedProject(p);
+                  }}
+                  style={{ cursor: 'pointer' }}>
                   <Image src={withBase(p.image)} alt={p.title} h={180} fit="cover" />
                 </Card.Section>
               )}
@@ -136,6 +149,11 @@ export default function ProjectsGrid({ projects, meta, locale }) {
                     href={p.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      if (typeof window !== 'undefined') {
+                        window.umami?.track('project_demo_click', { slug: p.slug, title: p.title, url: p.link });
+                      }
+                    }}
                     variant="light"
                     color="brand"
                     fullWidth
@@ -144,12 +162,35 @@ export default function ProjectsGrid({ projects, meta, locale }) {
                     {locale === 'en' ? 'Visit website' : 'Voir le site'}
                   </Button>
                 ) : (
-                  <Button onClick={() => setSelectedProject(p)} variant="light" color="brand" fullWidth mt="md" radius="md">
+                  <Button
+                    onClick={() => {
+                      if (typeof window !== 'undefined') {
+                        window.umami?.track('project_card_click', { slug: p.slug, title: p.title });
+                      }
+                      setSelectedProject(p);
+                    }}
+                    variant="light"
+                    color="brand"
+                    fullWidth
+                    mt="md"
+                    radius="md">
                     {locale === 'en' ? 'Learn more' : 'En savoir plus'}
                   </Button>
                 )
               ) : (
-                <Button component={Link} href={`/${locale}/projects/${p.slug}`} variant="light" color="brand" fullWidth mt="md" radius="md">
+                <Button
+                  component={Link}
+                  href={`/${locale}/projects/${p.slug}`}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.umami?.track('project_card_click', { slug: p.slug, title: p.title });
+                    }
+                  }}
+                  variant="light"
+                  color="brand"
+                  fullWidth
+                  mt="md"
+                  radius="md">
                   {viewLabel}
                 </Button>
               )}

@@ -52,7 +52,13 @@ function ColorSchemeToggle() {
       variant="default"
       size="lg"
       radius="xl"
-      onClick={() => setColorScheme(computed === 'dark' ? 'light' : 'dark')}
+      onClick={() => {
+        const nextTheme = computed === 'dark' ? 'light' : 'dark';
+        setColorScheme(nextTheme);
+        if (typeof window !== 'undefined') {
+          window.umami?.track('theme_toggle', { theme: nextTheme });
+        }
+      }}
       title={isDark ? 'Mode clair' : 'Mode sombre'}
       aria-label="Basculer le thème">
       {isDark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
@@ -66,7 +72,16 @@ function LocaleSwitcher({ locale }) {
   // Remplace le segment de locale en tete de chemin.
   const target = pathname.replace(/^\/(fr|en)/, `/${other}`);
   return (
-    <Button component={Link} href={target} variant="light" size="xs">
+    <Button
+      component={Link}
+      href={target}
+      onClick={() => {
+        if (typeof window !== 'undefined') {
+          window.umami?.track('language_switch', { from: locale, to: other });
+        }
+      }}
+      variant="light"
+      size="xs">
       {other.toUpperCase()}
     </Button>
   );
