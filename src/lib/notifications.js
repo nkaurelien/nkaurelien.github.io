@@ -26,6 +26,7 @@ export async function sendNtfyNotification({ title, message, priority = 'default
         'Content-Type': 'text/plain; charset=utf-8',
       },
       body: message,
+      signal: AbortSignal.timeout(3000),
     });
 
     if (!res.ok) {
@@ -69,6 +70,7 @@ export async function sendUmamiServerEvent({ name, url = '/api', data = {}, host
         'User-Agent': 'nkaurelien-website-server/1.0',
       },
       body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(3000),
     });
 
     if (!res.ok) {
