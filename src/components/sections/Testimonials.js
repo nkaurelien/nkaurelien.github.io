@@ -69,43 +69,70 @@ export default function Testimonials({ testimonials }) {
           {testimonials?.title || 'Recommandations'}
         </Title>
 
-        <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
-          {items.map(item => (
-            <Card className="testimonials-card" component="article" key={item.name} withBorder radius="lg" padding="lg" shadow="sm">
-              <Group justify="space-between" wrap="nowrap" align="flex-start">
-                <Group wrap="nowrap">
-                  <Avatar src={item.image ? withBase(item.image) : undefined} name={item.name} color="brand" radius="xl" size="lg" />
-                  <Stack gap={0}>
-                    <Text fw={700} fz="sm" lineClamp={1}>
-                      {item.name}
-                    </Text>
-                    <Text c="dimmed" fz="xs" lineClamp={2}>
-                      {item.role}
-                    </Text>
-                  </Stack>
+        <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="xl">
+          {items.map((item, idx) => {
+            const rot = [-1.8, 1.5, -1.3, 1.7, -1.5, 1.4][idx % 6];
+            return (
+              <Card
+                className="testimonials-card"
+                component="article"
+                key={item.name}
+                withBorder
+                radius="lg"
+                padding="lg"
+                shadow="sm"
+                style={{
+                  transform: `rotate(${rot}deg)`,
+                  transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, z-index 0.3s ease',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = 'rotate(0deg) translateY(-8px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 16px 32px rgba(0, 0, 0, 0.12)';
+                  e.currentTarget.style.zIndex = '10';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = `rotate(${rot}deg)`;
+                  e.currentTarget.style.boxShadow = '';
+                  e.currentTarget.style.zIndex = '1';
+                }}>
+                <Group justify="space-between" wrap="nowrap" align="flex-start">
+                  <Group wrap="nowrap">
+                    <Avatar src={item.image ? withBase(item.image) : undefined} name={item.name} color="brand" radius="xl" size="lg" />
+                    <Stack gap={0}>
+                      <Text fw={700} fz="sm" lineClamp={1}>
+                        {item.name}
+                      </Text>
+                      <Text c="dimmed" fz="xs" lineClamp={2}>
+                        {item.role}
+                      </Text>
+                    </Stack>
+                  </Group>
+                  {item.link && (
+                    <ActionIcon
+                      component="a"
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="subtle"
+                      color="blue"
+                      aria-label={`LinkedIn — ${item.name}`}>
+                      <IconBrandLinkedin size={20} />
+                    </ActionIcon>
+                  )}
                 </Group>
-                {item.link && (
-                  <ActionIcon
-                    component="a"
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="subtle"
-                    color="blue"
-                    aria-label={`LinkedIn — ${item.name}`}>
-                    <IconBrandLinkedin size={20} />
-                  </ActionIcon>
-                )}
-              </Group>
 
-              <Stars rating={item.rating} />
+                <Stars rating={item.rating} />
 
-              <Text c="dimmed" fz="sm" mt="sm" style={{ position: 'relative' }}>
-                <IconQuote size={18} style={{ opacity: 0.25, marginRight: 4, verticalAlign: 'text-top' }} />
-                {item.text}
-              </Text>
-            </Card>
-          ))}
+                <Text c="dimmed" fz="sm" mt="sm" style={{ position: 'relative' }}>
+                  <IconQuote size={18} style={{ opacity: 0.25, marginRight: 4, verticalAlign: 'text-top' }} />
+                  {item.text}
+                </Text>
+              </Card>
+            );
+          })}
         </SimpleGrid>
       </Container>
     </section>

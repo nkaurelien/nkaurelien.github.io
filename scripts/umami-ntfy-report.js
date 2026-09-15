@@ -9,8 +9,9 @@ require('dotenv').config({ path: '.env' });
 
 const UMAMI_URL = (process.env.UMAMI_URL || process.env.UMAMI_SERVER_URL || '').replace(/\/$/, '');
 const UMAMI_USERNAME = process.env.UMAMI_USERNAME || 'admin';
-const UMAMI_PASSWORD = process.env.UMAMI_PASSWORD;
-const NTFY_TOPIC_URL = process.env.NTFY_TOPIC_URL;
+const NTFY_SERVER_URL = (process.env.NTFY_SERVER_URL || process.env.NTFY_BASE_URL || 'https://ntfy.kamitbrains.fr').replace(/\/+$/, '');
+const NTFY_TOPIC = process.env.NTFY_TOPIC;
+const NTFY_TOPIC_URL = process.env.NTFY_TOPIC_URL || (NTFY_TOPIC ? `${NTFY_SERVER_URL}/${NTFY_TOPIC.replace(/^\/+/, '')}` : null);
 
 async function loginUmami() {
   if (!UMAMI_URL) {

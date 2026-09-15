@@ -245,15 +245,17 @@ export default function Company({ company, locale }) {
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: '16px',
-                    borderRadius: '50%',
+                    padding: '16px 28px',
+                    borderRadius: '16px',
                     background: 'light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6))',
+                    border: '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
                   }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={withBase(company.image || '/img/logos/kamitbrains.svg')}
                     alt={company.title}
-                    style={{ height: '72px', width: 'auto', display: 'block' }}
+                    style={{ maxHeight: '80px', maxWidth: '240px', width: 'auto', height: 'auto', display: 'block' }}
                   />
                 </Box>
               </Group>

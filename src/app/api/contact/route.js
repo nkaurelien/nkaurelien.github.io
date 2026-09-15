@@ -73,10 +73,12 @@ export async function POST(req) {
     // Notifications serveur asynchrones (ntfy + Umami SSE)
     Promise.allSettled([
       sendNtfyNotification({
-        title: `📩 Nouveau message de ${cleanName}`,
-        message: `De : ${cleanEmail}\n\n"${cleanMessage.slice(0, 300)}${cleanMessage.length > 300 ? '…' : ''}"`,
+        title: `📩 Message de ${cleanName}`,
+        message: `Expéditeur : ${cleanName} (${cleanEmail})\n\nMessage :\n${cleanMessage}`,
         priority: 'high',
-        tags: ['email', 'contact_form'],
+        tags: ['incoming_envelope', 'email', 'contact_form'],
+        click: `mailto:${cleanEmail}?subject=Re:%20Contact%20depuis%20portfolio`,
+        actions: `view, Répondre, mailto:${cleanEmail}?subject=Re:%20Contact%20depuis%20portfolio`,
       }),
       sendUmamiServerEvent({
         name: 'contact_submit',
