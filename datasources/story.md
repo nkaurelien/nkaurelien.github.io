@@ -1,11 +1,11 @@
 ---
-title: "Mon Histoire — Aurélien NKUMBE"
-description: "Récit du parcours personnel et professionnel d’Aurélien NKUMBE"
+title: "Mon Histoire — Astrid-Aurélien NKUMBE"
+description: "Récit du parcours personnel et professionnel d’Astrid-Aurélien NKUMBE"
 tags: bio, story, career, journey
 lang: fr
 ---
 
-# Mon histoire — Aurelien NKUMBE
+# Mon histoire — Astrid-Aurélien NKUMBE
 
 > Le récit, à la première personne : d'où je viens, ce qui m'anime, et où je vais.
 

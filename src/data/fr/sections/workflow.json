@@ -32,8 +32,8 @@
             "title": "Rituels & qualité",
             "items": [
                 "Clean Code & Architecture SOLID",
-                "Linting & Formating (ESLint, Prettier, Ruff)",
-                "Pre-commit hooks & Huski",
+                "Linting & Formatting (ESLint, Prettier, Ruff)",
+                "Pre-commit hooks & Husky",
                 "Conventional Commits & Semantic Versioning",
                 "GitFlow & Revues de code systématiques",
                 "Rétrospectives d'équipe & Mentorat Agile"

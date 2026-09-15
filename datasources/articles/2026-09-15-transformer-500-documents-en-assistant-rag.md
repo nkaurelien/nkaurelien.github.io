@@ -62,7 +62,7 @@ const splitter = RecursiveCharacterTextSplitter.fromLanguage('markdown', {
 })
 ```
 - **Découpage structurel** : Respecte les titres et paragraphes Markdown.
-- **Zéro Hallucination via UUIDv5** : Chaque fragment généré reçoit un `uuidv5` unique, généré déterministement à partir de l'ID KALI du texte et des numéros de lignes (`from` à `to`). Si la loi ne change pas, le hash reste identique.
+- **Hallucinations réduites via UUIDv5 (réponses traçables)** : Chaque fragment généré reçoit un `uuidv5` unique, généré déterministement à partir de l'ID KALI du texte et des numéros de lignes (`from` à `to`). Si la loi ne change pas, le hash reste identique.
 
 ---
 
@@ -79,7 +79,7 @@ Au lieu d'un backend lourd, le moteur de chat tourne sur le **Edge Runtime** de 
 
 ## 3. Résultats & Enseignements
 
-1. **Zéro hallucination réglementaire** : En forçant le LLM à s'appuyer uniquement sur le chunk traçable et en affichant la source (headers `x-sources`), l'utilisateur valide instantanément l'article du Code du Travail.
+1. **Réponses sourcées et traçables (hallucinations réduites)** : En forçant le LLM à s'appuyer uniquement sur le chunk traçable et en affichant la source (headers `x-sources`), l'utilisateur valide instantanément l'article du Code du Travail.
 2. **Architecture Serverless Réactive** : L'utilisation de Next.js Edge Functions garantit une latence minime et une scalabilité instantanée.
 3. **Maintien à jour Open Data** : La synchronisation via l'API GitHub de SocialGouv assure d'interroger le droit positif applicable du jour.
 

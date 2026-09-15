@@ -2,11 +2,12 @@
     "bg_image": "/img/me/bg.png",
     "badge": "Open to opportunities",
     "badge_detail": "France-wide",
-    "title": "Hello, <br/>Welcome home",
+    "title": "Hello — <br/>I design secure architecture, and I move the team forward.",
     "subtitle": {
         "start": "&lt;<i>code</i>&gt; I ",
         "rotates": [
-            "am a versatile fullstack Dev'Ops.",
+            "am a DevSecOps & Platform Engineer / Tech Lead.",
+            "secure and industrialize from spec to prod (healthcare/HDS, GDPR).",
             "analyze and design information systems.",
             "design and develop web & mobile apps.",
             "boost the SDLC with agentic AI (Claude).",
@@ -20,6 +21,6 @@
     },
     "photo": {
         "url": "img/me/face-1.png",
-        "alt": "Aurelien NKUMBE"
+        "alt": "Astrid-Aurélien NKUMBE"
     }
 }

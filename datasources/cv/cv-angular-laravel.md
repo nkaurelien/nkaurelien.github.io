@@ -1,5 +1,5 @@
 ---
-title: "CV Angular & Laravel — Aurélien NKUMBE"
+title: "CV Angular & Laravel — Astrid-Aurélien NKUMBE"
 description: "CV spécialisé Angular, Laravel, PHP, TypeScript & Traefik"
 tags: cv, resume, angular, laravel, php, typescript
 lang: fr

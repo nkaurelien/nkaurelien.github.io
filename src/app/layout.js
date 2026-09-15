@@ -4,8 +4,8 @@ import './globals.css';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 
 export const metadata = {
-  title: 'Aurelien NKUMBE — Développeur Fullstack & DevOps',
-  description: "Portfolio d'Aurelien NKUMBE, développeur full-stack polyvalent, DevOps et MOE.",
+  title: 'Astrid-Aurélien NKUMBE — DevSecOps / Platform Engineer & Tech Lead',
+  description: "Portfolio d'Astrid-Aurélien NKUMBE, DevSecOps / Platform Engineer & Tech Lead — architectures sécurisées et conformes (santé/HDS, RGPD), IA appliquée, de la spec à la prod.",
   icons: { icon: '/favicon-32x32.png' },
 };
 

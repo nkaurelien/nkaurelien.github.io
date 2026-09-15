@@ -378,7 +378,7 @@ export default function Hero({ locale, hero }) {
                 }}>
                 <Image
                   src={`/${hero.photo.url.replace(/^\//, '')}`}
-                  alt={hero.photo.alt || 'Aurelien NKUMBE'}
+                  alt={hero.photo.alt || 'Astrid-Aurélien NKUMBE'}
                   width={290}
                   height={350}
                   className="hero-photo-img"

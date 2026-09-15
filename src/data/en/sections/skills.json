@@ -24,7 +24,7 @@
         },
         {
             "title": "IoT, Health & Streaming",
-            "items": ["FHIR / HL7 Standards", "Apache Kafka", "Redpanda", "IoT (EmotiBit, ESP32, Bangle.js)", "Withings Cloud API", "WebSockets", "Bluetooth Low Energy (BLE)"],
+            "items": ["FHIR / HL7 Standards", "HDS", "Apache Kafka", "Redpanda", "IoT (EmotiBit, ESP32, Bangle.js)", "Withings Cloud API", "WebSockets", "Bluetooth Low Energy (BLE)"],
             "active": true
         },
         {

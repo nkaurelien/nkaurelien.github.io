@@ -243,7 +243,7 @@ export default function Header({ locale, app }) {
           <Box style={{ flex: '1 1 0', minWidth: 0 }}>
             <Anchor component={Link} href={`/${locale}`} underline="never" style={{ display: 'inline-block' }}>
               <Text fw={800} size="lg" c="brand.6" style={{ whiteSpace: 'nowrap' }}>
-                Aurelien<span style={{ color: 'var(--mantine-color-dimmed)' }}>.NKUMBE</span>
+                Astrid-Aurélien<span style={{ color: 'var(--mantine-color-dimmed)' }}>.NKUMBE</span>
               </Text>
             </Anchor>
           </Box>

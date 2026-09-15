@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Astrid-Aurélien NKUMBE ENONGENE",
-    "label": "Senior Fullstack Engineer & Tech Lead — Spécialiste IA/RAG & DevSecOps",
+    "label": "DevSecOps / Platform Engineer & Tech Lead — Fullstack, IA/RAG",
     "email": "nkumbeaurelien@hotmail.com",
     "phone": "+33 7 44 58 45 62",
     "url": "https://nkaurelien.kamitbrains.fr",
-    "summary": "Senior Fullstack Engineer et Technical Lead avec plus de 7 ans d'expérience dans la conception, l'architecture et le déploiement d'applications web, mobiles, IoT et IA. Spécialisé en DevSecOps, architectures logicielles propres (Clean Code, SOLID), intégration d'intelligences artificielles (RAG, LLM agentique, LangChain) et systèmes de santé connectés aux normes FHIR / HL7.",
+    "summary": "Senior Fullstack Engineer et Technical Lead avec plus de 7 ans d'expérience dans la conception, l'architecture et le déploiement d'applications web, mobiles, IoT et IA. Spécialisé en DevSecOps, architectures logicielles propres (Clean Code, SOLID), intégration d'intelligences artificielles (RAG, LLM agentique, LangChain) et systèmes de santé connectés aux normes FHIR / HL7, HDS.",
     "location": {
       "city": "Cergy / Paris",
       "countryCode": "FR",
@@ -41,7 +41,7 @@
       "position": "Ingénieur développeur fullstack (Lead Tech)",
       "startDate": "2025-05-01",
       "endDate": null,
-      "summary": "Plateforme de santé connectée et collecte de données physiologiques conforme aux normes FHIR/HL7.",
+      "summary": "Plateforme de santé connectée et collecte de données physiologiques conforme aux normes FHIR/HL7, HDS.",
       "highlights": [
         "Architecture et développement Fullstack (Next.js / FastAPI) d'applications patient et médecin.",
         "Collecte, traitement et restitution temps réel de métriques physiologiques issues d'objets connectés (Withings Cloud API, EmotiBit, ESP32).",
@@ -83,7 +83,7 @@
       "name": "Korée",
       "position": "Développeur Backend PHP / Flutter (Lead Tech)",
       "startDate": "2021-12-01",
-      "endDate": "2023-09-01",
+      "endDate": "2022-06-01",
       "summary": "Startup Fintech de fidélisation et cashback classée dans le Top 3 en Afrique centrale.",
       "highlights": [
         "Architecture et développement des APIs RESTful hautement sécurisées (JWT, ApiResources).",

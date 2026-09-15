@@ -29,7 +29,7 @@
         {
             "icon": "iot",
             "title": "IoT & Real-Time Pipelines",
-            "text": "Real-time streaming data pipelines (Redpanda / Apache Kafka), connected sensor integration (EmotiBit, Withings) and healthcare standards (FHIR / HL7).",
+            "text": "Real-time streaming data pipelines (Redpanda / Apache Kafka), connected sensor integration (EmotiBit, Withings) and healthcare standards (FHIR / HL7, HDS).",
             "active": true
         },
         {

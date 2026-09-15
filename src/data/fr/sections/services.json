@@ -29,7 +29,7 @@
         {
             "icon": "iot",
             "title": "IoT & Pipelines Temps Réel",
-            "text": "Pipelines de données streaming (Redpanda / Apache Kafka), captation d'objets connectés (EmotiBit, Withings) et conformité santé (FHIR / HL7).",
+            "text": "Pipelines de données streaming (Redpanda / Apache Kafka), captation d'objets connectés (EmotiBit, Withings) et conformité santé (FHIR / HL7, HDS).",
             "active": true
         },
         {

@@ -1,7 +1,7 @@
 {
     "settings": {
-        "siteName": "Aurelien NKUMBE",
-        "siteDescription": "Aurelien NKUMBE, Versatile, autonomous and collaborative full-stack developer, passionate about DevOps, MOE and new technologies. Experienced in software development, system administration and production, I am motivated by the challenges and ready to contribute to the success of your company.",
+        "siteName": "Astrid-Aurélien NKUMBE",
+        "siteDescription": "Astrid-Aurélien NKUMBE, DevSecOps / Platform Engineer & Tech Lead: I design secure architectures and industrialize from spec to production (healthcare/HDS, GDPR), with applied AI (RAG).",
         "formspreeURL": "https://formspree.io/f/your_api_key",
         "mailchimp": {
             "url": "",
@@ -11,22 +11,22 @@
     },
     "metadatas": {
         "titles": {
-            "home": "Home",
+            "home": "Astrid-Aurélien NKUMBE — DevSecOps / Platform Engineer & Tech Lead",
             "history": "History",
             "projects": "Projects",
             "contact": "Contact"
         },
         "descriptions": {
-            "home": "Aurelien NKUMBE, software engineer and fullstack web developer",
+            "home": "Astrid-Aurélien NKUMBE, DevSecOps / Platform Engineer & Tech Lead — secure architectures, healthcare/HDS, GDPR and applied AI.",
             "history": "Academic background and professional experience",
             "projects": "Some projects completed",
-            "contact": "contact Aurelien NKUMBE or send a message"
+            "contact": "contact Astrid-Aurélien NKUMBE or send a message"
         }
     },
     "profile": {
         "avatar": "/img/me/face-1.png",
-        "name": "Aurelien NKUMBE",
-        "role": "Software Engineer <br>Fullstack Web Developer",
+        "name": "Astrid-Aurélien NKUMBE",
+        "role": "DevSecOps / Platform Engineer <br>& Tech Lead",
         "info": [
             {
                 "label": "Country",
@@ -66,7 +66,7 @@
                     "value": "0.7"
                 },
                 {
-                    "label": "Typecript",
+                    "label": "TypeScript",
                     "value": "0.65"
                 },
                 {
@@ -149,7 +149,7 @@
                     "label": "Langchain, Guardrails, Transformer"
                 },
                 {
-                    "label": "PySpark, Panda, BeautifulSouop"
+                    "label": "PySpark, Panda, BeautifulSoup"
                 },
                 {
                     "label": "Supabase, Elastic Search"
@@ -218,8 +218,8 @@
         ]
     },
     "footer": {
-        "copy": "© 2024. All rights reserved.",
-        "developer": "By <b>Aurelien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT (onhold) — SIRET 92203463200013"
+        "copy": "© 2026. All rights reserved.",
+        "developer": "By <b>Astrid-Aurélien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT (on hold) — SIRET 92203463200013"
     },
     "social": [
         {

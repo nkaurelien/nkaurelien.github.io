@@ -46,7 +46,7 @@ const TRANSLATIONS = {
     signOut: 'Se déconnecter',
     suggestions: [
       'Comment télécharger son CV en PDF ?',
-      'Qui est Aurélien NKUMBE ?',
+      'Qui est Astrid-Aurélien NKUMBE ?',
       'Quels sont ses projets en IA et RAG ?',
       'Sur quoi travaille-t-il chez DATA2INNOV ?',
       'Quelles sont ses compétences DevSecOps ?',
@@ -75,7 +75,7 @@ const TRANSLATIONS = {
     signOut: 'Sign out',
     suggestions: [
       'How can I download his CV in PDF?',
-      'Who is Aurélien NKUMBE?',
+      'Who is Astrid-Aurélien NKUMBE?',
       'What are his AI and RAG projects?',
       'What is he working on at DATA2INNOV?',
       'What are his DevSecOps skills?',
