@@ -48,6 +48,30 @@ Au confluent du développement logiciel, de l'infrastructure et de l'intelligenc
 
 - **Valeurs & Pratiques** : Clean Code, principes SOLID, documentation soignée, Spec-Driven Development (SDD), amélioration continue et transmission.
 
+## Moi et votre entreprise — Les formules idéales de collaboration
+
+Selon la taille de votre organisation, votre maturité technique et vos défis actuels, voici comment mon profil s'articule pour maximiser votre retour sur investissement :
+
+### 1. Pour les Startups, Scale-ups et PME innovantes : **Lead Tech Fullstack & IA**
+> *« Un pilote technique polyvalent capable de tout faire avancer avec l'équipe. »*
+- **Vos enjeux** : Vous devez délivrer vite, sans accumuler de dette technique toxique, tout en intégrant les technologies d'avenir (IA générative, architectures modernes).
+- **Ce que je vous apporte** :
+  - **Prise en charge de bout en bout** : De la spécification (Spec-Driven Development) jusqu'au déploiement sécurisé en production.
+  - **Autonomie & Vélocité** : Capacité à prototyper en quelques jours puis industrialiser pour la mise à l'échelle (Next.js, FastAPI, Cloud/Docker).
+  - **Leadership bienveillant** : Encadrement et montée en compétences de vos développeurs juniors et médiors, instauration des bonnes pratiques (Clean Code, revues de code, tests automatisés).
+
+### 2. Pour les Grands Comptes & ETI (Banque, Assurance, Santé, Industrie) : **Platform Engineer IA ou Architecte Solutions Cloud**
+> *« Un bâtisseur de socles techniques robustes, sécurisés et conformes aux exigences d'entreprise. »*
+- **Vos enjeux** : Vous souhaitez industrialiser vos plateformes internes, outiller vos équipes produit pour qu'elles déploient vite, et intégrer l'IA de manière souveraine, gouvernée et conforme.
+- **Ce que je vous apporte** :
+  - **Construction d'Internal Developer Platforms (IDP)** : Services partagés, templates IaC (Terraform, Ansible), pipelines CI/CD standardisés et observabilité unifiée (SigNoz, ELK, Sentry).
+  - **Industrialisation de l'IA Agentique & RAG** : Déploiement de socles IA sécurisés sur Azure (Azure OpenAI), GCP ou AWS, avec respect strict du RGPD et zéro hallucination.
+  - **Conformité & Normes critiques** : Expérience concrète des environnements régulés (normes de santé FHIR/HL7, protocoles bancaires, API Gateway Kong, audits de sécurité Snyk).
+
+### 3. Sur les plateformes de recrutement (LinkedIn, APEC, Chasseurs de têtes) : **Lead Tech · Senior Fullstack Engineer · Architecte IA & DevSecOps**
+> *« Le profil hybride rare combinant excellence applicative, automatisation infrastructure et intelligence artificielle. »*
+- Une synthèse complète qui répond aux critères des comités de recrutement et recruteurs les plus exigeants, que ce soit pour une mission de transformation technique, un rôle d'encadrement ou la création d'un pôle d'ingénierie innovant.
+
 ## Compétences techniques
 
 - **Langages & frameworks** : Python, FastAPI, PHP, Laravel, TypeScript, Node.js, NestJS.
