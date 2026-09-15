@@ -58,10 +58,11 @@ Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience**
 - **Contexte** : Développement du Chatbot RAG (SmartDataPay) pour les gestionnaires de paie et automatisation RH.
 - **Réalisations** :
   - Développement Fullstack : Filament PHP, Livewire/AlpineJS, Laravel, PostgreSQL, Airtable, Auth0.
-  - Création du Chatbot RAG (Next.js, OpenAI, Ollama, LiteLLM, LangChain) et pipeline ETL documentaire pour l'indexation vectorielle de +500 documents RH/Paie (PDF, Word, Markdown, JSON).
+  - Création du moteur RAG (Next.js Edge Runtime, LangChain LCEL, LiteLLM, Perplexity AI, Azure OpenAI) avec streaming et restitution des sources (`x-sources`).
+  - Pipeline ETL documentaire & Open Data : synchronisation des Conventions Collectives Nationales via **SocialGouv/kali-data**, découpage Markdown par lignes (**UUIDv5**) et indexation vectorielle dans **Supabase pgvector** (procédures stockées PL/pgSQL).
   - Intégration de services IA Cloud (Azure, Google) et automatisation SaaS via Make / N8N.
   - Assistance à la Maîtrise d'Œuvre (MOE) pour l'étude de refonte IA du logiciel de paie Silea.
-- **Environnement** : Laravel, Filament PHP, Next.js, Python, LangChain, LiteLLM, OpenAI, Ollama, Supabase, Azure, Docker, Make, GitLab CI.
+- **Environnement** : Next.js 14, React, LangChain (LCEL), Supabase (pgvector), SocialGouv kali-data, Perplexity AI, Azure OpenAI, LiteLLM, Ollama, Laravel, Filament PHP, Livewire, AlpineJS, Docker, Make, N8N, Sentry, SonarQube, GitLab CI.
 
 ### **SYLEN-IT SERVICES** — Développeur Angular / TypeScript (Indépendant)
 *Novembre 2022 – Juillet 2023 | France*

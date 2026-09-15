@@ -83,12 +83,13 @@ DATA2INNOV conçoit une plateforme de télésanté innovante destinée aux méde
 Développement de la plateforme SmartDataPay, un assistant virtuel intelligent RAG dédié aux gestionnaires de paie et experts RH en France. L'objectif était de simplifier la recherche et l'interprétation des conventions collectives et du droit du travail complexes grâce à un agent IA conversationnel effectuant des simulations de calculs.
 
 #### **Réalisations & Apport de valeur** :
-- **Architecture RAG & Fine-Tuning IA** : Conception de l'agent conversationnel intelligent sous Next.js, LangChain et LiteLLM, supportant l'interrogation combinée des modèles OpenAI (GPT-4o) et Ollama (Llama 3 en local). Entraînement et fine-tuning par API sur les notions complexes du droit du travail français.
-- **Pipeline d'Ingestion Vectorielle & Scraping** : Collecte automatisée par scraping (BeautifulSoup) et découpage (Chunking) de +500 documents complexes (PDF, Word, Markdown, JSON) pour constituer la base de connaissances vectorielle (Supabase pgvector / Qdrant).
-- **Développement Applicatif SaaS** : Création du portail d'administration complet sous Laravel (Filament PHP, Livewire, AlpineJS) avec authentification sécurisée Auth0 et intégration des workflows Make / Zapier.
+- **Architecture RAG LCEL & Edge Streaming** : Production de l'agent conversationnel sous Next.js (App Router, Edge Runtime), LangChain Expression Language (LCEL) et LiteLLM. Implémentation d'une chaîne de réécriture contextuelle des questions (`condenseQuestionPrompt`), streaming Vercel AI SDK et restitution dynamique des extraits d'origine dans les headers HTTP (`x-sources`). Integration de passerelles multi-LLMs (Azure OpenAI GPT-4o-mini, Perplexity AI Llama 3.1 128k).
+- **Pipeline d'Ingestion & Open Data KALI** : Connexion directe au dépôt officiel **SocialGouv/kali-data** (Légifrance KALI) pour la synchronisation dynamique des Conventions Collectives Nationales (CCN). Découpage Markdown intelligent (`RecursiveCharacterTextSplitter`) et attribution d'identifiants déterministes **UUIDv5** par tranche de lignes pour garantir la traçabilité intégrale et zéro hallucination juridique.
+- **Stockage Vectoriel & Procédures Stockées** : Conception du schéma de vectorisation sous **Supabase pgvector** (`collective_conventions_integrals`) et écriture de la fonction RPC PL/pgSQL d'appariement sémantique par similarité cosinus (`match_collective_conventions_integrals`).
+- **Développement Applicatif SaaS** : Création du portail d'administration complet sous Laravel (Filament PHP, Livewire, AlpineJS) avec authentification sécurisée Auth0 et intégration des workflows Make / N8N.
 - **Maîtrise d'Œuvre (MOE) & Administration M365** : Rédaction du cahier des charges pour la refonte IA du logiciel Silea, encadrement des stagiaires et administration des licences Microsoft 365.
 
-- **Environnement technique** : Laravel 10, Filament PHP, Livewire, AlpineJS, Next.js, Python, BeautifulSoup, OpenAI API, Ollama, LangChain, LiteLLM, Supabase (pgvector), Qdrant, Azure Cloud, Databricks (PySpark 3), Docker, Make, Zapier, Auth0, GitLab CI.
+- **Environnement technique** : Next.js 14, React 18, LangChain (LCEL), Supabase (pgvector, PL/pgSQL), SocialGouv kali-data, Azure OpenAI, Perplexity AI, LiteLLM, Ollama, Laravel 10, Filament PHP, Livewire, AlpineJS, Python, BeautifulSoup, Elasticsearch, Docker, Make, N8N, Auth0, GitLab CI, Sentry, SonarQube.
 
 ---
 

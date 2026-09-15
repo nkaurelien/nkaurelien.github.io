@@ -59,12 +59,12 @@
       "endDate": "2024-09-01",
       "summary": "Développement du Chatbot RAG (SmartDataPay) pour les gestionnaires de paie et automatisation RH.",
       "highlights": [
-        "Développement Fullstack : Filament PHP, Livewire/AlpineJS, Laravel, PostgreSQL, Airtable, Auth0.",
-        "Création du Chatbot RAG (Next.js, OpenAI, Ollama, LiteLLM, LangChain) et pipeline ETL documentaire pour l'indexation vectorielle de +500 documents RH/Paie (PDF, Word, Markdown, JSON).",
-        "Intégration de services IA Cloud (Azure, Google) et automatisation SaaS via Make / N8N.",
-        "Assistance à la Maîtrise d'Œuvre (MOE) pour l'étude de refonte IA du logiciel de paie Silea."
+        "Développement Fullstack SaaS : Filament PHP, Livewire/AlpineJS, Laravel, PostgreSQL, Auth0, Airtable.",
+        "Création du moteur RAG (Next.js Edge Runtime, LangChain LCEL, LiteLLM, Perplexity AI, Azure OpenAI) avec streaming Vercel AI et restitution des sources (x-sources).",
+        "Pipeline ETL & Open Data KALI : synchronisation via SocialGouv/kali-data, découpage Markdown par lignes (UUIDv5) et stockage vectoriel dans Supabase pgvector (procédures stockées PL/pgSQL).",
+        "Assistance à la Maîtrise d'Œuvre (MOE) pour l'étude d'opportunité et de refonte IA du logiciel de paie Silea."
       ],
-      "keywords": ["Laravel", "Filament PHP", "Next.js", "Python", "LangChain", "LiteLLM", "OpenAI", "Ollama", "Supabase", "Azure", "Docker", "Make", "GitLab CI"]
+      "keywords": ["Next.js 14", "LangChain (LCEL)", "Supabase pgvector", "SocialGouv kali-data", "Perplexity AI", "Azure OpenAI", "LiteLLM", "Ollama", "Laravel 10", "Filament PHP", "Livewire", "AlpineJS", "Make", "N8N", "Sentry", "SonarQube", "GitLab CI"]
     },
     {
       "name": "SYLEN-IT SERVICES",
