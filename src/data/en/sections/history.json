@@ -138,10 +138,10 @@
             },
             {
                 "title": "MCS IT (MULTI CANAL SERVICES)",
-                "subtitle": "Fullstack Developer Laravel / Angular / Vue.js",
-                "tag": "Professional internship",
+                "subtitle": "Intern ➔ Lead Fullstack Developer",
+                "tag": "Intern ➔ Lead Dev",
                 "date": "June 2018 - Oct 2020",
-                "text": "Development of an e-commerce platform for parcel and meal delivery (Design Thinking, OOP, clean code): Angular app with Social Auth, courier mobile app (Flutter), POS backoffice, Google Maps/Places & Firebase integrations, Kubernetes clusters on GCP, GitLab + Laravel Envoy / Ansible CI/CD.",
+                "text": "Promoted from professional intern to Lead Developer. Design and development of an e-commerce platform for parcel and meal delivery (Design Thinking, OOP, clean code): Angular app with Social Auth, courier mobile app (Flutter), POS backoffice, Google Maps/Places & Firebase integrations, Kubernetes clusters on GCP, GitLab + Laravel Envoy / Ansible CI/CD.",
                 "button": {
                     "type": "project",
                     "link": "/projects/livraison-express",

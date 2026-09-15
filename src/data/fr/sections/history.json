@@ -138,10 +138,10 @@
             },
             {
                 "title": "MCS IT (MULTI CANAL SERVICES)",
-                "subtitle": "Développeur Full Stack Laravel / Angular / Vue.js",
-                "tag": "Stage professionnel",
+                "subtitle": "Stagiaire ➔ Lead Développeur Fullstack",
+                "tag": "Stage ➔ Lead Dev",
                 "date": "Juin 2018 - Oct 2020",
-                "text": "Développement d'une plateforme e-commerce de livraison de colis et de repas (Design Thinking, POO, clean code) : app Angular + Social Auth, app mobile coursiers (Flutter), backoffice POS, intégrations Google Maps/Places & Firebase, clusters Kubernetes sur GCP, CI/CD GitLab + Laravel Envoy / Ansible.",
+                "text": "Évolution de stagiaire professionnel à Lead Développeur. Conception et développement d'une plateforme e-commerce de livraison de colis et de repas (Design Thinking, POO, clean code) : app Angular + Social Auth, app mobile coursiers (Flutter), backoffice POS, intégrations Google Maps/Places & Firebase, clusters Kubernetes sur GCP, CI/CD GitLab + Laravel Envoy / Ansible.",
                 "button": {
                     "type": "project",
                     "link": "/projects/livraison-express",

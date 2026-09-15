@@ -102,9 +102,9 @@ Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience**
   - Conception d'architecture multi-tenant et scripts de sauvegarde automatique Cloud AWS EC2.
 - **Environnement** : Vue.js, Electron.js, Node.js, Laravel, MySQL, AWS EC2, Plesk.
 
-### **MCS IT** — Développeur Fullstack Laravel / Angular / Vue.js
+### **MCS IT** — Stagiaire ➔ Lead Développeur Fullstack
 *Juin 2018 – Octobre 2020 | Remote*
-- **Contexte** : Plateforme e-commerce et solution de livraison rapide (Livraison Express).
+- **Contexte** : Évolution de stagiaire professionnel à Lead Développeur sur la plateforme e-commerce et solution de livraison rapide (Livraison Express).
 - **Réalisations** :
   - Développement des applications Web (Angular/Bootstrap) et Mobile livreurs (Flutter).
   - Back-office de gestion des ventes et POS graphique avec Vue.js / Inertia.js.
