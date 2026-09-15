@@ -83,9 +83,9 @@ Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience**
   - Implémentation du pipeline DevSecOps : GitLab CI, Ansible, analyses SAST Snyk, Docker Registry.
 - **Environnement** : PHP 8.1, Laravel, Flutter, MySQL, Elasticsearch, Stripe, AWS, GCP, Docker, Snyk, Ansible.
 
-### **Société Commerciale de Banque Cameroun (Attijariwafa Bank)** — Analyste Programmeur / Chef de Projet (AMOE)
+### **Société Commerciale de Banque Cameroun (Attijariwafa Bank)** — Stagiaire ➔ Analyste Programmeur / Chef de Projet (AMOE) (CDD)
 *Avril 2022 – Septembre 2022 | Cameroun*
-- **Contexte** : Projets stratégiques de numérisation et de conformité bancaire.
+- **Contexte** : Évolution de stagiaire à Analyste Programmeur / CDD sur les projets stratégiques de numérisation et de conformité bancaire.
 - **Réalisations** :
   - Architecture & sécurisation des APIs REST avec Kong API Gateway (load balancing, rate limiting, protection DDoS).
   - Développement fullstack du portail Intranet bancaire et du BackOffice de gestion des relevés de comptes.
