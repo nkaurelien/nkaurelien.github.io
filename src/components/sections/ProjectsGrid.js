@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Container, Title, SimpleGrid, Card, Image, Text, Badge, Button, Group, Chip, Modal, Stack, ActionIcon } from '@mantine/core';
+import { Container, Title, SimpleGrid, Card, Image, Text, Badge, Button, Group, Chip, Modal, Stack, ActionIcon, Avatar, Tooltip } from '@mantine/core';
 import { withBase } from '@/lib/asset';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -59,7 +59,8 @@ export default function ProjectsGrid({ projects, meta, locale }) {
     () => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-      tl.fromTo('.projects-title', { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
+      tl.fromTo('.projects-avatar', { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5 })
+        .fromTo('.projects-title', { y: -15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.35')
         .fromTo('.projects-chips', { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.45')
         .fromTo('.projects-card', { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.08 }, '-=0.45');
     },
@@ -68,6 +69,44 @@ export default function ProjectsGrid({ projects, meta, locale }) {
 
   return (
     <Container component="section" ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
+      <Group justify="center" mb="md" className="projects-avatar">
+        <Tooltip
+          label={locale === 'en' ? 'About Astrid-Aurélien NKUMBE — Full Profile & Vision' : "À propos d'Astrid-Aurélien NKUMBE — Profil complet & vision"}
+          withArrow
+          position="top"
+          transitionProps={{ transition: 'pop', duration: 200 }}>
+          <Link
+            href={`/${locale}/blog/a-propos-d-astrid-aurelien-nkumbe`}
+            style={{ textDecoration: 'none', display: 'inline-block' }}
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.umami?.track('projects_avatar_click', { target: 'about_article' });
+              }
+            }}>
+            <Avatar
+              src={withBase('/img/me/face-1.png')}
+              alt="Astrid-Aurélien NKUMBE"
+              size={84}
+              radius="100%"
+              style={{
+                border: '3px solid var(--mantine-color-brand-6, #4f46e5)',
+                boxShadow: '0 8px 24px rgba(79, 70, 229, 0.22)',
+                cursor: 'pointer',
+                transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'scale(1.08)';
+                e.currentTarget.style.boxShadow = '0 12px 30px rgba(79, 70, 229, 0.38)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(79, 70, 229, 0.22)';
+              }}
+            />
+          </Link>
+        </Tooltip>
+      </Group>
+
       <Group justify="center" align="center" className="projects-title" mb="xl" gap="xs">
         <Title order={1} style={{ margin: 0 }}>
           {meta?.title || 'Projets'}
