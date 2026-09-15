@@ -73,7 +73,7 @@ Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience**
   - Migrations de versions Angular et refactoring du code legacy.
 - **Environnement** : Angular, TypeScript, RxJS, Elasticsearch, Azure DevOps, ESLint, Pnpm.
 
-### **Korée** — Développeur Backend PHP / Flutter (Lead Tech)
+### **Korée** — Lead Développeur Backend Laravel & Mobile Flutter
 *Décembre 2021 – Juin 2022 | Remote*
 - **Contexte** : Startup Fintech de fidélisation et cashback classée dans le Top 3 en Afrique centrale.
 - **Réalisations** :

@@ -111,7 +111,7 @@ Refonte des interfaces utilisateurs métiers du projet Coface au sein du Groupe 
 
 ---
 
-### **MISSION 4 : Technical Lead Backend PHP & Mobile (FinTech Korée)**
+### **MISSION 4 : Technical Lead Backend Laravel & Mobile (FinTech Korée)**
 - **Client / Entreprise** : Korée Africa  
 - **Période** : Décembre 2021 – Juin 2022 (~7 mois)  
 - **Rôle** : Architecte Backend & Lead Tech  
