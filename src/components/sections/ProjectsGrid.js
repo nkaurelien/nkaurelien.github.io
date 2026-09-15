@@ -68,8 +68,8 @@ export default function ProjectsGrid({ projects, meta, locale }) {
   );
 
   return (
-    <Container component="section" ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
-      <Group justify="center" mb="md" className="projects-avatar">
+    <Container component="section" ref={containerRef} size="lg" py={{ base: 48, sm: 72 }} style={{ overflow: 'hidden' }}>
+      <Group justify="center" mt={{ base: 'xs', sm: 'md' }} mb={{ base: 32, sm: 42 }} className="projects-avatar">
         <Tooltip
           label={locale === 'en' ? 'About Astrid-Aurélien NKUMBE — Full Profile & Vision' : "À propos d'Astrid-Aurélien NKUMBE — Profil complet & vision"}
           withArrow
@@ -86,28 +86,28 @@ export default function ProjectsGrid({ projects, meta, locale }) {
             <Avatar
               src={withBase('/img/me/face-1.png')}
               alt="Astrid-Aurélien NKUMBE"
-              size={84}
+              size={92}
               radius="100%"
               style={{
                 border: '3px solid var(--mantine-color-brand-6, #4f46e5)',
-                boxShadow: '0 8px 24px rgba(79, 70, 229, 0.22)',
+                boxShadow: '0 10px 28px rgba(79, 70, 229, 0.22)',
                 cursor: 'pointer',
                 transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = 'scale(1.08)';
-                e.currentTarget.style.boxShadow = '0 12px 30px rgba(79, 70, 229, 0.38)';
+                e.currentTarget.style.boxShadow = '0 14px 34px rgba(79, 70, 229, 0.38)';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(79, 70, 229, 0.22)';
+                e.currentTarget.style.boxShadow = '0 10px 28px rgba(79, 70, 229, 0.22)';
               }}
             />
           </Link>
         </Tooltip>
       </Group>
 
-      <Group justify="center" align="center" className="projects-title" mb="xl" gap="xs">
+      <Group justify="center" align="center" className="projects-title" mb={{ base: 28, sm: 38 }} gap="xs">
         <Title order={1} style={{ margin: 0 }}>
           {meta?.title || 'Projets'}
         </Title>
@@ -117,7 +117,7 @@ export default function ProjectsGrid({ projects, meta, locale }) {
       </Group>
 
       {categories.length > 0 && (
-        <Group className="projects-chips" justify="center" mb="xl">
+        <Group className="projects-chips" justify="center" mb={{ base: 36, sm: 52 }}>
           <Chip.Group
             multiple={false}
             value={active}
