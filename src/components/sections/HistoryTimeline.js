@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 import { Container, Title, Timeline, Text, Anchor, Badge, Group, Stack, Grid, Paper, Box, Button, ActionIcon } from '@mantine/core';
-import { IconSchool, IconBriefcase, IconDownload, IconCertificate, IconArrowUpRight } from '@tabler/icons-react';
+import { IconSchool, IconBriefcase, IconDownload, IconCertificate, IconArrowUpRight, IconSparkles } from '@tabler/icons-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -153,6 +153,44 @@ export default function HistoryTimeline({ history, locale }) {
                   color="teal"
                   size="input-xs"
                   aria-label="Télécharger CV PDF">
+                  <IconDownload size={14} />
+                </ActionIcon>
+              </Group>
+            </Paper>
+
+            {/* Carte À propos / En bref */}
+            <Paper withBorder p="md" radius="lg">
+              <Group gap="xs" mb="xs">
+                <IconSparkles size={18} color="var(--mantine-color-brand-6, #4f46e5)" />
+                <Text fw={700} size="sm">
+                  {locale === 'en' ? 'About Me — In Brief' : 'À propos — En bref'}
+                </Text>
+              </Group>
+              <Text size="xs" c="dimmed" mb="sm">
+                {locale === 'en'
+                  ? 'Full profile, tech vision, key milestones and engineer manifesto.'
+                  : "Profil complet, vision d'architecture, réalisations et manifeste de l'ingénieur."}
+              </Text>
+              <Group gap="xs">
+                <Button
+                  component={Link}
+                  href={`/${locale}/blog/a-propos-d-astrid-aurelien-nkumbe`}
+                  variant="filled"
+                  color="brand"
+                  style={{ flex: 1 }}
+                  size="xs"
+                  rightSection={<IconArrowUpRight size={14} />}>
+                  {locale === 'en' ? 'Discover profile' : 'Découvrir le profil'}
+                </Button>
+                <ActionIcon
+                  component="a"
+                  href="/about.pdf"
+                  download="En_Bref_Aurelien_NKUMBE.pdf"
+                  variant="light"
+                  color="brand"
+                  size="input-xs"
+                  aria-label="Télécharger En bref PDF"
+                  title={locale === 'en' ? 'Download PDF' : 'Télécharger le PDF'}>
                   <IconDownload size={14} />
                 </ActionIcon>
               </Group>
