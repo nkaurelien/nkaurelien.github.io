@@ -97,7 +97,7 @@
             {
                 "title": "SCB Cameroun (Groupe Attijariwafa Bank)",
                 "subtitle": "Analyste Programmeur - Chef de projet (AMOE)",
-                "tag": "CDD (Interne)",
+                "tag": "CDD · Interne",
                 "date": "Avr. 2022 - Sept. 2022",
                 "text": "Transformation numérique d'une banque du top 3 camerounais en contrat CDD interne : APIs REST sécurisées (JWT), reverse proxy KONG, authentification LDAP + RBAC sur l'AD, portail intranet d'accès aux applications métiers, distribution automatisée de relevés de comptes PDF, déploiement d'Argo CD sur Kubernetes.",
                 "active": true

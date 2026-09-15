@@ -97,7 +97,7 @@
             {
                 "title": "SCB Cameroon (Attijariwafa Bank Group)",
                 "subtitle": "Programmer Analyst - Project Lead (AMOE)",
-                "tag": "CDD (Internal)",
+                "tag": "CDD · Internal",
                 "date": "Apr. 2022 - Sept. 2022",
                 "text": "Digital transformation for a top 3 bank in Cameroon under internal fixed-term contract (CDD): secure REST APIs (JWT), KONG reverse proxy, LDAP + RBAC AD auth, intranet portal, automated PDF bank statement distribution, Argo CD deployment on Kubernetes.",
                 "active": true
