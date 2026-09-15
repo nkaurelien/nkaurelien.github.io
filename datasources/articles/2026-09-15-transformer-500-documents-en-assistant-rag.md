@@ -23,77 +23,64 @@ La réponse architecturale à ce problème est la méthode **RAG (Retrieval-Augm
 
 ---
 
-## L'Architecture du Pipeline RAG Souverain
+## L'Architecture du Pipeline RAG Next.js & Supabase
 
 ```
 ┌─────────────────────────┐
-│ Documents Métier        │
-│ (PDF, Word, Markdown)   │
+│ Open Data KALI & Scrape │
+│ (SocialGouv kali-data)  │
 └────────────┬────────────┘
              │
-             ▼  1. Pipeline ETL & Chunking
+             ▼  1. Pipeline ETL & Chunking (LangChain)
 ┌─────────────────────────┐
-│ RecursiveCharacterSplit │ (Taille de chunk: 800, Overlap: 150)
+│ RecursiveCharacterSplit │ (Markdown, Chunk size: 1000, Overlap: 200)
 └────────────┬────────────┘
              │
              ▼  2. Vector Embeddings
 ┌─────────────────────────┐
-│ BGE-Large / FastEmbed   │ ──► Stockage dans Base Vectorielle (PostgreSQL pgvector / Supabase)
+│ Azure OpenAI Embeddings │ ──► Stockage Vectoriel : Supabase pgvector (vector(1536))
 └────────────┬────────────┘
              │
-             ▼  3. Recherche Sémantique & Inférence
+             ▼  3. Recherche Sémantique & Inférence Edge
 ┌─────────────────────────┐
-│ Requête Utilisateur     │ ──► Cosine Similarity Search ──► Injection de Contexte ──► LLM Local (Ollama/LiteLLM)
+│ Requête Utilisateur     │ ──► RPC `match_collective_conventions` ──► LLM (Azure GPT-4o-mini / Perplexity)
 └────────────┬────────────┘
 ```
 
 ---
 
-## 1. La clé du succès : Le découpage intelligent (Chunking)
+## 1. La clé du succès : Le découpage intelligent et la Traçabilité (UUIDv5)
 
-Découper un document de 200 pages n'est pas trivial. Un découpage naïf au kilomètre peut couper un article de loi ou une formule de calcul au milieu d'une phrase essentielle.
+Découper un texte de loi au kilomètre est dangereux. Pour garantir l'intégrité, le pipeline télécharge les conventions intégrales au format Markdown directement depuis **SocialGouv/kali-data**.
 
-Stratégie adoptée avec **LangChain** :
-```python
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=800,
-    chunk_overlap=150,
-    separators=["\n\n", "\n", " ", ""]
-)
-chunks = text_splitter.split_documents(documents)
+Stratégie adoptée avec **LangChain** (`RecursiveCharacterTextSplitter`) :
+```javascript
+const splitter = RecursiveCharacterTextSplitter.fromLanguage('markdown', {
+    chunkSize: 1000,
+    chunkOverlap: 200
+})
 ```
-- **Overlap de 150 caractères** : Garantit qu'aucune continuité de sens ne soit perdue entre deux blocs consécutifs.
-- **Métadonnées associées** : Chaque chunk conserve son numéro de page, le nom du document source et sa catégorie réglementaire.
+- **Découpage structurel** : Respecte les titres et paragraphes Markdown.
+- **Zéro Hallucination via UUIDv5** : Chaque fragment généré reçoit un `uuidv5` unique, généré déterministement à partir de l'ID KALI du texte et des numéros de lignes (`from` à `to`). Si la loi ne change pas, le hash reste identique.
 
 ---
 
-## 2. Inférence Souveraine avec Ollama et LiteLLM
+## 2. Inférence Haute Performance : LCEL & Edge Streaming
 
-Pour garantir qu'aucune donnée RH confidentielle ne quitte le réseau de l'entreprise :
-- **Ollama** héberge le modèle LLM localement (ex: Llama3 ou Mistral).
-- **LiteLLM** fait office de passerelle unifiée, permettant d'interchanger dynamiquement les modèles selon la complexité de la question sans modifier le code applicatif.
+Au lieu d'un backend lourd, le moteur de chat tourne sur le **Edge Runtime** de Vercel/Next.js en utilisant le **LangChain Expression Language (LCEL)** :
 
-Exemple d'interrogation du modèle avec contexte injecté :
-```python
-system_prompt = f"""
-Tu es un assistant expert en droit du travail et gestion de paie.
-Réponds à la question de l'utilisateur uniquement en t'appuyant sur le contexte fourni ci-dessous.
-Si le contexte ne permet pas de répondre, indique-le clairement sans inventer.
-
-CONTEXTE FOURNI :
-{context_retrieved}
-"""
-```
+1. **Reformulation Contextuelle** : Une chaîne `condenseQuestionPrompt` reformule la question de l'utilisateur en fonction de l'historique du chat pour créer une requête autonome.
+2. **Recherche Vectorielle (Supabase)** : La requête interroge Supabase via une fonction PL/pgSQL (`match_collective_conventions_integrals`) qui filtre les embeddings par similarité cosinus.
+3. **Multi-LLM & Streaming** : Le contexte est injecté dans des modèles distants (Azure OpenAI, ou **Perplexity AI `llama-3.1-sonar`**) via le Vercel AI SDK.
+4. **Citation des sources en temps réel** : Les métadonnées des documents sources (Numéro d'article, IDCC) sont sérialisées et injectées directement dans les en-têtes HTTP de la réponse streamée (`x-sources`).
 
 ---
 
 ## 3. Résultats & Enseignements
 
-1. **Zéro hallucination réglementaire** : En forçant le modèle à citer le document source et l'article exact, l'utilisateur valide instantanément la réponse.
-2. **Gain de temps de recherche** : Réduction de 80 % du temps de recherche documentaire pour les gestionnaires.
-3. **Confidentialité absolue** : L'intégralité du traitement vectoriel et de l'inférence reste sur l'infrastructure contrôlée par l'entreprise.
+1. **Zéro hallucination réglementaire** : En forçant le LLM à s'appuyer uniquement sur le chunk traçable et en affichant la source (headers `x-sources`), l'utilisateur valide instantanément l'article du Code du Travail.
+2. **Architecture Serverless Réactive** : L'utilisation de Next.js Edge Functions garantit une latence minime et une scalabilité instantanée.
+3. **Maintien à jour Open Data** : La synchronisation via l'API GitHub de SocialGouv assure d'interroger le droit positif applicable du jour.
 
 ---
 
