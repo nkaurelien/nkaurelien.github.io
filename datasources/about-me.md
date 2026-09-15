@@ -28,12 +28,25 @@ lang: fr
 - Conçoit des applications patient & médecin (Next.js / FastAPI), collecte et interprétation de données physiologiques (EmotiBit-ESP32, Withings, Bangle.js), pipelines temps réel (Logstash, WebSockets), POC mobile Flutter (BLE/WiFi).
 - Fondateur de **KAMITBRAINS IT**, sa structure pour porter projets et missions en indépendant.
 
-## Spécialités
+## Spécialités & Rôles Cibles
 
-- **DevSecOps** (spécialité principale), avec de solides bases en **SysOps** et en **ingénierie des données**.
-- **IA & RAG appliqués** : chatbots métiers, extraction/transformation de documents, bases de connaissances vectorielles (LangChain, LiteLLM, OpenAI, Ollama).
-- **Développement agentique** (Claude) et **Spec-Driven Development** (GitHub Spec Kit) pour fiabiliser le cycle de dev.
-- Valeurs : clean code, principes SOLID, documentation, design thinking, amélioration continue, transmission (mentorat des juniors).
+Au confluent du développement logiciel, de l'infrastructure et de l'intelligence artificielle, mes appétences se concentrent sur 3 rôles à fort impact technique et humain :
+
+1. **Lead Tech (Fullstack, Cloud & IA) — Mon cœur de métier** :
+   - Piloter la conception d'applications de bout en bout (de la spec à la production).
+   - Accompagner et faire grandir les développeurs par le mentorat, les revues de code, le Clean Code / SOLID et les méthodologies Agiles (Scrum/Kanban).
+   - Faire le pont entre la vision produit/métier (MOA) et l'excellence technique (MOE).
+
+2. **Platform Engineer (IA / Cloud & DevSecOps) — Mon terrain d'industrialisation** :
+   - Bâtir des plateformes internes (*Internal Developer Platforms - IDP*) offrant des services et briques d'infrastructure prêtes à l'emploi.
+   - Industrialiser les solutions d'IA agentique et de RAG sur le Cloud (Azure, GCP, AWS) avec gouvernance, observabilité (SigNoz, ELK) et automatisation CI/CD (GitLab, GitHub, Docker, Kubernetes, Ansible, Terraform).
+
+3. **Architecte Solutions & Logiciel — Ma vision système** :
+   - Concevoir des architectures distribuées et microservices robustes, scalables et sécurisées.
+   - Garantir la conformité aux normes réglementaires exigeantes (santé connectée FHIR/HL7, sécurité bancaire, RGPD, API Gateway Kong, Snyk).
+   - Rendre l'IA pragmatique, souveraine et « zéro hallucination » au service des processus métiers critiques.
+
+- **Valeurs & Pratiques** : Clean Code, principes SOLID, documentation soignée, Spec-Driven Development (SDD), amélioration continue et transmission.
 
 ## Compétences techniques
 

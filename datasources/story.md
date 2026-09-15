@@ -62,3 +62,11 @@ de contenus née avec des camarades, que je réactualise brique par brique. Le n
 - **Rigueur Ops & Sécurité** : automatiser sans sécuriser est une dette assurée.
 - **Pragmatisme Startup & Leadership** : délivrer avec impact sous pression et sous contraintes de ressources.
 - **Curiosité constante** : des objets connectés aux LLMs, toujours explorer ce qui émerge.
+
+## Mes appétences & horizons professionnels
+
+Aujourd'hui, mon énergie et mes compétences s'investissent particulièrement dans 3 types de responsabilités :
+1. **Lead Tech (Fullstack, Cloud & IA)** : pour guider une équipe de développeurs, concevoir l'architecture et porter les projets de l'idée au déploiement en production.
+2. **Platform Engineer (IA & DevSecOps)** : pour bâtir les plateformes internes (*Internal Developer Platforms*), automatiser l'infrastructure Cloud et industrialiser les pipelines d'IA (RAG, agents).
+3. **Architecte Solutions & Logiciel** : pour concevoir des systèmes distribués résilients et conformes aux exigences réglementaires les plus strictes (santé FHIR/HL7, bancaire, RGPD).
+
