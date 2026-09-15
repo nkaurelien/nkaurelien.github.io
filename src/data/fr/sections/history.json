@@ -48,7 +48,7 @@
         "items": [
             {
                 "title": "DATA2INNOV",
-                "subtitle": "Ingénieur Développeur Fullstack (Lead / MOE)",
+                "subtitle": "Ingénieur Développeur Fullstack & Lead Tech",
                 "date": "Mai 2025 - Présent",
                 "text": "Développement fullstack (Next.js / FastAPI) d'applications santé patient & médecin conformes FHIR/HL7, HDS. Collecte et interprétation de données physiologiques issues d'objets connectés (EmotiBit-ESP32, Withings, Bangle.js), pipelines temps réel (Logstash, WebSockets, ELK), POC mobile Flutter (BLE/WiFi). Intégration & déploiement continus (GitLab CI, Docker, Ansible). Accompagnement technique des équipes en Tunisie.",
                 "active": true,
@@ -71,7 +71,7 @@
                 "title": "YSO Conseils / KAZAC — Smart Data Pay",
                 "subtitle": "Ingénieur Développeur Fullstack Web, IA & MOE",
                 "date": "Oct 2023 - Sept 2024",
-                "text": "Développement d'un chatbot RAG (Next.js, OpenAI, Ollama, LiteLLM, LangChain) — assistant intelligent pour la paie, le droit du travail et les conventions collectives en France. Développement fullstack Laravel (Filament, Livewire), automatisation SAAS (Make/N8N), CI/CD sur Azure.",
+                "text": "Développement d'un assistant RAG (Next.js Edge Runtime, LangChain LCEL, Open Data KALI, chunking UUIDv5, Supabase pgvector) pour la paie et les conventions collectives en France. Portail d'administration Laravel (Filament, Livewire), automatisation SaaS (Make/N8N) et CI/CD Azure.",
                 "button": {
                     "type": "project",
                     "link": "/projects/smart-data-pay-ia",
@@ -91,7 +91,7 @@
                 "title": "Sylen-IT Services",
                 "subtitle": "Développeur Angular / TypeScript",
                 "date": "Nov 2022 - Juillet 2023",
-                "text": "Intégration d'API et refonte de l'interface utilisateur (IHM) pour le projet Coface du Groupe BPCE, en full télétravail. Recherche de documents autour d'Elasticsearch. Techno : Angular, Laravel, RxJS.",
+                "text": "Intégration d'API et refonte de l'interface utilisateur (IHM) pour le projet Coface du Groupe BPCE, en full télétravail. Moteur de recherche documentaire autour d'Elasticsearch. Techno : Angular 14+, TypeScript, RxJS, Elasticsearch.",
                 "active": true
             },
             {
@@ -103,7 +103,7 @@
             },
             {
                 "title": "KOREE",
-                "subtitle": "Lead Développeur Backend (PHP/Laravel) & Mobile (Flutter)",
+                "subtitle": "Lead Développeur Backend Laravel & Mobile Flutter",
                 "date": "Déc 2021 - Juin 2022",
                 "text": "Conception et développement d'une plateforme de fidélisation client (top 3 startup Fintech d'Afrique centrale) : APIs RESTful sécurisées (JWT), intégrations cloud (AWS, GCP, Stripe), CI/CD GitLab + Ansible, analyse de vulnérabilités (Snyk).",
                 "button": {
