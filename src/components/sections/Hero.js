@@ -246,10 +246,10 @@ export default function Hero({ locale, hero }) {
                 </Box>
                 <Box style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.2)', paddingLeft: 16 }}>
                   <Text fw={800} fz={{ base: 22, sm: 26 }} c="white" style={{ lineHeight: 1 }}>
-                    100k+
+                    99.9%
                   </Text>
                   <Text size="xs" c="rgba(255, 255, 255, 0.75)" mt={2}>
-                    {locale === 'en' ? 'Users & Records' : 'Utilisateurs & Relevés'}
+                    {locale === 'en' ? 'Uptime & Reliability' : 'Uptime & Stabilité'}
                   </Text>
                 </Box>
               </Group>
