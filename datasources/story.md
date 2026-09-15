@@ -45,25 +45,20 @@ devenu mon accent : construire des systèmes **augmentés par l'IA**, utiles et 
 pousse loin le **développement agentique** (Claude) et le **Spec-Driven Development** (GitHub Spec
 Kit) pour accélérer et fiabiliser tout le cycle de dev.
 
+> **Ma vision du rôle de Senior Lead Tech à l'ère de l'IA :**  
+> *« L'IA est pour moi ce que la calculatrice ou l'IDE a été pour les générations précédentes : un accélérateur de productivité. Mon rôle de Senior / Lead n'est pas de mémoriser de la syntaxe au caractère près, mais d'orchestrer des architectures robustes, de garantir la sécurité, la conformité métier (FHIR/HL7, DevSecOps) et la qualité globale. L'IA me permet de me concentrer sur ce qui apporte la vraie valeur intellectuelle : la conception système, la résolution de problèmes complexes et l'accompagnement des équipes. »*
+
 ## Aujourd'hui
 
-Je suis en **CDI, en interne**, chez **DATA2INNOV**, sur une plateforme **santé connectée**
-(IoT, FHIR/HL7) — un domaine qui a du sens. Et je reste **ouvert aux opportunités** : missions
-longue durée, relocalisation, projets challengeants.
+Je suis **Tech Lead en CDI chez DATA2INNOV**, une entreprise audacieuse évoluant dans la **santé connectée (IoT, normes FHIR/HL7)**. En startup, l'agilité n'est pas un vain mot : malgré les ressources mesurées et l'absence de grands bureaux d'entreprise, le challenge est permanent et la pression réelle. Être Tech Lead dans ce contexte exige un pragmatisme total — concevoir l'architecture de A à Z, bâtir des pipelines de données physiologiques temps réel, sécuriser le CI/CD et former les développeurs tout en maintenant un rythme d'exécution élevé. C'est cette école du terrain et du résultat qui forge la valeur d'un vrai Lead.
 
 En dehors, je porte **Tameri BIG** — « Beautiful Inspiration Ground » —, une plateforme de partage
-de contenus née avec des camarades, que je réactualise brique par brique. La direction artistique,
-c'est **Idrissou Ngouen** ; le nom « Tameri / Kamit » puise dans notre héritage. C'est mon terrain
-de jeu et d'apprentissage continu.
+de contenus née avec des camarades, que je réactualise brique par brique. Le nom « Tameri / Kamit » puise dans notre héritage. C'est mon terrain de jeu et d'apprentissage continu.
 
 ## Ce qui me définit
 
-- **Polyvalence** : du front au back, du DevOps à la MOE, de l'analyse à la mise en production.
-- **Clean code & SOLID**, documentation, amélioration continue — je code comme je voudrais qu'on
-  code pour moi.
-- **Design thinking & systémique** : partir du besoin réel, itérer, simplifier.
-- **Transmission** : accompagner les juniors, documenter, partager.
-
-Si mon parcours ou mes projets résonnent avec ce que vous cherchez, écrivez-moi —
-[nkumbeaurelien@hotmail.com](mailto:nkumbeaurelien@hotmail.com) ou
-[LinkedIn](https://www.linkedin.com/in/nkaurelien/).
+- **Penser systèmes** avant d'aligner des lignes de code.
+- **Transmettre & documenter** : le code sans doc est un cadeau empoisonné.
+- **Rigueur Ops & Sécurité** : automatiser sans sécuriser est une dette assurée.
+- **Pragmatisme Startup & Leadership** : délivrer avec impact sous pression et sous contraintes de ressources.
+- **Curiosité constante** : des objets connectés aux LLMs, toujours explorer ce qui émerge.

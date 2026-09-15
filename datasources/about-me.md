@@ -18,6 +18,10 @@ lang: fr
 - Disponibilité : ouvert aux opportunités, flexible et **mobile dans toute la France**, missions longue durée et relocalisation possibles.
 - Contact : **nkumbeaurelien@hotmail.com**.
 
+## Manifeste & Philosophie de l'Ingénieur Augmenté par l'IA
+
+> *« L'IA est pour moi ce que la calculatrice ou l'IDE a été pour les générations précédentes : un accélérateur de productivité. Mon rôle de Senior / Lead n'est pas de mémoriser de la syntaxe au caractère près, mais d'orchestrer des architectures robustes, de garantir la sécurité, la conformité métier (FHIR/HL7, DevSecOps) et la qualité globale. L'IA me permet de me concentrer sur ce qui apporte la vraie valeur intellectuelle : la conception système, la résolution de problèmes complexes et l'accompagnement des équipes. »*
+
 ## Situation actuelle
 
 - En **CDI, en interne, chez DATA2INNOV** : plateforme de **santé connectée** (IoT, normes **FHIR/HL7**).
@@ -59,7 +63,7 @@ En résumé, son blog Medium partage des retours d'expérience concrets sur l'in
 - **YSO Conseils / Smart Data Pay** : développement d'un **chatbot RAG** pour aider les gestionnaires de paie à maîtriser le droit du travail — son virage vers l'IA appliquée.
 - **Livraison Express** (chez MCS — Multi Canal Services, son premier employeur) : plateforme e-commerce de livraison.
 - **MAMALPRO** : plateforme de santé publique (tests Covid, CAN 2021).
-- **Tameri BIG** (« Beautiful Inspiration Ground ») : plateforme de partage de contenus, projet personnel réactualisé brique par brique (direction artistique : Idrissou Ngouen).
+- **Tameri BIG** (« Beautiful Inspiration Ground ») : plateforme de partage de contenus, projet personnel réactualisé brique par brique.
 
 ## Projets open source (GitHub)
 

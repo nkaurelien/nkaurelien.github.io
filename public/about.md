@@ -5,152 +5,88 @@ tags: profile, bio, about, tech-lead, devops
 lang: fr
 ---
 
-# Astrid-Aurélien NKUMBE ENONGENE — À propos
+# À propos d'Aurélien NKUMBE — profil complet
 
-> Développeur'Ops fullstack polyvalent (7+ ans) — DevSecOps · SysOps · Data & IA.
-> En poste (CDI interne) et **ouvert aux opportunités** (dans toute la France).
+> Fiche profil factuelle et structurée d'Astrid-Aurélien NKUMBE ENONGENE (alias « nkaurelien »), Développeur'Ops full-stack et Tech Lead. Complète le récit « Mon histoire ».
 
-**Aurelien NKUMBE** (`@nkaurelien`) est un développeur full-stack polyvalent, autonome et
-collaboratif, passionné par le DevOps, la MOE et les nouvelles technologies. Originaire de
-Douala (Cameroun), basé en région parisienne (Paris · Cergy · Deuil-la-Barre), il conçoit
-des applications web, mobiles, données et IoT — de l'analyse à la mise en production — en
-soignant le clean code, la documentation et l'amélioration continue.
+## Identité
 
----
+- Nom complet : **Astrid-Aurélien NKUMBE ENONGENE**, connu en ligne sous **nkaurelien**.
+- Origine : né à **Douala, Cameroun** ; formation en **génie logiciel à l'IAI**.
+- Titres : **Senior Software Engineer · Backend · DevSecOps · Technical Lead (MOE / AMOE)**.
+- Expérience : **plus de 7 ans**. Développeur **full-stack polyvalent**, à l'aise en autonomie comme en équipe.
+- Disponibilité : ouvert aux opportunités, flexible et **mobile dans toute la France**, missions longue durée et relocalisation possibles.
+- Contact : **nkumbeaurelien@hotmail.com**.
 
-## En un coup d'œil
+## Manifeste & Philosophie de l'Ingénieur Augmenté par l'IA
 
-- **Rôle** : Développeur'Ops fullstack polyvalent · Tech Lead / MOE
-- **Expérience** : 7+ ans
-- **Statut actuel** : **CDI · Interne** chez **DATA2INNOV** (depuis mai 2025) — plateforme santé IoT conforme FHIR/HL7
-- **Entrepreneuriat** : fondateur de **KAMITBRAINS IT** (EI, SIRET 92203463200013, créée en décembre 2022, programmation informatique)
-- **Disponibilité** : ouvert à la **relocalisation** et aux nouvelles opportunités · **missions longue durée** · ouvert aux **ESN** (rejoindre ensuite le client final est un plus) · **projets challengeants**
-- **Langues** : Français (natif), Anglais (technique/pro), Allemand (B1)
+> *« L'IA est pour moi ce que la calculatrice ou l'IDE a été pour les générations précédentes : un accélérateur de productivité. Mon rôle de Senior / Lead n'est pas de mémoriser de la syntaxe au caractère près, mais d'orchestrer des architectures robustes, de garantir la sécurité, la conformité métier (FHIR/HL7, DevSecOps) et la qualité globale. L'IA me permet de me concentrer sur ce qui apporte la vraie valeur intellectuelle : la conception système, la résolution de problèmes complexes et l'accompagnement des équipes. »*
 
----
+## Situation actuelle
 
-## Parcours (le récit)
+- En **CDI, en interne, chez DATA2INNOV** : plateforme de **santé connectée** (IoT, normes **FHIR/HL7**).
+- Conçoit des applications patient & médecin (Next.js / FastAPI), collecte et interprétation de données physiologiques (EmotiBit-ESP32, Withings, Bangle.js), pipelines temps réel (Logstash, WebSockets), POC mobile Flutter (BLE/WiFi).
+- Fondateur de **KAMITBRAINS IT**, sa structure pour porter projets et missions en indépendant.
 
-Aurelien démarre sa carrière à la sortie de l'école chez **MCS IT (Multi Canal Services)**
-en 2018 — d'abord en **stage professionnel** — sous la houlette de **Fernand Hervé**, fondateur
-de MCS et son tout premier employeur. Il y développe la plateforme e-commerce de livraison
-**Livraison Express** (Angular, Laravel, Flutter, Firebase, GCP/Kubernetes) et y accueille et
-**encadre en peer programming** un développeur Odoo, **Carlson N. NDANGA**, qui en gardera une
-grande reconnaissance.
+## Spécialités
 
-Il enchaîne ensuite des missions variées, souvent en indépendant sous sa structure
-**Kamitbrains** : **SAS Inimov**, **LAB2VIEW** (application multiplateforme Electron.js),
-**MAMALPRO** (plateforme de tests Covid-19, officielle CAN Total Energies 2021, pour le
-MINSANTE au Cameroun).
+- **DevSecOps** (spécialité principale), avec de solides bases en **SysOps** et en **ingénierie des données**.
+- **IA & RAG appliqués** : chatbots métiers, extraction/transformation de documents, bases de connaissances vectorielles (LangChain, LiteLLM, OpenAI, Ollama).
+- **Développement agentique** (Claude) et **Spec-Driven Development** (GitHub Spec Kit) pour fiabiliser le cycle de dev.
+- Valeurs : clean code, principes SOLID, documentation, design thinking, amélioration continue, transmission (mentorat des juniors).
 
-Chez **KOREE** (2021-2022), top 3 des startups Fintech d'Afrique centrale, il est **architecte
-et développeur principal**, et **l'un des tout premiers ingénieurs** de la plateforme de
-fidélisation à cashback — aux côtés de la CEO **Magalie Gauze-Sanga**.
+## Compétences techniques
 
-Il participe à la transformation numérique de la **SCB Cameroun** (groupe Attijariwafa Bank) :
-APIs REST sécurisées, reverse proxy **KONG**, authentification **LDAP + RBAC**, déploiement
-**Argo CD** sur Kubernetes.
+- **Langages & frameworks** : Python, FastAPI, PHP, Laravel, TypeScript, Node.js, NestJS.
+- **Frontend** : Next.js, React, Angular, Vue.js, Flutter, Electron.
+- **DevOps & Cloud** : Docker, GitLab CI, Ansible, Terraform, Kubernetes, Nginx, Traefik, AWS, GCP, Azure, Snyk.
+- **Data, IA & IoT** : LangChain, OpenAI, Ollama, LiteLLM, Kafka, PySpark, Arduino/IoT, Streamlit.
+- **Observabilité** : Grafana, Loki, Alloy, Netdata, Prometheus, SigNoz, ELK Stack, Sentry.
+- **Bases de données** : PostgreSQL, MySQL, MongoDB, CouchDB, Oracle, Supabase, Firebase.
 
-En France, il réintègre Coface (**Sylen-IT Services**, Groupe BPCE) en Angular/TypeScript, puis
-rejoint **YSO Conseils / KAZAC** où il développe le **chatbot RAG** de **Smart Data Pay**
-(assistant IA paie & droit du travail) — sa spécialité du moment — avec la CEO **Rose YEMELI**
-et le développeur **Martin MBODY**. De ce travail naît le dataset **« Fiches Travail »** publié
-sur Hugging Face.
+## Blog technique sur Medium
 
-Après une formation **webMethods** chez WILOW (2025), il rejoint **DATA2INNOV** en **CDI interne**
-comme ingénieur fullstack (Lead / MOE) sur une plateforme **santé IoT** (Next.js / FastAPI,
-FHIR/HL7, EmotiBit, Withings, pipelines temps réel, POC mobile Flutter).
+Aurélien **tient un blog technique sur Medium** : **https://medium.com/@nkaurelien** (≈ 16 abonnés).
+Il y publie des articles pratiques de **DevOps, SysOps et administration système**, notamment :
 
-En parallèle, il porte **Tameri BIG** (« Beautiful Inspiration Ground »), une plateforme
-communautaire de partage de contenus (images, vidéos, audios, créas) initiée avec des camarades,
-qu'il réactualise en monorepo **NestJS 11 / Angular** — avec **Idrissou Ngouen** à la direction
-artistique.
+- Sécurisation de noms de domaine avec **Let's Encrypt, Certbot et Nginx** (SSL).
+- Installation et déploiement de **webMethods 10.15**, export/import de packages webMethods, configuration **Oracle 23ai** pour webMethods.
+- Configuration de serveurs mail **SMTP / Postfix** (relais mail) sur Ubuntu.
+- Configuration **Nginx** pour applications **PHP/Laravel**, exécution des files d'attente **Laravel avec PM2**.
+- Environnement de dev **WSL2 + Ubuntu + Docker** sur Windows, alias de commandes utiles **Debian/Ubuntu**.
 
----
+En résumé, son blog Medium partage des retours d'expérience concrets sur l'infrastructure serveur, le déploiement de logiciels d'entreprise et l'administration Linux.
 
-## Expériences
+## Projets marquants (parcours)
 
-| Période | Entreprise | Rôle | Statut |
-|---|---|---|---|
-| Mai 2025 – présent | **DATA2INNOV** | Ingénieur Développeur Fullstack (Lead / MOE) — santé IoT, FHIR/HL7 | CDI · Interne |
-| Déc. 2022 – présent | **KAMITBRAINS IT** | Fondateur & Développeur | Auto-entrepreneur |
-| Oct. 2023 – Sept. 2024 | **YSO Conseils / KAZAC — Smart Data Pay** | Fullstack Web, IA & MOE — chatbot RAG | |
-| Sep. 2021 – Nov. 2023 | **MAMALPRO** | Développeur web & DevOps / Consultant | Freelance |
-| Nov. 2022 – Juil. 2023 | **Sylen-IT Services** | Développeur Angular / TypeScript (Coface/BPCE) | |
-| Avr. 2022 – Sept. 2022 | **SCB Cameroun** (Attijariwafa Bank) | Analyste Programmeur - Chef de projet (AMOE) | |
-| Déc. 2021 – Juin 2022 | **KOREE** | Lead Dév. Backend & Mobile · Architecte · pionnier | |
-| Fév. 2021 – Oct. 2021 | **LAB2VIEW** | Développeur Fullstack Laravel / Vue.js / Electron.js | |
-| Déc. 2020 – Fév. 2021 | **SAS Inimov** | Développeur Fullstack Laravel / Ionic | Freelance |
-| Avr. 2020 – Juin 2020 | **MEFOR SHOP** | Consultant (conseil & hébergement) | Freelance |
-| Juin 2018 – Oct. 2020 | **MCS IT (Multi Canal Services)** | Développeur Full Stack | Stage professionnel |
+- **Koree** (Fintech, Afrique centrale) : architecte et développeur principal, l'un des tout premiers ingénieurs de la plateforme de fidélisation/cashback.
+- **YSO Conseils / Smart Data Pay** : développement d'un **chatbot RAG** pour aider les gestionnaires de paie à maîtriser le droit du travail — son virage vers l'IA appliquée.
+- **Livraison Express** (chez MCS — Multi Canal Services, son premier employeur) : plateforme e-commerce de livraison.
+- **MAMALPRO** : plateforme de santé publique (tests Covid, CAN 2021).
+- **Tameri BIG** (« Beautiful Inspiration Ground ») : plateforme de partage de contenus, projet personnel réactualisé brique par brique.
 
-## Formation
+## Projets open source (GitHub)
 
-- **WILOW** (2025) — Formation webMethods 10.x (full remote)
-- **IONIS-STM** (2022-2024) — MSc IA & Management, **RNCP niveau 7** (alternance)
-- **IAI Cameroun** (2014-2017) — Ingénieur des travaux, Génie Logiciel / Analyse & conception SI
-- **Lycée Technique Douala Koumassi** (2011) — Baccalauréat F2 (Électronique)
+- **momopay** — paiement mobile (Mobile Money) au Cameroun (PHP).
+- **mise-devtools** — setup d'environnement de dev piloté par mise (Shell).
+- **webmethods-devops-portfolio** — automatisation d'infra webMethods (Terraform, Ansible, Docker).
+- **couchdb-manager** — interface de gestion CouchDB, backup/restore/sync (Python, Streamlit).
+- **fhir-nextjs-starter** — starter santé FHIR/HL7 avec Next.js.
+- **conversation_openai_api** — expérimentations d'IA conversationnelle (OpenAI, LLM).
+- **angular-fastapi-traefik** — boilerplate fullstack Angular + FastAPI derrière Traefik.
 
----
+## Présence en ligne et liens
 
-## Projets
-
-- **Tameri BIG** (2019, réactualisé 2024-2025) — plateforme de partage de contenus « Beautiful Inspiration Ground » (Angular, NestJS 11, CouchDB, MinIO/S3, Redis, OIDC, imgproxy). Direction artistique : Idrissou Ngouen.
-- **Smart Data Pay** & **Smart Data Pay IA** (2024) — site vitrine + chatbot RAG paie/droit du travail (Next.js, OpenAI, Ollama, LiteLLM, LangChain).
-- **Koree** (2021) — plateforme de fidélisation à cashback (Laravel, Flutter, OCR, Stripe, Elasticsearch).
-- **Livraison Express** (2018) — e-commerce de livraison MCS (Angular, Flutter, Node.js, Laravel, Odoo, GCP/K8s).
-- **MAMALPRO** (2021) — plateforme santé publique / tests Covid-19.
-- **Kamitbrains** (2022) — site vitrine de sa société.
-- **Fiches Travail — Dataset RAG** (2023) — dataset Hugging Face (non maintenu).
-
-## Réseau
-
-**Recommandations** : Rose YEMELI (CEO Smart Data Pay), Hervé Franck ELOUNDOU (Consultant SAP),
-Dr Albert MAMBO (MINSANTE), Fernand Hervé (fondateur MCS), Magalie Gauze-Sanga (CEO Koree),
-Carlson N. NDANGA.
-
-**Collaborations** : Martin MBODY, Patrick Hendji (BNP Paribas), Nicky Valéry OLOA BIDJO
-(CEO Twin Lions, encadrant du stage académique KWATAHELP), Rose YEMELI, Idrissou Ngouen
-(directeur artistique de Tameri BIG).
-
----
-
-## Compétences
-
-- **Langages & frameworks** : Python, FastAPI, PHP/Laravel, TypeScript, Node.js, NestJS
-- **Frontend** : Next.js, React, Angular, Vue.js, Flutter, Electron, Mantine UI
-- **DevSecOps & Cloud** : Docker, GitLab CI/CD, Ansible, Terraform, Kubernetes, Nginx, AWS, GCP, Azure, Snyk
-- **Sécurité & Réseau** : reverse proxy (Nginx, Kong), en-têtes de sécurité HTTP, TLS/HTTPS, JWT/OAuth2, LDAP+RBAC, rate limiting / anti-DDoS
-- **Administration système (SysOps)** : Ubuntu/Linux, systemd, Bash, Cron, Supervisor, SSH, ISPConfig/Plesk, monitoring & logs
-- **Data, IA & IoT** : LangChain, LiteLLM, OpenAI/Ollama, PySpark, ELK, Kafka, IoT (EmotiBit, Withings), FHIR/HL7
-- **Développement augmenté par l'IA** : Claude (agentic dev), Claude Code, GitHub Spec Kit, Spec-Driven Development, MCP, prompt engineering
-- **Bases de données** : PostgreSQL, MySQL, MongoDB, CouchDB, Oracle, Supabase, Firebase
-- **Méthodes & outils** : UML / 2TUP / Merise, Agile (Scrum, XP), clean code / SOLID, Git, MkDocs, Figma
-
-## Environnement & rituels de dev
-
-- **Environnement local** : macOS, Ubuntu & Fedora · zsh / fish · VS Code & JetBrains · mise-en-place · Docker/Compose · Vagrant/VMware · Ansible · Makefile
-- **Outils** : Git/GitLab · Postman/Insomnia · REST Client (.http) · MkDocs · Claude Code · GitHub Spec Kit
-- **Rituels & qualité** : clean code & SOLID · ESLint/Prettier/Ruff · pre-commit hooks · conventional commits · Gitflow (MR vers develop) · revues de code & rétrospectives
-
----
-
-## Services
-
-Ce qu'Aurelien propose **en freelance** et ce qu'il apporte **en entreprise, en tant que salarié** :
-développement fullstack web & mobile · DevSecOps & Cloud · IA & applications RAG · développement
-augmenté par l'IA & agentique (Spec-Driven Dev, Claude) · IoT & données de santé · architecture,
-audit & MOE · formation & documentation.
-
----
-
-## Contact & liens
-
-- **Site** : https://nkaurelien.kamitbrains.fr
-- **Email** : nkumbeaurelien@hotmail.com
+- **Portfolio** : https://nkaurelien.kamitbrains.fr
+- **Blog Medium** : https://medium.com/@nkaurelien
 - **LinkedIn** : https://www.linkedin.com/in/nkaurelien/
 - **GitHub** : https://github.com/nkaurelien
 - **GitLab** : https://gitlab.com/nkaurelien
-- **Hugging Face** : https://huggingface.co/nkaurelien
-- **Linktree** : https://linktr.ee/nkaurelien
-- **Entreprise** : KAMITBRAINS IT — SIRET 92203463200013
+- **Linktree** (tous ses liens) : https://linktr.ee/nkaurelien
+- **Agenda / prise de RDV (Calendly)** : https://calendly.com/nkumbe-aurelien/30-minute-meeting-clone
+- **Email** : nkumbeaurelien@hotmail.com
+- **WhatsApp / téléphone** : via son Linktree.
+
+## Apprentissages en cours
+
+Normes de santé & IoT (FHIR/HL7) ; RAG & agents IA (LangChain, Ollama) ; SecOps & orchestration (Kubernetes / Argo / Swarm) ; Spec-Driven Development (Speckit / SDD) ; observabilité en ligne (Grafana, Loki, Alloy, Netdata).

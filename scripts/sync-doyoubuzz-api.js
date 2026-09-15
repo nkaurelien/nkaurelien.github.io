@@ -8,8 +8,9 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-// Fichier de destination JSON Resume
-const OUTPUT_PATH = path.join(__dirname, '../public/cv.json');
+// Fichiers de destination JSON Resume
+const DATASOURCES_PATH = path.join(__dirname, '../datasources/cv.json');
+const PUBLIC_PATH = path.join(__dirname, '../public/cv.json');
 
 /**
  * Mappe la structure API DoYouBuzz vers le standard JSON Resume schema v1.0.0
@@ -63,77 +64,54 @@ function mapDoYouBuzzApiToJSONResume(dybData) {
     summary: edu.description || ''
   }));
 
-  const rawSkills = dybData.skills?.skill || dybData.skills || [];
-  const skills = (Array.isArray(rawSkills) ? rawSkills : []).map(cat => {
-    const rawChildren = cat.children?.skill || cat.children || [];
-    return {
-      name: cat.title || cat.description || '',
-      keywords: (Array.isArray(rawChildren) ? rawChildren : []).map(sub => sub.title || sub.description).filter(Boolean)
-    };
-  });
-
   return {
     $schema: 'https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json',
     basics,
     work,
-    education,
-    skills
+    education
   };
 }
 
-/**
- * Exécute la requête HTTP vers l'API DoYouBuzz
- */
-function fetchDoYouBuzzCv(cvId, apiKey) {
-  const options = {
-    hostname: 'api.doyoubuzz.com',
-    port: 443,
-    path: `/cv/${cvId}`,
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'User-Agent': 'Antigravity-CV-Sync/1.0',
-      ...(apiKey ? { 'Authorization': `Bearer ${apiKey}` } : {})
-    }
-  };
-
-  console.log(`🌐 Connexion à l'API DoYouBuzz (GET https://api.doyoubuzz.com/cv/${cvId})...`);
-
-  const req = https.request(options, res => {
-    let body = '';
-    res.on('data', chunk => body += chunk);
-    res.on('end', () => {
-      if (res.statusCode >= 200 && res.statusCode < 300) {
-        try {
-          const dybJson = JSON.parse(body);
-          const converted = mapDoYouBuzzApiToJSONResume(dybJson);
-          fs.writeFileSync(OUTPUT_PATH, JSON.stringify(converted, null, 2), 'utf8');
-          console.log(`✅ Synchronisation API réussie ! ${OUTPUT_PATH} mis à jour.`);
-        } catch (err) {
-          console.error(`❌ Erreur d'analyse JSON de la réponse API :`, err.message);
-        }
-      } else {
-        console.error(`❌ Erreur HTTP API DoYouBuzz : statut ${res.statusCode} ${res.statusMessage}`);
-        console.error(body);
-      }
-    });
-  });
-
-  req.on('error', err => {
-    console.error(`❌ Erreur de connexion au serveur DoYouBuzz :`, err.message);
-  });
-
-  req.end();
-}
-
-// Arguments de ligne de commande
-const cvId = process.argv[2] || process.env.DOYOUBUZZ_CV_ID;
-const apiKey = process.argv[3] || process.env.DOYOUBUZZ_API_KEY;
+const cvId = process.argv[2];
+const apiKey = process.argv[3];
 
 if (!cvId) {
-  console.log(`ℹ️ Usage : node scripts/sync-doyoubuzz-api.js <CV_ID> [API_KEY]`);
-  console.log(`💡 Exemple : node scripts/sync-doyoubuzz-api.js 12345`);
+  console.log('💡 Usage : node scripts/sync-doyoubuzz-api.js <cv_id> [api_key]');
   process.exit(0);
 }
 
-fetchDoYouBuzzCv(cvId, apiKey);
+const options = {
+  hostname: 'api.doyoubuzz.com',
+  path: `/cv/${cvId}?format=json`,
+  method: 'GET',
+  headers: {
+    'User-Agent': 'NodeJS-DoYouBuzz-Sync'
+  }
+};
+
+if (apiKey) {
+  options.headers['Authorization'] = `Bearer ${apiKey}`;
+}
+
+https.get(options, (res) => {
+  let data = '';
+
+  res.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  res.on('end', () => {
+    try {
+      const parsed = JSON.parse(data);
+      const mapped = mapDoYouBuzzApiToJSONResume(parsed);
+      fs.writeFileSync(DATASOURCES_PATH, JSON.stringify(mapped, null, 2), 'utf8');
+      fs.writeFileSync(PUBLIC_PATH, JSON.stringify(mapped, null, 2), 'utf8');
+      console.log(`✅ Synchronisation réussie pour le CV ID: ${cvId}`);
+      console.log(`🚀 datasources/cv.json et public/cv.json ont été mis à jour !`);
+    } catch (e) {
+      console.error('❌ Erreur lors du parsing des données API DoYouBuzz:', e.message);
+    }
+  });
+}).on('error', (err) => {
+  console.error('❌ Erreur de requête HTTPS vers DoYouBuzz:', err.message);
+});

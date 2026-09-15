@@ -20,7 +20,7 @@ COPY prisma ./prisma
 RUN yarn install --frozen-lockfile
 
 # ------------------------------------------
-# Stage 2 : Build Next.js & génération de cv.pdf
+# Stage 2 : Build Next.js & génération des CV PDF
 # ------------------------------------------
 FROM node:22-slim AS builder
 WORKDIR /app
@@ -39,7 +39,7 @@ COPY . .
 # Génération du client Prisma
 RUN npx prisma generate
 
-# Génération automatique du CV PDF (cv.md -> public/cv.pdf)
+# Génération automatique des CV PDF (depuis datasources/)
 RUN node scripts/build-pdf.js
 
 # Compilation de l'application Next.js
@@ -76,9 +76,7 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/next.config.mjs ./next.config.mjs
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/datasources ./datasources
-COPY --from=builder /app/cv.md ./cv.md
-COPY --from=builder /app/cv.json ./cv.json
-COPY --from=builder /app/cv.pdf ./cv.pdf
+COPY --from=builder /app/latex ./latex
 
 # Copie des artéfacts Next.js et node_modules
 COPY --from=builder /app/.next ./.next

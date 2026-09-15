@@ -1,0 +1,202 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+\setlength{\footskip}{14pt}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeItemBullet}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{{\Large Astrid-Aurélien NKUMBE ENONGENE}} & Email : \href{mailto:nkumbeaurelien@hotmail.com}{nkumbeaurelien@hotmail.com}\\
+  \textbf{\small Senior Fullstack Engineer \& Tech Lead — Spécialiste IA/RAG \& DevSecOps} & Tél : +33 7 44 58 45 62\\
+  Paris / Cergy, France — Mobile France \& Remote & GitHub : \href{https://github.com/nkaurelien}{github.com/nkaurelien}\\
+  Portfolio : \href{https://nkaurelien.kamitbrains.fr}{nkaurelien.kamitbrains.fr} & LinkedIn : \href{https://www.linkedin.com/in/nkaurelien/}{linkedin.com/in/nkaurelien}\\
+\end{tabular*}
+
+\vspace{4pt}
+
+%-----------PROFIL-----------------
+\section{Profil Professionnel}
+Senior Fullstack Engineer et Technical Lead avec \textbf{plus de 7 ans d'expérience} dans la conception, l'architecture et le déploiement d'applications web, mobiles, IoT et IA. Spécialisé en \textbf{DevSecOps}, architectures logicielles propres (Clean Code, SOLID), intégration d'intelligences artificielles (RAG, LLM agentique, LangChain) et systèmes de santé connectés aux normes \textbf{FHIR / HL7}. Formateur technique en \textbf{Cloud Computing \& Conteneurisation}.
+
+%--------COMPETENCES TECHNIQUES------------
+\section{Compétences Techniques}
+ \resumeSubHeadingListStart
+   \item{\textbf{Langages}{: Python, PHP (8.x), TypeScript, JavaScript, Dart (Flutter), SQL, HCL (Terraform), Shell}}
+   \item{\textbf{Backend \& Frameworks}{: FastAPI, Laravel, NestJS, Node.js, RESTful APIs, GraphQL, WebSockets, JSON-RPC}}
+   \item{\textbf{Frontend \& Mobile}{: Next.js, React, Angular, Vue.js, Mantine UI, AlpineJS, Flutter, Electron.js}}
+   \item{\textbf{DevOps, Cloud \& SecOps}{: Docker, Docker Swarm, Kubernetes, Argo CD, Ansible, Terraform, GitLab CI/CD, Nginx, Snyk, AWS, GCP, Azure}}
+   \item{\textbf{IA \& Data Engineering}{: RAG (Retrieval-Augmented Generation), OpenAI API, Ollama, LangChain, LiteLLM, Vector DBs, ELK}}
+   \item{\textbf{IoT \& Santé}{: Normes FHIR / HL7, EmotiBit, ESP32, Bangle.js, Withings Cloud API, BLE / Wi-Fi, Arduino IDE}}
+   \item{\textbf{Bases de Données \& Observabilité}{: PostgreSQL, MySQL, CouchDB, MongoDB, Elasticsearch, Oracle 23ai, Supabase, SigNoz, Grafana, Prometheus}}
+ \resumeSubHeadingListEnd
+
+%-----------EXPERIENCES-----------------
+\section{Expériences Professionnelles}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {DATA2INNOV}{France}
+      {Ingénieur Développeur Fullstack \& Lead Tech}{Mai 2025 -- Présent}
+      \resumeItemListStart
+        \resumeItemBullet{Architecture et développement Fullstack (Next.js / FastAPI) d'applications patient et médecin pour une plateforme de santé connectée conforme aux normes FHIR/HL7.}
+        \resumeItemBullet{Collecte, traitement et restitution temps réel de métriques physiologiques issues d'objets connectés (Withings Cloud API, EmotiBit, ESP32).}
+        \resumeItemBullet{Définition d'architectures robustes, observabilité (JSON-RPC, Kafka, SigNoz, Docker Swarm) et POC mobile Flutter pour l'acquisition BLE/Wi-Fi.}
+        \resumeItemBullet{Conception et animation du support de cours/formation \textbf{Cloud Computing \& Conteneurisation} (Virtualisation, Docker, IaaS/PaaS/SaaS, Migration Cloud).}
+        \resumeItemBullet{Mise en place du pipeline CI/CD GitLab (tests, builds, registre Docker, Ansible/Docker Compose) et mentorat technique d'équipe.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {YSO Conseils / KAZAC}{France}
+      {Ingénieur Développeur Fullstack, IA \& MOE}{Oct. 2023 -- Sept. 2024}
+      \resumeItemListStart
+        \resumeItemBullet{Développement Fullstack (Filament PHP, Livewire/AlpineJS, Laravel, PostgreSQL, Auth0) du Chatbot RAG (SmartDataPay) pour gestionnaires de paie.}
+        \resumeItemBullet{Création du moteur RAG (Next.js, OpenAI, Ollama, LiteLLM, LangChain) et pipeline ETL documentaire pour +500 documents RH/Paie.}
+        \resumeItemBullet{Intégration de services IA Cloud (Azure, Google), automatisation SaaS (Make / N8N) et assistance MOE pour la refonte IA du logiciel Silea.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {SYLEN-IT SERVICES}{France}
+      {Développeur Angular / TypeScript (Indépendant)}{Nov. 2022 -- Juil. 2023}
+      \resumeItemListStart
+        \resumeItemBullet{Refonte UX/UI d'applications métiers (Coface / BPCE) avec intégration du Design System propriétaire BPCE.}
+        \resumeItemBullet{Intégration de l'API REST Elasticsearch pour le moteur de recherche documentaire en temps réel, migrations Angular et refactoring.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Korée}{Remote}
+      {Développeur Backend PHP / Flutter (Lead Tech)}{Déc. 2021 -- Sept. 2023}
+      \resumeItemListStart
+        \resumeItemBullet{Architecture et développement des APIs RESTful hautement sécurisées (JWT, ApiResources) pour une Fintech de fidélisation/cashback (Top 3 Afrique centrale).}
+        \resumeItemBullet{Intégration Cloud (AWS SQS/S3, push, SMS, Mobile Money / Stripe), optimisation des performances et pipeline DevSecOps (GitLab CI, Ansible, SAST Snyk).}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Société Commerciale de Banque Cameroun (Attijariwafa Bank)}{Cameroun}
+      {Analyste Programmeur / Chef de Projet (AMOE)}{Avr. 2022 -- Sept. 2022}
+      \resumeItemListStart
+        \resumeItemBullet{Architecture \& sécurisation des APIs REST avec Kong API Gateway (load balancing, rate limiting, protection DDoS).}
+        \resumeItemBullet{Développement fullstack du portail Intranet et BackOffice relevés de comptes, authentification LDAP + RBAC sur Active Directory.}
+        \resumeItemBullet{Automatisation du découpage PDF et distribution périodique chiffrée de +100k relevés de comptes; déploiement Argo CD sur Kubernetes.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {LAB2VIEW}{Cameroun}
+      {Développeur Fullstack Laravel / Vue.js / Electron.js}{Fév. 2021 -- Oct. 2021}
+      \resumeItemListStart
+        \resumeItemBullet{Développement de l'application desktop Point de Vente (POS) Electron.js / Vue.js avec auto-update via GitHub Releases et architecture multi-tenant Cloud AWS.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {MCS IT}{Remote}
+      {Développeur Fullstack Laravel / Angular / Vue.js}{Juin 2018 -- Oct. 2020}
+      \resumeItemListStart
+        \resumeItemBullet{Développement d'applications Web (Angular/Bootstrap) et Mobile livreurs (Flutter) pour une plateforme e-commerce et livraison express sur GCP / Docker.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJETS-----------------
+\section{Projets Marquants, Ingénierie Pédagogique \& Open Source}
+ \resumeSubHeadingListStart
+   \item{\textbf{Formation Cloud Computing}{: Conception du support de cours Beamer LaTeX \& TP complet (Virtualisation, Docker, Modèles IaaS/PaaS/SaaS, Stratégies de Migration).}}
+   \item{\textbf{momopay}{: SDK PHP d'intégration des APIs Mobile Money (MTN / Orange) en Afrique centrale.}}
+   \item{\textbf{nest-bugsnag}{: Module wrapper TypeScript / NestJS pour l'intégration de Bugsnag.}}
+   \item{\textbf{ai-llm-python-playground}{: Expérimentations d'agents IA, RAG et LLMs avec LangChain \& Python.}}
+   \item{\textbf{webmethods-devops-portfolio}{: IaC (Terraform, Ansible, Docker) pour Software AG webMethods Command Central.}}
+   \item{\textbf{fhir-nextjs-starter}{: Starter kit Next.js / TypeScript de santé connectée avec intégration FHIR/HL7.}}
+ \resumeSubHeadingListEnd
+
+%-----------FORMATIONS-----------------
+\section{Formations \& Diplômes}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {WILOW}{France}
+      {Formation webMethods 10.x (IS, Designer, Command Central, Administration, REST API)}{2025}
+    \resumeSubheading
+      {Ionis-STM}{France}
+      {Master of Science (MSc) IA \& Management / Expert en Ingénierie Informatique (RNCP 7)}{2022 -- 204}
+    \resumeSubheading
+      {Institut Africain de l'Informatique (IAI)}{Cameroun}
+      {Ingénieur des Travaux en Analyse \& Conception des Systèmes d'Informations}{2014 -- 2017}
+  \resumeSubHeadingListEnd
+
+%-----------LANGUES-----------------
+\section{Langues}
+ \resumeSubHeadingListStart
+   \item{\textbf{Français}{: Langue maternelle}}
+   \item{\textbf{Anglais}{: Bon niveau technique (lecture, rédaction de documentation et spécifications)}}
+   \item{\textbf{Allemand}{: Niveau B1 (2 ans de formation)}}
+ \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

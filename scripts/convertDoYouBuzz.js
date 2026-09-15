@@ -92,10 +92,12 @@ if (fs.existsSync(inputPath)) {
   const dybData = JSON.parse(fs.readFileSync(inputPath, 'utf8'));
   const converted = convertDoYouBuzzToJSONResume(dybData);
   
-  const outputPath = path.join(__dirname, '../public/cv.json');
-  fs.writeFileSync(outputPath, JSON.stringify(converted, null, 2), 'utf8');
+  const datasourcesPath = path.join(__dirname, '../datasources/cv.json');
+  const publicPath = path.join(__dirname, '../public/cv.json');
+  fs.writeFileSync(datasourcesPath, JSON.stringify(converted, null, 2), 'utf8');
+  fs.writeFileSync(publicPath, JSON.stringify(converted, null, 2), 'utf8');
   console.log(`✅ Conversion DoYouBuzz réussie ! Fichier : ${inputPath}`);
-  console.log(`🚀 cv.json mis à jour dans : ${outputPath}`);
+  console.log(`🚀 cv.json mis à jour dans datasources/ et public/`);
 } else {
   console.error(`❌ Fichier introuvable : ${inputPath}`);
 }

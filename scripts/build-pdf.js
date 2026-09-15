@@ -9,7 +9,7 @@ const datasourcesDir = path.join(rootDir, 'datasources');
 const datasourcesCvDir = path.join(datasourcesDir, 'cv');
 
 const cvFiles = [
-  { input: path.join(rootDir, 'cv.md'), outputName: 'cv.pdf', copyToDatasources: true },
+  { input: path.join(datasourcesDir, 'cv.md'), outputName: 'cv.pdf' },
   { input: path.join(datasourcesCvDir, 'cv-lite.md'), outputName: 'cv-lite.pdf' },
   { input: path.join(datasourcesCvDir, 'dossier-de-competences.md'), outputName: 'dossier-de-competences.pdf' },
   { input: path.join(datasourcesCvDir, 'cv-fullstack.md'), outputName: 'cv-fullstack.pdf' },
@@ -20,36 +20,28 @@ const cvFiles = [
 console.log('📄 Conversion de tous les CV (Markdown -> PDF)...');
 
 try {
-  cvFiles.forEach(({ input, outputName, copyToDatasources }) => {
+  cvFiles.forEach(({ input, outputName }) => {
     if (!fs.existsSync(input)) {
       console.warn(`⚠️ Fichier introuvable, ignoré: ${input}`);
       return;
     }
 
-    const targetPdfRoot = path.join(rootDir, outputName);
     const targetPdfPublic = path.join(publicDir, outputName);
 
     console.log(`🔨 Generation de ${outputName} depuis ${path.basename(input)}...`);
-    const command = `pandoc "${input}" -o "${targetPdfRoot}" --css="${cssPath}" --pdf-engine=weasyprint`;
+    const command = `pandoc "${input}" -o "${targetPdfPublic}" --css="${cssPath}" --pdf-engine=weasyprint`;
     execSync(command, { stdio: 'inherit', cwd: rootDir });
-
-    if (fs.existsSync(targetPdfRoot)) {
-      fs.copyFileSync(targetPdfRoot, targetPdfPublic);
-      if (copyToDatasources) {
-        fs.copyFileSync(targetPdfRoot, path.join(datasourcesDir, outputName));
-      }
-    }
 
     // Copie le fichier .md correspondant dans public/ pour la prévisualisation web
     const mdName = path.basename(input);
     fs.copyFileSync(input, path.join(publicDir, mdName));
   });
 
-  // Synchro des fichiers JSON et Markdown principaux dans public/
-  const cvMd = path.join(rootDir, 'cv.md');
-  const cvJson = path.join(rootDir, 'cv.json');
-  if (fs.existsSync(cvMd)) fs.copyFileSync(cvMd, path.join(publicDir, 'cv.md'));
-  if (fs.existsSync(cvJson)) fs.copyFileSync(cvJson, path.join(publicDir, 'cv.json'));
+  // Synchro des fichiers JSON et Markdown principaux depuis datasources/ vers public/
+  const cvMdDatasource = path.join(datasourcesDir, 'cv.md');
+  const cvJsonDatasource = path.join(datasourcesDir, 'cv.json');
+  if (fs.existsSync(cvMdDatasource)) fs.copyFileSync(cvMdDatasource, path.join(publicDir, 'cv.md'));
+  if (fs.existsSync(cvJsonDatasource)) fs.copyFileSync(cvJsonDatasource, path.join(publicDir, 'cv.json'));
 
   console.log('✅ Tous les CV et Dossier de compétences ont été compilés en PDF et servis dans public/ !');
 } catch (err) {
