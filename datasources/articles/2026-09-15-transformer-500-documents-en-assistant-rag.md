@@ -15,11 +15,12 @@ lang: fr
 
 ## Le Problème : La complexité documentaire RH & Paie
 
-Dans des domaines fortement réglementés (droit du travail, paie, conventions collectives), les documents métier s'accumulent sous des formats hétérogènes (PDF, Word, Markdown, JSON). Les LLMs généralistes échouent souvent car :
-1. Ils manquent de contexte métier spécifique et d'actualisation réglementaire.
-2. Envoyer des documents confidentiels RH sur des APIs cloud publiques pose un risque juridique de fuite de données.
+Dans des domaines fortement réglementés (droit du travail, paie, conventions collectives), les documents métier s'accumulent sous des formats hétérogènes (PDF, Word, Markdown, JSON). Les LLMs généralistes échouent souvent pour deux raisons majeures :
 
-La réponse architecturale à ce problème est la méthode **RAG (Retrieval-Augmented Generation)**.
+1. **L'hallucination et le manque d'actualisation** : Ils ignorent souvent les spécificités ou la dernière version d'une convention collective.
+2. **Le risque juridique et RGPD** : Il est crucial de distinguer la **Base de connaissances** (les lois et conventions de l'Open Data *SocialGouv/kali-data*, qui sont publiques) des **Données Utilisateur**. Si la loi est publique, les questions des gestionnaires RH (pouvant contenir des noms ou salaires d'employés) ou les contrats uploadés ne doivent **jamais** fuiter vers des APIs d'IA publiques qui s'entraînent sur ces données.
+
+La réponse architecturale à ce double défi (Fiabilité + Sécurité des données) est la méthode **RAG (Retrieval-Augmented Generation)**, couplée à des environnements d'IA d'entreprise (Azure OpenAI, dont les contrats interdisent l'entraînement sur les données clients) ou des LLMs locaux.
 
 ---
 
