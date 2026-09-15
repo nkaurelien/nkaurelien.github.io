@@ -281,6 +281,15 @@ export default function Header({ locale, app }) {
               <Menu.Dropdown>
                 <Menu.Label>Mes CV & Dossiers de compétences</Menu.Label>
                 <Menu.Divider />
+                <Menu.Item
+                  component="a"
+                  href="/about.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}
+                  style={{ fontWeight: 600, color: 'var(--mantine-color-brand-6)' }}>
+                  En bref (Profil & Vision)
+                </Menu.Item>
                 <Menu.Item component="a" href="/cv.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Principal (Complet)
                 </Menu.Item>

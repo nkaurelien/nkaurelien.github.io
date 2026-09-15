@@ -9,6 +9,7 @@ const datasourcesDir = path.join(rootDir, 'datasources');
 const datasourcesCvDir = path.join(datasourcesDir, 'cv');
 
 const cvFiles = [
+  { input: path.join(datasourcesDir, 'about-me.md'), outputName: 'about.pdf' },
   { input: path.join(datasourcesDir, 'cv.md'), outputName: 'cv.pdf' },
   { input: path.join(datasourcesCvDir, 'cv-lite.md'), outputName: 'cv-lite.pdf' },
   { input: path.join(datasourcesCvDir, 'dossier-de-competences.md'), outputName: 'dossier-de-competences.pdf' },
@@ -40,8 +41,10 @@ try {
   // Synchro des fichiers JSON et Markdown principaux depuis datasources/ vers public/
   const cvMdDatasource = path.join(datasourcesDir, 'cv.md');
   const cvJsonDatasource = path.join(datasourcesDir, 'cv.json');
+  const aboutMdDatasource = path.join(datasourcesDir, 'about-me.md');
   if (fs.existsSync(cvMdDatasource)) fs.copyFileSync(cvMdDatasource, path.join(publicDir, 'cv.md'));
   if (fs.existsSync(cvJsonDatasource)) fs.copyFileSync(cvJsonDatasource, path.join(publicDir, 'cv.json'));
+  if (fs.existsSync(aboutMdDatasource)) fs.copyFileSync(aboutMdDatasource, path.join(publicDir, 'about.md'));
 
   console.log('✅ Tous les CV et Dossier de compétences ont été compilés en PDF et servis dans public/ !');
 } catch (err) {

@@ -24,6 +24,15 @@ import remarkGfm from 'remark-gfm';
 
 export const CV_OPTIONS = [
   {
+    id: 'about',
+    label: 'En bref',
+    title: 'En bref — Profil complet & vision d’ingénierie',
+    mdUrl: '/about.md',
+    pdfUrl: '/about.pdf',
+    downloadName: 'En_Bref_Aurelien_NKUMBE.pdf',
+    badge: 'Synthèse',
+  },
+  {
     id: 'cv',
     label: 'CV Principal',
     title: 'CV Principal (Complet)',

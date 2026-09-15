@@ -14,6 +14,7 @@ import {
   IconChevronUp,
   IconEye,
   IconArrowUpRight,
+  IconSparkles,
 } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
 import CvPreviewModal from '@/components/layout/CvPreviewModal';
@@ -31,6 +32,15 @@ export default function CvFloatingButton() {
   };
 
   const cvList = [
+    {
+      id: 'about',
+      title: isEnglish ? 'In Brief (Profile & Vision)' : 'En bref (Profil & Vision)',
+      subtitle: isEnglish ? 'Summary, philosophy & tech vision' : 'Synthèse, philosophie & vision',
+      href: '/about.pdf',
+      download: 'En_Bref_Aurelien_NKUMBE.pdf',
+      icon: <IconSparkles size={18} style={{ color: 'var(--mantine-color-grape-6)' }} />,
+      badge: 'Bio',
+    },
     {
       id: 'cv',
       title: isEnglish ? 'Main CV (Full Profile)' : 'CV Principal (Complet)',
