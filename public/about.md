@@ -113,7 +113,7 @@ En résumé, son blog Medium partage des retours d'expérience concrets sur l'in
 - **Koree** (Fintech, Afrique centrale) : architecte et développeur principal, l'un des tout premiers ingénieurs de la plateforme de fidélisation/cashback.
 - **YSO Conseils / Smart Data Pay** : développement d'un **chatbot RAG** pour aider les gestionnaires de paie à maîtriser le droit du travail — son virage vers l'IA appliquée.
 - **Livraison Express** (chez MCS — Multi Canal Services, son premier employeur) : plateforme e-commerce de livraison.
-- **MAMALPRO** : plateforme de santé publique (tests Covid, CAN 2021).
+- **MAMALPRO** : plateforme de santé publique (gestion des tests Covid-19, MINSANTE).
 - **Tameri BIG** (« Beautiful Inspiration Ground ») : plateforme de partage de contenus, projet personnel réactualisé brique par brique.
 
 ## Projets open source (GitHub)

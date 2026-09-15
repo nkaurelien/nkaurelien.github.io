@@ -30,7 +30,7 @@ reconnaissance. Aider quelqu'un à progresser, c'est aussi grandir soi-même.
 En parallèle de mes missions, j'ai créé ma structure, **KAMITBRAINS IT**, pour porter mes projets
 et mes missions en indépendant. J'aime la double casquette : la **capacité de proposition** et
 l'agilité qu'exige une startup, et la **rigueur** qu'attend une grande entreprise. J'ai enchaîné
-des projets très variés — de la plateforme de santé publique **MAMALPRO** (tests Covid, CAN 2021)
+des projets très variés — de la plateforme de santé publique **MAMALPRO** (gestion des tests Covid-19, MINSANTE)
 à des applications multiplateformes, en passant par des missions bancaires.
 
 Chez **Koree**, une des premières Fintech d'Afrique centrale, j'ai été **architecte et développeur
