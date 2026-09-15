@@ -1,5 +1,5 @@
 ---
-title: "Dossier de Compétences — Aurélien NKUMBE"
+title: "Dossier de Compétences — Astrid-Aurélien NKUMBE"
 description: "Dossier d’expertise technique détaillé (DevSecOps, Cloud, IA, Fullstack)"
 tags: skills, expertise, cv, career, devops
 lang: fr
@@ -7,7 +7,7 @@ lang: fr
 
 # DOSSIER DE COMPÉTENCES & D'EXPERTISE EXHAUSTIF
 **Astrid-Aurélien NKUMBE ENONGENE**  
-*Senior Fullstack Engineer · Technical Lead · Architecte IA & DevSecOps*
+*DevSecOps / Platform Engineer · Tech Lead · Fullstack, IA/RAG*
 
 ---
 
@@ -84,7 +84,7 @@ Développement de la plateforme SmartDataPay, un assistant virtuel intelligent R
 
 #### **Réalisations & Apport de valeur** :
 - **Architecture RAG LCEL & Edge Streaming** : Production de l'agent conversationnel sous Next.js (App Router, Edge Runtime), LangChain Expression Language (LCEL) et LiteLLM. Implémentation d'une chaîne de réécriture contextuelle des questions (`condenseQuestionPrompt`), streaming Vercel AI SDK et restitution dynamique des extraits d'origine dans les headers HTTP (`x-sources`). Integration de passerelles multi-LLMs (Azure OpenAI GPT-4o-mini, Perplexity AI Llama 3.1 128k).
-- **Pipeline d'Ingestion & Open Data KALI** : Connexion directe au dépôt officiel **SocialGouv/kali-data** (Légifrance KALI) pour la synchronisation dynamique des Conventions Collectives Nationales (CCN). Découpage Markdown intelligent (`RecursiveCharacterTextSplitter`) et attribution d'identifiants déterministes **UUIDv5** par tranche de lignes pour garantir la traçabilité intégrale et zéro hallucination juridique.
+- **Pipeline d'Ingestion & Open Data KALI** : Connexion directe au dépôt officiel **SocialGouv/kali-data** (Légifrance KALI) pour la synchronisation dynamique des Conventions Collectives Nationales (CCN). Découpage Markdown intelligent (`RecursiveCharacterTextSplitter`) et attribution d'identifiants déterministes **UUIDv5** par tranche de lignes pour garantir une fiabilité maximale (RAG, garde-fous, traçabilité).
 - **Stockage Vectoriel & Procédures Stockées** : Conception du schéma de vectorisation sous **Supabase pgvector** (`collective_conventions_integrals`) et écriture de la fonction RPC PL/pgSQL d'appariement sémantique par similarité cosinus (`match_collective_conventions_integrals`).
 - **Développement Applicatif SaaS** : Création du portail d'administration complet sous Laravel (Filament PHP, Livewire, AlpineJS) avec authentification sécurisée Auth0 et intégration des workflows Make / N8N.
 - **Maîtrise d'Œuvre (MOE) & Administration M365** : Rédaction du cahier des charges pour la refonte IA du logiciel Silea, encadrement des stagiaires et administration des licences Microsoft 365.
@@ -113,7 +113,7 @@ Refonte des interfaces utilisateurs métiers du projet Coface au sein du Groupe 
 
 ### **MISSION 4 : Technical Lead Backend PHP & Mobile (FinTech Korée)**
 - **Client / Entreprise** : Korée Africa  
-- **Période** : Décembre 2021 – Septembre 2023 (1 an 10 mois)  
+- **Période** : Décembre 2021 – Juin 2022 (~7 mois)  
 - **Rôle** : Architecte Backend & Lead Tech  
 - **Secteur** : FinTech / Fidélisation & Paiement Mobile (Top 3 Afrique Centrale)  
 

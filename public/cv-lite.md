@@ -1,18 +1,18 @@
 ---
-title: "CV Synthétique — Aurélien NKUMBE"
-description: "Résumé du profil professionnel d’Aurélien NKUMBE"
+title: "CV Synthétique — Astrid-Aurélien NKUMBE"
+description: "Résumé du profil professionnel d’Astrid-Aurélien NKUMBE"
 tags: cv, resume, summary, profile
 lang: fr
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE
-**Senior Fullstack Engineer & Tech Lead**
+**DevSecOps / Platform Engineer & Tech Lead — Fullstack, IA/RAG**
 Paris / Cergy (Mobile France entière & Remote) | +33 7 44 58 45 62 | nkumbeaurelien@hotmail.com | [nkaurelien.kamitbrains.fr](https://nkaurelien.kamitbrains.fr) | [LinkedIn](https://www.linkedin.com/in/nkaurelien/) | [GitHub](https://github.com/nkaurelien)
 
 ---
 
 ### 💡 PROFIL SYNTHÉTIQUE
-Ingénieur Développeur Fullstack et Lead Tech avec **7+ ans d'expérience**. Spécialiste des architectures web/mobiles (Next.js, FastAPI, Laravel, Angular), de l'IA appliquée (RAG, LangChain), de la santé connectée (normes FHIR/HL7) et du DevSecOps (Docker, Swarm, GitLab CI, Ansible).
+Ingénieur Développeur Fullstack et Lead Tech avec **7+ ans d'expérience**. Spécialiste des architectures web/mobiles (Next.js, FastAPI, Laravel, Angular), de l'IA appliquée (RAG, LangChain), de la santé connectée (normes FHIR/HL7, HDS) et du DevSecOps (Docker, Swarm, GitLab CI, Ansible).
 
 ---
 
@@ -27,7 +27,7 @@ Ingénieur Développeur Fullstack et Lead Tech avec **7+ ans d'expérience**. Sp
 ### 💼 EXPÉRIENCES CLÉS
 
 **DATA2INNOV — Lead Tech & Fullstack Engineer** *(05/2025 – Présent)*
-- Développement Fullstack (Next.js / FastAPI) d'applications patient & médecin pour la santé connectée (normes FHIR/HL7).
+- Développement Fullstack (Next.js / FastAPI) d'applications patient & médecin pour la santé connectée (normes FHIR/HL7, HDS).
 - Collecte et traitement temps réel de métriques physiologiques (IoT Withings, EmotiBit, ESP32) et POC mobile Flutter.
 - Pipeline CI/CD GitLab, déploiement Docker Swarm, Kafka, SigNoz et accompagnement technique de l'équipe.
 
@@ -38,7 +38,7 @@ Ingénieur Développeur Fullstack et Lead Tech avec **7+ ans d'expérience**. Sp
 **SYLEN-IT SERVICES — Développeur Angular / TypeScript** *(11/2022 – 07/2023)*
 - Refonte UX/UI des applications métiers (Coface/BPCE) en Angular et moteur de recherche Elasticsearch.
 
-**Korée (Fintech Top 3) — Lead Dev Backend & Mobile** *(12/2021 – 09/2023)*
+**Korée (Fintech Top 3) — Lead Dev Backend & Mobile** *(12/2021 – 06/2022)*
 - Architecture des APIs RESTful sécurisées (JWT, Laravel), intégration AWS SQS/S3, Mobile Money et app Flutter.
 
 **SCB Cameroun (Attijariwafa Bank) — Chef de Projet / Dev (AMOE)** *(04/2022 – 09/2022)*

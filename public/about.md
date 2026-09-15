@@ -1,13 +1,17 @@
 ---
-title: "À propos d’Aurélien NKUMBE — Profil complet"
-description: "Fiche profil factuelle et structurée d’Aurélien NKUMBE (alias nkaurelien)"
-tags: profile, bio, about, tech-lead, devops
+title: "À propos d’Astrid-Aurélien NKUMBE — Profil complet"
+description: "Fiche profil factuelle et structurée d’Astrid-Aurélien NKUMBE (alias nkaurelien)"
+tags: profile, bio, about, tech-lead, devsecops, platform-engineering, healthtech, fhir, hds
 lang: fr
 ---
 
-# À propos d'Aurélien NKUMBE — profil complet
+# À propos d'Astrid-Aurélien NKUMBE — profil complet
 
-> Fiche profil factuelle et structurée d'Astrid-Aurélien NKUMBE ENONGENE (alias « nkaurelien »), Développeur'Ops full-stack et Tech Lead. Complète le récit « Mon histoire ».
+**Je conçois l'archi sécurisée — et je fais avancer l'équipe.**
+
+*DevSecOps & Platform Engineer / Tech Lead : j'industrialise des architectures sécurisées et conformes (santé/HDS, RGPD, FHIR/HL7), de la spec à la production — en faisant monter l'équipe.*
+
+> Fiche profil factuelle et structurée d'Astrid-Aurélien NKUMBE ENONGENE (alias « nkaurelien »), DevSecOps / Platform Engineer & Tech Lead full-stack. Complète le récit « Mon histoire ».
 
 ## Identité
 
@@ -24,9 +28,19 @@ lang: fr
 
 ## Situation actuelle
 
-- En **CDI, en interne, chez DATA2INNOV** : plateforme de **santé connectée** (IoT, normes **FHIR/HL7**).
+- En **CDI, en interne, chez DATA2INNOV** : plateforme de **santé connectée** (IoT, normes **FHIR/HL7**, contexte **HDS** — hébergement de données de santé, RGPD).
 - Conçoit des applications patient & médecin (Next.js / FastAPI), collecte et interprétation de données physiologiques (EmotiBit-ESP32, Withings, Bangle.js), pipelines temps réel (Logstash, WebSockets), POC mobile Flutter (BLE/WiFi).
 - Fondateur de **KAMITBRAINS IT**, sa structure pour porter projets et missions en indépendant.
+
+## Réalisations marquantes
+
+> Faits concrets (à **quantifier** avec tes propres chiffres — cf. `[à chiffrer]`).
+
+- **Plateforme de santé connectée en production, multi-pays (France + Tunisie)** : portails patient & médecin (Next.js / FastAPI / CouchDB), SSO **Keycloak**, contexte **HDS/RGPD**.
+- **CI/CD & releases industrialisées** : pipelines **GitLab CI**, releases **semver** automatisées (changelog + notes), déploiements **Ansible** multi-serveurs (dev/staging/prod × 2 pays). `[à chiffrer : nb services / fréquence de déploiement]`
+- **DevSecOps intégré au flux** : détection de secrets (**gitleaks**) et **SAST/SCA bloquants** dans la CI, durcissement des accès Docker (socket-proxy), **réponse à incident** (confinement d'un cryptominer exposé). `[à chiffrer : vulns/secrets détectés, MTTR]`
+- **Observabilité & exploitation** : centralisation des logs (Dozzle), tableaux de bord (Grafana/ELK), sécurisation des interfaces d'admin.
+- **Data / IoT temps réel** : ingestion de données physiologiques (EmotiBit-ESP32, Withings), pipelines temps réel (WebSockets, streaming Redpanda/Kafka).
 
 ## Spécialités & Rôles Cibles
 
@@ -43,8 +57,8 @@ Au confluent du développement logiciel, de l'infrastructure et de l'intelligenc
 
 3. **Architecte Solutions & Logiciel — Ma vision système** :
    - Concevoir des architectures distribuées et microservices robustes, scalables et sécurisées.
-   - Garantir la conformité aux normes réglementaires exigeantes (santé connectée FHIR/HL7, sécurité bancaire, RGPD, API Gateway Kong, Snyk).
-   - Rendre l'IA pragmatique, souveraine et « zéro hallucination » au service des processus métiers critiques.
+   - Garantir la conformité aux normes réglementaires exigeantes (santé connectée FHIR/HL7 **HDS**, sécurité bancaire, RGPD, API Gateway Kong, Snyk).
+   - Rendre l'IA pragmatique, souveraine et **fiabilisée** (RAG, garde-fous, évaluation) au service des processus métiers critiques.
 
 - **Valeurs & Pratiques** : Clean Code, principes SOLID, documentation soignée, Spec-Driven Development (SDD), amélioration continue et transmission.
 
@@ -65,8 +79,8 @@ Selon la taille de votre organisation, votre maturité technique et vos défis a
 - **Vos enjeux** : Vous souhaitez industrialiser vos plateformes internes, outiller vos équipes produit pour qu'elles déploient vite, et intégrer l'IA de manière souveraine, gouvernée et conforme.
 - **Ce que je vous apporte** :
   - **Construction d'Internal Developer Platforms (IDP)** : Services partagés, templates IaC (Terraform, Ansible), pipelines CI/CD standardisés et observabilité unifiée (SigNoz, ELK, Sentry).
-  - **Industrialisation de l'IA Agentique & RAG** : Déploiement de socles IA sécurisés sur Azure (Azure OpenAI), GCP ou AWS, avec respect strict du RGPD et zéro hallucination.
-  - **Conformité & Normes critiques** : Expérience concrète des environnements régulés (normes de santé FHIR/HL7, protocoles bancaires, API Gateway Kong, audits de sécurité Snyk).
+  - **Industrialisation de l'IA Agentique & RAG** : Déploiement de socles IA sécurisés sur Azure (Azure OpenAI), GCP ou AWS, avec respect strict du RGPD et réduction des hallucinations (RAG, garde-fous, évaluation).
+  - **Conformité & Normes critiques** : Expérience concrète des environnements régulés (normes de santé FHIR/HL7, **HDS**, protocoles bancaires, API Gateway Kong, audits de sécurité Snyk).
 
 ### 3. Sur les plateformes de recrutement (LinkedIn, APEC, Chasseurs de têtes) : **Lead Tech · Senior Fullstack Engineer · Architecte IA & DevSecOps**
 > *« Le profil hybride rare combinant excellence applicative, automatisation infrastructure et intelligence artificielle. »*
@@ -83,7 +97,7 @@ Selon la taille de votre organisation, votre maturité technique et vos défis a
 
 ## Blog technique sur Medium
 
-Aurélien **tient un blog technique sur Medium** : **https://medium.com/@nkaurelien** (≈ 16 abonnés).
+Aurélien **tient un blog technique sur Medium** : **https://medium.com/@nkaurelien**.
 Il y publie des articles pratiques de **DevOps, SysOps et administration système**, notamment :
 
 - Sécurisation de noms de domaine avec **Let's Encrypt, Certbot et Nginx** (SSL).

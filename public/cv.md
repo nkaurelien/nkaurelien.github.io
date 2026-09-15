@@ -6,7 +6,7 @@ lang: fr
 ---
 
 # Astrid-Aurélien NKUMBE ENONGENE
-**Senior Fullstack Engineer & Tech Lead — Spécialiste IA/RAG & DevSecOps**
+**DevSecOps / Platform Engineer & Tech Lead — Fullstack, IA/RAG**
 
 - **Téléphone** : +33 7 44 58 45 62
 - **Email** : nkumbeaurelien@hotmail.com
@@ -21,7 +21,7 @@ lang: fr
 
 ## 💡 Profil
 
-Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience** dans la conception, l'architecture et le déploiement d'applications web, mobiles, IoT et IA. Spécialisé en **DevSecOps**, architectures logicielles propres (Clean Code, SOLID), intégration d'intelligences artificielles (RAG, LLM agentique, LangChain) et systèmes de santé connectés aux normes **FHIR / HL7**.
+Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience** dans la conception, l'architecture et le déploiement d'applications web, mobiles, IoT et IA. Spécialisé en **DevSecOps**, architectures logicielles propres (Clean Code, SOLID), intégration d'intelligences artificielles (RAG, LLM agentique, LangChain) et systèmes de santé connectés aux normes **FHIR / HL7, HDS**.
 
 ---
 
@@ -43,7 +43,7 @@ Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience**
 
 ### **DATA2INNOV** — Ingénieur Développeur Fullstack & Lead Tech
 *Mai 2025 – Présent | France*
-- **Contexte** : Plateforme de santé connectée et collecte de données physiologiques conforme aux normes FHIR/HL7.
+- **Contexte** : Plateforme de santé connectée et collecte de données physiologiques conforme aux normes FHIR/HL7, HDS.
 - **Réalisations** :
   - Architecture et développement Fullstack (Next.js / FastAPI) d'applications patient et médecin.
   - Collecte, traitement et restitution temps réel de métriques physiologiques issues d'objets connectés (Withings Cloud API, EmotiBit, ESP32).
@@ -74,7 +74,7 @@ Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience**
 - **Environnement** : Angular, TypeScript, RxJS, Elasticsearch, Azure DevOps, ESLint, Pnpm.
 
 ### **Korée** — Développeur Backend PHP / Flutter (Lead Tech)
-*Décembre 2021 – Septembre 2023 | Remote*
+*Décembre 2021 – Juin 2022 | Remote*
 - **Contexte** : Startup Fintech de fidélisation et cashback classée dans le Top 3 en Afrique centrale.
 - **Réalisations** :
   - Architecture et développement des APIs RESTful hautement sécurisées (JWT, ApiResources).

@@ -1,5 +1,5 @@
 ---
-title: "CV DevSecOps — Aurélien NKUMBE"
+title: "CV DevSecOps — Astrid-Aurélien NKUMBE"
 description: "CV spécialisé DevSecOps, SysOps, Docker, Kubernetes & Ansible"
 tags: cv, resume, devops, sysops, docker, kubernetes, ansible
 lang: fr
@@ -17,7 +17,7 @@ lang: fr
 
 ## 💡 Profil
 
-Ingénieur DevSecOps et Architecte Cloud avec **5+ ans d'expérience spécialisée dans l'automatisation des pipelines CI/CD, l'orchestration de conteneurs (Docker Swarm, Kubernetes, Argo CD) et la sécurité applicative (SAST, Snyk, API Gateways)**. Solide double compétence en développement software (Python, Node.js, PHP) et en observabilité avancée (SigNoz, Grafana, ELK Stack, Prometheus).
+Ingénieur DevSecOps et Architecte Cloud avec **7+ ans d'expérience, dont ~5 ans en DevSecOps / Cloud / Platform**, spécialisé dans l'automatisation des pipelines CI/CD, l'orchestration de conteneurs (Docker Swarm, Kubernetes, Argo CD) et la sécurité applicative (SAST, Snyk, API Gateways). Solide double compétence en développement software (Python, Node.js, PHP) et en observabilité avancée (SigNoz, Grafana, ELK Stack, Prometheus).
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "CV Fullstack — Aurélien NKUMBE"
+title: "CV Fullstack — Astrid-Aurélien NKUMBE"
 description: "CV spécialisé Fullstack (React, Next.js, FastAPI, Node.js, Python)"
 tags: cv, resume, fullstack, react, nodejs, python
 lang: fr
@@ -36,7 +36,7 @@ Ingénieur Développeur Fullstack avec **plus de 7 ans d'expérience** dans la c
 
 ### **DATA2INNOV** — Ingénieur Développeur Fullstack & Lead Tech
 *Mai 2025 – Présent | France*
-- **Projet** : Plateforme Fullstack de santé connectée et gestion d'équipements IoT (FHIR/HL7).
+- **Projet** : Plateforme Fullstack de santé connectée et gestion d'équipements IoT (FHIR/HL7, HDS).
 - **Réalisations** :
   - Conception et développement de l'application Web Patient & Docteur avec Next.js et FastAPI.
   - Traitement et affichage en temps réel de données physiologiques (WebSockets, CouchDB, Logstash).
