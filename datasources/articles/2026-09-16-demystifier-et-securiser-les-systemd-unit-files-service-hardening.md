@@ -21,7 +21,20 @@ Dans ce contexte **Bare-Metal**, le binaire n'est pas protégé par la couche d'
 
 Authelia fournit deux Unit Files officiels :
 - **`authelia.service` (Instance Unique)** : Pour exécuter une seule instance globale du serveur.
-- **`authelia@.service` (Instance Templatée / Multi-Tenant)** : Utilise le symbole `@` pour créer des **Instantiated Services** (ex: `systemctl start authelia@site1`).
+- **`authelia@.service` (Instance Templatée / Multi-Tenant)** : Utilise la syntaxe `@` et le spécificateur `%i` pour créer des **Instantiated Services** dynamiques (ex: `systemctl start authelia@tenant1`).
+
+### Le Fonctionnement des Systemd Template Units (`service@.service`)
+
+Le symbole `@` signale à systemd que l'Unit File est un **modèle dynamique (Template)**.
+
+1. **La variable magique `%i` (Specifier)** :  
+   Lorsque vous tapez `systemctl start authelia@site1`, systemd injecte la valeur `site1` dans la variable `%i` du fichier.
+   ```ini
+   ExecStart=/usr/bin/authelia --config /etc/authelia/%i/configuration.yml
+   SyslogIdentifier=authelia-%i
+   ```
+2. **Multi-Tenancy sans duplication de code** :  
+   Vous pouvez gérer 10 clients ou environnements distincts sur le même serveur bare-metal sans dupliquer le fichier Unit File systemd. Chaque instance aura son propre PID, sa propre configuration et ses propres logs filtrables (`journalctl -u authelia@tenant1`).
 
 ---
 
