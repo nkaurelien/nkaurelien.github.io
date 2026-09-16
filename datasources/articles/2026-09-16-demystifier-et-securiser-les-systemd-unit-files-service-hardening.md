@@ -13,9 +13,21 @@ lang: fr
 
 ---
 
-## L'Unit File de Production Authelia
+## Déploiement Bare-Metal vs Conteneurisation
 
-Voici l'exemple réel et complet d'un Unit File pour le serveur d'authentification et d'autorisation **Authelia** :
+Dans la documentation officielle d'Authelia ([Authelia Bare-Metal Deployment](https://www.authelia.com/integration/deployment/bare-metal/)), l'exécutable tourne directement en tant que démon système sur le système d'exploitation hôte (non conteneurisé). 
+
+Dans ce contexte **Bare-Metal**, le binaire n'est pas protégé par la couche d'isolation de Docker ou de Kubernetes. C'est donc **`systemd` qui joue le rôle de bac à sable (Sandbox)** et de pare-feu applicatif système pour isoler le binaire Authelia du reste de la machine hôte.
+
+Authelia fournit deux Unit Files officiels :
+- **`authelia.service` (Instance Unique)** : Pour exécuter une seule instance globale du serveur.
+- **`authelia@.service` (Instance Templatée / Multi-Tenant)** : Utilise le symbole `@` pour créer des **Instantiated Services** (ex: `systemctl start authelia@site1`).
+
+---
+
+## L'Unit File de Production Authelia (Bare-Metal)
+
+Voici l'exemple réel et complet d'un Unit File de production pour le serveur d'authentification **Authelia** :
 
 ```ini
 # SPDX-FileCopyrightText: 2026 Authelia
