@@ -5,13 +5,26 @@ require('dotenv').config({ path: '.env' });
  * Script d'automatisation des rapports Umami vers ntfy.
  * S'authentifie sur l'API Umami v2, récupère les statistiques (vues, visiteurs, événements),
  * et génère une synthèse transmise directement via notification push ntfy.
+ * 
+ * Usage:
+ *   node scripts/umami-ntfy-report.js               # Par défaut: 7 jours (weekly)
+ *   node scripts/umami-ntfy-report.js --daily       # Collecte daily (24h)
+ *   node scripts/umami-ntfy-report.js --weekly      # Collecte weekly (7d)
+ *   PERIOD=daily node scripts/umami-ntfy-report.js   # Via variable d'environnement
  */
 
-const UMAMI_URL = (process.env.UMAMI_URL || process.env.UMAMI_SERVER_URL || '').replace(/\/$/, '');
+const UMAMI_URL = (process.env.UMAMI_URL || process.env.UMAMI_SERVER_URL || 'https://umami.kamitbrains.fr').replace(/\/$/, '');
 const UMAMI_USERNAME = process.env.UMAMI_USERNAME || 'admin';
+const UMAMI_PASSWORD = process.env.UMAMI_PASSWORD;
 const NTFY_SERVER_URL = (process.env.NTFY_SERVER_URL || process.env.NTFY_BASE_URL || 'https://ntfy.kamitbrains.fr').replace(/\/+$/, '');
 const NTFY_TOPIC = process.env.NTFY_TOPIC;
 const NTFY_TOPIC_URL = process.env.NTFY_TOPIC_URL || (NTFY_TOPIC ? `${NTFY_SERVER_URL}/${NTFY_TOPIC.replace(/^\/+/, '')}` : null);
+
+// Gestion dynamique de la période (daily: 1 jour / weekly: 7 jours)
+const args = process.argv.slice(2);
+const isDaily = args.includes('--daily') || args.includes('daily') || process.env.PERIOD === 'daily' || process.env.PERIOD === '24h';
+const days = isDaily ? 1 : 7;
+const periodLabel = days === 1 ? 'dernières 24h' : `${days} derniers jours`;
 
 async function loginUmami() {
   if (!UMAMI_URL) {
@@ -77,7 +90,7 @@ async function sendNtfyReport(reportText) {
   const res = await fetch(NTFY_TOPIC_URL, {
     method: 'POST',
     headers: {
-      Title: 'Rapport Analytics Umami (nkaurelien.kamitbrains.fr)',
+      Title: `Rapport Analytics Umami (${periodLabel})`,
       Priority: 'default',
       Tags: 'bar_chart,chart_with_upwards_trend',
       'Content-Type': 'text/plain; charset=utf-8',
@@ -86,14 +99,14 @@ async function sendNtfyReport(reportText) {
   });
 
   if (res.ok) {
-    console.log('✅ Rapport Umami envoyé avec succès vers ntfy !');
+    console.log(`✅ Rapport Umami (${periodLabel}) envoyé avec succès vers ntfy !`);
   } else {
     console.error('❌ Échec envoi ntfy:', res.status);
   }
 }
 
 async function run() {
-  console.log('🚀 Démarrage du rapport automatisé Umami -> ntfy...');
+  console.log(`🚀 Démarrage du rapport automatisé Umami -> ntfy (Mode: ${periodLabel})...`);
 
   try {
     const token = await loginUmami();
@@ -102,11 +115,10 @@ async function run() {
     const websites = await getWebsites(token);
     console.log(`🌐 Nombre de sites trouvés: ${websites.length}`);
 
-    // Période : 7 derniers jours
     const endAt = Date.now();
-    const startAt = endAt - 7 * 24 * 60 * 60 * 1000;
+    const startAt = endAt - days * 24 * 60 * 60 * 1000;
 
-    let reportLines = [`📈 Bilan des 7 derniers jours :`];
+    let reportLines = [`📈 Bilan des ${periodLabel} :`];
 
     for (const site of websites) {
       const rawStats = await getStats(token, site.id, startAt, endAt);
