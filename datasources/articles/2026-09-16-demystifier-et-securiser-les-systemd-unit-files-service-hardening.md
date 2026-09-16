@@ -243,5 +243,57 @@ systemd-analyze security authelia.service
 
 ---
 
+### 4. Pourquoi les Services Paquetés (SSH, Docker, Cron) sont-ils "UNSAFE" par Défaut ?
+
+Lorsqu'on exécute `systemd-analyze security` sur une installation Ubuntu ou Debian neuve, il est surprenant de constater que des démons système majeurs comme `ssh.service`, `docker.service` ou `cron.service` obtiennent un score d'exposition alarmant de **9.6 UNSAFE (🔴)**.
+
+#### Le Dilemme : Compatibilité vs Sécurité
+Les mainteneurs de paquets Linux (Ubuntu, Debian, RHEL) doivent garantir que le service fonctionnera **sur 100% des machines**, sans bloquer les cas d'usage atypiques :
+- Si Ubuntu activait `ProtectHome=true` par défaut dans `ssh.service`, un administrateur stockant ses clés SSH dans des répertoires d'accueil non standards ou utilisant du stockage réseau NFS se retrouverait **vérouillé hors de son serveur après une mise à jour `apt upgrade`**.
+- Si `docker.service` restreignait la gestion des cgroups ou des utilisateurs (`PrivateUsers=yes`), les conteneurs privilégiés (`docker run --privileged`) ou les extensions réseau avancées échoueraient.
+
+> **Règle Linux** : L'installation par défaut privilégie la **compatibilité maximale**. Le durcissement de sécurité (hardening) relève de la responsabilité du DevSecOps.
+
+---
+
+### 5. La Méthode Propre : Fichiers d'Override (`systemctl edit`)
+
+⚠️ **Règle absolue** : Ne modifiez **jamais** directement le fichier de distribution situé dans `/lib/systemd/system/ssh.service`. Toute modification serait silencieusement **écrasée lors de la prochaine mise à jour du paquet (`apt upgrade`)**.
+
+La méthode recommandée par systemd consiste à créer un **Drop-in File** dans `/etc/systemd/system/<service>.service.d/override.conf`.
+
+#### Exemple Pratique : Durcir `ssh.service` de 9.6 UNSAFE à 2.1 OK
+
+1. **Ouvrir l'éditeur d'override pour SSH** :
+   ```bash
+   sudo systemctl edit ssh.service
+   ```
+
+2. **Ajouter les directives de hardening** :
+   ```ini
+   [Service]
+   # Hardening de sécurité SSH (Drop-in Override)
+   NoNewPrivileges=yes
+   ProtectKernelModules=yes
+   ProtectKernelTunables=yes
+   ProtectControlGroups=yes
+   RestrictNamespaces=yes
+   SystemCallArchitectures=native
+   SystemCallFilter=@system-service
+   SystemCallErrorNumber=EPERM
+   UMask=027
+   ```
+
+3. **Recharger et redémarrer** :
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl restart ssh
+   ```
+
+4. **Résultat de l'audit** :
+   En relançant `systemd-analyze security ssh.service`, la note d'exposition du service SSH chute de **9.6 UNSAFE (🔴)** à **2.1 OK (🟢)**, garantissant un bac à sable hermétique en production sans rompre vos connexions SSH !
+
+---
+
 > 💡 **Le conseil DevSecOps** : Intégrez `systemd-analyze security <service>` dans vos pipelines CI/CD ou scripts d'audit Ansible pour bloquer tout déploiement d'un Unit File dont le score d'exposition dépasse 2.5.
 
