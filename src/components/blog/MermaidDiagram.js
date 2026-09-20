@@ -50,8 +50,12 @@ export default function MermaidDiagram({ chart }) {
         });
 
         const id = `mermaid-${Math.random().toString(36).substring(2, 9)}`;
-        // Remplace les \n dans les chaînes entre guillemets par des <br/> pour éviter les erreurs de syntaxe
-        let cleanChart = chart.trim().replace(/\\n/g, '<br/>');
+        // Remplace les \n par des <br/> et entoure de guillemets les libellés de liens contenant des deux-points (:)
+        let cleanChart = chart
+          .trim()
+          .replace(/\\n/g, '<br/>')
+          .replace(/-->\|([^|\"\n]*:[^|\"\n]*)\|/g, '-->|"$1"|')
+          .replace(/<-->\|([^|\"\n]*:[^|\"\n]*)\|/g, '<-->|"$1"|');
 
         const { svg: renderedSvg } = await mermaid.render(id, cleanChart);
 

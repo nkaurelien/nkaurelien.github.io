@@ -49,7 +49,7 @@ Plutôt que d'accepter des alertes de sécurité dans le navigateur ou de recour
 ```mermaid
 flowchart LR
     MacRootCA["Root CA Locale (mkcert)\nSur le Mac administrateur"] -->|Secret root-ca-key-pair| CertManager["cert-manager (K3s)"]
-    CertManager -->|ClusterIssuer: homelab-ca-issuer| Traefik["Traefik Ingress Controller"]
+    CertManager -->|"ClusterIssuer: homelab-ca-issuer"| Traefik["Traefik Ingress Controller"]
     Traefik -->|Certificat TLS Valide HTTPS| Services["Services Homelab\n(rancher, headlamp, infisical...)"]
 ```
 
