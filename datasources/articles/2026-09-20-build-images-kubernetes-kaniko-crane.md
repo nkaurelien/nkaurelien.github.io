@@ -40,10 +40,10 @@ Pour résoudre ce paradoxe, le projet open-source initié par Google a introduit
 
 ```mermaid
 flowchart TD
-    Git["Dépôt Git / Code Source"] -->|Contexte & Dockerfile| KanikoPod["Kubernetes Job : Kaniko Executor\n(gcr.io/kaniko-project/executor)"]
-    Secret["Secret K8s (config.json)\nAuth Registry"] -.->|Identifiants| KanikoPod
-    Cache["Volume Cache / Registre"] <-->|Layers pré-compilés| KanikoPod
-    KanikoPod -->|Push de l'image construite| Registry["Container Registry\n(GHCR, Docker Hub, Harbor)"]
+    Git["Dépôt Git / Code Source"] -->|"Contexte & Dockerfile"| KanikoPod["Kubernetes Job : Kaniko Executor<br/>(gcr.io/kaniko-project/executor)"]
+    Secret["Secret K8s (config.json)<br/>Auth Registry"] -.->|"Identifiants"| KanikoPod
+    Cache["Volume Cache / Registre"] <-->|"Layers pré-compilés"| KanikoPod
+    KanikoPod -->|"Push de l'image construite"| Registry["Container Registry<br/>(GHCR, Docker Hub, Harbor)"]
 ```
 
 ### Comment fonctionne Kaniko sous le capot ?
@@ -96,9 +96,9 @@ C'est là que Crane intervient avec une efficacité redoutable :
 
 ```mermaid
 flowchart LR
-    Kaniko["Kaniko Build"] -->|1. Push initial (staging)| GHCR["Registre Staging\n:staging-commit-abc"]
-    Crane["Crane CLI"] -->|2. Tag instantané (200 ms)| GHCR
-    GHCR -->|3. Nouveau pointeur :v1.0.0| Prod["Déploiement Production"]
+    Kaniko["Kaniko Build"] -->|"1. Push initial (staging)"| GHCR["Registre Staging<br/>:staging-commit-abc"]
+    Crane["Crane CLI"] -->|"2. Tag instantané (200 ms)"| GHCR
+    GHCR -->|"3. Nouveau pointeur :v1.0.0"| Prod["Déploiement Production"]
 ```
 
 ---

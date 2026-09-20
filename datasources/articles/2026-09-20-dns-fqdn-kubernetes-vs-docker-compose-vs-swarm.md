@@ -58,10 +58,10 @@ Docker Swarm élève le concept au niveau d'un cluster multi-serveurs :
 
 ```mermaid
 flowchart TD
-    Client["Client / API"] -->|DNS: redis:6379| DNS["DNS Interne Swarm (127.0.0.11)"]
-    DNS -->|Retourne la VIP du Service| VIP["VIP Virtuelle (10.0.0.5)"]
-    VIP -->|Routage L4 IPVS Kernel| Node1["Worker 1 : Container Redis"]
-    VIP -->|Routage L4 IPVS Kernel| Node2["Worker 2 : Container Redis"]
+    Client["Client / API"] -->|"DNS: redis:6379"| DNS["DNS Interne Swarm (127.0.0.11)"]
+    DNS -->|"Retourne la VIP du Service"| VIP["VIP Virtuelle (10.0.0.5)"]
+    VIP -->|"Routage L4 IPVS Kernel"| Node1["Worker 1 : Container Redis"]
+    VIP -->|"Routage L4 IPVS Kernel"| Node2["Worker 2 : Container Redis"]
 ```
 
 ### Mécanisme interne :
@@ -101,10 +101,10 @@ $$\underbrace{\text{redis}}_{\text{1. Service}}.\underbrace{\text{databases}}_{\
 
 ```mermaid
 flowchart LR
-    PodApp["Pod Infisical\n(Namespace: security)"] -->|1. Résolution DNS:\nredis.databases.svc.cluster.local| CoreDNS["CoreDNS (kube-system)\nIP: 10.43.0.10"]
-    CoreDNS -->|2. Retourne la ClusterIP stable (ex: 10.43.150.20)| PodApp
-    PodApp -->|3. Connexion TCP vers 10.43.150.20:6379| KubeProxy["iptables / Kube-Proxy"]
-    KubeProxy -->|4. Aiguille vers l'IP du Pod sain| PodValkey["Pod Valkey Réel\n(IP: 10.42.0.85:6379)"]
+    PodApp["Pod Infisical<br/>(Namespace: security)"] -->|"1. Résolution DNS:<br/>redis.databases.svc.cluster.local"| CoreDNS["CoreDNS (kube-system)<br/>IP: 10.43.0.10"]
+    CoreDNS -->|"2. Retourne la ClusterIP stable (ex: 10.43.150.20)"| PodApp
+    PodApp -->|"3. Connexion TCP vers 10.43.150.20:6379"| KubeProxy["iptables / Kube-Proxy"]
+    KubeProxy -->|"4. Aiguille vers l'IP du Pod sain"| PodValkey["Pod Valkey Réel<br/>(IP: 10.42.0.85:6379)"]
 ```
 
 1. **Stabilité absolue (ClusterIP)** : Le Pod de base de données peut redémarrer, être reprogrammé sur un autre serveur ou changer d'IP de conteneur (`10.42.x.x`), le `Service` conserve son adresse **ClusterIP** fixe.

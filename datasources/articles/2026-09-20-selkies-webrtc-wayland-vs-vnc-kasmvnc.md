@@ -29,9 +29,9 @@ Initié par des ingénieurs de **Google** et développé conjointement avec la c
 ```mermaid
 flowchart LR
     subgraph CONTAINER["Conteneur Linux / Pod K8s"]
-        Wayland["Compositeur Wayland\n(Smithay / Labwc)"]
-        Pixelflux["Pixelflux Capture\n(Zero-Copy Framebuffer)"]
-        GStreamer["Encodeur Vidéo GStreamer\n(H.264 / VP8 / VP9)"]
+        Wayland["Compositeur Wayland<br/>(Smithay / Labwc)"]
+        Pixelflux["Pixelflux Capture<br/>(Zero-Copy Framebuffer)"]
+        GStreamer["Encodeur Vidéo GStreamer<br/>(H.264 / VP8 / VP9)"]
         WebRTCServer["Serveur WebRTC / WebSocket"]
 
         Wayland --> Pixelflux
@@ -39,7 +39,7 @@ flowchart LR
         GStreamer --> WebRTCServer
     end
 
-    WebRTCServer -->|Flux Vidéo WebRTC & Audio Stéréo\n(Latence < 30ms)| Browser["Navigateur Web Client\n(Chrome, Safari, Firefox)"]
+    WebRTCServer -->|"Flux Vidéo WebRTC & Audio Stéréo<br/>(Latence &lt; 30ms)"| Browser["Navigateur Web Client<br/>(Chrome, Safari, Firefox)"]
 ```
 
 ### Les 4 Piliers Technologiques de Selkies :

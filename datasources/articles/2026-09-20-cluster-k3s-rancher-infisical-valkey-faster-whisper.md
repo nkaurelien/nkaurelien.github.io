@@ -48,9 +48,9 @@ Plutôt que d'accepter des alertes de sécurité dans le navigateur ou de recour
 
 ```mermaid
 flowchart LR
-    MacRootCA["Root CA Locale (mkcert)\nSur le Mac administrateur"] -->|Secret root-ca-key-pair| CertManager["cert-manager (K3s)"]
-    CertManager -->|ClusterIssuer: homelab-ca-issuer| Traefik["Traefik Ingress Controller"]
-    Traefik -->|Certificat TLS Valide HTTPS| Services["Services Homelab\n(rancher, headlamp, infisical...)"]
+    MacRootCA["Root CA Locale (mkcert)<br/>Sur le Mac administrateur"] -->|"Secret root-ca-key-pair"| CertManager["cert-manager (K3s)"]
+    CertManager -->|"ClusterIssuer: homelab-ca-issuer"| Traefik["Traefik Ingress Controller"]
+    Traefik -->|"Certificat TLS Valide HTTPS"| Services["Services Homelab<br/>(rancher, headlamp, infisical...)"]
 ```
 
 Chaque `Ingress` annoté avec `cert-manager.io/cluster-issuer: homelab-ca-issuer` reçoit instantanément un certificat TLS valide reconnu par l'ensemble des postes de travail du réseau local.
