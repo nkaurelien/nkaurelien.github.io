@@ -50,3 +50,9 @@ Because `htmlLabels: true` is active for `<br/>` support, unescaped `<` is parse
   \underbrace{\text{redis}}_{\text{1. Service}} \cdot \underbrace{\text{databases}}_{\text{2. Namespace}} \cdot \underbrace{\text{svc}}_{\text{3. Type d'objet}} \cdot \underbrace{\text{cluster.local}}_{\text{4. Racine DNS Cluster}}
   $$
   ```
+
+---
+
+## 🐋 Docker & Kubernetes Architecture Examples
+
+For ready-to-use Docker Compose, Traefik, Kaniko, Crane, and Kubernetes FQDN Mermaid flowchart templates, consult [examples/docker-examples.md](file://.agents/skills/mermaid-articles/examples/docker-examples.md).
