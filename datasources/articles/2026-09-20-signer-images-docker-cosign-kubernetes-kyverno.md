@@ -131,31 +131,50 @@ C'est exactement là qu'il faut s'arrêter avant de choisir.
 
 **Un log de transparence public est public.** Y sont déposés : le digest de l'image, le nom du dépôt, et l'identité OIDC du signataire — typiquement l'URL du projet et la référence de branche. Pour un projet open source, c'est une fonctionnalité : n'importe qui peut auditer. Pour une plateforme privée, c'est la publication permanente de la topologie interne — noms de services, cadence de release, structure des environnements. Et **le log est immuable** : il n'y a pas de bouton de suppression.
 
-Pour un registre privé, en santé, en finance ou sous contrainte réglementaire, le mode `--key` classique reste le choix raisonnable. Le keyless retrouve tout son intérêt avec une instance Rekor privée — au prix de l'infrastructure correspondante.
+Pour un registre privé, en santé, en finance ou sous contrainte réglementaire, le mode `--key` classique reste le choix raisonnable — **à condition de désactiver explicitement le journal, ce qui n'est pas le comportement par défaut** (voir ci-dessous). Le keyless retrouve tout son intérêt avec une instance Rekor privée, au prix de l'infrastructure correspondante.
 
-### Le piège de cosign v3
+### Le piège : le mode clé ne vous sort pas du journal public
 
-Constat empirique en installant cosign 3.1.3 : **le journal de transparence est désormais actif par défaut, y compris en mode `--key`.** Les comportements observés :
+Contre-intuitif, et c'est le point le plus important de cette section : **choisir `--key` ne suffit pas à rester hors de Rekor.** La documentation de la commande `sign` est sans ambiguïté, et ce depuis la v2 :
+
+```
+--tlog-upload    whether or not to upload to the tlog (default true)
+```
+
+Autrement dit, un `cosign sign --key ma-cle.key` sur un registre strictement privé **publie par défaut** le digest et le nom de l'image dans le journal de transparence public. Il faut le désactiver explicitement :
+
+```yaml
+variables:
+  COSIGN_TLOG_UPLOAD: "false"   # registre privé : rien ne part dans Rekor
+```
+
+Beaucoup d'équipes qui ont écarté le keyless « pour rester privées » ont ce comportement actif sans le savoir.
+
+### Ce que la v3 change
+
+Le défaut n'a pas bougé — c'est **la difficulté d'y échapper** qui a changé. Constat empirique en installant cosign 3.1.3 :
 
 ```bash
-# Vérification en mode clé : cosign interroge Rekor spontanément
-$ cosign verify-blob --key cosign.pub --signature blob.sig blob.txt
-Error: searching log query: ... (*models.Error) is not supported
-
-# Et désactiver l'upload n'est plus un simple drapeau
+# Désactiver l'upload n'est plus un simple drapeau
 $ COSIGN_TLOG_UPLOAD=false cosign sign-blob --key cosign.key --bundle b.json blob.txt
 Error: --tlog-upload=false is not supported with --signing-config.
 Provide a signing config without a transparency log service...
+
+# Et la vérification consulte Rekor spontanément, même en mode clé
+$ cosign verify-blob --key cosign.pub --signature blob.sig blob.txt
+Error: searching log query: ... (*models.Error) is not supported
 ```
 
-La vérification hors ligne exige `--insecure-ignore-tlog=true`, et la signature sans tlog demande de fabriquer un `signing-config` expurgé de `rekorTlogUrls`.
+La vérification hors ligne exige désormais `--insecure-ignore-tlog=true`, et signer sans tlog demande de fabriquer un `signing-config` expurgé de `rekorTlogUrls`.
 
-Conséquence pratique : sur une chaîne privée, **épingler la version de cosign dans la CI n'est pas cosmétique, c'est structurant**. Une image `cosign:latest` qui passe de v2 à v3 peut commencer à publier silencieusement vos digests et noms d'images dans un journal public. Épinglez `v2.4.x`, ou assumez la configuration v3 en connaissance de cause.
+Conséquence pratique : **épingler la version de cosign dans la CI n'est pas cosmétique, c'est structurant.** Un `cosign:latest` qui glisse de v2 à v3 transforme une configuration qui fonctionnait en erreur de pipeline — ou pire, en pipeline qu'on « répare » en retirant l'option.
 
 ```yaml
 image:
-  name: ghcr.io/sigstore/cosign/cosign:v2.4.1   # jamais :latest
+  name: alpine:3.20   # + binaire cosign v2.4.1 épinglé et vérifié par checksum
 ```
+
+Sur l'image à utiliser, une remarque de terrain : l'image officielle `ghcr.io/sigstore/cosign/cosign` est **distroless** — son entrypoint est `/ko-app/cosign` et elle n'embarque pas de shell. Elle est donc inutilisable telle quelle dans un `script:` GitLab CI, qui enveloppe toujours les commandes dans un shell. Installer le binaire depuis les releases GitHub, avec vérification du SHA-256, reste le plus simple — et a le mérite d'appliquer au vérificateur la rigueur qu'on attend de lui.
 
 ---
 
@@ -245,7 +264,9 @@ Cosign se place donc **après** un durcissement du runner, une gestion correcte 
 | Faire confiance à TLS pour l'intégrité du contenu | Le tuyau est sûr, le colis n'est pas vérifié |
 | Signer un tag en croyant signer un nom | La signature porte sur le digest — le re-tag la préserve |
 | Keyless sur un registre privé | Digests, noms d'images et identité publiés **définitivement** dans Rekor |
-| `cosign:latest` dans la CI | Le passage v2 → v3 change les défauts du journal de transparence |
+| Mode `--key` supposé hors Rekor | `--tlog-upload` vaut **`true` par défaut dès la v2** — à désactiver explicitement |
+| `cosign:latest` dans la CI | Le passage v2 → v3 rend la sortie du journal public bien plus difficile |
+| Image officielle cosign dans un `script:` | Distroless, **aucun shell** — le job échoue au démarrage |
 | `Enforce` dès le premier jour | Le cluster refuse ses propres composants tiers |
 | Nettoyage du registre par regex | Suppression possible des `.sig` → déploiements bloqués |
 | Signature considérée comme un scan | Une image vérolée signée reste vérolée |
