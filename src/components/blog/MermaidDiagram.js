@@ -20,8 +20,10 @@ export default function MermaidDiagram({ chart }) {
         setError(null);
 
         const mermaid = (await import('mermaid')).default;
+        mermaid.parseError = () => {};
         mermaid.initialize({
           startOnLoad: false,
+          suppressErrorRendering: true,
           theme: colorScheme === 'dark' ? 'dark' : 'default',
           securityLevel: 'loose',
           fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
@@ -66,10 +68,16 @@ export default function MermaidDiagram({ chart }) {
       }
     };
 
-    renderChart();
+    const cleanMermaidDomErrors = () => {
+      if (typeof document === 'undefined') return;
+      document.querySelectorAll('[id^="dmermaid"], [id*="dmermaid"], .mermaid-error').forEach(el => el.remove());
+    };
+
+    renderChart().then(cleanMermaidDomErrors);
 
     return () => {
       isMounted = false;
+      cleanMermaidDomErrors();
     };
   }, [chart, colorScheme]);
 
