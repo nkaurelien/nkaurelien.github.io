@@ -53,9 +53,7 @@ flowchart TD
 4. **Mise en cache intelligente (`--cache=true`)** : Les couches déjà compilées peuvent être mises en cache localement ou sur le registre pour réduire le temps de build de 80%.
 5. **Push direct** : Kaniko utilise le secret d'authentification monté (`/kaniko/.docker/config.json`) pour pousser les layers et le manifeste OCI final.
 
-### Exemples d'implémentation Kaniko (K8s, GitLab CI & GitHub Actions)
-
-#### A. Job Kubernetes Natif (`job.yaml`)
+### Exemple de Job Kubernetes Kaniko :
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -83,48 +81,6 @@ spec:
             items:
               - key: .dockerconfigjson
                 path: config.json
-```
-
-#### B. Pipeline GitLab CI/CD (`.gitlab-ci.yml`)
-```yaml
-build-kaniko:
-  stage: build
-  image:
-    name: gcr.io/kaniko-project/executor:v1.23.0-debug
-    entrypoint: [""]
-  script:
-    - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor
-      --context "${CI_PROJECT_DIR}"
-      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}"
-      --cache=true
-```
-
-#### C. Workflow GitHub Actions (`.github/workflows/build.yml`)
-```yaml
-name: Build Image avec Kaniko
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout du code
-        uses: actions/checkout@v4
-
-      - name: Build & Push sans Daemon Docker (Kaniko)
-        uses: aevea/action-kaniko@v1.6.0
-        with:
-          image: ghcr.io/${{ github.repository }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          cache: true
-          cache_registry: ghcr.io/${{ github.repository }}/cache
 ```
 
 ---

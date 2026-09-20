@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import MarkdownContent from '@/components/blog/MarkdownContent';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Container, Title, Text, Badge, Group, Anchor, Divider, Box } from '@mantine/core';
 import { getLocalArticle, getLocalArticles } from '@/lib/localArticles';
 
@@ -66,7 +67,7 @@ export default async function LocalArticlePage({ params }) {
       <Divider mb="xl" />
 
       <Box className="markdown-article" style={{ lineHeight: 1.7 }}>
-        <MarkdownContent content={article.content} />
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content}</ReactMarkdown>
       </Box>
     </Container>
   );
