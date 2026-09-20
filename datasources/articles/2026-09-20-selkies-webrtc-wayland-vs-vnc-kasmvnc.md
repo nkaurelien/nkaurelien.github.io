@@ -75,6 +75,12 @@ La nouvelle fondation officielle est désormais **`docker-baseimage-selkies`**, 
 | **Serveur d'affichage** | X11 (vieux de 40 ans) | X11 | **Wayland moderne (Smithay)** |
 | **Accélération GPU** | Très limitée | Partielle | **Complète (Nvidia, Intel DRI, AMD)** |
 
+> **Sur ces chiffres.** Les latences comparées ci-dessus sont celles rapportées en
+> réseau local (LAN, 1 Gb/s) avec encodage matériel disponible. En WAN, ou en
+> encodage logiciel sur CPU seul, l'écart avec KasmVNC se resserre nettement — le
+> gain de WebRTC tient surtout au transport (UDP, adaptation de débit) autant qu'au
+> codec. Mesurez sur votre propre lien avant d'arbitrer.
+
 ---
 
 ## 💡 Cas d'Usage en Homelab et Entreprise
@@ -84,3 +90,9 @@ La nouvelle fondation officielle est désormais **`docker-baseimage-selkies`**, 
 3. **Environnements de développement isolés** : Fournir un environnement de code complet sans aucune pollution de la machine hôte.
 
 Selkies transforme le conteneur en un poste de travail graphique moderne, souverain et accessible en un clic.
+
+---
+
+> **Statut dans notre homelab.** Cet article est une analyse de protocoles, pas un
+> retour de production : Selkies est en phase 6 de notre feuille de route K3s, après
+> l'observabilité et le stockage. Les manifestes suivront dans un article dédié.

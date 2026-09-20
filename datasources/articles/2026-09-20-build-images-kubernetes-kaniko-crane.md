@@ -50,7 +50,13 @@ flowchart TD
 1. **Extraction de l'image de base** : Kaniko télécharge le système de fichiers racine de l'image (`FROM python:3.11-slim`) et le décompresse dans son propre espace de travail.
 2. **Exécution isolée des commandes `RUN`** : Chaque directive du Dockerfile (ex: `RUN uv sync --compile-bytecode`) s'exécute dans l'espace utilisateur.
 3. **Calcul de snapshots différentiels** : Après chaque commande, Kaniko compare le système de fichiers avec l'étape précédente, crée une couche d'archive `.tar` et calcule son digest SHA256.
-4. **Mise en cache intelligente (`--cache=true`)** : Les couches déjà compilées peuvent être mises en cache localement ou sur le registre pour réduire le temps de build de 80%.
+4. **Mise en cache intelligente (`--cache=true`)** : Les couches déjà compilées sont réutilisées d'un build à l'autre, ce qui supprime l'essentiel du temps passé à réinstaller les dépendances.
+
+   > ⚠️ **Le cache doit survivre au Job.** `--cache=true` seul ne suffit pas : il faut dire *où*. Avec `--cache-dir` monté sur un `emptyDir`, le cache disparaît avec le pod à la fin du Job et n'est jamais réutilisé — le gain est nul, pour un `Job` qui est par nature éphémère. Utilisez un cache porté par le registre, ou à défaut un PVC :
+   > ```yaml
+   > - "--cache=true"
+   > - "--cache-repo=ghcr.io/votre-orga/mon-api/cache"
+   > ```
 5. **Push direct** : Kaniko utilise le secret d'authentification monté (`/kaniko/.docker/config.json`) pour pousser les layers et le manifeste OCI final.
 
 ### Exemple de Job Kubernetes Kaniko :
@@ -71,6 +77,7 @@ spec:
             - "--dockerfile=Dockerfile"
             - "--destination=ghcr.io/votre-orga/mon-api:staging"
             - "--cache=true"
+            - "--cache-repo=ghcr.io/votre-orga/mon-api/cache"
           volumeMounts:
             - name: reg-cred
               mountPath: /kaniko/.docker

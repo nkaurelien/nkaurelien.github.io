@@ -11,7 +11,10 @@ import matter from 'gray-matter';
 //   title, date, categories: [..], excerpt, thumbnail, medium: <url si migré>
 
 const ARTICLES_DIR = path.join(process.cwd(), 'datasources', 'articles');
-const FILE_RE = /^(?:(\d{4}-\d{2}-\d{2})-)?(.+)\.md$/;
+// Le préfixe de date est obligatoire : il délimite ce qui est un article de ce qui
+// est de la documentation déposée dans le même dossier (README.md, notes de
+// rédaction…), qui serait sinon publiée comme un article à part entière.
+const FILE_RE = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
 
 function toExcerpt(markdown = '', max = 180) {
   const clean = markdown
@@ -45,7 +48,7 @@ function parseFile(filename) {
     title: data.title || firstHeading(rawContent) || slug.replace(/-/g, ' '),
     // Lien relatif — préfixé par la locale au rendu (ArticleCard / page blog).
     link: `/blog/${slug}`,
-    date: data.date ? new Date(data.date).toISOString() : dateFromName ? `${dateFromName}T00:00:00.000Z` : null,
+    date: data.date ? new Date(data.date).toISOString() : `${dateFromName}T00:00:00.000Z`,
     categories: (data.categories || []).slice(0, 4),
     excerpt: data.excerpt || toExcerpt(content),
     thumbnail: data.thumbnail || null,

@@ -68,10 +68,19 @@ spec:
     spec:
       containers:
         - name: api
-          image: tiangolo/uvicorn-gunicorn-fastapi:python3.11-slim
+          image: ghcr.io/kamitbrains/fastapi-api:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
 ```
+
+> L'image est ici celle construite par notre propre `Dockerfile` (Uvicorn direct, un
+> worker par pod). On évite délibérément `tiangolo/uvicorn-gunicorn-fastapi` : Gunicorn
+> y lance un worker par cœur CPU à l'intérieur du pod et entre en conflit avec le
+> scaling horizontal du HPA — c'est le sujet d'un [article dédié](/fr/blog/fastapi-kubernetes-anti-pattern-gunicorn-uv/).
 
 ### 2. La Surcharge pour la Production (`overlays/prod/kustomization.yaml`)
 Kustomize hérite du dossier `base/` et applique uniquement les deltas nécessaires :
@@ -93,7 +102,6 @@ replicas:
 # Injection déclarative des variables spécifiques à la production
 configMapGenerator:
   - name: api-config
-    behavior: merge
     literals:
       - ENVIRONMENT=production
       - DEBUG=false
@@ -108,6 +116,16 @@ patches:
         path: /spec/rules/0/host
         value: api.kamitbrains-minipc-k1.lab
 ```
+
+> ⚠️ **Le piège `behavior: merge`.** On lit souvent `behavior: merge` sur le
+> `configMapGenerator` d'un overlay. Ce mode suppose qu'un ConfigMap du même nom existe
+> **déjà dans la base**. Ici la base n'en génère aucun, et Kustomize s'arrête net :
+> ```
+> error: merging from generator ...: ConfigMap "api-config" does not exist;
+> cannot merge or replace
+> ```
+> Sans `behavior`, l'overlay crée le ConfigMap — c'est bien ce qu'on veut. Réservez
+> `merge` aux cas où la base fournit réellement des valeurs communes à compléter.
 
 ---
 

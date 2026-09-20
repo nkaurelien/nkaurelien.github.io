@@ -128,6 +128,43 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ---
 
+## 🪤 Le Piège de la Migration : le Port change aussi
+
+Remplacer l'image ne suffit pas. `tiangolo/uvicorn-gunicorn-fastapi` écoute sur le
+**port 80** ; une image Uvicorn maison écoute typiquement sur **8000**. Si vous ne
+changez que la ligne `image:`, le `Service` continue de router vers le 80, les sondes
+échouent et le pod part en `CrashLoopBackOff` — un diagnostic pénible car l'erreur ne
+vient pas de l'application.
+
+Les quatre points à modifier ensemble :
+
+```yaml
+# deployment.yaml
+ports:
+  - containerPort: 8000        # au lieu de 80
+readinessProbe:
+  httpGet:
+    path: /healthz             # un endpoint dédié, pas "/"
+    port: 8000
+---
+# service.yaml
+ports:
+  - port: 80                   # inchangé -> l'Ingress n'est pas impacté
+    targetPort: 8000           # route vers Uvicorn
+```
+
+Garder le `Service` sur le port 80 et ne déplacer que le `targetPort` évite de toucher
+à l'`Ingress` et aux overlays Kustomize. Et puisque le `Dockerfile` crée un utilisateur
+non privilégié, autant le déclarer côté pod pour que Kubernetes le refuse s'il dérive :
+
+```yaml
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 10001
+```
+
+---
+
 ## 📊 Tableau Comparatif Synthétique
 
 | Critère | Approche Gunicorn (Ancienne) | Approche K8s + UV (Moderne) |

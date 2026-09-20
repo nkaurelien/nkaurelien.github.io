@@ -84,6 +84,7 @@ Suite au changement de licence de Redis vers des modèles propriétaires (RSALv2
 
 - **100% Compatible (Drop-in Replacement)** : Protocole RESP identique, zéro modification de code dans nos applications.
 - **Mutualisation des Ressources** : Une instance unique de Valkey (`redis.databases.svc:6379`) avec persistance AOF dessert à la fois les files de tâches de nos APIs et le cache d'Infisical.
+- **Une bascule progressive** : les charges que nous maîtrisons sont sur Valkey. Les stacks tierces qui épinglent Redis en amont (Coolify, Tyk) restent sur `redis:7-alpine` — les migrer de force reviendrait à sortir de leur matrice de support.
 
 ---
 
@@ -93,7 +94,23 @@ La gestion des identifiants et des variables d'environnement en production inter
 
 Nous avons déployé **Infisical Standalone** sur K3s dans le namespace `security` :
 1. **Mutualisation de la Persistance** : La base de données `infisical` est hébergée sur notre pod **PostgreSQL 16** (`postgres.databases.svc:5432`) existant, et le cache sur **Valkey 8**.
-2. **Zéro Secret dans Git** : Les manifestes `Deployment` et `Ingress` sont commités sans valeur sensible. Les clés maîtresses de chiffrement (`ENCRYPTION_KEY`, `AUTH_SECRET`) sont injectées dynamiquement au déploiement depuis un dossier local protégé `.secrets/`.
+2. **Zéro Secret dans Git** : Les manifestes `Deployment` et `Ingress` sont commités sans valeur sensible. Les clés maîtresses de chiffrement (`ENCRYPTION_KEY`, `AUTH_SECRET`) sont injectées dynamiquement au déploiement depuis un dossier local protégé `.secrets/`, via `envFrom.secretRef` :
+
+```yaml
+envFrom:
+  - secretRef:
+      name: infisical-secrets
+```
+```bash
+kubectl create secret generic infisical-secrets \
+  --from-env-file=.secrets/infisical.env -n security
+```
+
+> **La règle vaut pour tout le cluster, pas seulement Infisical.** C'est le point
+> où l'on dérape le plus facilement : un `POSTGRES_PASSWORD` écrit en clair dans un
+> `Deployment` « juste pour tester » finit commité, et le retirer ensuite impose une
+> réécriture d'historique Git. Le réflexe : `valueFrom.secretKeyRef` dès la première
+> version du manifeste, jamais `value:`.
 3. **Accès Web sécurisé** : Disponible sur `https://infisical.kamitbrains-minipc-k1.lab` avec rotation et audit des accès.
 
 ---
