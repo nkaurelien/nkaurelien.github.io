@@ -43,7 +43,7 @@ export const providerOrder = requested => {
 // - Si un provider échoue AVANT d'émettre un token (503/crédit/auth) -> on bascule.
 // - Après le 1er token émis, un échec est propagé (throw) — on ne peut plus switcher.
 // - Si tous échouent avant tout output, un message convivial est streamé.
-export async function* generateWithFallback({ providerKeys, systemPrompt, genkitMessages }) {
+export async function* generateWithFallback({ providerKeys, systemPrompt, genkitMessages, tools }) {
   let started = false;
   let lastError;
 
@@ -55,6 +55,7 @@ export async function* generateWithFallback({ providerKeys, systemPrompt, genkit
         model: provider.model(),
         system: systemPrompt,
         messages: genkitMessages,
+        tools,
       });
       for await (const chunk of responseStream.stream) {
         if (chunk.text) {

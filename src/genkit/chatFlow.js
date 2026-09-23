@@ -1,6 +1,7 @@
 import { z } from 'genkit';
 import { ai, providerOrder, AVAILABLE_PROVIDERS, generateWithFallback } from './ai';
 import { retrieveContext, buildSystemPrompt } from './rag';
+import { JAMILA_TOOLS } from './tools';
 
 /**
  * chatFlow — pipeline RAG de l'assistante "Jamila", testable indépendamment
@@ -38,10 +39,10 @@ export const chatFlow = ai.defineFlow(
     const history = (input.history || []).filter(m => m.text && m.text.trim().length > 0);
     const genkitMessages = [...history.map(m => ({ role: m.role, content: [{ text: m.text }] })), { role: 'user', content: [{ text: input.query }] }];
 
-    // 3. Génération streamée avec fallback entre providers
+    // 3. Génération streamée avec fallback entre providers (+ outils blog, boucle gérée par Genkit)
     const providerKeys = providerOrder(input.provider);
     let fullText = '';
-    for await (const text of generateWithFallback({ providerKeys, systemPrompt, genkitMessages })) {
+    for await (const text of generateWithFallback({ providerKeys, systemPrompt, genkitMessages, tools: JAMILA_TOOLS })) {
       fullText += text;
       sendChunk(text);
     }
