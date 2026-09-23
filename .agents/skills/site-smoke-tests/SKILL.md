@@ -67,6 +67,11 @@ Règles (guide `accessibility` de modern-web-guidance) à respecter pour tout no
 - **tout bouton icône a un `aria-label`** (le `Tooltip` Mantine ne nomme pas) ; icônes décoratives `aria-hidden="true"` ; pas de bouton dans un lien ;
 - **champs** : `<label for>` réel (pas seulement `placeholder`) ; avec Mantine, passer l'aide par `description` (il écrase `aria-describedby`) ;
 - **états** par ARIA (`aria-pressed`, `aria-expanded`, `aria-current`, `aria-busy`), pas seulement par la couleur ;
+- **animations** : importer GSAP via `@/lib/gsap` (jamais `'gsap'` directement) : il rend les animations quasi
+  instantanées si `prefers-reduced-motion`. Pour anime.js, mo.js ou un fond animé, tester `prefersReducedMotion()` (`@/lib/motion`) ;
+- **pas d'emoji comme icône** : icône Tabler `aria-hidden="true"` ;
+- **dates** : `Intl.DateTimeFormat` avec `timeZone: 'UTC'`, sinon serveur (Vercel, UTC) et navigateur (Paris) peuvent
+  afficher deux jours différents → erreur d'hydratation React #418 (vécu : « 26 oct. » côté serveur, « 27 oct. » côté client) ;
 - **contraste AA** : ne pas revenir à la teinte 6 de Mantine. `theme.primaryShade.light = 8`, et `globals.css` force `--mantine-color-dimmed`
   et `--mantine-color-<c>-light-color` en `:root:root[...]` (Mantine injecte ses variables à l'exécution, après la feuille globale).
 
@@ -86,7 +91,9 @@ Les tests HTTP ne voient pas une page qui répond 200 mais **plante à l'écran*
 | 1er article local | pas de titre, < 1000 caractères, date sans `datetime` |
 | `/fr/chat/` | < 4 suggestions, champ sans `<label>`, bouton d'envoi sans nom (rien n'est envoyé : pas de LLM) |
 | Mobile 390 px | débordement horizontal, bouton de menu sans nom |
+| **Mouvement réduit** (`prefers-reduced-motion` émulé) | `<canvas>` animé (fond Vanta) ou animation CSS infinie en cours sur `/fr/` |
 
+L'envoi Umami (`*/stats/api/send*`) est **bloqué** pendant les tests pour ne pas fausser les statistiques.
 `console.error` n'est qu'un avertissement. Captures facultatives dans `/tmp/ui-check/` (elles peuvent
 expirer si la fenêtre ego lite n'est pas au premier plan). ego-browser ne transmet pas l'environnement
 au script : `ui-check.sh` y injecte `__BASE__` / `__OUT__`. L'extension interne d'ego lite lève

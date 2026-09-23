@@ -24,6 +24,9 @@ const task = await taskSpace('ui-check site');
 const page = task.page('p1');
 await page.cdp('Runtime.enable');
 await page.cdp('Network.enable');
+// Les visites de test ne doivent pas fausser les statistiques Umami : on bloque l'envoi
+// (le chargement de /stats/script.js reste vérifié).
+await page.cdp('Network.setBlockedURLs', { urls: ['*/stats/api/send*'] });
 
 const origin = new URL(BASE).origin;
 const count = selector => page.evaluate(sel => document.querySelectorAll(sel).length, selector);
@@ -212,6 +215,29 @@ await checkPage('chat', '/fr/chat/', async () => {
   const shot = await page.screenshot({ path: `${OUT}/chat-desktop.png` }).catch(() => null);
   return `${ui.suggestions} suggestions, label « ${ui.inputLabel} », envoi « ${ui.sendLabel} », aide ${ui.described}${shot ? `, capture ${shot}` : ''}`;
 });
+
+// ------------------------------------------------ Mouvement réduit (WCAG 2.3.3)
+// Préférence émulée : pas de fond WebGL animé (Vanta), aucune animation CSS infinie.
+try {
+  await page.cdp('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  await page.goto(`${BASE}/fr/`);
+  await page.waitForLoadState();
+  await page.waitForTimeout(2000);
+  const motion = await page.evaluate(() => ({
+    canvases: document.querySelectorAll('canvas').length,
+    infinite: document
+      .getAnimations()
+      .filter(a => a.playState === 'running' && a.effect?.getTiming?.().iterations === Infinity).length,
+  }));
+  const problems = [];
+  if (motion.canvases) problems.push(`${motion.canvases} canvas animé(s) (fond Vanta ?)`);
+  if (motion.infinite) problems.push(`${motion.infinite} animation(s) CSS infinie(s) en cours`);
+  record('mouvement réduit (/fr/)', problems.length === 0, problems.join(' | ') || 'pas de fond animé, aucune animation infinie');
+} catch (err) {
+  record('mouvement réduit (/fr/)', false, err.message);
+} finally {
+  await page.cdp('Emulation.setEmulatedMedia', { features: [] }).catch(() => {});
+}
 
 // --------------------------------------------------------- Rendu mobile
 try {
