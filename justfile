@@ -44,6 +44,10 @@ format:
 lint:
     yarn lint
 
+# Applique les migrations SQL en attente (db/migrations, idempotentes) sur DIRECT_URL
+db-migrate:
+    ./db/migrate.sh
+
 # Applique le schéma Postgres + pgvector (Neon / Docker local) via Prisma
 db-schema:
     npx prisma db execute --file ./db/schema.sql

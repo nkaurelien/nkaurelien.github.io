@@ -1,6 +1,7 @@
 require('dotenv').config({ path: '.env.local' });
 require('dotenv').config({ path: '.env' });
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
@@ -26,10 +27,42 @@ if (connectionString.includes('pgbouncer=true') || connectionString.includes(':6
 }
 
 // Initialize LangChain Hugging Face Embeddings provider
-console.log('Initializing LangChain HuggingFaceTransformersEmbeddings (all-MiniLM-L6-v2)...');
+// Requiert la migration db/migrations/001 (colonnes metadata, chunk_index,
+// embedding_model, content_hash) : `make db-migrate`.
+const EMBEDDING_MODEL = 'Xenova/all-MiniLM-L6-v2';
+console.log(`Initializing LangChain HuggingFaceTransformersEmbeddings (${EMBEDDING_MODEL})...`);
 const embeddings = new HuggingFaceTransformersEmbeddings({
-  model: 'Xenova/all-MiniLM-L6-v2',
+  model: EMBEDDING_MODEL,
 });
+
+// Même valeur que la colonne générée content_entries.content_hash (sha256 UTF-8).
+const sha256 = text => crypto.createHash('sha256').update(text, 'utf8').digest('hex');
+
+// Faut-il (ré)embedder ? Oui si pas d'extraits, si le document a changé (hash), ou si REEMBED=1.
+async function needsEmbedding(dbClient, slug, rawMarkdown) {
+  const res = await dbClient.query(
+    `SELECT e.content_hash, count(v.id)::int AS chunks
+       FROM public.content_entries e
+       LEFT JOIN public.vector_embeddings v ON v.content_entry_id = e.id
+      WHERE e.slug = $1
+      GROUP BY e.content_hash`,
+    [slug]
+  );
+  if (process.env.REEMBED === '1') return 'REEMBED=1';
+  if (res.rows.length === 0 || res.rows[0].chunks === 0) return 'nouveau';
+  if (res.rows[0].content_hash !== sha256(rawMarkdown)) return 'modifié';
+  return null;
+}
+
+async function insertChunk(dbClient, { chunkText, entryId, chunkIndex, metadata }) {
+  const embedding = await embeddings.embedQuery(chunkText);
+  await dbClient.query(
+    `INSERT INTO public.vector_embeddings
+       (text_chunk, embedding_vector, content_entry_id, chunk_index, metadata, embedding_model)
+     VALUES ($1, $2, $3, $4, $5, $6)`,
+    [chunkText, `[${embedding.join(',')}]`, entryId, chunkIndex, metadata, EMBEDDING_MODEL]
+  );
+}
 
 function stripHtml(str = '') {
   return str.replace(/<[^>]+>/g, '');
@@ -154,23 +187,13 @@ ${proj.markdowns.fr || ''}
 ${proj.descriptions.en || ''}
 ${proj.markdowns.en || ''}`;
 
-      // Check if entry and vector embedding already exist to maintain idempotency
-      const checkEntry = await dbClient.query('SELECT id FROM public.content_entries WHERE slug = $1', [proj.slug]);
-      let entryId = null;
-      let hasEmbedding = false;
-
-      if (checkEntry.rows.length > 0) {
-        entryId = checkEntry.rows[0].id;
-        const checkEmbed = await dbClient.query('SELECT id FROM public.vector_embeddings WHERE content_entry_id = $1', [entryId]);
-        if (checkEmbed.rows.length > 0) {
-          hasEmbedding = true;
-        }
-      }
-
-      if (hasEmbedding && process.env.REEMBED !== '1') {
-        console.log(`Skipping project: ${proj.title} (Already embedded. Run with REEMBED=1 to force recalculation).`);
+      // Idempotence : on ne (ré)embedde que les projets nouveaux ou modifiés (content_hash).
+      const reason = await needsEmbedding(dbClient, proj.slug, combinedMarkdown);
+      if (!reason) {
+        console.log(`Skipping project: ${proj.title} (unchanged, already embedded).`);
         continue;
       }
+      console.log(`Embedding project (${reason}).`);
 
       // Insert or Update the ContentEntry
       const entryRes = await dbClient.query(`
@@ -181,7 +204,7 @@ ${proj.markdowns.en || ''}`;
         RETURNING id
       `, [proj.slug, combinedMarkdown, sectionId]);
 
-      entryId = entryRes.rows[0].id;
+      const entryId = entryRes.rows[0].id;
       console.log(`ContentEntry ID: ${entryId}`);
 
       // Generate embedding vectors using LangChain RecursiveCharacterTextSplitter
@@ -213,13 +236,12 @@ ${proj.markdowns.en || ''}`;
       for (let i = 0; i < bodyChunks.length; i++) {
         const chunkText = `${metaPrefix} ${bodyChunks[i]}`;
         console.log(`Generating embedding for chunk ${i + 1}/${bodyChunks.length} (${chunkText.length} chars)...`);
-        const embedding = await embeddings.embedQuery(chunkText);
-        const vectorString = `[${embedding.join(',')}]`;
-        
-        await dbClient.query(`
-          INSERT INTO public.vector_embeddings (text_chunk, embedding_vector, content_entry_id)
-          VALUES ($1, $2, $3)
-        `, [chunkText, vectorString, entryId]);
+        await insertChunk(dbClient, {
+          chunkText,
+          entryId,
+          chunkIndex: i,
+          metadata: { slug: proj.slug, category: 'PROJECT', source: `public/projects/${proj.slug}.md`, title: proj.title },
+        });
       }
       console.log('All embeddings inserted successfully!');
 
@@ -293,23 +315,13 @@ ${proj.markdowns.en || ''}`;
 
       console.log(`\n--- Importing Document: ${docTitle} (slug: ${slug}) ---`);
 
-      // Idempotency check
-      const checkDocEntry = await dbClient.query('SELECT id FROM public.content_entries WHERE slug = $1', [slug]);
-      let docEntryId = null;
-      let docHasEmbedding = false;
-
-      if (checkDocEntry.rows.length > 0) {
-        docEntryId = checkDocEntry.rows[0].id;
-        const checkDocEmbed = await dbClient.query('SELECT id FROM public.vector_embeddings WHERE content_entry_id = $1', [docEntryId]);
-        if (checkDocEmbed.rows.length > 0) {
-          docHasEmbedding = true;
-        }
-      }
-
-      if (docHasEmbedding && process.env.REEMBED !== '1') {
-        console.log(`Skipping document: ${docTitle} (Already embedded. Run with REEMBED=1 to force recalculation).`);
+      // Idempotence : on ne (ré)embedde que les documents nouveaux ou modifiés (content_hash).
+      const docReason = await needsEmbedding(dbClient, slug, rawContent);
+      if (!docReason) {
+        console.log(`Skipping document: ${docTitle} (unchanged, already embedded).`);
         continue;
       }
+      console.log(`Embedding document (${docReason}).`);
 
       // Insert or Update ContentEntry
       const docEntryRes = await dbClient.query(`
@@ -320,7 +332,7 @@ ${proj.markdowns.en || ''}`;
         RETURNING id
       `, [slug, rawContent, profileSectionId]);
 
-      docEntryId = docEntryRes.rows[0].id;
+      const docEntryId = docEntryRes.rows[0].id;
       console.log(`ContentEntry ID: ${docEntryId}`);
 
       console.log(`Splitting document text body into chunks using LangChain...`);
@@ -335,13 +347,12 @@ ${proj.markdowns.en || ''}`;
       for (let i = 0; i < docChunks.length; i++) {
         const chunkText = `${metaPrefix} ${docChunks[i]}`;
         console.log(`Generating embedding for chunk ${i + 1}/${docChunks.length} (${chunkText.length} chars)...`);
-        const embedding = await embeddings.embedQuery(chunkText);
-        const vectorString = `[${embedding.join(',')}]`;
-
-        await dbClient.query(`
-          INSERT INTO public.vector_embeddings (text_chunk, embedding_vector, content_entry_id)
-          VALUES ($1, $2, $3)
-        `, [chunkText, vectorString, docEntryId]);
+        await insertChunk(dbClient, {
+          chunkText,
+          entryId: docEntryId,
+          chunkIndex: i,
+          metadata: { slug, category: 'ABOUT', source: `datasources/${relativePath}`, title: docTitle },
+        });
       }
       console.log('All embeddings inserted successfully!');
     }

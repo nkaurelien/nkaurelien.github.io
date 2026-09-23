@@ -17,7 +17,7 @@ services:
       - PORT=3000
 
   # Postgres + pgvector local (même version majeure que Neon : 18).
-  # Le schéma du RAG est appliqué au 1er démarrage ; puis `make db-seed`.
+  # Au 1er démarrage : db/schema.sql puis db/migrations/*.sql ; ensuite `make db-seed`.
   db:
     image: pgvector/pgvector:pg18
     container_name: nkaurelien-db
@@ -31,6 +31,8 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql
       - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/init/02-migrations.sh:/docker-entrypoint-initdb.d/02-migrations.sh:ro
+      - ./db/migrations:/migrations:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U portfolio -d portfolio"]
       interval: 5s

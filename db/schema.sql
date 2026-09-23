@@ -1,5 +1,6 @@
 -- Schéma Postgres + pgvector du RAG (Neon en production, Docker en local).
--- Idempotent : make db-schema, ou monté dans /docker-entrypoint-initdb.d.
+-- Schéma de base (v0), idempotent. Les évolutions sont dans db/migrations/*.sql
+-- (make db-migrate) : une base neuve = schema.sql puis toutes les migrations.
 
 -- Enable the pgvector extension to work with embedding vectors
 create extension if not exists vector;

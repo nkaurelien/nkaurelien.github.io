@@ -1,4 +1,4 @@
-.PHONY: dev build format pdf db-schema db-seed db-reseed db-query db-studio db-pull db-generate db-up db-down
+.PHONY: dev build format pdf db-schema db-seed db-reseed db-query db-studio db-pull db-generate db-up db-down db-migrate
 
 # Start the local development server
 dev:
@@ -15,6 +15,10 @@ format:
 # Generate PDF from cv.md
 pdf:
 	node scripts/build-pdf.js
+
+# Apply pending SQL migrations (db/migrations/*.sql, idempotent) to DIRECT_URL — or DB_URL=…
+db-migrate:
+	./db/migrate.sh
 
 # Apply the Postgres + pgvector schema (Neon / local Docker)
 db-schema:
