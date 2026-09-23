@@ -142,6 +142,28 @@ await check('MCP list_articles (dates ISO)', async () => {
   return articles.map(a => a.date).join(', ');
 });
 
+// ------------------------------------------------------ Analytics Umami
+// Le traceur envoie POST /stats/api/send : 308 (trailingSlash) puis rewrite vers Umami.
+// Un identifiant de site factice fait répondre 400 par Umami lui-même, sans polluer
+// les statistiques : 400 = la requête arrive bien jusqu'à Umami ; 404 = cassé (ex. le
+// middleware de langue redirige vers /fr/stats/…).
+await check('Umami POST /stats/api/send', async () => {
+  const script = await req(`${BASE}/stats/script.js`);
+  if (script.status === 404 && BASE !== PROD) return 'Umami non configuré ici (UMAMI_URL absent) : ignoré';
+  assert(script.status === 200, `script.js HTTP ${script.status}`);
+  const r = await req(`${BASE}/stats/api/send`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'user-agent': 'Mozilla/5.0 (smoke-test)' },
+    body: JSON.stringify({
+      type: 'event',
+      payload: { website: '00000000-0000-0000-0000-000000000000', hostname: 'smoke-test', url: '/', language: 'fr' },
+    }),
+  });
+  assert(!r.url.includes('/fr/stats/'), `redirigé vers ${r.url} (middleware de langue)`);
+  assert(r.status === 400, `HTTP ${r.status} (attendu 400 d'Umami pour un site factice)`);
+  return 'script 200, envoi relayé jusqu\'à Umami (400 attendu pour un site factice)';
+});
+
 // ------------------------------------------------ Jamila (optionnel, LLM)
 if (WITH_LLM) {
   await check('Jamila /api/chat (1 question)', async () => {

@@ -34,6 +34,7 @@ Code de sortie 0 si tout passe, 1 sinon : utilisable tel quel en CI.
 | MCP `tools/list` | 6 outils, `inputSchema` en JSON Schema (`limit` = `integer`) | schémas zod renvoyés bruts |
 | MCP `limit: "abc"` | `isError`, « expected number » | validation zod contournée |
 | MCP `list_articles` | dates `YYYY-MM-DD` | bug `String(Date)` de gray-matter |
+| Umami `POST /stats/api/send` (site factice) | 400 renvoyé **par Umami** (308 trailingSlash puis rewrite) | envoi redirigé vers `/fr/stats/…` (404) : le middleware de langue ne doit pas traiter `/stats` |
 | `--with-llm` : Jamila | réponse sans « indisponible », liens `/blog/…` en 200 | quota LLM épuisé, RAG/outils cassés |
 
 ## Règles
@@ -92,7 +93,8 @@ au script : `ui-check.sh` y injecte `__BASE__` / `__OUT__`. L'extension interne 
 « No Listener: tabs:… » : ce bruit est filtré.
 
 **Historique (24/09/2026)** : 1er passage → erreur React #418 (hydratation) sur `/fr/` et `/fr/blog/`, et envoi
-Umami en 404 en prod (`/stats/api/send` → 308 → 307 `/fr/stats/api/send/`, le middleware de langue n'exclut pas `/stats`).
+Umami en 404 en prod (`/stats/api/send` → 308 → 307 `/fr/stats/api/send/`, le middleware de langue n'excluait pas `/stats`),
+corrigé en excluant `stats` du matcher de `src/middleware.js` (le rewrite retire le slash final avant de relayer à Umami).
 Audit axe initial : ~200 violations graves (contraste, boutons sans nom, images sans alt) → **0** après la passe
 d'accessibilité. Les ressources `/stats/` sont rangées en avertissement (Umami absent en local).
 
