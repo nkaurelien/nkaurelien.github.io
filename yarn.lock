@@ -832,12 +832,12 @@
   dependencies:
     "@formatjs/fast-memoize" "3.1.6"
 
-"@genkit-ai/ai@1.39.0":
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/@genkit-ai/ai/-/ai-1.39.0.tgz#a67c22c883273f0b777831650f9f17e4dd188fd4"
-  integrity sha512-e1ZI2ib4Y8ha2Zj/rN7Uioxd16rWMhalPe3krypLw8B4G36X8KZCqj2UhucKbCZJIffU0cxEvag7BP+JVQnsyQ==
+"@genkit-ai/ai@1.42.0":
+  version "1.42.0"
+  resolved "https://registry.yarnpkg.com/@genkit-ai/ai/-/ai-1.42.0.tgz#154e4a80b58d36b8a637aabcd5d2ab3e061d5cc5"
+  integrity sha512-FV1bMjOnGX7RRPT/T4ZVoV83VTaxQ9ZYTKQSPXI8wvOCtJXoW30ODQI6V+fFuykD5pVKrfjRb73pe0n43J+/Kw==
   dependencies:
-    "@genkit-ai/core" "1.39.0"
+    "@genkit-ai/core" "1.42.0"
     "@opentelemetry/api" "^1.9.0"
     "@types/node" "^20.11.19"
     colorette "^2.0.20"
@@ -849,17 +849,17 @@
     uri-templates "^0.2.0"
     uuid "^10.0.0"
 
-"@genkit-ai/anthropic@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@genkit-ai/anthropic/-/anthropic-0.3.0.tgz#e4220806ac687c756d93bce24fa37c13424b1f4b"
-  integrity sha512-RCQlBzmnXdMPRcd1pEHuzEbfUGCasxqIEsct+2m9A7mhM0uyw3gfIBNioSvUyt5IgZhBw2c+XgJs1L70FDVlBQ==
+"@genkit-ai/anthropic@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@genkit-ai/anthropic/-/anthropic-0.5.0.tgz#b1d513fdab93e17fe6f4d4537665897bb546ba50"
+  integrity sha512-1FSoA99Aw+dMyH/aPoFO+K5fSHF12YeOy8WBTJehxoXRb3PStRCEXSO0VLGR5Y4GcLdFExK7nClactLv1U0XKQ==
   dependencies:
     "@anthropic-ai/sdk" "^0.97.1"
 
-"@genkit-ai/core@1.39.0":
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/@genkit-ai/core/-/core-1.39.0.tgz#a670e49631289af28ce7cb805c6fae70b866724f"
-  integrity sha512-MI0cpmwc4K/KPVsXFAcHviOybt3T3IsVSsN37cEcOzo7mmv+s0JSdooxlQgZn68B6e3I8BNLL3Vk1vyc6qIlCw==
+"@genkit-ai/core@1.42.0":
+  version "1.42.0"
+  resolved "https://registry.yarnpkg.com/@genkit-ai/core/-/core-1.42.0.tgz#1c67a5729804c75686970630e69efcfcafc1c08a"
+  integrity sha512-UYTty6exDYUtDWMUxbSijvyZ8tn7Bf+e0CnTFEo2qUO7IpOPgPFaXyUsLWD+EvsxhXWkLhVW2V/e/st60p792g==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@opentelemetry/api-logs" "^0.52.0"
@@ -917,21 +917,21 @@
     node-fetch "^3.3.2"
     winston "^3.12.0"
 
-"@genkit-ai/google-genai@^1.39.0":
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/@genkit-ai/google-genai/-/google-genai-1.39.0.tgz#56a8752602c6adfbe99d023d413a79a49b060341"
-  integrity sha512-ZP9nA6TlBJ1ZHCmSkz56v0lrRS/Wfh6L09oHgeOIZyD/Pq76uX3W+Uly8dPAbDtNax63l64TsEYZH1HHt8rC8A==
+"@genkit-ai/google-genai@^1.42.0":
+  version "1.42.0"
+  resolved "https://registry.yarnpkg.com/@genkit-ai/google-genai/-/google-genai-1.42.0.tgz#7e6afc37a7680a8e9e19f6b0baf0ca6d2d7ed6ec"
+  integrity sha512-Tly/vRCGQxM7qu38Pl4uurAItoWjR+yEh3UvLRUaYScaNkaYpPPPMno7Nsn0ighwoC8+LmzQFdgg+pb8DVTcbA==
   dependencies:
     google-auth-library "^9.14.2"
     jsonpath-plus "^10.3.0"
 
-"@genkit-ai/telemetry-server@1.39.0":
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/@genkit-ai/telemetry-server/-/telemetry-server-1.39.0.tgz#d7b76843680b603ee52e5bdfa7af34241a49a37e"
-  integrity sha512-FktxOGR37LOatOjMJTnRp/nMkbZplq+ld9HujGclZrPTUB7Fn0GR0b3osjb9ofw+zmbpX1ZxWkOibz9b9c5f/g==
+"@genkit-ai/telemetry-server@1.43.0":
+  version "1.43.0"
+  resolved "https://registry.yarnpkg.com/@genkit-ai/telemetry-server/-/telemetry-server-1.43.0.tgz#74f7ce2b9ea22f8a076e07841053ae52730fbcd9"
+  integrity sha512-sSv+PV0Dq5hWowGESDu1B+34jKOAUiQ0dGiH48u+4TDSaZjnoxT9V1xhMx+F+MMKc+JGT3rBCQgxYuSze7OCuA==
   dependencies:
     "@asteasolutions/zod-to-openapi" "^7.0.0"
-    "@genkit-ai/tools-common" "1.39.0"
+    "@genkit-ai/tools-common" "1.43.0"
     "@google-cloud/firestore" "^7.6.0"
     "@opentelemetry/api" "~1.9.0"
     "@opentelemetry/context-async-hooks" "~1.25.0"
@@ -945,10 +945,10 @@
     lockfile "^1.0.4"
     zod "^3.22.4"
 
-"@genkit-ai/tools-common@1.39.0":
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/@genkit-ai/tools-common/-/tools-common-1.39.0.tgz#fbba062d8012bb09fe4cdd8da6af9763402499b1"
-  integrity sha512-sbp5gSxrrW75/Loy7FZupM51tRVPOHbd8NPriJ+OQMyTOQniQ+X+MaOamUvGMqt7IlxeiFSAnifKFvbNVNIzGg==
+"@genkit-ai/tools-common@1.43.0":
+  version "1.43.0"
+  resolved "https://registry.yarnpkg.com/@genkit-ai/tools-common/-/tools-common-1.43.0.tgz#943c67c0f3adbaddcc70cef8866fa2f6cb7004ca"
+  integrity sha512-4SplKXjz4ARVPwkB/NNAAMUpcAa5iEHsEws2gqzsxDO3vf0UbYLC2FBCSRuLKFa+uWQhRqZLs11/XN0D66jCAw==
   dependencies:
     "@asteasolutions/zod-to-openapi" "^7.0.0"
     "@inquirer/prompts" "^7.8.0"
@@ -6324,13 +6324,13 @@ generator-function@^2.0.0:
   resolved "https://registry.npmjs.org/generator-function/-/generator-function-2.0.1.tgz"
   integrity sha512-SFdFmIJi+ybC0vjlHN0ZGVGHc3lgE0DxPAT0djjVg+kjOnSqclqmj0KQ7ykTOLP6YxoqOvuAODGdcHJn+43q3g==
 
-genkit-cli@^1.39.0:
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/genkit-cli/-/genkit-cli-1.39.0.tgz#719d33cb5ee73cc55c296f4ffdc921fc63651d82"
-  integrity sha512-ikRAfSlQpNwyJ0Px0gV9x9NeDzt/x0JavIMJIayQYgzPWSbxqD9fzGlqcRj5D/ZzNL8mcvee8IkFGT7cN72DgQ==
+genkit-cli@^1.42.0:
+  version "1.43.0"
+  resolved "https://registry.yarnpkg.com/genkit-cli/-/genkit-cli-1.43.0.tgz#c466346aa7925a375ba838d0c742f0cb5c83b0de"
+  integrity sha512-i4NPpFvvEY25ABsYVFH+E+a0JWpdHbWzh+EVohR1s+taUyanpQBlbxrYLdgTgFZTWbT+h+f0hZ92WoRLj/lxRA==
   dependencies:
-    "@genkit-ai/telemetry-server" "1.39.0"
-    "@genkit-ai/tools-common" "1.39.0"
+    "@genkit-ai/telemetry-server" "1.43.0"
+    "@genkit-ai/tools-common" "1.43.0"
     "@inquirer/prompts" "^7.8.0"
     "@modelcontextprotocol/sdk" "^1.13.1"
     axios "^1.7.7"
@@ -6343,13 +6343,13 @@ genkit-cli@^1.39.0:
     semver "^7.7.2"
     yaml "^2.8.0"
 
-genkit@^1.39.0:
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/genkit/-/genkit-1.39.0.tgz#ba7eccadb82e0649699b99386b33e9c190a6b268"
-  integrity sha512-Qz9ef/LfAEDMzO1+Nd6l6dMYK/V4ZfWDIp79rz/1V6xDM5VuJMkoqOTCDwXAviuAnjoO2noJug2wIK81ilMhWA==
+genkit@^1.42.0:
+  version "1.42.0"
+  resolved "https://registry.yarnpkg.com/genkit/-/genkit-1.42.0.tgz#c16ef6a415a4e2b25dbfd7099db19517da878fff"
+  integrity sha512-yGdsoIo0UQtkNUrKWGQdRihGzbGf2njxYqcpDbkWdQPzMG7/s5caS0ovM+WDdkWPKwMBwxAD+8f9uQmDI7ZOCQ==
   dependencies:
-    "@genkit-ai/ai" "1.39.0"
-    "@genkit-ai/core" "1.39.0"
+    "@genkit-ai/ai" "1.42.0"
+    "@genkit-ai/core" "1.42.0"
     uuid "^10.0.0"
 
 get-caller-file@^2.0.5:

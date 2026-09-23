@@ -17,6 +17,9 @@ export const LLM_PROVIDERS = {};
 if (geminiApiKey) {
   plugins.push(googleAI({ apiKey: geminiApiKey }));
   LLM_PROVIDERS.gemini = { label: 'Gemini', model: () => googleAI.model('gemini-2.5-flash') };
+  // Secours même clé : le quota gratuit Gemini est compté PAR MODÈLE (20 req/jour
+  // pour gemini-2.5-flash), un autre modèle a donc son propre quota.
+  LLM_PROVIDERS['gemini-lite'] = { label: 'Gemini Flash-Lite', model: () => googleAI.model('gemini-3.5-flash-lite') };
 }
 
 if (anthropicApiKey) {
