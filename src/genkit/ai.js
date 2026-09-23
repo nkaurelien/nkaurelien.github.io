@@ -1,6 +1,7 @@
 import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/google-genai';
 import { anthropic } from '@genkit-ai/anthropic';
+import { a2ui, a2uiEnvelopesFromParts } from '@genkit-ai/a2ui';
 
 // Lecture directe de process.env (et non @/env) pour rester utilisable AUSSI en
 // standalone (genkit start -- tsx src/genkit/dev.mjs), hors du runtime Next.
@@ -28,6 +29,10 @@ export const ai = genkit({ plugins });
 
 export const AVAILABLE_PROVIDERS = Object.keys(LLM_PROVIDERS);
 
+// Generative UI (A2UI, preview) : Jamila peut streamer des « surfaces » (cartes,
+// listes, boutons) en plus du texte. Désactivé par défaut -> CHAT_A2UI=1 pour l'activer.
+export const A2UI_ENABLED = process.env.CHAT_A2UI === '1';
+
 // Provider par défaut : CHAT_LLM_PROVIDER si sa clé est configurée, sinon le 1er dispo.
 const DEFAULT_PROVIDER = LLM_PROVIDERS[process.env.CHAT_LLM_PROVIDER] ? process.env.CHAT_LLM_PROVIDER : AVAILABLE_PROVIDERS[0];
 
@@ -39,7 +44,8 @@ export const providerOrder = requested => {
   return [active, ...AVAILABLE_PROVIDERS.filter(k => k !== active)];
 };
 
-// Génère en streamant du TEXTE brut, avec fallback entre providers.
+// Génère en streamant du texte brut (string), et, si A2UI est activé, des
+// surfaces UI ({ a2ui: envelopes[] }), avec fallback entre providers.
 // - Si un provider échoue AVANT d'émettre un token (503/crédit/auth) -> on bascule.
 // - Après le 1er token émis, un échec est propagé (throw) — on ne peut plus switcher.
 // - Si tous échouent avant tout output, un message convivial est streamé.
@@ -56,11 +62,19 @@ export async function* generateWithFallback({ providerKeys, systemPrompt, genkit
         system: systemPrompt,
         messages: genkitMessages,
         tools,
+        use: A2UI_ENABLED ? [a2ui()] : undefined,
       });
       for await (const chunk of responseStream.stream) {
         if (chunk.text) {
           started = true;
           yield chunk.text;
+        }
+        if (A2UI_ENABLED) {
+          const envelopes = a2uiEnvelopesFromParts(chunk.content);
+          if (envelopes.length > 0) {
+            started = true;
+            yield { a2ui: envelopes };
+          }
         }
       }
       return; // succès

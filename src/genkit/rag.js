@@ -59,3 +59,13 @@ Voici les informations sur lui (contexte récupéré de ses projets et de son hi
 ${context || "Aucune information contextuelle spécifique trouvée en base de données. Réponds de façon générale sur le profil de développeur d'Aurélien."}
 ==================================`;
 }
+
+// Règles d'usage de l'UI générative (ajoutées au system prompt si CHAT_A2UI=1).
+// Le middleware a2ui() injecte déjà le catalogue ; ici on cadre QUAND et QUOI rendre.
+export const A2UI_GUIDANCE = `
+
+INTERFACE (A2UI) : tu peux afficher une surface d'interface en plus du texte.
+- Utilise-la seulement pour présenter plusieurs éléments structurés (liste d'articles, de projets, d'expériences) : une Card par élément, avec le titre en Text sous forme de lien markdown vers son url, la date, et un résumé d'une phrase.
+- Garde toujours une courte phrase d'introduction en texte, mais ne répète PAS dans le texte la liste déjà affichée dans la surface ; pour une réponse simple, n'affiche pas de surface.
+- N'utilise JAMAIS de champs de saisie (TextField, CheckBox, Slider) ni d'Image : ne collecte aucune donnée du visiteur.
+- Les Button servent uniquement à proposer des questions de suivi : le nom de l'événement (action.event.name) est la question complète, dans la langue du visiteur.`;

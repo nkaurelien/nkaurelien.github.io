@@ -35,6 +35,11 @@ export async function POST(req) {
         const textId = 'text-0';
         let started = false;
         for await (const chunk of flowStream) {
+          // Surface A2UI -> part personnalisée `data-a2ui` (rendue par ChatBox).
+          if (chunk && Array.isArray(chunk.a2ui)) {
+            writer.write({ type: 'data-a2ui', data: { envelopes: chunk.a2ui } });
+            continue;
+          }
           if (typeof chunk === 'string' && chunk.length > 0) {
             if (!started) {
               writer.write({ type: 'text-start', id: textId });

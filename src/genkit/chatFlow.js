@@ -1,6 +1,6 @@
 import { z } from 'genkit';
-import { ai, providerOrder, AVAILABLE_PROVIDERS, generateWithFallback } from './ai';
-import { retrieveContext, buildSystemPrompt } from './rag';
+import { ai, providerOrder, AVAILABLE_PROVIDERS, generateWithFallback, A2UI_ENABLED } from './ai';
+import { retrieveContext, buildSystemPrompt, A2UI_GUIDANCE } from './rag';
 import { JAMILA_TOOLS } from './tools';
 
 /**
@@ -24,7 +24,8 @@ export const chatFlow = ai.defineFlow(
         .describe('Historique de conversation (tours précédents)'),
     }),
     outputSchema: z.string(),
-    streamSchema: z.string(),
+    // Texte (string) ou surface A2UI ({ a2ui: envelopes[] }) quand CHAT_A2UI=1.
+    streamSchema: z.union([z.string(), z.object({ a2ui: z.array(z.any()) })]),
   },
   async (input, { sendChunk }) => {
     if (AVAILABLE_PROVIDERS.length === 0) {
@@ -33,7 +34,7 @@ export const chatFlow = ai.defineFlow(
 
     // 1. Récupération du contexte (RAG)
     const context = await retrieveContext(input.query);
-    const systemPrompt = buildSystemPrompt(context);
+    const systemPrompt = buildSystemPrompt(context) + (A2UI_ENABLED ? A2UI_GUIDANCE : '');
 
     // 2. Construction des messages Genkit (historique + question courante)
     const history = (input.history || []).filter(m => m.text && m.text.trim().length > 0);
@@ -42,9 +43,9 @@ export const chatFlow = ai.defineFlow(
     // 3. Génération streamée avec fallback entre providers (+ outils blog, boucle gérée par Genkit)
     const providerKeys = providerOrder(input.provider);
     let fullText = '';
-    for await (const text of generateWithFallback({ providerKeys, systemPrompt, genkitMessages, tools: JAMILA_TOOLS })) {
-      fullText += text;
-      sendChunk(text);
+    for await (const chunk of generateWithFallback({ providerKeys, systemPrompt, genkitMessages, tools: JAMILA_TOOLS })) {
+      if (typeof chunk === 'string') fullText += chunk;
+      sendChunk(chunk);
     }
 
     return fullText;

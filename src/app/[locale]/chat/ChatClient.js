@@ -188,6 +188,13 @@ export default function ChatClient({ locale }) {
     sdkSendMessage({ text: suggestion });
   };
 
+  // Clic sur un Button d'une surface A2UI : le nom de l'événement est la question
+  // de suivi (cf. A2UI_GUIDANCE côté serveur), envoyée comme un message du visiteur.
+  const handleA2uiAction = action => {
+    if (chatEndpointIsLoading || !action?.name) return;
+    sdkSendMessage({ text: action.name });
+  };
+
   const handleClearChat = () => {
     setMessages([welcomeMessage]);
     setInput('');
@@ -336,7 +343,14 @@ export default function ChatClient({ locale }) {
           </Stack>
         ) : (
           // 3. Render exact SDP Box
-          <ChatBox messages={messages} user={user} responseLoading={chatEndpointIsLoading} viewportRef={viewportRef} locale={locale} />
+          <ChatBox
+            messages={messages}
+            user={user}
+            responseLoading={chatEndpointIsLoading}
+            viewportRef={viewportRef}
+            locale={locale}
+            onA2uiAction={handleA2uiAction}
+          />
         )}
       </div>
 

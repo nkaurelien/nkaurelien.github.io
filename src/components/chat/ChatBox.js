@@ -1,9 +1,17 @@
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { ScrollArea, Stack, Paper, Group, Avatar, Text, Tooltip, ActionIcon } from '@mantine/core';
 import { IconUser, IconRobot, IconThumbUp, IconThumbDown, IconCopy, IconCheck } from '@tabler/icons-react';
 import { useClipboard } from '@mantine/hooks';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+
+// UI générative A2UI (preview) : client uniquement (web components / window).
+const A2uiMessage = dynamic(() => import('./A2uiMessage'), { ssr: false });
+
+// Enveloppes A2UI streamées par /api/chat dans des parts `data-a2ui`.
+const getA2uiEnvelopes = message =>
+  Array.isArray(message?.parts) ? message.parts.filter(part => part?.type === 'data-a2ui').flatMap(part => part.data?.envelopes || []) : [];
 
 // Helper to safely extract text content from both content (assistant) and parts (user) properties
 const getMessageText = message => {
@@ -36,7 +44,7 @@ const getMessageText = message => {
   return '';
 };
 
-export default function ChatBox({ messages = [], user, responseLoading, viewportRef, locale = 'fr' }) {
+export default function ChatBox({ messages = [], user, responseLoading, viewportRef, locale = 'fr', onA2uiAction }) {
   const clipboard = useClipboard({ timeout: 2000 });
   const [copiedId, setCopiedId] = useState(null);
   const [ratings, setRatings] = useState({});
@@ -75,6 +83,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
         {messages.map(message => {
           const isUser = message.role === 'user';
           const messageText = getMessageText(message);
+          const a2uiEnvelopes = isUser ? [] : getA2uiEnvelopes(message);
           const isCopied = copiedId === message.id;
           return (
             <Stack key={message.id} gap={6} style={{ width: '100%' }}>
@@ -108,6 +117,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                     ) : (
                       <div className="chat-prose" style={{ fontSize: '14px', lineHeight: 1.6 }}>
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>{messageText}</ReactMarkdown>
+                        {a2uiEnvelopes.length > 0 && <A2uiMessage envelopes={a2uiEnvelopes} onAction={onA2uiAction} />}
                       </div>
                     )}
                   </Stack>
