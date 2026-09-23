@@ -4,6 +4,14 @@ import matter from 'gray-matter';
 
 const ARTICLES_DIR = path.resolve(process.cwd(), 'datasources/articles');
 
+// gray-matter parse les dates YAML en objets Date : String(date) donnerait
+// "Wed Sep 16 2026 02:00:00 GMT…", d'où le passage par toISOString().
+function formatDate(value: unknown): string | undefined {
+  if (!value) return undefined;
+  const iso = value instanceof Date ? value.toISOString() : String(value);
+  return iso.split('T')[0];
+}
+
 export interface ArticleMetadata {
   file: string;
   slug: string;
@@ -45,7 +53,7 @@ export function listArticles(tag?: string, limit?: number): ArticleMetadata[] {
         file,
         slug: file.replace(/\.md$/, ''),
         title: data.title || file.replace(/\.md$/, ''),
-        date: data.date ? String(data.date).split('T')[0] : undefined,
+        date: formatDate(data.date),
         tags: parsedTags,
         categories: parsedCategories,
         excerpt: data.excerpt,
@@ -97,7 +105,7 @@ export function readArticle(slugOrFile: string): { metadata: ArticleMetadata; co
       file: matchedFile,
       slug: matchedFile.replace(/\.md$/, ''),
       title: data.title || matchedFile,
-      date: data.date ? String(data.date).split('T')[0] : undefined,
+      date: formatDate(data.date),
       tags: Array.isArray(data.tags) ? data.tags : [],
       categories: Array.isArray(data.categories) ? data.categories : [],
       excerpt: data.excerpt,
@@ -138,7 +146,7 @@ export function searchArticles(query: string): Array<ArticleMetadata & { snippet
         file,
         slug: file.replace(/\.md$/, ''),
         title: data.title || file,
-        date: data.date ? String(data.date).split('T')[0] : undefined,
+        date: formatDate(data.date),
         tags: Array.isArray(data.tags) ? data.tags : [],
         categories: Array.isArray(data.categories) ? data.categories : [],
         excerpt: data.excerpt,
