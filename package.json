@@ -23,6 +23,8 @@
     "genkit:dev": "genkit start --non-interactive -- yarn dev",
     "genkit:flows": "genkit start --non-interactive -- tsx --watch src/genkit/dev.mjs",
     "mcp:start": "tsx scripts/mcp/index.ts",
+    "test:smoke": "node scripts/smoke-test.mjs",
+    "test:ui": "sh scripts/ui-check.sh",
     "link-skills": "mkdir -p .claude/skills && for d in .agents/skills/*/; do n=$(basename \"$d\"); rm -rf \".claude/skills/$n\" && ln -s \"../../.agents/skills/$n\" \".claude/skills/$n\"; done"
   },
   "dependencies": {
@@ -69,6 +71,7 @@
     "@prisma/client": "^7.8.0",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
+    "axe-core": "^4.13.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.5.4",
     "genkit-cli": "^1.42.0",
