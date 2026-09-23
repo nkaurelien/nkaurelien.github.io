@@ -75,9 +75,14 @@ export function readArticle(slugOrFile: string): { metadata: ArticleMetadata; co
     throw new Error(`Le dossier des articles n'existe pas : ${ARTICLES_DIR}`);
   }
 
-  const cleanSlug = slugOrFile.replace(/\.md$/, '');
-  const files = fs.readdirSync(ARTICLES_DIR);
-  const matchedFile = files.find((f) => f === `${cleanSlug}.md` || f.includes(cleanSlug));
+  const cleanSlug = slugOrFile.trim().replace(/\.md$/, '');
+  if (!cleanSlug) {
+    throw new Error('Slug d\'article vide');
+  }
+
+  const files = fs.readdirSync(ARTICLES_DIR).filter((f) => f.endsWith('.md') && f !== 'README.md');
+  const matchedFile =
+    files.find((f) => f === `${cleanSlug}.md`) ?? files.find((f) => f.includes(cleanSlug));
 
   if (!matchedFile) {
     throw new Error(`Article introuvable pour "${slugOrFile}"`);
