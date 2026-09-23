@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { Container, SimpleGrid, Stack, Text } from '@mantine/core';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 

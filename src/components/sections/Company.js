@@ -5,7 +5,7 @@ import { Container, Title, Text, Button, Group, Box, Badge, SimpleGrid, Paper, S
 import { IconCircleCheck, IconExternalLink, IconBriefcase, IconPlayerPause } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
 import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import Link from 'next/link';
 
 function localizedHref(locale, link) {

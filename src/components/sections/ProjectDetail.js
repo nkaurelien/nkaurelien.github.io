@@ -15,7 +15,7 @@ import {
   IconBrandYoutube,
 } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 
 const LINK_ICONS = {

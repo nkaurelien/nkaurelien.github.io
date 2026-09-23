@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { Container, Title, Text, SimpleGrid, Card, Stack, Group, ThemeIcon } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 

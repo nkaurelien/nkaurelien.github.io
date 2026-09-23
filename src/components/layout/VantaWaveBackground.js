@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { useComputedColorScheme } from '@mantine/core';
 import loadScript from '@/lib/loadScript';
+import { prefersReducedMotion } from '@/lib/motion';
 
 /**
  * Helper to normalize hex string or number to integer for Vanta.js
@@ -61,6 +62,9 @@ export default function VantaWaveBackground({
     let isMounted = true;
 
     const initVanta = async () => {
+      // Mouvement réduit : pas de fond animé en continu (ni chargement de Three.js) ;
+      // le conteneur garde son fond statique.
+      if (prefersReducedMotion()) return;
       try {
         // 1. Ensure Three.js (r134) is loaded
         if (typeof window !== 'undefined' && !window.THREE) {

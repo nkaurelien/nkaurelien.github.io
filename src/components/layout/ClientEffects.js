@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { prefersReducedMotion } from '@/lib/motion';
 
 export default function ClientEffects() {
   useEffect(() => {
@@ -50,7 +51,8 @@ export default function ClientEffects() {
       });
 
     const handleGlobalClick = e => {
-      if (!burst || !bubble) return;
+      // Effet décoratif au clic : désactivé si l'utilisateur réduit les animations.
+      if (!burst || !bubble || prefersReducedMotion()) return;
 
       // Find closest interactive element
       const target = e.target.closest('button, a, .mantine-Button-root, .mantine-ActionIcon-root, .mantine-Chip-label, .nav-link');

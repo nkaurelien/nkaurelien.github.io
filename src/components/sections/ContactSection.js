@@ -33,7 +33,7 @@ import {
 } from '@tabler/icons-react';
 import { features } from '@/config/features';
 import { useAuth } from '@/context/AuthContext';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 
 // Clef de site hCaptcha. Par defaut : clef de TEST publique hCaptcha

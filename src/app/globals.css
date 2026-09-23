@@ -397,3 +397,17 @@ header button:hover .tabler-icon {
   --mantine-color-orange-light-color: color-mix(in srgb, var(--mantine-color-orange-9) 80%, black);
   --mantine-color-brand-light-color: var(--mantine-color-brand-9);
 }
+
+/* Mouvement réduit (WCAG 2.3.3) : animations et transitions CSS quasi instantanées,
+   boucles infinies arrêtées (points de saisie du chat, icônes animées…).
+   Les animations JS (GSAP, anime.js, mo.js, fond Vanta) sont gérées dans le code. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

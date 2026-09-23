@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Container, Title, SimpleGrid, Card, Image, Text, Badge, Button, Group, Chip, Modal, Stack, ActionIcon, Avatar, Tooltip } from '@mantine/core';
 import { withBase } from '@/lib/asset';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { db } from '@/lib/firebase';
 import { collection, getDocs } from 'firebase/firestore';

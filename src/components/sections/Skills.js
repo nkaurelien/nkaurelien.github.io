@@ -2,10 +2,11 @@
 
 import { useRef } from 'react';
 import { Container, Title, Text, SimpleGrid, Card, Badge, Group } from '@mantine/core';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { animate, stagger } from 'animejs';
+import { prefersReducedMotion } from '@/lib/motion';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -38,7 +39,8 @@ export default function Skills({ skills }) {
           onEnter: () => {
             // Subtle Anime.js entrance stagger
             const badges = containerRef.current?.querySelectorAll('.anime-skill-badge');
-            if (badges && badges.length > 0) {
+            // Mouvement réduit : pas d'animation, les badges restent simplement visibles.
+            if (badges && badges.length > 0 && !prefersReducedMotion()) {
               animate(badges, {
                 translateY: [6, 0],
                 opacity: [0, 1],

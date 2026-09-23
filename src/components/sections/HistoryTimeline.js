@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { Container, Title, Timeline, Text, Anchor, Badge, Group, Stack, Grid, Paper, Box, Button, ActionIcon } from '@mantine/core';
 import { IconSchool, IconBriefcase, IconDownload, IconCertificate, IconArrowUpRight, IconSparkles } from '@tabler/icons-react';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
