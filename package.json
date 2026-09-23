@@ -22,7 +22,8 @@
     "report": "node scripts/umami-ntfy-report.js",
     "genkit:dev": "genkit start --non-interactive -- yarn dev",
     "genkit:flows": "genkit start --non-interactive -- tsx --watch src/genkit/dev.mjs",
-    "mcp:start": "tsx scripts/mcp/index.ts"
+    "mcp:start": "tsx scripts/mcp/index.ts",
+    "install-skills": "mkdir -p .claude/skills && for d in .agents/skills/*/; do n=$(basename \"$d\"); rm -rf \".claude/skills/$n\" && ln -s \"../../.agents/skills/$n\" \".claude/skills/$n\"; done"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.9",
