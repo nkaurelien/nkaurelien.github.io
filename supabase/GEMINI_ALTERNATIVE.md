@@ -77,7 +77,7 @@ GEMINI_API_KEY="VOTRE_CLE_API_GEMINI_ICI"
 ```
 
 ### Étape 4 : Mettre à jour le script d'importation
-Modifiez le fichier **[import-projects-supabase.js](file:///Volumes/X9%20Pro/Workspaces/nkaurelien/nkaurelien.github.io/scripts/import-projects-supabase.js)** pour importer le SDK et remplacer la fonction `generateEmbedding` :
+Modifiez le fichier **[import-projects.js](file:///Volumes/X9%20Pro/Workspaces/nkaurelien/nkaurelien.github.io/scripts/import-projects.js)** pour importer le SDK et remplacer la fonction `generateEmbedding` :
 
 ```javascript
 // A. Remplacer l'import Xenova par le SDK Google au début du fichier :

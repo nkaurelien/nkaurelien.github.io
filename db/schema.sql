@@ -1,3 +1,6 @@
+-- Schéma Postgres + pgvector du RAG (Neon en production, Docker en local).
+-- Idempotent : make db-schema, ou monté dans /docker-entrypoint-initdb.d.
+
 -- Enable the pgvector extension to work with embedding vectors
 create extension if not exists vector;
 
@@ -47,26 +50,8 @@ create table if not exists public.content_tags (
   primary key (content_entry_id, tag_id)
 );
 
--- Enable Row Level Security (RLS) as per Supabase security practices
-alter table public.content_sections enable row level security;
-alter table public.content_entries enable row level security;
-alter table public.vector_embeddings enable row level security;
-alter table public.tags enable row level security;
-alter table public.content_tags enable row level security;
-
--- Create standard RLS policies for public reading
-create policy "Allow public read access to sections" on public.content_sections for select to anon, authenticated using (true);
-create policy "Allow public read access to entries" on public.content_entries for select to anon, authenticated using (true);
-create policy "Allow public read access to embeddings" on public.vector_embeddings for select to anon, authenticated using (true);
-create policy "Allow public read access to tags" on public.tags for select to anon, authenticated using (true);
-create policy "Allow public read access to content tags" on public.content_tags for select to anon, authenticated using (true);
-
--- Create policies for full admin control (via service role / authenticated write operations if authenticated)
-create policy "Allow all actions for authenticated admins on sections" on public.content_sections to authenticated using (true) with check (true);
-create policy "Allow all actions for authenticated admins on entries" on public.content_entries to authenticated using (true) with check (true);
-create policy "Allow all actions for authenticated admins on embeddings" on public.vector_embeddings to authenticated using (true) with check (true);
-create policy "Allow all actions for authenticated admins on tags" on public.tags to authenticated using (true) with check (true);
-create policy "Allow all actions for authenticated admins on content tags" on public.content_tags to authenticated using (true) with check (true);
+-- Pas de RLS : l'accès se fait en SQL direct (pg / Prisma) avec le rôle
+-- propriétaire, sans API REST publique (ancien schéma Supabase : anon/authenticated).
 
 -- Create cosine similarity search function for semantic search queries
 create or replace function match_embeddings(

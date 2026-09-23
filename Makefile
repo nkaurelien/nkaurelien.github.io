@@ -1,4 +1,4 @@
-.PHONY: dev build format pdf db-schema db-seed db-reseed db-query db-studio db-pull db-generate
+.PHONY: dev build format pdf db-schema db-seed db-reseed db-query db-studio db-pull db-generate db-up db-down
 
 # Start the local development server
 dev:
@@ -16,19 +16,19 @@ format:
 pdf:
 	node scripts/build-pdf.js
 
-# Apply SQL schema migrations to the Supabase database
+# Apply the Postgres + pgvector schema (Neon / local Docker)
 db-schema:
-	npx prisma db execute --file ./supabase/create_embeddings_schema.sql
+	npx prisma db execute --file ./db/schema.sql
 
-# Seed the Supabase database with projects and generate vector embeddings
+# Seed the database with projects and generate vector embeddings
 db-seed:
-	node scripts/import-projects-supabase.js
+	node scripts/import-projects.js
 
 # Force re-embedding of ALL projects/docs (recalcule même les entrées existantes)
 db-reseed:
-	REEMBED=1 node scripts/import-projects-supabase.js
+	REEMBED=1 node scripts/import-projects.js
 
-# Send an SQL query to Supabase via Prisma (usage: make db-query Q="SELECT count(*) FROM vector_embeddings")
+# Send an SQL query to Postgres via Prisma (usage: make db-query Q="SELECT count(*) FROM vector_embeddings")
 db-query:
 	node scripts/db-query.js "$(Q)"
 
@@ -51,3 +51,11 @@ docker-build:
 # Run the containerized app via docker-compose
 docker-up:
 	docker compose up --build -d
+
+# Start the local Postgres + pgvector database (schema applied on first start)
+db-up:
+	docker compose up -d db
+
+# Stop the local Postgres + pgvector database (data kept in the pgdata volume)
+db-down:
+	docker compose stop db

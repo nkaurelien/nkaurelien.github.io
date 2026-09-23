@@ -44,19 +44,19 @@ format:
 lint:
     yarn lint
 
-# Applique le schéma SQL sur Supabase via Prisma
+# Applique le schéma Postgres + pgvector (Neon / Docker local) via Prisma
 db-schema:
-    npx prisma db execute --file ./supabase/create_embeddings_schema.sql
+    npx prisma db execute --file ./db/schema.sql
 
-# Ingest les projets et génère les embeddings vectoriels dans Supabase
+# Ingest les projets et génère les embeddings vectoriels (pgvector)
 db-seed:
-    node scripts/import-projects-supabase.js
+    node scripts/import-projects.js
 
 # Force le re-calcul de TOUS les embeddings vectoriels
 db-reseed:
-    REEMBED=1 node scripts/import-projects-supabase.js
+    REEMBED=1 node scripts/import-projects.js
 
-# Exécute une requête SQL sur Supabase (ex: just db-query "SELECT count(*) FROM vector_embeddings")
+# Exécute une requête SQL sur Postgres (ex: just db-query "SELECT count(*) FROM vector_embeddings")
 db-query query:
     node scripts/db-query.js "{{query}}"
 

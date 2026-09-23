@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
   return {
     title: isFr ? 'Discuter avec Aurélien — Assistant IA' : 'Chat with Aurélien — AI Assistant',
     description: isFr
-      ? 'Posez vos questions à mon jumeau numérique alimenté par IA et RAG (Supabase).'
+      ? 'Posez vos questions à mon jumeau numérique alimenté par IA et RAG (pgvector).'
       : 'Ask questions to my AI & RAG powered digital twin.',
   };
 }

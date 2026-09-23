@@ -3,7 +3,7 @@ import path from 'path';
 import util from 'util';
 
 const execPromise = util.promisify(exec);
-const SCRIPT_PATH = path.resolve(process.cwd(), 'scripts/import-projects-supabase.js');
+const SCRIPT_PATH = path.resolve(process.cwd(), 'scripts/import-projects.js');
 
 export async function syncEmbeddings(options?: { projectId?: string }): Promise<{ success: boolean; output: string }> {
   try {

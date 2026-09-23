@@ -58,7 +58,7 @@ async function run() {
     chunkOverlap: 120,
   });
 
-  console.log('Connecting to Supabase PostgreSQL database...');
+  console.log('Connecting to PostgreSQL (pgvector) database...');
   await dbClient.connect();
   console.log('Connected successfully!');
 
@@ -346,7 +346,7 @@ ${proj.markdowns.en || ''}`;
       console.log('All embeddings inserted successfully!');
     }
 
-    console.log('\nAll projects, documents, and embeddings have been successfully seeded to Supabase!');
+    console.log('\nAll projects, documents, and embeddings have been successfully seeded to PostgreSQL!');
 
   } catch (error) {
     console.error('Seeding process encountered an error:', error);

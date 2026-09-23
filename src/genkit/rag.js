@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { Pool } from 'pg';
 import { HuggingFaceTransformersEmbeddings } from '@langchain/community/embeddings/huggingface_transformers';
 import { env as transformersEnv } from '@huggingface/transformers';
 
@@ -7,30 +7,34 @@ import { env as transformersEnv } from '@huggingface/transformers';
 transformersEnv.allowLocalModels = false;
 transformersEnv.cacheDir = '/tmp/hf-transformers-cache';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+// Postgres + pgvector (Neon) via l'URL poolée. Une seule connexion par instance
+// serverless : le pooler Neon (PgBouncer) mutualise côté serveur.
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 1, idleTimeoutMillis: 10_000 });
 
 // Embeddings locaux (dimension 384, cohérent avec le schéma vector(384)).
 const embeddings = new HuggingFaceTransformersEmbeddings({ model: 'Xenova/all-MiniLM-L6-v2' });
 
-// Récupère le contexte RAG : embedding de la requête -> similarité pgvector sur Supabase.
+// Récupère le contexte RAG : embedding de la requête -> similarité pgvector (match_embeddings).
 export async function retrieveContext(query, { matchCount = 8, matchThreshold = 0.15 } = {}) {
   if (!query || !query.trim()) return '';
 
   const queryVector = await embeddings.embedQuery(query);
 
-  const { data: documents, error } = await supabase.rpc('match_embeddings', {
-    query_embedding: `[${queryVector.join(',')}]`,
-    match_threshold: matchThreshold,
-    match_count: matchCount,
-  });
-
-  if (error) {
-    console.error('[rag] Supabase RPC error:', error);
+  let documents;
+  try {
+    const { rows } = await pool.query(
+      `SELECT m.text_chunk, e.slug
+         FROM match_embeddings($1::vector, $2, $3) m
+         LEFT JOIN content_entries e ON e.id = m.content_entry_id
+        ORDER BY m.similarity DESC`,
+      [`[${queryVector.join(',')}]`, matchThreshold, matchCount]
+    );
+    documents = rows;
+  } catch (err) {
+    console.error('[rag] Postgres error:', err.message);
     return '';
   }
-  if (!documents || documents.length === 0) return '';
+  if (documents.length === 0) return '';
 
   return documents.map(doc => `- Context (from ${doc.slug || 'profile'}): ${doc.text_chunk}`).join('\n\n');
 }

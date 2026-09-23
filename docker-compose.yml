@@ -15,3 +15,27 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
+
+  # Postgres + pgvector local (même version majeure que Neon : 18).
+  # Le schéma du RAG est appliqué au 1er démarrage ; puis `make db-seed`.
+  db:
+    image: pgvector/pgvector:pg18
+    container_name: nkaurelien-db
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio
+      POSTGRES_DB: portfolio
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio -d portfolio"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
