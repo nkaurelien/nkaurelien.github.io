@@ -23,6 +23,7 @@ import {
 } from '@mantine/core';
 import {
   IconArrowUpRight,
+  IconPin,
   IconNews,
   IconArrowRight,
   IconSearch,
@@ -76,6 +77,9 @@ function formatDate(date, locale) {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
+      // Fuseau fixe : sans lui, le serveur (Vercel, UTC) et le navigateur (ex. Paris)
+      // peuvent afficher deux jours différents -> erreur d'hydratation React #418.
+      timeZone: 'UTC',
     }).format(new Date(date));
   } catch {
     return '';
@@ -159,8 +163,8 @@ function UpcomingArticleCard({ article, locale }) {
       <Stack gap="xs">
         <Group justify="space-between" align="center">
           <Group gap="xs">
-            <Badge variant="filled" color="indigo" size="xs" radius="sm">
-              💡 {article.category}
+            <Badge variant="filled" color="indigo" size="xs" radius="sm" leftSection={<IconBulb size={10} aria-hidden="true" />}>
+              {article.category}
             </Badge>
             <Badge variant="dot" color={article.status === 'En rédaction' ? 'green' : 'orange'} size="xs">
               {article.status}
@@ -181,7 +185,8 @@ function UpcomingArticleCard({ article, locale }) {
 
         <Group justify="space-between" align="center" mt={4}>
           <Text size="xs" fw={600} c="dimmed">
-            📌 Projet lié : <span style={{ color: 'var(--mantine-color-text)' }}>{article.project}</span>
+            <IconPin size={12} aria-hidden="true" style={{ verticalAlign: '-2px' }} /> Projet lié :{' '}
+            <span style={{ color: 'var(--mantine-color-text)' }}>{article.project}</span>
           </Text>
           <Group gap={4}>
             {article.tags.slice(0, 3).map(tag => (
@@ -240,8 +245,8 @@ function FeaturedArticleCard({ article, t }) {
         <Grid.Col span={{ base: 12, sm: article.thumbnail ? 7 : 12 }}>
           <Stack gap="xs">
             <Group justify="space-between" align="center">
-              <Badge variant="filled" color="blue" size="xs" radius="sm">
-                📌 {t.__locale === 'en' ? 'FEATURED' : 'À LA UNE'}
+              <Badge variant="filled" color="blue" size="xs" radius="sm" leftSection={<IconPin size={10} aria-hidden="true" />}>
+                {t.__locale === 'en' ? 'FEATURED' : 'À LA UNE'}
               </Badge>
               <Text size="xs" c="dimmed" fw={600}>
                 {formatDate(article.date, t.__locale)}
@@ -674,7 +679,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
                   </ThemeIcon>
                   <Box>
                     <Title order={4} size="h5">
-                      💡 Prochains Articles & Roadmap de Rédaction Medium
+                      Prochains Articles & Roadmap de Rédaction Medium
                     </Title>
                     <Text size="xs" c="dimmed">
                       Idées de sujets techniques et retours d&apos;expérience en cours de rédaction basés sur mes projets réels.

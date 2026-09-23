@@ -26,6 +26,9 @@ function formatDate(date, locale) {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
+      // Fuseau fixe : sans lui, le serveur (Vercel, UTC) et le navigateur (ex. Paris)
+      // peuvent afficher deux jours différents -> erreur d'hydratation React #418.
+      timeZone: 'UTC',
     }).format(new Date(date));
   } catch {
     return '';

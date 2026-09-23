@@ -4,8 +4,9 @@ import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container, Title, Text, Button, Group, Box, Badge, Stack } from '@mantine/core';
+import { IconRocket } from '@tabler/icons-react';
 import CodeBanner from './CodeBanner';
-import gsap from 'gsap';
+import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import VantaWaveBackground from '../layout/VantaWaveBackground';
 
@@ -345,7 +346,7 @@ export default function Hero({ locale, hero }) {
                   transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}>
                 <Text size="xs" fw={700} c="cyan.4" style={{ display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
-                  <span>🚀</span> Fullstack & AI Engineer
+                  <IconRocket size={14} aria-hidden="true" /> Fullstack & AI Engineer
                 </Text>
               </Box>
 
