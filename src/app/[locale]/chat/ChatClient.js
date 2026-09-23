@@ -30,6 +30,8 @@ const TRANSLATIONS = {
     title: 'Assistant IA — Jamila',
     description: 'Posez vos questions sur mon parcours, mes compétences et mes projets. Je réponds à partir de ma base de connaissances (RAG).',
     placeholder: 'Posez votre question en langage naturel...',
+    inputLabel: 'Votre question pour Jamila',
+    suggestionsLabel: 'Questions suggérées',
     send: 'Envoyer',
     clear: 'Nouvelle conversation',
     statusOnline: 'Disponible',
@@ -59,6 +61,8 @@ const TRANSLATIONS = {
     title: 'AI Assistant — Jamila',
     description: 'Ask questions about my journey, skills, and projects. I answer using a semantic knowledge base (RAG).',
     placeholder: 'Ask your question in natural language...',
+    inputLabel: 'Your question for Jamila',
+    suggestionsLabel: 'Suggested questions',
     send: 'Send',
     clear: 'New conversation',
     statusOnline: 'Online',
@@ -199,10 +203,18 @@ export default function ChatClient({ locale }) {
 
   return (
     <Container size="md" py="xl" style={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 100px)', position: 'relative' }}>
+      {/* Titre de page (h1) toujours présent ; visible sur l'écran d'accueil, lu par les
+          lecteurs d'écran pendant la conversation. */}
+      {hasExchanges && (
+        <h1 className="visually-hidden" data-testid="chat-title">
+          {t.title}
+        </h1>
+      )}
+
       {/* Top Header Row */}
       <Group justify="space-between" mb="xl" align="center">
         <Group gap="xs">
-          <IconMessage2Code size={24} style={{ color: 'var(--mantine-color-blue-filled)' }} />
+          <IconMessage2Code size={24} aria-hidden="true" style={{ color: 'var(--mantine-color-blue-filled)' }} />
           <Text fw={700} size="sm" c="dimmed">
             {t.title}
           </Text>
@@ -219,13 +231,22 @@ export default function ChatClient({ locale }) {
             color="teal"
             size="xs"
             radius="xl"
-            leftSection={<IconDownload size={14} />}>
+            leftSection={<IconDownload size={14} aria-hidden="true" />}
+            data-testid="chat-cv-download">
             {locale === 'en' ? 'CV PDF' : 'CV PDF'}
           </Button>
           {hasExchanges && (
             <Tooltip label={t.clear}>
-              <ActionIcon variant="subtle" color="gray" onClick={handleClearChat} size="md" radius="md" disabled={chatEndpointIsLoading}>
-                <IconTrash size={16} />
+              <ActionIcon
+                aria-label={t.clear}
+                data-testid="chat-clear"
+                variant="subtle"
+                color="gray"
+                onClick={handleClearChat}
+                size="md"
+                radius="md"
+                disabled={chatEndpointIsLoading}>
+                <IconTrash size={16} aria-hidden="true" />
               </ActionIcon>
             </Tooltip>
           )}
@@ -249,9 +270,9 @@ export default function ChatClient({ locale }) {
                   justifyContent: 'center',
                   marginBottom: '10px',
                 }}>
-                <IconRobot size={36} style={{ color: 'var(--mantine-color-blue-filled)' }} />
+                <IconRobot size={36} aria-hidden="true" style={{ color: 'var(--mantine-color-blue-filled)' }} />
               </div>
-              <Title order={2} ta="center">
+              <Title order={1} ta="center" data-testid="chat-title">
                 {t.title}
               </Title>
               <Text size="sm" c="dimmed" ta="center" style={{ maxWidth: '520px', lineHeight: 1.5 }}>
@@ -298,34 +319,49 @@ export default function ChatClient({ locale }) {
 
             {/* Suggestions Grid (2x2) */}
             <Stack style={{ width: '100%', maxWidth: '640px' }} gap="md">
-              <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+              {/* Liste sémantique (role="list" : Safari retire la sémantique d'un ul en grille). */}
+              <SimpleGrid
+                component="ul"
+                role="list"
+                aria-label={t.suggestionsLabel}
+                className="list-reset"
+                data-testid="chat-suggestions"
+                cols={{ base: 1, sm: 2 }}
+                spacing="md">
                 {t.suggestions.map((suggestion, index) => (
-                  <UnstyledButton
-                    key={index}
-                    onClick={() => handleSuggestionClick(suggestion)}
-                    style={{ height: '100%' }}
-                    disabled={chatEndpointIsLoading}>
-                    <Paper
-                      withBorder
-                      p="md"
-                      radius="md"
-                      style={{
-                        height: '100%',
-                        backgroundColor: 'var(--mantine-color-default)',
-                        transition: 'all 0.2s ease',
-                        cursor: chatEndpointIsLoading ? 'not-allowed' : 'pointer',
-                        opacity: chatEndpointIsLoading ? 0.5 : 1,
-                        pointerEvents: chatEndpointIsLoading ? 'none' : 'auto',
-                      }}
-                      className="suggestion-card">
-                      <Group gap="xs" align="flex-start" wrap="nowrap">
-                        <IconSparkles size={16} style={{ color: 'var(--mantine-color-blue-filled)', marginTop: '2px', flexShrink: 0 }} />
-                        <Text size="xs" fw={500} style={{ lineHeight: 1.4 }}>
-                          {suggestion}
-                        </Text>
-                      </Group>
-                    </Paper>
-                  </UnstyledButton>
+                  <li key={index}>
+                    <UnstyledButton
+                      type="button"
+                      data-testid="chat-suggestion"
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      style={{ height: '100%', width: '100%' }}
+                      disabled={chatEndpointIsLoading}>
+                      <Paper
+                        withBorder
+                        p="md"
+                        radius="md"
+                        style={{
+                          height: '100%',
+                          backgroundColor: 'var(--mantine-color-default)',
+                          transition: 'all 0.2s ease',
+                          cursor: chatEndpointIsLoading ? 'not-allowed' : 'pointer',
+                          opacity: chatEndpointIsLoading ? 0.5 : 1,
+                          pointerEvents: chatEndpointIsLoading ? 'none' : 'auto',
+                        }}
+                        className="suggestion-card">
+                        <Group gap="xs" align="flex-start" wrap="nowrap">
+                          <IconSparkles
+                            size={16}
+                            aria-hidden="true"
+                            style={{ color: 'var(--mantine-color-blue-filled)', marginTop: '2px', flexShrink: 0 }}
+                          />
+                          <Text size="xs" fw={500} style={{ lineHeight: 1.4 }}>
+                            {suggestion}
+                          </Text>
+                        </Group>
+                      </Paper>
+                    </UnstyledButton>
+                  </li>
                 ))}
               </SimpleGrid>
 
@@ -349,6 +385,8 @@ export default function ChatClient({ locale }) {
         handleInputChange={handleInputChange}
         isLoading={chatEndpointIsLoading}
         privacyNotice={t.privacy}
+        label={t.inputLabel}
+        sendLabel={t.send}
       />
 
       {/* Global CSS hover animations */}

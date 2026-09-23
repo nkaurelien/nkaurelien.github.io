@@ -183,8 +183,9 @@ export default function CvFloatingButton() {
                         }}
                         variant="subtle"
                         color="blue"
-                        size="xs">
-                        <IconArrowUpRight size={14} />
+                        size="xs"
+                        aria-label={`${isEnglish ? 'Open in a new tab' : 'Ouvrir dans un nouvel onglet'} : ${item.title}`}>
+                        <IconArrowUpRight size={14} aria-hidden="true" />
                       </ActionIcon>
                     </Tooltip>
                     <Tooltip label={isEnglish ? 'Direct PDF download' : 'Télécharger PDF direct'} withinPortal>
@@ -200,8 +201,9 @@ export default function CvFloatingButton() {
                         }}
                         variant="subtle"
                         color="teal"
-                        size="xs">
-                        <IconDownload size={14} />
+                        size="xs"
+                        aria-label={`${isEnglish ? 'Download PDF' : 'Télécharger le PDF'} : ${item.title}`}>
+                        <IconDownload size={14} aria-hidden="true" />
                       </ActionIcon>
                     </Tooltip>
                     <Badge size="xs" variant="light" color="gray" style={{ textTransform: 'none', flexShrink: 0 }}>

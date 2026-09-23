@@ -1,7 +1,17 @@
 import { Box, TextInput, ActionIcon, Text } from '@mantine/core';
 import { IconRobot, IconSend } from '@tabler/icons-react';
 
-export default function ChatInput({ placeholder, input, setInput, sendMessage, handleInputChange, isLoading, privacyNotice }) {
+export default function ChatInput({
+  placeholder,
+  input,
+  setInput,
+  sendMessage,
+  handleInputChange,
+  isLoading,
+  privacyNotice,
+  label = 'Votre question',
+  sendLabel = 'Envoyer',
+}) {
   return (
     <Box
       style={{
@@ -17,6 +27,8 @@ export default function ChatInput({ placeholder, input, setInput, sendMessage, h
       }}>
       <form
         id="chat-form"
+        data-testid="chat-form"
+        aria-busy={isLoading}
         onSubmit={e => {
           if (typeof window !== 'undefined' && input?.trim()) {
             window.umami?.track('chat_query_submit', { length: input.trim().length });
@@ -24,7 +36,20 @@ export default function ChatInput({ placeholder, input, setInput, sendMessage, h
           sendMessage(e);
         }}
         style={{ width: '100%' }}>
+        {/* Libellé réel du champ (le placeholder ne suffit pas), visible des seuls lecteurs d'écran. */}
+        <label htmlFor="chat-input" className="visually-hidden">
+          {label}
+        </label>
         <TextInput
+          id="chat-input"
+          name="message"
+          data-testid="chat-input"
+          autoComplete="off"
+          enterKeyHint="send"
+          // description : Mantine relie l'aide au champ (aria-describedby) ; masquée visuellement,
+          // le même texte étant affiché sous le formulaire (aria-hidden pour ne pas le lire 2 fois).
+          description={privacyNotice}
+          descriptionProps={{ className: 'visually-hidden' }}
           value={input}
           onChange={handleInputChange}
           placeholder={placeholder}
@@ -33,10 +58,19 @@ export default function ChatInput({ placeholder, input, setInput, sendMessage, h
           disabled={isLoading}
           leftSectionPointerEvents="none"
           rightSectionPointerEvents="auto"
-          leftSection={<IconRobot size={20} style={{ color: 'var(--mantine-color-blue-filled)', marginLeft: '12px' }} />}
+          leftSection={<IconRobot size={20} aria-hidden="true" style={{ color: 'var(--mantine-color-blue-filled)', marginLeft: '12px' }} />}
           rightSection={
-            <ActionIcon type="submit" color="blue" size="lg" radius="xl" variant="filled" disabled={isLoading} style={{ marginRight: '6px' }}>
-              <IconSend size={16} />
+            <ActionIcon
+              type="submit"
+              aria-label={sendLabel}
+              data-testid="chat-send"
+              color="blue"
+              size="lg"
+              radius="xl"
+              variant="filled"
+              disabled={isLoading}
+              style={{ marginRight: '6px' }}>
+              <IconSend size={16} aria-hidden="true" />
             </ActionIcon>
           }
           styles={{
@@ -48,16 +82,12 @@ export default function ChatInput({ placeholder, input, setInput, sendMessage, h
               paddingLeft: '48px',
               paddingRight: '48px',
               height: '54px',
-              '&:focus': {
-                borderColor: 'var(--mantine-color-blue-filled)',
-                boxShadow: '0 0 12px rgba(34, 139, 230, 0.25), 0 8px 32px rgba(0, 0, 0, 0.15)',
-              },
             },
           }}
         />
       </form>
       {privacyNotice && (
-        <Text size="10px" c="dimmed" ta="center" mt={6} style={{ lineHeight: 1.3, opacity: 0.85 }}>
+        <Text aria-hidden="true" data-testid="chat-privacy" size="10px" c="dimmed" ta="center" mt={6} style={{ lineHeight: 1.3, opacity: 0.85 }}>
           {privacyNotice}
         </Text>
       )}

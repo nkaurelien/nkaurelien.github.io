@@ -138,6 +138,14 @@ export default function Header({ locale, app }) {
     const active = !item.external && isActive(item.link);
     const linkHref = item.external ? item.link : localizedHref(locale, item.link);
     const classNames = `nav-link ${active ? 'nav-link-active' : ''}`.trim();
+    const testId = `nav-link-${
+      item.link
+        .replace(/^https?:\/\//, '')
+        .replace(/[^a-z0-9]+/gi, '-')
+        .replace(/^-|-$/g, '') || 'home'
+    }`;
+    // Page courante annoncée aux lecteurs d'écran (et non seulement par la couleur).
+    const current = active ? 'page' : undefined;
 
     // Met en avant l'Assistant IA (fonctionnalité phare) : bouton pill dégradé + icône.
     if (!item.external && item.link === '/chat') {
@@ -151,7 +159,9 @@ export default function Header({ locale, app }) {
           radius="xl"
           variant="gradient"
           gradient={{ from: 'blue', to: 'cyan', deg: 45 }}
-          leftSection={<IconSparkles size={14} />}
+          leftSection={<IconSparkles size={14} aria-hidden="true" />}
+          aria-current={current}
+          data-testid={testId}
           className="ai-nav-btn"
           style={{ fontWeight: 600, boxShadow: '0 2px 12px rgba(34, 139, 230, 0.35)' }}>
           {item.label}
@@ -168,6 +178,8 @@ export default function Header({ locale, app }) {
         rel={item.external ? 'noopener noreferrer' : undefined}
         className={classNames}
         onClick={onClick}
+        aria-current={current}
+        data-testid={testId}
         underline="never">
         {item.label}
       </Anchor>
@@ -241,7 +253,7 @@ export default function Header({ locale, app }) {
         <Group h="100%" justify="space-between" wrap="nowrap" align="center">
           {/* 1. Logo à Gauche */}
           <Box style={{ flex: '1 1 0', minWidth: 0 }}>
-            <Anchor component={Link} href={`/${locale}`} underline="never" style={{ display: 'inline-block' }}>
+            <Anchor component={Link} href={`/${locale}`} underline="never" style={{ display: 'inline-block' }} data-testid="nav-home">
               <Text fw={800} size="lg" c="brand.6" style={{ whiteSpace: 'nowrap' }}>
                 Astrid-Aurélien<span style={{ color: 'var(--mantine-color-dimmed)' }}>.NKUMBE</span>
               </Text>
@@ -249,7 +261,15 @@ export default function Header({ locale, app }) {
           </Box>
 
           {/* 2. Navigation Principale Centrée au milieu */}
-          <Group component="nav" gap="xs" visibleFrom="md" wrap="nowrap" justify="center" style={{ flex: '0 1 auto' }}>
+          <Group
+            component="nav"
+            aria-label={locale === 'en' ? 'Main' : 'Principale'}
+            data-testid="nav-main"
+            gap="xs"
+            visibleFrom="md"
+            wrap="nowrap"
+            justify="center"
+            style={{ flex: '0 1 auto' }}>
             {menuWithAdmin.flatMap(item => {
               if (item.label === 'Admin') {
                 return [renderAdminMenu()];
@@ -332,13 +352,22 @@ export default function Header({ locale, app }) {
           {/* Menu Burger sur mobile */}
           <Group gap="xs" hiddenFrom="md">
             <ColorSchemeToggle />
-            <Burger opened={opened} onClick={toggle} size="sm" />
+            {/* Nom stable (« Menu ») : l'état ouvert/fermé est porté par aria-expanded. */}
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              size="sm"
+              aria-label="Menu"
+              aria-expanded={opened}
+              aria-controls="mobile-menu"
+              data-testid="nav-burger"
+            />
           </Group>
         </Group>
       </Container>
 
-      <Drawer opened={opened} onClose={close} title="Menu" hiddenFrom="md" position="right" size="xs">
-        <Stack component="nav" gap="md" mt="md">
+      <Drawer opened={opened} onClose={close} title="Menu" hiddenFrom="md" position="right" size="xs" id="mobile-menu">
+        <Stack component="nav" aria-label={locale === 'en' ? 'Main' : 'Principale'} data-testid="nav-mobile" gap="md" mt="md">
           {menuWithAdmin.flatMap(item => {
             if (item.label === 'Admin') {
               return [

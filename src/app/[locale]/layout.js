@@ -33,8 +33,14 @@ export default async function LocaleLayout({ children, params }) {
     <NextIntlClientProvider locale={locale} messages={messages}>
       <MantineProvider theme={theme} defaultColorScheme="light">
         <AuthContextProvider>
+          {/* Lien d'évitement : premier élément focalisable, saute l'en-tête et la navigation. */}
+          <a href="#content" className="skip-link visually-hidden" data-testid="skip-link">
+            {locale === 'en' ? 'Skip to content' : 'Aller au contenu'}
+          </a>
           <Header locale={locale} app={app} />
-          <main>{children}</main>
+          <main id="content" tabIndex={-1} data-testid="main-content">
+            {children}
+          </main>
           <Footer app={app} />
           <ClientEffects />
           <CvFloatingButton />

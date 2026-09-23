@@ -240,8 +240,9 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
                     }
                   }}
                   size="md"
-                  radius="md">
-                  {clipboard.copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                  radius="md"
+                  aria-label="Copier le Markdown">
+                  {clipboard.copied ? <IconCheck size={16} aria-hidden="true" /> : <IconCopy size={16} aria-hidden="true" />}
                 </ActionIcon>
               </Tooltip>
 
@@ -256,8 +257,8 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
                 Télécharger PDF
               </Button>
 
-              <ActionIcon variant="subtle" color="gray" onClick={onClose} size="md" radius="md">
-                <IconX size={18} />
+              <ActionIcon variant="subtle" color="gray" onClick={onClose} size="md" radius="md" aria-label="Fermer">
+                <IconX size={18} aria-hidden="true" />
               </ActionIcon>
             </Group>
           </Group>

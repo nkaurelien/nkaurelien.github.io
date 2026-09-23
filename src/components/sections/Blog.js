@@ -46,6 +46,7 @@ const LABELS = {
     onMedium: 'Tout lire sur Medium',
     empty: 'Les articles ne sont pas disponibles pour le moment. Retrouvez-les directement sur Medium.',
     searchTitle: 'Rechercher',
+    clearSearch: 'Effacer la recherche',
     searchPlaceholder: 'Rechercher un article...',
     tagsTitle: 'Thématiques',
     noResults: 'Aucun article ne correspond à votre recherche.',
@@ -60,6 +61,7 @@ const LABELS = {
     onMedium: 'Read everything on Medium',
     empty: 'Articles are unavailable right now. Find them directly on Medium.',
     searchTitle: 'Search',
+    clearSearch: 'Clear search',
     searchPlaceholder: 'Search articles...',
     tagsTitle: 'Topics',
     noResults: 'No articles match your search.',
@@ -310,7 +312,8 @@ function CompactArticleRow({ article, t }) {
               {article.categories[0]}
             </Badge>
           )}
-          <ActionIcon size="sm" variant="subtle" color="blue">
+          {/* Décoratif : la carte entière est déjà le lien (pas de bouton imbriqué dans un lien). */}
+          <ActionIcon component="span" aria-hidden="true" size="sm" variant="subtle" color="blue">
             <IconArrowUpRight size={14} />
           </ActionIcon>
         </Group>
@@ -328,6 +331,9 @@ function ArticleListItem({ article, t }) {
   return (
     <Card
       {...linkProps}
+      data-testid="blog-card"
+      data-slug={article.link.replace(/\/$/, '').split('/').pop()}
+      data-source={article.source}
       withBorder
       padding="md"
       radius="lg"
@@ -487,7 +493,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
             {t.kicker}
           </Text>
         </Group>
-        <Title order={2} ta="center">
+        <Title order={1} ta="center" id="blog-title" data-testid="blog-title">
           {t.title}
         </Title>
         <Text c="dimmed" ta="center" size="sm" style={{ maxWidth: 560, lineHeight: 1.5 }}>
@@ -500,21 +506,32 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
         <Grid.Col span={{ base: 12, md: 4 }}>
           <Stack gap="lg" style={{ position: 'sticky', top: 90 }}>
             {/* Carte de Recherche */}
-            <Paper withBorder p="md" radius="lg">
+            <Paper withBorder p="md" radius="lg" role="search" data-testid="blog-search-region">
               <Group gap="xs" mb="xs">
-                <IconSearch size={16} color="var(--mantine-color-blue-6)" />
-                <Text fw={700} size="sm">
+                <IconSearch size={16} color="var(--mantine-color-blue-6)" aria-hidden="true" />
+                <Text component="label" htmlFor="blog-search" fw={700} size="sm">
                   {t.searchTitle}
                 </Text>
               </Group>
               <TextInput
+                id="blog-search"
+                type="search"
+                name="q"
+                data-testid="blog-search"
+                autoComplete="off"
+                enterKeyHint="search"
                 placeholder={t.searchPlaceholder}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.currentTarget.value)}
                 rightSection={
                   searchQuery ? (
-                    <ActionIcon variant="subtle" size="sm" onClick={() => setSearchQuery('')}>
-                      <IconX size={14} />
+                    <ActionIcon
+                      variant="subtle"
+                      size="sm"
+                      onClick={() => setSearchQuery('')}
+                      aria-label={t.clearSearch}
+                      data-testid="blog-search-clear">
+                      <IconX size={14} aria-hidden="true" />
                     </ActionIcon>
                   ) : null
                 }
@@ -527,17 +544,23 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
             {availableTags.length > 1 && (
               <Paper withBorder p="md" radius="lg">
                 <Group gap="xs" mb="xs">
-                  <IconTag size={16} color="var(--mantine-color-blue-6)" />
-                  <Text fw={700} size="sm">
+                  <IconTag size={16} color="var(--mantine-color-blue-6)" aria-hidden="true" />
+                  <Text fw={700} size="sm" id="blog-tags-title">
                     {t.tagsTitle}
                   </Text>
                 </Group>
                 <Divider mb="sm" />
-                <Group gap={6} wrap="wrap">
+                <Group gap={6} wrap="wrap" role="group" aria-labelledby="blog-tags-title" data-testid="blog-tags">
                   {availableTags.map(tagObj => {
                     const active = activeTag === tagObj.name;
                     return (
-                      <UnstyledButton key={tagObj.name} onClick={() => setActiveTag(tagObj.name)}>
+                      <UnstyledButton
+                        key={tagObj.name}
+                        type="button"
+                        aria-pressed={active}
+                        data-testid="blog-tag"
+                        data-tag={tagObj.name}
+                        onClick={() => setActiveTag(tagObj.name)}>
                         <Badge
                           size="sm"
                           variant={active ? 'filled' : 'light'}
@@ -587,7 +610,8 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
         {/* Colonne 2: Contenu Principal de Droite (70%): Liste des Articles */}
         <Grid.Col span={{ base: 12, md: 8 }}>
           <Group justify="space-between" align="center" mb="md">
-            <Text size="xs" fw={700} c="dimmed" tt="uppercase" style={{ letterSpacing: 0.5 }}>
+            {/* role="status" : le nombre de résultats est annoncé quand on filtre ou cherche. */}
+            <Text role="status" data-testid="blog-count" size="xs" fw={700} c="dimmed" tt="uppercase" style={{ letterSpacing: 0.5 }}>
               {t.articleCount(filteredArticles.length)}
             </Text>
             {activeTag !== 'Tous' && (
@@ -596,8 +620,15 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
                 color="blue"
                 size="sm"
                 rightSection={
-                  <ActionIcon size="xs" color="blue" radius="xl" variant="transparent" onClick={() => setActiveTag('Tous')}>
-                    <IconX size={10} color="white" />
+                  <ActionIcon
+                    size="xs"
+                    color="blue"
+                    radius="xl"
+                    variant="transparent"
+                    onClick={() => setActiveTag('Tous')}
+                    aria-label={`${t.__locale === 'en' ? 'Remove filter' : 'Retirer le filtre'} ${activeTag}`}
+                    data-testid="blog-tag-reset">
+                    <IconX size={10} color="white" aria-hidden="true" />
                   </ActionIcon>
                 }>
                 {activeTag}
@@ -624,9 +655,11 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
               )}
             </Paper>
           ) : (
-            <Stack gap="md">
+            <Stack component="ul" role="list" aria-labelledby="blog-title" className="list-reset" data-testid="blog-list" gap="md">
               {filteredArticles.map(article => (
-                <ArticleListItem key={article.link} article={article} t={t} />
+                <li key={article.link}>
+                  <ArticleListItem article={article} t={t} />
+                </li>
               ))}
             </Stack>
           )}

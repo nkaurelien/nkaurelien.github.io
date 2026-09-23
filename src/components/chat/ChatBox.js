@@ -62,7 +62,11 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
     copied: isEnglish ? 'Copied!' : 'Copié !',
     helpful: isEnglish ? 'Helpful' : 'Utile',
     notHelpful: isEnglish ? 'Not helpful' : 'Pas utile',
+    conversation: isEnglish ? 'Conversation with Jamila' : 'Conversation avec Jamila',
+    reply: isEnglish ? 'reply' : 'réponse',
   };
+
+  let replyCount = 0;
 
   return (
     <ScrollArea
@@ -71,13 +75,25 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
       viewportRef={viewportRef}
       type="auto"
       scrollbarSize={6}>
-      <Stack gap="md" py="md">
+      {/* Journal de conversation : role="log" annonce les nouveaux messages (poliment) ;
+          aria-busy pendant le streaming évite de lire la réponse morceau par morceau. */}
+      <Stack gap="md" py="md" id="chat-log" role="log" aria-label={labels.conversation} aria-busy={responseLoading} data-testid="chat-log">
         {messages.map(message => {
           const isUser = message.role === 'user';
+          // Numéro de réponse de Jamila : distingue les boutons d'action d'une réponse à l'autre.
+          replyCount += isUser ? 0 : 1;
+          const replyName = `${labels.reply} ${replyCount}`;
           const messageText = getMessageText(message);
           const isCopied = copiedId === message.id;
           return (
-            <Stack key={message.id} gap={6} style={{ width: '100%' }}>
+            <Stack
+              key={message.id}
+              component="article"
+              aria-labelledby={`msg-${message.id}-author`}
+              data-testid="chat-message"
+              data-role={message.role}
+              gap={6}
+              style={{ width: '100%' }}>
               <Paper
                 withBorder
                 p="md"
@@ -88,17 +104,17 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                 }}>
                 <Group align="flex-start" gap="sm" wrap="nowrap">
                   {isUser ? (
-                    <Avatar src={user?.photoURL} radius="xl" size="md" color="gray" variant="filled">
-                      {!user?.photoURL && <IconUser size={18} />}
+                    <Avatar src={user?.photoURL} alt="" aria-hidden="true" radius="xl" size="md" color="gray" variant="filled">
+                      {!user?.photoURL && <IconUser size={18} aria-hidden="true" />}
                     </Avatar>
                   ) : (
-                    <Avatar radius="xl" size="md" color="blue" variant="filled">
-                      <IconRobot size={18} />
+                    <Avatar radius="xl" size="md" color="blue" variant="filled" aria-hidden="true">
+                      <IconRobot size={18} aria-hidden="true" />
                     </Avatar>
                   )}
 
                   <Stack gap={4} style={{ flex: 1, minWidth: 0 }}>
-                    <Text fw={600} size="sm" style={{ lineHeight: 1.1 }}>
+                    <Text id={`msg-${message.id}-author`} fw={600} size="sm" style={{ lineHeight: 1.1 }}>
                       {isUser ? labels.userLabel : labels.aiLabel}
                     </Text>
                     {isUser ? (
@@ -119,6 +135,9 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                 <Group gap={4} px="md" style={{ color: 'var(--mantine-color-dimmed)' }}>
                   <Tooltip label={labels.helpful} withArrow>
                     <ActionIcon
+                      aria-label={`${labels.helpful} (${replyName})`}
+                      aria-pressed={ratings[message.id] === 'up'}
+                      data-testid="chat-feedback-up"
                       variant="subtle"
                       color={ratings[message.id] === 'up' ? 'blue' : 'gray'}
                       onClick={() => {
@@ -128,12 +147,15 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                         }
                       }}
                       size="sm">
-                      <IconThumbUp size={14} />
+                      <IconThumbUp size={14} aria-hidden="true" />
                     </ActionIcon>
                   </Tooltip>
 
                   <Tooltip label={labels.notHelpful} withArrow>
                     <ActionIcon
+                      aria-label={`${labels.notHelpful} (${replyName})`}
+                      aria-pressed={ratings[message.id] === 'down'}
+                      data-testid="chat-feedback-down"
                       variant="subtle"
                       color={ratings[message.id] === 'down' ? 'red' : 'gray'}
                       onClick={() => {
@@ -143,13 +165,19 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                         }
                       }}
                       size="sm">
-                      <IconThumbDown size={14} />
+                      <IconThumbDown size={14} aria-hidden="true" />
                     </ActionIcon>
                   </Tooltip>
 
                   <Tooltip label={isCopied ? labels.copied : labels.copy} withArrow>
-                    <ActionIcon variant="subtle" color={isCopied ? 'teal' : 'gray'} onClick={() => handleCopy(message.id, messageText)} size="sm">
-                      {isCopied ? <IconCheck size={14} /> : <IconCopy size={14} />}
+                    <ActionIcon
+                      aria-label={`${labels.copy} (${replyName})`}
+                      data-testid="chat-copy"
+                      variant="subtle"
+                      color={isCopied ? 'teal' : 'gray'}
+                      onClick={() => handleCopy(message.id, messageText)}
+                      size="sm">
+                      {isCopied ? <IconCheck size={14} aria-hidden="true" /> : <IconCopy size={14} aria-hidden="true" />}
                     </ActionIcon>
                   </Tooltip>
                 </Group>
@@ -161,6 +189,8 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
         {/* Loading Indicator */}
         {responseLoading && (
           <Paper
+            aria-hidden="true"
+            data-testid="chat-typing"
             withBorder
             p="md"
             radius="lg"
@@ -172,7 +202,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
             }}>
             <Group align="flex-start" gap="sm" wrap="nowrap">
               <Avatar radius="xl" size="md" color="blue" variant="filled">
-                <IconRobot size={18} />
+                <IconRobot size={18} aria-hidden="true" />
               </Avatar>
               <Stack gap={4} style={{ flex: 1 }}>
                 <Text fw={600} size="sm" style={{ lineHeight: 1.1 }}>

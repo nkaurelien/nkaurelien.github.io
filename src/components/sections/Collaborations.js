@@ -87,7 +87,7 @@ export default function Collaborations({ collaborators }) {
               shadow="sm">
               <Group wrap="nowrap" justify="space-between">
                 <Group wrap="nowrap">
-                  <Avatar src={item.image ? withBase(item.image) : undefined} name={item.name} color="brand" radius="xl" size="md" />
+                  <Avatar src={item.image ? withBase(item.image) : undefined} alt="" name={item.name} color="brand" radius="xl" size="md" />
                   <Stack gap={0}>
                     <Text fw={700} fz="sm" lineClamp={1}>
                       {item.name}

@@ -209,8 +209,8 @@ export default function SearchAside({ opened, onClose, locale = 'fr' }) {
           leftSection={<IconSearch size={16} />}
           rightSection={
             query ? (
-              <ActionIcon variant="subtle" size="sm" onClick={() => setQuery('')}>
-                <IconX size={14} />
+              <ActionIcon variant="subtle" size="sm" onClick={() => setQuery('')} aria-label="Effacer la recherche">
+                <IconX size={14} aria-hidden="true" />
               </ActionIcon>
             ) : (
               <Kbd size="xs">⌘K</Kbd>

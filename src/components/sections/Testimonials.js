@@ -100,7 +100,7 @@ export default function Testimonials({ testimonials }) {
                 }}>
                 <Group justify="space-between" wrap="nowrap" align="flex-start">
                   <Group wrap="nowrap">
-                    <Avatar src={item.image ? withBase(item.image) : undefined} name={item.name} color="brand" radius="xl" size="lg" />
+                    <Avatar src={item.image ? withBase(item.image) : undefined} alt="" name={item.name} color="brand" radius="xl" size="lg" />
                     <Stack gap={0}>
                       <Text fw={700} fz="sm" lineClamp={1}>
                         {item.name}
@@ -119,7 +119,7 @@ export default function Testimonials({ testimonials }) {
                       variant="subtle"
                       color="blue"
                       aria-label={`LinkedIn — ${item.name}`}>
-                      <IconBrandLinkedin size={20} />
+                      <IconBrandLinkedin size={20} aria-hidden="true" />
                     </ActionIcon>
                   )}
                 </Group>

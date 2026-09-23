@@ -40,16 +40,16 @@ export default async function LocalArticlePage({ params }) {
   if (!article) notFound();
 
   return (
-    <Container size="md" py="xl">
-      <Anchor component={Link} href={`/${locale}/blog`} size="sm">
-        ← Blog
+    <Container size="md" py="xl" component="article" aria-labelledby="article-title" data-testid="article" data-slug={slug}>
+      <Anchor component={Link} href={`/${locale}/blog`} size="sm" data-testid="article-back">
+        <span aria-hidden="true">← </span>Blog
       </Anchor>
 
-      <Title order={1} mt="md" mb="xs">
+      <Title order={1} mt="md" mb="xs" id="article-title" data-testid="article-title">
         {article.title}
       </Title>
       <Group gap="xs" mb="lg">
-        <Text size="sm" c="dimmed">
+        <Text component="time" dateTime={article.date} size="sm" c="dimmed" data-testid="article-date">
           {formatDate(article.date, locale)}
         </Text>
         {article.categories.map(c => (
@@ -58,14 +58,15 @@ export default async function LocalArticlePage({ params }) {
           </Badge>
         ))}
         {article.mediumUrl && (
-          <Anchor href={article.mediumUrl} target="_blank" rel="noopener noreferrer" size="sm">
-            Aussi sur Medium ↗
+          <Anchor href={article.mediumUrl} target="_blank" rel="noopener noreferrer" size="sm" data-testid="article-medium">
+            Aussi sur Medium <span aria-hidden="true">↗</span>
+            <span className="visually-hidden"> (nouvel onglet)</span>
           </Anchor>
         )}
       </Group>
       <Divider mb="xl" />
 
-      <Box className="markdown-article" style={{ lineHeight: 1.7 }}>
+      <Box className="markdown-article" data-testid="article-content" style={{ lineHeight: 1.7 }}>
         <MarkdownContent content={article.content} />
       </Box>
     </Container>

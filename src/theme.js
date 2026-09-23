@@ -4,6 +4,9 @@ import { createTheme } from '@mantine/core';
 
 export const theme = createTheme({
   primaryColor: 'indigo',
+  // Teinte 8 en thème clair (Mantine utilise 6 par défaut) : les variantes filled/light et
+  // les textes colorés (bleu, indigo, gris…) atteignent le contraste WCAG AA de 4.5:1.
+  primaryShade: { light: 8, dark: 8 },
   defaultRadius: 'md',
   fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
   headings: {
