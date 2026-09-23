@@ -1,0 +1,20 @@
+# Modèles exposés par le proxy LiteLLM (http://litellm:4000 dans le réseau compose).
+model_list:
+  # Même modèle que le RAG de Jamila (Xenova/all-MiniLM-L6-v2, 384 dimensions),
+  # servi par Ollama sur l'hôte : `ollama pull all-minilm`. Sans clé ni quota.
+  - model_name: all-minilm
+    litellm_params:
+      model: ollama/all-minilm
+      api_base: http://host.docker.internal:11434
+
+  # Alternative cloud (décommenter + GEMINI_API_KEY dans .env ; EMBEDDING_DIMENSIONS=768).
+  # - model_name: gemini-embedding
+  #   litellm_params:
+  #     model: gemini/gemini-embedding-001
+  #     api_key: os.environ/GEMINI_API_KEY
+  #     dimensions: 768
+
+litellm_settings:
+  # Le SDK OpenAI (utilisé par vector-api via le préfixe openai/) envoie
+  # encoding_format=base64, refusé par Ollama : on ignore les paramètres non supportés.
+  drop_params: true

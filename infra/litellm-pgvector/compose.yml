@@ -1,0 +1,61 @@
+# litellm-pgvector en local : API « Vector Stores » compatible OpenAI sur pgvector.
+#   https://github.com/BerriAI/litellm-pgvector
+#
+#   ollama (hôte, all-minilm 384d) <── litellm (proxy :4000) <── vector-api (:8000) ──> Neon (base litellm_vectors)
+#
+# Usage : cp .env.example .env  (remplir)  puis  docker compose up -d --build
+# Doc   : README.md (dans ce dossier)
+
+name: litellm-pgvector
+
+services:
+  # Proxy LiteLLM : expose le modèle d'embedding d'Ollama (hôte) en API OpenAI.
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    environment:
+      LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY:?LITELLM_MASTER_KEY manquant dans .env}
+    volumes:
+      - ./litellm-config.yaml:/app/config.yaml:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:4000:4000"
+    restart: unless-stopped
+
+  # API Vector Stores (FastAPI + Prisma Python), construite depuis le dépôt (commit figé).
+  vector-api:
+    build:
+      context: https://github.com/BerriAI/litellm-pgvector.git#b553f84a32f580b4303297df5567f25912b59d93
+    depends_on:
+      - litellm
+    environment:
+      DATABASE_URL: ${VECTOR_DATABASE_URL:?VECTOR_DATABASE_URL manquant dans .env}
+      SERVER_API_KEY: ${VECTOR_API_KEY:?VECTOR_API_KEY manquant dans .env}
+      # Le service appelle le proxy avec le SDK LiteLLM : préfixe « openai/ » obligatoire
+      # (proxy = API compatible OpenAI), sinon « LLM Provider NOT provided ».
+      EMBEDDING__MODEL: openai/${EMBEDDING_MODEL:-all-minilm}
+      EMBEDDING__BASE_URL: http://litellm:4000
+      EMBEDDING__API_KEY: ${LITELLM_MASTER_KEY}
+      EMBEDDING__DIMENSIONS: ${EMBEDDING_DIMENSIONS:-384}
+    # Le schéma Prisma fige vector(1536) : on l'aligne sur EMBEDDING__DIMENSIONS,
+    # on crée l'extension puis les tables (prisma db push, idempotent), et on démarre.
+    command:
+      - sh
+      - -c
+      - |
+        set -e
+        sed -i "s/vector([0-9]*)/vector($${EMBEDDING__DIMENSIONS})/" prisma/schema.prisma
+        psql "$${DATABASE_URL}" -v ON_ERROR_STOP=1 -qc 'CREATE EXTENSION IF NOT EXISTS vector'
+        prisma generate > /dev/null
+        prisma db push --skip-generate --accept-data-loss
+        exec uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
+    restart: unless-stopped
