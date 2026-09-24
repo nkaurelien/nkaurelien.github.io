@@ -8,7 +8,7 @@ export default async function HistoryPage({ params }) {
   setRequestLocale(locale);
 
   const [app, history] = await Promise.all([getApp(locale), getSection(locale, 'history')]);
-  const title = app?.metadatas?.titles?.history || 'Historique';
+  const title = app?.metadatas?.titles?.history || 'Mon parcours';
 
   return (
     <>

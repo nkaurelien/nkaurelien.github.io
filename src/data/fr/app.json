@@ -12,7 +12,7 @@
     "metadatas": {
         "titles": {
             "home": "Astrid-Aurélien NKUMBE — DevSecOps / Platform Engineer & Tech Lead",
-            "history": "Historique",
+            "history": "Mon parcours",
             "projects": "Projets",
             "contact": "Contact"
         },
@@ -178,7 +178,7 @@
                 "children": 0
             },
             {
-                "label": "Historique",
+                "label": "Mon parcours",
                 "link": "/history",
                 "children": 0
             },
