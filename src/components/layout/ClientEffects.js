@@ -25,7 +25,7 @@ export default function ClientEffects() {
           children: {
             shape: 'circle',
             radius: 4,
-            fill: ['#6366f1', '#06b6d4', '#10b981', '#f59e0b', '#ec4899'],
+            fill: ['#f30a07', '#cc0806', '#a90504', '#850302', '#6b7280'],
             strokeWidth: 0,
             duration: 600,
             easing: 'cubic.out',
@@ -38,7 +38,7 @@ export default function ClientEffects() {
           top: 0,
           shape: 'circle',
           fill: 'none',
-          stroke: '#6366f1',
+          stroke: '#f30a07',
           strokeWidth: { 3: 0 },
           radius: { 0: 24 },
           opacity: { 1: 0 },

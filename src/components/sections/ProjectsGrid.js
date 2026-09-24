@@ -89,18 +89,18 @@ export default function ProjectsGrid({ projects, meta, locale }) {
               size={92}
               radius="100%"
               style={{
-                border: '3px solid var(--mantine-color-brand-6, #4f46e5)',
-                boxShadow: '0 10px 28px rgba(79, 70, 229, 0.22)',
+                border: '3px solid var(--mantine-color-brand-6, #a90504)',
+                boxShadow: '0 10px 28px rgba(169, 5, 4, 0.22)',
                 cursor: 'pointer',
                 transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = 'scale(1.08)';
-                e.currentTarget.style.boxShadow = '0 14px 34px rgba(79, 70, 229, 0.38)';
+                e.currentTarget.style.boxShadow = '0 14px 34px rgba(169, 5, 4, 0.38)';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.boxShadow = '0 10px 28px rgba(79, 70, 229, 0.22)';
+                e.currentTarget.style.boxShadow = '0 10px 28px rgba(169, 5, 4, 0.22)';
               }}
             />
           </Link>
@@ -111,7 +111,7 @@ export default function ProjectsGrid({ projects, meta, locale }) {
         <Title order={1} style={{ margin: 0 }}>
           {meta?.title || 'Projets'}
         </Title>
-        <ActionIcon variant="light" color="indigo" onClick={fetchDbProjects} title="Actualiser les projets" radius="md">
+        <ActionIcon variant="light" color="kamit" onClick={fetchDbProjects} title="Actualiser les projets" radius="md">
           <IconRefresh size={18} />
         </ActionIcon>
       </Group>
@@ -260,7 +260,7 @@ export default function ProjectsGrid({ projects, meta, locale }) {
               {selectedProject.description}
             </Text>
             {selectedProject.link && (
-              <Button component="a" href={selectedProject.link} target="_blank" rel="noopener noreferrer" color="indigo" fullWidth mt="xs">
+              <Button component="a" href={selectedProject.link} target="_blank" rel="noopener noreferrer" color="kamit" fullWidth mt="xs">
                 {locale === 'en' ? 'Visit website' : 'Voir le site'}
               </Button>
             )}

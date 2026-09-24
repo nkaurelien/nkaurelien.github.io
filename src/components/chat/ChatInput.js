@@ -58,13 +58,13 @@ export default function ChatInput({
           disabled={isLoading}
           leftSectionPointerEvents="none"
           rightSectionPointerEvents="auto"
-          leftSection={<IconRobot size={20} aria-hidden="true" style={{ color: 'var(--mantine-color-blue-filled)', marginLeft: '12px' }} />}
+          leftSection={<IconRobot size={20} aria-hidden="true" style={{ color: 'var(--mantine-color-kamit-filled)', marginLeft: '12px' }} />}
           rightSection={
             <ActionIcon
               type="submit"
               aria-label={sendLabel}
               data-testid="chat-send"
-              color="blue"
+              color="kamit"
               size="lg"
               radius="xl"
               variant="filled"

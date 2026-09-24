@@ -18,14 +18,16 @@ a {
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, #312e81 0%, #4f46e5 55%, #6366f1 100%);
+  /* Charte Kamitbrains (bannière) : rouge vif au centre, bordeaux puis quasi-noir sur les bords.
+     Fond de secours du hero (sans WebGL ou avec mouvement réduit). */
+  background: radial-gradient(ellipse at 50% 15%, #f30a07 0%, #a90504 38%, #4f0202 75%, #2a0000 100%);
 }
 
 .hero-floating-badge:hover {
   transform: translateY(-5px) scale(1.08) !important;
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.45),
-    0 0 20px rgba(129, 140, 248, 0.4) !important;
+    0 0 20px rgba(243, 10, 7, 0.4) !important;
 }
 
 .section-muted {
@@ -44,11 +46,14 @@ a {
 .site-footer {
   border-top: 1px solid var(--mantine-color-default-border);
   background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
-  margin-top: 48px;
+  /* Pas de marge haute : elle laissait une bande de fond nu entre une section colorée
+     (ex. page Kamitbrains) et le pied de page ; les sections ont leur propre padding. */
 }
 
-/* premium header navigation link styles */
-.nav-link {
+/* premium header navigation link styles
+   Spécificité doublée (.nav-link.nav-link) : dans le build de production, les styles Mantine
+   (Anchor, Text) sont chargés après cette feuille et écrasaient couleur, padding et fond. */
+.nav-link.nav-link {
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--mantine-color-text);
@@ -60,15 +65,16 @@ a {
   text-decoration: none;
 }
 
-.nav-link:hover {
-  color: var(--mantine-color-brand-6) !important;
+.nav-link.nav-link:hover {
+  color: var(--mantine-color-kamit-text) !important;
   background: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6));
 }
 
-.nav-link-active {
+.nav-link.nav-link-active {
   font-weight: 700;
-  color: var(--mantine-color-brand-6) !important;
-  background: light-dark(var(--mantine-color-brand-0), rgba(79, 70, 229, 0.15));
+  /* kamit-text : rouge foncé en thème clair, rouge clair en thème sombre (contraste AA). */
+  color: var(--mantine-color-kamit-text) !important;
+  background: light-dark(var(--mantine-color-kamit-0), rgba(243, 10, 7, 0.16));
 }
 
 /* Bouton "Assistant IA" — mise en avant (pill dégradé) */
@@ -79,7 +85,7 @@ a {
 }
 .ai-nav-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 18px rgba(34, 139, 230, 0.5) !important;
+  box-shadow: 0 4px 18px rgba(169, 5, 4, 0.5) !important;
 }
 
 /* Subtitle typewriter rotation animation */
@@ -224,7 +230,7 @@ header button:hover .tabler-icon {
 
 .kamitbrains-list-item:hover .tabler-icon-circle-check {
   transform: scale(1.24) rotate(10deg);
-  color: var(--mantine-color-indigo-6) !important;
+  color: var(--mantine-color-kamit-6) !important;
 }
 
 /* 3. Central Logo Hover Animation */
@@ -370,10 +376,27 @@ header button:hover .tabler-icon {
 /* Contraste WCAG AA (4.5:1) du texte secondaire : le « dimmed » Mantine par défaut
    (gray-6 ≈ 3.3:1 sur blanc) est trop clair. `:root:root` : Mantine injecte ses variables
    à l'exécution (<style> après cette feuille), il faut une spécificité supérieure. */
+/* Boutons pleins orange profond : teinte 9 (#bf360c) dans les deux thèmes ; texte blanc
+   ≈ 5.6:1 (teinte 8 ≈ 4.4:1 en clair, teinte 7 ≈ 3.6:1 en sombre). */
+:root:root[data-mantine-color-scheme] {
+  --mantine-color-deepOrange-filled: var(--mantine-color-deepOrange-9);
+  --mantine-color-deepOrange-filled-hover: #a02e0a;
+}
+
 :root:root[data-mantine-color-scheme='light'] {
   --mantine-color-dimmed: var(--mantine-color-gray-7);
 }
 :root:root[data-mantine-color-scheme='dark'] {
+  /* Texte rouge de la charte en thème sombre : teinte 3 (#ff8f8a, ≈ 6:1 sur fond sombre) ;
+     la teinte 4 par défaut (#fb5f59) n'atteint que 4.45:1 sur les cartes (#2e2e2e). */
+  --mantine-color-kamit-text: var(--mantine-color-kamit-3);
+  --mantine-color-brand-text: var(--mantine-color-brand-3);
+  --mantine-color-kamit-light-color: var(--mantine-color-kamit-3);
+  --mantine-color-brand-light-color: var(--mantine-color-brand-3);
+  /* Orange profond en thème sombre : teinte 3 (#ff8a65) pour texte et contour (≈ 6.8:1). */
+  --mantine-color-deepOrange-text: var(--mantine-color-deepOrange-3);
+  --mantine-color-deepOrange-outline: var(--mantine-color-deepOrange-3);
+  --mantine-color-deepOrange-light-color: var(--mantine-color-deepOrange-3);
   --mantine-color-dimmed: var(--mantine-color-dark-1);
 }
 
@@ -387,8 +410,8 @@ header button:hover .tabler-icon {
   --mantine-color-pink-light-color: var(--mantine-color-pink-9);
   --mantine-color-grape-light-color: var(--mantine-color-grape-9);
   --mantine-color-violet-light-color: var(--mantine-color-violet-9);
-  --mantine-color-indigo-light-color: var(--mantine-color-indigo-9);
-  --mantine-color-blue-light-color: var(--mantine-color-blue-9);
+  --mantine-color-kamit-light-color: var(--mantine-color-kamit-9);
+  --mantine-color-kamit-light-color: var(--mantine-color-kamit-9);
   --mantine-color-cyan-light-color: color-mix(in srgb, var(--mantine-color-cyan-9) 80%, black);
   --mantine-color-teal-light-color: color-mix(in srgb, var(--mantine-color-teal-9) 80%, black);
   --mantine-color-green-light-color: color-mix(in srgb, var(--mantine-color-green-9) 80%, black);
@@ -396,6 +419,10 @@ header button:hover .tabler-icon {
   --mantine-color-yellow-light-color: color-mix(in srgb, var(--mantine-color-yellow-9) 80%, black);
   --mantine-color-orange-light-color: color-mix(in srgb, var(--mantine-color-orange-9) 80%, black);
   --mantine-color-brand-light-color: var(--mantine-color-brand-9);
+  --mantine-color-deepOrange-light-color: var(--mantine-color-deepOrange-9);
+  /* Orange profond en thème clair : texte et contour en teinte 9 (#bf360c ≈ 5.6:1 ; la 8 ≈ 4.4:1). */
+  --mantine-color-deepOrange-text: var(--mantine-color-deepOrange-9);
+  --mantine-color-deepOrange-outline: var(--mantine-color-deepOrange-9);
 }
 
 /* Mouvement réduit (WCAG 2.3.3) : animations et transitions CSS quasi instantanées,

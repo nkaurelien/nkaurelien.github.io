@@ -117,7 +117,7 @@ export default function Testimonials({ testimonials }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       variant="subtle"
-                      color="blue"
+                      color="kamit"
                       aria-label={`LinkedIn — ${item.name}`}>
                       <IconBrandLinkedin size={20} aria-hidden="true" />
                     </ActionIcon>

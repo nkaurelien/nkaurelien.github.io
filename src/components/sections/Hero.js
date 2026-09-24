@@ -133,10 +133,11 @@ export default function Hero({ locale, hero }) {
       style={{ overflow: 'hidden', position: 'relative' }}>
       <VantaWaveBackground
         effectType="fog"
-        highlightColor="#ff6f0f"
-        midtoneColor="#ff5032"
-        lowlightColor="#463b72"
-        baseColor="#1e1b4b"
+        // Charte Kamitbrains (bannière) : rouge vif au centre, bordeaux puis quasi-noir.
+        highlightColor="#f30a07"
+        midtoneColor="#a90504"
+        lowlightColor="#4f0202"
+        baseColor="#140000"
         speed={1.2}
         zoom={0.95}
         opacity={0.85}
@@ -151,7 +152,7 @@ export default function Hero({ locale, hero }) {
                   size="lg"
                   radius="sm"
                   variant="white"
-                  c="teal.7"
+                  c="teal.9"
                   leftSection={<span className="status-dot-pulse" />}
                   styles={{
                     root: {
@@ -345,7 +346,7 @@ export default function Hero({ locale, hero }) {
                   cursor: 'pointer',
                   transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}>
-                <Text size="xs" fw={700} c="cyan.4" style={{ display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
+                <Text size="xs" fw={700} c="kamit.3" style={{ display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
                   <IconRocket size={14} aria-hidden="true" /> Fullstack & AI Engineer
                 </Text>
               </Box>
@@ -358,7 +359,7 @@ export default function Hero({ locale, hero }) {
                   left: '-8%',
                   right: '-8%',
                   bottom: '-8%',
-                  background: 'radial-gradient(circle, rgba(129, 140, 248, 0.45) 0%, rgba(99, 102, 241, 0) 70%)',
+                  background: 'radial-gradient(circle, rgba(243, 10, 7, 0.4) 0%, rgba(169, 5, 4, 0) 70%)',
                   filter: 'blur(20px)',
                   zIndex: 0,
                   pointerEvents: 'none',

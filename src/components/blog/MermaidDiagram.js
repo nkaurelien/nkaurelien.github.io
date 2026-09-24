@@ -7,21 +7,25 @@ import { Box, Loader, Paper, Text, useComputedColorScheme } from '@mantine/core'
 // (plusieurs diagrammes sur une même page) peuvent se voler leur thème. On sérialise.
 let renderQueue = Promise.resolve();
 
+// Charte Kamitbrains (rouge, noir, blanc). edgeLabelBackground explicite : le fond gris
+// par défaut du thème sombre de Mermaid (#585858) laissait les étiquettes à 4.4:1.
 function themeVariables(dark) {
   return dark
     ? {
-        primaryColor: '#1e293b',
+        primaryColor: '#1f1f1f',
         primaryTextColor: '#f8fafc',
-        primaryBorderColor: '#3b82f6',
-        lineColor: '#60a5fa',
-        tertiaryColor: '#0f172a',
+        primaryBorderColor: '#f6302b',
+        lineColor: '#ff8f8a',
+        tertiaryColor: '#141414',
+        edgeLabelBackground: '#262626',
       }
     : {
-        primaryColor: '#eff6ff',
+        primaryColor: '#fff1f0',
         primaryTextColor: '#1e293b',
-        primaryBorderColor: '#3b82f6',
-        lineColor: '#2563eb',
-        tertiaryColor: '#f8fafc',
+        primaryBorderColor: '#a90504',
+        lineColor: '#a90504',
+        tertiaryColor: '#fafafa',
+        edgeLabelBackground: '#ffffff',
       };
 }
 

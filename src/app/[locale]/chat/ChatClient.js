@@ -214,7 +214,7 @@ export default function ChatClient({ locale }) {
       {/* Top Header Row */}
       <Group justify="space-between" mb="xl" align="center">
         <Group gap="xs">
-          <IconMessage2Code size={24} aria-hidden="true" style={{ color: 'var(--mantine-color-blue-filled)' }} />
+          <IconMessage2Code size={24} aria-hidden="true" style={{ color: 'var(--mantine-color-kamit-filled)' }} />
           <Text fw={700} size="sm" c="dimmed">
             {t.title}
           </Text>
@@ -228,7 +228,7 @@ export default function ChatClient({ locale }) {
             href="/cv.pdf"
             download="CV_Aurelien_NKUMBE.pdf"
             variant="light"
-            color="teal"
+            color="kamit"
             size="xs"
             radius="xl"
             leftSection={<IconDownload size={14} aria-hidden="true" />}
@@ -264,13 +264,13 @@ export default function ChatClient({ locale }) {
                   width: '64px',
                   height: '64px',
                   borderRadius: '50%',
-                  backgroundColor: 'rgba(34, 139, 230, 0.1)',
+                  backgroundColor: 'rgba(169, 5, 4, 0.1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: '10px',
                 }}>
-                <IconRobot size={36} aria-hidden="true" style={{ color: 'var(--mantine-color-blue-filled)' }} />
+                <IconRobot size={36} aria-hidden="true" style={{ color: 'var(--mantine-color-kamit-filled)' }} />
               </div>
               <Title order={1} ta="center" data-testid="chat-title">
                 {t.title}
@@ -285,7 +285,7 @@ export default function ChatClient({ locale }) {
                   <Menu.Target>
                     <UnstyledButton>
                       <Group gap={8} wrap="nowrap" mt="xs">
-                        <Avatar src={user.photoURL || undefined} size={28} radius="xl" color="blue">
+                        <Avatar src={user.photoURL || undefined} size={28} radius="xl" color="kamit">
                           {(user.displayName || user.email || '?').charAt(0).toUpperCase()}
                         </Avatar>
                         <Text size="sm" fw={500} style={{ maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -307,7 +307,7 @@ export default function ChatClient({ locale }) {
                     size="sm"
                     radius="xl"
                     variant="light"
-                    color="blue"
+                    color="kamit"
                     leftSection={<IconBrandGoogle size={16} />}
                     onClick={handleGuestSignIn}
                     mt="xs">
@@ -353,7 +353,7 @@ export default function ChatClient({ locale }) {
                           <IconSparkles
                             size={16}
                             aria-hidden="true"
-                            style={{ color: 'var(--mantine-color-blue-filled)', marginTop: '2px', flexShrink: 0 }}
+                            style={{ color: 'var(--mantine-color-kamit-filled)', marginTop: '2px', flexShrink: 0 }}
                           />
                           <Text size="xs" fw={500} style={{ lineHeight: 1.4 }}>
                             {suggestion}
@@ -393,9 +393,9 @@ export default function ChatClient({ locale }) {
       <style jsx global>{`
         .suggestion-card:hover {
           transform: translateY(-2px);
-          border-color: var(--mantine-color-blue-filled) !important;
-          box-shadow: 0 4px 12px rgba(34, 139, 230, 0.1);
-          background-color: rgba(34, 139, 230, 0.03) !important;
+          border-color: var(--mantine-color-kamit-filled) !important;
+          box-shadow: 0 4px 12px rgba(169, 5, 4, 0.1);
+          background-color: rgba(169, 5, 4, 0.03) !important;
         }
         /* Markdown rendering for AI messages — theme-aware, no Tailwind dependency */
         /* Bulles de conversation : coin « de départ » moins arrondi, comme une messagerie. */
@@ -412,7 +412,7 @@ export default function ChatClient({ locale }) {
           gap: 0.5rem;
           padding: 0.5rem 0.75rem;
           border: 1px solid var(--mantine-color-default-border);
-          border-inline-start: 3px solid var(--mantine-color-indigo-filled);
+          border-inline-start: 3px solid var(--mantine-color-kamit-filled);
           border-radius: 0.5rem;
           background-color: var(--mantine-color-body);
           color: var(--mantine-color-text);
@@ -421,11 +421,11 @@ export default function ChatClient({ locale }) {
             transform 0.15s ease;
         }
         .chat-source-card:hover {
-          border-color: var(--mantine-color-indigo-filled);
+          border-color: var(--mantine-color-kamit-filled);
           transform: translateX(2px);
         }
         .chat-source-card:focus-visible {
-          outline: 3px solid var(--mantine-color-indigo-filled);
+          outline: 3px solid var(--mantine-color-kamit-filled);
           outline-offset: 2px;
         }
         .chat-prose > :first-child {
@@ -446,7 +446,8 @@ export default function ChatClient({ locale }) {
           margin: 0.2em 0;
         }
         .chat-prose a {
-          color: var(--mantine-color-blue-filled);
+          /* kamit-text : s'adapte au thème (rouge foncé en clair, rouge clair en sombre). */
+          color: var(--mantine-color-kamit-text);
           text-decoration: underline;
         }
         .chat-prose code {
@@ -470,7 +471,7 @@ export default function ChatClient({ locale }) {
         .chat-prose blockquote {
           margin: 0 0 0.6em;
           padding-left: 0.9em;
-          border-left: 3px solid var(--mantine-color-blue-light-border);
+          border-left: 3px solid var(--mantine-color-kamit-light-border);
           color: var(--mantine-color-dimmed);
         }
         .chat-prose table {
@@ -488,7 +489,7 @@ export default function ChatClient({ locale }) {
           width: 6px;
           height: 6px;
           border-radius: 50%;
-          background-color: var(--mantine-color-blue-filled);
+          background-color: var(--mantine-color-kamit-filled);
           display: inline-block;
           animation: dot-flashing 1.4s infinite linear;
           opacity: 0.2;

@@ -47,7 +47,7 @@ export default function CvFloatingButton() {
       subtitle: isEnglish ? 'Full resume with all experiences' : 'Parcours détaillé & compétences',
       href: '/cv.pdf',
       download: 'CV_Aurelien_NKUMBE.pdf',
-      icon: <IconFileText size={18} style={{ color: 'var(--mantine-color-blue-6)' }} />,
+      icon: <IconFileText size={18} style={{ color: 'var(--mantine-color-kamit-6)' }} />,
       badge: 'PDF',
     },
     {
@@ -83,7 +83,7 @@ export default function CvFloatingButton() {
       subtitle: isEnglish ? 'PHP 8.x, Filament, Angular, RxJS' : 'PHP 8.x, Filament, Angular, RxJS',
       href: '/cv-angular-laravel.pdf',
       download: 'CV_Aurelien_NKUMBE_Angular_Laravel.pdf',
-      icon: <IconBrandPhp size={18} style={{ color: 'var(--mantine-color-indigo-6)' }} />,
+      icon: <IconBrandPhp size={18} style={{ color: 'var(--mantine-color-kamit-6)' }} />,
       badge: 'PHP/Angular',
     },
     {
@@ -119,7 +119,7 @@ export default function CvFloatingButton() {
             <Tooltip label={isEnglish ? 'Preview & Download CVs' : 'Aperçu & Téléchargement des CV'} position="left" withArrow>
               <Button
                 variant="gradient"
-                gradient={{ from: 'teal.6', to: 'cyan.6', deg: 45 }}
+                gradient={{ from: 'kamit.9', to: 'kamit.7', deg: 45 }}
                 size="md"
                 radius="xl"
                 leftSection={<IconDownload size={18} />}
@@ -183,7 +183,7 @@ export default function CvFloatingButton() {
                           }
                         }}
                         variant="subtle"
-                        color="blue"
+                        color="kamit"
                         size="xs"
                         aria-label={`${isEnglish ? 'Open in a new tab' : 'Ouvrir dans un nouvel onglet'} : ${item.title}`}>
                         <IconArrowUpRight size={14} aria-hidden="true" />
@@ -201,7 +201,7 @@ export default function CvFloatingButton() {
                           }
                         }}
                         variant="subtle"
-                        color="teal"
+                        color="kamit"
                         size="xs"
                         aria-label={`${isEnglish ? 'Download PDF' : 'Télécharger le PDF'} : ${item.title}`}>
                         <IconDownload size={14} aria-hidden="true" />

@@ -53,7 +53,8 @@ export default function Services({ services }) {
       py={{ base: 60, sm: 80, md: 100 }}
       style={{
         position: 'relative',
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.88)), url(${bgImageUrl})`,
+        // Voile de la couleur de fond du thème (et non blanc fixe) : lisible en clair comme en sombre.
+        backgroundImage: `linear-gradient(color-mix(in srgb, var(--mantine-color-body) 82%, transparent), color-mix(in srgb, var(--mantine-color-body) 88%, transparent)), url(${bgImageUrl})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'scroll',
@@ -81,7 +82,7 @@ export default function Services({ services }) {
                 shadow="sm"
                 className="service-card"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.88)',
+                  background: 'color-mix(in srgb, var(--mantine-color-body) 88%, transparent)',
                   backdropFilter: 'blur(8px)',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   cursor: 'pointer',

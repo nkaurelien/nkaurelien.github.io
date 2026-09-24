@@ -17,13 +17,13 @@ function HistoryButton({ button, locale }) {
   const isInternal = button.type === 'project' || button.link.startsWith('/');
   if (isInternal) {
     return (
-      <Anchor component={Link} href={`/${locale}${button.link}`} fz="xs" fw={600} c="blue" mt={4} display="inline-block">
+      <Anchor component={Link} href={`/${locale}${button.link}`} fz="xs" fw={600} c="kamit" mt={4} display="inline-block">
         {button.label} →
       </Anchor>
     );
   }
   return (
-    <Anchor href={button.link} target="_blank" rel="noopener noreferrer" fz="xs" fw={600} c="blue" mt={4} display="inline-block">
+    <Anchor href={button.link} target="_blank" rel="noopener noreferrer" fz="xs" fw={600} c="kamit" mt={4} display="inline-block">
       {button.label} →
     </Anchor>
   );
@@ -80,7 +80,7 @@ export default function HistoryTimeline({ history, locale }) {
             {/* Carte En-tête Éducation */}
             <Paper withBorder p="md" radius="lg">
               <Group gap="xs" mb="sm">
-                <IconSchool size={20} color="var(--mantine-color-blue-6)" />
+                <IconSchool size={20} color="var(--mantine-color-kamit-6)" />
                 <Title className="timeline-col-title" order={3} fz="lg">
                   {history?.col1?.title || (locale === 'en' ? 'Education' : 'Formation')}
                 </Title>
@@ -95,7 +95,7 @@ export default function HistoryTimeline({ history, locale }) {
                       paddingBottom: i < eduItems.length - 1 ? '12px' : 0,
                     }}>
                     <Group justify="space-between" align="center" gap={4} mb={2}>
-                      <Badge variant="light" color="blue" size="xs">
+                      <Badge variant="light" color="kamit" size="xs">
                         {item.date}
                       </Badge>
                       {item.tag && (
@@ -108,7 +108,7 @@ export default function HistoryTimeline({ history, locale }) {
                       {item.title}
                     </Text>
                     {item.subtitle && (
-                      <Text fz="xs" fw={600} c="blue">
+                      <Text fz="xs" fw={600} c="kamit">
                         {item.subtitle}
                       </Text>
                     )}
@@ -121,10 +121,19 @@ export default function HistoryTimeline({ history, locale }) {
               </Stack>
             </Paper>
 
-            {/* Carte Téléchargement CV */}
-            <Paper withBorder p="md" radius="lg">
+            {/* Carte Téléchargement CV : action principale (recruteurs), mise en avant par la
+                charte (bordure gauche rouge, fond teinté, bouton plein). */}
+            <Paper
+              withBorder
+              p="md"
+              radius="lg"
+              data-testid="history-cv-card"
+              style={{
+                borderInlineStart: '4px solid var(--mantine-color-kamit-filled)',
+                backgroundColor: 'var(--mantine-color-kamit-light)',
+              }}>
               <Group gap="xs" mb="xs">
-                <IconCertificate size={18} color="var(--mantine-color-teal-6)" />
+                <IconCertificate size={18} aria-hidden="true" color="var(--mantine-color-kamit-text)" />
                 <Text fw={700} size="sm">
                   {locale === 'en' ? 'Full Resume' : 'CV & Dossier'}
                 </Text>
@@ -139,10 +148,10 @@ export default function HistoryTimeline({ history, locale }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="filled"
-                  color="teal"
+                  color="kamit"
                   style={{ flex: 1 }}
                   size="xs"
-                  rightSection={<IconArrowUpRight size={14} />}>
+                  rightSection={<IconArrowUpRight size={14} aria-hidden="true" />}>
                   {locale === 'en' ? 'Open Resume (PDF)' : 'Ouvrir le CV (PDF)'}
                 </Button>
                 <ActionIcon
@@ -150,7 +159,7 @@ export default function HistoryTimeline({ history, locale }) {
                   href="/cv.pdf"
                   download="CV_Aurelien_NKUMBE.pdf"
                   variant="light"
-                  color="teal"
+                  color="kamit"
                   size="input-xs"
                   aria-label="Télécharger CV PDF">
                   <IconDownload size={14} />
@@ -158,10 +167,19 @@ export default function HistoryTimeline({ history, locale }) {
               </Group>
             </Paper>
 
-            {/* Carte À propos / En bref */}
-            <Paper withBorder p="md" radius="lg">
+            {/* Carte À propos / En bref : même mise en avant que la carte CV, en orange profond
+                (voisin du rouge de la charte) pour les distinguer. */}
+            <Paper
+              withBorder
+              p="md"
+              radius="lg"
+              data-testid="history-about-card"
+              style={{
+                borderInlineStart: '4px solid var(--mantine-color-deepOrange-filled)',
+                backgroundColor: 'var(--mantine-color-deepOrange-light)',
+              }}>
               <Group gap="xs" mb="xs">
-                <IconSparkles size={18} color="var(--mantine-color-brand-6, #4f46e5)" />
+                <IconSparkles size={18} aria-hidden="true" color="var(--mantine-color-deepOrange-text)" />
                 <Text fw={700} size="sm">
                   {locale === 'en' ? 'About Me — In Brief' : 'À propos — En bref'}
                 </Text>
@@ -176,10 +194,10 @@ export default function HistoryTimeline({ history, locale }) {
                   component={Link}
                   href={`/${locale}/blog/a-propos-d-astrid-aurelien-nkumbe`}
                   variant="filled"
-                  color="brand"
+                  color="deepOrange"
                   style={{ flex: 1 }}
                   size="xs"
-                  rightSection={<IconArrowUpRight size={14} />}>
+                  rightSection={<IconArrowUpRight size={14} aria-hidden="true" />}>
                   {locale === 'en' ? 'Discover profile' : 'Découvrir le profil'}
                 </Button>
                 <ActionIcon
@@ -187,7 +205,7 @@ export default function HistoryTimeline({ history, locale }) {
                   href="/about.pdf"
                   download="En_Bref_Aurelien_NKUMBE.pdf"
                   variant="light"
-                  color="brand"
+                  color="deepOrange"
                   size="input-xs"
                   aria-label="Télécharger En bref PDF"
                   title={locale === 'en' ? 'Download PDF' : 'Télécharger le PDF'}>
@@ -216,7 +234,7 @@ export default function HistoryTimeline({ history, locale }) {
                       {item.date}
                     </Badge>
                     {item.tag && (
-                      <Badge variant="filled" color="indigo" size="sm" radius="xs">
+                      <Badge variant="filled" color="kamit" size="sm" radius="xs">
                         {item.tag}
                       </Badge>
                     )}

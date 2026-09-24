@@ -231,7 +231,7 @@ export default function SearchAside({ opened, onClose, locale = 'fr' }) {
                   <Badge
                     size="sm"
                     variant={active ? 'filled' : 'light'}
-                    color={active ? 'blue' : 'gray'}
+                    color={active ? 'kamit' : 'gray'}
                     style={{
                       cursor: 'pointer',
                       textTransform: 'none',
@@ -277,7 +277,7 @@ export default function SearchAside({ opened, onClose, locale = 'fr' }) {
                     <Badge
                       size="xs"
                       variant="outline"
-                      color={item.type === 'Projets' ? 'teal' : item.type === 'Expertise' ? 'indigo' : item.type === 'Blog' ? 'orange' : 'cyan'}>
+                      color={item.type === 'Projets' ? 'teal' : item.type === 'Expertise' ? 'kamit' : item.type === 'Blog' ? 'orange' : 'cyan'}>
                       {item.type}
                     </Badge>
                     <IconArrowUpRight size={14} style={{ opacity: 0.6 }} />

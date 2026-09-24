@@ -40,7 +40,7 @@ export default function Company({ company, locale }) {
             children: {
               shape: 'circle',
               radius: 3,
-              fill: ['#6366f1', '#06b6d4', '#10b981'],
+              fill: ['#f30a07', '#a90504', '#3f0000'],
               strokeWidth: 0,
               duration: 400,
               easing: 'cubic.out',
@@ -135,7 +135,8 @@ export default function Company({ company, locale }) {
       c={hasBg ? 'white' : undefined}
       style={{
         backgroundImage: hasBg
-          ? `linear-gradient(135deg, rgba(20, 21, 23, 0.90) 0%, rgba(49, 46, 129, 0.90) 100%), url(${withBase(company.bg_image)})`
+          ? // Charte Kamitbrains (bannière) : rouge au centre haut, bordeaux puis quasi-noir.
+            `radial-gradient(ellipse at 50% 15%, rgba(243, 10, 7, 0.82) 0%, rgba(133, 3, 2, 0.9) 45%, rgba(26, 0, 0, 0.95) 100%), url(${withBase(company.bg_image)})`
           : undefined,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -172,7 +173,7 @@ export default function Company({ company, locale }) {
             )}
 
             <Group className={company.status === 'PAUSE' ? undefined : 'company-badge'} justify="flex-start">
-              <Badge size="lg" radius="sm" variant={hasBg ? 'filled' : 'light'} color="indigo" leftSection={<IconBriefcase size={14} />}>
+              <Badge size="lg" radius="sm" variant={hasBg ? 'filled' : 'light'} color="kamit" leftSection={<IconBriefcase size={14} />}>
                 {company.badge || 'Structure Freelance'}
               </Badge>
             </Group>
@@ -204,8 +205,8 @@ export default function Company({ company, locale }) {
                   size="md"
                   radius="xl"
                   variant="filled"
-                  color={hasBg ? 'white' : 'indigo'}
-                  c={hasBg ? 'indigo.8' : undefined}
+                  color={hasBg ? 'white' : 'kamit'}
+                  c={hasBg ? 'kamit.8' : undefined}
                   rightSection={<IconExternalLink size={16} />}>
                   {company.button.label}
                 </Button>
@@ -217,7 +218,7 @@ export default function Company({ company, locale }) {
                   size="md"
                   radius="xl"
                   variant="outline"
-                  color={hasBg ? 'white' : 'indigo'}>
+                  color={hasBg ? 'white' : 'kamit'}>
                   {company.buttonProject.label}
                 </Button>
               )}
@@ -264,7 +265,7 @@ export default function Company({ company, locale }) {
               <Stack gap="md">
                 {items.map((item, idx) => (
                   <Group key={idx} wrap="nowrap" align="flex-start" gap="md" className="kamitbrains-list-item" onMouseEnter={triggerHoverBurst}>
-                    <ThemeIcon size={28} radius="xl" variant="light" color="indigo" style={{ flexShrink: 0, marginTop: '2px' }}>
+                    <ThemeIcon size={28} radius="xl" variant="light" color="kamit" style={{ flexShrink: 0, marginTop: '2px' }}>
                       <IconCircleCheck size={18} />
                     </ThemeIcon>
                     <Box style={{ flex: 1, textAlign: 'left' }}>

@@ -119,8 +119,8 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                 radius="lg"
                 className={isUser ? 'chat-bubble chat-bubble-user' : 'chat-bubble chat-bubble-ai'}
                 style={{
-                  backgroundColor: isUser ? 'var(--mantine-color-indigo-light)' : 'var(--mantine-color-default-hover)',
-                  borderColor: isUser ? 'var(--mantine-color-indigo-light-hover)' : 'var(--mantine-color-default-border)',
+                  backgroundColor: isUser ? 'var(--mantine-color-kamit-light)' : 'var(--mantine-color-default-hover)',
+                  borderColor: isUser ? 'var(--mantine-color-kamit-light-hover)' : 'var(--mantine-color-default-border)',
                 }}>
                 <Group align="flex-start" gap="sm" wrap="nowrap" style={{ flexDirection: isUser ? 'row-reverse' : 'row' }}>
                   {isUser ? (
@@ -128,7 +128,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                       {!user?.photoURL && <IconUser size={18} aria-hidden="true" />}
                     </Avatar>
                   ) : (
-                    <Avatar radius="xl" size="md" color="indigo" variant="filled" aria-hidden="true">
+                    <Avatar radius="xl" size="md" color="kamit" variant="filled" aria-hidden="true">
                       <IconRobot size={18} aria-hidden="true" />
                     </Avatar>
                   )}
@@ -156,7 +156,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                   {sources.map(source => (
                     <li key={source.href}>
                       <Anchor component={Link} href={source.href} underline="never" className="chat-source-card" data-testid="chat-source-card">
-                        <IconArticle size={16} aria-hidden="true" style={{ flexShrink: 0, color: 'var(--mantine-color-indigo-filled)' }} />
+                        <IconArticle size={16} aria-hidden="true" style={{ flexShrink: 0, color: 'var(--mantine-color-kamit-filled)' }} />
                         <Text component="span" size="sm" fw={600} lineClamp={1} style={{ flex: 1, minWidth: 0 }}>
                           {source.title}
                         </Text>
@@ -176,7 +176,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                       aria-pressed={ratings[message.id] === 'up'}
                       data-testid="chat-feedback-up"
                       variant="subtle"
-                      color={ratings[message.id] === 'up' ? 'blue' : 'gray'}
+                      color={ratings[message.id] === 'up' ? 'kamit' : 'gray'}
                       onClick={() => {
                         handleRateMessage(message.id, 'up');
                         if (typeof window !== 'undefined') {
@@ -238,7 +238,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
               width: '100%',
             }}>
             <Group align="flex-start" gap="sm" wrap="nowrap">
-              <Avatar radius="xl" size="md" color="blue" variant="filled">
+              <Avatar radius="xl" size="md" color="kamit" variant="filled">
                 <IconRobot size={18} aria-hidden="true" />
               </Avatar>
               <Stack gap={4} style={{ flex: 1 }}>

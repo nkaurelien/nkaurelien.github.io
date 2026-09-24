@@ -218,7 +218,7 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
                   <Text fw={700} size="md" truncate="end" style={{ lineHeight: 1.2, flex: 1, minWidth: 0 }}>
                     {selectedCv.title}
                   </Text>
-                  <Badge size="xs" variant="light" color="teal" style={{ flexShrink: 0 }}>
+                  <Badge size="xs" variant="light" color="kamit" style={{ flexShrink: 0 }}>
                     {selectedCv.badge}
                   </Badge>
                 </Group>
@@ -249,7 +249,7 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
               <Button
                 onClick={handleDownloadClick}
                 variant="gradient"
-                gradient={{ from: 'teal.6', to: 'cyan.6', deg: 45 }}
+                gradient={{ from: 'kamit.9', to: 'kamit.7', deg: 45 }}
                 size="xs"
                 radius="md"
                 leftSection={<IconDownload size={15} />}
@@ -285,7 +285,7 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
         <Box mt="md">
           {loading ? (
             <Stack align="center" justify="center" py={60}>
-              <Loader color="teal" type="dots" size="lg" />
+              <Loader color="kamit" type="dots" size="lg" />
               <Text size="sm" c="dimmed">
                 Chargement du CV...
               </Text>
@@ -317,7 +317,7 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
             margin-bottom: 0.6rem;
             padding-bottom: 0.25rem;
             border-bottom: 2px solid var(--mantine-color-default-border);
-            color: var(--mantine-color-blue-6);
+            color: var(--mantine-color-kamit-6);
             text-transform: uppercase;
             letter-spacing: 0.5px;
           }
@@ -341,7 +341,7 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
             margin: 1.2rem 0;
           }
           .cv-markdown-preview a {
-            color: var(--mantine-color-blue-filled);
+            color: var(--mantine-color-kamit-text);
             text-decoration: underline;
           }
           .cv-markdown-preview code {
@@ -398,7 +398,7 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
             <Button
               type="submit"
               variant="gradient"
-              gradient={{ from: 'teal.6', to: 'cyan.6', deg: 45 }}
+              gradient={{ from: 'kamit.9', to: 'kamit.7', deg: 45 }}
               radius="md"
               fullWidth
               loading={isSubmittingLead}

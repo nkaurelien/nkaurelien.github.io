@@ -56,8 +56,11 @@ export default function CodeBanner({ hero }) {
   if (!rotates || rotates.length === 0) return null;
 
   return (
-    <Box component="div" style={{ position: 'relative', zIndex: 30, width: '100%', marginTop: '-32px', marginBottom: '16px' }}>
-      <Container size="lg">
+    // Bandeau à cheval sur la jonction hero / section suivante : conteneur de hauteur nulle,
+    // bandeau centré sur la ligne (translateY -50 %). Il ne réserve plus d'espace sous le hero,
+    // qui laissait une bande de la couleur de fond (visible en thème sombre).
+    <Box component="div" style={{ position: 'relative', zIndex: 30, width: '100%', height: 0 }}>
+      <Container size="lg" style={{ transform: 'translateY(-50%)' }}>
         <Box
           py={14}
           px={{ base: 18, sm: 30 }}

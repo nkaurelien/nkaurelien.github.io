@@ -18,6 +18,7 @@ import {
   TextInput,
   Textarea,
   Divider,
+  useComputedColorScheme,
 } from '@mantine/core';
 import {
   IconMail,
@@ -49,6 +50,7 @@ export default function ContactSection({ contact }) {
   const { user } = useAuth();
   const captchaEnabled = features.contactHcaptcha;
   const [mounted, setMounted] = useState(false);
+  const colorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
   const [verified, setVerified] = useState(!captchaEnabled);
   const captchaRef = useRef(null);
   const containerRef = useRef(null);
@@ -183,7 +185,7 @@ export default function ContactSection({ contact }) {
         <Card className="contact-right-card" withBorder radius="xl" p="xl" shadow="md">
           {!verified ? (
             <Stack align="center" gap="md" py="lg" style={{ width: '100%' }}>
-              <ThemeIcon size="xl" radius="md" variant="light" color="indigo">
+              <ThemeIcon size="xl" radius="md" variant="light" color="kamit">
                 <IconShieldLock size={28} />
               </ThemeIcon>
               <Text fz="sm" ta="center" c="dimmed" style={{ maxWidth: 320 }}>
@@ -191,7 +193,11 @@ export default function ContactSection({ contact }) {
               </Text>
               {mounted && (
                 <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                  {/* Iframe hCaptcha : on suit seulement le thème du site (la clé remonte le
+                      widget au changement de thème). */}
                   <HCaptcha
+                    key={colorScheme}
+                    theme={colorScheme}
                     ref={captchaRef}
                     sitekey={SITEKEY}
                     onVerify={token => {
@@ -256,7 +262,7 @@ export default function ContactSection({ contact }) {
                     required
                     disabled={sending}
                   />
-                  <Button type="submit" color="indigo" loading={sending} leftSection={<IconSend size={16} />} fullWidth mt="xs">
+                  <Button type="submit" color="kamit" loading={sending} leftSection={<IconSend size={16} />} fullWidth mt="xs">
                     Envoyer le message
                   </Button>
                 </Stack>

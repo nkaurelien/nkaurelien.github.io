@@ -158,12 +158,12 @@ export default function Header({ locale, app }) {
           size="xs"
           radius="xl"
           variant="gradient"
-          gradient={{ from: 'blue', to: 'cyan', deg: 45 }}
+          gradient={{ from: 'kamit.9', to: 'kamit.7', deg: 45 }}
           leftSection={<IconSparkles size={14} aria-hidden="true" />}
           aria-current={current}
           data-testid={testId}
           className="ai-nav-btn"
-          style={{ fontWeight: 600, boxShadow: '0 2px 12px rgba(34, 139, 230, 0.35)' }}>
+          style={{ fontWeight: 600, boxShadow: '0 2px 12px rgba(169, 5, 4, 0.35)' }}>
           {item.label}
         </Button>
       );
@@ -245,7 +245,8 @@ export default function Header({ locale, app }) {
         zIndex: 100,
         transition: 'all 0.3s ease',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.88)' : 'transparent',
+        // Fond du thème (clair ou sombre) légèrement translucide, au lieu d'un blanc fixe.
+        backgroundColor: scrolled ? 'color-mix(in srgb, var(--mantine-color-body) 88%, transparent)' : 'transparent',
         boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.06)' : 'none',
         borderBottom: scrolled ? '1px solid var(--mantine-color-default-border)' : '1px solid transparent',
       }}>
@@ -253,9 +254,18 @@ export default function Header({ locale, app }) {
         <Group h="100%" justify="space-between" wrap="nowrap" align="center">
           {/* 1. Logo à Gauche */}
           <Box style={{ flex: '1 1 0', minWidth: 0 }}>
-            <Anchor component={Link} href={`/${locale}`} underline="never" style={{ display: 'inline-block' }} data-testid="nav-home">
-              <Text fw={800} size="lg" c="brand.6" style={{ whiteSpace: 'nowrap' }}>
-                Astrid-Aurélien<span style={{ color: 'var(--mantine-color-dimmed)' }}>.NKUMBE</span>
+            <Anchor
+              component={Link}
+              href={`/${locale}`}
+              underline="never"
+              style={{ display: 'inline-block' }}
+              data-testid="nav-home"
+              aria-label={locale === 'en' ? 'Astrid-Aurélien NKUMBE – Home' : 'Astrid-Aurélien NKUMBE – Accueil'}>
+              {/* Charte Kamitbrains : « Aurélien » en couleur du texte (noir / blanc selon le thème),
+                  « .nk » en rouge (teinte adaptée au thème par --mantine-color-kamit-text).
+                  Le nom complet reste annoncé par aria-label. */}
+              <Text fw={800} size="lg" c="var(--mantine-color-text)" style={{ whiteSpace: 'nowrap' }}>
+                Aurélien<span style={{ color: 'var(--mantine-color-kamit-text)' }}>.nk</span>
               </Text>
             </Anchor>
           </Box>
@@ -289,7 +299,7 @@ export default function Header({ locale, app }) {
               <Menu.Target>
                 <Button
                   variant="light"
-                  color="teal"
+                  color="kamit"
                   size="xs"
                   radius="xl"
                   leftSection={<IconDownload size={14} />}
@@ -397,7 +407,7 @@ export default function Header({ locale, app }) {
             href="/cv.pdf"
             download="CV_Aurelien_NKUMBE.pdf"
             variant="filled"
-            color="teal"
+            color="kamit"
             size="xs"
             radius="xl"
             leftSection={<IconDownload size={16} />}

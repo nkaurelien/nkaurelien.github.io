@@ -157,13 +157,13 @@ function UpcomingArticleCard({ article, locale }) {
       radius="lg"
       style={{
         backgroundColor: 'var(--mantine-color-body)',
-        borderLeft: '4px solid var(--mantine-color-indigo-5)',
+        borderLeft: '4px solid var(--mantine-color-kamit-5)',
         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
       }}>
       <Stack gap="xs">
         <Group justify="space-between" align="center">
           <Group gap="xs">
-            <Badge variant="filled" color="indigo" size="xs" radius="sm" leftSection={<IconBulb size={10} aria-hidden="true" />}>
+            <Badge variant="filled" color="kamit" size="xs" radius="sm" leftSection={<IconBulb size={10} aria-hidden="true" />}>
               {article.category}
             </Badge>
             <Badge variant="dot" color={article.status === 'En rédaction' ? 'green' : 'orange'} size="xs">
@@ -245,7 +245,7 @@ function FeaturedArticleCard({ article, t }) {
         <Grid.Col span={{ base: 12, sm: article.thumbnail ? 7 : 12 }}>
           <Stack gap="xs">
             <Group justify="space-between" align="center">
-              <Badge variant="filled" color="blue" size="xs" radius="sm" leftSection={<IconPin size={10} aria-hidden="true" />}>
+              <Badge variant="filled" color="kamit" size="xs" radius="sm" leftSection={<IconPin size={10} aria-hidden="true" />}>
                 {t.__locale === 'en' ? 'FEATURED' : 'À LA UNE'}
               </Badge>
               <Text size="xs" c="dimmed" fw={600}>
@@ -265,13 +265,13 @@ function FeaturedArticleCard({ article, t }) {
               {article.categories?.length > 0 && (
                 <Group gap={4}>
                   {article.categories.slice(0, 3).map(cat => (
-                    <Badge key={cat} size="xs" variant="light" color="blue" radius="sm">
+                    <Badge key={cat} size="xs" variant="light" color="kamit" radius="sm">
                       {cat}
                     </Badge>
                   ))}
                 </Group>
               )}
-              <Group gap={4} c="blue" style={{ fontWeight: 700, fontSize: '13px' }}>
+              <Group gap={4} c="kamit" style={{ fontWeight: 700, fontSize: '13px' }}>
                 {t.read}
                 <IconArrowUpRight size={15} />
               </Group>
@@ -318,7 +318,7 @@ function CompactArticleRow({ article, t }) {
             </Badge>
           )}
           {/* Décoratif : la carte entière est déjà le lien (pas de bouton imbriqué dans un lien). */}
-          <ActionIcon component="span" aria-hidden="true" size="sm" variant="subtle" color="blue">
+          <ActionIcon component="span" aria-hidden="true" size="sm" variant="subtle" color="kamit">
             <IconArrowUpRight size={14} />
           </ActionIcon>
         </Group>
@@ -372,7 +372,7 @@ function ArticleListItem({ article, t }) {
             {article.categories?.length > 0 && (
               <Group gap={4}>
                 {article.categories.slice(0, 2).map(cat => (
-                  <Badge key={cat} size="xs" variant="light" color="blue" radius="sm">
+                  <Badge key={cat} size="xs" variant="light" color="kamit" radius="sm">
                     {cat}
                   </Badge>
                 ))}
@@ -385,7 +385,7 @@ function ArticleListItem({ article, t }) {
           <Text size="xs" c="dimmed" lineClamp={2} style={{ lineHeight: 1.4 }}>
             {article.excerpt}
           </Text>
-          <Group gap={4} mt={2} c="blue" style={{ fontWeight: 600, fontSize: '12px' }}>
+          <Group gap={4} mt={2} c="kamit" style={{ fontWeight: 600, fontSize: '12px' }}>
             {t.read}
             <IconArrowUpRight size={13} />
           </Group>
@@ -441,7 +441,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
     return (
       <Container size="md" py={50}>
         <Stack align="center" gap="xs" mb="lg">
-          <Group gap={6} c="blue">
+          <Group gap={6} c="kamit">
             <IconNews size={18} />
             <Text fw={700} size="sm" tt="uppercase" style={{ letterSpacing: '1px' }}>
               {t.kicker}
@@ -492,7 +492,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
   return (
     <Container size="lg" py={60}>
       <Stack align="center" gap="xs" mb="xl">
-        <Group gap={6} c="blue">
+        <Group gap={6} c="kamit">
           <IconNews size={18} />
           <Text fw={700} size="sm" tt="uppercase" style={{ letterSpacing: '1px' }}>
             {t.kicker}
@@ -513,7 +513,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
             {/* Carte de Recherche */}
             <Paper withBorder p="md" radius="lg" role="search" data-testid="blog-search-region">
               <Group gap="xs" mb="xs">
-                <IconSearch size={16} color="var(--mantine-color-blue-6)" aria-hidden="true" />
+                <IconSearch size={16} color="var(--mantine-color-kamit-6)" aria-hidden="true" />
                 <Text component="label" htmlFor="blog-search" fw={700} size="sm">
                   {t.searchTitle}
                 </Text>
@@ -549,7 +549,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
             {availableTags.length > 1 && (
               <Paper withBorder p="md" radius="lg">
                 <Group gap="xs" mb="xs">
-                  <IconTag size={16} color="var(--mantine-color-blue-6)" aria-hidden="true" />
+                  <IconTag size={16} color="var(--mantine-color-kamit-6)" aria-hidden="true" />
                   <Text fw={700} size="sm" id="blog-tags-title">
                     {t.tagsTitle}
                   </Text>
@@ -569,7 +569,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
                         <Badge
                           size="sm"
                           variant={active ? 'filled' : 'light'}
-                          color={active ? 'blue' : 'gray'}
+                          color={active ? 'kamit' : 'gray'}
                           radius="xl"
                           style={{
                             cursor: 'pointer',
@@ -622,12 +622,12 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
             {activeTag !== 'Tous' && (
               <Badge
                 variant="filled"
-                color="blue"
+                color="kamit"
                 size="sm"
                 rightSection={
                   <ActionIcon
                     size="xs"
-                    color="blue"
+                    color="kamit"
                     radius="xl"
                     variant="transparent"
                     onClick={() => setActiveTag('Tous')}
@@ -670,11 +670,16 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
           )}
 
           {/* Section : Roadmap & Idées d'Articles à Paraître sur Medium */}
-          <Paper withBorder p="lg" radius="xl" mt={40} style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
+          <Paper
+            withBorder
+            p="lg"
+            radius="xl"
+            mt={40}
+            style={{ backgroundColor: 'light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6))' }}>
             <Stack gap="md">
               <Group justify="space-between" align="center">
                 <Group gap="xs">
-                  <ThemeIcon color="indigo" size="md" radius="md" variant="light">
+                  <ThemeIcon color="kamit" size="md" radius="md" variant="light">
                     <IconBulb size={18} />
                   </ThemeIcon>
                   <Box>
@@ -686,7 +691,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
                     </Text>
                   </Box>
                 </Group>
-                <Badge color="indigo" variant="outline" size="sm">
+                <Badge color="kamit" variant="outline" size="sm">
                   {UPCOMING_ARTICLES.length} sujets en préparation
                 </Badge>
               </Group>
