@@ -20,6 +20,9 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    env:
+      # next lint charge next.config -> src/env.mjs, qui exige DATABASE_URL : sans objet pour le lint.
+      SKIP_ENV_VALIDATION: '1'
     steps:
       - name: Checkout
         uses: actions/checkout@v4

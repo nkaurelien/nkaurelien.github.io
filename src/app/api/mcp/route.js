@@ -28,14 +28,7 @@ export async function GET(req) {
     sdk: '@modelcontextprotocol/sdk',
     ...SERVER_INFO,
     transport: 'Streamable HTTP (stateless, JSON)',
-    tools: [
-      'get_profile_overview',
-      'search_experience',
-      'list_articles',
-      'read_article',
-      'search_articles',
-      'send_contact_message',
-    ],
+    tools: ['get_profile_overview', 'search_experience', 'list_articles', 'read_article', 'search_articles', 'send_contact_message'],
   });
 }
 

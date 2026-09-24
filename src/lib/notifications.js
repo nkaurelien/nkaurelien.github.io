@@ -18,9 +18,7 @@ export function getNtfyTopicUrl() {
   const topic = process.env.NTFY_TOPIC?.trim();
   if (!topic) return null;
 
-  const server = (process.env.NTFY_SERVER_URL || process.env.NTFY_BASE_URL || 'https://ntfy.kamitbrains.fr')
-    .trim()
-    .replace(/\/+$/, '');
+  const server = (process.env.NTFY_SERVER_URL || process.env.NTFY_BASE_URL || 'https://ntfy.kamitbrains.fr').trim().replace(/\/+$/, '');
   return `${server}/${topic.replace(/^\/+/, '')}`;
 }
 
@@ -48,14 +46,7 @@ function normalizeActions(actions) {
 /**
  * Envoie une notification push instantanée vers un serveur ntfy.
  */
-export async function sendNtfyNotification({
-  title,
-  message,
-  priority = 'default',
-  tags = [],
-  click,
-  actions,
-}) {
+export async function sendNtfyNotification({ title, message, priority = 'default', tags = [], click, actions }) {
   const topicUrl = getNtfyTopicUrl();
   if (!topicUrl) {
     console.log('[ntfy] Notification sautée (NTFY_TOPIC ou NTFY_TOPIC_URL non configuré).', { title, message });
@@ -67,7 +58,7 @@ export async function sendNtfyNotification({
     const topic = url.pathname.replace(/^\/+/, '');
     const serverUrl = `${url.protocol}//${url.host}`;
 
-    const numPriority = typeof priority === 'number' ? priority : (PRIORITY_MAP[priority] || 3);
+    const numPriority = typeof priority === 'number' ? priority : PRIORITY_MAP[priority] || 3;
     const parsedActions = normalizeActions(actions);
 
     const payload = {
@@ -104,7 +95,7 @@ export async function sendNtfyNotification({
     console.log('[ntfy] Notification envoyée avec succès vers topic', topic, ':', title);
     return true;
   } catch (err) {
-    console.error('[ntfy] Erreur lors de l\'envoi vers ntfy:', err?.message || err);
+    console.error("[ntfy] Erreur lors de l'envoi vers ntfy:", err?.message || err);
     return false;
   }
 }
