@@ -29,6 +29,15 @@ await page.cdp('Network.enable');
 await page.cdp('Network.setBlockedURLs', { urls: ['*/stats/api/send*'] });
 
 const origin = new URL(BASE).origin;
+
+// Thème imposé (clé localStorage de Mantine) : sans cela, le résultat dépend du réglage du
+// navigateur (un audit s'est déjà exécuté en sombre par surprise).
+async function setScheme(scheme) {
+  await page.goto(`${BASE}/fr/`);
+  await page.waitForLoadState();
+  await page.evaluate(s => localStorage.setItem('mantine-color-scheme-value', s), scheme);
+}
+await setScheme('light');
 const count = selector => page.evaluate(sel => document.querySelectorAll(sel).length, selector);
 
 // Charge une page et renvoie ses problèmes : exceptions, erreurs console, ressources du site en erreur.
@@ -68,6 +77,10 @@ async function visit(url) {
 
 // Audit axe-core : injecté dans la page, règles WCAG 2.1 A/AA.
 async function axeAudit() {
+  // Éloigne le curseur (et son libellé) affiché par ego lite : posé sur un élément, il
+  // fausse le calcul de contraste d'axe (faux positif observé sur les tags du blog).
+  await page.mouse.move(2, 2);
+  await page.waitForTimeout(300);
   await page.evaluate(`${AXE_SOURCE}; 0`);
   return page.evaluate(() =>
     window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] } }).then(r =>
@@ -140,6 +153,15 @@ await checkPage('accueil', '/fr/', async () => {
   const navLinks = await count('[data-testid="nav-main"] a');
   if (navLinks < 3) throw new Error(`${navLinks} liens dans la navigation principale`);
   const current = await page.evaluate(() => document.querySelector('[data-testid="nav-main"] [aria-current="page"]')?.textContent?.trim());
+  // Styles de navigation effectivement appliqués (dans le build de prod, l'ordre des CSS
+  // différait du dev et Mantine écrasait .nav-link : ni padding ni pastille).
+  const navStyle = await page.evaluate(() => {
+    const active = document.querySelector('[data-testid="nav-main"] [aria-current="page"]');
+    const cs = active && getComputedStyle(active);
+    return { padding: cs?.paddingLeft, bg: cs?.backgroundColor };
+  });
+  if (!navStyle.padding || navStyle.padding === '0px' || navStyle.bg === 'rgba(0, 0, 0, 0)')
+    throw new Error(`lien actif sans style (.nav-link écrasé ?) : padding ${navStyle.padding}, fond ${navStyle.bg}`);
   const chrome = await page.evaluate(() => ({
     footer: !!document.querySelector('[data-testid="site-footer"]'),
     cv: !!document.querySelector('[data-testid="cv-floating"]'),
@@ -170,6 +192,9 @@ await checkPage('blog', '/fr/blog/', async () => {
   await page.click(`[data-testid="blog-tag"][data-tag="${tag}"]`, { label: 'filtrer par tag' });
   const pressed = await page.evaluate(t => document.querySelector(`[data-testid="blog-tag"][data-tag="${t}"]`)?.getAttribute('aria-pressed'), tag);
   if (pressed !== 'true') throw new Error(`tag « ${tag} » : aria-pressed=${pressed}`);
+  // Laisse finir les transitions de couleur des badges avant l'audit axe (sinon contraste
+  // mesuré sur une couleur intermédiaire : faux positif).
+  await page.waitForTimeout(600);
   return `${cards} cartes ; recherche « kaniko » → ${found} (${status}) ; tag « ${tag} » aria-pressed OK`;
 });
 
@@ -309,6 +334,33 @@ try {
   record('conversation simulée', false, err.message);
 } finally {
   await page.cdp('Fetch.disable').catch(() => {});
+}
+
+// ------------------------------------------------------- Thème sombre (axe)
+// Contrastes et fonds en thème sombre : couleurs codées en dur (blanc, indigo…) invisibles
+// ou illisibles, logo et liens actifs de la charte, sections restées claires.
+try {
+  await setScheme('dark');
+  // + un article (diagrammes Mermaid, thème dédié) quand la page du blog en a fourni un.
+  for (const path of ['/fr/', '/fr/blog/', '/fr/chat/', ...(firstArticle ? [firstArticle] : [])]) {
+    await page.goto(BASE + path);
+    await page.waitForLoadState();
+    await page.waitForTimeout(1500);
+    const scheme = await page.evaluate(() => document.documentElement.getAttribute('data-mantine-color-scheme'));
+    const violations = await axeAudit();
+    const blocking = violations.filter(v => v.impact === 'serious' || v.impact === 'critical');
+    record(
+      `sombre ${path} axe`,
+      scheme === 'dark' && blocking.length === 0,
+      scheme !== 'dark'
+        ? `thème appliqué : ${scheme}`
+        : blocking.map(v => `${v.id} [${v.impact}] ×${v.nodes} (${v.target.slice(0, 60)})`).join(' | ') || '0 violation grave'
+    );
+  }
+} catch (err) {
+  record('thème sombre', false, err.message);
+} finally {
+  await setScheme('light').catch(() => {});
 }
 
 // --------------------------------------------------------- Rendu mobile
