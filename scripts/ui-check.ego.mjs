@@ -50,7 +50,12 @@ async function visit(url) {
     .map(d => (d.exception?.description || d.text || '').split('\n')[0]);
   const consoleErrors = ev
     .filter(e => e.method === 'Runtime.consoleAPICalled' && e.params.type === 'error')
-    .map(e => e.params.args.map(a => a.value ?? a.description ?? '').join(' ').slice(0, 120));
+    .map(e =>
+      e.params.args
+        .map(a => a.value ?? a.description ?? '')
+        .join(' ')
+        .slice(0, 120)
+    );
   const failedAll = ev
     .filter(e => e.method === 'Network.responseReceived' && e.params.response.status >= 400)
     .map(e => `${e.params.response.status} ${e.params.response.url}`)
@@ -65,16 +70,14 @@ async function visit(url) {
 async function axeAudit() {
   await page.evaluate(`${AXE_SOURCE}; 0`);
   return page.evaluate(() =>
-    window.axe
-      .run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] } })
-      .then(r =>
-        r.violations.map(v => ({
-          id: v.id,
-          impact: v.impact,
-          nodes: v.nodes.length,
-          target: v.nodes[0]?.target?.join(' ') || '',
-        }))
-      )
+    window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] } }).then(r =>
+      r.violations.map(v => ({
+        id: v.id,
+        impact: v.impact,
+        nodes: v.nodes.length,
+        target: v.nodes[0]?.target?.join(' ') || '',
+      }))
+    )
   );
 }
 
@@ -95,9 +98,7 @@ async function structure() {
     window.scrollTo(0, 0);
   });
   await page.keyboard.press('Tab');
-  const firstFocus = await page.evaluate(
-    () => document.activeElement?.getAttribute('data-testid') || document.activeElement?.tagName
-  );
+  const firstFocus = await page.evaluate(() => document.activeElement?.getAttribute('data-testid') || document.activeElement?.tagName);
   const problems = [];
   if (!s.main) problems.push('pas de main#content');
   if (s.h1 !== 1) problems.push(`${s.h1} h1 (attendu 1)`);
@@ -117,11 +118,7 @@ async function checkPage(name, path, extra) {
     if (analytics.length) record(`${name} analytics`, true, `Umami : ${analytics.join(' | ')}`, 'warn');
 
     const structProblems = await structure();
-    record(
-      `${name} structure`,
-      structProblems.length === 0,
-      structProblems.join(' | ') || "main#content, 1 h1, lang, lien d'évitement au 1er Tab"
-    );
+    record(`${name} structure`, structProblems.length === 0, structProblems.join(' | ') || "main#content, 1 h1, lang, lien d'évitement au 1er Tab");
 
     const violations = await axeAudit();
     const blocking = violations.filter(v => v.impact === 'serious' || v.impact === 'critical');
@@ -142,10 +139,13 @@ async function checkPage(name, path, extra) {
 await checkPage('accueil', '/fr/', async () => {
   const navLinks = await count('[data-testid="nav-main"] a');
   if (navLinks < 3) throw new Error(`${navLinks} liens dans la navigation principale`);
-  const current = await page.evaluate(
-    () => document.querySelector('[data-testid="nav-main"] [aria-current="page"]')?.textContent?.trim()
-  );
-  return `${navLinks} liens de navigation, page courante : « ${current || 'aucune'} »`;
+  const current = await page.evaluate(() => document.querySelector('[data-testid="nav-main"] [aria-current="page"]')?.textContent?.trim());
+  const chrome = await page.evaluate(() => ({
+    footer: !!document.querySelector('[data-testid="site-footer"]'),
+    cv: !!document.querySelector('[data-testid="cv-floating"]'),
+  }));
+  if (!chrome.footer || !chrome.cv) throw new Error(`pied de page ${chrome.footer}, bouton CV ${chrome.cv} (attendus sur l'accueil)`);
+  return `${navLinks} liens de navigation, page courante : « ${current || 'aucune'} », pied de page + bouton CV présents`;
 });
 
 // ---------------------------------------------------------------- Blog
@@ -153,9 +153,7 @@ let firstArticle = null;
 await checkPage('blog', '/fr/blog/', async () => {
   const cards = await count('[data-testid="blog-card"]');
   if (cards < 10) throw new Error(`seulement ${cards} cartes d'articles`);
-  firstArticle = await page.evaluate(() =>
-    document.querySelector('[data-testid="blog-card"][data-source="local"]')?.getAttribute('href')
-  );
+  firstArticle = await page.evaluate(() => document.querySelector('[data-testid="blog-card"][data-source="local"]')?.getAttribute('href'));
 
   // Recherche (sans LLM) : « kaniko » doit réduire la liste et mettre à jour le compteur annoncé.
   await page.fill('[data-testid="blog-search"]', 'kaniko');
@@ -168,14 +166,9 @@ await checkPage('blog', '/fr/blog/', async () => {
   await page.click('[data-testid="blog-search-clear"]', { label: 'effacer la recherche' });
 
   // Filtre par tag : bouton à bascule (aria-pressed).
-  const tag = await page.evaluate(() =>
-    document.querySelectorAll('[data-testid="blog-tag"]')[1]?.getAttribute('data-tag')
-  );
+  const tag = await page.evaluate(() => document.querySelectorAll('[data-testid="blog-tag"]')[1]?.getAttribute('data-tag'));
   await page.click(`[data-testid="blog-tag"][data-tag="${tag}"]`, { label: 'filtrer par tag' });
-  const pressed = await page.evaluate(
-    t => document.querySelector(`[data-testid="blog-tag"][data-tag="${t}"]`)?.getAttribute('aria-pressed'),
-    tag
-  );
+  const pressed = await page.evaluate(t => document.querySelector(`[data-testid="blog-tag"][data-tag="${t}"]`)?.getAttribute('aria-pressed'), tag);
   if (pressed !== 'true') throw new Error(`tag « ${tag} » : aria-pressed=${pressed}`);
   return `${cards} cartes ; recherche « kaniko » → ${found} (${status}) ; tag « ${tag} » aria-pressed OK`;
 });
@@ -207,8 +200,11 @@ await checkPage('chat', '/fr/chat/', async () => {
       inputLabel: input ? document.querySelector(`label[for="${input.id}"]`)?.textContent?.trim() : null,
       sendLabel: document.querySelector('[data-testid="chat-send"]')?.getAttribute('aria-label'),
       described: input?.getAttribute('aria-describedby'),
+      footer: !!document.querySelector('[data-testid="site-footer"]'),
+      cv: !!document.querySelector('[data-testid="cv-floating"]'),
     };
   });
+  if (ui.footer || ui.cv) throw new Error(`interface non épurée : pied de page ${ui.footer}, bouton CV ${ui.cv}`);
   if (ui.suggestions < 4) throw new Error(`${ui.suggestions} suggestions affichées`);
   if (!ui.inputLabel) throw new Error('champ de saisie sans <label>');
   if (!ui.sendLabel) throw new Error("bouton d'envoi sans nom accessible");
@@ -225,9 +221,7 @@ try {
   await page.waitForTimeout(2000);
   const motion = await page.evaluate(() => ({
     canvases: document.querySelectorAll('canvas').length,
-    infinite: document
-      .getAnimations()
-      .filter(a => a.playState === 'running' && a.effect?.getTiming?.().iterations === Infinity).length,
+    infinite: document.getAnimations().filter(a => a.playState === 'running' && a.effect?.getTiming?.().iterations === Infinity).length,
   }));
   const problems = [];
   if (motion.canvases) problems.push(`${motion.canvases} canvas animé(s) (fond Vanta ?)`);
@@ -237,6 +231,84 @@ try {
   record('mouvement réduit (/fr/)', false, err.message);
 } finally {
   await page.cdp('Emulation.setEmulatedMedia', { features: [] }).catch(() => {});
+}
+
+// ------------------------------------ Conversation simulée (sans appel LLM)
+// ego lite intercepte POST /api/chat (CDP Fetch) et répond un flux « UI Message Stream »
+// préenregistré contenant un lien d'article : bulles, cartes de sources et audit axe
+// sur une vraie conversation, de façon déterministe et sans consommer de quota.
+try {
+  await page.goto(`${BASE}/fr/chat/`);
+  await page.waitForLoadState();
+  await page.waitForTimeout(1000);
+  await page.cdp('Fetch.enable', { patterns: [{ urlPattern: '*/api/chat*', requestStage: 'Request' }] });
+  await page.events();
+  await page.click('[data-testid="chat-suggestion"] >> nth=0', { label: 'question suggérée' });
+  let paused = null;
+  for (let i = 0; i < 40 && !paused; i++) {
+    await page.waitForTimeout(250);
+    paused = (await page.events()).find(e => e.method === 'Fetch.requestPaused');
+  }
+  if (!paused) throw new Error("la requête /api/chat n'a pas été émise");
+  const article = '/blog/build-images-kubernetes-kaniko-crane/';
+  const stream =
+    [
+      { type: 'start' },
+      { type: 'text-start', id: 't1' },
+      { type: 'text-delta', id: 't1', delta: `Oui, voici son article : [Kaniko + Crane](${article}).` },
+      { type: 'text-end', id: 't1' },
+      { type: 'finish' },
+    ]
+      .map(e => `data: ${JSON.stringify(e)}\n\n`)
+      .join('') + 'data: [DONE]\n\n';
+  await page.cdp('Fetch.fulfillRequest', {
+    requestId: paused.params.requestId,
+    responseCode: 200,
+    responseHeaders: [
+      { name: 'content-type', value: 'text/event-stream' },
+      { name: 'x-vercel-ai-ui-message-stream', value: 'v1' },
+    ],
+    body: Buffer.from(stream).toString('base64'),
+  });
+  await page.waitForSelector('[data-testid="chat-source-card"]', { state: 'visible', timeout: 8000 });
+  const conv = await page.evaluate(() => {
+    const log = document.querySelector('[data-testid="chat-log"]').getBoundingClientRect();
+    const box = role => document.querySelector(`[data-testid="chat-message"][data-role="${role}"] .chat-bubble`)?.getBoundingClientRect();
+    const u = box('user');
+    const a = box('assistant');
+    return {
+      userRight: u ? Math.round(log.right - u.right) : null,
+      userLeft: u ? Math.round(u.left - log.left) : null,
+      aiLeft: a ? Math.round(a.left - log.left) : null,
+      sources: [...document.querySelectorAll('[data-testid="chat-source-card"]')].map(el => el.getAttribute('href')),
+      listLabel: document.querySelector('[data-testid="chat-sources"]')?.getAttribute('aria-label'),
+    };
+  });
+  const problems = [];
+  if (conv.userRight === null || conv.userRight > 24) problems.push(`bulle visiteur non alignée à droite (écart ${conv.userRight}px)`);
+  if (conv.userLeft !== null && conv.userLeft < 40) problems.push('bulle visiteur pleine largeur');
+  if (conv.aiLeft === null || conv.aiLeft > 24) problems.push(`bulle Jamila non alignée à gauche (écart ${conv.aiLeft}px)`);
+  if (conv.sources.length !== 1 || conv.sources[0] !== `/fr${article}`) problems.push(`cartes de sources : ${JSON.stringify(conv.sources)}`);
+  else {
+    const head = await fetch(BASE + conv.sources[0], { method: 'HEAD', redirect: 'follow' });
+    if (head.status !== 200) problems.push(`carte de source ${conv.sources[0]} -> HTTP ${head.status}`);
+  }
+  record(
+    'conversation simulée',
+    problems.length === 0,
+    problems.join(' | ') || `visiteur à droite, Jamila à gauche, 1 carte « ${conv.listLabel} » -> ${conv.sources[0]} (200)`
+  );
+  const violations = await axeAudit();
+  const blocking = violations.filter(v => v.impact === 'serious' || v.impact === 'critical');
+  record(
+    'conversation axe WCAG',
+    blocking.length === 0,
+    blocking.map(v => `${v.id} [${v.impact}] ×${v.nodes} (${v.target.slice(0, 60)})`).join(' | ') || '0 violation grave'
+  );
+} catch (err) {
+  record('conversation simulée', false, err.message);
+} finally {
+  await page.cdp('Fetch.disable').catch(() => {});
 }
 
 // --------------------------------------------------------- Rendu mobile
