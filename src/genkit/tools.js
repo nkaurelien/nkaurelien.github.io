@@ -3,8 +3,10 @@ import { ai } from './ai';
 import { listArticles, readArticle, searchArticles } from '../../scripts/mcp/tools/articles';
 
 // Outils du blog pour "Jamila", appelés en direct (mêmes fonctions que le serveur
-// MCP /api/mcp, sans passer par HTTP). Volontairement en lecture seule :
+// MCP /api/mcp, sans passer par HTTP). Volontairement sans effet de bord :
 // send_contact_message n'est PAS exposé à un chat public (spam / prompt injection).
+// Pour transmettre un message, prepare_contact_message affiche seulement un formulaire
+// prérempli : c'est le visiteur qui vérifie et envoie (hCaptcha + /api/contact).
 
 // Borne la taille renvoyée au modèle (un article complet peut dépasser 30 ko).
 const MAX_ARTICLE_CHARS = 12000;
@@ -57,4 +59,28 @@ export const readArticleTool = ai.defineTool(
   }
 );
 
-export const JAMILA_TOOLS = [searchArticlesTool, listArticlesTool, readArticleTool];
+export const prepareContactMessageTool = ai.defineTool(
+  {
+    name: 'prepare_contact_message',
+    description:
+      "Propose au visiteur de transmettre un message à Aurélien (contact, mission, question, rendez-vous). N'ENVOIE RIEN : affiche dans le chat un formulaire prérempli que le visiteur vérifie, complète puis envoie lui-même après un contrôle anti-robot.",
+    inputSchema: z.object({
+      message: z
+        .string()
+        .max(5000)
+        .optional()
+        .describe(
+          "Le message du visiteur, à la 1re personne du visiteur, s'il l'a déjà formulé (sinon laisser vide : il l'écrira dans le formulaire)"
+        ),
+      name: z.string().max(120).optional().describe('Nom du visiteur, seulement s’il l’a donné'),
+      email: z.string().max(200).optional().describe('Email du visiteur, seulement s’il l’a donné'),
+    }),
+  },
+  async () => ({
+    status: 'form_displayed',
+    sent: false,
+    note: 'Formulaire affiché au visiteur. Le message n’est PAS envoyé : le visiteur doit le vérifier, compléter son nom et son email, puis cliquer sur « Envoyer ».',
+  })
+);
+
+export const JAMILA_TOOLS = [searchArticlesTool, listArticlesTool, readArticleTool, prepareContactMessageTool];

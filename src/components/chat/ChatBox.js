@@ -14,10 +14,12 @@ import {
   IconList,
   IconBook,
   IconTool,
+  IconMail,
 } from '@tabler/icons-react';
 import { useClipboard } from '@mantine/hooks';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import ContactDraftCard from './ContactDraftCard';
 
 // Helper to safely extract text content from both content (assistant) and parts (user) properties
 const getMessageText = message => {
@@ -76,6 +78,7 @@ const TOOL_STEPS = {
     fr: i => `Liste des articles${i.tag ? ` (tag ${i.tag})` : ''}`,
     en: i => `Listing articles${i.tag ? ` (tag ${i.tag})` : ''}`,
   },
+  prepare_contact_message: { Icon: IconMail, fr: () => "Préparation d'un message pour Aurélien", en: () => 'Drafting a message for Aurélien' },
   read_article: { Icon: IconBook, fr: i => `Lecture de l'article « ${shortSlug(i.slug)} »`, en: i => `Reading article “${shortSlug(i.slug)}”` },
 };
 export const getToolSteps = (message, locale = 'fr') =>
@@ -176,6 +179,10 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
           const sources = isUser ? [] : extractSources(messageText, locale);
           const toolSteps = isUser ? [] : getToolSteps(message, locale);
           const isStreaming = message.id === streamingId;
+          // Brouillon de message préparé par l'outil prepare_contact_message (le dernier du tour).
+          const contactDraft = isUser
+            ? null
+            : (message.parts || []).filter(part => part?.type === 'data-tool' && part.data?.name === 'prepare_contact_message').pop();
           return (
             <Stack
               key={message.id}
@@ -251,6 +258,8 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                   ))}
                 </Stack>
               )}
+
+              {contactDraft && <ContactDraftCard key={contactDraft.id} draft={contactDraft.data.input} user={user} locale={locale} />}
 
               {/* Interactive Action Row for AI Responses (excluding the welcome root message) */}
               {!isUser && message.id !== 'welcome' && (
