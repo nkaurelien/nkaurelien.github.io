@@ -36,6 +36,7 @@ import {
   IconBook,
   IconWriting,
 } from '@tabler/icons-react';
+import SectionHeading from './SectionHeading';
 
 const LABELS = {
   fr: {
@@ -395,7 +396,7 @@ function ArticleListItem({ article, t }) {
   );
 }
 
-export default function Blog({ articles = [], locale = 'fr', compact = false, profileUrl = 'https://medium.com/@nkaurelien' }) {
+export default function Blog({ articles = [], locale = 'fr', compact = false, number, profileUrl = 'https://medium.com/@nkaurelien' }) {
   const t = { ...(LABELS[locale] || LABELS.fr), __locale: locale };
   const list = articles;
   const MEDIUM_PROFILE_URL = profileUrl;
@@ -439,21 +440,8 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, pr
   // MODE COMPACT (Page d'accueil) : 1 carte à la une + liste compacte épurée
   if (compact) {
     return (
-      <Container size="md" py={50}>
-        <Stack align="center" gap="xs" mb="lg">
-          <Group gap={6} c="kamit">
-            <IconNews size={18} />
-            <Text fw={700} size="sm" tt="uppercase" style={{ letterSpacing: '1px' }}>
-              {t.kicker}
-            </Text>
-          </Group>
-          <Title order={3} ta="center">
-            {t.title}
-          </Title>
-          <Text c="dimmed" ta="center" size="sm" style={{ maxWidth: 520, lineHeight: 1.5 }}>
-            {t.subtitle}
-          </Text>
-        </Stack>
+      <Container size="lg" py={64}>
+        <SectionHeading number={number} title={t.title} subtitle={t.subtitle} mb={32} />
 
         <Stack gap="md">
           {/* Article #1 à la une */}

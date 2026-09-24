@@ -1,17 +1,18 @@
 'use client';
 
 import { useRef } from 'react';
-import { Container, Title, Text, SimpleGrid, Card, Stack, Group, ThemeIcon } from '@mantine/core';
+import { Container, Text, SimpleGrid, Card, Stack, Group, ThemeIcon } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SectionHeading from './SectionHeading';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function Workflow({ workflow }) {
+export default function Workflow({ workflow, number }) {
   const containerRef = useRef(null);
   const groups = (workflow?.groups || []).filter(g => g.active !== false);
 
@@ -50,15 +51,13 @@ export default function Workflow({ workflow }) {
 
   return (
     <Container component="section" ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
-      <Title className="workflow-title" order={2} ta="center">
-        {workflow?.title || 'Environnement & rituels'}
-      </Title>
-      {workflow?.subtitle && (
-        <Text className="workflow-subtitle" ta="center" c="dimmed" mt="xs" mb="xl">
-          {workflow.subtitle}
-        </Text>
-      )}
-      {!workflow?.subtitle && <div style={{ marginBottom: 'var(--mantine-spacing-xl)' }} />}
+      <SectionHeading
+        number={number}
+        title={workflow?.title || 'Environnement & rituels'}
+        subtitle={workflow?.subtitle}
+        titleClassName="workflow-title"
+        subtitleClassName="workflow-subtitle"
+      />
 
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
         {groups.map(group => (

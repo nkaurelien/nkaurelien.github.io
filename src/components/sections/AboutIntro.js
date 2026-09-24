@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { Container, Title, Text, Group, Box, Grid, Stack } from '@mantine/core';
+import { Container, Text, Group, Box, Grid, Stack } from '@mantine/core';
+import SectionHeading from './SectionHeading';
 
 // « 01. À propos » (inspiré de jev.dev) : photo + courte bio à gauche, compétences
 // regroupées en étiquettes à droite. Suit le hero, qui ne montre plus la photo.
@@ -12,15 +13,7 @@ export default function AboutIntro({ about }) {
   return (
     <Box component="section" id="about" aria-labelledby="about-title" data-testid="about-intro" className="hero-dots-soft" py={{ base: 90, md: 110 }}>
       <Container size="lg">
-        <Group gap="md" wrap="nowrap" mb={48}>
-          <Text component="span" ff="monospace" fz="sm" c="var(--mantine-color-kamit-text)" aria-hidden="true">
-            {about.number}
-          </Text>
-          <Title id="about-title" order={2} fz={{ base: 24, sm: 28 }} style={{ whiteSpace: 'nowrap' }}>
-            {about.title}
-          </Title>
-          <Box aria-hidden="true" style={{ flex: 1, height: 1, backgroundColor: 'var(--mantine-color-default-border)' }} />
-        </Group>
+        <SectionHeading number={about.number} title={about.title} id="about-title" />
 
         <Grid gutter={{ base: 40, md: 64 }}>
           <Grid.Col span={{ base: 12, md: 5 }}>

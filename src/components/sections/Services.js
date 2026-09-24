@@ -1,12 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { Container, Title, SimpleGrid, Card, Text, ThemeIcon, Box } from '@mantine/core';
+import { Container, SimpleGrid, Card, Text, ThemeIcon, Box } from '@mantine/core';
 import { IconCode, IconServerCog, IconRobot, IconSparkles, IconActivityHeartbeat, IconSitemap, IconSchool, IconStar } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
 import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SectionHeading from './SectionHeading';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -22,7 +23,7 @@ const ICONS = {
   training: IconSchool,
 };
 
-export default function Services({ services }) {
+export default function Services({ services, number }) {
   const items = (services?.items || []).filter(i => i.active !== false);
   const containerRef = useRef(null);
 
@@ -60,15 +61,7 @@ export default function Services({ services }) {
         backgroundAttachment: 'scroll',
       }}>
       <Container size="lg">
-        <Title order={2} ta="center">
-          {services?.title || 'Mes Services'}
-        </Title>
-        {services?.subtitle && (
-          <Text ta="center" c="dimmed" mt="xs" mb="xl" maw={720} mx="auto">
-            {services.subtitle}
-          </Text>
-        )}
-        {!services?.subtitle && <div style={{ marginBottom: 'var(--mantine-spacing-xl)' }} />}
+        <SectionHeading number={number} title={services?.title || 'Mes Services'} subtitle={services?.subtitle} />
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
           {items.map(item => {
             const Icon = ICONS[item.icon] || IconStar;

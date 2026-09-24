@@ -36,13 +36,13 @@ export default async function HomePage({ params }) {
       <Hero locale={locale} hero={hero} />
       <CodeBanner hero={hero} />
       <AboutIntro about={about} />
-      <Services services={services} />
-      <Skills skills={skills} />
-      <Workflow workflow={workflow} />
+      <Services services={services} number="02." />
+      <Skills skills={skills} number="03." />
+      <Workflow workflow={workflow} number="04." />
       <Counters counters={counters} />
-      <Testimonials testimonials={testimonials} />
-      <Collaborations collaborators={collaborators} />
-      <Blog locale={locale} articles={articles} compact profileUrl={MEDIUM_PROFILE_URL} />
+      <Testimonials testimonials={testimonials} number="05." />
+      <Collaborations collaborators={collaborators} number="06." />
+      <Blog locale={locale} articles={articles} compact number="07." profileUrl={MEDIUM_PROFILE_URL} />
     </>
   );
 }

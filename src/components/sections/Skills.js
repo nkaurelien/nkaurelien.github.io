@@ -1,18 +1,19 @@
 'use client';
 
 import { useRef } from 'react';
-import { Container, Title, Text, SimpleGrid, Card, Badge, Group } from '@mantine/core';
+import { Container, Text, SimpleGrid, Card, Badge, Group } from '@mantine/core';
 import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { animate, stagger } from 'animejs';
 import { prefersReducedMotion } from '@/lib/motion';
+import SectionHeading from './SectionHeading';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function Skills({ skills }) {
+export default function Skills({ skills, number }) {
   const containerRef = useRef(null);
   const groups = (skills?.groups || []).filter(g => g.active !== false);
 
@@ -66,15 +67,13 @@ export default function Skills({ skills }) {
   return (
     <section className="section-muted">
       <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
-        <Title className="skills-title" order={2} ta="center">
-          {skills?.title || 'Compétences'}
-        </Title>
-        {skills?.subtitle && (
-          <Text className="skills-subtitle" ta="center" c="dimmed" mt="xs" mb="xl">
-            {skills.subtitle}
-          </Text>
-        )}
-        {!skills?.subtitle && <div style={{ marginBottom: 'var(--mantine-spacing-xl)' }} />}
+        <SectionHeading
+          number={number}
+          title={skills?.title || 'Compétences'}
+          subtitle={skills?.subtitle}
+          titleClassName="skills-title"
+          subtitleClassName="skills-subtitle"
+        />
 
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
           {groups.map(group => (

@@ -1,28 +1,30 @@
 'use client';
 
 import { useRef } from 'react';
-import { Container, Title, Text, SimpleGrid, Card, Avatar, Group, Stack, ThemeIcon } from '@mantine/core';
+import { Container, Text, SimpleGrid, Card, Avatar, Group, Stack, ThemeIcon } from '@mantine/core';
 import { IconBrandLinkedin, IconBrandBehance, IconBrandGithub, IconBrandGitlab, IconWorld } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
 import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SectionHeading from './SectionHeading';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Choisit l'icone selon la plateforme du lien.
-function linkMeta(url = '') {
+// Choisit l'icone selon la plateforme du lien (gris discret, rouge au survol de la carte :
+// plus de couleurs de marque, qui juraient avec la charte en mode sombre).
+function linkIcon(url = '') {
   const u = url.toLowerCase();
-  if (u.includes('behance')) return { Icon: IconBrandBehance, color: 'indigo' };
-  if (u.includes('linkedin')) return { Icon: IconBrandLinkedin, color: 'blue' };
-  if (u.includes('github')) return { Icon: IconBrandGithub, color: 'dark' };
-  if (u.includes('gitlab')) return { Icon: IconBrandGitlab, color: 'orange' };
-  return { Icon: IconWorld, color: 'gray' };
+  if (u.includes('behance')) return IconBrandBehance;
+  if (u.includes('linkedin')) return IconBrandLinkedin;
+  if (u.includes('github')) return IconBrandGithub;
+  if (u.includes('gitlab')) return IconBrandGitlab;
+  return IconWorld;
 }
 
-export default function Collaborations({ collaborators }) {
+export default function Collaborations({ collaborators, number }) {
   const containerRef = useRef(null);
   const items = (collaborators?.items || []).filter(i => i.active !== false);
 
@@ -61,18 +63,17 @@ export default function Collaborations({ collaborators }) {
 
   return (
     <Container component="section" ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
-      <Title className="collab-title" order={2} ta="center">
-        {collaborators?.title || 'Collaborations'}
-      </Title>
-      {collaborators?.subtitle && (
-        <Text className="collab-subtitle" ta="center" c="dimmed" mt="xs" mb="xl">
-          {collaborators.subtitle}
-        </Text>
-      )}
+      <SectionHeading
+        number={number}
+        title={collaborators?.title || 'Collaborations'}
+        subtitle={collaborators?.subtitle}
+        titleClassName="collab-title"
+        subtitleClassName="collab-subtitle"
+      />
 
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
         {items.map(item => {
-          const { Icon, color } = linkMeta(item.link);
+          const Icon = linkIcon(item.link);
           return (
             <Card
               key={item.name}
@@ -97,8 +98,8 @@ export default function Collaborations({ collaborators }) {
                     </Text>
                   </Stack>
                 </Group>
-                <ThemeIcon variant="subtle" color={color} size="md">
-                  <Icon size={20} />
+                <ThemeIcon variant="subtle" color="gray" size="md" className="collab-link-icon">
+                  <Icon size={20} aria-hidden="true" />
                 </ThemeIcon>
               </Group>
             </Card>

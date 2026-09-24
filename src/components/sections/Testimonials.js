@@ -1,12 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { Container, Title, SimpleGrid, Card, Avatar, Text, Group, Stack, ActionIcon } from '@mantine/core';
+import { Container, SimpleGrid, Card, Avatar, Text, Group, Stack, ActionIcon } from '@mantine/core';
 import { IconStarFilled, IconStar, IconBrandLinkedin, IconQuote } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
 import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SectionHeading from './SectionHeading';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +27,7 @@ function Stars({ rating = 5 }) {
   );
 }
 
-export default function Testimonials({ testimonials }) {
+export default function Testimonials({ testimonials, number }) {
   const containerRef = useRef(null);
   const items = (testimonials?.items || []).filter(t => t.active !== false && (t.text || '').trim().length > 0);
 
@@ -65,9 +66,7 @@ export default function Testimonials({ testimonials }) {
   return (
     <section className="section-muted">
       <Container ref={containerRef} size="lg" py={64} style={{ overflow: 'hidden' }}>
-        <Title className="testimonials-title" order={2} ta="center" mb="xl">
-          {testimonials?.title || 'Recommandations'}
-        </Title>
+        <SectionHeading number={number} title={testimonials?.title || 'Recommandations'} titleClassName="testimonials-title" />
 
         <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="xl">
           {items.map((item, idx) => {
