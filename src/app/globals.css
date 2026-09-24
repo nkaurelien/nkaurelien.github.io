@@ -61,6 +61,23 @@ a {
   text-decoration: underline;
 }
 
+/* Vignette de projet sans image : même fond que le hero (lueur rouge sur quasi-noir). */
+.project-thumb-placeholder {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(169, 5, 4, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(216, 67, 21, 0.2) 0%, transparent 55%), #0c0909;
+}
+
+/* Collaborations : icône de lien neutre, rouge au survol de la carte. */
+.collab-link-icon {
+  transition: color 0.2s ease;
+}
+a:hover .collab-link-icon,
+.collab-link-icon:hover {
+  color: var(--mantine-color-kamit-text);
+}
+
 .about-tag {
   padding: 5px 12px;
   border: 1px solid var(--mantine-color-default-border);

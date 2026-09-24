@@ -2,16 +2,41 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Container, Title, SimpleGrid, Card, Image, Text, Badge, Button, Group, Chip, Modal, Stack, ActionIcon, Avatar, Tooltip } from '@mantine/core';
+import {
+  Container,
+  Title,
+  SimpleGrid,
+  Card,
+  Image,
+  Text,
+  Badge,
+  Button,
+  Group,
+  Chip,
+  Modal,
+  Stack,
+  ActionIcon,
+  Avatar,
+  Tooltip,
+} from '@mantine/core';
 import { withBase } from '@/lib/asset';
+import ProjectThumb from './ProjectThumb';
 import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import { db } from '@/lib/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { IconRefresh } from '@tabler/icons-react';
 
+// Retire les balises HTML et décode les entités courantes (ex. « complet&nbsp;: »).
 function stripHtml(str = '') {
-  return str.replace(/<[^>]+>/g, '');
+  return str
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, '\u00a0')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
 }
 
 export default function ProjectsGrid({ projects, meta, locale }) {
@@ -71,7 +96,9 @@ export default function ProjectsGrid({ projects, meta, locale }) {
     <Container component="section" ref={containerRef} size="lg" py={{ base: 48, sm: 72 }} style={{ overflow: 'hidden' }}>
       <Group justify="center" mt={{ base: 'xs', sm: 'md' }} mb={{ base: 32, sm: 42 }} className="projects-avatar">
         <Tooltip
-          label={locale === 'en' ? 'About Astrid-Aurélien NKUMBE — Full Profile & Vision' : "À propos d'Astrid-Aurélien NKUMBE — Profil complet & vision"}
+          label={
+            locale === 'en' ? 'About Astrid-Aurélien NKUMBE — Full Profile & Vision' : "À propos d'Astrid-Aurélien NKUMBE — Profil complet & vision"
+          }
           withArrow
           position="top"
           transitionProps={{ transition: 'pop', duration: 200 }}>
@@ -149,25 +176,27 @@ export default function ProjectsGrid({ projects, meta, locale }) {
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
           {filtered.map(p => (
             <Card key={p.slug} component="article" withBorder radius="lg" padding="lg" shadow="sm" className="projects-card">
-              {p.image && (
-                <Card.Section
-                  component={p.isDynamic ? 'div' : Link}
-                  href={p.isDynamic ? undefined : `/${locale}/projects/${p.slug}`}
-                  onClick={() => {
-                    if (typeof window !== 'undefined') {
-                      window.umami?.track('project_card_click', { slug: p.slug, title: p.title });
-                    }
-                    if (p.isDynamic) setSelectedProject(p);
-                  }}
-                  style={{ cursor: 'pointer' }}>
-                  <Image src={withBase(p.image)} alt={p.title} h={180} fit="cover" />
-                </Card.Section>
-              )}
-              <Group justify="space-between" mt="md" mb="xs" wrap="nowrap">
-                <Text fw={700}>{p.title}</Text>
-                <Group gap={6} wrap="nowrap">
+              {/* Toujours une vignette : image du projet, ou visuel de remplacement si absente / cassée. */}
+              <Card.Section
+                component={p.isDynamic ? 'div' : Link}
+                href={p.isDynamic ? undefined : `/${locale}/projects/${p.slug}`}
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.umami?.track('project_card_click', { slug: p.slug, title: p.title });
+                  }
+                  if (p.isDynamic) setSelectedProject(p);
+                }}
+                style={{ cursor: 'pointer' }}>
+                <ProjectThumb src={p.image} alt={p.title} category={p.category} categorySlug={p.categorySlug} />
+              </Card.Section>
+              {/* Le titre se replie, la catégorie reste entière (plus de « APPLICATIONS … »). */}
+              <Group justify="space-between" align="flex-start" mt="md" mb="xs" wrap="nowrap">
+                <Text fw={700} style={{ flex: 1, minWidth: 0 }}>
+                  {p.title}
+                </Text>
+                <Group gap={6} wrap="nowrap" mt={2} style={{ flexShrink: 0 }}>
                   {p.category && (
-                    <Badge variant="light" color="brand">
+                    <Badge variant="light" color="brand" styles={{ label: { overflow: 'visible' } }}>
                       {p.category}
                     </Badge>
                   )}
