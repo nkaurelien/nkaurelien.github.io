@@ -46,7 +46,7 @@ export default async function LocaleLayout({ children, params }) {
             <Footer app={app} />
           </HideOnChat>
           <ClientEffects />
-          <HideOnChat>
+          <HideOnChat scope="cv">
             <CvFloatingButton />
           </HideOnChat>
         </AuthContextProvider>
