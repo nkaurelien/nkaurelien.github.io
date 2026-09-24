@@ -398,6 +398,36 @@ export default function ChatClient({ locale }) {
           background-color: rgba(34, 139, 230, 0.03) !important;
         }
         /* Markdown rendering for AI messages — theme-aware, no Tailwind dependency */
+        /* Bulles de conversation : coin « de départ » moins arrondi, comme une messagerie. */
+        .chat-bubble-user {
+          border-end-end-radius: 4px !important;
+        }
+        .chat-bubble-ai {
+          border-end-start-radius: 4px !important;
+        }
+        /* Cartes de sources (articles cités) : bordure gauche d'accent. */
+        .chat-source-card {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 0.75rem;
+          border: 1px solid var(--mantine-color-default-border);
+          border-inline-start: 3px solid var(--mantine-color-indigo-filled);
+          border-radius: 0.5rem;
+          background-color: var(--mantine-color-body);
+          color: var(--mantine-color-text);
+          transition:
+            border-color 0.15s ease,
+            transform 0.15s ease;
+        }
+        .chat-source-card:hover {
+          border-color: var(--mantine-color-indigo-filled);
+          transform: translateX(2px);
+        }
+        .chat-source-card:focus-visible {
+          outline: 3px solid var(--mantine-color-indigo-filled);
+          outline-offset: 2px;
+        }
         .chat-prose > :first-child {
           margin-top: 0;
         }

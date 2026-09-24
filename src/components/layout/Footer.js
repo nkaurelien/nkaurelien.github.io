@@ -22,7 +22,7 @@ export default function Footer({ app }) {
   const footer = app?.footer || {};
 
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" data-testid="site-footer">
       <Container size="lg" py="xl">
         <Stack align="center" gap="md">
           <Group gap="xs">

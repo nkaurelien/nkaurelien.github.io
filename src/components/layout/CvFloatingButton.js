@@ -100,6 +100,7 @@ export default function CvFloatingButton() {
   return (
     <>
       <Box
+        data-testid="cv-floating"
         style={{
           position: 'fixed',
           bottom: 24,

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { ScrollArea, Stack, Paper, Group, Avatar, Text, Tooltip, ActionIcon } from '@mantine/core';
-import { IconUser, IconRobot, IconThumbUp, IconThumbDown, IconCopy, IconCheck } from '@tabler/icons-react';
+import Link from 'next/link';
+import { ScrollArea, Stack, Paper, Group, Avatar, Text, Tooltip, ActionIcon, Anchor } from '@mantine/core';
+import { IconUser, IconRobot, IconThumbUp, IconThumbDown, IconCopy, IconCheck, IconArticle, IconArrowUpRight } from '@tabler/icons-react';
 import { useClipboard } from '@mantine/hooks';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -36,6 +37,21 @@ const getMessageText = message => {
   return '';
 };
 
+// Articles du blog cités dans une réponse (liens markdown vers /blog/… ou /fr|en/blog/…),
+// affichés en « cartes de sources » sous la réponse. Dédoublonnés, préfixés par la locale.
+const SOURCE_LINK_RE = /\[([^\]]+)\]\(((?:\/(?:fr|en))?\/blog\/[^)\s]+)\)/g;
+export const extractSources = (markdown, locale) => {
+  const seen = new Set();
+  const sources = [];
+  for (const [, title, rawHref] of markdown.matchAll(SOURCE_LINK_RE)) {
+    const href = /^\/(fr|en)\//.test(rawHref) ? rawHref : `/${locale}${rawHref}`;
+    if (seen.has(href)) continue;
+    seen.add(href);
+    sources.push({ title: title.replace(/[*_`]/g, '').trim(), href });
+  }
+  return sources;
+};
+
 export default function ChatBox({ messages = [], user, responseLoading, viewportRef, locale = 'fr' }) {
   const clipboard = useClipboard({ timeout: 2000 });
   const [copiedId, setCopiedId] = useState(null);
@@ -64,6 +80,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
     notHelpful: isEnglish ? 'Not helpful' : 'Pas utile',
     conversation: isEnglish ? 'Conversation with Jamila' : 'Conversation avec Jamila',
     reply: isEnglish ? 'reply' : 'réponse',
+    sources: isEnglish ? 'Cited articles' : 'Articles cités',
   };
 
   let replyCount = 0;
@@ -85,6 +102,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
           const replyName = `${labels.reply} ${replyCount}`;
           const messageText = getMessageText(message);
           const isCopied = copiedId === message.id;
+          const sources = isUser ? [] : extractSources(messageText, locale);
           return (
             <Stack
               key={message.id}
@@ -93,28 +111,30 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
               data-testid="chat-message"
               data-role={message.role}
               gap={6}
-              style={{ width: '100%' }}>
+              // Bulles de conversation : visiteur à droite (largeur limitée), Jamila à gauche.
+              style={{ alignSelf: isUser ? 'flex-end' : 'flex-start', maxWidth: isUser ? '85%' : '100%', width: isUser ? 'auto' : '100%' }}>
               <Paper
                 withBorder
                 p="md"
                 radius="lg"
+                className={isUser ? 'chat-bubble chat-bubble-user' : 'chat-bubble chat-bubble-ai'}
                 style={{
-                  backgroundColor: isUser ? 'var(--mantine-color-default-hover)' : 'var(--mantine-color-blue-light)',
-                  borderColor: isUser ? 'var(--mantine-color-default-border)' : 'var(--mantine-color-blue-light-border)',
+                  backgroundColor: isUser ? 'var(--mantine-color-indigo-light)' : 'var(--mantine-color-default-hover)',
+                  borderColor: isUser ? 'var(--mantine-color-indigo-light-hover)' : 'var(--mantine-color-default-border)',
                 }}>
-                <Group align="flex-start" gap="sm" wrap="nowrap">
+                <Group align="flex-start" gap="sm" wrap="nowrap" style={{ flexDirection: isUser ? 'row-reverse' : 'row' }}>
                   {isUser ? (
                     <Avatar src={user?.photoURL} alt="" aria-hidden="true" radius="xl" size="md" color="gray" variant="filled">
                       {!user?.photoURL && <IconUser size={18} aria-hidden="true" />}
                     </Avatar>
                   ) : (
-                    <Avatar radius="xl" size="md" color="blue" variant="filled" aria-hidden="true">
+                    <Avatar radius="xl" size="md" color="indigo" variant="filled" aria-hidden="true">
                       <IconRobot size={18} aria-hidden="true" />
                     </Avatar>
                   )}
 
                   <Stack gap={4} style={{ flex: 1, minWidth: 0 }}>
-                    <Text id={`msg-${message.id}-author`} fw={600} size="sm" style={{ lineHeight: 1.1 }}>
+                    <Text id={`msg-${message.id}-author`} fw={600} size="sm" ta={isUser ? 'right' : undefined} style={{ lineHeight: 1.1 }}>
                       {isUser ? labels.userLabel : labels.aiLabel}
                     </Text>
                     {isUser ? (
@@ -129,6 +149,23 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                   </Stack>
                 </Group>
               </Paper>
+
+              {/* Cartes de sources : articles du blog cités dans la réponse. */}
+              {sources.length > 0 && (
+                <Stack component="ul" role="list" aria-label={labels.sources} className="list-reset" data-testid="chat-sources" gap={6} pl="xs">
+                  {sources.map(source => (
+                    <li key={source.href}>
+                      <Anchor component={Link} href={source.href} underline="never" className="chat-source-card" data-testid="chat-source-card">
+                        <IconArticle size={16} aria-hidden="true" style={{ flexShrink: 0, color: 'var(--mantine-color-indigo-filled)' }} />
+                        <Text component="span" size="sm" fw={600} lineClamp={1} style={{ flex: 1, minWidth: 0 }}>
+                          {source.title}
+                        </Text>
+                        <IconArrowUpRight size={14} aria-hidden="true" style={{ flexShrink: 0 }} />
+                      </Anchor>
+                    </li>
+                  ))}
+                </Stack>
+              )}
 
               {/* Interactive Action Row for AI Responses (excluding the welcome root message) */}
               {!isUser && message.id !== 'welcome' && (
@@ -195,8 +232,8 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
             p="md"
             radius="lg"
             style={{
-              backgroundColor: 'var(--mantine-color-blue-light)',
-              borderColor: 'var(--mantine-color-blue-light-border)',
+              backgroundColor: 'var(--mantine-color-default-hover)',
+              borderColor: 'var(--mantine-color-default-border)',
               alignSelf: 'flex-start',
               width: '100%',
             }}>

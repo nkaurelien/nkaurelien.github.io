@@ -10,6 +10,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientEffects from '@/components/layout/ClientEffects';
 import CvFloatingButton from '@/components/layout/CvFloatingButton';
+import HideOnChat from '@/components/layout/HideOnChat';
 import { AuthContextProvider } from '@/context/AuthContext';
 
 export function generateStaticParams() {
@@ -41,9 +42,13 @@ export default async function LocaleLayout({ children, params }) {
           <main id="content" tabIndex={-1} data-testid="main-content">
             {children}
           </main>
-          <Footer app={app} />
+          <HideOnChat>
+            <Footer app={app} />
+          </HideOnChat>
           <ClientEffects />
-          <CvFloatingButton />
+          <HideOnChat>
+            <CvFloatingButton />
+          </HideOnChat>
         </AuthContextProvider>
       </MantineProvider>
     </NextIntlClientProvider>
