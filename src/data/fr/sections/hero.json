@@ -1,26 +1,33 @@
 {
-    "bg_image": "/img/me/bg.png",
-    "badge": "Ouvert aux opportunités",
-    "badge_detail": "Toute la France",
-    "title": "Hello — <br/>je conçois l'archi sécurisée, et je fais avancer l'équipe.",
-    "subtitle": {
-        "start": "&lt;<i>code</i>&gt; ",
-        "rotates": [
-            "DevSecOps & Platform Engineer / Tech Lead.",
-            "Je sécurise et industrialise de la spec à la prod.",
-            "J'analyse et je conçois des systèmes d'information.",
-            "Je conçois et développe des applications web & mobiles.",
-            "Je booste le SDLC avec l'IA agentique (Claude).",
-            "J'expérimente le Spec-Driven Development (Speckit)."
-        ],
-        "end": "&lt;/<i>code</i>&gt;"
-    },
-    "button": {
-        "link": "/projects",
-        "label": "Explorer maintenant"
-    },
-    "photo": {
-        "url": "img/me/face-1.png",
-        "alt": "Astrid-Aurélien NKUMBE"
-    }
+  "bg_image": "/img/me/bg.png",
+  "badge": "Ouvert aux opportunités",
+  "badge_detail": "Toute la France",
+  "title": "Hello — <br/>je conçois l'archi sécurisée, et je fais avancer l'équipe.",
+  "subtitle": {
+    "start": "&lt;<i>code</i>&gt; ",
+    "rotates": [
+      "DevSecOps & Platform Engineer / Tech Lead.",
+      "Je sécurise et industrialise de la spec à la prod.",
+      "J'analyse et je conçois des systèmes d'information.",
+      "Je conçois et développe des applications web & mobiles.",
+      "Je booste le SDLC avec l'IA agentique (Claude).",
+      "J'expérimente le Spec-Driven Development (Speckit)."
+    ],
+    "end": "&lt;/<i>code</i>&gt;"
+  },
+  "button": {
+    "link": "/projects",
+    "label": "Explorer maintenant"
+  },
+  "photo": {
+    "url": "img/me/face-1.png",
+    "alt": "Astrid-Aurélien NKUMBE"
+  },
+  "eyebrow": "Bonjour, je suis",
+  "first_name": "Aurélien",
+  "last_name": "NKUMBE",
+  "role": "DevSecOps & Platform Engineer · Tech Lead",
+  "company": "Kamitbrains",
+  "company_link": "/kamitbrains",
+  "tagline": "Je conçois l'archi sécurisée, et je fais avancer l'équipe."
 }

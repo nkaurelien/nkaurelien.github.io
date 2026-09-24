@@ -18,16 +18,62 @@ a {
 }
 
 .hero-gradient {
-  /* Charte Kamitbrains (bannière) : rouge vif au centre, bordeaux puis quasi-noir sur les bords.
+  /* Charte Kamitbrains en sourdine : lueur rouge sombre sur fond quasi noir.
      Fond de secours du hero (sans WebGL ou avec mouvement réduit). */
-  background: radial-gradient(ellipse at 50% 15%, #f30a07 0%, #a90504 38%, #4f0202 75%, #2a0000 100%);
+  background:
+    radial-gradient(ellipse at 30% 35%, rgba(169, 5, 4, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 60%, rgba(216, 67, 21, 0.18) 0%, transparent 50%), #0c0909;
 }
 
-.hero-floating-badge:hover {
-  transform: translateY(-5px) scale(1.08) !important;
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.45),
-    0 0 20px rgba(243, 10, 7, 0.4) !important;
+/* Trame de points discrète (hero et « À propos »), au-dessus du fond animé. */
+.hero-dots::after,
+.hero-dots-soft {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.hero-dots::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+[data-mantine-color-scheme='light'] .hero-dots-soft {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+}
+
+/* Nom de famille : dégradé rouge Kamitbrains → deep orange (teintes claires : fond sombre).
+   Couleur pleine en secours si background-clip: text n'est pas pris en charge. */
+.hero-name-accent {
+  color: #fb5f59;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-name-accent {
+    background: linear-gradient(90deg, #fb5f59 0%, #ff8a65 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+.hero-company-link {
+  color: #ff8f8a;
+}
+.hero-company-link:hover {
+  text-decoration: underline;
+}
+
+.about-tag {
+  padding: 5px 12px;
+  border: 1px solid var(--mantine-color-default-border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background: color-mix(in srgb, var(--mantine-color-body) 85%, transparent);
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.about-tag:hover {
+  border-color: var(--mantine-color-kamit-outline);
+  color: var(--mantine-color-kamit-text);
 }
 
 .section-muted {
@@ -45,7 +91,8 @@ a {
 
 .site-footer {
   border-top: 1px solid var(--mantine-color-default-border);
-  background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+  /* background-color (et non background) : garde la trame de points de .hero-dots-soft. */
+  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
   /* Pas de marge haute : elle laissait une bande de fond nu entre une section colorée
      (ex. page Kamitbrains) et le pied de page ; les sections ont leur propre padding. */
 }
@@ -106,21 +153,6 @@ a {
 }
 
 /* Premium homepage photo container styles */
-.hero-photo-container {
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-photo-container:hover {
-  transform: translateY(-8px) scale(1.02);
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
-  box-shadow: 0 30px 50px -12px rgba(0, 0, 0, 0.45) !important;
-}
-
-.hero-photo-container:hover .hero-photo-img {
-  transform: scale(1.06);
-}
-
 /* Premium Animocons-inspired SVG icon micro-interactions */
 
 /* 1. Social Icons in Footer: Pop & Rotate */
@@ -130,6 +162,13 @@ a {
 
 .site-footer a .tabler-icon {
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.site-footer .footer-icon {
+  color: var(--mantine-color-dimmed);
+}
+.site-footer .footer-icon:hover {
+  color: var(--mantine-color-kamit-text);
 }
 
 .site-footer a:hover .tabler-icon {
@@ -281,32 +320,6 @@ header button:hover .tabler-icon {
   border-radius: 50%;
   background-color: var(--mantine-color-teal-5);
   animation: status-pulse 2s infinite;
-}
-
-/* Responsive Mobile Centering for Hero Section */
-@media (max-width: 991px) {
-  .hero-parent-group {
-    justify-content: center !important;
-  }
-  .hero-badge-group {
-    justify-content: center !important;
-  }
-  .hero-buttons-group {
-    justify-content: center !important;
-  }
-  .hero-title {
-    text-align: center !important;
-  }
-  .hero-subtitle {
-    text-align: center !important;
-  }
-  .hero-photo-wrapper {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-top: 24px !important;
-    display: block !important;
-    max-width: fit-content;
-  }
 }
 
 /* Diagrammes Mermaid : le SVG doit se contraindre à la colonne d'article, et les

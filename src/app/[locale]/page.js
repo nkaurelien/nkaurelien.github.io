@@ -3,6 +3,7 @@ import { getSection, getSlider } from '@/lib/content';
 import { getMediumArticles, MEDIUM_PROFILE_URL } from '@/lib/medium';
 import Hero from '@/components/sections/Hero';
 import CodeBanner from '@/components/sections/CodeBanner';
+import AboutIntro from '@/components/sections/AboutIntro';
 import Services from '@/components/sections/Services';
 import Skills from '@/components/sections/Skills';
 import Workflow from '@/components/sections/Workflow';
@@ -18,8 +19,9 @@ export default async function HomePage({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const [hero, services, skills, workflow, counters, testimonials, collaborators, articles] = await Promise.all([
+  const [hero, about, services, skills, workflow, counters, testimonials, collaborators, articles] = await Promise.all([
     getSection(locale, 'hero'),
+    getSection(locale, 'about'),
     getSection(locale, 'services'),
     getSection(locale, 'skills'),
     getSection(locale, 'workflow'),
@@ -33,6 +35,7 @@ export default async function HomePage({ params }) {
     <>
       <Hero locale={locale} hero={hero} />
       <CodeBanner hero={hero} />
+      <AboutIntro about={about} />
       <Services services={services} />
       <Skills skills={skills} />
       <Workflow workflow={workflow} />

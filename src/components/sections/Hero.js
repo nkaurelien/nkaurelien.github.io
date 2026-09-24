@@ -1,403 +1,157 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Container, Title, Text, Button, Group, Box, Badge, Stack } from '@mantine/core';
-import { IconRocket } from '@tabler/icons-react';
-import CodeBanner from './CodeBanner';
+import { Container, Title, Text, Button, Group, Box } from '@mantine/core';
+import { IconBrandGithub, IconFileText, IconMail, IconArrowRight } from '@tabler/icons-react';
 import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import VantaWaveBackground from '../layout/VantaWaveBackground';
 
-function decode(str = '') {
-  return str
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/<\/?i>/g, '');
-}
+const GITHUB = 'https://github.com/nkaurelien';
 
-function renderSubtitleContent(start, end, sentence) {
-  if (!sentence) return null;
-  const words = sentence.split(' ');
-
-  if (words.length <= 1) {
-    return (
-      <span style={{ whiteSpace: 'nowrap' }}>
-        <span style={{ opacity: 0.7 }}>{decode(start)}</span>
-        {sentence}
-        <span style={{ opacity: 0.7 }}>{decode(end)}</span>
-      </span>
-    );
-  }
-
-  const firstWord = words[0];
-  const lastWord = words[words.length - 1];
-  const middleText = words.slice(1, -1).join(' ');
-
-  return (
-    <>
-      <span style={{ whiteSpace: 'nowrap' }}>
-        <span style={{ opacity: 0.7 }}>{decode(start)}</span>
-        {firstWord}
-      </span>
-      {middleText ? ` ${middleText} ` : ' '}
-      <span style={{ whiteSpace: 'nowrap' }}>
-        {lastWord}
-        <span style={{ opacity: 0.7 }}>{decode(end)}</span>
-      </span>
-    </>
-  );
-}
-
+// Hero épuré (inspiré de jev.dev) : accroche, nom en très grand, rôle @ société, phrase
+// d'accroche et boutons « pilule ». La photo est présentée juste après, dans « À propos ».
 export default function Hero({ locale, hero }) {
-  const rotates = hero?.subtitle?.rotates || [];
-  const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (rotates.length < 2) return undefined;
-    const id = setInterval(() => setIndex(i => (i + 1) % rotates.length), 2600);
-    return () => clearInterval(id);
-  }, [rotates.length]);
+  const isEnglish = locale === 'en';
 
   useGSAP(
     () => {
-      if (typeof window === 'undefined') return undefined;
-
-      let badgeCleanupFns = [];
-
-      // 1. Dynamically import mo.js pour les étincelles sur les étiquettes flottantes
-      import('@mojs/core')
-        .then(mojsModule => {
-          const mojs = mojsModule.default;
-          const badgeEls = containerRef.current?.querySelectorAll('.hero-floating-badge');
-
-          if (badgeEls && badgeEls.length > 0) {
-            badgeEls.forEach(badge => {
-              const burst = new mojs.Burst({
-                parent: badge,
-                left: '50%',
-                top: '50%',
-                radius: { 0: 28 },
-                count: 6,
-                angle: { 0: 60 },
-                children: {
-                  shape: 'circle',
-                  radius: 3.5,
-                  fill: ['#34d399', '#22d3ee', '#818cf8', '#f43f5e', '#fbbf24'],
-                  duration: 600,
-                  delay: 'rand(0, 100)',
-                  easing: 'cubic.out',
-                },
-              });
-
-              const handleBadgeMouseEnter = () => burst.replay();
-              badge.addEventListener('mouseenter', handleBadgeMouseEnter);
-              badgeCleanupFns.push(() => badge.removeEventListener('mouseenter', handleBadgeMouseEnter));
-            });
-          }
-        })
-        .catch(err => console.error('Failed to load mojs in Hero:', err));
-
-      // 2. Play page entry timeline using GSAP
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-
-      tl.fromTo('.hero-badge', { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
-        .fromTo('.hero-title', { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.45')
-        .fromTo('.hero-subtitle', { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.55')
-        .fromTo('.hero-btn', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1 }, '-=0.45')
-        .fromTo(
-          '.hero-photo-wrapper',
-          { x: 40, scale: 0.96, opacity: 0 },
-          { x: 0, scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.2)' },
-          '-=0.65'
-        );
-
-      // Cleanup
-      return () => {
-        badgeCleanupFns.forEach(cleanup => cleanup());
-      };
+      gsap
+        .timeline({ defaults: { ease: 'power4.out' } })
+        .fromTo('.hero-eyebrow', { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
+        .fromTo('.hero-title', { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.3')
+        .fromTo('.hero-role, .hero-tagline', { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1 }, '-=0.5')
+        .fromTo('.hero-btn, .hero-status', { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08 }, '-=0.4');
     },
     { scope: containerRef }
   );
+
+  const pill = {
+    root: {
+      borderColor: 'rgba(255, 255, 255, 0.18)',
+      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+      color: 'rgba(255, 255, 255, 0.85)',
+      fontWeight: 500,
+    },
+  };
 
   return (
     <Box
       component="section"
       ref={containerRef}
-      className="hero-gradient"
+      className="hero-gradient hero-dots"
       c="white"
-      pt={{ base: 50, sm: 75, md: 95 }}
-      pb={{ base: 70, sm: 105, md: 135 }}
+      aria-labelledby="hero-title"
+      data-testid="hero"
+      pt={{ base: 90, sm: 130, md: 160 }}
+      pb={{ base: 110, sm: 150, md: 180 }}
       style={{ overflow: 'hidden', position: 'relative' }}>
       <VantaWaveBackground
         effectType="fog"
-        // Charte Kamitbrains (bannière) : rouge vif au centre, bordeaux puis quasi-noir.
-        highlightColor="#f30a07"
-        midtoneColor="#a90504"
-        lowlightColor="#4f0202"
-        baseColor="#140000"
-        speed={1.2}
-        zoom={0.95}
-        opacity={0.85}
+        // Charte Kamitbrains, en sourdine : lueurs rouge sombre sur fond quasi noir,
+        // pour laisser le nom (rouge → deep orange) ressortir.
+        highlightColor="#7a0403"
+        midtoneColor="#3d0201"
+        lowlightColor="#1c0302"
+        baseColor="#0c0909"
+        speed={0.8}
+        zoom={0.9}
+        opacity={0.9}
       />
       <Container size="lg" style={{ position: 'relative', zIndex: 1 }}>
-        <Group justify={{ base: 'center', md: 'space-between' }} align="center" wrap="wrap" className="hero-parent-group" w="100%">
-          <Box style={{ flex: '1 1 340px', maxWidth: 600 }}>
-            {hero?.badge && (
-              <Group gap="sm" mb="md" className="hero-badge-group" justify={{ base: 'center', md: 'flex-start' }}>
-                <Badge
-                  className="hero-badge"
-                  size="lg"
-                  radius="sm"
-                  variant="white"
-                  c="teal.9"
-                  leftSection={<span className="status-dot-pulse" />}
-                  styles={{
-                    root: {
-                      height: 28,
-                      paddingLeft: 10,
-                      paddingRight: 10,
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                    },
-                    inner: {
-                      textTransform: 'none',
-                      fontWeight: 600,
-                      fontSize: '0.85rem',
-                      letterSpacing: 0.2,
-                    },
-                  }}>
-                  {hero.badge}
-                </Badge>
-                {hero?.badge_detail && (
-                  <Badge
-                    className="hero-badge-detail"
-                    size="lg"
-                    radius="sm"
-                    variant="outline"
-                    color="white"
-                    leftSection={<span style={{ marginRight: 2 }}>📍</span>}
-                    styles={{
-                      root: {
-                        height: 28,
-                        borderColor: 'rgba(255, 255, 255, 0.3)',
-                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                        color: '#ffffff',
-                        paddingLeft: 10,
-                        paddingRight: 10,
-                      },
-                      inner: {
-                        textTransform: 'none',
-                        fontWeight: 500,
-                        fontSize: '0.85rem',
-                        letterSpacing: 0.2,
-                      },
-                    }}>
-                    {hero.badge_detail}
-                  </Badge>
-                )}
-              </Group>
+        <Box maw={760}>
+          <Text className="hero-eyebrow" ff="monospace" fz="sm" tt="uppercase" c="rgba(255, 255, 255, 0.6)" style={{ letterSpacing: 2 }} mb="md">
+            {hero?.eyebrow || (isEnglish ? "Hi, I'm" : 'Bonjour, je suis')}
+          </Text>
+
+          <Title
+            id="hero-title"
+            className="hero-title"
+            order={1}
+            fz={{ base: 52, sm: 76, md: 96 }}
+            fw={900}
+            lh={1}
+            style={{ letterSpacing: '-0.04em' }}>
+            {hero?.first_name || 'Aurélien'} <span className="hero-name-accent">{hero?.last_name || 'NKUMBE'}</span>
+          </Title>
+
+          <Text className="hero-role" fz={{ base: 'lg', sm: 22 }} fw={500} mt="xl" c="white">
+            {hero?.role}
+            {hero?.company && (
+              <>
+                {' '}
+                <Link href={`/${locale}${hero.company_link || '/kamitbrains'}`} className="hero-company-link">
+                  @ {hero.company}
+                </Link>
+              </>
             )}
-            <Stack gap="md" align={{ base: 'center', md: 'flex-start' }}>
-              <Title
-                className="hero-title"
-                order={1}
-                fz={{ base: 34, sm: 46 }}
-                lh={1.15}
-                ta={{ base: 'center', md: 'left' }}
-                dangerouslySetInnerHTML={{ __html: decode(hero?.title) }}
-              />
+          </Text>
 
-              <Group mt="xs" gap="sm" justify={{ base: 'center', md: 'flex-start' }} className="hero-buttons-group">
-                {hero?.button && (
-                  <Button
-                    className="hero-btn"
-                    size="md"
-                    radius="xl"
-                    variant="white"
-                    c="brand.7"
-                    component={Link}
-                    href={`/${locale}${hero.button.link}`}>
-                    {hero.button.label}
-                  </Button>
-                )}
-                <Button className="hero-btn" size="md" radius="xl" variant="outline" color="white" component={Link} href={`/${locale}/contact`}>
-                  {locale === 'en' ? 'Contact me' : 'Me contacter'}
-                </Button>
-              </Group>
+          <Text className="hero-tagline" fz={{ base: 'md', sm: 'lg' }} mt={6} c="rgba(255, 255, 255, 0.65)">
+            {hero?.tagline}
+          </Text>
 
-              {/* Métriques d'impact percutantes */}
-              <Group mt="sm" gap="xl" justify={{ base: 'center', md: 'flex-start' }} className="hero-metrics">
-                <Box>
-                  <Text fw={800} fz={{ base: 22, sm: 26 }} c="white" style={{ lineHeight: 1 }}>
-                    7+
-                  </Text>
-                  <Text size="xs" c="rgba(255, 255, 255, 0.75)" mt={2}>
-                    {locale === 'en' ? 'Years Exp.' : "Ans d'expérience"}
-                  </Text>
-                </Box>
-                <Box style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.2)', paddingLeft: 16 }}>
-                  <Text fw={800} fz={{ base: 22, sm: 26 }} c="white" style={{ lineHeight: 1 }}>
-                    20+
-                  </Text>
-                  <Text size="xs" c="rgba(255, 255, 255, 0.75)" mt={2}>
-                    {locale === 'en' ? 'Projects Delivered' : 'Projets Web & IA'}
-                  </Text>
-                </Box>
-                <Box style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.2)', paddingLeft: 16 }}>
-                  <Text fw={800} fz={{ base: 22, sm: 26 }} c="white" style={{ lineHeight: 1 }}>
-                    99.9%
-                  </Text>
-                  <Text size="xs" c="rgba(255, 255, 255, 0.75)" mt={2}>
-                    {locale === 'en' ? 'Uptime & Reliability' : 'Uptime & Stabilité'}
-                  </Text>
-                </Box>
-              </Group>
+          <Group mt={36} gap="sm" className="hero-buttons-group">
+            {hero?.button && (
+              <Button
+                className="hero-btn"
+                radius="xl"
+                color="kamit"
+                component={Link}
+                href={`/${locale}${hero.button.link}`}
+                rightSection={<IconArrowRight size={16} aria-hidden="true" />}
+                data-testid="hero-cta">
+                {hero.button.label}
+              </Button>
+            )}
+            <Button
+              className="hero-btn"
+              radius="xl"
+              variant="outline"
+              styles={pill}
+              component="a"
+              href={GITHUB}
+              target="_blank"
+              rel="noopener noreferrer"
+              leftSection={<IconBrandGithub size={16} aria-hidden="true" />}>
+              GitHub
+            </Button>
+            <Button
+              className="hero-btn"
+              radius="xl"
+              variant="outline"
+              styles={pill}
+              component="a"
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              leftSection={<IconFileText size={16} aria-hidden="true" />}>
+              {isEnglish ? 'Resume' : 'CV'}
+            </Button>
+            <Button
+              className="hero-btn"
+              radius="xl"
+              variant="outline"
+              styles={pill}
+              component={Link}
+              href={`/${locale}/contact`}
+              leftSection={<IconMail size={16} aria-hidden="true" />}>
+              Contact
+            </Button>
+          </Group>
 
-              {/* Écosystème & Stack de Confiance (Style SkyMedia : Petits badges rectangles discrets) */}
-              <Box mt="xs" pt="xs" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', width: '100%' }}>
-                <Text size="xs" fw={600} c="rgba(255, 255, 255, 0.65)" tt="uppercase" style={{ letterSpacing: 0.8 }} mb={6}>
-                  {locale === 'en' ? 'Core Ecosystem' : 'Écosystème & Stack de Confiance'}
-                </Text>
-                <Group gap="xs" align="center" wrap="wrap" justify={{ base: 'center', md: 'flex-start' }}>
-                  {[
-                    '🤖 Claude IA',
-                    '⚙️ SpecKit',
-                    '⚛️ Next.js 15',
-                    '🅰️ Angular',
-                    '🔴 Laravel',
-                    '⚡ REST API',
-                    '⚡ FastAPI',
-                    '🔐 OAuth2',
-                    '🔒 DevSecOps',
-                    '🐳 Docker',
-                    '🦊 GitLab CI',
-                    '🧱 Terraform',
-                  ].map(partner => (
-                    <Text
-                      key={partner}
-                      size="xs"
-                      fw={600}
-                      c="rgba(255, 255, 255, 0.9)"
-                      style={{
-                        padding: '3px 9px',
-                        background: 'rgba(255, 255, 255, 0.08)',
-                        borderRadius: '6px',
-                        border: '1px solid rgba(255, 255, 255, 0.18)',
-                        fontSize: '0.72rem',
-                      }}>
-                      {partner}
-                    </Text>
-                  ))}
-                </Group>
-              </Box>
-            </Stack>
-          </Box>
-
-          {hero?.photo?.url && (
-            <Box
-              className="hero-photo-container hero-photo-wrapper"
-              ml={{ base: 'auto', md: 'auto' }}
-              mr={{ base: 'auto', md: 0 }}
-              mt={{ base: 'xl', md: 0 }}
-              style={{
-                flex: '0 0 auto',
-                position: 'relative',
-                display: 'inline-block',
-              }}>
-              {/* Badge flottant 1: Senior Fullstack Engineer */}
-              <Box
-                className="hero-floating-badge"
-                style={{
-                  position: 'absolute',
-                  top: -12,
-                  right: -12,
-                  zIndex: 10,
-                  background: 'rgba(15, 23, 42, 0.95)',
-                  backdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(16, 185, 129, 0.5)',
-                  borderRadius: '16px',
-                  padding: '6px 14px',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                }}>
-                <Text size="xs" fw={700} c="teal.4" style={{ display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
-                  <span>⚡</span> Senior Fullstack Engineer
-                </Text>
-              </Box>
-
-              {/* Badge flottant 2: Fullstack & AI Engineer */}
-              <Box
-                className="hero-floating-badge"
-                style={{
-                  position: 'absolute',
-                  bottom: -12,
-                  left: -12,
-                  zIndex: 10,
-                  background: 'rgba(15, 23, 42, 0.95)',
-                  backdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(6, 182, 212, 0.5)',
-                  borderRadius: '16px',
-                  padding: '6px 14px',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                }}>
-                <Text size="xs" fw={700} c="kamit.3" style={{ display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
-                  <IconRocket size={14} aria-hidden="true" /> Fullstack & AI Engineer
-                </Text>
-              </Box>
-
-              {/* Halo d'ambiance diffus en arrière-plan */}
-              <Box
-                style={{
-                  position: 'absolute',
-                  top: '-8%',
-                  left: '-8%',
-                  right: '-8%',
-                  bottom: '-8%',
-                  background: 'radial-gradient(circle, rgba(243, 10, 7, 0.4) 0%, rgba(169, 5, 4, 0) 70%)',
-                  filter: 'blur(20px)',
-                  zIndex: 0,
-                  pointerEvents: 'none',
-                }}
-              />
-
-              {/* Photo Épurée Sans Cadre (Intégration directe avec ombre profonde) */}
-              <Box
-                style={{
-                  borderRadius: '24px',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  zIndex: 1,
-                  display: 'block',
-                  lineHeight: 0,
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  boxShadow: '0 32px 75px -12px rgba(0, 0, 0, 0.65), 0 12px 30px -8px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.3)',
-                }}>
-                <Image
-                  src={`/${hero.photo.url.replace(/^\//, '')}`}
-                  alt={hero.photo.alt || 'Astrid-Aurélien NKUMBE'}
-                  width={290}
-                  height={350}
-                  className="hero-photo-img"
-                  style={{
-                    objectFit: 'cover',
-                    maxWidth: '100%',
-                    width: '290px',
-                    height: '350px',
-                    transition: 'transform 0.5s ease',
-                    display: 'block',
-                  }}
-                  priority
-                />
-              </Box>
-            </Box>
+          {hero?.badge && (
+            <Group className="hero-status" gap={8} mt="lg" wrap="nowrap">
+              <span className="status-dot-pulse" aria-hidden="true" />
+              <Text fz="sm" c="rgba(255, 255, 255, 0.7)">
+                {hero.badge}
+                {hero?.badge_detail ? ` · ${hero.badge_detail}` : ''}
+              </Text>
+            </Group>
           )}
-        </Group>
+        </Box>
       </Container>
     </Box>
   );

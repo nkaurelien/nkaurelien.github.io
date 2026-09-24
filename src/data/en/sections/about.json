@@ -1,0 +1,70 @@
+{
+  "number": "01.",
+  "title": "About",
+  "photo": {
+    "url": "img/me/face-1.png",
+    "alt": "Astrid-Aurélien NKUMBE"
+  },
+  "bio": "DevSecOps & Platform Engineer and full-stack Tech Lead, I have spent 7+ years industrializing secure, compliant architectures (healthcare / HDS, GDPR, FHIR), from spec to production. I grow teams and bring agentic AI (Claude, RAG) into the development lifecycle. Born in Douala, trained in software engineering at IAI, I now work anywhere in France.",
+  "groups": [
+    {
+      "title": "Leadership",
+      "items": [
+        "Tech Lead",
+        "Architecture",
+        "Team growth",
+        "Code review",
+        "Project management"
+      ]
+    },
+    {
+      "title": "DevSecOps & Cloud",
+      "items": [
+        "Kubernetes",
+        "Docker",
+        "GitLab CI",
+        "Terraform",
+        "Ansible",
+        "Argo CD"
+      ]
+    },
+    {
+      "title": "AI & Data",
+      "items": [
+        "Claude",
+        "RAG",
+        "pgvector",
+        "LangChain",
+        "Genkit",
+        "SpecKit"
+      ]
+    },
+    {
+      "title": "Languages",
+      "items": [
+        "TypeScript",
+        "Python",
+        "PHP",
+        "Dart"
+      ]
+    },
+    {
+      "title": "Frontend",
+      "items": [
+        "Next.js",
+        "React",
+        "Angular",
+        "Flutter"
+      ]
+    },
+    {
+      "title": "Health & Compliance",
+      "items": [
+        "FHIR / HL7",
+        "HDS",
+        "GDPR",
+        "OAuth2"
+      ]
+    }
+  ]
+}

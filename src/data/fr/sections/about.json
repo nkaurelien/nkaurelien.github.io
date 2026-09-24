@@ -1,0 +1,70 @@
+{
+  "number": "01.",
+  "title": "À propos",
+  "photo": {
+    "url": "img/me/face-1.png",
+    "alt": "Astrid-Aurélien NKUMBE"
+  },
+  "bio": "DevSecOps & Platform Engineer et Tech Lead full-stack, j'industrialise depuis plus de 7 ans des architectures sécurisées et conformes (santé / HDS, RGPD, FHIR), de la spec à la production. Je fais monter les équipes en compétence et j'intègre l'IA agentique (Claude, RAG) au cycle de développement. Né à Douala, formé en génie logiciel à l'IAI, je travaille aujourd'hui partout en France.",
+  "groups": [
+    {
+      "title": "Leadership",
+      "items": [
+        "Tech Lead",
+        "Architecture",
+        "Montée en compétence",
+        "Revue de code",
+        "MOE / AMOE"
+      ]
+    },
+    {
+      "title": "DevSecOps & Cloud",
+      "items": [
+        "Kubernetes",
+        "Docker",
+        "GitLab CI",
+        "Terraform",
+        "Ansible",
+        "Argo CD"
+      ]
+    },
+    {
+      "title": "IA & Data",
+      "items": [
+        "Claude",
+        "RAG",
+        "pgvector",
+        "LangChain",
+        "Genkit",
+        "SpecKit"
+      ]
+    },
+    {
+      "title": "Langages",
+      "items": [
+        "TypeScript",
+        "Python",
+        "PHP",
+        "Dart"
+      ]
+    },
+    {
+      "title": "Frontend",
+      "items": [
+        "Next.js",
+        "React",
+        "Angular",
+        "Flutter"
+      ]
+    },
+    {
+      "title": "Santé & Conformité",
+      "items": [
+        "FHIR / HL7",
+        "HDS",
+        "RGPD",
+        "OAuth2"
+      ]
+    }
+  ]
+}
