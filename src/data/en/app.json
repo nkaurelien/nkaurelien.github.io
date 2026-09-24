@@ -219,7 +219,9 @@
     },
     "footer": {
         "copy": "© 2026. All rights reserved.",
-        "developer": "By <b>Astrid-Aurélien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT (on hold) — SIRET 92203463200013"
+        "developer": "By <b>Astrid-Aurélien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT (on hold) — SIRET 92203463200013",
+        "cta_title": "Let's connect.",
+        "cta_text": "Open to interesting conversations, collaborations, or just saying hi."
     },
     "social": [
         {

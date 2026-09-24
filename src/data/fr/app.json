@@ -219,7 +219,9 @@
     },
     "footer": {
         "copy": "© 2026. Tous Droits Réservés.",
-        "developer": "Par <b>Astrid-Aurélien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT (en pause) — SIRET 92203463200013"
+        "developer": "Par <b>Astrid-Aurélien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT (en pause) — SIRET 92203463200013",
+        "cta_title": "Restons en contact.",
+        "cta_text": "Ouvert aux échanges, aux collaborations, ou simplement pour dire bonjour."
     },
     "social": [
         {
