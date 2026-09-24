@@ -15,19 +15,27 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 1, idle
 const embeddings = new HuggingFaceTransformersEmbeddings({ model: 'Xenova/all-MiniLM-L6-v2' });
 
 // Récupère le contexte RAG : embedding de la requête -> similarité pgvector (match_embeddings).
-export async function retrieveContext(query, { matchCount = 8, matchThreshold = 0.15 } = {}) {
+// perDocument : plafond d'extraits par document. Sans lui, un long document (about-me,
+// ~30 extraits) remplit tout le contexte et évince les fiches projets (ex. Koree).
+export async function retrieveContext(query, { matchCount = 8, matchThreshold = 0.15, perDocument = 2 } = {}) {
   if (!query || !query.trim()) return '';
 
   const queryVector = await embeddings.embedQuery(query);
 
   let documents;
   try {
+    // Candidats élargis (×8), puis au plus `perDocument` extraits par document, puis les
+    // `matchCount` meilleurs au total.
     const { rows } = await pool.query(
-      `SELECT m.text_chunk, e.slug
-         FROM match_embeddings($1::vector, $2, $3) m
-         LEFT JOIN content_entries e ON e.id = m.content_entry_id
-        ORDER BY m.similarity DESC`,
-      [`[${queryVector.join(',')}]`, matchThreshold, matchCount]
+      `SELECT text_chunk, slug
+         FROM (SELECT m.text_chunk, m.similarity, e.slug,
+                      row_number() OVER (PARTITION BY m.content_entry_id ORDER BY m.similarity DESC) AS rank_in_doc
+                 FROM match_embeddings($1::vector, $2, $3 * 8) m
+                 LEFT JOIN content_entries e ON e.id = m.content_entry_id) ranked
+        WHERE rank_in_doc <= $4
+        ORDER BY similarity DESC
+        LIMIT $3`,
+      [`[${queryVector.join(',')}]`, matchThreshold, matchCount, perDocument]
     );
     documents = rows;
   } catch (err) {

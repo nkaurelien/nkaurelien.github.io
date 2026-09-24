@@ -77,19 +77,18 @@ make db-reseed                 # REEMBED=1 : recalcule TOUT (après un changemen
 - Au premier lancement, le modèle (~90 Mo) est téléchargé ; ensuite compter quelques secondes par extrait.
 - Plus besoin de `make db-reseed` après une modification de contenu : `make db-seed` détecte le changement. `db-reseed` reste utile après un changement de modèle, de préfixe ou de découpage.
 
-### ⚠️ Écart connu entre la base et le script (à trancher)
+### Périmètre du RAG (décidé le 24/09/2026)
 
-La base contient **10 entrées** : 8 projets, `about-me` et `story`. Mais le script lit **tout** `datasources/` en récursif.
-Un seed aujourd'hui ajouterait donc environ 30 entrées : les 23 fichiers de `datasources/articles/` (dont `README.md`, qui n'est pas un article), `cv.md`, les 5 fichiers de `datasources/cv/` et `lettre-de-motivation-globale.md`.
-Avant de relancer un seed complet, il faut décider ce que le RAG doit contenir. Les articles sont déjà servis par les outils de Jamila. Les CV et la lettre ajoutent des doublons et du texte orienté candidature.
-Une fois décidé, filtrer dans `getFilesRecursively` / `docFiles`.
+`scripts/import-projects.js` n'importe plus tout `datasources/` : liste explicite `RAG_DOCUMENTS`
+(`about-me.md`, `story.md`) + les 8 projets de `public/projects/`. Les articles sont servis en direct par
+les outils de Jamila ; les CV et la lettre de motivation dupliqueraient le profil (ton « candidature »).
+Pour élargir : ajouter le chemin dans `RAG_DOCUMENTS`, puis `make db-seed`.
 
-**Mesuré sur une copie de la prod (23/09/2026)** : un seed complet ajoute 30 documents et **686 extraits** (contre 39).
-`about-me` et `story` sont détectés **modifiés** : la prod embarque une version périmée du profil.
-Effet sur la recherche : pour « Koree », l'extrait du projet `koree` disparaît au profit de `about-me` et `story` ;
-pour « compétences DevSecOps », les 8 extraits viennent **tous** de `cv-dossier-de-competences`.
-Il faut donc, avant un seed complet en prod : fixer le périmètre, ET limiter le nombre d'extraits par document
-dans la recherche (par exemple 2 à 3 par slug), sinon un gros document monopolise le contexte.
+**Plafond par document** : `retrieveContext(query, { perDocument = 2 })` garde au plus 2 extraits par
+document parmi 8×`matchCount` candidats, puis les 8 meilleurs. Sans lui, `about-me` (29 extraits) remplissait
+tout le contexte et évinçait les fiches projets (mesuré : question « Koree » → 0 extrait `koree` sans plafond,
+1 avec `perDocument = 2`). Le modèle all-MiniLM (surtout anglais) classe parfois mal les fiches projets face
+à une question en français : c'est la limite suivante à traiter (modèle multilingue, réembedding complet).
 
 ## Vérifier
 

@@ -294,7 +294,16 @@ ${proj.markdowns.en || ''}`;
     }
 
     const datasourcesDir = path.join(process.cwd(), 'datasources');
-    const docFiles = getFilesRecursively(datasourcesDir).filter(f => f.endsWith('.md') || f.endsWith('.txt'));
+    // Périmètre du RAG : liste explicite (chemins relatifs à datasources/). Les articles
+    // (datasources/articles/) sont servis en direct par les outils de Jamila ; les CV et
+    // la lettre de motivation dupliqueraient le profil avec un ton « candidature ».
+    // Pour élargir, ajouter les fichiers ici puis lancer `make db-seed`.
+    const RAG_DOCUMENTS = ['about-me.md', 'story.md'];
+    const docFiles = getFilesRecursively(datasourcesDir).filter(f =>
+      RAG_DOCUMENTS.includes(path.relative(datasourcesDir, f))
+    );
+    const missing = RAG_DOCUMENTS.filter(d => !docFiles.some(f => path.relative(datasourcesDir, f) === d));
+    if (missing.length) console.warn(`Documents introuvables dans datasources/ : ${missing.join(', ')}`);
 
     for (const filePath of docFiles) {
       const relativePath = path.relative(datasourcesDir, filePath);
