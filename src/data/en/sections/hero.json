@@ -26,8 +26,9 @@
   "eyebrow": "Hi, I'm",
   "first_name": "Aurélien",
   "last_name": "NKUMBE",
-  "role": "DevSecOps & Platform Engineer · Tech Lead",
-  "company": "Kamitbrains",
+  "role": "Tech Lead · DevSecOps & Platform Engineer",
+  "company": "Kamitbrains IT",
+  "company_label": "founder of",
   "company_link": "/kamitbrains",
   "tagline": "I design secure architecture, and I move the team forward."
 }

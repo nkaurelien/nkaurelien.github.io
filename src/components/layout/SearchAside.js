@@ -40,7 +40,7 @@ const SEARCH_INDEX = [
     id: 'serv-fullstack',
     type: 'Expertise',
     category: 'Engineering',
-    title: 'Tech Lead & Développement Fullstack',
+    title: 'Lead Tech & Développement Fullstack',
     description: 'Conception et architecture d’applications web & mobiles : Next.js 15, React, Angular, FastAPI, Laravel, Flutter.',
     link: '/#services',
     tags: ['Next.js 15', 'React', 'Angular', 'FastAPI', 'Laravel', 'Flutter'],

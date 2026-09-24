@@ -82,8 +82,12 @@ export default function Hero({ locale, hero }) {
             {hero?.company && (
               <>
                 {' '}
+                {/* Kamitbrains IT : ma propre structure (auto-entreprise), d'où « fondateur de » et non « @ ». */}
+                <Text component="span" inherit c="rgba(255, 255, 255, 0.7)">
+                  · {hero.company_label || (isEnglish ? 'founder of' : 'fondateur de')}{' '}
+                </Text>
                 <Link href={`/${locale}${hero.company_link || '/kamitbrains'}`} className="hero-company-link">
-                  @ {hero.company}
+                  {hero.company}
                 </Link>
               </>
             )}

@@ -5,12 +5,12 @@
     "url": "img/me/face-1.png",
     "alt": "Astrid-Aurélien NKUMBE"
   },
-  "bio": "DevSecOps & Platform Engineer et Tech Lead full-stack, j'industrialise depuis plus de 7 ans des architectures sécurisées et conformes (santé / HDS, RGPD, FHIR), de la spec à la production. Je fais monter les équipes en compétence et j'intègre l'IA agentique (Claude, RAG) au cycle de développement. Né à Douala, formé en génie logiciel à l'IAI, je travaille aujourd'hui partout en France.",
+  "bio": "DevSecOps & Platform Engineer et Lead Tech full-stack, j'industrialise depuis plus de 7 ans des architectures sécurisées et conformes (santé / HDS, RGPD, FHIR), de la spec à la production. Je fais monter les équipes en compétence et j'intègre l'IA agentique (Claude, RAG) au cycle de développement. Né à Douala, formé en génie logiciel à l'IAI, je travaille aujourd'hui partout en France.",
   "groups": [
     {
       "title": "Leadership",
       "items": [
-        "Tech Lead",
+        "Lead Tech",
         "Architecture",
         "Montée en compétence",
         "Revue de code",
