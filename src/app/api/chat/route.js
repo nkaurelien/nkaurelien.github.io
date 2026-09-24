@@ -28,14 +28,18 @@ export async function POST(req) {
     // Exécute le flow Genkit (RAG + génération + fallback) en streaming.
     const { stream: flowStream } = chatFlow.stream({ query, provider, history });
 
-    // Bridge le flux texte du flow vers le protocole UI Message Stream (v5) de useChat :
-    // text-start -> text-delta(s) -> text-end.
+    // Bridge le flux du flow vers le protocole UI Message Stream (v5) de useChat :
+    // appels d'outils -> parties « data-tool » (affichées en direct), texte -> text-start,
+    // text-delta(s), text-end.
     const stream = createUIMessageStream({
       execute: async ({ writer }) => {
         const textId = 'text-0';
         let started = false;
+        let toolCount = 0;
         for await (const chunk of flowStream) {
-          if (typeof chunk === 'string' && chunk.length > 0) {
+          if (chunk && typeof chunk === 'object' && chunk.tool) {
+            writer.write({ type: 'data-tool', id: `tool-${toolCount++}`, data: { name: chunk.tool, input: chunk.input ?? {} } });
+          } else if (typeof chunk === 'string' && chunk.length > 0) {
             if (!started) {
               writer.write({ type: 'text-start', id: textId });
               started = true;

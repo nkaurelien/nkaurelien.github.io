@@ -10,7 +10,8 @@ import { JAMILA_TOOLS } from './tools';
  * Input minimal : { "query": "Quels sont les projets IA d'Aurélien ?" }
  * Optionnel     : { "provider": "gemini" | "claude", "history": [{role, text}] }
  *
- * Streame le texte token par token (streamSchema) et renvoie la réponse complète.
+ * Streame le texte token par token (chaînes) et, avant, chaque appel d'outil
+ * ({ tool, input }), puis renvoie la réponse complète.
  */
 export const chatFlow = ai.defineFlow(
   {
@@ -24,7 +25,7 @@ export const chatFlow = ai.defineFlow(
         .describe('Historique de conversation (tours précédents)'),
     }),
     outputSchema: z.string(),
-    streamSchema: z.string(),
+    streamSchema: z.union([z.string(), z.object({ tool: z.string(), input: z.any() })]),
   },
   async (input, { sendChunk }) => {
     if (AVAILABLE_PROVIDERS.length === 0) {
@@ -42,9 +43,13 @@ export const chatFlow = ai.defineFlow(
     // 3. Génération streamée avec fallback entre providers (+ outils blog, boucle gérée par Genkit)
     const providerKeys = providerOrder(input.provider);
     let fullText = '';
-    for await (const text of generateWithFallback({ providerKeys, systemPrompt, genkitMessages, tools: JAMILA_TOOLS })) {
-      fullText += text;
-      sendChunk(text);
+    for await (const event of generateWithFallback({ providerKeys, systemPrompt, genkitMessages, tools: JAMILA_TOOLS })) {
+      if (event.type === 'tool') {
+        sendChunk({ tool: event.name, input: event.input });
+      } else {
+        fullText += event.text;
+        sendChunk(event.text);
+      }
     }
 
     return fullText;

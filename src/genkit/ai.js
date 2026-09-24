@@ -42,8 +42,11 @@ export const providerOrder = requested => {
   return [active, ...AVAILABLE_PROVIDERS.filter(k => k !== active)];
 };
 
-// Génère en streamant du TEXTE brut, avec fallback entre providers.
-// - Si un provider échoue AVANT d'émettre un token (503/crédit/auth) -> on bascule.
+// Génère en streamant, avec fallback entre providers. Émet des événements :
+// - { type: 'text', text } : morceau de réponse ;
+// - { type: 'tool', name, input } : appel d'outil décidé par le modèle (affiché en direct
+//   dans le chat). Les outils sont en lecture seule : rejouer un appel après bascule est sans risque.
+// - Si un provider échoue AVANT d'émettre un token de texte (503/crédit/auth) -> on bascule.
 // - Après le 1er token émis, un échec est propagé (throw) — on ne peut plus switcher.
 // - Si tous échouent avant tout output, un message convivial est streamé.
 export async function* generateWithFallback({ providerKeys, systemPrompt, genkitMessages, tools }) {
@@ -60,10 +63,18 @@ export async function* generateWithFallback({ providerKeys, systemPrompt, genkit
         messages: genkitMessages,
         tools,
       });
+      const seenTools = new Set();
       for await (const chunk of responseStream.stream) {
+        for (const { toolRequest } of chunk.toolRequests || []) {
+          // Un même appel peut revenir dans plusieurs morceaux : dédoublonné par ref / nom + arguments.
+          const key = toolRequest.ref || `${toolRequest.name}:${JSON.stringify(toolRequest.input)}`;
+          if (seenTools.has(key)) continue;
+          seenTools.add(key);
+          yield { type: 'tool', name: toolRequest.name, input: toolRequest.input ?? {} };
+        }
         if (chunk.text) {
           started = true;
-          yield chunk.text;
+          yield { type: 'text', text: chunk.text };
         }
       }
       return; // succès
@@ -76,5 +87,8 @@ export async function* generateWithFallback({ providerKeys, systemPrompt, genkit
   }
 
   console.error(`[genkit] all providers failed. Last error: ${lastError?.message || lastError}`);
-  yield "Désolé, l'assistant est momentanément indisponible (forte demande sur le service d'IA). Merci de réessayer dans quelques instants.";
+  yield {
+    type: 'text',
+    text: "Désolé, l'assistant est momentanément indisponible (forte demande sur le service d'IA). Merci de réessayer dans quelques instants.",
+  };
 }

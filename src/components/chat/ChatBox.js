@@ -1,7 +1,20 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { ScrollArea, Stack, Paper, Group, Avatar, Text, Tooltip, ActionIcon, Anchor } from '@mantine/core';
-import { IconUser, IconRobot, IconThumbUp, IconThumbDown, IconCopy, IconCheck, IconArticle, IconArrowUpRight } from '@tabler/icons-react';
+import { ScrollArea, Stack, Paper, Group, Avatar, Text, Tooltip, ActionIcon, Anchor, Loader } from '@mantine/core';
+import {
+  IconUser,
+  IconRobot,
+  IconThumbUp,
+  IconThumbDown,
+  IconCopy,
+  IconCheck,
+  IconArticle,
+  IconArrowUpRight,
+  IconSearch,
+  IconList,
+  IconBook,
+  IconTool,
+} from '@tabler/icons-react';
 import { useClipboard } from '@mantine/hooks';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -52,6 +65,58 @@ export const extractSources = (markdown, locale) => {
   return sources;
 };
 
+// Slug lisible : sans le préfixe de date du fichier (2025-05-12-…).
+const shortSlug = (slug = '') => slug.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+
+// Appels d'outils de Jamila (parties « data-tool » du flux) : libellé lisible par outil.
+const TOOL_STEPS = {
+  search_articles: { Icon: IconSearch, fr: i => `Recherche dans les articles : « ${i.query} »`, en: i => `Searching articles: “${i.query}”` },
+  list_articles: {
+    Icon: IconList,
+    fr: i => `Liste des articles${i.tag ? ` (tag ${i.tag})` : ''}`,
+    en: i => `Listing articles${i.tag ? ` (tag ${i.tag})` : ''}`,
+  },
+  read_article: { Icon: IconBook, fr: i => `Lecture de l'article « ${shortSlug(i.slug)} »`, en: i => `Reading article “${shortSlug(i.slug)}”` },
+};
+export const getToolSteps = (message, locale = 'fr') =>
+  (message?.parts || [])
+    .filter(part => part?.type === 'data-tool' && part.data?.name)
+    .map((part, idx) => {
+      const step = TOOL_STEPS[part.data.name];
+      const input = part.data.input || {};
+      return {
+        key: part.id || `${part.data.name}-${idx}`,
+        Icon: step?.Icon || IconTool,
+        label: step ? step[locale === 'en' ? 'en' : 'fr'](input) : part.data.name,
+      };
+    });
+
+// Étapes d'outils affichées en tête de réponse : en cours (loader) tant que le texte
+// n'a pas commencé, puis validées (coche) et discrètes.
+function ToolSteps({ steps, running, label }) {
+  if (steps.length === 0) return null;
+  return (
+    <Stack component="ul" gap={4} className="list-reset" aria-label={label} data-testid="chat-tool-steps" mb={6}>
+      {steps.map(({ key, Icon, label: stepLabel }, idx) => {
+        const active = running && idx === steps.length - 1;
+        return (
+          <Group component="li" key={key} gap={6} wrap="nowrap" data-testid="chat-tool-step" data-state={active ? 'running' : 'done'}>
+            {active ? (
+              <Loader size={12} color="kamit" aria-hidden="true" />
+            ) : (
+              <IconCheck size={13} aria-hidden="true" style={{ color: 'var(--mantine-color-teal-text)' }} />
+            )}
+            <Icon size={14} aria-hidden="true" style={{ flexShrink: 0, color: 'var(--mantine-color-dimmed)' }} />
+            <Text component="span" size="xs" c="dimmed" style={{ minWidth: 0 }} truncate>
+              {stepLabel}
+            </Text>
+          </Group>
+        );
+      })}
+    </Stack>
+  );
+}
+
 export default function ChatBox({ messages = [], user, responseLoading, viewportRef, locale = 'fr' }) {
   const clipboard = useClipboard({ timeout: 2000 });
   const [copiedId, setCopiedId] = useState(null);
@@ -81,7 +146,13 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
     conversation: isEnglish ? 'Conversation with Jamila' : 'Conversation avec Jamila',
     reply: isEnglish ? 'reply' : 'réponse',
     sources: isEnglish ? 'Cited articles' : 'Articles cités',
+    steps: isEnglish ? 'Steps taken by Jamila' : 'Étapes suivies par Jamila',
   };
+
+  // Réponse en cours de streaming : dernier message de Jamila pendant le chargement. Ses
+  // étapes d'outils remplacent alors l'indicateur « en train d'écrire » séparé.
+  const lastMessage = messages[messages.length - 1];
+  const streamingId = responseLoading && lastMessage?.role === 'assistant' ? lastMessage.id : null;
 
   let replyCount = 0;
 
@@ -103,6 +174,8 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
           const messageText = getMessageText(message);
           const isCopied = copiedId === message.id;
           const sources = isUser ? [] : extractSources(messageText, locale);
+          const toolSteps = isUser ? [] : getToolSteps(message, locale);
+          const isStreaming = message.id === streamingId;
           return (
             <Stack
               key={message.id}
@@ -142,9 +215,21 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
                         {messageText}
                       </Text>
                     ) : (
-                      <div className="chat-prose" style={{ fontSize: '14px', lineHeight: 1.6 }}>
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{messageText}</ReactMarkdown>
-                      </div>
+                      <>
+                        <ToolSteps steps={toolSteps} running={isStreaming && !messageText} label={labels.steps} />
+                        {isStreaming && !messageText && toolSteps.length === 0 && (
+                          <Group gap={6} py="xs" aria-hidden="true">
+                            <span className="dot-typing" />
+                            <span className="dot-typing" />
+                            <span className="dot-typing" />
+                          </Group>
+                        )}
+                        {messageText && (
+                          <div className="chat-prose" style={{ fontSize: '14px', lineHeight: 1.6 }}>
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>{messageText}</ReactMarkdown>
+                          </div>
+                        )}
+                      </>
                     )}
                   </Stack>
                 </Group>
@@ -224,7 +309,7 @@ export default function ChatBox({ messages = [], user, responseLoading, viewport
         })}
 
         {/* Loading Indicator */}
-        {responseLoading && (
+        {responseLoading && !streamingId && (
           <Paper
             aria-hidden="true"
             data-testid="chat-typing"
