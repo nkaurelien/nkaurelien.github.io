@@ -166,8 +166,9 @@ await checkPage('accueil', '/fr/', async () => {
     footer: !!document.querySelector('[data-testid="site-footer"]'),
     cv: !!document.querySelector('[data-testid="cv-floating"]'),
   }));
-  if (!chrome.footer || !chrome.cv) throw new Error(`pied de page ${chrome.footer}, bouton CV ${chrome.cv} (attendus sur l'accueil)`);
-  return `${navLinks} liens de navigation, page courante : « ${current || 'aucune'} », pied de page + bouton CV présents`;
+  // Bouton CV flottant retiré de l'accueil : le hero a son propre bouton CV.
+  if (!chrome.footer || chrome.cv) throw new Error(`pied de page ${chrome.footer}, bouton CV flottant ${chrome.cv} (attendu : pied de page seul)`);
+  return `${navLinks} liens de navigation, page courante : « ${current || 'aucune'} », pied de page présent, pas de bouton CV flottant`;
 });
 
 // ---------------------------------------------------------------- Blog
