@@ -2,23 +2,8 @@
 
 import { useChat as useChatSdk } from '@ai-sdk/react';
 import { useEffect, useRef, useState } from 'react';
-import {
-  Container,
-  Text,
-  Group,
-  Stack,
-  Title,
-  Badge,
-  Tooltip,
-  ActionIcon,
-  SimpleGrid,
-  UnstyledButton,
-  Paper,
-  Button,
-  Avatar,
-  Menu,
-} from '@mantine/core';
-import { IconTrash, IconRobot, IconMessage2Code, IconSparkles, IconBrandGoogle, IconLogout, IconDownload } from '@tabler/icons-react';
+import { Container, Text, Group, Stack, Title, Tooltip, SimpleGrid, UnstyledButton, Paper, Button, Avatar, Menu } from '@mantine/core';
+import { IconPlus, IconRobot, IconSparkles, IconBrandGoogle, IconLogout } from '@tabler/icons-react';
 
 // Modular components (SDP style)
 import ChatBox from '@/components/chat/ChatBox';
@@ -34,7 +19,7 @@ const TRANSLATIONS = {
     suggestionsLabel: 'Questions suggérées',
     send: 'Envoyer',
     clear: 'Nouvelle conversation',
-    statusOnline: 'Disponible',
+    scope: 'Répond à partir de mes articles et de mon profil.',
     userLabel: 'Vous',
     aiLabel: 'Jamila (IA)',
     tip: 'Astuce : Cliquez sur une suggestion ci-dessus pour démarrer instantanément.',
@@ -47,13 +32,13 @@ const TRANSLATIONS = {
     signInHint: 'Connectez-vous pour préremplir le formulaire de contact.',
     signOut: 'Se déconnecter',
     suggestions: [
-      'Comment télécharger son CV en PDF ?',
+      'Liste ses 5 derniers articles de blog.',
       'Qui est Astrid-Aurélien NKUMBE ?',
       'Quels sont ses projets en IA et RAG ?',
       'Sur quoi travaille-t-il chez DATA2INNOV ?',
       'Quelles sont ses compétences DevSecOps ?',
       'Parle-moi de son parcours (Koree, Smart Data Pay...).',
-      'A-t-il un blog ? Où lire ses articles ?',
+      'Résume son article sur Kaniko.',
       'Comment le contacter ou prendre rendez-vous ?',
     ],
   },
@@ -65,7 +50,7 @@ const TRANSLATIONS = {
     suggestionsLabel: 'Suggested questions',
     send: 'Send',
     clear: 'New conversation',
-    statusOnline: 'Online',
+    scope: 'Answers from my articles and my profile.',
     userLabel: 'You',
     aiLabel: 'Jamila (AI)',
     tip: 'Tip: Click on a suggestion above to start instantly.',
@@ -78,13 +63,13 @@ const TRANSLATIONS = {
     signInHint: 'Sign in to pre-fill the contact form.',
     signOut: 'Sign out',
     suggestions: [
-      'How can I download his CV in PDF?',
+      'List his 5 latest blog articles.',
       'Who is Astrid-Aurélien NKUMBE?',
       'What are his AI and RAG projects?',
       'What is he working on at DATA2INNOV?',
       'What are his DevSecOps skills?',
       'Tell me about his career (Koree, Smart Data Pay...).',
-      'Does he have a blog? Where can I read his articles?',
+      'Summarize his article about Kaniko.',
       'How can I contact him or book a meeting?',
     ],
   },
@@ -211,47 +196,25 @@ export default function ChatClient({ locale }) {
         </h1>
       )}
 
-      {/* Top Header Row */}
-      <Group justify="space-between" mb="xl" align="center">
-        <Group gap="xs">
-          <IconMessage2Code size={24} aria-hidden="true" style={{ color: 'var(--mantine-color-kamit-filled)' }} />
-          <Text fw={700} size="sm" c="dimmed">
-            {t.title}
+      {/* Barre de conversation (seulement pendant un échange ; l'écran d'accueil commence
+          directement par le titre) : périmètre des réponses + nouvelle conversation. */}
+      {hasExchanges && (
+        <Group justify="space-between" mb="md" align="center" wrap="nowrap" data-testid="chat-bar">
+          <Text size="xs" c="dimmed">
+            {t.scope}
           </Text>
-        </Group>
-        <Group gap="xs">
-          <Badge color="green" variant="dot" size="md">
-            {t.statusOnline}
-          </Badge>
           <Button
-            component="a"
-            href="/cv.pdf"
-            download="CV_Aurelien_NKUMBE.pdf"
-            variant="light"
-            color="kamit"
+            variant="default"
             size="xs"
             radius="xl"
-            leftSection={<IconDownload size={14} aria-hidden="true" />}
-            data-testid="chat-cv-download">
-            {locale === 'en' ? 'CV PDF' : 'CV PDF'}
+            leftSection={<IconPlus size={14} aria-hidden="true" />}
+            onClick={handleClearChat}
+            disabled={chatEndpointIsLoading}
+            data-testid="chat-clear">
+            {t.clear}
           </Button>
-          {hasExchanges && (
-            <Tooltip label={t.clear}>
-              <ActionIcon
-                aria-label={t.clear}
-                data-testid="chat-clear"
-                variant="subtle"
-                color="gray"
-                onClick={handleClearChat}
-                size="md"
-                radius="md"
-                disabled={chatEndpointIsLoading}>
-                <IconTrash size={16} aria-hidden="true" />
-              </ActionIcon>
-            </Tooltip>
-          )}
         </Group>
-      </Group>
+      )}
 
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '100px' }}>

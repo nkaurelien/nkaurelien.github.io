@@ -261,7 +261,8 @@ try {
 
 // ------------------------------------ Conversation simulée (sans appel LLM)
 // ego lite intercepte POST /api/chat (CDP Fetch) et répond un flux « UI Message Stream »
-// préenregistré contenant un lien d'article : bulles, cartes de sources et audit axe
+// préenregistré (un appel d'outil puis un lien d'article) : bulles, étape d'outil, cartes
+// de sources, barre « Nouvelle conversation » et audit axe
 // sur une vraie conversation, de façon déterministe et sans consommer de quota.
 try {
   await page.goto(`${BASE}/fr/chat/`);
@@ -280,6 +281,7 @@ try {
   const stream =
     [
       { type: 'start' },
+      { type: 'data-tool', id: 'tool-0', data: { name: 'search_articles', input: { query: 'kaniko' } } },
       { type: 'text-start', id: 't1' },
       { type: 'text-delta', id: 't1', delta: `Oui, voici son article : [Kaniko + Crane](${article}).` },
       { type: 'text-end', id: 't1' },
@@ -308,12 +310,16 @@ try {
       aiLeft: a ? Math.round(a.left - log.left) : null,
       sources: [...document.querySelectorAll('[data-testid="chat-source-card"]')].map(el => el.getAttribute('href')),
       listLabel: document.querySelector('[data-testid="chat-sources"]')?.getAttribute('aria-label'),
+      steps: [...document.querySelectorAll('[data-testid="chat-tool-step"]')].map(el => `${el.dataset.state}:${el.textContent.trim()}`),
+      clear: document.querySelector('[data-testid="chat-clear"]')?.textContent?.trim(),
     };
   });
   const problems = [];
   if (conv.userRight === null || conv.userRight > 24) problems.push(`bulle visiteur non alignée à droite (écart ${conv.userRight}px)`);
   if (conv.userLeft !== null && conv.userLeft < 40) problems.push('bulle visiteur pleine largeur');
   if (conv.aiLeft === null || conv.aiLeft > 24) problems.push(`bulle Jamila non alignée à gauche (écart ${conv.aiLeft}px)`);
+  if (conv.steps.length !== 1 || !/^done:.*kaniko/.test(conv.steps[0])) problems.push(`étape d'outil : ${JSON.stringify(conv.steps)}`);
+  if (!conv.clear) problems.push('bouton « Nouvelle conversation » absent');
   if (conv.sources.length !== 1 || conv.sources[0] !== `/fr${article}`) problems.push(`cartes de sources : ${JSON.stringify(conv.sources)}`);
   else {
     const head = await fetch(BASE + conv.sources[0], { method: 'HEAD', redirect: 'follow' });
@@ -322,7 +328,8 @@ try {
   record(
     'conversation simulée',
     problems.length === 0,
-    problems.join(' | ') || `visiteur à droite, Jamila à gauche, 1 carte « ${conv.listLabel} » -> ${conv.sources[0]} (200)`
+    problems.join(' | ') ||
+      `visiteur à droite, Jamila à gauche, étape « ${conv.steps[0].slice(5)} », 1 carte « ${conv.listLabel} » -> ${conv.sources[0]} (200), « ${conv.clear} »`
   );
   const violations = await axeAudit();
   const blocking = violations.filter(v => v.impact === 'serious' || v.impact === 'critical');
