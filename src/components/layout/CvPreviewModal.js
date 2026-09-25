@@ -21,6 +21,7 @@ import { IconDownload, IconCopy, IconCheck, IconEye, IconX, IconMail, IconBuildi
 import { useClipboard } from '@mantine/hooks';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { trackAndNotifyCvDownload } from '@/lib/cvAnalytics';
 
 export const CV_OPTIONS = [
   {
@@ -148,12 +149,20 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
 
   // Clic sur le bouton de téléchargement
   const handleDownloadClick = () => {
-    if (typeof window !== 'undefined') {
-      window.umami?.track('cv_pdf_download_click', { cvId: selectedCv.id });
-    }
     if (emailCaptured) {
+      trackAndNotifyCvDownload({
+        cvId: selectedCv.id,
+        cvTitle: selectedCv.title,
+        source: 'preview_modal_direct',
+        email: userEmail,
+        name: userName,
+        company: userCompany,
+      });
       triggerPdfDownload(selectedCv.pdfUrl, selectedCv.downloadName);
     } else {
+      if (typeof window !== 'undefined') {
+        window.umami?.track('cv_pdf_download_click', { cvId: selectedCv.id });
+      }
       setLeadModalOpened(true);
     }
   };
@@ -174,6 +183,8 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
           name: userName,
           company: userCompany,
           cvId: selectedCv.id,
+          cvTitle: selectedCv.title,
+          source: 'preview_modal_lead_form',
         }),
       });
 

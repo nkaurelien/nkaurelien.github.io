@@ -8,6 +8,8 @@ import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 import VantaWaveBackground from '../layout/VantaWaveBackground';
 
+import { trackAndNotifyCvDownload } from '@/lib/cvAnalytics';
+
 const GITHUB = 'https://github.com/nkaurelien';
 
 // Hero épuré (inspiré de jev.dev) : accroche, nom en très grand, rôle @ société, phrase
@@ -131,6 +133,13 @@ export default function Hero({ locale, hero }) {
               href="/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                trackAndNotifyCvDownload({
+                  cvId: 'cv',
+                  cvTitle: 'CV Principal',
+                  source: 'hero_button',
+                });
+              }}
               leftSection={<IconFileText size={16} aria-hidden="true" />}>
               {isEnglish ? 'Resume' : 'CV'}
             </Button>

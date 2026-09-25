@@ -18,6 +18,7 @@ import {
 } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
 import CvPreviewModal from '@/components/layout/CvPreviewModal';
+import { trackAndNotifyCvDownload } from '@/lib/cvAnalytics';
 
 export default function CvFloatingButton() {
   const pathname = usePathname() || '';
@@ -178,9 +179,11 @@ export default function CvFloatingButton() {
                         rel="noopener noreferrer"
                         onClick={e => {
                           e.stopPropagation();
-                          if (typeof window !== 'undefined') {
-                            window.umami?.track('cv_pdf_open_new_tab', { cvId: item.id });
-                          }
+                          trackAndNotifyCvDownload({
+                            cvId: item.id,
+                            cvTitle: item.title,
+                            source: 'floating_button_tab_view',
+                          });
                         }}
                         variant="subtle"
                         color="kamit"
@@ -196,9 +199,11 @@ export default function CvFloatingButton() {
                         download={item.download}
                         onClick={e => {
                           e.stopPropagation();
-                          if (typeof window !== 'undefined') {
-                            window.umami?.track('cv_pdf_direct_download', { cvId: item.id });
-                          }
+                          trackAndNotifyCvDownload({
+                            cvId: item.id,
+                            cvTitle: item.title,
+                            source: 'floating_button_download',
+                          });
                         }}
                         variant="subtle"
                         color="kamit"
