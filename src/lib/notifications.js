@@ -3,8 +3,8 @@
  * et d'événements serveur Umami (Server-Side Events).
  */
 
-const UMAMI_URL = process.env.UMAMI_URL || process.env.UMAMI_SERVER_URL;
-const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+const UMAMI_URL = (process.env.UMAMI_URL || process.env.UMAMI_SERVER_URL || 'https://umami.kamitbrains.fr').replace(/\/$/, '');
+const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || process.env.UMAMI_WEBSITE_ID || '37569a74-7d82-44fc-b839-525d4604c9b8';
 /**
  * Résout l'URL complète du topic ntfy.
  * Priorité :
