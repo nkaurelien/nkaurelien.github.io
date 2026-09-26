@@ -43,10 +43,11 @@ const LABELS = {
   fr: {
     kicker: 'Blog',
     title: 'Articles récents',
-    subtitle: 'Mes retours d’expérience DevOps, SysOps et administration système, publiés sur Medium.',
+    subtitle: 'Mes retours d’expérience DevOps, DevSecOps et administration système.',
     read: 'Lire l’article',
     seeAll: 'Voir tous les articles',
-    onMedium: 'Tout lire sur Medium',
+    onMedium: 'Voir mes articles Medium',
+    mediumText: 'Mes premiers articles sont sur Medium. Les nouveaux sont publiés directement ici.',
     empty: 'Les articles ne sont pas disponibles pour le moment. Retrouvez-les directement sur Medium.',
     searchTitle: 'Rechercher',
     clearSearch: 'Effacer la recherche',
@@ -58,10 +59,11 @@ const LABELS = {
   en: {
     kicker: 'Blog',
     title: 'Recent articles',
-    subtitle: 'My hands-on DevOps, SysOps and system administration write-ups, published on Medium.',
+    subtitle: 'My hands-on DevOps, DevSecOps and system administration write-ups.',
     read: 'Read article',
     seeAll: 'See all articles',
-    onMedium: 'Read everything on Medium',
+    onMedium: 'See my Medium articles',
+    mediumText: 'My earlier articles are on Medium. New ones are published right here.',
     empty: 'Articles are unavailable right now. Find them directly on Medium.',
     searchTitle: 'Search',
     clearSearch: 'Clear search',
@@ -591,7 +593,7 @@ export default function Blog({ articles = [], locale = 'fr', compact = false, nu
                 </Text>
               </Group>
               <Text size="xs" c="dimmed" mb="sm">
-                Retrouvez tous mes articles et publications régulières sur Medium.
+                {t.mediumText}
               </Text>
               <Button
                 component="a"
