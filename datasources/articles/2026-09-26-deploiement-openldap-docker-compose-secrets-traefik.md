@@ -227,7 +227,7 @@ phpLDAPadmin est une application web PHP, exposée sur le port 80 à l'intérieu
 ```yaml
 services:
   phpldapadmin:
-    image: osixia/phpldapadmin:0.9.0
+    image: osixia/phpldapadmin:latest
     networks:
       - ldap-network
       - traefik-public
