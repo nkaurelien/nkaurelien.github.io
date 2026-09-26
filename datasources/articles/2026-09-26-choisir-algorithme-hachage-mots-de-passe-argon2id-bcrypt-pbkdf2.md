@@ -83,14 +83,24 @@ Ses trois paramètres sont indépendants et lisibles : `m` (mémoire en Kio), `t
 
 L'[OWASP Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) classe les algorithmes dans cet ordre : **Argon2id**, puis **scrypt**, puis **bcrypt** (systèmes existants), puis **PBKDF2** (si FIPS-140 est exigé). Paramètres minimaux :
 
-| Algorithme | Paramètres minimaux (configurations équivalentes) |
-| :--- | :--- |
-| **Argon2id** | `m=47104` (46 Mio), `t=1`, `p=1`<br>`m=19456` (19 Mio), `t=2`, `p=1`<br>`m=12288` (12 Mio), `t=3`, `p=1`<br>`m=9216` (9 Mio), `t=4`, `p=1`<br>`m=7168` (7 Mio), `t=5`, `p=1` |
-| **scrypt** | `N=2^17` (128 Mio), `r=8`, `p=1`<br>`N=2^16` (64 Mio), `r=8`, `p=2`<br>`N=2^15` (32 Mio), `r=8`, `p=3`<br>`N=2^14` (16 Mio), `r=8`, `p=5`<br>`N=2^13` (8 Mio), `r=8`, `p=10` |
-| **bcrypt** | facteur de coût **≥ 10**, entrée ≤ 72 octets |
-| **PBKDF2** | HMAC-SHA256 : **600 000** itérations<br>HMAC-SHA512 : **220 000** itérations<br>HMAC-SHA1 : 1 400 000 itérations (systèmes existants uniquement) |
+| Algorithme | Configuration minimale | Mémoire |
+| :--- | :--- | :--- |
+| **Argon2id** | `m=47104, t=1, p=1` | 46 Mio |
+| **Argon2id** | `m=19456, t=2, p=1` | 19 Mio |
+| **Argon2id** | `m=12288, t=3, p=1` | 12 Mio |
+| **Argon2id** | `m=9216, t=4, p=1` | 9 Mio |
+| **Argon2id** | `m=7168, t=5, p=1` | 7 Mio |
+| **scrypt** | `N=2^17, r=8, p=1` | 128 Mio |
+| **scrypt** | `N=2^16, r=8, p=2` | 64 Mio |
+| **scrypt** | `N=2^15, r=8, p=3` | 32 Mio |
+| **scrypt** | `N=2^14, r=8, p=5` | 16 Mio |
+| **scrypt** | `N=2^13, r=8, p=10` | 8 Mio |
+| **bcrypt** | facteur de coût **≥ 10**, entrée ≤ 72 octets | 4 Kio (fixe) |
+| **PBKDF2-HMAC-SHA256** | **600 000** itérations | négligeable |
+| **PBKDF2-HMAC-SHA512** | **220 000** itérations | négligeable |
+| **PBKDF2-HMAC-SHA1** | 1 400 000 itérations (systèmes existants uniquement) | négligeable |
 
-Les configurations d'une même ligne se valent : on échange de la mémoire contre du temps de calcul. Avec Argon2id, prenez celle qui correspond à la RAM disponible sur vos serveurs **au pic de connexions simultanées**.
+Pour Argon2id et scrypt, les cinq configurations se valent : on échange de la mémoire contre du temps de calcul. Avec Argon2id, prenez celle qui correspond à la RAM disponible sur vos serveurs **au pic de connexions simultanées**.
 
 ## 6. L'arbre de décision
 
