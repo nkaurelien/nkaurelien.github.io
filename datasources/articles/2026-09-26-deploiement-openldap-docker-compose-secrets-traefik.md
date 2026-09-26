@@ -5,6 +5,7 @@ date: 2026-09-26
 categories: [DevSecOps, Docker, Sécurité, Identity Management]
 excerpt: "Comment déployer OpenLDAP et phpLDAPadmin de manière sécurisée avec Docker Compose : secrets Docker, init container idempotent, overlay memberOf, politique de mots de passe (ppolicy) et Traefik pour le TLS."
 lang: fr
+thumbnail: /img/blog/openldap/cover.png
 ---
 
 # Déploiement Sécurisé d'OpenLDAP avec Docker Compose : Secrets, Init Containers et Traefik
@@ -250,6 +251,16 @@ Deux points d'attention :
 - **Réseau externe** : `traefik-public` doit exister avant `docker compose up` (`docker network create traefik-public`, une seule fois), sinon la stack refuse de démarrer.
 
 Côté certificat, Let's Encrypt ne peut pas délivrer de certificat pour un nom en `.local`. En lab, Traefik servira son certificat auto-signé par défaut ; pour un certificat valide, utilisez un vrai domaine (avec un challenge DNS pour un hôte interne). Pour limiter la surface d'exposition, on peut aussi retirer le mapping de port direct (`8088:80`) une fois Traefik en place.
+
+## Résultat
+
+Une fois la stack lancée, phpLDAPadmin demande le **DN complet** de connexion (et non un simple identifiant) :
+
+![Page de connexion phpLDAPadmin avec le DN admin](/img/blog/openldap/phpldapadmin-login.png)
+
+Connecté en admin, on retrouve l'arbre créé par l'init container : les groupes `appdev-team` et `devops-team`, les OUs `appdev` et `devops`, et le conteneur `ou=policies` de la politique de mots de passe.
+
+![Arbre de l'annuaire dans phpLDAPadmin après initialisation](/img/blog/openldap/phpldapadmin-tree.png)
 
 ## Conclusion
 
