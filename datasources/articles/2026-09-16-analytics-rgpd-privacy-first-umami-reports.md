@@ -11,6 +11,13 @@ lang: fr
 
 *Face aux restrictions du RGPD et à la lourdeur des scripts de suivi traditionnels (Google Analytics), Umami s'impose comme la solution d'analyse d'audience web auto-hébergée idéale : privacy-first, sans cookies, ultra-rapide et totalement automatisable via son API REST.*
 
+> 💻 **Code source** : le déploiement Umami (Compose) et le rôle Ansible avec le script de rapport `umami-ntfy-report.js` et ses tâches Ofelia sont disponibles dans le dépôt [nkaurelien/docker-examples](https://github.com/nkaurelien/docker-examples/tree/main/compose/05-monitoring-reporting/umami).
+>
+> ```bash
+> git clone https://github.com/nkaurelien/docker-examples.git
+> cd docker-examples/compose/05-monitoring-reporting/umami
+> ```
+
 ---
 
 ## Pourquoi Réinventer l'Analyse d'Audience Web ?
@@ -222,3 +229,8 @@ environment = UMAMI_URL=https://analytics.yourdomain.tld,NTFY_TOPIC_URL=https://
 | **Ressources mémoire** | Cloud SaaS | Élevées (PHP/MySQL) | **Très faibles (Node/Go)** |
 
 Grâce à ce pipeline, les métriques d'audience restent entièrement sous notre contrôle, légères à charger et directement consultables chaque matin sur smartphone.
+
+### Code source
+- [Umami (Compose)](https://github.com/nkaurelien/docker-examples/tree/main/compose/05-monitoring-reporting/umami)
+- [Rôle Ansible Umami (rapport Ntfy + Ofelia)](https://github.com/nkaurelien/docker-examples/tree/main/ansible/roles/umami)
+- [Ofelia (Compose)](https://github.com/nkaurelien/docker-examples/tree/main/compose/01-infrastructure/ofelia)

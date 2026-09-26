@@ -11,6 +11,13 @@ lang: fr
 
 *Comment décliner une même application sur plusieurs environnements (Dev, Staging, Production) sans jamais copier-coller des dizaines de fichiers YAML ? Analyse du pattern Base & Overlays avec Kustomize, l'outil déclaratif intégré nativement dans `kubectl`.*
 
+> 💻 **Code source** : l'application `fastapi-boilerplate` avec sa `base/` et ses overlays `dev`, `staging` et `prod` est disponible dans le dépôt [nkaurelien/docker-examples](https://github.com/nkaurelien/docker-examples/tree/main/kubernetes/apps/fastapi-boilerplate).
+>
+> ```bash
+> git clone https://github.com/nkaurelien/docker-examples.git
+> cd docker-examples/kubernetes/apps/fastapi-boilerplate
+> ```
+
 ---
 
 ## 🛑 Le Piège Classique : La Duplication des Manifestes
@@ -157,3 +164,6 @@ kubectl kustomize overlays/prod
 | **Idéal pour** | Vos **propres microservices internes** et variations d'environnements | Déployer des **logiciels tiers communautaires complexes** (Rancher, Prometheus Stack, cert-manager) |
 
 L'adoption de Kustomize offre l'équilibre parfait entre sobriété, lisibilité GitOps et zéro duplication.
+
+### Code source
+- [fastapi-boilerplate (base + overlays)](https://github.com/nkaurelien/docker-examples/tree/main/kubernetes/apps/fastapi-boilerplate)

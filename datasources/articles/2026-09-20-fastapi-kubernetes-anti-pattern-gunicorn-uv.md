@@ -11,6 +11,13 @@ lang: fr
 
 *Pendant de nombreuses années, le conteneur `tiangolo/uvicorn-gunicorn-fastapi` a été la référence pour déployer des applications FastAPI. Cependant, dans une architecture Kubernetes moderne, l'usage combiné de Gunicorn et Uvicorn crée un conflit direct d'orchestration. Analyse technique et guide de conception d'une image de production 100% Cloud-Native.*
 
+> 💻 **Code source** : le `Dockerfile` multi-stage avec UV et les manifestes Kubernetes de l'application `fastapi-boilerplate` sont disponibles dans le dépôt [nkaurelien/docker-examples](https://github.com/nkaurelien/docker-examples/tree/main/kubernetes/apps/fastapi-boilerplate).
+>
+> ```bash
+> git clone https://github.com/nkaurelien/docker-examples.git
+> cd docker-examples/kubernetes/apps/fastapi-boilerplate
+> ```
+
 ---
 
 ## 🧐 L'Héritage : Pourquoi cette image a-t-elle été si populaire ?
@@ -177,3 +184,6 @@ securityContext:
 | **Gestion du Scale** | Biaisée par le CPU de la machine | **100% pilotée par HPA et Pod Replicas** |
 
 Ce modèle garantit un démarrage à froid quasi-instantané, une sécurité renforcée et une intégration parfaite dans les pipelines GitOps et Kubernetes.
+
+### Code source
+- [fastapi-boilerplate (Dockerfile UV + manifestes)](https://github.com/nkaurelien/docker-examples/tree/main/kubernetes/apps/fastapi-boilerplate)

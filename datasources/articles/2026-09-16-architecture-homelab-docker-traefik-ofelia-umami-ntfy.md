@@ -11,6 +11,13 @@ lang: fr
 
 *La gestion d'une infrastructure auto-hébergée (Homelab ou micro-cloud souverain) exige le même niveau de rigueur qu'une plateforme de production entreprise : sécurité TLS automatisée, orchestration déclarative, surveillance proactive et automatisation des tâches de maintenance.*
 
+> 💻 **Code source** : l'implémentation de cette stack (Compose et rôles Ansible pour Traefik, Ofelia, Umami et Ntfy, dont le script `umami-ntfy-report.js`) est disponible dans le dépôt [nkaurelien/docker-examples](https://github.com/nkaurelien/docker-examples).
+>
+> ```bash
+> git clone https://github.com/nkaurelien/docker-examples.git
+> cd docker-examples
+> ```
+
 ---
 
 ## Le Défi de l'Auto-hébergement Moderne
@@ -235,3 +242,10 @@ run();
 ## Bilan
 
 Cette architecture offre un équilibre parfait entre **autonomie**, **sécurité** et **faible empreinte mémoire**. Elle permet de faire tourner une infrastructure complète de services métiers, d'automatisation et de monitoring sur des ressources modestes tout en maintenant une réactivité maximale via notifications Push.
+
+### Code source
+- [Traefik (Compose)](https://github.com/nkaurelien/docker-examples/tree/main/compose/01-infrastructure/traefik)
+- [Ofelia (Compose)](https://github.com/nkaurelien/docker-examples/tree/main/compose/01-infrastructure/ofelia)
+- [Umami (Compose)](https://github.com/nkaurelien/docker-examples/tree/main/compose/05-monitoring-reporting/umami)
+- [Ntfy (Compose)](https://github.com/nkaurelien/docker-examples/tree/main/compose/18-communication/notification/ntfy)
+- [Rôles Ansible (traefik, ofelia, umami, ntfy)](https://github.com/nkaurelien/docker-examples/tree/main/ansible/roles)
