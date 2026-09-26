@@ -6,6 +6,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 import MermaidDiagram from './MermaidDiagram';
+import { withBase } from '@/lib/asset';
 
 // react-markdown rend un bloc clôturé en <pre><code class="language-x">. On intercepte
 // au niveau du <pre> : remplacer le <code> laisserait le <pre> parent autour du diagramme.
@@ -20,6 +21,19 @@ export default function MarkdownContent({ content }) {
       remarkPlugins={[remarkGfm, remarkMath]}
       rehypePlugins={[rehypeKatex]}
       components={{
+        // Images du markdown : chemins /img/... servis depuis public/, préfixés par le basePath.
+        img({ node, src, alt, ...props }) {
+          return (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              {...props}
+              src={withBase(src)}
+              alt={alt || ''}
+              loading="lazy"
+              style={{ maxWidth: '100%', height: 'auto', borderRadius: 8, border: '1px solid #e5e7eb' }}
+            />
+          );
+        },
         pre({ children, ...props }) {
           const inner = codeChild(children);
           const lang = /language-(\w+)/.exec(inner?.className || '')?.[1];

@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { withBase } from '@/lib/asset';
 import {
   Container,
   Title,
@@ -233,7 +234,7 @@ function FeaturedArticleCard({ article, t }) {
                 display: 'block',
               }}>
               <Image
-                src={article.thumbnail}
+                src={withBase(article.thumbnail)}
                 h={180}
                 w="100%"
                 fit="cover"
@@ -362,7 +363,14 @@ function ArticleListItem({ article, t }) {
               overflow: 'hidden',
               display: 'block',
             }}>
-            <Image src={article.thumbnail} h={95} w="100%" fit="cover" alt={article.title} fallbackSrc="https://placehold.co/600x320?text=Article" />
+            <Image
+              src={withBase(article.thumbnail)}
+              h={95}
+              w="100%"
+              fit="cover"
+              alt={article.title}
+              fallbackSrc="https://placehold.co/600x320?text=Article"
+            />
           </Box>
         )}
         <Stack gap={4} style={{ flex: 1, minWidth: 0 }}>
