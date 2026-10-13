@@ -75,9 +75,40 @@ max-bps=3000000                         # débit par allocation
 
 Sans les `denied-peer-ip`, un relais TURN devient un **proxy ouvert vers votre réseau interne**.
 
-**Le vrai obstacle : le port 443.** C'est lui qui débloque les réseaux fermés, et il est presque toujours pris par le reverse proxy. Solutions : une IP dédiée au TURN, ou un multiplexage `nginx stream` avec `ssl_preread` qui aiguille le trafic TURN d'un côté et le web de l'autre — faisable, mais délicat sur un serveur de production.
+**Le vrai obstacle : le port 443.** C'est lui qui débloque les réseaux fermés, et il est presque toujours pris par le reverse proxy… **en TCP**. Or un socket UDP 443 et un socket TCP 443 sont distincts : un relais TURN peut écouter en **UDP 443** sans toucher à nginx. C'est d'ailleurs la configuration recommandée par la DINUM pour l'auto-hébergement de *La Suite Meet*.
 
----
+| Réseau client | TURN UDP 443 | TURN TLS 5349 | TURN TLS sur TCP 443 |
+|---|---|---|---|
+| Ports UDP « exotiques » fermés, UDP 443 ouvert (HTTP/3) | ✅ | ✅ | ✅ |
+| Tout UDP fermé | ❌ | ✅ si 5349 est ouvert (rare en entreprise) | ✅ |
+| HTTPS TCP 443 seul (proxy, inspection) | ❌ | ❌ | ✅ |
+
+L'UDP 443 couvre donc une bonne partie des cas sans deuxième IP. Pour les réseaux les plus fermés, il faut toujours un TURN en **TLS sur TCP 443** : une IP dédiée, un multiplexage `nginx stream` + `ssl_preread`, ou un service géré.
+
+> ⚠️ **Vérifiez que l'UDP arrive vraiment jusqu'à votre machine.** Un serveur derrière un NAT de datacenter (IP privée sur l'interface, IP publique sur un équipement en amont) ne reçoit que les ports redirigés. Pare-feu local ouvert ou pas, rien ne passe — y compris l'UDP 10000 du serveur média. Test simple : `nc -lu <port>` sur le serveur, `echo test | nc -u <ip> <port>` depuis l'extérieur, après avoir vérifié avec une requête STUN publique que l'UDP sortant du client fonctionne.
+
+## 🎥 Et si on changeait de serveur de visio ? LiveKit Server
+
+La documentation de *La Suite Meet* (DINUM) n'utilise pas de coturn séparé : elle s'appuie sur **LiveKit Server**, un SFU **open source** (Apache 2.0, écrit en Go, auto-hébergeable — à ne pas confondre avec *LiveKit Cloud*, sa version hébergée payante), dont le **TURN est intégré** :
+
+```yaml
+rtc:
+  tcp_port: 7881
+  udp_port: 7882
+  use_external_ip: true
+  turn:
+    enabled: true
+    udp_port: 443
+    domain: livekit.example.com
+```
+
+C'est une vraie alternative, avec des webhooks natifs (`room_started`, `participant_joined`…). Je l'ai pourtant écartée **pour ce projet, à ce stade** :
+
+- **Jitsi Meet fournit une interface complète, prête à intégrer en iframe** ; avec LiveKit, il faut construire l'interface avec ses SDK, ou déployer l'application La Suite Meet elle-même ;
+- tout l'existant — jetons par participant, événements de salle (`event_sync`), comptage des consultations — est construit sur Jitsi ;
+- le TURN intégré simplifie l'exploitation, mais ne règle pas le cas des réseaux qui n'autorisent que **TCP 443**.
+
+À réévaluer si la « souveraineté numérique » (stack DINUM) devient un argument, ou si l'exploitation d'un TURN séparé devient un poids.
 
 ## ☁️ L'option gérée : Cloudflare TURN
 
@@ -118,10 +149,11 @@ coturn auto-hébergé : 0 € de licence, ~50 Mo de RAM ; le coût est dans **la
 ```mermaid
 flowchart TD
     Q1{"Utilisateurs en réseaux<br/>d'entreprise / d'hôpital ?"} -->|non| N["TURN UDP/TCP simple<br/>(coturn) — voire rien"]
-    Q1 -->|oui| Q2{"IP dédiée ou 443<br/>multiplexable sans risque ?"}
-    Q2 -->|oui| C["coturn / eturnal<br/>avec TLS 443"]
-    Q2 -->|non| CF["Service géré (Cloudflare)<br/>+ alerte budget"]
-    CF --> H["Plus tard : coturn en UDP/TCP<br/>+ Cloudflare pour le TLS 443"]
+    Q1 -->|oui| U["coturn en UDP 443 + TLS 5349<br/>(sans 2ᵉ IP)"]
+    U --> Q2{"Réseaux « TCP 443 seul »<br/>à couvrir ?"}
+    Q2 -->|non| OK["Suffisant"]
+    Q2 -->|"oui, IP dédiée possible"| C["coturn en TLS sur TCP 443"]
+    Q2 -->|"oui, sans IP dédiée"| CF["+ service géré (Cloudflare)<br/>pour le TLS 443, alerte budget"]
 ```
 
 Les deux approches se combinent : Prosody accepte plusieurs relais. Un coturn local absorbe la majorité des cas (UDP/TCP), le service géré ne prend que les réseaux les plus fermés.
@@ -130,7 +162,7 @@ Les deux approches se combinent : Prosody accepte plusieurs relais. Un coturn lo
 
 ## 🎓 Leçons
 
-1. **Tester depuis un réseau fermé avant la mise en production** : un partage de connexion avec un pare-feu qui ne laisse passer que le 443 suffit à reproduire le problème.
+1. **Vérifier que l'UDP atteint vraiment le serveur** (NAT de datacenter) et **tester depuis un réseau fermé avant la mise en production** : un partage de connexion avec un pare-feu qui ne laisse passer que le 443 suffit à reproduire le problème.
 2. **« La salle s'ouvre » ne veut pas dire « la visio marche »** : la signalisation et les médias ne prennent pas le même chemin.
 3. **Le TURN est un service exposé** : identifiants temporaires, interdiction des réseaux privés, limites de débit.
 4. **Chiffrer le coût par participant relayé**, pas par consultation : seule une minorité passe par le relais.
