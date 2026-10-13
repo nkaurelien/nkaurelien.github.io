@@ -99,15 +99,15 @@ Intégration Jitsi : l'image Prosody accepte des **identifiants fixes** (`TURNS_
 
 ## 💶 Combien ça coûte
 
-Cloudflare facture **0,05 $ par Go envoyé au client relayé** (gratuit seulement avec leur propre SFU, ce qui n'est pas le cas avec Jitsi). Une visio 720p représente environ **2 Mbit/s par participant**, soit **~0,9 Go/h**, soit **~0,045 $ de l'heure par participant relayé**.
+Cloudflare facture **0,05 \$ par Go envoyé au client relayé** (gratuit seulement avec leur propre SFU, ce qui n'est pas le cas avec Jitsi). Une visio 720p représente environ **2 Mbit/s par participant**, soit **~0,9 Go/h**, soit **~0,045 \$ de l'heure par participant relayé**.
 
 Pour des consultations de 30 minutes à deux participants :
 
 | Volume mensuel | 15 % de participants relayés (courant) | 100 % relayés (pire cas) |
 |---|---|---|
-| 500 consultations | ≈ 3 $ | ≈ 23 $ |
-| 2 000 consultations | ≈ 14 $ | ≈ 90 $ |
-| 5 000 consultations | ≈ 34 $ | ≈ 225 $ |
+| 500 consultations | ≈ 3 \$ | ≈ 23 \$ |
+| 2 000 consultations | ≈ 14 \$ | ≈ 90 \$ |
+| 5 000 consultations | ≈ 34 \$ | ≈ 225 \$ |
 
 coturn auto-hébergé : 0 € de licence, ~50 Mo de RAM ; le coût est dans **la bande passante du serveur** et dans le temps passé à l'exploiter (certificats, 443, mises à jour, surveillance).
 
