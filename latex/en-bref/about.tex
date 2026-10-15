@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 \usepackage{lmodern}
-\usepackage[left=1.6cm,right=1.6cm,top=1.6cm,bottom=1.6cm]{geometry}
+\usepackage[left=1.6cm,right=1.6cm,top=1.3cm,bottom=1.3cm]{geometry}
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{enumitem}
@@ -12,6 +12,7 @@
 \usepackage[skins,breakable]{tcolorbox}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\usepackage{lastpage}
 
 % Palette de couleurs harmonieuse (Kamit Teal & Slate)
 \definecolor{brandTeal}{RGB}{15, 118, 110}     % Teal foncé (#0f766e)
@@ -19,7 +20,7 @@
 \definecolor{brandTealBorder}{RGB}{94, 234, 212}% Bordure douce
 \definecolor{darkgray}{RGB}{30, 41, 59}        % Texte principal (#1e293b)
 \definecolor{slateGray}{RGB}{71, 85, 105}      % Texte secondaire (#475569)
-\definecolor{lightGray}{RGB}{241, 245, 249}    % Fond de bloc (#f1f5f9)
+\definecolor{lightGray}{RGB}{248, 250, 252}    % Fond de bloc (#f8fafc)
 \definecolor{ruleGray}{RGB}{226, 232, 240}     % Ligne séparatrice
 
 \hypersetup{
@@ -30,19 +31,19 @@
     pdftitle={En bref --- Profil complet et Vision d'ingénierie}
 }
 
-% Format des titres
+% Format des titres avec espacements verticaux maîtrisés
 \titleformat{\section}
   {\large\bfseries\color{brandTeal}}
   {}{0em}
-  {}[\vspace{-0.4em}\textcolor{brandTeal}{\rule{\linewidth}{1.2pt}}\vspace{-0.3em}]
+  {}[\vspace{-0.35em}\textcolor{brandTeal}{\rule{\linewidth}{1.2pt}}\vspace{-0.25em}]
 
 \titleformat{\subsection}
   {\normalsize\bfseries\color{darkgray}}
   {}{0em}
   {}
 
-\titlespacing*{\section}{0pt}{1.2em}{0.6em}
-\titlespacing*{\subsection}{0pt}{0.8em}{0.3em}
+\titlespacing*{\section}{0pt}{0.9em}{0.45em}
+\titlespacing*{\subsection}{0pt}{0.6em}{0.25em}
 
 % En-tête et pied de page
 \pagestyle{fancy}
@@ -54,39 +55,28 @@
 \fancyfoot[C]{\footnotesize\color{slateGray}\href{https://nkaurelien.kamitbrains.fr}{nkaurelien.kamitbrains.fr}}
 \fancyfoot[R]{\footnotesize\color{slateGray}\thepage\ / \pageref{LastPage}}
 
-\usepackage{lastpage}
 \color{darkgray}
 
 \begin{document}
 
 % =========================================================================
-% EN-TÊTE PRINCIPAL
+% EN-TÊTE PRINCIPAL (AÉRÉ ET PLEINE LARGEUR)
 % =========================================================================
-\begin{minipage}[c]{0.70\textwidth}
-    {\huge\bfseries\color{brandTeal} Astrid-Aurélien NKUMBE ENONGENE}\\[0.3em]
-    {\large\bfseries\color{darkgray} DevSecOps \& Platform Engineer $\cdot$ Tech Lead Fullstack \& IA}\\[0.4em]
-    {\normalsize\color{slateGray}\itshape « Je conçois l'architecture sécurisée --- et je fais avancer l'équipe. »}
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.28\textwidth}
-    \begin{tcolorbox}[
-        colback=lightGray,
-        colframe=ruleGray,
-        arc=4pt,
-        boxrule=0.6pt,
-        top=4pt,bottom=4pt,left=6pt,right=6pt
-    ]
-    \footnotesize
-    \faMapMarker*\ Paris / Cergy (Mobile / Remote)\\[0.25em]
-    \faPhone*\ +33 7 44 58 45 62\\[0.25em]
-    \faEnvelope\ \href{mailto:nkumbeaurelien@hotmail.com}{\texttt{nkumbeaurelien@hotmail.com}}\\[0.25em]
-    \faGlobe\ \href{https://nkaurelien.kamitbrains.fr}{nkaurelien.kamitbrains.fr}\\[0.25em]
-    \faGithub\ \href{https://github.com/nkaurelien}{github.com/nkaurelien}\\[0.25em]
-    \faLinkedin\ \href{https://www.linkedin.com/in/nkaurelien/}{in/nkaurelien}
-    \end{tcolorbox}
-\end{minipage}
+\begin{center}
+    {\LARGE\bfseries\color{brandTeal} Astrid-Aurélien NKUMBE ENONGENE}\\[0.3em]
+    {\large\bfseries\color{darkgray} DevSecOps \& Platform Engineer $\cdot$ Tech Lead Fullstack \& IA}\\[0.35em]
+    {\normalsize\color{slateGray}\itshape « Je conçois l'architecture sécurisée --- et je fais avancer l'équipe. »}\\[0.5em]
+    {\footnotesize\color{slateGray}
+        \faMapMarker*\ Paris / Cergy (Mobile \& Remote) \quad$\cdot$\quad
+        \faPhone*\ +33 7 44 58 45 62 \quad$\cdot$\quad
+        \faEnvelope\ \href{mailto:nkumbeaurelien@hotmail.com}{\texttt{nkumbeaurelien@hotmail.com}}\\[0.25em]
+        \faGlobe\ \href{https://nkaurelien.kamitbrains.fr}{\texttt{nkaurelien.kamitbrains.fr}} \quad$\cdot$\quad
+        \faGithub\ \href{https://github.com/nkaurelien}{\texttt{github.com/nkaurelien}} \quad$\cdot$\quad
+        \faLinkedin\ \href{https://www.linkedin.com/in/nkaurelien/}{\texttt{linkedin.com/in/nkaurelien}}
+    }
+\end{center}
 
-\vspace{0.4em}
+\vspace{0.1em}
 \textcolor{ruleGray}{\rule{\linewidth}{1pt}}
 \vspace{0.4em}
 
@@ -98,13 +88,15 @@
     colframe=brandTealBorder,
     arc=4pt,
     boxrule=0.8pt,
-    top=6pt,bottom=6pt,left=8pt,right=8pt
+    top=5pt,bottom=5pt,left=8pt,right=8pt
 ]
 \textbf{\color{brandTeal}\faLightbulb\ Manifeste de l'Ingénieur Augmenté par l'IA :}\\
 {\small\itshape
-« L'IA est pour moi ce que la calculatrice ou l'IDE a été pour les générations précédentes : un accélérateur de productivité. Mon rôle de Senior / Lead n'est pas de mémoriser de la syntaxe au caractère près, mais d'orchestrer des architectures robustes, de garantir la sécurité, la conformité réglementaire (FHIR/HL7, HDS, DevSecOps) et la qualité globale. L'IA me permet de me concentrer sur ce qui apporte la vraie valeur intellectuelle : la conception système, la résolution de problèmes complexes et l'accompagnement des équipes. »
+« L'IA est pour moi ce que la calculatrice ou l'IDE a été pour les générations précédentes : un accélérateur de productivité. Mon rôle de Senior / Lead n'est pas de mémoriser de la syntaxe au caractère près, mais d'orchestrer des architectures robustes, de garantir la sécurité, la conformité réglementaire (normes FHIR, HL7, HDS, DevSecOps) et la qualité globale. L'IA me permet de me concentrer sur ce qui apporte la vraie valeur intellectuelle : la conception système, la résolution de problèmes complexes et l'accompagnement des équipes. »
 }
 \end{tcolorbox}
+
+\vspace{0.1em}
 
 % =========================================================================
 % SITUATION ACTUELLE & RÉALISATIONS MARQUANTES
@@ -112,36 +104,38 @@
 \section{\faBriefcase\ Situation Actuelle \& Réalisations Clés}
 
 \textbf{En CDI, en interne, chez DATA2INNOV} --- \emph{Lead Tech \& Ingénieur Fullstack} (France) :
-\begin{itemize}[leftmargin=1.5em, itemsep=0.2em, topsep=0.2em]
-    \item \textbf{Plateforme de santé connectée (normes FHIR/HL7 / HDS)} : Conception et développement Fullstack (Next.js / FastAPI) d'applications médecin et patient pour le suivi télémédical en temps réel.
+\begin{itemize}[leftmargin=1.4em, itemsep=0.2em, topsep=0.15em]
+    \item \textbf{Plateforme de santé connectée (normes FHIR, HL7 et HDS)} : Conception et développement Fullstack (Next.js / FastAPI) d'applications médecin et patient pour le suivi télémédical en temps réel.
     \item \textbf{Ingestion \& Traitement de flux IoT} : Intégration temps réel de capteurs physiologiques (Withings Cloud API, EmotiBit-ESP32, BLE/Wi-Fi, WebSockets, Kafka, CouchDB).
     \item \textbf{Industrialisation DevSecOps \& Observabilité} : Pipelines GitLab CI/CD automatisés, conteneurisation Docker Swarm, surveillance centralisée (SigNoz, Grafana, Logstash).
     \item \textbf{Ingénierie pédagogique} : Mise à jour du support et auteur des fiches pratiques (TP) et fichiers d'évaluation pour la formation \textbf{Cloud Computing \& Conteneurisation}.
     \item \textbf{Entrepreneuriat} : Fondateur de \textbf{KAMITBRAINS IT}, structure dédiée aux projets innovants et missions en indépendant.
 \end{itemize}
 
+\vspace{0.1em}
+
 % =========================================================================
 % SPÉCIALITÉS & RÔLES CIBLES
 % =========================================================================
 \section{\faBullseye\ Spécialités \& Rôles Cibles}
 
-\begin{enumerate}[leftmargin=1.5em, itemsep=0.5em, topsep=0.3em]
+\begin{enumerate}[leftmargin=1.4em, itemsep=0.35em, topsep=0.2em]
     \item \textbf{\color{brandTeal}Lead Tech (Fullstack, Cloud \& IA) --- Cœur de métier} :
-    \begin{itemize}[leftmargin=1.2em, itemsep=0.15em]
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em]
         \item Pilotage de la conception applicative de bout en bout (de la spécification fonctionnelle jusqu'à la production).
         \item Mentorat et montée en compétences de l'équipe (Clean Code, SOLID, TDD, revues de code, culture Agile Scrum/Kanban).
         \item Passerelle active entre les enjeux produit/métier (MOA) et l'excellence technique d'ingénierie (MOE).
     \end{itemize}
 
     \item \textbf{\color{brandTeal}Platform Engineer (IA, Cloud \& DevSecOps) --- Industrialisation} :
-    \begin{itemize}[leftmargin=1.2em, itemsep=0.15em]
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em]
         \item Construction d'\emph{Internal Developer Platforms} (IDP) : socles d'infrastructure prêts à l'emploi (Docker, Kubernetes, Ansible, Terraform).
         \item Déploiement et sécurisation de pipelines CI/CD durcis (GitLab CI, GitHub Actions, SAST/SCA Snyk, Gitleaks, SOPS).
         \item Industrialisation d'agents IA et de moteurs RAG sourcés sur le Cloud (Azure, GCP, AWS) avec gouvernance et observabilité.
     \end{itemize}
 
     \item \textbf{\color{brandTeal}Architecte Solutions \& Logiciel --- Vision Système} :
-    \begin{itemize}[leftmargin=1.2em, itemsep=0.15em]
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em]
         \item Modélisation d'architectures distribuées, microservices et événementielles robustes, scalables et résilientes.
         \item Garantie de conformité aux normes réglementaires exigeantes : santé connectée \textbf{FHIR/HL7, hébergement certifié HDS}, RGPD, sécurité API.
         \item Intégration pragmatique et souveraine de l'IA (garde-fous éthiques, réduction des hallucinations, évaluation continue).
@@ -163,16 +157,18 @@
     title={\small\bfseries\faRocket\ 1. Pour les Startups, Scale-ups \& PME innovantes : Lead Tech Fullstack \& IA},
     coltitle=white,
     colbacktitle=brandTeal,
-    top=6pt,bottom=6pt,left=8pt,right=8pt
+    top=5pt,bottom=5pt,left=8pt,right=8pt
 ]
 \textbf{Vos défis :} Délivrer vite avec un haut niveau de qualité, sans accumuler de dette technique, tout en intégrant l'IA générative.\\
 \textbf{Ce que j'apporte :}
-\begin{itemize}[leftmargin=1.2em, itemsep=0.15em]
+\begin{itemize}[leftmargin=1.2em, itemsep=0.1em]
     \item \textbf{Prise en charge de bout en bout :} De la spécification (Spec-Driven Development) au déploiement sécurisé en production.
     \item \textbf{Autonomie \& Vélocité :} Prototypage rapide en quelques jours puis industrialisation pérenne (Next.js, FastAPI, Cloud/Docker).
     \item \textbf{Leadership pragmatique :} Encadrement bienveillant, instauration des bonnes pratiques et structuration de l'équipe technique.
 \end{itemize}
 \end{tcolorbox}
+
+\vspace{0.3em}
 
 \begin{tcolorbox}[
     colback=white,
@@ -182,23 +178,25 @@
     title={\small\bfseries\faBuilding\ 2. Pour les Grands Comptes \& ETI (Banque, Assurance, Santé) : Platform Engineer ou Architecte Cloud},
     coltitle=white,
     colbacktitle=darkgray,
-    top=6pt,bottom=6pt,left=8pt,right=8pt
+    top=5pt,bottom=5pt,left=8pt,right=8pt
 ]
 \textbf{Vos défis :} Bâtir des socles techniques robustes, outiller les équipes de dev pour déployer vite, et intégrer l'IA de façon souveraine et conforme.\\
 \textbf{Ce que j'apporte :}
-\begin{itemize}[leftmargin=1.2em, itemsep=0.15em]
+\begin{itemize}[leftmargin=1.2em, itemsep=0.1em]
     \item \textbf{Internal Developer Platforms (IDP) :} Templates IaC (Terraform, Ansible), pipelines standardisés et observabilité unifiée (SigNoz, ELK).
     \item \textbf{Industrialisation IA \& RAG :} Déploiements souverains sur Azure/GCP/AWS avec respect strict du RGPD et contrôle des hallucinations.
     \item \textbf{Conformité critique :} Maîtrise des environnements régulés (normes de santé FHIR/HL7, hébergement HDS, protocoles bancaires, Snyk).
 \end{itemize}
 \end{tcolorbox}
 
+\vspace{0.2em}
+
 % =========================================================================
 % SYNTHÈSE DE LA STACK TECHNIQUE
 % =========================================================================
 \section{\faCogs\ Socle Technique \& Compétences Clés}
 
-\begin{itemize}[leftmargin=1.5em, itemsep=0.35em]
+\begin{itemize}[leftmargin=1.4em, itemsep=0.25em]
     \item \textbf{Langages \& Backend :} Python (FastAPI), PHP (8.x, Laravel, Filament), TypeScript, Node.js (NestJS), SQL, Bash/Shell.
     \item \textbf{Frontend \& Mobile :} Next.js (App Router), React, Angular, Mantine UI, AlpineJS, Flutter (BLE/Wi-Fi), TailwindCSS.
     \item \textbf{DevSecOps \& Cloud :} Docker, Docker Swarm, Kubernetes, Argo CD, GitLab CI, Ansible, Terraform, Nginx, Snyk, Gitleaks, AWS, GCP, Azure.
@@ -207,22 +205,24 @@
     \item \textbf{Méthodologies \& Qualité :} Spec-Driven Development, Clean Architecture, SOLID, TDD, Scrum/Kanban, revues de code.
 \end{itemize}
 
+\vspace{0.2em}
+
 % =========================================================================
 % PUBLICATIONS TECHNIQUES & CONTACT
 % =========================================================================
 \section{\faBookOpen\ Publications \& Blog Technique}
 
 Auteur régulier d'articles pratiques sur \href{https://medium.com/@nkaurelien}{\textbf{\texttt{medium.com/@nkaurelien}}} :
-\begin{itemize}[leftmargin=1.5em, itemsep=0.2em]
+\begin{itemize}[leftmargin=1.4em, itemsep=0.15em]
     \item Industrialisation DevSecOps, gestion automatisée des certificats SSL/TLS sous Linux et Nginx.
     \item Intégration et administration Software AG webMethods 10.15 et bases de données vectorielles (Oracle 23ai).
     \item Retours d'expérience sur l'ingénierie en santé connectée et architectures résilientes.
 \end{itemize}
 
-\vspace{0.8em}
+\vspace{1.2em}
 \begin{center}
     \footnotesize\color{slateGray}
-    Document généré avec \LaTeX\ $\cdot$ Retrouvez tous les projets et démos interactives sur \href{https://nkaurelien.kamitbrains.fr}{\textbf{nkaurelien.kamitbrains.fr}}
+    Document édité avec \LaTeX\ $\cdot$ Retrouvez tous les projets et démos interactives sur \href{https://nkaurelien.kamitbrains.fr}{\textbf{nkaurelien.kamitbrains.fr}}
 \end{center}
 
 \end{document}

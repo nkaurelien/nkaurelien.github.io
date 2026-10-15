@@ -59,11 +59,11 @@ export default function CvFloatingButton() {
     {
       id: 'about',
       title: isEnglish ? 'In Brief (Profile & Vision)' : 'En bref (Profil & Vision)',
-      subtitle: isEnglish ? 'Summary, philosophy & tech vision (LaTeX 3P)' : 'Synthèse, philosophie & vision (LaTeX 3P)',
+      subtitle: isEnglish ? 'Summary, philosophy & tech vision (LaTeX 2P)' : 'Synthèse, philosophie & vision (LaTeX 2P)',
       href: '/about.pdf',
       download: 'En_Bref_Aurelien_NKUMBE.pdf',
       icon: <IconSparkles size={18} style={{ color: 'var(--mantine-color-grape-6)' }} />,
-      badge: 'LaTeX 3P',
+      badge: 'LaTeX 2P',
     },
     {
       id: 'cv',

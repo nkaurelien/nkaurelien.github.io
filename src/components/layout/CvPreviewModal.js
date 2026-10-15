@@ -27,11 +27,11 @@ export const CV_OPTIONS = [
   {
     id: 'about',
     label: 'En bref (LaTeX)',
-    title: 'En bref — Profil complet & vision d’ingénierie (LaTeX 3P)',
+    title: 'En bref — Profil complet & vision d’ingénierie (LaTeX 2P)',
     mdUrl: '/about.md',
     pdfUrl: '/about.pdf',
     downloadName: 'En_Bref_Aurelien_NKUMBE.pdf',
-    badge: 'LaTeX 3P',
+    badge: 'LaTeX 2P',
   },
   {
     id: 'cv',

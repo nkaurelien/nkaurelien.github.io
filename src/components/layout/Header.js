@@ -318,7 +318,7 @@ export default function Header({ locale, app }) {
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}
                   style={{ fontWeight: 600, color: 'var(--mantine-color-brand-6)' }}>
-                  En bref (LaTeX 3P)
+                  En bref (LaTeX 2P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
