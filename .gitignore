@@ -48,3 +48,11 @@ next-env.d.ts
 
 # Root temporary PDF builds (tracked under public/ and datasources/)
 /*.pdf
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk

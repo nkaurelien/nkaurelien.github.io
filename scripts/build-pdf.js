@@ -55,9 +55,13 @@ try {
       fs.copyFileSync(path.join(latexSarvesh, 'cv.pdf'), path.join(publicDir, 'cv.pdf'));
     }
     const latexCurve = path.join(rootDir, 'latex', 'customised-curve-cv');
+    if (fs.existsSync(path.join(latexCurve, 'cv-llt.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode cv-llt.tex && pdflatex -interaction=nonstopmode cv-llt.tex', { cwd: latexCurve, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexCurve, 'cv-llt.pdf'), path.join(publicDir, 'cv-curve.pdf'));
+    }
     if (fs.existsSync(path.join(latexCurve, 'cv-curve.tex'))) {
       execSync('pdflatex -interaction=nonstopmode cv-curve.tex && pdflatex -interaction=nonstopmode cv-curve.tex', { cwd: latexCurve, stdio: 'ignore' });
-      fs.copyFileSync(path.join(latexCurve, 'cv-curve.pdf'), path.join(publicDir, 'cv-curve.pdf'));
+      fs.copyFileSync(path.join(latexCurve, 'cv-curve.pdf'), path.join(publicDir, 'cv-curve-data2innov.pdf'));
     }
     const latexVidushi = path.join(rootDir, 'latex', 'vidushi-wahal-cv');
     if (fs.existsSync(path.join(latexVidushi, 'cv.tex'))) {
