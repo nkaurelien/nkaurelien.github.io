@@ -36,7 +36,7 @@ lang: fr
 
 ## Situation actuelle
 
-- En **CDI, en interne, chez DATA2INNOV** : plateforme de **santé connectée** (IoT, normes **FHIR/HL7**, contexte **HDS** — hébergement de données de santé, RGPD).
+- En **CDI, en interne, au sein d'une startup e-Santé innovante** : plateforme de **santé connectée** (IoT, normes **FHIR/HL7**, contexte **HDS** — hébergement de données de santé, RGPD).
 - Conçoit des applications patient & médecin (Next.js / FastAPI), collecte et interprétation de données physiologiques (EmotiBit-ESP32, Withings, Bangle.js), pipelines temps réel (Logstash, WebSockets), POC mobile Flutter (BLE/WiFi).
 - Fondateur de **KAMITBRAINS IT**, sa structure pour porter projets et missions en indépendant.
 

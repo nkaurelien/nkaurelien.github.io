@@ -23,7 +23,7 @@ Dans une grande entreprise corporate :
 - Les décisions nécessitent des semaines de comités de validation et de bureaucratie.
 - L'ingénieur devient souvent un hyper-spécialiste d'une micro-brique, coupé de la vision produit globale.
 
-À l'inverse, **dans une startup audacieuse (comme DATA2INNOV)** :
+À l'inverse, **dans une startup e-Santé audacieuse** :
 - Vous ne pilotez pas des milliers de serveurs, mais vous devez **faire fonctionner une architecture complexe de A à Z** (Next.js, FastAPI, Docker Swarm, SigNoz, normes médicales FHIR/HL7, objets connectés IoT).
 - Vos ressources et budgets sont comptés. Chaque choix d'architecture compte.
 - La pression est directe et le feedback client est immédiat.
