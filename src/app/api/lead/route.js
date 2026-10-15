@@ -89,7 +89,7 @@ export async function POST(req) {
         message: ntfyMessage,
         priority,
         tags: ntfyTags,
-        click: 'https://nkaurelien.kamitbrains.fr/cv.pdf',
+        click: 'https://nkaurelien.kamitbrains.fr/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf',
       }),
       sendUmamiServerEvent({
         name: 'cv_download',

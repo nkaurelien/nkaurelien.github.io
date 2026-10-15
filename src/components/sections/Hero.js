@@ -130,18 +130,19 @@ export default function Hero({ locale, hero }) {
               variant="outline"
               styles={pill}
               component="a"
-              href="/cv.pdf"
+              href="/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
+              download="Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
                 trackAndNotifyCvDownload({
                   cvId: 'cv',
-                  cvTitle: 'CV Principal',
+                  cvTitle: 'CV Principal ATS',
                   source: 'hero_button',
                 });
               }}
               leftSection={<IconFileText size={16} aria-hidden="true" />}>
-              {isEnglish ? 'Resume' : 'CV'}
+              {isEnglish ? 'Resume (ATS)' : 'CV (ATS)'}
             </Button>
             <Button
               className="hero-btn"

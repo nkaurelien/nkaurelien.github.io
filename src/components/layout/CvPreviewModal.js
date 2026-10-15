@@ -35,12 +35,12 @@ export const CV_OPTIONS = [
   },
   {
     id: 'cv',
-    label: 'CV Principal',
-    title: 'CV Principal (Complet)',
+    label: 'CV Principal (ATS)',
+    title: 'CV Principal ATS (2 Pages — Format Recommandé)',
     mdUrl: '/cv.md',
-    pdfUrl: '/cv.pdf',
-    downloadName: 'CV_Aurelien_NKUMBE.pdf',
-    badge: 'Complet',
+    pdfUrl: '/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf',
+    downloadName: 'Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf',
+    badge: 'Recommandé ATS',
   },
   {
     id: 'cv-lite',

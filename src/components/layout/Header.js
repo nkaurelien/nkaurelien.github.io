@@ -320,8 +320,13 @@ export default function Header({ locale, app }) {
                   style={{ fontWeight: 600, color: 'var(--mantine-color-brand-6)' }}>
                   En bref (Profil & Vision)
                 </Menu.Item>
-                <Menu.Item component="a" href="/cv.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
-                  CV Principal (Complet)
+                <Menu.Item
+                  component="a"
+                  href="/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}>
+                  CV Principal ATS (2 Pages)
                 </Menu.Item>
                 <Menu.Item component="a" href="/cv-lite.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Synthétique (1 Page)
@@ -404,8 +409,8 @@ export default function Header({ locale, app }) {
 
           <Button
             component="a"
-            href="/cv.pdf"
-            download="CV_Aurelien_NKUMBE.pdf"
+            href="/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
+            download="Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
             variant="filled"
             color="kamit"
             size="xs"
@@ -414,7 +419,7 @@ export default function Header({ locale, app }) {
             onClick={close}
             justify="flex-start"
             mt="xs">
-            Télécharger CV (PDF)
+            Télécharger CV ATS (PDF)
           </Button>
 
           {user && !isAdminUser && (

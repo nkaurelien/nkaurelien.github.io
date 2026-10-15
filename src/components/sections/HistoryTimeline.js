@@ -135,16 +135,16 @@ export default function HistoryTimeline({ history, locale }) {
               <Group gap="xs" mb="xs">
                 <IconCertificate size={18} aria-hidden="true" color="var(--mantine-color-kamit-text)" />
                 <Text fw={700} size="sm">
-                  {locale === 'en' ? 'Full Resume' : 'CV & Dossier'}
+                  {locale === 'en' ? 'Full Resume (ATS)' : 'CV Principal (ATS)'}
                 </Text>
               </Group>
               <Text size="xs" c="dimmed" mb="sm">
-                {locale === 'en' ? 'Open full PDF resume in a new tab or download.' : 'Ouvrez le CV complet dans un nouvel onglet ou téléchargez-le.'}
+                {locale === 'en' ? 'Open ATS-optimized PDF resume (2 pages) or download.' : 'Ouvrez le CV optimisé ATS (2 pages) ou téléchargez-le.'}
               </Text>
               <Group gap="xs">
                 <Button
                   component="a"
-                  href="/cv.pdf"
+                  href="/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="filled"
@@ -156,8 +156,8 @@ export default function HistoryTimeline({ history, locale }) {
                 </Button>
                 <ActionIcon
                   component="a"
-                  href="/cv.pdf"
-                  download="CV_Aurelien_NKUMBE.pdf"
+                  href="/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
+                  download="Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
                   variant="light"
                   color="kamit"
                   size="input-xs"

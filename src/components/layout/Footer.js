@@ -40,7 +40,7 @@ export default function Footer({ app }) {
   const links = [
     ...social.map(s => ({ title: s.title, href: s.link, Icon: ICONS[s.icon] || IconWorld, external: true })),
     { title: 'Contact', href: `/${locale}/contact`, Icon: IconMail },
-    { title: isEnglish ? 'Resume (PDF)' : 'CV (PDF)', href: '/cv.pdf', Icon: IconFileText, external: true },
+    { title: isEnglish ? 'Resume (PDF)' : 'CV (PDF)', href: '/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf', Icon: IconFileText, external: true },
   ];
 
   return (

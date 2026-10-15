@@ -44,12 +44,12 @@ export default function CvFloatingButton() {
     },
     {
       id: 'cv',
-      title: isEnglish ? 'Main CV (Full Profile)' : 'CV Principal (Complet)',
-      subtitle: isEnglish ? 'Full resume with all experiences' : 'Parcours détaillé & compétences',
-      href: '/cv.pdf',
-      download: 'CV_Aurelien_NKUMBE.pdf',
+      title: isEnglish ? 'Main CV (ATS 2 Pages)' : 'CV Principal ATS (2 Pages)',
+      subtitle: isEnglish ? 'Concise & ATS-optimized format' : 'Format condensé & optimisé ATS',
+      href: '/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf',
+      download: 'Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf',
       icon: <IconFileText size={18} style={{ color: 'var(--mantine-color-kamit-6)' }} />,
-      badge: 'PDF',
+      badge: 'Recommandé',
     },
     {
       id: 'cv-lite',

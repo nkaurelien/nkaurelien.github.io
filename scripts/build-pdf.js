@@ -46,6 +46,13 @@ try {
   if (fs.existsSync(cvJsonDatasource)) fs.copyFileSync(cvJsonDatasource, path.join(publicDir, 'cv.json'));
   if (fs.existsSync(aboutMdDatasource)) fs.copyFileSync(aboutMdDatasource, path.join(publicDir, 'about.md'));
 
+  // Si le CV ATS LaTeX existe dans public/, on synchronise également public/cv.pdf dessus
+  const atsCvPdf = path.join(publicDir, 'Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf');
+  if (fs.existsSync(atsCvPdf)) {
+    fs.copyFileSync(atsCvPdf, path.join(publicDir, 'cv.pdf'));
+    console.log('🎯 Synchronisation de Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf vers public/cv.pdf effectuée !');
+  }
+
   console.log('✅ Tous les CV et Dossier de compétences ont été compilés en PDF et servis dans public/ !');
 } catch (err) {
   console.error('❌ Erreur lors de la génération des PDF :', err.message);
