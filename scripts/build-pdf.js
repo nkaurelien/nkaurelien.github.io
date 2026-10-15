@@ -78,6 +78,11 @@ try {
       execSync('pdflatex -interaction=nonstopmode about.tex && pdflatex -interaction=nonstopmode about.tex', { cwd: latexEnBref, stdio: 'ignore' });
       fs.copyFileSync(path.join(latexEnBref, 'about.pdf'), path.join(publicDir, 'about.pdf'));
     }
+    const latexDossier = path.join(rootDir, 'latex', 'dossier-de-competences');
+    if (fs.existsSync(path.join(latexDossier, 'dossier.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode dossier.tex && pdflatex -interaction=nonstopmode dossier.tex', { cwd: latexDossier, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexDossier, 'dossier.pdf'), path.join(publicDir, 'dossier-de-competences.pdf'));
+    }
     console.log('🎯 Synchronisation des templates LaTeX vers public/ effectuée avec succès !');
   } catch (latexErr) {
     console.warn('⚠️ Compilation LaTeX optionnelle passée :', latexErr.message);

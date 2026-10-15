@@ -71,12 +71,12 @@ export const CV_OPTIONS = [
   },
   {
     id: 'dossier-de-competences',
-    label: 'Dossier ESN',
-    title: 'Dossier de Compétences (ESN / Conseil)',
+    label: 'Dossier ESN (LaTeX)',
+    title: 'Dossier de Compétences (ESN / Conseil — LaTeX 5P)',
     mdUrl: '/dossier-de-competences.md',
     pdfUrl: '/dossier-de-competences.pdf',
     downloadName: 'Dossier_de_Competences_Aurelien_NKUMBE.pdf',
-    badge: 'ESN/Conseil',
+    badge: 'LaTeX ESN',
   },
   {
     id: 'cv-fullstack',

@@ -358,7 +358,7 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  Dossier de Compétences (ESN)
+                  Dossier de Compétences (LaTeX ESN 5P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"

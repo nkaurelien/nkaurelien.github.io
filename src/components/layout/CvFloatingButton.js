@@ -103,12 +103,12 @@ export default function CvFloatingButton() {
     },
     {
       id: 'dossier-de-competences',
-      title: isEnglish ? 'Skills Dossier (Consulting)' : 'Dossier de Compétences',
-      subtitle: isEnglish ? 'ESN & consulting format' : 'Format ESN & missions détaillées',
+      title: isEnglish ? 'Skills Dossier (LaTeX ESN)' : 'Dossier de Compétences (LaTeX)',
+      subtitle: isEnglish ? 'ESN & consulting format (LaTeX 5P)' : 'Format ESN & missions détaillées (LaTeX 5P)',
       href: '/dossier-de-competences.pdf',
       download: 'Dossier_de_Competences_Aurelien_NKUMBE.pdf',
       icon: <IconBriefcase size={18} style={{ color: 'var(--mantine-color-grape-6)' }} />,
-      badge: 'ESN',
+      badge: 'LaTeX ESN',
     },
     {
       id: 'cv-devops',

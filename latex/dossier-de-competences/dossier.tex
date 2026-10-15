@@ -1,0 +1,272 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage[left=1.5cm,right=1.5cm,top=1.3cm,bottom=1.3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{fontawesome5}
+\usepackage[skins,breakable]{tcolorbox}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+% Palette de couleurs ESN / Cabinet de Conseil
+\definecolor{primary}{RGB}{30, 58, 138}       % Bleu Marine Exécutif (#1e3a8a)
+\definecolor{primaryLight}{RGB}{239, 246, 255}% Fond d'en-tête (#eff6ff)
+\definecolor{primaryBorder}{RGB}{191, 219, 254}% Bordure délicate (#bfdbfe)
+\definecolor{tealAccent}{RGB}{15, 118, 110}   % Teal accent (#0f766e)
+\definecolor{darkgray}{RGB}{30, 41, 59}       % Texte principal (#1e293b)
+\definecolor{slateGray}{RGB}{71, 85, 105}     % Texte secondaire (#475569)
+\definecolor{lightGray}{RGB}{248, 250, 252}   % Fond doux (#f8fafc)
+\definecolor{ruleGray}{RGB}{226, 232, 240}    % Ligne (#e2e8f0)
+\definecolor{tagBg}{RGB}{241, 245, 249}       % Fond tags (#f1f5f9)
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    pdfauthor={Astrid-Aurélien NKUMBE ENONGENE},
+    pdftitle={Dossier de Compétences et d'Expertise --- Astrid-Aurélien NKUMBE}
+}
+
+% Format des titres de rubriques
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {}{0em}
+  {}[\vspace{-0.35em}\textcolor{primary}{\rule{\linewidth}{1.2pt}}\vspace{-0.25em}]
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{darkgray}}
+  {}{0em}
+  {}
+
+\titlespacing*{\section}{0pt}{1.0em}{0.45em}
+\titlespacing*{\subsection}{0pt}{0.65em}{0.25em}
+
+% En-tête et pied de page
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{ruleGray}\leaders\hrule height \footrulewidth\hfill}}
+\fancyfoot[L]{\footnotesize\color{slateGray}Astrid-Aurélien NKUMBE --- Dossier de Compétences \& Expertise}
+\fancyfoot[C]{\footnotesize\color{slateGray}\href{https://nkaurelien.kamitbrains.fr}{nkaurelien.kamitbrains.fr}}
+\fancyfoot[R]{\footnotesize\color{slateGray}\thepage\ / \pageref{LastPage}}
+
+\color{darkgray}
+
+% Commande pour styliser les fiches de mission
+\newcommand{\missionCard}[6]{%
+\begin{tcolorbox}[
+    colback=white,
+    colframe=ruleGray,
+    arc=4pt,
+    boxrule=0.8pt,
+    top=5pt,bottom=5pt,left=8pt,right=8pt,
+    before skip=6pt, after skip=6pt
+]
+    {\bfseries\large\color{primary}#1} \hfill {\bfseries\small\color{slateGray}#3}\\[0.2em]
+    {\bfseries\normalsize\color{tealAccent}#2} \quad$\cdot$\quad {\small\itshape Secteur : #4} \hfill {\small\color{slateGray}Client : \textbf{#5}}\\[0.25em]
+    \textcolor{ruleGray}{\rule{\linewidth}{0.6pt}}\\[0.3em]
+    #6
+\end{tcolorbox}
+}
+
+\begin{document}
+
+% =========================================================================
+% EN-TÊTE PRINCIPAL EXÉCUTIF
+% =========================================================================
+\begin{center}
+    {\huge\bfseries\color{primary} DOSSIER DE COMPÉTENCES \& D'EXPERTISE}\\[0.25em]
+    {\LARGE\bfseries\color{darkgray} Astrid-Aurélien NKUMBE ENONGENE}\\[0.3em]
+    {\large\bfseries\color{tealAccent} DevSecOps / Platform Engineer $\cdot$ Technical Lead $\cdot$ Architecte Fullstack \& IA}\\[0.5em]
+    {\footnotesize\color{slateGray}
+        \faMapMarker*\ Région Parisienne (Cergy / Paris) --- Mobile France \& Remote \quad$\cdot$\quad
+        \faPhone*\ +33 7 44 58 45 62 \quad$\cdot$\quad
+        \faEnvelope\ \href{mailto:nkumbeaurelien@hotmail.com}{\texttt{nkumbeaurelien@hotmail.com}}\\[0.25em]
+        \faGlobe\ \href{https://nkaurelien.kamitbrains.fr}{\texttt{nkaurelien.kamitbrains.fr}} \quad$\cdot$\quad
+        \faGithub\ \href{https://github.com/nkaurelien}{\texttt{github.com/nkaurelien}} \quad$\cdot$\quad
+        \faLinkedin\ \href{https://www.linkedin.com/in/nkaurelien/}{\texttt{linkedin.com/in/nkaurelien}}
+    }
+\end{center}
+
+\vspace{0.2em}
+\textcolor{ruleGray}{\rule{\linewidth}{1.2pt}}
+\vspace{0.4em}
+
+% =========================================================================
+% FICHE SIGNALÉTIQUE & SYNTHÈSE DES COMPÉTENCES
+% =========================================================================
+\section{\faIdCard\ Fiche Signalétique \& Synthèse du Profil}
+
+\begin{tcolorbox}[
+    colback=primaryLight,
+    colframe=primaryBorder,
+    arc=4pt,
+    boxrule=0.8pt,
+    top=5pt,bottom=5pt,left=8pt,right=8pt
+]
+\begin{tabularx}{\linewidth}{@{}p{3.6cm} X p{2.8cm} X@{}}
+    \textbf{Expérience globale :} & 7+ années en ingénierie logicielle & \textbf{Disponibilité :} & Immédiate / À l'écoute \\
+    \textbf{Rôles cibles :} & Lead Tech / DevSecOps / Platform & \textbf{Mobilité :} & Paris, France \& Remote \\
+    \textbf{Normes \& Domaines :} & Télésanté FHIR/HL7, Banque, IA & \textbf{Langues :} & Français (Nat.), Anglais (C1), Allemand (B1)
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace{0.2em}
+
+Ingénieur et Technical Lead diplômé d'un \textbf{Master of Science (MSc) en IA \& Management} (RNCP Niveau 7) et diplômé Ingénieur des Travaux en Génie Logiciel (IAI). J'interviens sur l'ensemble de la chaîne de valeur :
+\begin{itemize}[leftmargin=1.4em, itemsep=0.15em, topsep=0.15em]
+    \item \textbf{Architecture \& Développement Fullstack} : Systèmes distribués, microservices et monolithiques modulaires (Next.js, FastAPI, Laravel, Angular, React, Flutter).
+    \item \textbf{Industrialisation \& DevSecOps} : Pipelines CI/CD automatisés (GitLab CI, GitHub Actions), conteneurisation (Docker Swarm, Kubernetes, Argo CD), automatisation (Ansible, Terraform) et sécurité (Snyk, Gitleaks, KONG Gateway, normes HDS).
+    \item \textbf{Ingénierie des Données \& IA (RAG)} : Assistants LLMs augmentés (OpenAI, Ollama, LangChain, LiteLLM), pipelines de vectorisation (Supabase pgvector, Elasticsearch) et ingestion de données.
+    \item \textbf{Conformité \& Normes Métier} : Normes de santé connectée \textbf{FHIR / HL7, hébergement HDS}, conformité bancaire (distribution de relevés chiffrés, LDAP/RBAC).
+    \item \textbf{Leadership Technique \& Gestion de Projet} : Spécifications techniques (Spec-Driven Development), Clean Code, revues de code, encadrement d'équipes et méthodologies Agiles (Scrum/Kanban).
+\end{itemize}
+
+% =========================================================================
+% MATRICE DES COMPÉTENCES TECHNIQUES
+% =========================================================================
+\section{\faTable\ Matrice Exhaustive des Compétences Techniques}
+
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}p{3.5cm} X >{\raggedleft\arraybackslash}p{2.8cm}@{}}
+\toprule
+\textbf{Domaine} & \textbf{Technologies, Frameworks \& Outils Maîtrisés} & \textbf{Niveau / Exp.} \\
+\midrule
+\textbf{Backend \& APIs} & Python (FastAPI), PHP 8.x (Laravel, Filament PHP), Node.js (NestJS), REST, GraphQL, WebSockets, JSON-RPC & Expert (7+ ans) \\
+\textbf{Frontend \& Mobile} & Next.js, React, Angular 10-14+, Vue.js, Mantine UI, Tailwind CSS, AlpineJS, Flutter (Dart), Electron.js & Expert (7+ ans) \\
+\textbf{DevSecOps \& Cloud} & Docker, Docker Swarm, Kubernetes, Argo CD, Ansible, Terraform, GitLab CI/CD, Nginx, Snyk, KONG Gateway & Expert (5+ ans) \\
+\textbf{Cloud Providers} & AWS (EC2, S3, SQS, SNS, ECS, RDS), GCP (Cloud Run, Vertex AI, GCS), Azure (App Services, OpenAI), Supabase & Avancé (5+ ans) \\
+\textbf{IA \& Data Engineering} & RAG (Retrieval-Augmented Generation), LangChain, LiteLLM, Ollama, Supabase pgvector, ELK, Kafka, SigNoz & Avancé (3+ ans) \\
+\textbf{IoT \& Normes Santé} & Normes FHIR / HL7, EmotiBit, ESP32, Bangle.js, Withings Cloud API, BLE, Wi-Fi, Arduino IDE & Avancé (2+ ans) \\
+\textbf{Bases de Données} & PostgreSQL, MySQL, CouchDB, MongoDB Atlas, Elasticsearch, Oracle 23ai, Redis, Supabase, Qdrant & Expert (7+ ans) \\
+\textbf{Méthodologies \& Qualité} & Spec-Driven Development, Clean Architecture, SOLID, TDD, revues de code, GitFlow, Agile Scrum/Kanban & Expert (7+ ans) \\
+\bottomrule
+\end{tabularx}
+\renewcommand{\arraystretch}{1.0}
+
+\newpage
+
+% =========================================================================
+% FICHES DÉTAILLÉES DES MISSIONS
+% =========================================================================
+\section{\faBriefcase\ Fiches Détaillées des Missions d'Ingénierie \& Conseil}
+
+% --- MISSION 1 ---
+\missionCard{Plateforme de Télésanté IoT \& Normes FHIR/HL7}{Technical Lead \& Ingénieur Fullstack}{Mai 2025 -- Présent}{Santé connectée / Télémédecine}{DATA2INNOV (France)}{
+    \textbf{Contexte :} Conception d'une plateforme médicale temps réel pour le suivi des constantes physiologiques de patients (capteurs IoT médicaux), nécessitant une conformité stricte aux normes FHIR/HL7 et un contexte HDS.\\
+    \textbf{Réalisations clés :}
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em, topsep=0.15em]
+        \item Architecture Fullstack Next.js (Mantine UI) et microservices FastAPI (Python 3.12) à haute performance.
+        \item Ingestion temps réel de métriques médicales (Withings Cloud API, EmotiBit-ESP32, BLE/Wi-Fi, WebSockets, Kafka, CouchDB).
+        \item Développement d'un POC d'application mobile Flutter pour l'acquisition continue de signaux biométriques.
+        \item Cluster Docker Swarm, observabilité distribuée (SigNoz, Grafana, Logstash) et CI/CD automatisé GitLab / Ansible.
+        \item Mise à jour du support et auteur des fiches pratiques (TP) et fichiers d'évaluation pour la formation \textbf{Cloud Computing \& Conteneurisation}.
+    \end{itemize}
+    \textbf{Stack :} FastAPI, Python 3.12, Next.js, FHIR/HL7, Flutter, WebSockets, CouchDB, Kafka, SigNoz, Docker Swarm, Ansible, GitLab CI.
+}
+
+% --- MISSION 2 ---
+\missionCard{SmartDataPay --- Chatbot RAG Intelligent \& Automatisation RH}{Ingénieur Fullstack, IA (RAG) \& Référent MOE}{Oct. 2023 -- Oct. 2024}{RH, Paie \& Intelligence Artificielle}{YSO Conseils / KAZAC (France)}{
+    \textbf{Contexte :} Développement d'un agent IA conversationnel (RAG) pour simplifier l'accès et l'interprétation des conventions collectives et du droit du travail français par les gestionnaires de paie.\\
+    \textbf{Réalisations clés :}
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em, topsep=0.15em]
+        \item Moteur RAG sous Next.js (Edge Runtime), LangChain LCEL, LiteLLM et streaming Vercel AI SDK avec sources sourcées (`x-sources`).
+        \item Ingestion des Conventions Collectives Légifrance (KALI-data) : découpage intelligent et attribution d'identifiants déterministes UUIDv5.
+        \item Schéma de vectorisation sous Supabase pgvector avec procédures stockées PL/pgSQL d'appariement sémantique cosinus.
+        \item Portail SaaS d'administration sous Laravel (Filament PHP, Livewire, AlpineJS), Auth0 et workflows Make / N8N.
+        \item Rédaction du cahier des charges (MOE) pour la refonte IA du logiciel Silea et encadrement technique.
+    \end{itemize}
+    \textbf{Stack :} Next.js, LangChain (LCEL), Supabase pgvector, Azure OpenAI, LiteLLM, Ollama, Laravel, Filament PHP, Auth0, Make, GitLab CI.
+}
+
+% --- MISSION 3 ---
+\missionCard{Refonte UX/UI \& Moteur de Recherche Documentaire Elasticsearch}{Consultant Développeur Frontend Angular \& TypeScript}{Nov. 2022 -- Juil. 2023}{Banque \& Assurance / Crédit-Export}{SYLEN-IT SERVICES (BPCE / Coface)}{
+    \textbf{Contexte :} Refonte des applications métiers Coface au sein du Groupe BPCE avec intégration du Design System propriétaire et interfaçage avec un moteur de recherche documentaire à forte volumétrie.\\
+    \textbf{Réalisations clés :}
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em, topsep=0.15em]
+        \item Réécriture complète des vues applicatives en Angular 14+ avec adoption du framework CSS propriétaire BPCE (mono-repo Nx / Pnpm).
+        \item Intégration de l'API RESTful Elasticsearch pour la recherche instantanée et le filtrage à facettes des dossiers financiers.
+        \item Résolution de la dette technique, écriture de tests E2E Cypress et intégration qualité (ESLint, Prettier) dans Azure DevOps.
+    \end{itemize}
+    \textbf{Stack :} Angular 14+, TypeScript, RxJS, Nx, Cypress, Elasticsearch REST API, Azure DevOps, Pnpm, Git, Agile Scrum.
+}
+
+% --- MISSION 4 ---
+\missionCard{Plateforme FinTech Korée Africa \& Application Mobile}{Technical Lead Backend Laravel \& Mobile Flutter}{Déc. 2021 -- Juin 2022}{FinTech / Fidélisation \& Paiement Mobile}{Korée Africa (Afrique Centrale)}{
+    \textbf{Contexte :} Conception et mise à l'échelle d'une solution FinTech de fidélisation et remboursement d'avoirs par Mobile Money (MTN / Orange) et cartes bancaires pour les commerces (Top 3 FinTech d'Afrique centrale).\\
+    \textbf{Réalisations clés :}
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em, topsep=0.15em]
+        \item Développement v1 complète de l'application mobile Flutter : authentification biométrique, OTP SMS, QR code et scan de tickets via Google Cloud Vision API.
+        \item Architecture backend PHP 8.1 / Laravel (JWT, Spatie Permissions) avec système de notifications hybrides (OneSignal, AWS SNS/SQS).
+        \item Mise en cache et recherche avec Laravel Scout / Elasticsearch, sauvegardes automatisées et pipeline GitLab CI / Ansible.
+    \end{itemize}
+    \textbf{Stack :} PHP 8.1, Laravel, Flutter, Google Cloud Vision API, MySQL, Elasticsearch, Stripe, AWS (EC2, S3, SQS), Ansible, GitLab CI.
+}
+
+\newpage
+
+% --- MISSION 5 ---
+\missionCard{Projets Réglementaires Bancaires E-RELEVE-COMPTE \& COLEPS}{Analyste Programmeur \& Chef de Projet AMOE}{Avril 2022 -- Sept. 2022}{Banque \& Conformité Réglementaire}{SCB Cameroun (Groupe Attijariwafa Bank)}{
+    \textbf{Contexte :} Réalisation de projets réglementaires bancaires critiques imposés par l'État : distribution automatique chiffrée des relevés de comptes clients (+100\,000 mensuels) et passerelle d'échanges interbancaires COLEPS.\\
+    \textbf{Réalisations clés :}
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em, topsep=0.15em]
+        \item Sécurisation des flux interbancaires avec le reverse proxy KONG Gateway (rate-limiting, IP whitelisting, protection DDoS, load balancing).
+        \item Développement sous Vue.js et Laravel du portail de découpage et de distribution chiffrée des relevés par email sécurisé.
+        \item Connexion à l'Active Directory de la banque via LDAP et mise en place d'une gestion stricte des habilitations RBAC.
+        \item Déploiement d'un cluster Kubernetes avec Argo CD, VMware ESXi et conteneurisation Docker sur serveurs HP Proliant.
+    \end{itemize}
+    \textbf{Stack :} Vue.js, Laravel, Kong API Gateway, LDAP / Active Directory, RBAC, Kubernetes, Argo CD, VMware ESXi, Docker, MySQL.
+}
+
+% --- MISSION 6 ---
+\missionCard{Logiciel de Caisse POS Multiplateforme \& Moteur de Synchronisation}{Développeur Fullstack Desktop \& Web}{Fév. 2021 -- Oct. 2021}{Édition logicielle / Point de Vente (POS)}{LAB2VIEW}{
+    \textbf{Contexte :} Développement d'une solution de gestion de point de vente et de stock multiplateforme (Desktop / Web / Cloud) utilisable hors-ligne pour les commerces de détail.\\
+    \textbf{Réalisations clés :}
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em, topsep=0.15em]
+        \item Application desktop sous Electron.js, Node.js et Vue.js avec pilotage direct d'imprimantes matricielles Epson via WebSockets.
+        \item Conception et publication dans GitLab Packages de 2 packages PHP réutilisables (Orange Money SDK \& Repository Pattern).
+        \item Architecture SaaS backend multi-tenant sous Laravel et système d'auto-update des exécutables via GitHub Releases.
+    \end{itemize}
+    \textbf{Stack :} Electron.js, Vue.js, Node.js, Laravel, WebSockets, Imprimantes Epson, MySQL, AWS EC2, GitHub Actions, UML (2TUP).
+}
+
+% --- MISSION 7 ---
+\missionCard{Plateforme E-Commerce \& Logistique de Livraison Géolocalisée}{Lead Développeur Fullstack Web \& Mobile}{Juin 2018 -- Oct. 2020}{E-Commerce \& Logistique Dernier Kilomètre}{Multi Canal Services (MCS IT)}{
+    \textbf{Contexte :} Conception et déploiement d'une plateforme de commande en ligne et livraison géolocalisée de repas et colis. Évolution rapide de stagiaire à Lead Développeur en charge de l'ingénierie et de l'infrastructure.\\
+    \textbf{Réalisations clés :}
+    \begin{itemize}[leftmargin=1.2em, itemsep=0.1em, topsep=0.15em]
+        \item Architecture mono-repo frontend Angular avec pré-rendu SEO (Puppeteer Headless) et optimisation poussée du bundle (Tree shaking, Lazy loading).
+        \item Développement de l'application mobile livreurs sous Flutter avec géolocalisation continue (Firebase Realtime DB, Google Maps API).
+        \item Portail BackOffice POS sous Laravel / Vue.js et industrialisation des déploiements GCP via GitLab CI, Ansible et NetData.
+    \end{itemize}
+    \textbf{Stack :} Angular, Laravel, Inertia.js, Vue.js, Flutter, Google Maps API, Firebase, MongoDB, MySQL, GCP, Ansible, GitLab CI.
+}
+
+% =========================================================================
+% DIPLÔMES, FORMATIONS & CERTIFICATIONS
+% =========================================================================
+\section{\faGraduationCap\ Diplômes, Formations \& Certifications}
+
+\begin{itemize}[leftmargin=1.4em, itemsep=0.25em, topsep=0.2em]
+    \item \textbf{2025} : \textbf{Formation Professionnelle WebMethods 10.x} --- WILOW Paris (Integration Server, Designer, Command Central, REST API).
+    \item \textbf{2022 -- 2024} : \textbf{Master of Science (MSc) IA \& Management} / Expert en Ingénierie Informatique (RNCP Niveau 7) --- Ionis-STM France.
+    \item \textbf{2014 -- 2017} : \textbf{Ingénieur des Travaux Informatiques (option Génie Logiciel)} --- Institut Africain de l'Informatique (IAI).
+    \item \textbf{2008 -- 2011} : \textbf{Baccalauréat Technique Série F2 (Électronique)} --- Lycée Technique Douala Koumassi (LTDK).
+\end{itemize}
+
+\vspace{0.8em}
+\begin{center}
+    \footnotesize\color{slateGray}
+    Dossier édité sous \LaTeX\ $\cdot$ Retrouvez tous les projets et démos interactives sur \href{https://nkaurelien.kamitbrains.fr}{\textbf{nkaurelien.kamitbrains.fr}}
+\end{center}
+
+\end{document}
