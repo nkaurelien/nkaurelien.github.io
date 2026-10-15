@@ -23,11 +23,11 @@ Développeur Senior avec **plus de 7 ans d'expertise spécialisée sur Laravel (
 
 ## 🛠️ Compétences Techniques Spécialisées
 
-- **Laravel & Écosystème PHP** : PHP 8.x, Laravel (Sanctum, ApiResources, Scout, Queues, Horizon, Telescope), Filament PHP, Livewire, Inertia.js, Composer, PEST, PHPUnit.
-- **Angular & Écosystème JS/TS** : Angular, TypeScript, RxJS, NgRx, Angular CLI, Vue.js, AlpineJS, Node.js.
-- **APIs & Intégration** : RESTful APIs, GraphQL, Swagger / OpenAPI, JWT, OAuth2, Auth0, Stripe API.
+- **Laravel \& Écosystème PHP** : PHP 8.x, Laravel (Sanctum, ApiResources, Scout, Queues, Horizon, Telescope), Filament PHP, Livewire, Inertia.js, Composer, PEST, PHPUnit, PHPStan.
+- **Angular \& Écosystème JS/TS** : Angular, TypeScript, RxJS, NgRx, Angular CLI, Vue.js, AlpineJS, Node.js.
+- **APIs \& Intégration** : RESTful APIs, GraphQL, Swagger / OpenAPI, JWT, OAuth2, Auth0, Stripe API.
 - **Bases de Données** : MySQL, PostgreSQL, Elasticsearch, MongoDB, Redis, Migration scripts (iSeed).
-- **Outillage & Qualité** : Git, ESLint, Prettier, Bitbucket, GitLab CI, Docker, Nginx, Agile/Scrum.
+- **Outillage \& Qualité** : Git, PHPStan, ESLint, Prettier, Bitbucket, GitLab CI, Docker, Nginx, Agile/Scrum.
 
 ---
 
