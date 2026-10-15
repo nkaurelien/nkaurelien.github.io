@@ -326,10 +326,31 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Principal ATS (2 Pages)
+                  CV Principal ATS (LaTeX 2P)
                 </Menu.Item>
-                <Menu.Item component="a" href="/cv-lite.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
-                  CV Synthétique (1 Page)
+                <Menu.Item
+                  component="a"
+                  href="/cv-curve.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}>
+                  CV Modèle CurVe (LaTeX 3P)
+                </Menu.Item>
+                <Menu.Item
+                  component="a"
+                  href="/cv-vidushi-wahal.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}>
+                  CV Exécutif Moderne (LaTeX 2P)
+                </Menu.Item>
+                <Menu.Item
+                  component="a"
+                  href="/lettre-de-motivation-globale.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}>
+                  Lettre de Motivation (LaTeX 1P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"

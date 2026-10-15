@@ -44,21 +44,39 @@ export default function CvFloatingButton() {
     },
     {
       id: 'cv',
-      title: isEnglish ? 'Main CV (ATS 2 Pages)' : 'CV Principal ATS (2 Pages)',
+      title: isEnglish ? 'Main CV (LaTeX ATS 2P)' : 'CV Principal ATS (LaTeX 2P)',
       subtitle: isEnglish ? 'Concise & ATS-optimized format' : 'Format condensé & optimisé ATS',
       href: '/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf',
       download: 'Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf',
       icon: <IconFileText size={18} style={{ color: 'var(--mantine-color-kamit-6)' }} />,
-      badge: 'Recommandé',
+      badge: 'LaTeX ATS',
     },
     {
-      id: 'cv-lite',
-      title: isEnglish ? 'Lite CV (1 Page)' : 'CV Synthétique (1 Page)',
-      subtitle: isEnglish ? 'Condensed 1-page summary' : 'Format 1 page condensé',
-      href: '/cv-lite.pdf',
-      download: 'CV_Aurelien_NKUMBE_Lite.pdf',
+      id: 'cv-curve',
+      title: isEnglish ? 'Design CV (LaTeX CurVe)' : 'CV Modèle CurVe (LaTeX)',
+      subtitle: isEnglish ? 'Elegant multi-page design' : 'Design élégant & rubriques détaillées',
+      href: '/cv-curve.pdf',
+      download: 'CV_Curve_Aurelien_NKUMBE.pdf',
+      icon: <IconFileTypePdf size={18} style={{ color: 'var(--mantine-color-blue-6)' }} />,
+      badge: 'LaTeX CurVe',
+    },
+    {
+      id: 'cv-vidushi-wahal',
+      title: isEnglish ? 'Modern Executive (LaTeX)' : 'CV Exécutif Moderne (LaTeX)',
+      subtitle: isEnglish ? 'Clear modern executive format' : 'Format exécutif moderne 2 pages',
+      href: '/cv-vidushi-wahal.pdf',
+      download: 'CV_Moderne_Aurelien_NKUMBE.pdf',
       icon: <IconFileTypePdf size={18} style={{ color: 'var(--mantine-color-teal-6)' }} />,
-      badge: '1 Page',
+      badge: 'LaTeX Mod',
+    },
+    {
+      id: 'lettre-de-motivation',
+      title: isEnglish ? 'Cover Letter (LaTeX 1P)' : 'Lettre de Motivation (LaTeX)',
+      subtitle: isEnglish ? 'Spontaneous cover letter format' : 'Lettre spontanée Vous-Moi-Nous',
+      href: '/lettre-de-motivation-globale.pdf',
+      download: 'Lettre_de_Motivation_Aurelien_NKUMBE.pdf',
+      icon: <IconFileText size={18} style={{ color: 'var(--mantine-color-indigo-6)' }} />,
+      badge: 'LaTeX 1P',
     },
     {
       id: 'dossier-de-competences',
@@ -68,6 +86,15 @@ export default function CvFloatingButton() {
       download: 'Dossier_de_Competences_Aurelien_NKUMBE.pdf',
       icon: <IconBriefcase size={18} style={{ color: 'var(--mantine-color-grape-6)' }} />,
       badge: 'ESN',
+    },
+    {
+      id: 'cv-devops',
+      title: isEnglish ? 'Lead DevSecOps & Cloud' : 'CV Lead DevSecOps & Cloud',
+      subtitle: isEnglish ? 'Docker, K8s, CI/CD, Ansible' : 'Docker, K8s, CI/CD, Ansible',
+      href: '/cv-devops.pdf',
+      download: 'CV_Aurelien_NKUMBE_DevOps.pdf',
+      icon: <IconCloud size={18} style={{ color: 'var(--mantine-color-orange-6)' }} />,
+      badge: 'DevSecOps',
     },
     {
       id: 'cv-fullstack',
@@ -87,15 +114,6 @@ export default function CvFloatingButton() {
       icon: <IconBrandPhp size={18} style={{ color: 'var(--mantine-color-kamit-6)' }} />,
       badge: 'PHP/Angular',
     },
-    {
-      id: 'cv-devops',
-      title: isEnglish ? 'Lead DevSecOps & Cloud' : 'CV Lead DevSecOps & Cloud',
-      subtitle: isEnglish ? 'Docker, K8s, CI/CD, Ansible' : 'Docker, K8s, CI/CD, Ansible',
-      href: '/cv-devops.pdf',
-      download: 'CV_Aurelien_NKUMBE_DevOps.pdf',
-      icon: <IconCloud size={18} style={{ color: 'var(--mantine-color-orange-6)' }} />,
-      badge: 'DevSecOps',
-    },
   ];
 
   return (
@@ -112,7 +130,7 @@ export default function CvFloatingButton() {
           position="top-end"
           shadow="xl"
           radius="lg"
-          width={320}
+          width={350}
           withinPortal
           offset={12}
           transitionProps={{ transition: 'pop-bottom-right', duration: 200 }}>

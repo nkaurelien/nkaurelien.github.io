@@ -46,11 +46,32 @@ try {
   if (fs.existsSync(cvJsonDatasource)) fs.copyFileSync(cvJsonDatasource, path.join(publicDir, 'cv.json'));
   if (fs.existsSync(aboutMdDatasource)) fs.copyFileSync(aboutMdDatasource, path.join(publicDir, 'about.md'));
 
-  // Si le CV ATS LaTeX existe dans public/, on synchronise également public/cv.pdf dessus
-  const atsCvPdf = path.join(publicDir, 'Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf');
-  if (fs.existsSync(atsCvPdf)) {
-    fs.copyFileSync(atsCvPdf, path.join(publicDir, 'cv.pdf'));
-    console.log('🎯 Synchronisation de Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf vers public/cv.pdf effectuée !');
+  // Compilation et synchronisation des templates LaTeX
+  try {
+    const latexSarvesh = path.join(rootDir, 'latex', 'sarvesh-parab-cv');
+    if (fs.existsSync(path.join(latexSarvesh, 'cv.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode cv.tex && pdflatex -interaction=nonstopmode cv.tex', { cwd: latexSarvesh, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexSarvesh, 'cv.pdf'), path.join(publicDir, 'Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf'));
+      fs.copyFileSync(path.join(latexSarvesh, 'cv.pdf'), path.join(publicDir, 'cv.pdf'));
+    }
+    const latexCurve = path.join(rootDir, 'latex', 'customised-curve-cv');
+    if (fs.existsSync(path.join(latexCurve, 'cv-curve.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode cv-curve.tex && pdflatex -interaction=nonstopmode cv-curve.tex', { cwd: latexCurve, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexCurve, 'cv-curve.pdf'), path.join(publicDir, 'cv-curve.pdf'));
+    }
+    const latexVidushi = path.join(rootDir, 'latex', 'vidushi-wahal-cv');
+    if (fs.existsSync(path.join(latexVidushi, 'cv.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode cv.tex && pdflatex -interaction=nonstopmode cv.tex', { cwd: latexVidushi, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexVidushi, 'cv.pdf'), path.join(publicDir, 'cv-vidushi-wahal.pdf'));
+    }
+    const latexLettre = path.join(rootDir, 'latex', 'lettre-de-motivation');
+    if (fs.existsSync(path.join(latexLettre, 'lettre-de-motivation-globale.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode lettre-de-motivation-globale.tex', { cwd: latexLettre, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexLettre, 'lettre-de-motivation-globale.pdf'), path.join(publicDir, 'lettre-de-motivation-globale.pdf'));
+    }
+    console.log('🎯 Synchronisation des templates LaTeX vers public/ effectuée avec succès !');
+  } catch (latexErr) {
+    console.warn('⚠️ Compilation LaTeX optionnelle passée :', latexErr.message);
   }
 
   console.log('✅ Tous les CV et Dossier de compétences ont été compilés en PDF et servis dans public/ !');
