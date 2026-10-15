@@ -318,7 +318,7 @@ export default function Header({ locale, app }) {
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}
                   style={{ fontWeight: 600, color: 'var(--mantine-color-brand-6)' }}>
-                  En bref (LaTeX 2P)
+                  En bref — Profil & Vision (2P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -326,7 +326,7 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Principal ATS (LaTeX 2P)
+                  CV Principal ATS (2P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -334,7 +334,7 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Modèle CurVe (LaTeX 3P)
+                  CV Détaillé Design (3P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -342,7 +342,7 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Exécutif Moderne (LaTeX 2P)
+                  CV Exécutif Moderne (2P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -350,7 +350,7 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  Lettre de Motivation (LaTeX 1P)
+                  Lettre de Motivation (1P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -358,7 +358,7 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  Dossier de Compétences (LaTeX ESN 5P)
+                  Dossier de Compétences ESN (5P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -366,7 +366,7 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Dev Fullstack (LaTeX 2P)
+                  CV Dev Fullstack (2P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -374,10 +374,10 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Angular & Laravel PHP (LaTeX 2P)
+                  CV Angular & Laravel PHP (2P)
                 </Menu.Item>
                 <Menu.Item component="a" href="/cv-devops.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
-                  CV Lead DevSecOps & Cloud (LaTeX 2P)
+                  CV Lead DevSecOps & Cloud (2P)
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
