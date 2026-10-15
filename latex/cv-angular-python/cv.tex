@@ -1,0 +1,171 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage[left=1.5cm,right=1.5cm,top=1.25cm,bottom=1.25cm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% Couleurs Angular & Python (Indigo profond & Slate)
+\definecolor{primary}{RGB}{67, 56, 202}       % Indigo profond (#4338ca)
+\definecolor{darkgray}{RGB}{30, 41, 59}       % Texte principal (#1e293b)
+\definecolor{slateGray}{RGB}{71, 85, 105}     % Texte secondaire (#475569)
+\definecolor{ruleGray}{RGB}{226, 232, 240}    % Ligne séparatrice
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    pdfauthor={Astrid-Aurélien NKUMBE ENONGENE},
+    pdftitle={CV Senior Fullstack Angular et Python --- Astrid-Aurélien NKUMBE}
+}
+
+% Format des titres
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {}{0em}
+  {}[\vspace{-0.35em}\textcolor{primary}{\rule{\linewidth}{1.2pt}}\vspace{-0.25em}]
+
+\titlespacing*{\section}{0pt}{0.85em}{0.4em}
+
+% En-tête et pied de page
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{ruleGray}\leaders\hrule height \footrulewidth\hfill}}
+\fancyfoot[L]{\footnotesize\color{slateGray}Astrid-Aurélien NKUMBE --- CV Spécialiste Angular \& Python}
+\fancyfoot[C]{}
+\fancyfoot[R]{\footnotesize\color{slateGray}Page \thepage\ / \pageref{LastPage}}
+
+\color{darkgray}
+
+\begin{document}
+
+% =========================================================================
+% EN-TÊTE PRINCIPAL
+% =========================================================================
+\begin{center}
+    {\LARGE\bfseries\color{primary} Astrid-Aurélien NKUMBE ENONGENE}\\[0.25em]
+    {\large\bfseries\color{darkgray} Senior Fullstack Engineer $\cdot$ Angular / TypeScript $\cdot$ Python / FastAPI}\\[0.4em]
+    {\footnotesize\color{slateGray}
+        \faMapMarker*\ Région Parisienne (Cergy / Paris) --- Mobile France \& Remote \quad$\cdot$\quad
+        \faPhone*\ +33 7 44 58 45 62 \quad$\cdot$\quad
+        \faEnvelope\ \href{mailto:nkumbeaurelien@hotmail.com}{\texttt{nkumbeaurelien@hotmail.com}}\\[0.25em]
+        \faGlobe\ \href{https://nkaurelien.kamitbrains.fr}{\texttt{nkaurelien.kamitbrains.fr}} \quad$\cdot$\quad
+        \faGithub\ \href{https://github.com/nkaurelien}{\texttt{github.com/nkaurelien}} \quad$\cdot$\quad
+        \faLinkedin\ \href{https://www.linkedin.com/in/nkaurelien/}{\texttt{linkedin.com/in/nkaurelien}}
+    }
+\end{center}
+
+\vspace{0.1em}
+\textcolor{ruleGray}{\rule{\linewidth}{1pt}}
+\vspace{0.35em}
+
+% =========================================================================
+% PROFIL
+% =========================================================================
+\section{\faLightbulb\ Profil Professionnel}
+Ingénieur Développeur Fullstack Senior avec \textbf{plus de 7 ans d'expérience}, expert sur l'alliance de la robustesse frontend avec \textbf{Angular (TypeScript, RxJS, Signals)} et de la performance backend / data avec \textbf{Python (FastAPI, AsyncIO, architectures RAG/IA)}. Spécialiste de la conception d'architectures applicatives orientées services, du traitement temps réel (WebSockets), de l'interopérabilité des APIs et de l'intégration de modèles d'intelligence artificielle en production.
+
+% =========================================================================
+% COMPÉTENCES TECHNIQUES
+% =========================================================================
+\section{\faCogs\ Compétences Angular \& Python}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.25em, topsep=0.15em]
+    \item \textbf{Angular \& Écosystème Frontend :} Angular (v12 à v18), TypeScript, RxJS, NgRx, Angular Signals, Angular CLI, Design Systems, HTML5, SCSS.
+    \item \textbf{Python \& Frameworks Backend :} Python 3.10+, FastAPI, Pydantic, SQLAlchemy, Alembic, Uvicorn, Gunicorn, AsyncIO, PySpark.
+    \item \textbf{IA \& Écosystème Data :} RAG (Retrieval-Augmented Generation), LangChain, LiteLLM, OpenAI API, Ollama, Vector DBs (pgvector), ELK Stack.
+    \item \textbf{APIs, Protocoles \& Sécurité :} RESTful APIs, WebSockets, OpenAPI / Swagger, JSON-RPC, normes médicales FHIR/HL7, JWT, OAuth2, Auth0.
+    \item \textbf{Bases de Données :} PostgreSQL, MySQL, CouchDB, MongoDB, Elasticsearch, Redis, Supabase.
+    \item \textbf{DevOps \& Outillage :} Docker, Docker Compose, Docker Swarm, GitLab CI/CD, Azure DevOps, Nginx, Pytest, Git, ESLint.
+\end{itemize}
+
+% =========================================================================
+% EXPÉRIENCES PROFESSIONNELLES
+% =========================================================================
+\section{\faBriefcase\ Expériences Angular \& Python}
+
+\textbf{\large DATA2INNOV} \hfill {\bfseries\small\color{slateGray} Mai 2025 -- Présent} \\
+\emph{\color{primary}Lead Développeur Python / FastAPI \& Architecte Données} \hfill {\small France}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Conception et développement de l'architecture backend asynchrone sous \textbf{FastAPI} et Python 3.11.
+    \item Normalisation et validation stricte des flux biomédicaux au format standardisé FHIR / HL7 avec Pydantic.
+    \item Ingestion haute fréquence et diffusion temps réel via WebSockets, CouchDB et pipelines Logstash.
+    \item Conteneurisation de la stack sous Docker Swarm et supervision de métrologie avec SigNoz.
+    \item Mise à jour du support et auteur des fiches pratiques (TP) et fichiers d'évaluation --- Formation \textbf{Cloud Computing \& Conteneurisation}.
+\end{itemize}
+
+\vspace{0.35em}
+
+\textbf{\large YSO Conseils / KAZAC} \hfill {\bfseries\small\color{slateGray} Octobre 2023 -- Septembre 2024} \\
+\emph{\color{primary}Développeur Python \& Architecte IA (SmartDataPay)} \hfill {\small France}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Conception du moteur RAG en Python avec LangChain, LiteLLM, OpenAI API et Ollama pour interroger plus de 500 documents complexes.
+    \item Création de scripts ETL asynchrones en Python pour l'extraction, le chunking et la vectorisation vers des bases vectorielles PostgreSQL / pgvector.
+    \item Développement d'APIs REST modulaires pour l'intégration sécurisée avec les applications web clientes.
+\end{itemize}
+
+\newpage
+
+\textbf{\large SYLEN-IT SERVICES} \hfill {\bfseries\small\color{slateGray} Novembre 2022 -- Juillet 2023} \\
+\emph{\color{primary}Développeur Angular / TypeScript (Indépendant)} \hfill {\small France}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Refonte complète des interfaces et de l'architecture composants avec \textbf{Angular}, TypeScript et SCSS pour l'application Coface (groupe BPCE).
+    \item Gestion rigoureuse des états applicatifs et flux réactifs asynchrones avec la librairie \textbf{RxJS}.
+    \item Intégration de l'API REST Elasticsearch pour l'indexation et la recherche instantanée multicritère de documents.
+    \item Migrations de versions Angular, renforcement du typage TypeScript et tests d'intégration.
+\end{itemize}
+
+\vspace{0.35em}
+
+\textbf{\large Korée Africa} \hfill {\bfseries\small\color{slateGray} Décembre 2021 -- Septembre 2023} \\
+\emph{\color{primary}Développeur Backend \& APIs REST} \hfill {\small Remote}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Développement et sécurisation d'APIs RESTful avec authentification JWT et validation stricte de schémas de données.
+    \item Intégration de services Cloud AWS (SQS, SNS, S3) et passerelles de paiement (Stripe, Mobile Money).
+    \item Optimisation des temps de réponse grâce à l'indexation Elasticsearch et la mise en cache Redis.
+\end{itemize}
+
+\vspace{0.35em}
+
+\textbf{\large MCS IT} \hfill {\bfseries\small\color{slateGray} Juin 2018 -- Octobre 2020} \\
+\emph{\color{primary}Développeur Full Stack Angular} \hfill {\small Remote}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Développement de la plateforme e-commerce Frontend réactive sous \textbf{Angular} et Bootstrap.
+    \item Intégration d'APIs REST pour la synchronisation des catalogues produits et le suivi des commandes en temps réel.
+\end{itemize}
+
+% =========================================================================
+% PROJETS OPEN SOURCE
+% =========================================================================
+\section{\faRocket\ Projets Open Source \& Innovations}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.25em, topsep=0.15em]
+    \item \textbf{ai-llm-python-playground (Python, FastAPI) :} Expérimentations d'agents IA, architectures RAG et pipelines LLM modulaires.
+    \item \textbf{couchdb-manager (Python, Streamlit) :} Dashboard de supervision, synchronisation et maintenance d'instances CouchDB.
+    \item \textbf{fhir-angular-starter (Angular, TypeScript) :} Bibliothèque de services et composants réactifs Angular pour l'intégration des standards FHIR.
+\end{itemize}
+
+% =========================================================================
+% FORMATIONS & DIPLÔMES
+% =========================================================================
+\section{\faGraduationCap\ Formations \& Diplômes}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.25em, topsep=0.15em]
+    \item \textbf{2022 -- 2024} : \textbf{Master of Science (MSc) IA \& Management} / Expert en Ingénierie Informatique (RNCP 7) --- Ionis-STM France.
+    \item \textbf{2014 -- 2017} : \textbf{Ingénieur des Travaux en Analyse \& Conception SI} --- Institut Africain de l'Informatique (IAI).
+\end{itemize}
+
+\vspace{0.8em}
+\begin{center}
+    \footnotesize\color{slateGray}
+    Retrouvez tous les projets et démos interactives sur \href{https://nkaurelien.kamitbrains.fr}{\textbf{nkaurelien.kamitbrains.fr}}
+\end{center}
+
+\end{document}

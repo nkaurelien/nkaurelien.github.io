@@ -97,6 +97,15 @@ export const CV_OPTIONS = [
     badge: 'PHP/Angular 2P',
   },
   {
+    id: 'cv-angular-python',
+    label: 'Angular & Python',
+    title: 'CV Spécialité Angular & Python (FastAPI — 2 Pages)',
+    mdUrl: '/cv-angular-python.md',
+    pdfUrl: '/cv-angular-python.pdf',
+    downloadName: 'CV_Aurelien_NKUMBE_Angular_Python.pdf',
+    badge: 'Angular/Python 2P',
+  },
+  {
     id: 'cv-devops',
     label: 'DevSecOps',
     title: 'CV Spécialité Lead DevSecOps & Cloud (2 Pages)',

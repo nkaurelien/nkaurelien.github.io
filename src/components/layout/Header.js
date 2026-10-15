@@ -376,6 +376,14 @@ export default function Header({ locale, app }) {
                   leftSection={<IconArrowUpRight size={14} />}>
                   CV Angular & Laravel PHP (2P)
                 </Menu.Item>
+                <Menu.Item
+                  component="a"
+                  href="/cv-angular-python.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<IconArrowUpRight size={14} />}>
+                  CV Angular & Python (2P)
+                </Menu.Item>
                 <Menu.Item component="a" href="/cv-devops.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   CV Lead DevSecOps & Cloud (2P)
                 </Menu.Item>

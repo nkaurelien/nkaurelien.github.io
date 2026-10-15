@@ -9,6 +9,8 @@ import {
   IconBriefcase,
   IconCode,
   IconBrandPhp,
+  IconBrandPython,
+  IconBrandAngular,
   IconCloud,
   IconCodeAsterisk,
   IconChevronUp,
@@ -136,6 +138,15 @@ export default function CvFloatingButton() {
       download: 'CV_Aurelien_NKUMBE_Angular_Laravel.pdf',
       icon: <IconBrandPhp size={18} style={{ color: 'var(--mantine-color-kamit-6)' }} />,
       badge: 'PHP/Angular 2P',
+    },
+    {
+      id: 'cv-angular-python',
+      title: isEnglish ? 'Angular & Python Dev' : 'CV Angular & Python',
+      subtitle: isEnglish ? 'Angular, TypeScript, Python, FastAPI (2 pages)' : 'Angular, TypeScript, Python, FastAPI (2 pages)',
+      href: '/cv-angular-python.pdf',
+      download: 'CV_Aurelien_NKUMBE_Angular_Python.pdf',
+      icon: <IconBrandPython size={18} style={{ color: 'var(--mantine-color-indigo-6)' }} />,
+      badge: 'Angular/Python 2P',
     },
   ];
 

@@ -15,6 +15,7 @@ const cvFiles = [
   { input: path.join(datasourcesCvDir, 'dossier-de-competences.md'), outputName: 'dossier-de-competences.pdf' },
   { input: path.join(datasourcesCvDir, 'cv-fullstack.md'), outputName: 'cv-fullstack.pdf' },
   { input: path.join(datasourcesCvDir, 'cv-angular-laravel.md'), outputName: 'cv-angular-laravel.pdf' },
+  { input: path.join(datasourcesCvDir, 'cv-angular-python.md'), outputName: 'cv-angular-python.pdf' },
   { input: path.join(datasourcesCvDir, 'cv-devops.md'), outputName: 'cv-devops.pdf' },
 ];
 
@@ -97,6 +98,11 @@ try {
     if (fs.existsSync(path.join(latexAngularLaravel, 'cv.tex'))) {
       execSync('pdflatex -interaction=nonstopmode cv.tex && pdflatex -interaction=nonstopmode cv.tex', { cwd: latexAngularLaravel, stdio: 'ignore' });
       fs.copyFileSync(path.join(latexAngularLaravel, 'cv.pdf'), path.join(publicDir, 'cv-angular-laravel.pdf'));
+    }
+    const latexAngularPython = path.join(rootDir, 'latex', 'cv-angular-python');
+    if (fs.existsSync(path.join(latexAngularPython, 'cv.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode cv.tex && pdflatex -interaction=nonstopmode cv.tex', { cwd: latexAngularPython, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexAngularPython, 'cv.pdf'), path.join(publicDir, 'cv-angular-python.pdf'));
     }
     console.log('🎯 Synchronisation des templates LaTeX vers public/ effectuée avec succès !');
   } catch (latexErr) {
