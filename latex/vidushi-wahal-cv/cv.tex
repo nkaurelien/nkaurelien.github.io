@@ -1,31 +1,28 @@
 \documentclass[a4paper,10pt]{article}
 
 \usepackage{latexsym}
-\usepackage[empty]{fullpage}
+\usepackage[left=1.5cm,right=1.5cm,top=1.3cm,bottom=1.3cm]{geometry}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
+\usepackage{xcolor}
 \usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage[pdftex]{hyperref}
+\usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{lastpage}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 
+\definecolor{slateGray}{RGB}{100, 116, 139}
+\definecolor{ruleGray}{RGB}{203, 213, 225}
+
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
-\fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.0in}
-\addtolength{\topmargin}{-0.6in}
-\addtolength{\textheight}{1.2in}
-\setlength{\footskip}{14pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{ruleGray}\leaders\hrule height \footrulewidth\hfill}}
+\fancyfoot[L]{\footnotesize\color{slateGray}Astrid-Aurélien NKUMBE --- CV Exécutif Moderne}
+\fancyfoot[R]{\footnotesize\color{slateGray}Page \thepage\ / \pageref{LastPage}}
 
 \urlstyle{same}
 
@@ -35,39 +32,39 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-3pt}]
 
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[2]{
   \item\small{
-    \textbf{#1}{: #2 \vspace{-2pt}}
+    \textbf{#1}{: #2 \vspace{-1pt}}
   }
 }
 
 \newcommand{\resumeItemBullet}[1]{
   \item\small{
-    {#1 \vspace{-2pt}}
+    {#1 \vspace{-1pt}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item
+  \vspace{1pt}\item
     \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
+    \end{tabular*}\vspace{-3pt}
 }
 
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-2pt}}
 
 \renewcommand{\labelitemii}{$\circ$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*, itemsep=2pt, topsep=2pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=1.2em, itemsep=1.5pt, topsep=1pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
 
 %-------------------------------------------
 %%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,11 +75,11 @@
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
   \textbf{{\Large Astrid-Aurélien NKUMBE ENONGENE}} & Email : \href{mailto:nkumbeaurelien@hotmail.com}{nkumbeaurelien@hotmail.com}\\
   \textbf{\small Senior Fullstack Engineer \& Tech Lead --- IA/RAG \& DevSecOps} & Tél : +33 7 44 58 45 62\\
-  Paris / Cergy, France — Mobile France \& Remote & GitHub : \href{https://github.com/nkaurelien}{github.com/nkaurelien}\\
+  Paris / Cergy, France --- Mobile France \& Remote & GitHub : \href{https://github.com/nkaurelien}{github.com/nkaurelien}\\
   Portfolio : \href{https://nkaurelien.kamitbrains.fr}{nkaurelien.kamitbrains.fr} & LinkedIn : \href{https://www.linkedin.com/in/nkaurelien/}{linkedin.com/in/nkaurelien}\\
 \end{tabular*}
 
-\vspace{4pt}
+\vspace{3pt}
 
 %-----------PROFIL-----------------
 \section{Profil Professionnel}
@@ -139,6 +136,13 @@ Senior Fullstack Engineer et Technical Lead avec \textbf{plus de 7 ans d'expéri
         \resumeItemBullet{Architecture et développement des APIs RESTful hautement sécurisées (JWT, ApiResources) pour une Fintech de fidélisation/cashback (Top 3 Afrique centrale).}
         \resumeItemBullet{Intégration Cloud (AWS SQS/S3, push, SMS, Mobile Money / Stripe), optimisation des performances et pipeline DevSecOps (GitLab CI, Ansible, SAST Snyk).}
       \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+\newpage
+
+\section{Expériences Professionnelles (suite)}
+  \resumeSubHeadingListStart
 
     \resumeSubheading
       {Société Commerciale de Banque Cameroun (Attijariwafa Bank)}{Cameroun}
