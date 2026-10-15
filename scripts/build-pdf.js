@@ -73,6 +73,11 @@ try {
       execSync('pdflatex -interaction=nonstopmode lettre-de-motivation-globale.tex', { cwd: latexLettre, stdio: 'ignore' });
       fs.copyFileSync(path.join(latexLettre, 'lettre-de-motivation-globale.pdf'), path.join(publicDir, 'lettre-de-motivation-globale.pdf'));
     }
+    const latexEnBref = path.join(rootDir, 'latex', 'en-bref');
+    if (fs.existsSync(path.join(latexEnBref, 'about.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode about.tex && pdflatex -interaction=nonstopmode about.tex', { cwd: latexEnBref, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexEnBref, 'about.pdf'), path.join(publicDir, 'about.pdf'));
+    }
     console.log('🎯 Synchronisation des templates LaTeX vers public/ effectuée avec succès !');
   } catch (latexErr) {
     console.warn('⚠️ Compilation LaTeX optionnelle passée :', latexErr.message);

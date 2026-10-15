@@ -26,12 +26,12 @@ import { trackAndNotifyCvDownload } from '@/lib/cvAnalytics';
 export const CV_OPTIONS = [
   {
     id: 'about',
-    label: 'En bref',
-    title: 'En bref — Profil complet & vision d’ingénierie',
+    label: 'En bref (LaTeX)',
+    title: 'En bref — Profil complet & vision d’ingénierie (LaTeX 3P)',
     mdUrl: '/about.md',
     pdfUrl: '/about.pdf',
     downloadName: 'En_Bref_Aurelien_NKUMBE.pdf',
-    badge: 'Synthèse',
+    badge: 'LaTeX 3P',
   },
   {
     id: 'cv',
@@ -167,17 +167,17 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
 
   // Clic sur le bouton de téléchargement
   const handleDownloadClick = () => {
-    if (emailCaptured) {
-      trackAndNotifyCvDownload({
-        cvId: selectedCv.id,
-        cvTitle: selectedCv.title,
-        source: 'preview_modal_direct',
-        email: userEmail,
-        name: userName,
-        company: userCompany,
-      });
-      triggerPdfDownload(selectedCv.pdfUrl, selectedCv.downloadName);
-    } else {
+    // Déclenche le téléchargement immédiat du PDF sans blocage
+    triggerPdfDownload(selectedCv.pdfUrl, selectedCv.downloadName);
+    trackAndNotifyCvDownload({
+      cvId: selectedCv.id,
+      cvTitle: selectedCv.title,
+      source: 'preview_modal_direct',
+      email: userEmail,
+      name: userName,
+      company: userCompany,
+    });
+    if (!emailCaptured) {
       if (typeof window !== 'undefined') {
         window.umami?.track('cv_pdf_download_click', { cvId: selectedCv.id });
       }

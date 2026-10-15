@@ -32,15 +32,38 @@ export default function CvFloatingButton() {
     setModalOpened(true);
   };
 
+  const handleDirectDownload = (href, downloadName, id, title) => {
+    trackAndNotifyCvDownload({
+      cvId: id,
+      cvTitle: title,
+      source: 'floating_button_download',
+    });
+    const link = document.createElement('a');
+    link.href = href;
+    link.download = downloadName || 'document.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleOpenTab = (href, id, title) => {
+    trackAndNotifyCvDownload({
+      cvId: id,
+      cvTitle: title,
+      source: 'floating_button_tab_view',
+    });
+    window.open(href, '_blank', 'noopener,noreferrer');
+  };
+
   const cvList = [
     {
       id: 'about',
       title: isEnglish ? 'In Brief (Profile & Vision)' : 'En bref (Profil & Vision)',
-      subtitle: isEnglish ? 'Summary, philosophy & tech vision' : 'Synthèse, philosophie & vision',
+      subtitle: isEnglish ? 'Summary, philosophy & tech vision (LaTeX 3P)' : 'Synthèse, philosophie & vision (LaTeX 3P)',
       href: '/about.pdf',
       download: 'En_Bref_Aurelien_NKUMBE.pdf',
       icon: <IconSparkles size={18} style={{ color: 'var(--mantine-color-grape-6)' }} />,
-      badge: 'Bio',
+      badge: 'LaTeX 3P',
     },
     {
       id: 'cv',
@@ -53,7 +76,7 @@ export default function CvFloatingButton() {
     },
     {
       id: 'cv-curve',
-      title: isEnglish ? 'Design CV (LaTeX CurVe)' : 'CV Modèle CurVe (LaTeX)',
+      title: isEnglish ? 'Design CV (LaTeX CurVe)' : 'CV Modèle CurVe (LaTeX 3P)',
       subtitle: isEnglish ? 'Elegant multi-page design' : 'Design élégant & rubriques détaillées',
       href: '/cv-curve.pdf',
       download: 'CV_Curve_Aurelien_NKUMBE.pdf',
@@ -62,7 +85,7 @@ export default function CvFloatingButton() {
     },
     {
       id: 'cv-vidushi-wahal',
-      title: isEnglish ? 'Modern Executive (LaTeX)' : 'CV Exécutif Moderne (LaTeX)',
+      title: isEnglish ? 'Modern Executive (LaTeX)' : 'CV Exécutif Moderne (LaTeX 2P)',
       subtitle: isEnglish ? 'Clear modern executive format' : 'Format exécutif moderne 2 pages',
       href: '/cv-vidushi-wahal.pdf',
       download: 'CV_Moderne_Aurelien_NKUMBE.pdf',
@@ -191,17 +214,10 @@ export default function CvFloatingButton() {
                       label={isEnglish ? 'Open PDF in new tab (copiable link)' : 'Ouvrir PDF dans un nouvel onglet (lien copiable)'}
                       withinPortal>
                       <ActionIcon
-                        component="a"
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         onClick={e => {
+                          e.preventDefault();
                           e.stopPropagation();
-                          trackAndNotifyCvDownload({
-                            cvId: item.id,
-                            cvTitle: item.title,
-                            source: 'floating_button_tab_view',
-                          });
+                          handleOpenTab(item.href, item.id, item.title);
                         }}
                         variant="subtle"
                         color="kamit"
@@ -212,16 +228,10 @@ export default function CvFloatingButton() {
                     </Tooltip>
                     <Tooltip label={isEnglish ? 'Direct PDF download' : 'Télécharger PDF direct'} withinPortal>
                       <ActionIcon
-                        component="a"
-                        href={item.href}
-                        download={item.download}
                         onClick={e => {
+                          e.preventDefault();
                           e.stopPropagation();
-                          trackAndNotifyCvDownload({
-                            cvId: item.id,
-                            cvTitle: item.title,
-                            source: 'floating_button_download',
-                          });
+                          handleDirectDownload(item.href, item.download, item.id, item.title);
                         }}
                         variant="subtle"
                         color="kamit"
