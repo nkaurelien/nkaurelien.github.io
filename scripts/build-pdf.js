@@ -83,6 +83,21 @@ try {
       execSync('pdflatex -interaction=nonstopmode dossier.tex && pdflatex -interaction=nonstopmode dossier.tex', { cwd: latexDossier, stdio: 'ignore' });
       fs.copyFileSync(path.join(latexDossier, 'dossier.pdf'), path.join(publicDir, 'dossier-de-competences.pdf'));
     }
+    const latexDevops = path.join(rootDir, 'latex', 'cv-devops');
+    if (fs.existsSync(path.join(latexDevops, 'cv.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode cv.tex && pdflatex -interaction=nonstopmode cv.tex', { cwd: latexDevops, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexDevops, 'cv.pdf'), path.join(publicDir, 'cv-devops.pdf'));
+    }
+    const latexFullstack = path.join(rootDir, 'latex', 'cv-fullstack');
+    if (fs.existsSync(path.join(latexFullstack, 'cv.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode cv.tex && pdflatex -interaction=nonstopmode cv.tex', { cwd: latexFullstack, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexFullstack, 'cv.pdf'), path.join(publicDir, 'cv-fullstack.pdf'));
+    }
+    const latexAngularLaravel = path.join(rootDir, 'latex', 'cv-angular-laravel');
+    if (fs.existsSync(path.join(latexAngularLaravel, 'cv.tex'))) {
+      execSync('pdflatex -interaction=nonstopmode cv.tex && pdflatex -interaction=nonstopmode cv.tex', { cwd: latexAngularLaravel, stdio: 'ignore' });
+      fs.copyFileSync(path.join(latexAngularLaravel, 'cv.pdf'), path.join(publicDir, 'cv-angular-laravel.pdf'));
+    }
     console.log('🎯 Synchronisation des templates LaTeX vers public/ effectuée avec succès !');
   } catch (latexErr) {
     console.warn('⚠️ Compilation LaTeX optionnelle passée :', latexErr.message);

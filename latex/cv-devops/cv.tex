@@ -1,0 +1,163 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage[left=1.5cm,right=1.5cm,top=1.25cm,bottom=1.25cm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% Couleurs DevSecOps (Orange brûlé & Slate)
+\definecolor{primary}{RGB}{194, 65, 12}       % Orange brûlé (#c2410c)
+\definecolor{darkgray}{RGB}{30, 41, 59}       % Texte principal (#1e293b)
+\definecolor{slateGray}{RGB}{71, 85, 105}     % Texte secondaire (#475569)
+\definecolor{ruleGray}{RGB}{226, 232, 240}    % Ligne séparatrice
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    pdfauthor={Astrid-Aurélien NKUMBE ENONGENE},
+    pdftitle={CV Lead DevSecOps et Cloud Architect --- Astrid-Aurélien NKUMBE}
+}
+
+% Format des titres
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {}{0em}
+  {}[\vspace{-0.35em}\textcolor{primary}{\rule{\linewidth}{1.2pt}}\vspace{-0.25em}]
+
+\titlespacing*{\section}{0pt}{0.85em}{0.4em}
+
+% En-tête et pied de page
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{ruleGray}\leaders\hrule height \footrulewidth\hfill}}
+\fancyfoot[L]{\footnotesize\color{slateGray}Astrid-Aurélien NKUMBE --- CV Lead DevSecOps \& Cloud}
+\fancyfoot[C]{}
+\fancyfoot[R]{\footnotesize\color{slateGray}Page \thepage\ / \pageref{LastPage}}
+
+\color{darkgray}
+
+\begin{document}
+
+% =========================================================================
+% EN-TÊTE PRINCIPAL
+% =========================================================================
+\begin{center}
+    {\LARGE\bfseries\color{primary} Astrid-Aurélien NKUMBE ENONGENE}\\[0.25em]
+    {\large\bfseries\color{darkgray} Lead DevSecOps Engineer $\cdot$ Cloud Infrastructure Architect}\\[0.4em]
+    {\footnotesize\color{slateGray}
+        \faMapMarker*\ Région Parisienne (Cergy / Paris) --- Mobile France \& Remote \quad$\cdot$\quad
+        \faPhone*\ +33 7 44 58 45 62 \quad$\cdot$\quad
+        \faEnvelope\ \href{mailto:nkumbeaurelien@hotmail.com}{\texttt{nkumbeaurelien@hotmail.com}}\\[0.25em]
+        \faGlobe\ \href{https://nkaurelien.kamitbrains.fr}{\texttt{nkaurelien.kamitbrains.fr}} \quad$\cdot$\quad
+        \faGithub\ \href{https://github.com/nkaurelien}{\texttt{github.com/nkaurelien}} \quad$\cdot$\quad
+        \faLinkedin\ \href{https://www.linkedin.com/in/nkaurelien/}{\texttt{linkedin.com/in/nkaurelien}}
+    }
+\end{center}
+
+\vspace{0.1em}
+\textcolor{ruleGray}{\rule{\linewidth}{1pt}}
+\vspace{0.35em}
+
+% =========================================================================
+% PROFIL
+% =========================================================================
+\section{\faLightbulb\ Profil Professionnel}
+Ingénieur DevSecOps et Architecte Cloud avec \textbf{plus de 7 ans d'expérience (dont $\sim$5 ans en DevSecOps, Cloud et Platform Engineering)}, spécialisé dans l'automatisation intégrale des pipelines CI/CD, l'orchestration de conteneurs (Docker Swarm, Kubernetes, Argo CD) et la sécurité applicative (SAST/SCA Snyk, API Gateways, conformité HDS). Solide double compétence en développement logiciel (Python, Node.js, PHP) et en observabilité distribuée (SigNoz, Grafana, ELK Stack, Prometheus).
+
+% =========================================================================
+% COMPÉTENCES TECHNIQUES
+% =========================================================================
+\section{\faCogs\ Compétences DevSecOps \& Cloud}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.25em, topsep=0.15em]
+    \item \textbf{Conteneurs \& Orchestration :} Docker, Docker Compose, Docker Swarm, Kubernetes (K8s), Argo CD, Portainer.
+    \item \textbf{CI/CD \& Automatisation :} GitLab CI/CD, GitHub Actions, Azure DevOps, Ansible, Terraform, scripts Shell/Bash.
+    \item \textbf{Sécurité Applicative (SecOps) :} Snyk (SAST/SCA), Gitleaks, KONG API Gateway, Nginx, Traefik, LDAP, Active Directory, Auth0, SSL/Certbot, RBAC.
+    \item \textbf{Observabilité \& Métrologie :} SigNoz, Grafana, Loki, Alloy, Netdata, Prometheus, ELK Stack (Logstash, Elasticsearch, Kibana), Sentry.
+    \item \textbf{Cloud Providers \& Plateformes :} AWS (EC2, S3, SQS, SNS), GCP (Cloud Run, GCS, Vertex AI), Azure (App Services, OpenAI), Supabase.
+    \item \textbf{Systèmes \& Middleware :} Linux (Ubuntu, Debian), Software AG webMethods 10.x, Oracle 23ai, Postfix (SMTP Relay), PM2, Supervisor.
+\end{itemize}
+
+% =========================================================================
+% EXPÉRIENCES PROFESSIONNELLES
+% =========================================================================
+\section{\faBriefcase\ Expériences DevSecOps \& Infrastructures}
+
+\textbf{\large DATA2INNOV} \hfill {\bfseries\small\color{slateGray} Mai 2025 -- Présent} \\
+\emph{\color{primary}Lead DevSecOps \& Fullstack Architect} \hfill {\small France}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Conception de l'infrastructure de déploiement conteneurisée sécurisée avec Docker Swarm et Ansible.
+    \item Pipeline CI/CD complet sous GitLab CI : exécution des tests, builds d'images multi-arch et push vers GitLab Container Registry.
+    \item Déploiement de la métrologie et observabilité temps réel : SigNoz, Kafka et pipelines Logstash pour flux physiologiques IoT.
+    \item Durcissement et sécurisation du réseau IoT (acquisition sécurisée BLE / Wi-Fi) et reverse proxies Nginx.
+    \item Mise à jour du support et auteur des fiches pratiques (TP) et fichiers d'évaluation --- Formation \textbf{Cloud Computing \& Conteneurisation}.
+\end{itemize}
+
+\vspace{0.35em}
+
+\textbf{\large YSO Conseils / KAZAC} \hfill {\bfseries\small\color{slateGray} Octobre 2023 -- Septembre 2024} \\
+\emph{\color{primary}DevSecOps \& Cloud Infrastructure (SmartDataPay)} \hfill {\small France}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Automatisation des déploiements d'applications web et IA sur le Cloud Azure avec GitLab CI.
+    \item Déploiement d'environnements vectoriels d'embeddings sécurisés (Supabase pgvector, Databricks Notebooks, Docker).
+    \item Automatisation de workflows SaaS avec Make/N8N et sécurisation des accès applicatifs via Auth0.
+\end{itemize}
+
+\newpage
+
+\textbf{\large Korée Africa} \hfill {\bfseries\small\color{slateGray} Décembre 2021 -- Septembre 2023} \\
+\emph{\color{primary}Lead DevSecOps \& Backend Architect} \hfill {\small Remote}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Automatisation intégrale de la chaîne CI/CD (GitLab CI + Ansible + scripts Bash) avec mécanismes de rollback automatique.
+    \item Intégration de la sécurité dès la conception (\emph{Shift Left Security}) : analyse statique SAST et détection de failles avec Snyk.
+    \item Administration du stockage et des files de messages Cloud AWS (SQS, SNS, S3, Docker Registry).
+    \item Configuration du système de traces et de surveillance applicative (Google Cloud Monitoring, Laravel Telescope).
+\end{itemize}
+
+\vspace{0.4em}
+
+\textbf{\large Société Commerciale de Banque Cameroun (Attijariwafa Bank)} \hfill {\bfseries\small\color{slateGray} Avril 2022 -- Septembre 2022} \\
+\emph{\color{primary}Architecte Infra \& DevSecOps (Projets Réglementaires)} \hfill {\small Cameroun}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.18em, topsep=0.15em]
+    \item Déploiement et configuration de la passerelle de sécurité API KONG Gateway (Reverse Proxy, Load Balancing, limitation de débit, filtrage IP, protection DDoS).
+    \item Déploiement d'un cluster Kubernetes avec Argo CD pour la livraison continue sur serveurs physiques HP ProLiant.
+    \item Sécurisation des accès aux applications bancaires par authentification LDAP et gestion fine des habilitations RBAC.
+\end{itemize}
+
+% =========================================================================
+% PROJETS OPEN SOURCE & PUBLICATIONS
+% =========================================================================
+\section{\faRocket\ Projets DevOps \& Publications Techniques}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.25em, topsep=0.15em]
+    \item \textbf{webmethods-devops-portfolio :} Automatisation d'infrastructures d'intégration Software AG webMethods 10.x avec Terraform, Ansible et Docker.
+    \item \textbf{mise-devtools :} Scripts d'automatisation et de provisionnement d'environnements de développement sous Linux et macOS.
+    \item \textbf{Blog Technique Medium (\href{https://medium.com/@nkaurelien}{\texttt{medium.com/@nkaurelien}}) :} Rédaction d'articles spécialisés sur la sécurisation Nginx/SSL, le déploiement webMethods 10.15 et l'administration système Linux.
+\end{itemize}
+
+% =========================================================================
+% FORMATIONS & DIPLÔMES
+% =========================================================================
+\section{\faGraduationCap\ Formations \& Diplômes}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.25em, topsep=0.15em]
+    \item \textbf{2025} : \textbf{Formation webMethods 10.x} --- WILOW Paris (IS, Designer, Command Central, Administration).
+    \item \textbf{2022 -- 2024} : \textbf{Master of Science (MSc) IA \& Management} / Expert en Ingénierie Informatique (RNCP 7) --- Ionis-STM France.
+    \item \textbf{2014 -- 2017} : \textbf{Ingénieur des Travaux en Analyse \& Conception SI} --- Institut Africain de l'Informatique (IAI).
+\end{itemize}
+
+\vspace{0.8em}
+\begin{center}
+    \footnotesize\color{slateGray}
+    CV édité sous \LaTeX\ $\cdot$ Retrouvez tous les projets et démos interactives sur \href{https://nkaurelien.kamitbrains.fr}{\textbf{nkaurelien.kamitbrains.fr}}
+\end{center}
+
+\end{document}

@@ -366,7 +366,7 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Dev Fullstack (Python/React)
+                  CV Dev Fullstack (LaTeX 2P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -374,10 +374,10 @@ export default function Header({ locale, app }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Dev Angular & Laravel PHP
+                  CV Angular & Laravel PHP (LaTeX 2P)
                 </Menu.Item>
                 <Menu.Item component="a" href="/cv-devops.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
-                  CV Lead DevSecOps & Cloud
+                  CV Lead DevSecOps & Cloud (LaTeX 2P)
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
