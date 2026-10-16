@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
-import { Container, Title, Badge, Text, Button, Group, Stack, SimpleGrid, Image, Card, Anchor } from '@mantine/core';
+import { Container, Title, Badge, Text, Button, Group, Stack, SimpleGrid, Image, Card, Anchor, Box } from '@mantine/core';
 import {
   IconArrowLeft,
   IconExternalLink,
@@ -15,6 +15,7 @@ import {
   IconBrandYoutube,
 } from '@tabler/icons-react';
 import { withBase } from '@/lib/asset';
+import { useImageGradient } from '@/lib/imageEffects';
 import gsap from '@/lib/gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -40,6 +41,8 @@ export default function ProjectDetail({ locale, project }) {
   const carousel = project.carousel || [];
   const links = project.links || [];
   const containerRef = useRef(null);
+  const heroSrc = project.image ? withBase(project.image) : null;
+  const heroGradient = useImageGradient(heroSrc);
 
   useGSAP(
     () => {
@@ -80,7 +83,39 @@ export default function ProjectDetail({ locale, project }) {
         </Group>
       </Group>
 
-      {project.image && <Image className="project-hero-img" src={withBase(project.image)} alt={project.title} radius="lg" mb="lg" />}
+      {heroSrc && (
+        <Box
+          className="project-hero-img"
+          mb="lg"
+          p={{ base: 8, sm: 14 }}
+          style={{
+            position: 'relative',
+            borderRadius: 'var(--mantine-radius-lg)',
+            background: heroGradient.surfaceBg,
+            boxShadow: `0 18px 48px -12px ${heroGradient.primary.replace('rgb(', 'rgba(').replace(')', ', 0.35)')}`,
+            isolation: 'isolate',
+            overflow: 'hidden',
+          }}>
+          <Box
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: -24,
+              background: heroGradient.ambilight,
+              filter: 'blur(26px)',
+              opacity: 0.85,
+              zIndex: 0,
+              pointerEvents: 'none',
+            }}
+          />
+          <Image
+            src={heroSrc}
+            alt={project.title}
+            radius="md"
+            style={{ position: 'relative', zIndex: 1, boxShadow: '0 8px 28px rgba(0, 0, 0, 0.35)' }}
+          />
+        </Box>
+      )}
 
       {project.description && (
         <Text className="project-description" component="div" c="dimmed" mb="lg" dangerouslySetInnerHTML={{ __html: project.description }} />
