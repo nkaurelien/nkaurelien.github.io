@@ -65,7 +65,7 @@ Ingénieur Développeur Fullstack Senior avec **plus de 7 ans d'expérience**, s
 - **Environnement** : Angular, TypeScript, RxJS, Elasticsearch, Azure DevOps, Git, ESLint.
 
 ### **Korée Africa** — Développeur Backend & APIs REST
-*Décembre 2021 – Septembre 2023 | Remote*
+*Décembre 2021 – Juin 2022 | Remote*
 - **Projet** : Plateforme Fintech de fidélisation et cashback.
 - **Réalisations** :
   - Développement et sécurisation d'APIs RESTful avec authentification JWT et validation de schémas.

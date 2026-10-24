@@ -52,7 +52,7 @@ Ingénieur DevSecOps et Architecte Cloud avec **7+ ans d'expérience, dont ~5 an
 - **Environnement** : Azure Cloud, Docker, GitLab CI, Supabase, Databricks, Nginx, Auth0, Make.
 
 ### **Korée** — Lead DevSecOps & Backend Architect
-*Décembre 2021 – Septembre 2023 | Remote*
+*Décembre 2021 – Juin 2022 | Remote*
 - **Réalisations** :
   - Automatisation intégrale de la chaîne CI/CD (GitLab CI + Ansible + scripts Bash) avec rollback automatique.
   - Intégration de la sécurité dès la conception (Shift Left Security) : analyse statique SAST et détection de vulnérabilités avec Snyk.

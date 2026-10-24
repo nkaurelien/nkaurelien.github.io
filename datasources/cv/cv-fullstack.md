@@ -62,7 +62,7 @@ Ingénieur Développeur Fullstack avec **plus de 7 ans d'expérience** dans la c
 - **Environnement** : Angular, TypeScript, RxJS, Elasticsearch, Azure DevOps.
 
 ### **Korée** — Senior Backend & Fullstack Developer
-*Décembre 2021 – Septembre 2023 | Remote*
+*Décembre 2021 – Juin 2022 | Remote*
 - **Projet** : Plateforme Fintech de cashback & fidélisation.
 - **Réalisations** :
   - Conception d'APIs RESTful performantes et sécurisées (JWT, Laravel Scout).

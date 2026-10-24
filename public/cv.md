@@ -43,19 +43,19 @@ Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience**
 
 ### **DATA2INNOV** — Ingénieur Développeur Fullstack & Lead Tech
 *Mai 2025 – Présent | France*
-- **Contexte** : Plateforme de santé connectée et collecte de données physiologiques conforme aux normes FHIR/HL7, HDS.
+- **Contexte** : Conception et refonte d'une plateforme de santé connectée et collecte de données physiologiques conforme aux normes FHIR/HL7, HDS.
 - **Réalisations** :
-  - Architecture et développement Fullstack (Next.js / FastAPI) d'applications patient et médecin.
+  - Architecture et développement Fullstack (Next.js 15 / FastAPI) d'applications patient et médecin.
   - Collecte, traitement et restitution temps réel de métriques physiologiques issues d'objets connectés (Withings Cloud API, EmotiBit, ESP32).
   - Définition d'architectures robustes & observabilité : JSON-RPC, Kafka, SigNoz, Docker Swarm.
   - Développement d'un POC d'application mobile Flutter pour l'acquisition BLE/Wi-Fi et la synchronisation continue vers Logstash.
-  - Mise en place du pipeline CI/CD GitLab (tests, builds, registre d'images Docker, déploiement Ansible / Docker Compose).
-  - Mentorat et accompagnement technique des équipes de développement web.
+  - Mise à jour du support et auteur des fiches pratiques (TP) et fichiers d'évaluation — Formation **Cloud Computing & Conteneurisation**.
+  - Mise en place du pipeline CI/CD GitLab (tests, builds, registre d'images Docker, déploiement Ansible / Docker Compose) et mentorat d'équipe.
 - **Environnement** : FastAPI, Python, Next.js, FHIR/HL7, Mantine UI, Flutter, WebSockets, CouchDB, Logstash, Kafka, Docker Swarm, SigNoz, Ansible, GitLab CI.
 
 ### **YSO Conseils / KAZAC** — Ingénieur Développeur Fullstack, IA & MOE
 *Octobre 2023 – Septembre 2024 | France*
-- **Contexte** : Développement du Chatbot RAG (SmartDataPay) pour les gestionnaires de paie et automatisation RH.
+- **Contexte** : Développement de la plateforme SaaS et de l'assistant IA conversationnel RAG (SmartDataPay) dédié aux gestionnaires de paie et RH.
 - **Réalisations** :
   - Développement Fullstack : Filament PHP, Livewire/AlpineJS, Laravel, PostgreSQL, Airtable, Auth0.
   - Création du moteur RAG (Next.js Edge Runtime, LangChain LCEL, LiteLLM, Perplexity AI, Azure OpenAI) avec streaming et restitution des sources (`x-sources`).
@@ -66,50 +66,53 @@ Senior Fullstack Engineer et Technical Lead avec **plus de 7 ans d'expérience**
 
 ### **SYLEN-IT SERVICES** — Développeur Angular / TypeScript (Indépendant)
 *Novembre 2022 – Juillet 2023 | France*
-- **Contexte** : Refonte des interfaces métiers (Coface / BPCE) et moteur de recherche documentaire Elasticsearch.
+- **Contexte** : Refonte des interfaces métiers du projet Coface (Groupe BPCE) avec le nouveau Design System et moteur de recherche Elasticsearch.
 - **Réalisations** :
-  - Refonte UX/UI d'applications Angular avec intégration du Design System propriétaire BPCE.
-  - Intégration de l'API REST Elasticsearch pour la recherche documentaire en temps réel.
-  - Migrations de versions Angular et refactoring du code legacy.
-- **Environnement** : Angular, TypeScript, RxJS, Elasticsearch, Azure DevOps, ESLint, Pnpm.
+  - Refonte UX/UI d'applications Angular 14+ avec intégration du Design System propriétaire BPCE en mono-repo Nx / Pnpm.
+  - Intégration de l'API REST Elasticsearch pour la recherche documentaire instantanée et le filtrage à facettes.
+  - Migrations de versions Angular, refactoring du code legacy et tests end-to-end Cypress sous Azure DevOps.
+- **Environnement** : Angular 14+, TypeScript, RxJS, Nx, Pnpm, Elasticsearch, Cypress, Azure DevOps, ESLint.
 
 ### **Korée** — Lead Développeur Backend Laravel & Mobile Flutter
 *Décembre 2021 – Juin 2022 | Remote*
-- **Contexte** : Startup Fintech de fidélisation et cashback classée dans le Top 3 en Afrique centrale.
+- **Contexte** : Conception et passage à l'échelle d'une startup Fintech de fidélisation et cashback classée dans le Top 3 en Afrique centrale.
 - **Réalisations** :
-  - Architecture et développement des APIs RESTful hautement sécurisées (JWT, ApiResources).
-  - Intégration des services Cloud : AWS SQS/S3, push notifications, passerelles SMS & paiements mobiles (Mobile Money / Stripe).
-  - Optimisation des performances : mise en cache, indexation Laravel Scout, traitements différés (Scheduler/Queues).
+  - Architecture et développement des APIs RESTful hautement sécurisées (PHP 8.1, Laravel, JWT, ApiResources) et application mobile Flutter v1 (biométrie, OTP, Google Cloud Vision API).
+  - Intégration des services Cloud : AWS SQS/SNS/S3, OneSignal, Firebase, passerelles SMS & paiements mobiles (Mobile Money / Stripe).
+  - Optimisation des performances : mise en cache, indexation Laravel Scout / Elasticsearch, traitements différés (Scheduler/Queues).
   - Implémentation du pipeline DevSecOps : GitLab CI, Ansible, analyses SAST Snyk, Docker Registry.
-- **Environnement** : PHP 8.1, Laravel, Flutter, MySQL, Elasticsearch, Stripe, AWS, GCP, Docker, Snyk, Ansible.
+- **Environnement** : PHP 8.1, Laravel, Flutter, Google Cloud Vision API, MySQL, Elasticsearch, Stripe, AWS, GCP, Docker, Snyk, Ansible.
 
 ### **Société Commerciale de Banque Cameroun (Attijariwafa Bank)** — Analyste Programmeur / Chef de Projet (AMOE) (CDD)
 *Avril 2022 – Septembre 2022 | Cameroun*
-- **Contexte** : Projets stratégiques de numérisation et de conformité bancaire en contrat CDD.
+- **Contexte** : Conduite de projets stratégiques de numérisation et de conformité réglementaire bancaire (E-RELEVE-COMPTE et COLEPS API).
 - **Réalisations** :
   - Architecture & sécurisation des APIs REST avec Kong API Gateway (load balancing, rate limiting, protection DDoS).
   - Développement fullstack du portail Intranet bancaire et du BackOffice de gestion des relevés de comptes.
   - Authentification centralisée LDAP + RBAC sur Active Directory d'entreprise.
   - Automatisation du découpage PDF et de la distribution périodique chiffrée par email de +100k relevés de comptes.
-  - Configuration de serveurs HP ProLiant et déploiement d'Argo CD sur Kubernetes.
-- **Environnement** : Vue.js, Laravel, LDAP, RBAC, Kong Gateway, Docker, Argo CD, Kubernetes, MySQL.
+  - Configuration de serveurs HP ProLiant (VMware ESXi, Portainer) et déploiement d'Argo CD sur Kubernetes.
+- **Environnement** : Vue.js, Laravel, LDAP, RBAC, Active Directory, Kong Gateway, Docker, VMware ESXi, Argo CD, Kubernetes, MySQL.
 
 ### **LAB2VIEW** — Développeur Fullstack Laravel / Vue.js / Electron.js
 *Février 2021 – Octobre 2021 | Cameroun*
-- **Contexte** : Application desktop/cross-platform de gestion commerciale et point de vente (POS).
+- **Contexte** : Développement et mise en production d'une solution logicielle de caisse (POS) et de gestion de stock multiplateforme (Desktop, Web, SaaS).
 - **Réalisations** :
-  - Développement de l'application Electron.js / Vue.js avec système d'auto-update via GitHub Releases.
-  - Conception d'architecture multi-tenant et scripts de sauvegarde automatique Cloud AWS EC2.
-- **Environnement** : Vue.js, Electron.js, Node.js, Laravel, MySQL, AWS EC2, Plesk.
+  - Développement sous Electron.js, Node.js et Vue.js d'un point de vente (POS) hors-ligne avec impression matricielle Epson via WebSockets.
+  - Architecture SaaS backend multi-tenant sous Laravel et système d'auto-update des exécutables via GitHub Releases.
+  - Conception et publication dans GitLab Packages de 2 bibliothèques PHP Composer réutilisables (API Orange Money & Repository Pattern).
+  - Modélisation d'architecture Cloudcraft (UML / 2TUP) et scripts de sauvegarde automatique sur Cloud AWS EC2 / Plesk.
+- **Environnement** : Electron.js, Vue.js, Node.js, Laravel, WebSockets, Epson Matrix Printer, MySQL, AWS EC2, Plesk, GitHub Actions, Cloudcraft, UML (2TUP).
 
 ### **MCS IT** — Stagiaire ➔ Lead Développeur Fullstack
 *Juin 2018 – Octobre 2020 | Remote*
-- **Contexte** : Évolution de stagiaire professionnel à Lead Développeur sur la plateforme e-commerce et solution de livraison rapide (Livraison Express).
+- **Contexte** : Conception et développement d'une plateforme e-commerce et d'applications web et mobile de livraison géolocalisée (Livraison Express).
 - **Réalisations** :
-  - Développement des applications Web (Angular/Bootstrap) et Mobile livreurs (Flutter).
-  - Back-office de gestion des ventes et POS graphique avec Vue.js / Inertia.js.
-  - Déploiement sur GCP, orchestration Docker Compose / Ansible et mentorat d'équipe.
-- **Environnement** : Angular, Laravel, Vue.js, Flutter, MongoDB, GCP, Firebase, Docker.
+  - Architecture mono-repo frontend Angular avec pré-rendu SEO (Puppeteer Headless) et optimisation poussée des bundles (Tree shaking, Lazy loading).
+  - Développement du portail BackOffice POS sous Laravel, Vue.js et Inertia.js (gestion des commandes, stocks, exports PDF/CSV).
+  - Création de l'application mobile coursiers sous Flutter avec géolocalisation en temps réel (Firebase Realtime DB, Google Maps API).
+  - Déploiement automatisé sur GCP (Cloud Run, Kubernetes) via GitLab CI et Ansible, monitoring (NetData/Sentry) et migration de données via Talend.
+- **Environnement** : Angular, Laravel, Vue.js, Inertia.js, Flutter, Google Maps API, Firebase, MongoDB, MySQL, GCP, Kubernetes, Docker, Ansible, GitLab CI, Talend, NetData, Sentry.
 
 ---
 

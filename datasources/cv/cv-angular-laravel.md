@@ -51,7 +51,7 @@ Développeur Senior avec **plus de 7 ans d'expertise spécialisée sur Laravel (
 - **Environnement** : Angular, TypeScript, RxJS, Elasticsearch, Git, Azure DevOps, ESLint, Pnpm.
 
 ### **Korée** — Lead Développeur Backend Laravel & API REST
-*Décembre 2021 – Septembre 2023 | Remote*
+*Décembre 2021 – Juin 2022 | Remote*
 - **Réalisations** :
   - Architecture complète et développement de l'API RESTful du produit Fintech (PHP 8.1 / Laravel).
   - Mise en place de l'authentification JWT, des ApiResources et de serveurs Mocks Postman.

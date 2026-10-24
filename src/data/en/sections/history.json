@@ -91,7 +91,7 @@
                 "title": "Sylen-IT Services",
                 "subtitle": "Angular / TypeScript Developer",
                 "date": "Nov 2022 - July 2023",
-                "text": "API integration and UI redesign for the Coface project (BPCE Group), fully remote. Document search engine built around Elasticsearch. Stack: Angular 14+, TypeScript, RxJS, Elasticsearch.",
+                "text": "UI redesign with the BPCE Design System for the Coface project (Nx / Pnpm mono-repo), fully remote. Real-time document search engine built around Elasticsearch and Cypress E2E testing under Azure DevOps. Stack: Angular 14+, TypeScript, RxJS, Elasticsearch.",
                 "active": true
             },
             {
@@ -99,14 +99,14 @@
                 "subtitle": "Programmer Analyst - Project Lead (AMOE)",
                 "tag": "CDD · Internal",
                 "date": "Apr. 2022 - Sept. 2022",
-                "text": "Digital transformation for a top 3 bank in Cameroon under internal fixed-term contract (CDD): secure REST APIs (JWT), KONG reverse proxy, LDAP + RBAC AD auth, intranet portal, automated PDF bank statement distribution, Argo CD deployment on Kubernetes.",
+                "text": "Digital transformation and regulatory compliance (E-RELEVE / COLEPS) under internal fixed-term contract (CDD): secure REST APIs (JWT), KONG reverse proxy, LDAP + RBAC AD auth, intranet portal and encrypted distribution of +100k PDF bank statements, Argo CD deployment on Kubernetes.",
                 "active": true
             },
             {
                 "title": "KOREE",
                 "subtitle": "Lead Backend (Laravel) & Mobile (Flutter) Developer",
                 "date": "Dec 2021 - June 2022",
-                "text": "Design and development of a customer loyalty platform (top-3 Fintech startup in Central Africa): secure RESTful APIs (JWT), cloud integrations (AWS, GCP, Stripe), GitLab + Ansible CI/CD, vulnerability scanning (Snyk).",
+                "text": "Design and scaling of a customer loyalty and cashback platform (top-3 Fintech startup in Central Africa): secure RESTful APIs (PHP 8.1, Laravel, JWT), Flutter mobile app v1 (biometrics, OTP, Google Cloud Vision API), cloud integrations (AWS SQS/SNS/S3, GCP, Stripe), GitLab + Ansible CI/CD and Snyk vulnerability scanning.",
                 "button": {
                     "type": "project",
                     "link": "/projects/koree",
@@ -118,7 +118,7 @@
                 "title": "LAB2VIEW",
                 "subtitle": "Fullstack Developer Laravel / Vue.js / Electron.js",
                 "date": "Feb. 2021 - Oct. 2021",
-                "text": "Cross-platform desktop app (Electron.js) for stock and point-of-sale management, powered by a RESTful API: automatic updates and release publishing, multi-tenant architecture and SAAS version, AWS EC2 / Plesk deployment.",
+                "text": "Cross-platform desktop app (Electron.js, Node.js, Vue.js) for stock and offline point-of-sale (POS) management with Epson matrix printer control via WebSockets: multi-tenant SaaS backend in Laravel, auto-updates via GitHub Releases, 2 reusable PHP Composer packages (Orange Money & Repository Pattern), AWS EC2 / Plesk deployment.",
                 "active": true
             },
             {
@@ -142,7 +142,7 @@
                 "subtitle": "Intern ➔ Lead Fullstack Developer",
                 "tag": "Intern ➔ Lead Dev",
                 "date": "June 2018 - Oct 2020",
-                "text": "Promoted from professional intern to Lead Developer. Design and development of an e-commerce platform for parcel and meal delivery (Design Thinking, OOP, clean code): Angular app with Social Auth, courier mobile app (Flutter), POS backoffice, Google Maps/Places & Firebase integrations, Kubernetes clusters on GCP, GitLab + Laravel Envoy / Ansible CI/CD.",
+                "text": "Promoted from professional intern to Lead Developer. Design and development of an e-commerce platform for geolocated parcel and meal delivery: Angular mono-repo frontend (Puppeteer SEO pre-rendering + Social Auth), courier mobile app (Flutter, Firebase, Google Maps API), POS backoffice (Laravel, Vue.js, Inertia.js), GCP deployment (Cloud Run, Kubernetes) via GitLab CI / Ansible and Talend data migration.",
                 "button": {
                     "type": "project",
                     "link": "/projects/livraison-express",
