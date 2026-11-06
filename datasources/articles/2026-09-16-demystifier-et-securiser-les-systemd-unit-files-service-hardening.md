@@ -1,5 +1,6 @@
 ---
 id: demystifier-et-securiser-les-systemd-unit-files-service-hardening
+status: published
 tags: systemd, linux, devsecops, security, sysadmin, hardening, authelia, devops
 title: "Démystifier et Sécuriser les Systemd Unit Files : Le Guide DevSecOps du Service Hardening"
 date: 2026-09-16

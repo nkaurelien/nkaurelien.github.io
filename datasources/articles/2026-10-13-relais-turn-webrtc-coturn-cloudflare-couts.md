@@ -1,5 +1,6 @@
 ---
 id: relais-turn-webrtc-coturn-cloudflare-couts
+status: published
 tags: webrtc, turn, coturn, cloudflare, jitsi, reseau, self-hosted, finops
 title: "Relais TURN pour la visio WebRTC : coturn ou Cloudflare, et combien ça coûte vraiment"
 date: 2026-10-13

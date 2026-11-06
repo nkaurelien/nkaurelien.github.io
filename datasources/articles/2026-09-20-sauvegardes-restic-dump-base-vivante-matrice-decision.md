@@ -1,5 +1,6 @@
 ---
 id: sauvegardes-restic-dump-base-vivante-matrice-decision
+status: published
 tags: backup, restic, postgresql, docker, devops, homelab, kopia, borg, pitr
 title: "Sauvegardes : Pourquoi Copier le Volume d'une Base de Données Produit une Archive Corrompue"
 date: 2026-09-20

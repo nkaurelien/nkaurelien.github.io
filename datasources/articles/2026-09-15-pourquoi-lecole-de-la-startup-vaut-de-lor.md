@@ -1,5 +1,6 @@
 ---
 id: pourquoi-lecole-de-la-startup-vaut-de-lor
+status: published
 tags: startup, lead-tech, carrieres, architecture, devops, leadership, management
 title: "Pourquoi l'école de la Startup vaut de l'or par rapport aux grands groupes"
 date: 2026-09-15

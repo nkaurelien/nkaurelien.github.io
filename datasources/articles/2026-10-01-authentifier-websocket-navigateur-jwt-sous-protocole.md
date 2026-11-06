@@ -1,5 +1,6 @@
 ---
 id: authentifier-websocket-navigateur-jwt-sous-protocole
+status: published
 tags: websocket, securite, jwt, fastapi, keycloak, oidc, iot, devsecops, rate-limiting
 title: "Authentifier un WebSocket Navigateur : le JWT dans `Sec-WebSocket-Protocol`"
 date: 2026-10-01

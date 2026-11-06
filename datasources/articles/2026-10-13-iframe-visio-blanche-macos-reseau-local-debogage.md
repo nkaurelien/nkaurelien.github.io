@@ -1,5 +1,6 @@
 ---
 id: iframe-visio-blanche-macos-reseau-local-debogage
+status: published
 tags: debugging, webrtc, iframe, macos, playwright, jitsi, nextjs, reseau
 title: "Iframe de visio blanche : chercher le bug dans le code… alors qu'il était dans macOS"
 date: 2026-10-13

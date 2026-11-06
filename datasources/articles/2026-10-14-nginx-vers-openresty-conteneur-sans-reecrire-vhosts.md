@@ -1,5 +1,6 @@
 ---
 id: nginx-vers-openresty-conteneur-sans-reecrire-vhosts
+status: published
 tags: nginx, openresty, docker, systemd, crowdsec, reverse-proxy, devsecops, ubuntu
 title: "Passer de nginx à OpenResty en conteneur sans réécrire ses vhosts"
 date: 2026-10-14

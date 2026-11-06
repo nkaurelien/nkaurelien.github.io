@@ -1,5 +1,6 @@
 ---
 id: deploiement-openldap-docker-compose-secrets-traefik
+status: published
 tags: openldap, docker-compose, securite, docker-secrets, traefik, ppolicy, memberof, identity-management
 title: "Déploiement Sécurisé d'OpenLDAP avec Docker Compose : Secrets, Init Containers et Traefik"
 date: 2026-09-26

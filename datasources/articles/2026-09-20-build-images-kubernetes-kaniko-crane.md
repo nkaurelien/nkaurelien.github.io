@@ -1,5 +1,6 @@
 ---
 id: build-images-kubernetes-kaniko-crane
+status: published
 tags: kubernetes, kaniko, crane, docker, ci-cd, devops, security, rootless, containers
 title: "Builder et Promouvoir des Images dans Kubernetes sans Docker : Le Duo Gagnant Kaniko + Crane"
 date: 2026-09-20

@@ -4,6 +4,35 @@ Ce dossier contient l'ensemble des articles techniques publiés sur le blog.
 
 ---
 
+## 📋 Métadonnées Front Matter (`---`)
+
+Chaque fichier `YYYY-MM-DD-slug.md` accepte les attributs suivants dans son en-tête YAML :
+
+```yaml
+---
+id: hsts-csp-en-tetes-securite-nginx-nextjs   # Identifiant immuable pour les réactions Firestore (défaut: slug)
+status: published                              # published | unlisted | draft
+title: "Titre de l'article"
+date: 2026-10-17
+categories: [Sécurité, DevSecOps]
+tags: hsts, csp, securite
+excerpt: "Résumé court affiché dans la liste et les métadonnées OpenGraph."
+lang: fr
+---
+```
+
+### Statuts et visibilité (`status`, `listed`, `visible`)
+
+| Valeur de `status` | Affiché dans la liste (`/blog` & Jamila) | Accessible via l'URL (`/blog/[slug]`) | Indexation moteurs (`robots`) |
+| :--- | :---: | :---: | :---: |
+| **`published`** *(défaut)* | ✅ Oui (`listed: true`) | ✅ Oui (`visible: true`) | `index, follow` |
+| **`unlisted`** | ❌ Non (`listed: false`) | ✅ Oui (`visible: true`) | `noindex, nofollow` |
+| **`draft`** *(ou `private`, `hidden`, `archived`)* | ❌ Non (`listed: false`) | ❌ Non (`404 Not Found`) | — |
+
+> Vous pouvez également surcharger finement ces comportements avec les booléens explicites `listed: true|false` et `visible: true|false` dans le front matter.
+
+---
+
 ## 🎨 Règles d'Écriture des Schémas Mermaid
 
 Afin de garantir un rendu sans erreur et compatible avec Mermaid v12+ (`securityLevel: 'strict'`, `htmlLabels: true`), suivez scrupuleusement les règles ci-dessous lors de la rédaction de diagrammes ```mermaid``` dans vos articles `.md` :

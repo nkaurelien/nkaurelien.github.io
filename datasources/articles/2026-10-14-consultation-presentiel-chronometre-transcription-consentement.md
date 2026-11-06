@@ -1,5 +1,6 @@
 ---
 id: consultation-presentiel-chronometre-transcription-consentement
+status: published
 tags: telesante, nextjs, react, mediarecorder, transcription, rgpd, consentement, ux, jitsi
 title: "Compter les consultations en présentiel quand on n'a que le navigateur du médecin"
 date: 2026-10-14

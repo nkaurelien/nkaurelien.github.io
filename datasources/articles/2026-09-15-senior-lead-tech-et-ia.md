@@ -1,5 +1,6 @@
 ---
 id: senior-lead-tech-et-ia
+status: published
 tags: ia, devsecops, lead-tech, carrieres, architecture, clean-code, dev-ia
 title: "Senior Lead Tech & IA : Peut-on être un véritable spécialiste en codant avec l'IA ?"
 date: 2026-09-15

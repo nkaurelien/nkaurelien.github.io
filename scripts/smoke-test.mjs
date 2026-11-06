@@ -60,10 +60,20 @@ const assert = (cond, msg) => {
 const req = (url, opts = {}) => fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(TIMEOUT), ...opts });
 
 // Slug web d'un article = nom de fichier sans extension ni préfixe de date (cf. src/lib/localArticles.js).
+// Exclut les articles en brouillon (status: draft / private / archived / hidden ou visible: false).
 const articleSlugs = readdirSync(path.join(ROOT, 'datasources/articles'))
-  .map(f => f.match(/^\d{4}-\d{2}-\d{2}-(.+)\.md$/))
-  .filter(Boolean)
-  .map(m => m[1]);
+  .map(f => {
+    const m = f.match(/^\d{4}-\d{2}-\d{2}-(.+)\.md$/);
+    if (!m) return null;
+    const raw = readFileSync(path.join(ROOT, 'datasources/articles', f), 'utf8');
+    const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] || '';
+    const statusMatch = fm.match(/^status:\s*['"]?(\w+)['"]?/m);
+    const visibleMatch = fm.match(/^visible:\s*(true|false)/m);
+    const status = (statusMatch ? statusMatch[1] : 'published').toLowerCase();
+    const visible = visibleMatch ? visibleMatch[1] === 'true' : status === 'published' || status === 'unlisted';
+    return visible ? m[1] : null;
+  })
+  .filter(Boolean);
 
 // ---------------------------------------------------------------- Pages
 for (const p of ['/fr/', '/en/', '/fr/blog/', '/fr/chat/']) {

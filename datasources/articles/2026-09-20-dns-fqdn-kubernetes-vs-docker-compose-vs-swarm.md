@@ -1,5 +1,6 @@
 ---
 id: dns-fqdn-kubernetes-vs-docker-compose-vs-swarm
+status: published
 tags: kubernetes, docker, docker-compose, docker-swarm, dns, fqdn, coredns, networking, devops
 title: "Comprendre la Découverte de Services et le DNS : Kubernetes (FQDN & CoreDNS) vs Docker Compose vs Docker Swarm"
 date: 2026-09-20

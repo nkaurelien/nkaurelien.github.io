@@ -1,5 +1,6 @@
 ---
 id: jitsi-ou-livekit-produit-fini-ou-infrastructure-visio
+status: published
 tags: jitsi, livekit, webrtc, visio, telesante, self-hosted, architecture, souverainete
 title: "Jitsi ou LiveKit : produit fini ou infrastructure ? Choisir une visio auto-hébergée"
 date: 2026-10-13

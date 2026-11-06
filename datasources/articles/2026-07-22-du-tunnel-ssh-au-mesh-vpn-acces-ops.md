@@ -1,5 +1,6 @@
 ---
 id: du-tunnel-ssh-au-mesh-vpn-acces-ops
+status: published
 tags: devops, security, wireguard, self-hosted, ssh, vpn
 title: "Du tunnel SSH au mesh VPN : n'exposer aucun service interne, sans sacrifier l'accès ops"
 date: 2026-07-22

@@ -1,5 +1,6 @@
 ---
 id: spec-driven-development-sdd
+status: published
 tags: sdd, speckit, architecture, dev-ia, clean-code, devsecops, metodologie
 title: "Spec-Driven Development (SDD) : Pourquoi cadrer la spec avant de faire coder l'IA change tout"
 date: 2026-09-15

@@ -1,5 +1,6 @@
 ---
 id: a-propos-d-astrid-aurelien-nkumbe
+status: published
 title: "À propos d'Astrid-Aurélien NKUMBE : Profil complet, réalisations & vision"
 date: 2026-09-15
 categories: [Bio & Parcours, Tech Lead, DevSecOps, Architecture]
