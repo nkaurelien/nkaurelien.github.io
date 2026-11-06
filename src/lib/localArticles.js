@@ -18,19 +18,44 @@ const ARTICLES_DIR = path.join(process.cwd(), 'datasources', 'articles');
 const FILE_RE = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
 
 /**
+ * Enum des statuts possibles d'un article de blog.
+ * @readonly
+ * @enum {'published' | 'unlisted' | 'hidden' | 'draft' | 'archived'}
+ */
+export const ArticleStatus = Object.freeze({
+  /** Affiché dans la liste (/blog, Jamila, MCP) et accessible par URL (/blog/[slug]) */
+  PUBLISHED: 'published',
+  /** Masqué de la liste (/blog), mais accessible par URL directe (noindex) */
+  UNLISTED: 'unlisted',
+  /** Masqué de la liste ET inaccessible par URL (404) */
+  HIDDEN: 'hidden',
+  /** Brouillon : masqué de la liste ET inaccessible par URL (404) */
+  DRAFT: 'draft',
+  /** Archivé : masqué de la liste ET inaccessible par URL (404) */
+  ARCHIVED: 'archived',
+});
+
+/**
+ * @typedef {typeof ArticleStatus[keyof typeof ArticleStatus]} ArticleStatusValue
+ */
+export const ARTICLE_STATUS_VALUES = Object.freeze(Object.values(ArticleStatus));
+
+/**
  * Détermine la visibilité d'un article à partir de son attribut `status` :
- * - 'published' (défaut) -> affiché dans la liste (/blog) ET accessible par URL (/blog/[slug])
- * - 'unlisted'           -> masqué de la liste (/blog), MAIS accessible par URL directe
- * - 'hidden' | 'draft'   -> masqué de la liste ET inaccessible (404)
+ * - ArticleStatus.PUBLISHED (défaut) -> affiché dans la liste (/blog) ET accessible par URL (/blog/[slug])
+ * - ArticleStatus.UNLISTED           -> masqué de la liste (/blog), MAIS accessible par URL directe
+ * - ArticleStatus.HIDDEN | DRAFT | ARCHIVED -> masqué de la liste ET inaccessible (404)
+ * @param {Record<string, unknown>} [data]
+ * @returns {{ status: ArticleStatusValue, visible: boolean, listed: boolean }}
  */
 export function resolveArticleVisibility(data = {}) {
-  const rawStatus = String(data.status || 'published').trim().toLowerCase();
-  const status = ['published', 'unlisted', 'draft', 'private', 'archived', 'hidden'].includes(rawStatus)
-    ? rawStatus
-    : 'published';
+  const rawStatus = String(data.status || ArticleStatus.PUBLISHED).trim().toLowerCase();
+  const status = ARTICLE_STATUS_VALUES.includes(rawStatus)
+    ? /** @type {ArticleStatusValue} */ (rawStatus)
+    : ArticleStatus.PUBLISHED;
 
-  const visible = status === 'published' || status === 'unlisted';
-  const listed = status === 'published';
+  const visible = status === ArticleStatus.PUBLISHED || status === ArticleStatus.UNLISTED;
+  const listed = status === ArticleStatus.PUBLISHED;
 
   return { status, visible, listed };
 }

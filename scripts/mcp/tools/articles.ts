@@ -12,14 +12,29 @@ function formatDate(value: unknown): string | undefined {
   return iso.split('T')[0];
 }
 
-function resolveVisibility(data: Record<string, unknown> = {}): { status: string; visible: boolean; listed: boolean } {
-  const rawStatus = String(data.status || 'published').trim().toLowerCase();
-  const status = ['published', 'unlisted', 'draft', 'private', 'archived', 'hidden'].includes(rawStatus)
-    ? rawStatus
-    : 'published';
+export enum ArticleStatus {
+  PUBLISHED = 'published',
+  UNLISTED = 'unlisted',
+  HIDDEN = 'hidden',
+  DRAFT = 'draft',
+  ARCHIVED = 'archived',
+}
 
-  const visible = status === 'published' || status === 'unlisted';
-  const listed = status === 'published';
+export type ArticleStatusValue = `${ArticleStatus}`;
+export const ARTICLE_STATUS_VALUES = Object.values(ArticleStatus) as ArticleStatusValue[];
+
+function resolveVisibility(data: Record<string, unknown> = {}): {
+  status: ArticleStatusValue;
+  visible: boolean;
+  listed: boolean;
+} {
+  const rawStatus = String(data.status || ArticleStatus.PUBLISHED).trim().toLowerCase() as ArticleStatusValue;
+  const status: ArticleStatusValue = ARTICLE_STATUS_VALUES.includes(rawStatus)
+    ? rawStatus
+    : ArticleStatus.PUBLISHED;
+
+  const visible = status === ArticleStatus.PUBLISHED || status === ArticleStatus.UNLISTED;
+  const listed = status === ArticleStatus.PUBLISHED;
 
   return { status, visible, listed };
 }
@@ -27,6 +42,7 @@ function resolveVisibility(data: Record<string, unknown> = {}): { status: string
 export interface ArticleMetadata {
   file: string;
   slug: string;
+  status?: ArticleStatusValue;
   title: string;
   date?: string;
   tags?: string[];

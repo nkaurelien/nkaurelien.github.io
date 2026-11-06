@@ -14,6 +14,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { ArticleStatus } from '../src/lib/localArticles.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PROD = 'https://nkaurelien.kamitbrains.fr';
@@ -68,8 +69,8 @@ const articleSlugs = readdirSync(path.join(ROOT, 'datasources/articles'))
     const raw = readFileSync(path.join(ROOT, 'datasources/articles', f), 'utf8');
     const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] || '';
     const statusMatch = fm.match(/^status:\s*['"]?(\w+)['"]?/m);
-    const status = (statusMatch ? statusMatch[1] : 'published').toLowerCase();
-    const visible = status === 'published' || status === 'unlisted';
+    const status = (statusMatch ? statusMatch[1] : ArticleStatus.PUBLISHED).toLowerCase();
+    const visible = status === ArticleStatus.PUBLISHED || status === ArticleStatus.UNLISTED;
     return visible ? m[1] : null;
   })
   .filter(Boolean);
