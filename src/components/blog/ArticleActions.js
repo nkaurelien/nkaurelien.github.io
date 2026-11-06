@@ -155,13 +155,25 @@ export default function ArticleActions({
     }
   };
 
-  // Action Repost (One-shot)
+  // Action Repost (Option 3 : Copie de citation prête à coller + One-shot Firebase)
   const handleRepost = async () => {
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const quote = `« ${title} » par ${author}\n🔗 ${currentUrl}`;
+
+    if (typeof window !== 'undefined' && navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(quote);
+      } catch {
+        // Ignorer si presse-papier inaccessible
+      }
+    }
+
+    setRepostFeedback(true);
+    setTimeout(() => setRepostFeedback(false), 2800);
+
     if (!isReposted) {
       setIsReposted(true);
       setStats(prev => ({ ...prev, reposts: prev.reposts + 1 }));
-      setRepostFeedback(true);
-      setTimeout(() => setRepostFeedback(false), 2500);
 
       try {
         localStorage.setItem(`blog_reposted_${articleKey}`, '1');
@@ -178,9 +190,6 @@ export default function ArticleActions({
       } catch (err) {
         console.warn('[ArticleActions] Erreur repost:', err?.message);
       }
-    } else {
-      setRepostFeedback(true);
-      setTimeout(() => setRepostFeedback(false), 2000);
     }
   };
 
@@ -341,9 +350,9 @@ export default function ArticleActions({
             </ActionIcon>
           </Tooltip>
 
-          {/* Bouton Repost */}
+          {/* Bouton Repost (Option 3 : Citation prête à coller) */}
           <Tooltip
-            label={repostFeedback ? 'Article repartagé !' : 'Repartager'}
+            label={repostFeedback ? 'Citation copiée ! Prête à coller' : 'Repartager (copier la citation)'}
             opened={repostFeedback || undefined}
             withArrow
             position="top">
@@ -353,7 +362,7 @@ export default function ArticleActions({
               size={38}
               onClick={handleRepost}
               data-testid="article-repost-button"
-              aria-label="Repartager l'article"
+              aria-label="Copier la citation pour repartager l'article"
               style={{
                 color: isReposted ? 'var(--mantine-color-kamit-filled)' : undefined,
                 borderColor: isReposted ? 'var(--mantine-color-kamit-filled)' : undefined,
