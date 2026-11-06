@@ -116,6 +116,11 @@ export const CV_OPTIONS = [
   },
 ];
 
+// Retire l'en-tête YAML (front matter --- ... ---) avant l'affichage et la copie Markdown
+function stripFrontMatter(markdown = '') {
+  return String(markdown).replace(/^\uFEFF?---\r?\n[\s\S]*?\r?\n---\r?\n*/, '');
+}
+
 export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onSelectCvId }) {
   const selectedCv = CV_OPTIONS.find(c => c.id === activeCvId) || CV_OPTIONS[0];
   const [content, setContent] = useState('');
@@ -154,7 +159,7 @@ export default function CvPreviewModal({ opened, onClose, activeCvId = 'cv', onS
         return res.text();
       })
       .then(text => {
-        setContent(text);
+        setContent(stripFrontMatter(text));
         setLoading(false);
       })
       .catch(err => {
