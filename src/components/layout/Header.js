@@ -328,12 +328,7 @@ export default function Header({ locale, app }) {
                   leftSection={<IconArrowUpRight size={14} />}>
                   Dossier de Compétences ESN (5P)
                 </Menu.Item>
-                <Menu.Item
-                  component="a"
-                  href="/about.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  leftSection={<IconArrowUpRight size={14} />}>
+                <Menu.Item component="a" href="/about.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
                   En bref — Profil & Vision (2P)
                 </Menu.Item>
                 <Menu.Item

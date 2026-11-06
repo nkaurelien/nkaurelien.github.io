@@ -1,15 +1,15 @@
 {
-    "title": "Me contacter",
-    "availability": {
-        "title": "Disponibilité",
-        "items": [
-            "Mobilité : Toute la France (grandes métropoles)",
-            "Missions longue durée",
-            "Ouvert aux ESN — rejoindre ensuite le client final est un plus",
-            "Projets challengeants"
-        ]
-    },
-    "whatsapp_label": "Discuter sur WhatsApp",
-    "phone_label": "Téléphone",
-    "location": "Paris · Cergy, Île-de-France (Résidence) | Strasbourg · Nantes · Marseille (Réseau de contact)"
+  "title": "Me contacter",
+  "availability": {
+    "title": "Disponibilité",
+    "items": [
+      "Mobilité : Toute la France (grandes métropoles)",
+      "Missions longue durée",
+      "Ouvert aux ESN — rejoindre ensuite le client final est un plus",
+      "Projets challengeants"
+    ]
+  },
+  "whatsapp_label": "Discuter sur WhatsApp",
+  "phone_label": "Téléphone",
+  "location": "Paris · Cergy, Île-de-France (Résidence) | Strasbourg · Nantes · Marseille (Réseau de contact)"
 }

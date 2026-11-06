@@ -1,15 +1,15 @@
 {
-    "title": "Contact me",
-    "availability": {
-        "title": "Availability",
-        "items": [
-            "Mobility: Anywhere in France (major metropolitan areas)",
-            "Long-term missions",
-            "Open to consulting firms (ESN) — later joining the end client is a plus",
-            "Challenging projects"
-        ]
-    },
-    "whatsapp_label": "Chat on WhatsApp",
-    "phone_label": "Phone",
-    "location": "Paris · Cergy, Île-de-France (Residence) | Strasbourg · Nantes · Marseille (Contact networks)"
+  "title": "Contact me",
+  "availability": {
+    "title": "Availability",
+    "items": [
+      "Mobility: Anywhere in France (major metropolitan areas)",
+      "Long-term missions",
+      "Open to consulting firms (ESN) — later joining the end client is a plus",
+      "Challenging projects"
+    ]
+  },
+  "whatsapp_label": "Chat on WhatsApp",
+  "phone_label": "Phone",
+  "location": "Paris · Cergy, Île-de-France (Residence) | Strasbourg · Nantes · Marseille (Contact networks)"
 }

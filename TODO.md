@@ -1,6 +1,6 @@
 ---
-title: "TODO — Intégration Firebase & Espace Admin"
-description: "Liste des tâches à réaliser pour l’espace administration et Firebase"
+title: 'TODO — Intégration Firebase & Espace Admin'
+description: 'Liste des tâches à réaliser pour l’espace administration et Firebase'
 tags: todo, firebase, admin, tasks
 lang: fr
 ---
@@ -34,18 +34,22 @@ Ce fichier récapitule les tâches accomplies concernant l'intégration de Fireb
 Voici les options d'extensions pour l'espace d'administration :
 
 ### 📂 Option A : Gestion des Projets en Base de Données (Firestore)
+
 - [ ] Configurer Firebase Firestore pour stocker la liste des projets.
 - [ ] Connecter le formulaire de création de projets dans `/admin` pour enregistrer les données en temps réel.
 - [ ] Mettre à jour la grille de projets publique pour récupérer les données de Firestore.
 
 ### ✉️ Option B : Centre de Messages (Formulaire de Contact)
+
 - [ ] Connecter le formulaire de contact public à Firebase Firestore.
 - [ ] Créer un onglet "Messages" dans l'espace `/admin` permettant de lister, lire, marquer comme lu et supprimer les messages des visiteurs.
 
 ### ✍️ Option C : Éditeur de Profil Dynamique
+
 - [ ] Développer un formulaire dans `/admin` pour éditer vos données de profil (bio, liens sociaux, photo).
 - [ ] Charger les infos dynamiquement sur le portfolio à la place des fichiers JSON statiques.
 
 ### 📊 Option D : Statistiques Avancées & Téléchargements
+
 - [ ] Connecter les événements (ex: téléchargement de CV, clic sur projet) avec Firebase Analytics.
 - [ ] Afficher des graphiques de statistiques simplifiés dans l'onglet "Vue d'ensemble" de l'admin.

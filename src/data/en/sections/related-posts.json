@@ -1,8 +1,8 @@
 {
-    "title": "Similar Publications:",
-    "numOfItems": 2,
-    "button": {
-        "label": "View all",
-        "link": "/blog"
-    }
+  "title": "Similar Publications:",
+  "numOfItems": 2,
+  "button": {
+    "label": "View all",
+    "link": "/blog"
+  }
 }

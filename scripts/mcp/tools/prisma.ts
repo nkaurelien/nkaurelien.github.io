@@ -101,7 +101,7 @@ export function getSchemaSummary(): SchemaSummary {
         let fieldType = parts[1];
         const isOptional = fieldType.endsWith('?');
         const isArray = fieldType.endsWith('[]');
-        fieldType = fieldType.replace(/[?\[\]]/g, '');
+        fieldType = fieldType.replace(/[?[\]]/g, '');
 
         const attributes = parts.slice(2);
         currentModel.fields.push({

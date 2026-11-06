@@ -1,48 +1,48 @@
 {
-    "title": "Areas of Expertise",
-    "subtitle": "My scope of impact and technical competencies as a Senior Engineer & Tech Lead — from software architecture to production deployment.",
-    "items": [
-        {
-            "icon": "code",
-            "title": "Tech Lead & Fullstack Development",
-            "text": "Design, architecture, and development of high-performance web & mobile apps: Next.js 15, React, Angular, FastAPI, Laravel, Flutter, REST API & OAuth2.",
-            "active": true
-        },
-        {
-            "icon": "devops",
-            "title": "DevSecOps & Cloud",
-            "text": "Industrialization & cloud deployment: GitLab CI/CD, Docker, Ansible, Terraform, Kubernetes, observability (Grafana, Loki, ELK) and application security (Snyk, SAST).",
-            "active": true
-        },
-        {
-            "icon": "ai",
-            "title": "AI & RAG Applications",
-            "text": "Development of AI-augmented assistants and chatbots: LangChain, LiteLLM, OpenAI, Ollama / Qwen, vector databases (Qdrant, pgvector) & RAG pipelines.",
-            "active": true
-        },
-        {
-            "icon": "aidev",
-            "title": "AI-Augmented & Agentic Development",
-            "text": "Accelerating the SDLC lifecycle via agentic dev (Claude 3.7 / Claude Code, Antigravity) and Spec-Driven Development (GitHub SpecKit): from spec to production.",
-            "active": true
-        },
-        {
-            "icon": "iot",
-            "title": "IoT & Real-Time Pipelines",
-            "text": "Real-time streaming data pipelines (Redpanda / Apache Kafka), connected sensor integration (EmotiBit, Withings) and healthcare standards (FHIR / HL7, HDS).",
-            "active": true
-        },
-        {
-            "icon": "architecture",
-            "title": "Architecture, Audit & Tech Lead",
-            "text": "Architecture modeling (UML, Merise), performance & security audits, tech stack selection, Tech Lead role and deep code reviews.",
-            "active": true
-        },
-        {
-            "icon": "training",
-            "title": "Training & Technical Documentation",
-            "text": "Upskilling teams (Web, DevSecOps, AI), technical documentation (MkDocs), API specifications (OpenAPI / Swagger, Postman), and architecture guidebooks.",
-            "active": true
-        }
-    ]
+  "title": "Areas of Expertise",
+  "subtitle": "My scope of impact and technical competencies as a Senior Engineer & Tech Lead — from software architecture to production deployment.",
+  "items": [
+    {
+      "icon": "code",
+      "title": "Tech Lead & Fullstack Development",
+      "text": "Design, architecture, and development of high-performance web & mobile apps: Next.js 15, React, Angular, FastAPI, Laravel, Flutter, REST API & OAuth2.",
+      "active": true
+    },
+    {
+      "icon": "devops",
+      "title": "DevSecOps & Cloud",
+      "text": "Industrialization & cloud deployment: GitLab CI/CD, Docker, Ansible, Terraform, Kubernetes, observability (Grafana, Loki, ELK) and application security (Snyk, SAST).",
+      "active": true
+    },
+    {
+      "icon": "ai",
+      "title": "AI & RAG Applications",
+      "text": "Development of AI-augmented assistants and chatbots: LangChain, LiteLLM, OpenAI, Ollama / Qwen, vector databases (Qdrant, pgvector) & RAG pipelines.",
+      "active": true
+    },
+    {
+      "icon": "aidev",
+      "title": "AI-Augmented & Agentic Development",
+      "text": "Accelerating the SDLC lifecycle via agentic dev (Claude 3.7 / Claude Code, Antigravity) and Spec-Driven Development (GitHub SpecKit): from spec to production.",
+      "active": true
+    },
+    {
+      "icon": "iot",
+      "title": "IoT & Real-Time Pipelines",
+      "text": "Real-time streaming data pipelines (Redpanda / Apache Kafka), connected sensor integration (EmotiBit, Withings) and healthcare standards (FHIR / HL7, HDS).",
+      "active": true
+    },
+    {
+      "icon": "architecture",
+      "title": "Architecture, Audit & Tech Lead",
+      "text": "Architecture modeling (UML, Merise), performance & security audits, tech stack selection, Tech Lead role and deep code reviews.",
+      "active": true
+    },
+    {
+      "icon": "training",
+      "title": "Training & Technical Documentation",
+      "text": "Upskilling teams (Web, DevSecOps, AI), technical documentation (MkDocs), API specifications (OpenAPI / Swagger, Postman), and architecture guidebooks.",
+      "active": true
+    }
+  ]
 }

@@ -9,62 +9,27 @@
   "groups": [
     {
       "title": "Leadership",
-      "items": [
-        "Tech Lead",
-        "Architecture",
-        "Team growth",
-        "Code review",
-        "Project management"
-      ]
+      "items": ["Tech Lead", "Architecture", "Team growth", "Code review", "Project management"]
     },
     {
       "title": "DevSecOps & Cloud",
-      "items": [
-        "Kubernetes",
-        "Docker",
-        "GitLab CI",
-        "Terraform",
-        "Ansible",
-        "Argo CD"
-      ]
+      "items": ["Kubernetes", "Docker", "GitLab CI", "Terraform", "Ansible", "Argo CD"]
     },
     {
       "title": "AI & Data",
-      "items": [
-        "Claude",
-        "RAG",
-        "pgvector",
-        "LangChain",
-        "Genkit",
-        "SpecKit"
-      ]
+      "items": ["Claude", "RAG", "pgvector", "LangChain", "Genkit", "SpecKit"]
     },
     {
       "title": "Languages",
-      "items": [
-        "TypeScript",
-        "Python",
-        "PHP",
-        "Dart"
-      ]
+      "items": ["TypeScript", "Python", "PHP", "Dart"]
     },
     {
       "title": "Frontend",
-      "items": [
-        "Next.js",
-        "React",
-        "Angular",
-        "Flutter"
-      ]
+      "items": ["Next.js", "React", "Angular", "Flutter"]
     },
     {
       "title": "Health & Compliance",
-      "items": [
-        "FHIR / HL7",
-        "HDS",
-        "GDPR",
-        "OAuth2"
-      ]
+      "items": ["FHIR / HL7", "HDS", "GDPR", "OAuth2"]
     }
   ]
 }

@@ -49,10 +49,10 @@ export const ARTICLE_STATUS_VALUES = Object.freeze(Object.values(ArticleStatus))
  * @returns {{ status: ArticleStatusValue, visible: boolean, listed: boolean }}
  */
 export function resolveArticleVisibility(data = {}) {
-  const rawStatus = String(data.status || ArticleStatus.PUBLISHED).trim().toLowerCase();
-  const status = ARTICLE_STATUS_VALUES.includes(rawStatus)
-    ? /** @type {ArticleStatusValue} */ (rawStatus)
-    : ArticleStatus.PUBLISHED;
+  const rawStatus = String(data.status || ArticleStatus.PUBLISHED)
+    .trim()
+    .toLowerCase();
+  const status = ARTICLE_STATUS_VALUES.includes(rawStatus) ? /** @type {ArticleStatusValue} */ (rawStatus) : ArticleStatus.PUBLISHED;
 
   const visible = status === ArticleStatus.PUBLISHED || status === ArticleStatus.UNLISTED;
   const listed = status === ArticleStatus.PUBLISHED;

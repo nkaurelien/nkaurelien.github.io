@@ -61,7 +61,10 @@ try {
       fs.copyFileSync(path.join(latexCurve, 'cv-llt.pdf'), path.join(publicDir, 'cv-curve.pdf'));
     }
     if (fs.existsSync(path.join(latexCurve, 'cv-curve.tex'))) {
-      execSync('pdflatex -interaction=nonstopmode cv-curve.tex && pdflatex -interaction=nonstopmode cv-curve.tex', { cwd: latexCurve, stdio: 'ignore' });
+      execSync('pdflatex -interaction=nonstopmode cv-curve.tex && pdflatex -interaction=nonstopmode cv-curve.tex', {
+        cwd: latexCurve,
+        stdio: 'ignore',
+      });
       fs.copyFileSync(path.join(latexCurve, 'cv-curve.pdf'), path.join(publicDir, 'cv-curve-data2innov.pdf'));
     }
     const latexVidushi = path.join(rootDir, 'latex', 'vidushi-wahal-cv');
@@ -81,7 +84,10 @@ try {
     }
     const latexDossier = path.join(rootDir, 'latex', 'dossier-de-competences');
     if (fs.existsSync(path.join(latexDossier, 'dossier.tex'))) {
-      execSync('pdflatex -interaction=nonstopmode dossier.tex && pdflatex -interaction=nonstopmode dossier.tex', { cwd: latexDossier, stdio: 'ignore' });
+      execSync('pdflatex -interaction=nonstopmode dossier.tex && pdflatex -interaction=nonstopmode dossier.tex', {
+        cwd: latexDossier,
+        stdio: 'ignore',
+      });
       fs.copyFileSync(path.join(latexDossier, 'dossier.pdf'), path.join(publicDir, 'dossier-de-competences.pdf'));
     }
     const latexDevops = path.join(rootDir, 'latex', 'cv-devops');

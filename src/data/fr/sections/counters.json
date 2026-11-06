@@ -1,22 +1,22 @@
 {
-    "items": [
-        {
-            "label": "Années d'expérience",
-            "value": "7",
-            "valueAfter": "+",
-            "active": true
-        },
-        {
-            "label": "Projets réalisés",
-            "value": "20",
-            "valueAfter": "+",
-            "active": true
-        },
-        {
-            "label": "Répertoires GIT",
-            "value": "30",
-            "valueAfter": "+",
-            "active": true
-        }
-    ]
+  "items": [
+    {
+      "label": "Années d'expérience",
+      "value": "7",
+      "valueAfter": "+",
+      "active": true
+    },
+    {
+      "label": "Projets réalisés",
+      "value": "20",
+      "valueAfter": "+",
+      "active": true
+    },
+    {
+      "label": "Répertoires GIT",
+      "value": "30",
+      "valueAfter": "+",
+      "active": true
+    }
+  ]
 }

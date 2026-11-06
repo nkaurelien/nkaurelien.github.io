@@ -1,44 +1,44 @@
 {
-    "title": "My dev environment & rituals",
-    "subtitle": "How I work day to day",
-    "groups": [
-        {
-            "title": "Local environment",
-            "items": [
-                "macOS, Ubuntu & Linux",
-                "zsh / fish terminal",
-                "VS Code & Antigravity IDE / agy CLI",
-                "justfile (Modern command runner)",
-                "mise-en-place (tool version manager)",
-                "Docker, Compose & Swarm",
-                "Ansible (provisioning & automation)",
-                "Makefile & Bash/Python scripts"
-            ],
-            "active": true
-        },
-        {
-            "title": "Everyday tools",
-            "items": [
-                "Git / GitLab / GitHub Actions",
-                "Postman / Insomnia & REST Client",
-                "MkDocs & TypeSpec (API docs)",
-                "Claude Code & Antigravity (agentic dev)",
-                "GitHub SpecKit (Spec-Driven Dev)",
-                "Snyk & SigNoz / ELK (DevSecOps & Observability)"
-            ],
-            "active": true
-        },
-        {
-            "title": "Rituals & quality",
-            "items": [
-                "Clean Code & SOLID Architecture",
-                "Linting & Formatting (ESLint, Prettier, Ruff)",
-                "Pre-commit hooks & Husky",
-                "Conventional Commits & Semantic Versioning",
-                "GitFlow & Systematic code reviews",
-                "Team retrospectives & Agile mentoring"
-            ],
-            "active": true
-        }
-    ]
+  "title": "My dev environment & rituals",
+  "subtitle": "How I work day to day",
+  "groups": [
+    {
+      "title": "Local environment",
+      "items": [
+        "macOS, Ubuntu & Linux",
+        "zsh / fish terminal",
+        "VS Code & Antigravity IDE / agy CLI",
+        "justfile (Modern command runner)",
+        "mise-en-place (tool version manager)",
+        "Docker, Compose & Swarm",
+        "Ansible (provisioning & automation)",
+        "Makefile & Bash/Python scripts"
+      ],
+      "active": true
+    },
+    {
+      "title": "Everyday tools",
+      "items": [
+        "Git / GitLab / GitHub Actions",
+        "Postman / Insomnia & REST Client",
+        "MkDocs & TypeSpec (API docs)",
+        "Claude Code & Antigravity (agentic dev)",
+        "GitHub SpecKit (Spec-Driven Dev)",
+        "Snyk & SigNoz / ELK (DevSecOps & Observability)"
+      ],
+      "active": true
+    },
+    {
+      "title": "Rituals & quality",
+      "items": [
+        "Clean Code & SOLID Architecture",
+        "Linting & Formatting (ESLint, Prettier, Ruff)",
+        "Pre-commit hooks & Husky",
+        "Conventional Commits & Semantic Versioning",
+        "GitFlow & Systematic code reviews",
+        "Team retrospectives & Agile mentoring"
+      ],
+      "active": true
+    }
+  ]
 }

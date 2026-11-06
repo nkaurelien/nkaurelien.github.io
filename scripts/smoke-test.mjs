@@ -171,7 +171,7 @@ await check('Umami POST /stats/api/send', async () => {
   });
   assert(!r.url.includes('/fr/stats/'), `redirigé vers ${r.url} (middleware de langue)`);
   assert(r.status === 400, `HTTP ${r.status} (attendu 400 d'Umami pour un site factice)`);
-  return 'script 200, envoi relayé jusqu\'à Umami (400 attendu pour un site factice)';
+  return "script 200, envoi relayé jusqu'à Umami (400 attendu pour un site factice)";
 });
 
 // ------------------------------------------------ Jamila (optionnel, LLM)

@@ -19,11 +19,7 @@ if (!connectionString) {
 // Clean transaction pooler parameters if present
 if (connectionString.includes('pgbouncer=true') || connectionString.includes(':6543/')) {
   console.log('Detected transaction pooler connection. Switching to direct session port...');
-  connectionString = connectionString
-    .replace(':6543/', ':5432/')
-    .replace('pgbouncer=true', '')
-    .replace('&&', '&')
-    .replace('?&', '?');
+  connectionString = connectionString.replace(':6543/', ':5432/').replace('pgbouncer=true', '').replace('&&', '&').replace('?&', '?');
 }
 
 // Initialize LangChain Hugging Face Embeddings provider
@@ -84,7 +80,7 @@ function getFilesRecursively(dir, fileList = []) {
 
 async function run() {
   const dbClient = new Client({ connectionString });
-  
+
   // Initialize LangChain Text Splitter
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 600,
@@ -196,13 +192,16 @@ ${proj.markdowns.en || ''}`;
       console.log(`Embedding project (${reason}).`);
 
       // Insert or Update the ContentEntry
-      const entryRes = await dbClient.query(`
+      const entryRes = await dbClient.query(
+        `
         INSERT INTO public.content_entries (slug, raw_markdown, section_id)
         VALUES ($1, $2, $3)
         ON CONFLICT (slug) 
         DO UPDATE SET raw_markdown = EXCLUDED.raw_markdown, section_id = EXCLUDED.section_id
         RETURNING id
-      `, [proj.slug, combinedMarkdown, sectionId]);
+      `,
+        [proj.slug, combinedMarkdown, sectionId]
+      );
 
       const entryId = entryRes.rows[0].id;
       console.log(`ContentEntry ID: ${entryId}`);
@@ -250,20 +249,26 @@ ${proj.markdowns.en || ''}`;
         console.log(`Associating ${proj.tags.length} tags...`);
         for (const tagName of proj.tags) {
           // Insert Tag
-          const tagRes = await dbClient.query(`
+          const tagRes = await dbClient.query(
+            `
             INSERT INTO public.tags (name)
             VALUES ($1)
             ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
             RETURNING id
-          `, [tagName]);
+          `,
+            [tagName]
+          );
           const tagId = tagRes.rows[0].id;
 
           // Insert ContentTag relation
-          await dbClient.query(`
+          await dbClient.query(
+            `
             INSERT INTO public.content_tags (content_entry_id, tag_id)
             VALUES ($1, $2)
             ON CONFLICT DO NOTHING
-          `, [entryId, tagId]);
+          `,
+            [entryId, tagId]
+          );
         }
       }
     }
@@ -272,15 +277,18 @@ ${proj.markdowns.en || ''}`;
     // Seed Additional Profile Documents (story.md and llms.txt)
     // ----------------------------------------------------
     console.log('\n--- Processing Profile Documents ---');
-    
+
     // Check or create the content section for profile (ABOUT category)
     let profileSectionId;
-    const profileSecRes = await dbClient.query(`
+    const profileSecRes = await dbClient.query(
+      `
       INSERT INTO public.content_sections (title, category, description)
       VALUES ($1, $2, $3)
       ON CONFLICT DO NOTHING
       RETURNING id
-    `, ['Profil et Histoire', 'ABOUT', 'Profil, histoire et informations d\'Aurélien NKUMBE']);
+    `,
+      ['Profil et Histoire', 'ABOUT', "Profil, histoire et informations d'Aurélien NKUMBE"]
+    );
 
     if (profileSecRes.rows.length > 0) {
       profileSectionId = profileSecRes.rows[0].id;
@@ -299,9 +307,7 @@ ${proj.markdowns.en || ''}`;
     // la lettre de motivation dupliqueraient le profil avec un ton « candidature ».
     // Pour élargir, ajouter les fichiers ici puis lancer `make db-seed`.
     const RAG_DOCUMENTS = ['about-me.md', 'story.md'];
-    const docFiles = getFilesRecursively(datasourcesDir).filter(f =>
-      RAG_DOCUMENTS.includes(path.relative(datasourcesDir, f))
-    );
+    const docFiles = getFilesRecursively(datasourcesDir).filter(f => RAG_DOCUMENTS.includes(path.relative(datasourcesDir, f)));
     const missing = RAG_DOCUMENTS.filter(d => !docFiles.some(f => path.relative(datasourcesDir, f) === d));
     if (missing.length) console.warn(`Documents introuvables dans datasources/ : ${missing.join(', ')}`);
 
@@ -309,8 +315,8 @@ ${proj.markdowns.en || ''}`;
       const relativePath = path.relative(datasourcesDir, filePath);
       // Generate slug based on relative path
       const slug = relativePath
-        .replace(/\.[^/.]+$/, "") // strip extension
-        .replace(/[^a-zA-Z0-9-_]/g, "-") // sanitize characters
+        .replace(/\.[^/.]+$/, '') // strip extension
+        .replace(/[^a-zA-Z0-9-_]/g, '-') // sanitize characters
         .toLowerCase();
 
       const rawContent = fs.readFileSync(filePath, 'utf-8');
@@ -333,13 +339,16 @@ ${proj.markdowns.en || ''}`;
       console.log(`Embedding document (${docReason}).`);
 
       // Insert or Update ContentEntry
-      const docEntryRes = await dbClient.query(`
+      const docEntryRes = await dbClient.query(
+        `
         INSERT INTO public.content_entries (slug, raw_markdown, section_id)
         VALUES ($1, $2, $3)
         ON CONFLICT (slug)
         DO UPDATE SET raw_markdown = EXCLUDED.raw_markdown, section_id = EXCLUDED.section_id
         RETURNING id
-      `, [slug, rawContent, profileSectionId]);
+      `,
+        [slug, rawContent, profileSectionId]
+      );
 
       const docEntryId = docEntryRes.rows[0].id;
       console.log(`ContentEntry ID: ${docEntryId}`);
@@ -367,7 +376,6 @@ ${proj.markdowns.en || ''}`;
     }
 
     console.log('\nAll projects, documents, and embeddings have been successfully seeded to PostgreSQL!');
-
   } catch (error) {
     console.error('Seeding process encountered an error:', error);
   } finally {

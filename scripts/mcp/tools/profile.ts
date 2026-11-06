@@ -55,13 +55,13 @@ export function searchProfileAndExperience(query: string): {
   const profile = getProfileContext();
   const q = query.toLowerCase();
 
-  const matchedSkills = profile.skills.filter((s) => {
+  const matchedSkills = profile.skills.filter(s => {
     const name = String(s.name || '').toLowerCase();
     const keywords = Array.isArray(s.keywords) ? s.keywords.join(' ').toLowerCase() : '';
     return name.includes(q) || keywords.includes(q);
   });
 
-  const matchedWork = profile.work.filter((w) => {
+  const matchedWork = profile.work.filter(w => {
     const name = String(w.name || '').toLowerCase();
     const position = String(w.position || '').toLowerCase();
     const summary = String(w.summary || '').toLowerCase();

@@ -43,11 +43,7 @@ export async function GET(req) {
     // Lecture des commentaires en one-shot (ordonnés du plus récent au plus ancien)
     let comments = [];
     try {
-      const commentsSnap = await docRef
-        .collection('comments')
-        .orderBy('createdAt', 'desc')
-        .limit(50)
-        .get();
+      const commentsSnap = await docRef.collection('comments').orderBy('createdAt', 'desc').limit(50).get();
 
       comments = commentsSnap.docs.map(d => ({
         id: d.id,
@@ -104,9 +100,9 @@ export async function POST(req) {
         { merge: true }
       );
     } else if (action === 'unlike') {
-      await adminDb.runTransaction(async (transaction) => {
+      await adminDb.runTransaction(async transaction => {
         const doc = await transaction.get(docRef);
-        const currentLikes = doc.exists ? (Number(doc.data().likes) || 0) : 0;
+        const currentLikes = doc.exists ? Number(doc.data().likes) || 0 : 0;
         transaction.set(
           docRef,
           {

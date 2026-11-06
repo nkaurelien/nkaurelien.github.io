@@ -32,9 +32,7 @@ const api = async (method, url, body, key = stackEnv.VECTOR_API_KEY) => {
 };
 
 const embed = async texts =>
-  (await api('POST', `${LITELLM}/v1/embeddings`, { model: MODEL, input: texts }, stackEnv.LITELLM_MASTER_KEY)).data.map(
-    d => d.embedding
-  );
+  (await api('POST', `${LITELLM}/v1/embeddings`, { model: MODEL, input: texts }, stackEnv.LITELLM_MASTER_KEY)).data.map(d => d.embedding);
 
 // 1. Extraits source (base du RAG, via l'URL poolée de l'app)
 const db = new pg.Client({ connectionString: appEnv.DATABASE_URL });

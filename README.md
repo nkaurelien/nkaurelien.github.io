@@ -1,6 +1,6 @@
 ---
-title: "nkaurelien.github.io — Portfolio & Site Personnel"
-description: "Site personnel et portfolio d’Aurélien NKUMBE - Développeur Ops Fullstack et Tech Lead"
+title: 'nkaurelien.github.io — Portfolio & Site Personnel'
+description: 'Site personnel et portfolio d’Aurélien NKUMBE - Développeur Ops Fullstack et Tech Lead'
 tags: readme, documentation, nextjs, portfolio
 lang: fr
 ---

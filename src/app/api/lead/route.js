@@ -17,14 +17,7 @@ const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
 export async function POST(req) {
   try {
-    const {
-      email = '',
-      name = '',
-      company = '',
-      cvId = 'cv',
-      cvTitle = '',
-      source = 'cv-download',
-    } = await req.json();
+    const { email = '', name = '', company = '', cvId = 'cv', cvTitle = '', source = 'cv-download' } = await req.json();
 
     const cleanEmail = clip(email, 200);
     const cleanName = clip(name, 120);

@@ -2,15 +2,8 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 
-import {
-  listArticles,
-  readArticle,
-  searchArticles,
-} from './tools/articles';
-import {
-  getProfileContext,
-  searchProfileAndExperience,
-} from './tools/profile';
+import { listArticles, readArticle, searchArticles } from './tools/articles';
+import { getProfileContext, searchProfileAndExperience } from './tools/profile';
 import { sendContactMessage } from './tools/notify';
 
 export const SERVER_INFO = {
@@ -42,14 +35,14 @@ export function createPortfolioMcpServer(): McpServer {
   // ==========================================
   server.tool(
     'get_profile_overview',
-    'Récupère la biographie, compétences, parcours professionnel, réseaux sociaux et résumé d\'Aurélien Nkumbe',
+    "Récupère la biographie, compétences, parcours professionnel, réseaux sociaux et résumé d'Aurélien Nkumbe",
     {},
     async () => run('get_profile_overview', () => getProfileContext())
   );
 
   server.tool(
     'search_experience',
-    'Recherche des informations spécifiques sur les compétences, technologies et missions passées d\'Aurélien',
+    "Recherche des informations spécifiques sur les compétences, technologies et missions passées d'Aurélien",
     {
       query: z.string().describe('Technologie, rôle ou entreprise recherchée (ex: "Kubernetes", "FHIR", "React", "DATA2INNOV")'),
     },
@@ -61,19 +54,19 @@ export function createPortfolioMcpServer(): McpServer {
   // ==========================================
   server.tool(
     'list_articles',
-    'Liste les articles et publications techniques d\'Aurélien avec titre, date, tags et résumés',
+    "Liste les articles et publications techniques d'Aurélien avec titre, date, tags et résumés",
     {
       tag: z.string().optional().describe('Filtrer par tag (ex: "devops", "security", "rag", "docker")'),
-      limit: z.number().int().positive().optional().describe('Nombre maximum d\'articles à lister'),
+      limit: z.number().int().positive().optional().describe("Nombre maximum d'articles à lister"),
     },
     async ({ tag, limit }) => run('list_articles', () => listArticles(tag, limit))
   );
 
   server.tool(
     'read_article',
-    'Lit l\'intégralité d\'un article technique du blog selon son slug',
+    "Lit l'intégralité d'un article technique du blog selon son slug",
     {
-      slug: z.string().min(1).describe('Slug ou titre du fichier markdown de l\'article'),
+      slug: z.string().min(1).describe("Slug ou titre du fichier markdown de l'article"),
     },
     async ({ slug }) => run('read_article', () => readArticle(slug))
   );
@@ -94,12 +87,12 @@ export function createPortfolioMcpServer(): McpServer {
     'send_contact_message',
     'Transmet un message de contact à Aurélien Nkumbe via notification push instantanée (Ntfy)',
     {
-      senderName: z.string().min(1).describe('Nom complet de l\'expéditeur'),
-      senderEmail: z.string().email().describe('Adresse e-mail pour recontacter l\'expéditeur'),
+      senderName: z.string().min(1).describe("Nom complet de l'expéditeur"),
+      senderEmail: z.string().email().describe("Adresse e-mail pour recontacter l'expéditeur"),
       subject: z.string().optional().describe('Objet du message'),
       message: z.string().min(1).describe('Message ou proposition de collaboration à transmettre'),
     },
-    async (params) => run('send_contact_message', async () => (await sendContactMessage(params)).message)
+    async params => run('send_contact_message', async () => (await sendContactMessage(params)).message)
   );
 
   return server;

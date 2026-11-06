@@ -2,15 +2,7 @@
 
 import { useState } from 'react';
 import { Menu, Button, Text, Badge, Group, Box, Tooltip, ActionIcon } from '@mantine/core';
-import {
-  IconDownload,
-  IconFileText,
-  IconBriefcase,
-  IconCodeAsterisk,
-  IconChevronUp,
-  IconArrowUpRight,
-  IconSparkles,
-} from '@tabler/icons-react';
+import { IconDownload, IconFileText, IconBriefcase, IconCodeAsterisk, IconChevronUp, IconArrowUpRight, IconSparkles } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
 import CvPreviewModal from '@/components/layout/CvPreviewModal';
 import { trackAndNotifyCvDownload } from '@/lib/cvAnalytics';

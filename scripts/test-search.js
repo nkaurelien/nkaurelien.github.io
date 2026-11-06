@@ -40,7 +40,7 @@ async function run() {
     `;
 
     const res = await dbClient.query(query, [vectorString]);
-    
+
     console.log('\n--- SEMANTIC SEARCH RESULTS ---');
     if (res.rows.length === 0) {
       console.log('No matches found above threshold.');
@@ -53,7 +53,6 @@ async function run() {
         console.log(`   Matching Chunk: ${row.text_chunk.substring(0, 120)}...\n`);
       });
     }
-
   } catch (error) {
     console.error('Error testing semantic search:', error);
   } finally {

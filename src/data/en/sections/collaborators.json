@@ -1,37 +1,37 @@
 {
-    "title": "Collaborations",
-    "subtitle": "A few people I had the pleasure of working with",
-    "items": [
-        {
-            "name": "Martin MBODY",
-            "role": "Web Developer | Laravel | React | Next.js",
-            "link": "https://www.linkedin.com/in/martin-mbody-867b06115/",
-            "active": true
-        },
-        {
-            "name": "Patrick Hendji",
-            "role": "Senior Software Developer Consultant (Angular / C#) · BNP Paribas",
-            "link": "https://www.linkedin.com/in/patrick-hendji-05085745/",
-            "active": true
-        },
-        {
-            "name": "Nicky Valéry OLOA BIDJO",
-            "role": "CEO Twin Lions · Founder Digital Experts",
-            "link": "https://www.linkedin.com/in/oloabidjo/",
-            "active": true
-        },
-        {
-            "name": "Rose YEMELI",
-            "role": "Payroll & HRIS Consultant | AI & Automation Expert",
-            "image": "/img/testimonials/face-yemeli.png",
-            "link": "https://www.linkedin.com/in/rose-yemeli/",
-            "active": true
-        },
-        {
-            "name": "Idrissou Ngouen",
-            "role": "Art Director & Visual Designer · UI/UX Specialist, Illustrator & Digital Painter",
-            "link": "https://www.behance.net/ngwenidrisd6e4",
-            "active": true
-        }
-    ]
+  "title": "Collaborations",
+  "subtitle": "A few people I had the pleasure of working with",
+  "items": [
+    {
+      "name": "Martin MBODY",
+      "role": "Web Developer | Laravel | React | Next.js",
+      "link": "https://www.linkedin.com/in/martin-mbody-867b06115/",
+      "active": true
+    },
+    {
+      "name": "Patrick Hendji",
+      "role": "Senior Software Developer Consultant (Angular / C#) · BNP Paribas",
+      "link": "https://www.linkedin.com/in/patrick-hendji-05085745/",
+      "active": true
+    },
+    {
+      "name": "Nicky Valéry OLOA BIDJO",
+      "role": "CEO Twin Lions · Founder Digital Experts",
+      "link": "https://www.linkedin.com/in/oloabidjo/",
+      "active": true
+    },
+    {
+      "name": "Rose YEMELI",
+      "role": "Payroll & HRIS Consultant | AI & Automation Expert",
+      "image": "/img/testimonials/face-yemeli.png",
+      "link": "https://www.linkedin.com/in/rose-yemeli/",
+      "active": true
+    },
+    {
+      "name": "Idrissou Ngouen",
+      "role": "Art Director & Visual Designer · UI/UX Specialist, Illustrator & Digital Painter",
+      "link": "https://www.behance.net/ngwenidrisd6e4",
+      "active": true
+    }
+  ]
 }

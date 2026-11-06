@@ -1,54 +1,54 @@
 {
-    "title": "Recommandations",
-    "items": [
-        {
-            "name": "Rose YEMELI",
-            "image": "/img/testimonials/face-yemeli.png",
-            "role": "Directrice YSO Conseils - CEO Smart Data Pay",
-            "link": "https://www.linkedin.com/in/rose-yemeli/",
-            "text": "Son expertise en développement web et en ingénierie logicielle a révolutionné notre plateforme RH grâce à l'IA. Son professionnalisme et sa capacité à résoudre des problèmes complexes ont été essentiels dans la conception de notre plateforme d'IA.",
-            "rating": 5,
-            "active": true
-        },
-        {
-            "name": "Hervé Franck ELOUNDOU",
-            "role": "Consultant SAP S/4HANA EAM, CPI & Field Service Management | Odoo",
-            "link": "https://www.linkedin.com/in/herve-franck-eloundou/",
-            "text": "J'ai eu la possibilité de travailler avec Astrid-Aurélien pendant plus d'un an. Très bon techniquement et ayant une forte capacité d'analyse et de conception dans le domaine du développement informatique, je le recommande si vous avez besoin dans la mise en place d'une application web et/ou mobile.",
-            "rating": 5,
-            "active": true
-        },
-        {
-            "name": "Dr Albert MAMBO",
-            "image": "/img/testimonials/face-mambo.png",
-            "role": "Délégué Régional de la Santé Publique pour le Littoral",
-            "text": "Son travail exemplaire sur MAMALPRO a grandement amélioré nos plateformes de santé publique. Son expertise technique, son professionnalisme et sa rapidité de réponse ont été essentiels pour optimiser notre communication et notre gestion des données.",
-            "rating": 5,
-            "active": true
-        },
-        {
-            "name": "Fernand Hervé",
-            "role": "Fondateur de MCS · Consultant chez Capgemini",
-            "link": "https://www.linkedin.com/in/fernand-herv%C3%A9-a917ab27/",
-            "text": "Son expertise technique et sa créativité ont été déterminantes dans la réussite de nos projets. Son professionnalisme et sa capacité à résoudre des problèmes complexes en font un atout précieux pour n'importe quelle équipe. L'un des meilleurs développeurs avec qui j'ai travaillé.",
-            "rating": 5,
-            "active": true
-        },
-        {
-            "name": "Magalie Gauze-Sanga",
-            "role": "Women Tech Entrepreneur · CEO Koree",
-            "link": "https://www.linkedin.com/in/gsmagalie/",
-            "text": "Astrid-Aurélien a été l'architecte et le développeur principal de Koree, et fait partie de nos tout premiers ingénieurs. Son expertise technique, sa vision et son professionnalisme ont été déterminants dans la construction de notre plateforme. Au-delà de ses compétences, c'est une personne fiable avec qui nous avons gardé d'excellentes relations. Je le recommande sans réserve.",
-            "rating": 5,
-            "active": true
-        },
-        {
-            "name": "Carlson N. NDANGA",
-            "role": "IT & Business Systems Analyst | ERP, ServiceNow & M365 | Power BI & Fabric | Automation & AI-Enabled Insights",
-            "link": "https://www.linkedin.com/in/carlson-nche-ndanga/",
-            "text": "Astrid-Aurélien m'a accueilli et intégré à mon arrivée chez MCS. En tant que développeur Odoo, j'ai énormément appris à ses côtés : sa pédagogie en peer programming, sa rigueur et sa générosité à partager son savoir m'ont fait progresser très vite. Toujours disponible et bienveillant, c'est autant un mentor qu'un excellent développeur. Je lui en suis très reconnaissant et le recommande sans hésiter.",
-            "rating": 5,
-            "active": true
-        }
-    ]
+  "title": "Recommandations",
+  "items": [
+    {
+      "name": "Rose YEMELI",
+      "image": "/img/testimonials/face-yemeli.png",
+      "role": "Directrice YSO Conseils - CEO Smart Data Pay",
+      "link": "https://www.linkedin.com/in/rose-yemeli/",
+      "text": "Son expertise en développement web et en ingénierie logicielle a révolutionné notre plateforme RH grâce à l'IA. Son professionnalisme et sa capacité à résoudre des problèmes complexes ont été essentiels dans la conception de notre plateforme d'IA.",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "name": "Hervé Franck ELOUNDOU",
+      "role": "Consultant SAP S/4HANA EAM, CPI & Field Service Management | Odoo",
+      "link": "https://www.linkedin.com/in/herve-franck-eloundou/",
+      "text": "J'ai eu la possibilité de travailler avec Astrid-Aurélien pendant plus d'un an. Très bon techniquement et ayant une forte capacité d'analyse et de conception dans le domaine du développement informatique, je le recommande si vous avez besoin dans la mise en place d'une application web et/ou mobile.",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "name": "Dr Albert MAMBO",
+      "image": "/img/testimonials/face-mambo.png",
+      "role": "Délégué Régional de la Santé Publique pour le Littoral",
+      "text": "Son travail exemplaire sur MAMALPRO a grandement amélioré nos plateformes de santé publique. Son expertise technique, son professionnalisme et sa rapidité de réponse ont été essentiels pour optimiser notre communication et notre gestion des données.",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "name": "Fernand Hervé",
+      "role": "Fondateur de MCS · Consultant chez Capgemini",
+      "link": "https://www.linkedin.com/in/fernand-herv%C3%A9-a917ab27/",
+      "text": "Son expertise technique et sa créativité ont été déterminantes dans la réussite de nos projets. Son professionnalisme et sa capacité à résoudre des problèmes complexes en font un atout précieux pour n'importe quelle équipe. L'un des meilleurs développeurs avec qui j'ai travaillé.",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "name": "Magalie Gauze-Sanga",
+      "role": "Women Tech Entrepreneur · CEO Koree",
+      "link": "https://www.linkedin.com/in/gsmagalie/",
+      "text": "Astrid-Aurélien a été l'architecte et le développeur principal de Koree, et fait partie de nos tout premiers ingénieurs. Son expertise technique, sa vision et son professionnalisme ont été déterminants dans la construction de notre plateforme. Au-delà de ses compétences, c'est une personne fiable avec qui nous avons gardé d'excellentes relations. Je le recommande sans réserve.",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "name": "Carlson N. NDANGA",
+      "role": "IT & Business Systems Analyst | ERP, ServiceNow & M365 | Power BI & Fabric | Automation & AI-Enabled Insights",
+      "link": "https://www.linkedin.com/in/carlson-nche-ndanga/",
+      "text": "Astrid-Aurélien m'a accueilli et intégré à mon arrivée chez MCS. En tant que développeur Odoo, j'ai énormément appris à ses côtés : sa pédagogie en peer programming, sa rigueur et sa générosité à partager son savoir m'ont fait progresser très vite. Toujours disponible et bienveillant, c'est autant un mentor qu'un excellent développeur. Je lui en suis très reconnaissant et le recommande sans hésiter.",
+      "rating": 5,
+      "active": true
+    }
+  ]
 }

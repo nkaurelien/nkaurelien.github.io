@@ -18,24 +18,26 @@ const PUBLIC_PATH = path.join(__dirname, '../public/cv.json');
 function mapDoYouBuzzApiToJSONResume(dybData) {
   const user = dybData.userInformation || {};
   const presentation = dybData.presentation || {};
-  
+
   const basics = {
     name: 'Astrid Aurelien NKUMBE ENONGENE',
     label: dybData.title || 'Senior Fullstack Engineer & Tech Lead',
     email: 'nkumbeaurelien@hotmail.com',
     phone: '+33 7 44 58 45 62',
     url: 'https://www.doyoubuzz.com/astrid-aurelien-nkumbe-enongene',
-    summary: presentation.text || 'Senior Fullstack Engineer et Technical Lead avec plus de 7 ans d\'expérience dans la conception, l\'architecture et le déploiement d\'applications web, mobiles, IoT et IA.',
+    summary:
+      presentation.text ||
+      "Senior Fullstack Engineer et Technical Lead avec plus de 7 ans d'expérience dans la conception, l'architecture et le déploiement d'applications web, mobiles, IoT et IA.",
     location: {
       city: user.city || 'Paris / Cergy',
       countryCode: 'FR',
-      region: 'Région Parisienne — Mobile France entière & Remote'
+      region: 'Région Parisienne — Mobile France entière & Remote',
     },
     profiles: [
       { network: 'GitHub', username: 'nkaurelien', url: 'https://github.com/nkaurelien' },
       { network: 'LinkedIn', username: 'nkaurelien', url: 'https://www.linkedin.com/in/nkaurelien/' },
-      { network: 'DoYouBuzz', username: 'astrid-aurelien-nkumbe-enongene', url: 'https://www.doyoubuzz.com/astrid-aurelien-nkumbe-enongene' }
-    ]
+      { network: 'DoYouBuzz', username: 'astrid-aurelien-nkumbe-enongene', url: 'https://www.doyoubuzz.com/astrid-aurelien-nkumbe-enongene' },
+    ],
   };
 
   const rawExps = dybData.experiences?.experience || dybData.experiences || [];
@@ -50,7 +52,7 @@ function mapDoYouBuzzApiToJSONResume(dybData) {
       endDate: exp.end || null,
       summary: exp.description || exp.title || '',
       highlights,
-      keywords: []
+      keywords: [],
     };
   });
 
@@ -61,14 +63,14 @@ function mapDoYouBuzzApiToJSONResume(dybData) {
     studyType: edu.degree || edu.diploma || '',
     startDate: edu.start || null,
     endDate: edu.end || null,
-    summary: edu.description || ''
+    summary: edu.description || '',
   }));
 
   return {
     $schema: 'https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json',
     basics,
     work,
-    education
+    education,
   };
 }
 
@@ -85,33 +87,35 @@ const options = {
   path: `/cv/${cvId}?format=json`,
   method: 'GET',
   headers: {
-    'User-Agent': 'NodeJS-DoYouBuzz-Sync'
-  }
+    'User-Agent': 'NodeJS-DoYouBuzz-Sync',
+  },
 };
 
 if (apiKey) {
   options.headers['Authorization'] = `Bearer ${apiKey}`;
 }
 
-https.get(options, (res) => {
-  let data = '';
+https
+  .get(options, res => {
+    let data = '';
 
-  res.on('data', (chunk) => {
-    data += chunk;
-  });
+    res.on('data', chunk => {
+      data += chunk;
+    });
 
-  res.on('end', () => {
-    try {
-      const parsed = JSON.parse(data);
-      const mapped = mapDoYouBuzzApiToJSONResume(parsed);
-      fs.writeFileSync(DATASOURCES_PATH, JSON.stringify(mapped, null, 2), 'utf8');
-      fs.writeFileSync(PUBLIC_PATH, JSON.stringify(mapped, null, 2), 'utf8');
-      console.log(`✅ Synchronisation réussie pour le CV ID: ${cvId}`);
-      console.log(`🚀 datasources/cv.json et public/cv.json ont été mis à jour !`);
-    } catch (e) {
-      console.error('❌ Erreur lors du parsing des données API DoYouBuzz:', e.message);
-    }
+    res.on('end', () => {
+      try {
+        const parsed = JSON.parse(data);
+        const mapped = mapDoYouBuzzApiToJSONResume(parsed);
+        fs.writeFileSync(DATASOURCES_PATH, JSON.stringify(mapped, null, 2), 'utf8');
+        fs.writeFileSync(PUBLIC_PATH, JSON.stringify(mapped, null, 2), 'utf8');
+        console.log(`✅ Synchronisation réussie pour le CV ID: ${cvId}`);
+        console.log(`🚀 datasources/cv.json et public/cv.json ont été mis à jour !`);
+      } catch (e) {
+        console.error('❌ Erreur lors du parsing des données API DoYouBuzz:', e.message);
+      }
+    });
+  })
+  .on('error', err => {
+    console.error('❌ Erreur de requête HTTPS vers DoYouBuzz:', err.message);
   });
-}).on('error', (err) => {
-  console.error('❌ Erreur de requête HTTPS vers DoYouBuzz:', err.message);
-});

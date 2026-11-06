@@ -11,7 +11,7 @@ async function main() {
   console.error('🚀 nk-portfolio-assistant-mcp démarré avec succès sur stdio.');
 }
 
-main().catch((error) => {
+main().catch(error => {
   console.error('Erreur au démarrage du serveur MCP:', error);
   process.exit(1);
 });

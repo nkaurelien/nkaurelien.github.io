@@ -1,37 +1,37 @@
 {
-    "title": "Collaborations",
-    "subtitle": "Quelques personnes avec qui j'ai eu le plaisir de travailler",
-    "items": [
-        {
-            "name": "Martin MBODY",
-            "role": "Développeur Web | Laravel | React | Next.js",
-            "link": "https://www.linkedin.com/in/martin-mbody-867b06115/",
-            "active": true
-        },
-        {
-            "name": "Patrick Hendji",
-            "role": "Senior Software Developer Consultant (Angular / C#) · BNP Paribas",
-            "link": "https://www.linkedin.com/in/patrick-hendji-05085745/",
-            "active": true
-        },
-        {
-            "name": "Nicky Valéry OLOA BIDJO",
-            "role": "CEO Twin Lions · Founder Digital Experts",
-            "link": "https://www.linkedin.com/in/oloabidjo/",
-            "active": true
-        },
-        {
-            "name": "Rose YEMELI",
-            "role": "Consultante Paie & SIRH | Experte IA & Automatisation",
-            "image": "/img/testimonials/face-yemeli.png",
-            "link": "https://www.linkedin.com/in/rose-yemeli/",
-            "active": true
-        },
-        {
-            "name": "Idrissou Ngouen",
-            "role": "Directeur Artistique & Visual Designer · Spécialiste UI/UX, Illustrateur & Digital Painter",
-            "link": "https://www.behance.net/ngwenidrisd6e4",
-            "active": true
-        }
-    ]
+  "title": "Collaborations",
+  "subtitle": "Quelques personnes avec qui j'ai eu le plaisir de travailler",
+  "items": [
+    {
+      "name": "Martin MBODY",
+      "role": "Développeur Web | Laravel | React | Next.js",
+      "link": "https://www.linkedin.com/in/martin-mbody-867b06115/",
+      "active": true
+    },
+    {
+      "name": "Patrick Hendji",
+      "role": "Senior Software Developer Consultant (Angular / C#) · BNP Paribas",
+      "link": "https://www.linkedin.com/in/patrick-hendji-05085745/",
+      "active": true
+    },
+    {
+      "name": "Nicky Valéry OLOA BIDJO",
+      "role": "CEO Twin Lions · Founder Digital Experts",
+      "link": "https://www.linkedin.com/in/oloabidjo/",
+      "active": true
+    },
+    {
+      "name": "Rose YEMELI",
+      "role": "Consultante Paie & SIRH | Experte IA & Automatisation",
+      "image": "/img/testimonials/face-yemeli.png",
+      "link": "https://www.linkedin.com/in/rose-yemeli/",
+      "active": true
+    },
+    {
+      "name": "Idrissou Ngouen",
+      "role": "Directeur Artistique & Visual Designer · Spécialiste UI/UX, Illustrateur & Digital Painter",
+      "link": "https://www.behance.net/ngwenidrisd6e4",
+      "active": true
+    }
+  ]
 }

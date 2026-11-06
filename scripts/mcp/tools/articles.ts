@@ -28,10 +28,10 @@ function resolveVisibility(data: Record<string, unknown> = {}): {
   visible: boolean;
   listed: boolean;
 } {
-  const rawStatus = String(data.status || ArticleStatus.PUBLISHED).trim().toLowerCase() as ArticleStatusValue;
-  const status: ArticleStatusValue = ARTICLE_STATUS_VALUES.includes(rawStatus)
-    ? rawStatus
-    : ArticleStatus.PUBLISHED;
+  const rawStatus = String(data.status || ArticleStatus.PUBLISHED)
+    .trim()
+    .toLowerCase() as ArticleStatusValue;
+  const status: ArticleStatusValue = ARTICLE_STATUS_VALUES.includes(rawStatus) ? rawStatus : ArticleStatus.PUBLISHED;
 
   const visible = status === ArticleStatus.PUBLISHED || status === ArticleStatus.UNLISTED;
   const listed = status === ArticleStatus.PUBLISHED;
@@ -56,7 +56,7 @@ export function listArticles(tag?: string, limit?: number): ArticleMetadata[] {
     return [];
   }
 
-  const files = fs.readdirSync(ARTICLES_DIR).filter((f) => f.endsWith('.md') && f !== 'README.md');
+  const files = fs.readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.md') && f !== 'README.md');
   const articles: ArticleMetadata[] = [];
 
   for (const file of files) {
@@ -70,14 +70,14 @@ export function listArticles(tag?: string, limit?: number): ArticleMetadata[] {
       const parsedTags = Array.isArray(data.tags)
         ? data.tags
         : typeof data.tags === 'string'
-        ? data.tags.split(',').map((t: string) => t.trim())
-        : [];
+          ? data.tags.split(',').map((t: string) => t.trim())
+          : [];
 
       const parsedCategories = Array.isArray(data.categories)
         ? data.categories
         : typeof data.categories === 'string'
-        ? data.categories.split(',').map((c: string) => c.trim())
-        : [];
+          ? data.categories.split(',').map((c: string) => c.trim())
+          : [];
 
       const articleMeta: ArticleMetadata = {
         file,
@@ -115,12 +115,11 @@ export function readArticle(slugOrFile: string): { metadata: ArticleMetadata; co
 
   const cleanSlug = slugOrFile.trim().replace(/\.md$/, '');
   if (!cleanSlug) {
-    throw new Error('Slug d\'article vide');
+    throw new Error("Slug d'article vide");
   }
 
-  const files = fs.readdirSync(ARTICLES_DIR).filter((f) => f.endsWith('.md') && f !== 'README.md');
-  const matchedFile =
-    files.find((f) => f === `${cleanSlug}.md`) ?? files.find((f) => f.includes(cleanSlug));
+  const files = fs.readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.md') && f !== 'README.md');
+  const matchedFile = files.find(f => f === `${cleanSlug}.md`) ?? files.find(f => f.includes(cleanSlug));
 
   if (!matchedFile) {
     throw new Error(`Article introuvable pour "${slugOrFile}"`);
@@ -153,7 +152,7 @@ export function searchArticles(query: string): Array<ArticleMetadata & { snippet
   if (!query || !fs.existsSync(ARTICLES_DIR)) return [];
 
   const q = query.toLowerCase();
-  const files = fs.readdirSync(ARTICLES_DIR).filter((f) => f.endsWith('.md') && f !== 'README.md');
+  const files = fs.readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.md') && f !== 'README.md');
   const results: Array<ArticleMetadata & { snippet: string }> = [];
 
   for (const file of files) {

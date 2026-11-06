@@ -1,282 +1,282 @@
 {
-    "settings": {
-        "siteName": "Astrid-Aurélien NKUMBE",
-        "siteDescription": "Astrid-Aurélien NKUMBE, DevSecOps / Platform Engineer & Tech Lead: I design secure architectures and industrialize from spec to production (healthcare/HDS, GDPR), with applied AI (RAG).",
-        "formspreeURL": "https://formspree.io/f/your_api_key",
-        "mailchimp": {
-            "url": "",
-            "key": ""
-        },
-        "perPage": 6
+  "settings": {
+    "siteName": "Astrid-Aurélien NKUMBE",
+    "siteDescription": "Astrid-Aurélien NKUMBE, DevSecOps / Platform Engineer & Tech Lead: I design secure architectures and industrialize from spec to production (healthcare/HDS, GDPR), with applied AI (RAG).",
+    "formspreeURL": "https://formspree.io/f/your_api_key",
+    "mailchimp": {
+      "url": "",
+      "key": ""
     },
-    "metadatas": {
-        "titles": {
-            "home": "Astrid-Aurélien NKUMBE — DevSecOps / Platform Engineer & Tech Lead",
-            "history": "History",
-            "projects": "Projects",
-            "contact": "Contact"
-        },
-        "descriptions": {
-            "home": "Astrid-Aurélien NKUMBE, DevSecOps / Platform Engineer & Tech Lead — secure architectures, healthcare/HDS, GDPR and applied AI.",
-            "history": "Academic background and professional experience",
-            "projects": "Some projects completed",
-            "contact": "contact Astrid-Aurélien NKUMBE or send a message"
-        }
+    "perPage": 6
+  },
+  "metadatas": {
+    "titles": {
+      "home": "Astrid-Aurélien NKUMBE — DevSecOps / Platform Engineer & Tech Lead",
+      "history": "History",
+      "projects": "Projects",
+      "contact": "Contact"
     },
-    "profile": {
-        "avatar": "/img/me/face-1.png",
-        "name": "Astrid-Aurélien NKUMBE",
-        "role": "DevSecOps / Platform Engineer <br>& Tech Lead",
-        "info": [
-            {
-                "label": "Country",
-                "value": "France"
-            },
-            {
-                "label": "City",
-                "value": "Paris | Cergy"
-            }
-        ],
-        "skills": {
-            "language": [
-                {
-                    "label": "French",
-                    "value": "1"
-                },
-                {
-                    "label": "English",
-                    "value": "0.3"
-                },
-                {
-                    "label": "German",
-                    "value": "0.2"
-                }
-            ],
-            "hard": [
-                {
-                    "label": "HTML 5",
-                    "value": "0.95"
-                },
-                {
-                    "label": "CSS 3",
-                    "value": "0.85"
-                },
-                {
-                    "label": "Javascript",
-                    "value": "0.7"
-                },
-                {
-                    "label": "TypeScript",
-                    "value": "0.65"
-                },
-                {
-                    "label": "Bootstrap CSS",
-                    "value": "0.85"
-                },
-                {
-                    "label": "Tailwind CSS",
-                    "value": "0.6"
-                },
-                {
-                    "label": "PHP (Laravel)",
-                    "value": "0.85"
-                },
-                {
-                    "label": "JQuery JS, Ajax",
-                    "value": "0.85"
-                },
-                {
-                    "label": "Angular JS",
-                    "value": "0.75"
-                },
-                {
-                    "label": "Inertia JS",
-                    "value": "0.65"
-                },
-                {
-                    "label": "React JS / Next JS",
-                    "value": "0.45"
-                },
-                {
-                    "label": "Java",
-                    "value": "0.2"
-                },
-                {
-                    "label": "Python",
-                    "value": "0.6"
-                },
-                {
-                    "label": "MySQL",
-                    "value": "0.8"
-                },
-                {
-                    "label": "PostgreSQL",
-                    "value": "0.65"
-                },
-                {
-                    "label": "Oracle",
-                    "value": "0.35"
-                },
-                {
-                    "label": "Git",
-                    "value": "0.6"
-                },
-                {
-                    "label": "Gitlab CI",
-                    "value": "0.6"
-                },
-                {
-                    "label": "Docker, Compose",
-                    "value": "0.7"
-                },
-                {
-                    "label": "Ansible",
-                    "value": "0.6"
-                },
-                {
-                    "label": "Terraform",
-                    "value": "0.6"
-                }
-            ],
-            "knowledge": [
-                {
-                    "label": "Eslint, Prettier"
-                },
-                {
-                    "label": "Webpack, Vite JS"
-                },
-                {
-                    "label": "Langchain, Guardrails, Transformer"
-                },
-                {
-                    "label": "PySpark, Panda, BeautifulSoup"
-                },
-                {
-                    "label": "Supabase, Elastic Search"
-                },
-                {
-                    "label": "Figma, Photoshop, Illustrator"
-                },
-                {
-                    "label": "Make, Zapier"
-                }
-            ]
-        },
-        "resume": [
-            {
-                "file": "https://linktr.ee/nkaurelien",
-                "label": "CV Dev Full stack  Angular - PHP - Python | Devops"
-            }
-        ]
-    },
-    "header": {
-        "topBackground": "/img/me/bg.png",
-        "menu": [
-            {
-                "label": "Home",
-                "link": "/",
-                "children": 0
-            },
-            {
-                "label": "History",
-                "link": "/history",
-                "children": 0
-            },
-            {
-                "label": "Projects",
-                "link": "/projects",
-                "children": 0
-            },
-            {
-                "label": "Kamitbrains",
-                "link": "/kamitbrains",
-                "children": 0
-            },
-            {
-                "label": "Blog",
-                "link": "/blog",
-                "children": 0,
-                "external": false
-            },
-            {
-                "label": "AI Assistant",
-                "link": "/chat",
-                "children": 0
-            },
-            {
-                "label": "Contact",
-                "link": "/contact",
-                "children": 0
-            },
-            {
-                "label": "Agenda",
-                "link": "https://calendly.com/nkumbe-aurelien/30-minute-meeting-clone",
-                "oldLink": "https://calendly.com/nkaurelien",
-                "children": 0,
-                "external": true
-            }
-        ]
-    },
-    "footer": {
-        "copy": "© 2026. All rights reserved.",
-        "developer": "By <b>Astrid-Aurélien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT (on hold) — SIRET 92203463200013",
-        "cta_title": "Let's connect.",
-        "cta_text": "Open to interesting conversations, collaborations, or just saying hi."
-    },
-    "social": [
-        {
-            "link": "https://linkedin.com/in/nkaurelien",
-            "icon": "Linkedin",
-            "title": "Linkedin"
-        },
-        {
-            "link": "https://medium.com/@nkaurelien",
-            "icon": "Newspaper",
-            "title": "Medium"
-        },
-        {
-            "link": "https://huggingface.co/nkaurelien",
-            "icon": "Smile",
-            "title": "Huggingface"
-        },
-        {
-            "link": "https://github.com/nkaurelien",
-            "icon": "Github",
-            "title": "Github"
-        },
-        {
-            "link": "https://x.com/AstridNkumbe",
-            "icon": "Twitter",
-            "title": "Twitter"
-        },
-        {
-            "link": "https://www.pappers.fr/entreprise/nkumbe-enongene-astrid-aurelien-922034632",
-            "icon": "Building2",
-            "title": "Pappers"
-        }
-    ],
-    "projects": {
-        "title": "Projects",
-        "all_categories": "All Categories",
-        "view_more": "View More",
-        "categories": [
-            {
-                "name": "Websites",
-                "slug": "websites"
-            },
-            {
-                "name": "Web Applications",
-                "slug": "web-applications"
-            },
-            {
-                "name": "Data & AI",
-                "slug": "data-ai"
-            }
-        ]
-    },
-    "not_found": {
-        "number": "404",
-        "title": "Page Not Found !",
-        "description": "The requested page was not found"
+    "descriptions": {
+      "home": "Astrid-Aurélien NKUMBE, DevSecOps / Platform Engineer & Tech Lead — secure architectures, healthcare/HDS, GDPR and applied AI.",
+      "history": "Academic background and professional experience",
+      "projects": "Some projects completed",
+      "contact": "contact Astrid-Aurélien NKUMBE or send a message"
     }
+  },
+  "profile": {
+    "avatar": "/img/me/face-1.png",
+    "name": "Astrid-Aurélien NKUMBE",
+    "role": "DevSecOps / Platform Engineer <br>& Tech Lead",
+    "info": [
+      {
+        "label": "Country",
+        "value": "France"
+      },
+      {
+        "label": "City",
+        "value": "Paris | Cergy"
+      }
+    ],
+    "skills": {
+      "language": [
+        {
+          "label": "French",
+          "value": "1"
+        },
+        {
+          "label": "English",
+          "value": "0.3"
+        },
+        {
+          "label": "German",
+          "value": "0.2"
+        }
+      ],
+      "hard": [
+        {
+          "label": "HTML 5",
+          "value": "0.95"
+        },
+        {
+          "label": "CSS 3",
+          "value": "0.85"
+        },
+        {
+          "label": "Javascript",
+          "value": "0.7"
+        },
+        {
+          "label": "TypeScript",
+          "value": "0.65"
+        },
+        {
+          "label": "Bootstrap CSS",
+          "value": "0.85"
+        },
+        {
+          "label": "Tailwind CSS",
+          "value": "0.6"
+        },
+        {
+          "label": "PHP (Laravel)",
+          "value": "0.85"
+        },
+        {
+          "label": "JQuery JS, Ajax",
+          "value": "0.85"
+        },
+        {
+          "label": "Angular JS",
+          "value": "0.75"
+        },
+        {
+          "label": "Inertia JS",
+          "value": "0.65"
+        },
+        {
+          "label": "React JS / Next JS",
+          "value": "0.45"
+        },
+        {
+          "label": "Java",
+          "value": "0.2"
+        },
+        {
+          "label": "Python",
+          "value": "0.6"
+        },
+        {
+          "label": "MySQL",
+          "value": "0.8"
+        },
+        {
+          "label": "PostgreSQL",
+          "value": "0.65"
+        },
+        {
+          "label": "Oracle",
+          "value": "0.35"
+        },
+        {
+          "label": "Git",
+          "value": "0.6"
+        },
+        {
+          "label": "Gitlab CI",
+          "value": "0.6"
+        },
+        {
+          "label": "Docker, Compose",
+          "value": "0.7"
+        },
+        {
+          "label": "Ansible",
+          "value": "0.6"
+        },
+        {
+          "label": "Terraform",
+          "value": "0.6"
+        }
+      ],
+      "knowledge": [
+        {
+          "label": "Eslint, Prettier"
+        },
+        {
+          "label": "Webpack, Vite JS"
+        },
+        {
+          "label": "Langchain, Guardrails, Transformer"
+        },
+        {
+          "label": "PySpark, Panda, BeautifulSoup"
+        },
+        {
+          "label": "Supabase, Elastic Search"
+        },
+        {
+          "label": "Figma, Photoshop, Illustrator"
+        },
+        {
+          "label": "Make, Zapier"
+        }
+      ]
+    },
+    "resume": [
+      {
+        "file": "https://linktr.ee/nkaurelien",
+        "label": "CV Dev Full stack  Angular - PHP - Python | Devops"
+      }
+    ]
+  },
+  "header": {
+    "topBackground": "/img/me/bg.png",
+    "menu": [
+      {
+        "label": "Home",
+        "link": "/",
+        "children": 0
+      },
+      {
+        "label": "History",
+        "link": "/history",
+        "children": 0
+      },
+      {
+        "label": "Projects",
+        "link": "/projects",
+        "children": 0
+      },
+      {
+        "label": "Kamitbrains",
+        "link": "/kamitbrains",
+        "children": 0
+      },
+      {
+        "label": "Blog",
+        "link": "/blog",
+        "children": 0,
+        "external": false
+      },
+      {
+        "label": "AI Assistant",
+        "link": "/chat",
+        "children": 0
+      },
+      {
+        "label": "Contact",
+        "link": "/contact",
+        "children": 0
+      },
+      {
+        "label": "Agenda",
+        "link": "https://calendly.com/nkumbe-aurelien/30-minute-meeting-clone",
+        "oldLink": "https://calendly.com/nkaurelien",
+        "children": 0,
+        "external": true
+      }
+    ]
+  },
+  "footer": {
+    "copy": "© 2026. All rights reserved.",
+    "developer": "By <b>Astrid-Aurélien NKUMBE</b> (@nkaurelien) · KAMITBRAINS IT (on hold) — SIRET 92203463200013",
+    "cta_title": "Let's connect.",
+    "cta_text": "Open to interesting conversations, collaborations, or just saying hi."
+  },
+  "social": [
+    {
+      "link": "https://linkedin.com/in/nkaurelien",
+      "icon": "Linkedin",
+      "title": "Linkedin"
+    },
+    {
+      "link": "https://medium.com/@nkaurelien",
+      "icon": "Newspaper",
+      "title": "Medium"
+    },
+    {
+      "link": "https://huggingface.co/nkaurelien",
+      "icon": "Smile",
+      "title": "Huggingface"
+    },
+    {
+      "link": "https://github.com/nkaurelien",
+      "icon": "Github",
+      "title": "Github"
+    },
+    {
+      "link": "https://x.com/AstridNkumbe",
+      "icon": "Twitter",
+      "title": "Twitter"
+    },
+    {
+      "link": "https://www.pappers.fr/entreprise/nkumbe-enongene-astrid-aurelien-922034632",
+      "icon": "Building2",
+      "title": "Pappers"
+    }
+  ],
+  "projects": {
+    "title": "Projects",
+    "all_categories": "All Categories",
+    "view_more": "View More",
+    "categories": [
+      {
+        "name": "Websites",
+        "slug": "websites"
+      },
+      {
+        "name": "Web Applications",
+        "slug": "web-applications"
+      },
+      {
+        "name": "Data & AI",
+        "slug": "data-ai"
+      }
+    ]
+  },
+  "not_found": {
+    "number": "404",
+    "title": "Page Not Found !",
+    "description": "The requested page was not found"
+  }
 }

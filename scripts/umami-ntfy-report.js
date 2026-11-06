@@ -5,7 +5,7 @@ require('dotenv').config({ path: '.env' });
  * Script d'automatisation des rapports Umami vers ntfy.
  * S'authentifie sur l'API Umami v2, récupère les statistiques (vues, visiteurs, événements),
  * et génère une synthèse transmise directement via notification push ntfy.
- * 
+ *
  * Usage:
  *   node scripts/umami-ntfy-report.js               # Par défaut: 7 jours (weekly)
  *   node scripts/umami-ntfy-report.js --daily       # Collecte daily (24h)
@@ -28,7 +28,7 @@ const periodLabel = days === 1 ? 'dernières 24h' : `${days} derniers jours`;
 
 async function loginUmami() {
   if (!UMAMI_URL) {
-    throw new Error('UMAMI_URL non configuré dans l\'environnement.');
+    throw new Error("UMAMI_URL non configuré dans l'environnement.");
   }
   if (!UMAMI_PASSWORD) {
     throw new Error('UMAMI_PASSWORD non configuré.');
@@ -58,7 +58,7 @@ async function getWebsites(token) {
   }
 
   const data = await res.json();
-  return Array.isArray(data) ? data : (data.data || []);
+  return Array.isArray(data) ? data : data.data || [];
 }
 
 async function getStats(token, websiteId, startAt, endAt) {
@@ -122,7 +122,7 @@ async function run() {
 
     for (const site of websites) {
       const rawStats = await getStats(token, site.id, startAt, endAt);
-      
+
       const pageviews = extractVal(rawStats.pageviews);
       const visitors = extractVal(rawStats.visitors);
       const visits = extractVal(rawStats.visits);

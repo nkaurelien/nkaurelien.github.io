@@ -1,29 +1,29 @@
 {
-    "title": "Contact information",
-    "items": [
+  "title": "Contact information",
+  "items": [
+    {
+      "info": [
         {
-            "info": [
-                {
-                    "label": "Country",
-                    "value": "France"
-                },
-                {
-                    "label": "Address",
-                    "value": "Paris | Cergy"
-                }
-            ]
+          "label": "Country",
+          "value": "France"
         },
         {
-            "info": [
-                {
-                    "label": "Email",
-                    "value": "nkumbeaurelien@hotmail.com"
-                },
-                {
-                    "label": "Phone",
-                    "value": "+33 7 44 58 45 62"
-                }
-            ]
+          "label": "Address",
+          "value": "Paris | Cergy"
         }
-    ]
+      ]
+    },
+    {
+      "info": [
+        {
+          "label": "Email",
+          "value": "nkumbeaurelien@hotmail.com"
+        },
+        {
+          "label": "Phone",
+          "value": "+33 7 44 58 45 62"
+        }
+      ]
+    }
+  ]
 }

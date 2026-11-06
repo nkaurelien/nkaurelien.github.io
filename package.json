@@ -11,8 +11,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "check": "vp check",
+    "lint": "vp lint",
+    "lint:next": "next lint",
+    "format": "vp fmt \"src/**/*.{js,jsx,ts,tsx}\"",
+    "test": "vp test --passWithNoTests",
     "db:pull": "prisma db pull",
     "db:generate": "prisma generate",
     "db:studio": "prisma studio",
@@ -21,11 +24,12 @@
     "pdf": "node scripts/build-pdf.js",
     "report": "node scripts/umami-ntfy-report.js",
     "genkit:dev": "genkit start --non-interactive -- yarn dev",
-    "genkit:flows": "genkit start --non-interactive -- tsx --watch src/genkit/dev.mjs",
-    "mcp:start": "tsx scripts/mcp/index.ts",
+    "genkit:flows": "genkit start --non-interactive -- vpx --watch src/genkit/dev.mjs",
+    "mcp:start": "vpx scripts/mcp/index.ts",
     "test:smoke": "node scripts/smoke-test.mjs",
     "test:ui": "sh scripts/ui-check.sh",
-    "link-skills": "mkdir -p .claude/skills && for d in .agents/skills/*/; do n=$(basename \"$d\"); rm -rf \".claude/skills/$n\" && ln -s \"../../.agents/skills/$n\" \".claude/skills/$n\"; done"
+    "link-skills": "mkdir -p .claude/skills && for d in .agents/skills/*/; do n=$(basename \"$d\"); rm -rf \".claude/skills/$n\" && ln -s \"../../.agents/skills/$n\" \".claude/skills/$n\"; done",
+    "prepare": "vp config"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.9",
@@ -79,9 +83,12 @@
     "postcss": "^8.4.49",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
-    "prettier": "^3.3.3",
     "prisma": "^7.8.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vite-plus": "1.5.0"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "resolutions": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@1.5.0"
+  }
 }

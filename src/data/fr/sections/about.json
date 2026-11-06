@@ -9,62 +9,27 @@
   "groups": [
     {
       "title": "Leadership",
-      "items": [
-        "Lead Tech",
-        "Architecture",
-        "Montée en compétence",
-        "Revue de code",
-        "MOE / AMOE"
-      ]
+      "items": ["Lead Tech", "Architecture", "Montée en compétence", "Revue de code", "MOE / AMOE"]
     },
     {
       "title": "DevSecOps & Cloud",
-      "items": [
-        "Kubernetes",
-        "Docker",
-        "GitLab CI",
-        "Terraform",
-        "Ansible",
-        "Argo CD"
-      ]
+      "items": ["Kubernetes", "Docker", "GitLab CI", "Terraform", "Ansible", "Argo CD"]
     },
     {
       "title": "IA & Data",
-      "items": [
-        "Claude",
-        "RAG",
-        "pgvector",
-        "LangChain",
-        "Genkit",
-        "SpecKit"
-      ]
+      "items": ["Claude", "RAG", "pgvector", "LangChain", "Genkit", "SpecKit"]
     },
     {
       "title": "Langages",
-      "items": [
-        "TypeScript",
-        "Python",
-        "PHP",
-        "Dart"
-      ]
+      "items": ["TypeScript", "Python", "PHP", "Dart"]
     },
     {
       "title": "Frontend",
-      "items": [
-        "Next.js",
-        "React",
-        "Angular",
-        "Flutter"
-      ]
+      "items": ["Next.js", "React", "Angular", "Flutter"]
     },
     {
       "title": "Santé & Conformité",
-      "items": [
-        "FHIR / HL7",
-        "HDS",
-        "RGPD",
-        "OAuth2"
-      ]
+      "items": ["FHIR / HL7", "HDS", "RGPD", "OAuth2"]
     }
   ]
 }

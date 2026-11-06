@@ -16,22 +16,20 @@ export async function sendContactMessage(params: ContactMessageParams): Promise<
   const topic = process.env.NTFY_TOPIC;
 
   if (!topic) {
-    throw new Error('NTFY_TOPIC non configuré dans l\'environnement.');
+    throw new Error("NTFY_TOPIC non configuré dans l'environnement.");
   }
 
   const endpoint = `${ntfyServer}/${topic.replace(/^\/+/, '')}`;
   const subject = params.subject || 'Nouveau message de contact via Portfolio MCP';
 
-  const bodyContent = [
-    `👤 De : ${params.senderName} (${params.senderEmail})`,
-    `📌 Sujet : ${subject}`,
-    `\n💬 Message :\n${params.message}`,
-  ].join('\n');
+  const bodyContent = [`👤 De : ${params.senderName} (${params.senderEmail})`, `📌 Sujet : ${subject}`, `\n💬 Message :\n${params.message}`].join(
+    '\n'
+  );
 
   const headers: Record<string, string> = {
-    'Title': `📬 Contact Portfolio: ${params.senderName}`,
-    'Priority': 'high',
-    'Tags': 'mailbox_with_mail,speech_balloon',
+    Title: `📬 Contact Portfolio: ${params.senderName}`,
+    Priority: 'high',
+    Tags: 'mailbox_with_mail,speech_balloon',
     'Content-Type': 'text/plain; charset=utf-8',
   };
 

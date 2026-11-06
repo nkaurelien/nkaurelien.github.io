@@ -293,9 +293,7 @@ export default function ArticleActions({
         setStats(prev => {
           const nextCount = prev.commentsCount + 1;
           try {
-            window.dispatchEvent(
-              new CustomEvent('blog-comment-added', { detail: { count: nextCount, id: articleKey } })
-            );
+            window.dispatchEvent(new CustomEvent('blog-comment-added', { detail: { count: nextCount, id: articleKey } }));
           } catch {
             // Ignorer
           }
@@ -325,13 +323,7 @@ export default function ArticleActions({
       {/* 1. Ligne Auteur (Avatar + Nom + Date) */}
       {showAuthor && (
         <Group gap="sm" mb="md" align="center" data-testid="article-author-row">
-          <Avatar
-            src={withBase(avatar)}
-            alt={author}
-            radius="xl"
-            size={44}
-            style={{ border: '1px solid var(--mantine-color-default-border)' }}
-          />
+          <Avatar src={withBase(avatar)} alt={author} radius="xl" size={44} style={{ border: '1px solid var(--mantine-color-default-border)' }} />
           <Stack gap={1} justify="center">
             <Text
               size="sm"
@@ -372,13 +364,7 @@ export default function ArticleActions({
                   transition: 'all 0.2s ease',
                 },
               }}
-              leftSection={
-                isLiked ? (
-                  <IconHeartFilled size={18} color="var(--mantine-color-kamit-filled)" />
-                ) : (
-                  <IconHeart size={18} />
-                )
-              }>
+              leftSection={isLiked ? <IconHeartFilled size={18} color="var(--mantine-color-kamit-filled)" /> : <IconHeart size={18} />}>
               <Text size="sm" fw={600} span>
                 {stats.likes}
               </Text>
@@ -466,31 +452,16 @@ export default function ArticleActions({
 
             <Menu.Dropdown>
               <Menu.Label>Partager l’article</Menu.Label>
-              <Menu.Item
-                leftSection={copied ? <IconCheck size={16} color="green" /> : <IconCopy size={16} />}
-                onClick={copyLinkToClipboard}>
+              <Menu.Item leftSection={copied ? <IconCheck size={16} color="green" /> : <IconCopy size={16} />} onClick={copyLinkToClipboard}>
                 {copied ? 'Lien copié !' : 'Copier le lien'}
               </Menu.Item>
-              <Menu.Item
-                leftSection={<IconBrandLinkedin size={16} />}
-                component="a"
-                href={linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer">
+              <Menu.Item leftSection={<IconBrandLinkedin size={16} />} component="a" href={linkedinUrl} target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </Menu.Item>
-              <Menu.Item
-                leftSection={<IconBrandX size={16} />}
-                component="a"
-                href={twitterUrl}
-                target="_blank"
-                rel="noopener noreferrer">
+              <Menu.Item leftSection={<IconBrandX size={16} />} component="a" href={twitterUrl} target="_blank" rel="noopener noreferrer">
                 X (Twitter)
               </Menu.Item>
-              <Menu.Item
-                leftSection={<IconMail size={16} />}
-                component="a"
-                href={mailUrl}>
+              <Menu.Item leftSection={<IconMail size={16} />} component="a" href={mailUrl}>
                 Par e-mail
               </Menu.Item>
             </Menu.Dropdown>
@@ -523,77 +494,77 @@ export default function ArticleActions({
           position="right"
           size="md"
           padding="md">
-        <Stack gap="md">
-          {/* Formulaire ajout de commentaire */}
-          <Paper p="sm" withBorder radius="md" bg="var(--mantine-color-default)">
-            <form onSubmit={handleSubmitComment}>
-              <Stack gap="xs">
-                <TextInput
-                  placeholder="Votre nom ou pseudo (optionnel)"
-                  value={commentAuthor}
-                  onChange={e => setCommentAuthor(e.currentTarget.value)}
-                  size="sm"
-                  maxLength={60}
-                />
-                <Textarea
-                  placeholder="Écrivez une réponse constructive..."
-                  value={commentText}
-                  onChange={e => setCommentText(e.currentTarget.value)}
-                  minRows={3}
-                  size="sm"
-                  required
-                  maxLength={1000}
-                />
-                <Group justify="space-between" align="center" mt="xs">
-                  {commentSuccess && (
-                    <Text size="xs" c="green" fw={500}>
-                      ✓ Commentaire publié !
-                    </Text>
-                  )}
-                  <Button
-                    type="submit"
-                    size="xs"
-                    radius="xl"
-                    loading={submittingComment}
-                    disabled={!commentText.trim()}
-                    style={{ marginLeft: 'auto' }}>
-                    Publier
-                  </Button>
-                </Group>
-              </Stack>
-            </form>
-          </Paper>
-
-          <Divider label="Discussions" labelPosition="center" />
-
-          {/* Liste des commentaires */}
-          {comments.length === 0 ? (
-            <Text size="sm" c="dimmed" ta="center" py="xl">
-              Aucun commentaire pour le moment. Soyez le premier à réagir !
-            </Text>
-          ) : (
-            <Stack gap="sm">
-              {comments.map(c => (
-                <Paper key={c.id || Math.random()} p="sm" withBorder radius="md">
-                  <Group justify="space-between" mb={4}>
-                    <Text size="xs" fw={700}>
-                      {c.author || 'Visiteur'}
-                    </Text>
-                    {c.createdAt && (
-                      <Text size="xs" c="dimmed">
-                        {formatDisplayDate(c.createdAt, locale)}
+          <Stack gap="md">
+            {/* Formulaire ajout de commentaire */}
+            <Paper p="sm" withBorder radius="md" bg="var(--mantine-color-default)">
+              <form onSubmit={handleSubmitComment}>
+                <Stack gap="xs">
+                  <TextInput
+                    placeholder="Votre nom ou pseudo (optionnel)"
+                    value={commentAuthor}
+                    onChange={e => setCommentAuthor(e.currentTarget.value)}
+                    size="sm"
+                    maxLength={60}
+                  />
+                  <Textarea
+                    placeholder="Écrivez une réponse constructive..."
+                    value={commentText}
+                    onChange={e => setCommentText(e.currentTarget.value)}
+                    minRows={3}
+                    size="sm"
+                    required
+                    maxLength={1000}
+                  />
+                  <Group justify="space-between" align="center" mt="xs">
+                    {commentSuccess && (
+                      <Text size="xs" c="green" fw={500}>
+                        ✓ Commentaire publié !
                       </Text>
                     )}
+                    <Button
+                      type="submit"
+                      size="xs"
+                      radius="xl"
+                      loading={submittingComment}
+                      disabled={!commentText.trim()}
+                      style={{ marginLeft: 'auto' }}>
+                      Publier
+                    </Button>
                   </Group>
-                  <Text size="sm" style={{ whiteSpace: 'pre-wrap' }}>
-                    {c.text}
-                  </Text>
-                </Paper>
-              ))}
-            </Stack>
-          )}
-        </Stack>
-      </Drawer>
+                </Stack>
+              </form>
+            </Paper>
+
+            <Divider label="Discussions" labelPosition="center" />
+
+            {/* Liste des commentaires */}
+            {comments.length === 0 ? (
+              <Text size="sm" c="dimmed" ta="center" py="xl">
+                Aucun commentaire pour le moment. Soyez le premier à réagir !
+              </Text>
+            ) : (
+              <Stack gap="sm">
+                {comments.map(c => (
+                  <Paper key={c.id || Math.random()} p="sm" withBorder radius="md">
+                    <Group justify="space-between" mb={4}>
+                      <Text size="xs" fw={700}>
+                        {c.author || 'Visiteur'}
+                      </Text>
+                      {c.createdAt && (
+                        <Text size="xs" c="dimmed">
+                          {formatDisplayDate(c.createdAt, locale)}
+                        </Text>
+                      )}
+                    </Group>
+                    <Text size="sm" style={{ whiteSpace: 'pre-wrap' }}>
+                      {c.text}
+                    </Text>
+                  </Paper>
+                ))}
+              </Stack>
+            )}
+          </Stack>
+        </Drawer>
       )}
     </Box>
   );

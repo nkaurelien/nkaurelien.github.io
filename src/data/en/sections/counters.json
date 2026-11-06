@@ -1,22 +1,22 @@
 {
-    "items": [
-        {
-            "label": "Years Experience",
-            "value": "7",
-            "valueAfter": "+",
-            "active": true
-        },
-        {
-            "label": "Completed Projects",
-            "value": "20",
-            "valueAfter": "+",
-            "active": true
-        },
-        {
-            "label": "Git repositories",
-            "value": "30",
-            "valueAfter": "+",
-            "active": true
-        }
-    ]
+  "items": [
+    {
+      "label": "Years Experience",
+      "value": "7",
+      "valueAfter": "+",
+      "active": true
+    },
+    {
+      "label": "Completed Projects",
+      "value": "20",
+      "valueAfter": "+",
+      "active": true
+    },
+    {
+      "label": "Git repositories",
+      "value": "30",
+      "valueAfter": "+",
+      "active": true
+    }
+  ]
 }

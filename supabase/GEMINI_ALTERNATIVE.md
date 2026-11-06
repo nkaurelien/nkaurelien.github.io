@@ -1,6 +1,6 @@
 ---
-title: "Alternative Embeddings Google Gemini"
-description: "Guide d’utilisation des Embeddings Google Gemini pour la recherche sémantique"
+title: 'Alternative Embeddings Google Gemini'
+description: 'Guide d’utilisation des Embeddings Google Gemini pour la recherche sémantique'
 tags: supabase, ai, gemini, embeddings, llm
 lang: fr
 ---
@@ -13,19 +13,20 @@ Ce document explique comment migrer du modèle local gratuit `@xenova/transforme
 
 ## Comparatif Technique
 
-| Caractéristique | Modèle Actuel (Xenova Local) | Modèle Google Gemini |
-| :--- | :--- | :--- |
-| **Nom du modèle** | `Xenova/all-MiniLM-L6-v2` | `text-embedding-004` |
-| **Dimensions du vecteur** | 384 | 768 |
-| **Coût** | Gratuit (100% Local) | Gratuit (dans les limites du plan gratuit) / Payant au-delà |
-| **Connexion internet** | Non requise | Requise (Appel API Google Cloud) |
-| **Configuration requise** | Aucune clé API | Requiert une `GEMINI_API_KEY` |
+| Caractéristique           | Modèle Actuel (Xenova Local) | Modèle Google Gemini                                        |
+| :------------------------ | :--------------------------- | :---------------------------------------------------------- |
+| **Nom du modèle**         | `Xenova/all-MiniLM-L6-v2`    | `text-embedding-004`                                        |
+| **Dimensions du vecteur** | 384                          | 768                                                         |
+| **Coût**                  | Gratuit (100% Local)         | Gratuit (dans les limites du plan gratuit) / Payant au-delà |
+| **Connexion internet**    | Non requise                  | Requise (Appel API Google Cloud)                            |
+| **Configuration requise** | Aucune clé API               | Requiert une `GEMINI_API_KEY`                               |
 
 ---
 
 ## Guide de Migration Pas-à-Pas
 
 ### Étape 1 : Modifier le schéma de la base de données (Supabase)
+
 Le modèle de Google produit des vecteurs de **768 dimensions** (au lieu de 384). Vous devez mettre à jour la taille de la colonne dans Supabase.
 
 Exécutez ce script SQL dans l'éditeur SQL de votre console Supabase (ou via `make db-schema` après modification de [create_embeddings_schema.sql](file:///Volumes/X9%20Pro/Workspaces/nkaurelien/nkaurelien.github.io/supabase/create_embeddings_schema.sql)) :
@@ -64,19 +65,24 @@ $$;
 ```
 
 ### Étape 2 : Installer le SDK Google Gen AI
+
 Installez le package officiel de Google pour Node.js :
+
 ```bash
 yarn add @google/genai
 ```
 
 ### Étape 3 : Configurer votre Clé API Gemini
+
 1. Obtenez une clé API Gemini gratuite sur [Google AI Studio](https://aistudio.google.com/).
 2. Ajoutez la clé dans votre fichier `.env.local` :
+
 ```env
 GEMINI_API_KEY="VOTRE_CLE_API_GEMINI_ICI"
 ```
 
 ### Étape 4 : Mettre à jour le script d'importation
+
 Modifiez le fichier **[import-projects.js](file:///Volumes/X9%20Pro/Workspaces/nkaurelien/nkaurelien.github.io/scripts/import-projects.js)** pour importer le SDK et remplacer la fonction `generateEmbedding` :
 
 ```javascript
@@ -97,15 +103,18 @@ async function generateEmbedding(text) {
     // Retourne le tableau de 768 floats
     return response.embedding.values;
   } catch (error) {
-    console.error('Erreur lors de la génération d\'embedding Gemini :', error);
+    console.error("Erreur lors de la génération d'embedding Gemini :", error);
     throw error;
   }
 }
 ```
 
 ### Étape 5 : Ré-exécuter le Seed
+
 Videz d'abord la table locale des vecteurs en base de données si vous souhaitez forcer la regénération, puis lancez la commande :
+
 ```bash
 make db-seed
 ```
- Le script calculera de nouveaux embeddings haute définition de 768 dimensions et les sauvegardera sur votre instance Supabase.
+
+Le script calculera de nouveaux embeddings haute définition de 768 dimensions et les sauvegardera sur votre instance Supabase.

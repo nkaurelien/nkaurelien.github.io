@@ -1,48 +1,48 @@
 {
-    "title": "Domaines d'Expertise",
-    "subtitle": "Mon périmètre d'intervention et mes savoir-faire en tant que Lead Tech & Ingénieur Senior — de la conception architecturale à la mise en production.",
-    "items": [
-        {
-            "icon": "code",
-            "title": "Lead Tech & Développement Fullstack",
-            "text": "Conception, architecture et développement d'applications web & mobiles performantes : Next.js 15, React, Angular, FastAPI, Laravel, Flutter, REST API & OAuth2.",
-            "active": true
-        },
-        {
-            "icon": "devops",
-            "title": "DevSecOps & Cloud",
-            "text": "Industrialisation et déploiement cloud : CI/CD GitLab, Docker, Ansible, Terraform, Kubernetes, observabilité (Grafana, Loki, ELK) et sécurité applicative (Snyk, SAST).",
-            "active": true
-        },
-        {
-            "icon": "ai",
-            "title": "IA & Applications RAG",
-            "text": "Développement d'assistants et chatbots métiers augmentés par l'IA : LangChain, LiteLLM, OpenAI, Ollama / Qwen, bases vectorielles (Qdrant, pgvector) & RAG.",
-            "active": true
-        },
-        {
-            "icon": "aidev",
-            "title": "Développement Augmenté par l'IA & Agentique",
-            "text": "Accélération du cycle SDLC via le dev agentique (Claude 3.7 / Claude Code, Antigravity) et le Spec-Driven Development (GitHub SpecKit) : de la spec à la prod.",
-            "active": true
-        },
-        {
-            "icon": "iot",
-            "title": "IoT & Pipelines Temps Réel",
-            "text": "Pipelines de données streaming (Redpanda / Apache Kafka), captation d'objets connectés (EmotiBit, Withings) et conformité santé (FHIR / HL7, HDS).",
-            "active": true
-        },
-        {
-            "icon": "architecture",
-            "title": "Architecture, Audit & MOE",
-            "text": "Analyse et modélisation d'architecture (UML, Merise), audits de performance et sécurité, choix technologiques, rôle de Lead Tech et revue de code.",
-            "active": true
-        },
-        {
-            "icon": "training",
-            "title": "Formation & Documentation Technique",
-            "text": "Montée en compétence d'équipes (Web, DevSecOps, IA), documentation technique (MkDocs), spécifications d'API (OpenAPI / Swagger, Postman) et rédactions de guides d'architecture.",
-            "active": true
-        }
-    ]
+  "title": "Domaines d'Expertise",
+  "subtitle": "Mon périmètre d'intervention et mes savoir-faire en tant que Lead Tech & Ingénieur Senior — de la conception architecturale à la mise en production.",
+  "items": [
+    {
+      "icon": "code",
+      "title": "Lead Tech & Développement Fullstack",
+      "text": "Conception, architecture et développement d'applications web & mobiles performantes : Next.js 15, React, Angular, FastAPI, Laravel, Flutter, REST API & OAuth2.",
+      "active": true
+    },
+    {
+      "icon": "devops",
+      "title": "DevSecOps & Cloud",
+      "text": "Industrialisation et déploiement cloud : CI/CD GitLab, Docker, Ansible, Terraform, Kubernetes, observabilité (Grafana, Loki, ELK) et sécurité applicative (Snyk, SAST).",
+      "active": true
+    },
+    {
+      "icon": "ai",
+      "title": "IA & Applications RAG",
+      "text": "Développement d'assistants et chatbots métiers augmentés par l'IA : LangChain, LiteLLM, OpenAI, Ollama / Qwen, bases vectorielles (Qdrant, pgvector) & RAG.",
+      "active": true
+    },
+    {
+      "icon": "aidev",
+      "title": "Développement Augmenté par l'IA & Agentique",
+      "text": "Accélération du cycle SDLC via le dev agentique (Claude 3.7 / Claude Code, Antigravity) et le Spec-Driven Development (GitHub SpecKit) : de la spec à la prod.",
+      "active": true
+    },
+    {
+      "icon": "iot",
+      "title": "IoT & Pipelines Temps Réel",
+      "text": "Pipelines de données streaming (Redpanda / Apache Kafka), captation d'objets connectés (EmotiBit, Withings) et conformité santé (FHIR / HL7, HDS).",
+      "active": true
+    },
+    {
+      "icon": "architecture",
+      "title": "Architecture, Audit & MOE",
+      "text": "Analyse et modélisation d'architecture (UML, Merise), audits de performance et sécurité, choix technologiques, rôle de Lead Tech et revue de code.",
+      "active": true
+    },
+    {
+      "icon": "training",
+      "title": "Formation & Documentation Technique",
+      "text": "Montée en compétence d'équipes (Web, DevSecOps, IA), documentation technique (MkDocs), spécifications d'API (OpenAPI / Swagger, Postman) et rédactions de guides d'architecture.",
+      "active": true
+    }
+  ]
 }

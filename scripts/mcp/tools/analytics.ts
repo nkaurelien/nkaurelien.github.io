@@ -38,7 +38,7 @@ export interface AnalyticsReport {
 
 export async function queryAnalyticsReport(period: 'daily' | 'weekly' = 'weekly'): Promise<AnalyticsReport> {
   if (!UMAMI_URL) {
-    throw new Error('UMAMI_URL non configuré dans l\'environnement.');
+    throw new Error("UMAMI_URL non configuré dans l'environnement.");
   }
   if (!UMAMI_PASSWORD) {
     throw new Error('UMAMI_PASSWORD non configuré.');
@@ -69,7 +69,7 @@ export async function queryAnalyticsReport(period: 'daily' | 'weekly' = 'weekly'
   const rawSitesData = (await sitesRes.json()) as unknown;
   const websites = Array.isArray(rawSitesData)
     ? (rawSitesData as Array<{ id: string; name: string; domain: string }>)
-    : ((rawSitesData as { data?: Array<{ id: string; name: string; domain: string }> }).data || []);
+    : (rawSitesData as { data?: Array<{ id: string; name: string; domain: string }> }).data || [];
 
   const days = period === 'daily' ? 1 : 7;
   const periodLabel = days === 1 ? 'dernières 24h' : `${days} derniers jours`;

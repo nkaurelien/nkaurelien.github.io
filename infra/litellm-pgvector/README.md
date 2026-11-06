@@ -26,14 +26,14 @@ l'extension `vector`, puis lance `prisma db push` (idempotent) avant `uvicorn`.
 
 ## API (Bearer `VECTOR_API_KEY`)
 
-| Méthode | Route | Rôle |
-|---|---|---|
-| POST | `/v1/vector_stores` | Crée un store (`name`, `metadata`) |
-| GET | `/v1/vector_stores?limit=&after=&before=` | Liste paginée |
-| POST | `/v1/vector_stores/{id}/embeddings` | Ajoute un extrait **avec son vecteur** (`content`, `embedding`, `metadata`) |
-| POST | `/v1/vector_stores/{id}/embeddings/batch` | Même chose, par lot |
-| POST | `/v1/vector_stores/{id}/search` | `query` (embeddée côté serveur), `limit` ≤ 100, `filters` sur les métadonnées |
-| GET | `/health` | Sans authentification |
+| Méthode | Route                                     | Rôle                                                                          |
+| ------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
+| POST    | `/v1/vector_stores`                       | Crée un store (`name`, `metadata`)                                            |
+| GET     | `/v1/vector_stores?limit=&after=&before=` | Liste paginée                                                                 |
+| POST    | `/v1/vector_stores/{id}/embeddings`       | Ajoute un extrait **avec son vecteur** (`content`, `embedding`, `metadata`)   |
+| POST    | `/v1/vector_stores/{id}/embeddings/batch` | Même chose, par lot                                                           |
+| POST    | `/v1/vector_stores/{id}/search`           | `query` (embeddée côté serveur), `limit` ≤ 100, `filters` sur les métadonnées |
+| GET     | `/health`                                 | Sans authentification                                                         |
 
 ```bash
 K=$(grep '^VECTOR_API_KEY=' infra/litellm-pgvector/.env | cut -d= -f2-)
@@ -57,6 +57,7 @@ expires_at / last_active_at / created_at │
 ```
 
 **Ce qui est intéressant :**
+
 - **Collections (stores)** : un même schéma sert plusieurs corpus indépendants
   (ex. `jamila-rag`, `articles`, `cv`). Chez nous, c'est
   `content_sections.category` qui joue ce rôle, avec un `CHECK` figé.
@@ -72,6 +73,7 @@ expires_at / last_active_at / created_at │
 - **`ON DELETE CASCADE`** : supprimer un store supprime ses extraits.
 
 **Limites constatées (à corriger avant un déploiement serveur) :**
+
 - **Aucun index** hormis les clés primaires : pas d'index sur
   `embeddings.vector_store_id` (la clé étrangère), pas d'index HNSW sur `embedding`.
   Chaque recherche lit toute la table (négligeable à 39 lignes, pas à 100 000).
@@ -97,12 +99,12 @@ expires_at / last_active_at / created_at │
 
 ## Pièges de configuration (résolus dans ce compose)
 
-| Erreur | Cause | Correctif |
-|---|---|---|
+| Erreur                                                   | Cause                                                                                | Correctif                                                             |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
 | `LLM Provider NOT provided. You passed model=all-minilm` | vector-api appelle le proxy avec le SDK LiteLLM, qui exige un préfixe de fournisseur | `EMBEDDING__MODEL=openai/all-minilm` (le proxy est compatible OpenAI) |
-| `encoding_format: base64 is not supported by ollama` | Le client OpenAI demande du base64 | `litellm_settings.drop_params: true` |
-| `password authentication failed` au démarrage | Mot de passe Neon changé | Mettre à jour `VECTOR_DATABASE_URL` (voir le skill `jamila-rag-data`) |
-| Tables absentes | Le dépôt ne crée rien au démarrage | `prisma db push` dans la `command` du service |
+| `encoding_format: base64 is not supported by ollama`     | Le client OpenAI demande du base64                                                   | `litellm_settings.drop_params: true`                                  |
+| `password authentication failed` au démarrage            | Mot de passe Neon changé                                                             | Mettre à jour `VECTOR_DATABASE_URL` (voir le skill `jamila-rag-data`) |
+| Tables absentes                                          | Le dépôt ne crée rien au démarrage                                                   | `prisma db push` dans la `command` du service                         |
 
 ## Et ensuite
 

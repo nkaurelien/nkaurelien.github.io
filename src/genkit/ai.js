@@ -30,7 +30,7 @@ if (process.env.ENABLE_FIREBASE_TELEMETRY === 'true') {
   enableFirebaseTelemetry({
     projectId: gcpProjectId,
   }).catch(err => {
-    console.warn('[genkit] Erreur lors de l\'activation de la télémétrie Firebase:', err?.message || err);
+    console.warn("[genkit] Erreur lors de l'activation de la télémétrie Firebase:", err?.message || err);
   });
 }
 
