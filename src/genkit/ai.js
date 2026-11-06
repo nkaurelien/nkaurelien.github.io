@@ -3,7 +3,36 @@ import { googleAI } from '@genkit-ai/google-genai';
 import { anthropic } from '@genkit-ai/anthropic';
 import { enableFirebaseTelemetry } from '@genkit-ai/firebase';
 
-enableFirebaseTelemetry();
+// Télémétrie Firebase : activée si ENABLE_FIREBASE_TELEMETRY === 'true'
+// (laisser à false en local / hors GCP pour éviter les erreurs de détection de Project ID)
+if (process.env.ENABLE_FIREBASE_TELEMETRY === 'true') {
+  // Si FIREBASE_SERVICE_ACCOUNT est présent, on alimente les variables attendues par Google Cloud/Firebase telemetry
+  if (process.env.FIREBASE_SERVICE_ACCOUNT && !process.env.GCLOUD_SERVICE_ACCOUNT_CREDS) {
+    try {
+      const raw = process.env.FIREBASE_SERVICE_ACCOUNT.trim();
+      const json = raw.startsWith('{') ? raw : Buffer.from(raw, 'base64').toString('utf-8');
+      const sa = JSON.parse(json);
+      if (sa.private_key && sa.private_key.includes('\\n')) {
+        sa.private_key = sa.private_key.replace(/\\n/g, '\n');
+      }
+      process.env.GCLOUD_SERVICE_ACCOUNT_CREDS = JSON.stringify(sa);
+      if (!process.env.GCLOUD_PROJECT && sa.project_id) {
+        process.env.GCLOUD_PROJECT = sa.project_id;
+        process.env.GOOGLE_CLOUD_PROJECT = sa.project_id;
+      }
+    } catch (err) {
+      console.warn('[genkit] Impossible de charger FIREBASE_SERVICE_ACCOUNT pour la télémétrie:', err?.message || err);
+    }
+  }
+
+  const gcpProjectId = process.env.GCLOUD_PROJECT || process.env.GOOGLE_CLOUD_PROJECT || process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+
+  enableFirebaseTelemetry({
+    projectId: gcpProjectId,
+  }).catch(err => {
+    console.warn('[genkit] Erreur lors de l\'activation de la télémétrie Firebase:', err?.message || err);
+  });
+}
 
 // Lecture directe de process.env (et non @/env) pour rester utilisable AUSSI en
 // standalone (genkit start -- tsx src/genkit/dev.mjs), hors du runtime Next.
