@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useDisclosure } from '@mantine/hooks';
 import {
   Group,
   Stack,
@@ -71,13 +72,51 @@ export default function ArticleActions({
   const [isReposted, setIsReposted] = useState(false);
   const [copied, setCopied] = useState(false);
   const [repostFeedback, setRepostFeedback] = useState(false);
-  const [commentsDrawerOpen, setCommentsDrawerOpen] = useState(false);
+  const [commentsDrawerOpen, { open: openComments, close: closeComments }] = useDisclosure(false);
 
   // Formulaire nouveau commentaire
   const [commentAuthor, setCommentAuthor] = useState('');
   const [commentText, setCommentText] = useState('');
   const [submittingComment, setSubmittingComment] = useState(false);
   const [commentSuccess, setCommentSuccess] = useState(false);
+
+  // Synchronisation globale de l'ouverture du tiroir de commentaires (un seul Drawer par page)
+  const handleOpenComments = useCallback(() => {
+    if (showAuthor) {
+      openComments();
+    } else {
+      window.dispatchEvent(new CustomEvent('open-blog-comments', { detail: { id: articleKey } }));
+    }
+  }, [showAuthor, openComments, articleKey]);
+
+  useEffect(() => {
+    if (!showAuthor) return;
+
+    const handleExternalOpen = e => {
+      if (!e?.detail?.id || e.detail.id === articleKey) {
+        openComments();
+      }
+    };
+
+    window.addEventListener('open-blog-comments', handleExternalOpen);
+    return () => {
+      window.removeEventListener('open-blog-comments', handleExternalOpen);
+    };
+  }, [showAuthor, openComments, articleKey]);
+
+  // Synchronisation globale du compteur si un commentaire est ajouté
+  useEffect(() => {
+    const handleCommentAdded = e => {
+      if (e?.detail?.id === articleKey && typeof e.detail.count === 'number') {
+        setStats(prev => ({ ...prev, commentsCount: e.detail.count }));
+      }
+    };
+
+    window.addEventListener('blog-comment-added', handleCommentAdded);
+    return () => {
+      window.removeEventListener('blog-comment-added', handleCommentAdded);
+    };
+  }, [articleKey]);
 
   // Récupération des données en One-Shot (Firestore via API route)
   useEffect(() => {
@@ -251,7 +290,17 @@ export default function ArticleActions({
       const data = await res.json();
       if (data.ok && data.comment) {
         setComments(prev => [data.comment, ...prev]);
-        setStats(prev => ({ ...prev, commentsCount: prev.commentsCount + 1 }));
+        setStats(prev => {
+          const nextCount = prev.commentsCount + 1;
+          try {
+            window.dispatchEvent(
+              new CustomEvent('blog-comment-added', { detail: { count: nextCount, id: articleKey } })
+            );
+          } catch {
+            // Ignorer
+          }
+          return { ...prev, commentsCount: nextCount };
+        });
         setCommentText('');
         setCommentSuccess(true);
         setTimeout(() => setCommentSuccess(false), 3000);
@@ -342,7 +391,11 @@ export default function ArticleActions({
               variant="default"
               radius="xl"
               size={38}
-              onClick={() => setCommentsDrawerOpen(true)}
+              onClick={e => {
+                e.stopPropagation();
+                e.currentTarget.blur();
+                handleOpenComments();
+              }}
               data-testid="article-comment-button"
               aria-label="Commentaires de l'article"
               style={{ transition: 'all 0.2s ease' }}>
@@ -445,23 +498,31 @@ export default function ArticleActions({
         </Group>
       </Group>
 
-      {/* Drawer des Commentaires */}
-      <Drawer
-        opened={commentsDrawerOpen}
-        onClose={() => setCommentsDrawerOpen(false)}
-        title={
-          <Group gap="xs">
-            <Text fw={700} size="md">
-              Commentaires
-            </Text>
-            <Badge variant="light" size="sm">
-              {stats.commentsCount}
-            </Badge>
-          </Group>
-        }
-        position="right"
-        size="md"
-        padding="md">
+      {/* Drawer des Commentaires (instance unique contrôlée) */}
+      {showAuthor && (
+        <Drawer
+          opened={commentsDrawerOpen}
+          onClose={closeComments}
+          returnFocus={false}
+          trapFocus={false}
+          closeOnClickOutside={true}
+          closeOnEscape={true}
+          transitionProps={{ duration: 150 }}
+          overlayProps={{ backgroundOpacity: 0.45, blur: 3 }}
+          zIndex={1000}
+          title={
+            <Group gap="xs">
+              <Text fw={700} size="md">
+                Commentaires
+              </Text>
+              <Badge variant="light" size="sm">
+                {stats.commentsCount}
+              </Badge>
+            </Group>
+          }
+          position="right"
+          size="md"
+          padding="md">
         <Stack gap="md">
           {/* Formulaire ajout de commentaire */}
           <Paper p="sm" withBorder radius="md" bg="var(--mantine-color-default)">
@@ -533,6 +594,7 @@ export default function ArticleActions({
           )}
         </Stack>
       </Drawer>
+      )}
     </Box>
   );
 }
