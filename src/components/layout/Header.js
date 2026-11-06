@@ -313,44 +313,12 @@ export default function Header({ locale, app }) {
                 <Menu.Divider />
                 <Menu.Item
                   component="a"
-                  href="/about.pdf"
+                  href="/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}
                   style={{ fontWeight: 600, color: 'var(--mantine-color-brand-6)' }}>
-                  En bref — Profil & Vision (2P)
-                </Menu.Item>
-                <Menu.Item
-                  component="a"
-                  href="/Astrid_Aurelien_NKUMBE_ENONGENE_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  leftSection={<IconArrowUpRight size={14} />}>
                   CV Principal ATS (2P)
-                </Menu.Item>
-                <Menu.Item
-                  component="a"
-                  href="/cv-curve.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  leftSection={<IconArrowUpRight size={14} />}>
-                  CV Détaillé Design (3P)
-                </Menu.Item>
-                <Menu.Item
-                  component="a"
-                  href="/cv-vidushi-wahal.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  leftSection={<IconArrowUpRight size={14} />}>
-                  CV Exécutif Moderne (2P)
-                </Menu.Item>
-                <Menu.Item
-                  component="a"
-                  href="/lettre-de-motivation-globale.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  leftSection={<IconArrowUpRight size={14} />}>
-                  Lettre de Motivation (1P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
@@ -362,30 +330,19 @@ export default function Header({ locale, app }) {
                 </Menu.Item>
                 <Menu.Item
                   component="a"
-                  href="/cv-fullstack.pdf"
+                  href="/about.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Dev Fullstack (2P)
+                  En bref — Profil & Vision (2P)
                 </Menu.Item>
                 <Menu.Item
                   component="a"
-                  href="/cv-angular-laravel.pdf"
+                  href="/lettre-de-motivation-globale.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   leftSection={<IconArrowUpRight size={14} />}>
-                  CV Angular & Laravel PHP (2P)
-                </Menu.Item>
-                <Menu.Item
-                  component="a"
-                  href="/cv-angular-python.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  leftSection={<IconArrowUpRight size={14} />}>
-                  CV Angular & Python (2P)
-                </Menu.Item>
-                <Menu.Item component="a" href="/cv-devops.pdf" target="_blank" rel="noopener noreferrer" leftSection={<IconArrowUpRight size={14} />}>
-                  CV Lead DevSecOps & Cloud (2P)
+                  Lettre de Motivation (1P)
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
