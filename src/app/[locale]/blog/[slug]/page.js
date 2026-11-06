@@ -10,14 +10,18 @@ import { getLocalArticle, getLocalArticles } from '@/lib/localArticles';
 // migrés manuellement vers Medium ensuite (front matter `medium:` une fois fait).
 
 export function generateStaticParams() {
-  return getLocalArticles().map(({ slug }) => ({ slug }));
+  return getLocalArticles({ includeUnlisted: true }).map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const article = getLocalArticle(slug);
   if (!article) return {};
-  return { title: article.title, description: article.excerpt };
+  return {
+    title: article.title,
+    description: article.excerpt,
+    ...(article.listed === false ? { robots: { index: false, follow: false } } : {}),
+  };
 }
 
 function formatDate(date, locale) {

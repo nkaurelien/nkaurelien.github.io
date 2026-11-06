@@ -12,6 +12,28 @@ function formatDate(value: unknown): string | undefined {
   return iso.split('T')[0];
 }
 
+function resolveVisibility(data: Record<string, unknown> = {}): { status: string; visible: boolean; listed: boolean } {
+  const rawStatus = String(data.status || 'published').trim().toLowerCase();
+  const status = ['published', 'unlisted', 'draft', 'private', 'archived', 'hidden'].includes(rawStatus)
+    ? rawStatus
+    : 'published';
+
+  const visible =
+    typeof data.visible === 'boolean'
+      ? data.visible
+      : typeof data.published === 'boolean'
+      ? data.published
+      : status === 'published' || status === 'unlisted';
+
+  const listed = !visible
+    ? false
+    : typeof data.listed === 'boolean'
+    ? data.listed
+    : status === 'published';
+
+  return { status, visible, listed };
+}
+
 export interface ArticleMetadata {
   file: string;
   slug: string;
@@ -36,6 +58,8 @@ export function listArticles(tag?: string, limit?: number): ArticleMetadata[] {
     try {
       const fileContent = fs.readFileSync(fullPath, 'utf8');
       const { data } = matter(fileContent);
+      const { visible, listed } = resolveVisibility(data);
+      if (!visible || !listed) continue;
 
       const parsedTags = Array.isArray(data.tags)
         ? data.tags
@@ -99,6 +123,10 @@ export function readArticle(slugOrFile: string): { metadata: ArticleMetadata; co
   const fullPath = path.join(ARTICLES_DIR, matchedFile);
   const fileContent = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContent);
+  const { visible } = resolveVisibility(data);
+  if (!visible) {
+    throw new Error(`Article introuvable pour "${slugOrFile}"`);
+  }
 
   return {
     metadata: {
@@ -126,6 +154,8 @@ export function searchArticles(query: string): Array<ArticleMetadata & { snippet
     const fullPath = path.join(ARTICLES_DIR, file);
     const content = fs.readFileSync(fullPath, 'utf8');
     const { data, content: body } = matter(content);
+    const { visible, listed } = resolveVisibility(data);
+    if (!visible || !listed) continue;
 
     const title = (data.title || file).toLowerCase();
     const tags = Array.isArray(data.tags) ? data.tags.join(' ').toLowerCase() : String(data.tags || '').toLowerCase();

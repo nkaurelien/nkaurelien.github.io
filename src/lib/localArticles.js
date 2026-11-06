@@ -8,13 +8,43 @@ import matter from 'gray-matter';
 // fichier sert de fallback si le front matter n'en donne pas).
 //
 // Front matter (tout est optionnel) :
-//   title, date, categories: [..], excerpt, thumbnail, medium: <url si migré>
+//   id, status ('published' | 'unlisted' | 'draft'), listed (bool), visible (bool),
+//   title, date, categories: [..], excerpt, thumbnail, medium: <url si migré>, author
 
 const ARTICLES_DIR = path.join(process.cwd(), 'datasources', 'articles');
 // Le préfixe de date est obligatoire : il délimite ce qui est un article de ce qui
 // est de la documentation déposée dans le même dossier (README.md, notes de
 // rédaction…), qui serait sinon publiée comme un article à part entière.
 const FILE_RE = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
+
+/**
+ * Détermine la visibilité d'un article à partir de son front matter :
+ * - status: 'published' (défaut) -> affiché dans la liste (/blog) ET accessible par URL (/blog/[slug])
+ * - status: 'unlisted'           -> masqué de la liste (/blog), MAIS accessible par URL directe
+ * - status: 'draft' | 'private' | 'archived' | 'hidden' -> masqué de la liste ET inaccessible (404)
+ * Peut aussi être piloté finement via `listed: boolean` et `visible: boolean`.
+ */
+export function resolveArticleVisibility(data = {}) {
+  const rawStatus = String(data.status || 'published').trim().toLowerCase();
+  const status = ['published', 'unlisted', 'draft', 'private', 'archived', 'hidden'].includes(rawStatus)
+    ? rawStatus
+    : 'published';
+
+  const visible =
+    typeof data.visible === 'boolean'
+      ? data.visible
+      : typeof data.published === 'boolean'
+        ? data.published
+        : status === 'published' || status === 'unlisted';
+
+  const listed = !visible
+    ? false
+    : typeof data.listed === 'boolean'
+      ? data.listed
+      : status === 'published';
+
+  return { status, visible, listed };
+}
 
 function toExcerpt(markdown = '', max = 180) {
   const clean = markdown
@@ -42,9 +72,14 @@ function parseFile(filename) {
   // markdown pour éviter le doublon à l'affichage.
   const content = rawContent.replace(/^\s*#\s+.+\n/, '');
 
+  const { status, visible, listed } = resolveArticleVisibility(data);
+
   return {
     id: String(data.id || slug).trim(),
     slug,
+    status,
+    visible,
+    listed,
     source: 'local',
     title: data.title || firstHeading(rawContent) || slug.replace(/-/g, ' '),
     // Lien relatif — préfixé par la locale au rendu (ArticleCard / page blog).
@@ -59,15 +94,19 @@ function parseFile(filename) {
   };
 }
 
-/** Liste les articles locaux (métadonnées seules), triés du plus récent au plus ancien. */
-export function getLocalArticles({ limit } = {}) {
+/**
+ * Liste les articles locaux (métadonnées seules), triés du plus récent au plus ancien.
+ * Par défaut, renvoie uniquement les articles `listed: true` et `visible: true`.
+ * Passer `includeUnlisted: true` (ex: pour generateStaticParams) inclut aussi les articles `unlisted`.
+ */
+export function getLocalArticles({ limit, includeUnlisted = false } = {}) {
   try {
     if (!fs.existsSync(ARTICLES_DIR)) return [];
     const items = fs
       .readdirSync(ARTICLES_DIR)
       .filter(f => f.endsWith('.md'))
       .map(parseFile)
-      .filter(Boolean)
+      .filter(a => a && a.visible && (includeUnlisted || a.listed))
       // eslint-disable-next-line no-unused-vars
       .map(({ content, ...meta }) => meta)
       .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
@@ -78,7 +117,7 @@ export function getLocalArticles({ limit } = {}) {
   }
 }
 
-/** Un article complet (avec son markdown) par slug — null si absent. */
+/** Un article complet (avec son markdown) par slug — null si absent ou non visible (draft/private). */
 export function getLocalArticle(slug) {
   try {
     const files = fs.existsSync(ARTICLES_DIR) ? fs.readdirSync(ARTICLES_DIR) : [];
@@ -86,7 +125,9 @@ export function getLocalArticle(slug) {
       const m = f.match(FILE_RE);
       return m && m[2] === slug;
     });
-    return file ? parseFile(file) : null;
+    if (!file) return null;
+    const article = parseFile(file);
+    return article && article.visible ? article : null;
   } catch {
     return null;
   }
