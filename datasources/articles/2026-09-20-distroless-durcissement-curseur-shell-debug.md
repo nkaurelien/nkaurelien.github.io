@@ -1,4 +1,5 @@
 ---
+id: distroless-durcissement-curseur-shell-debug
 tags: distroless, docker, securite, kubernetes, ci-cd, hardening, trivy, chainguard
 title: "Distroless : Chaque Outil Retiré est un Outil qui Manquera à 3h du Matin"
 date: 2026-09-20

@@ -1,4 +1,5 @@
 ---
+id: secrets-en-clair-git-detection-purge-prevention
 tags: git, securite, secrets, devsecops, trufflehog, kubernetes, filter-repo, gitops
 title: "Six Secrets en Clair dans Mes Propres Manifestes : Détection, Purge et Prévention"
 date: 2026-09-20

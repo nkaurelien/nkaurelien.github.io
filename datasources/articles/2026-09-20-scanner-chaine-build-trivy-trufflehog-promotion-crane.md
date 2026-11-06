@@ -1,4 +1,5 @@
 ---
+id: scanner-chaine-build-trivy-trufflehog-promotion-crane
 tags: devsecops, ci-cd, trivy, trufflehog, kaniko, crane, supply-chain, hadolint, semgrep
 title: "Entre le Build et le Push : Scanner Vraiment, et Pas Pour la Forme"
 date: 2026-09-20

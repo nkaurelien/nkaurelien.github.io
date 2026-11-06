@@ -43,6 +43,7 @@ function parseFile(filename) {
   const content = rawContent.replace(/^\s*#\s+.+\n/, '');
 
   return {
+    id: String(data.id || slug).trim(),
     slug,
     source: 'local',
     title: data.title || firstHeading(rawContent) || slug.replace(/-/g, ' '),
@@ -53,6 +54,7 @@ function parseFile(filename) {
     excerpt: data.excerpt || toExcerpt(content),
     thumbnail: data.thumbnail || null,
     mediumUrl: data.medium || null, // renseigné après migration manuelle vers Medium
+    author: data.author || 'CODEUR SENIOR',
     content,
   };
 }

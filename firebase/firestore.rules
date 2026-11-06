@@ -34,6 +34,18 @@ service cloud.firestore {
       allow create: if false;
     }
 
+    // Réactions aux articles de blog (likes, partages, commentaires) :
+    // Lecture publique, écriture via l'API serveur (/api/blog/reactions) ou admin.
+    match /blog_reactions/{slug} {
+      allow read: if true;
+      allow write: if isAdmin();
+
+      match /comments/{commentId} {
+        allow read: if true;
+        allow write: if isAdmin();
+      }
+    }
+
     // Filet de sécurité : tout autre document est réservé à l'admin.
     match /{document=**} {
       allow read, write: if isAdmin();

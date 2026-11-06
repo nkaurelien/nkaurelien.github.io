@@ -1,4 +1,5 @@
 ---
+id: prouver-teleconsultation-jitsi-event-sync-ecart-declare-reel
 tags: jitsi, webrtc, telesante, fastapi, couchdb, nextjs, anti-fraude, self-hosted, devsecops
 title: "Prouver qu'une téléconsultation a eu lieu : Jitsi auto-hébergé, événements de salle et écart déclaré / réel"
 date: 2026-10-13

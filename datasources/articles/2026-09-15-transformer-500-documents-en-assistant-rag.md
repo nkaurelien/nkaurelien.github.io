@@ -1,4 +1,5 @@
 ---
+id: transformer-500-documents-en-assistant-rag
 tags: ia, rag, langchain, ollama, litellm, python, vector-db, embeddings, advanced-rag, agentic-rag
 title: "Comment transformer +500 documents complexes en un Assistant RAG fiable avec LangChain et Ollama"
 date: 2026-09-15

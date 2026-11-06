@@ -1,4 +1,5 @@
 ---
+id: analytics-rgpd-privacy-first-umami-reports
 tags: umami, analytics, rgpd, privacy, docker, ntfy, automation, devops
 title: "Analytics RGPD & Privacy-First avec Umami : Mesurer l'audience et automatiser les rapports Push"
 date: 2026-09-16

@@ -1,4 +1,5 @@
 ---
+id: selkies-webrtc-wayland-vs-vnc-kasmvnc
 tags: selkies, webrtc, wayland, vnc, linuxserver, k3s, remote-desktop, devops, virtualization
 title: "Bureaux Linux dans le Navigateur : Pourquoi Selkies Enterre Définitivement VNC et KasmVNC"
 date: 2026-09-20

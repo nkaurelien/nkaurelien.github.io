@@ -1,4 +1,5 @@
 ---
+id: kustomize-base-overlays-kubernetes-multi-env
 tags: kubernetes, kustomize, devops, gitops, ci-cd, multi-environment, architecture
 title: "Gérer ses Environnements Kubernetes sans Duplication : Le Pattern Kustomize Base & Overlays"
 date: 2026-09-20

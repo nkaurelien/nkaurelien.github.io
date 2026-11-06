@@ -1,4 +1,5 @@
 ---
+id: signer-images-docker-cosign-kubernetes-kyverno
 tags: cosign, sigstore, supply-chain, kubernetes, kyverno, docker, oci, devsecops, ecdsa
 title: "Signer ses Images avec Cosign : la Même Crypto que SSH, un Problème Complètement Différent"
 date: 2026-09-20

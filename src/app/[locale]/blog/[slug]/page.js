@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import MarkdownContent from '@/components/blog/MarkdownContent';
+import ArticleActions from '@/components/blog/ArticleActions';
 import { Container, Title, Text, Badge, Group, Anchor, Divider, Box } from '@mantine/core';
 import { getLocalArticle, getLocalArticles } from '@/lib/localArticles';
 
@@ -51,7 +52,7 @@ export default async function LocalArticlePage({ params }) {
       <Title order={1} mt="md" mb="xs" id="article-title" data-testid="article-title">
         {article.title}
       </Title>
-      <Group gap="xs" mb="lg">
+      <Group gap="xs" mb="md">
         <Text component="time" dateTime={article.date} size="sm" c="dimmed" data-testid="article-date">
           {formatDate(article.date, locale)}
         </Text>
@@ -67,11 +68,36 @@ export default async function LocalArticlePage({ params }) {
           </Anchor>
         )}
       </Group>
-      <Divider mb="xl" />
+
+      {/* Barre d'action et Auteur (Haut d'article) */}
+      <ArticleActions
+        id={article.id}
+        slug={slug}
+        title={article.title}
+        date={article.date}
+        author={article.author || 'CODEUR SENIOR'}
+        locale={locale}
+        showAuthor={true}
+      />
+
+      <Divider my="lg" />
 
       <Box className="markdown-article" data-testid="article-content" style={{ lineHeight: 1.7 }}>
         <MarkdownContent content={article.content} />
       </Box>
+
+      <Divider my="xl" />
+
+      {/* Barre d'action récapitulative (Bas d'article) */}
+      <ArticleActions
+        id={article.id}
+        slug={slug}
+        title={article.title}
+        date={article.date}
+        author={article.author || 'CODEUR SENIOR'}
+        locale={locale}
+        showAuthor={false}
+      />
     </Container>
   );
 }

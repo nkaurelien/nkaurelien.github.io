@@ -1,4 +1,5 @@
 ---
+id: choisir-algorithme-hachage-mots-de-passe-argon2id-bcrypt-pbkdf2
 tags: securite, mots-de-passe, argon2, bcrypt, scrypt, pbkdf2, hachage, owasp, devsecops, openldap
 title: "Bien Choisir son Algorithme de Hachage de Mots de Passe : Argon2id, scrypt, bcrypt ou PBKDF2 ?"
 date: 2026-09-26

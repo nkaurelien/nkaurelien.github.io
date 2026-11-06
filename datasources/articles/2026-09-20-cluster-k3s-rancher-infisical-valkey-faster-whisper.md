@@ -1,4 +1,5 @@
 ---
+id: cluster-k3s-rancher-infisical-valkey-faster-whisper
 tags: kubernetes, k3s, devops, homelab, infisical, valkey, cert-manager, faster-whisper, air-gap
 title: "Du Bare-Metal au Cloud-Native : Déployer un Cluster K3s Air-Gap avec Rancher, Infisical, Valkey et Faster-Whisper"
 date: 2026-09-20

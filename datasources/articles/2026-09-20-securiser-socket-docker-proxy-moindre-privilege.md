@@ -1,4 +1,5 @@
 ---
+id: securiser-socket-docker-proxy-moindre-privilege
 tags: docker, securite, socket-proxy, traefik, homelab, devsecops, capabilities, moindre-privilege
 title: "Le Socket Docker : Pourquoi Votre Montage `:ro` Ne Protège de Rien"
 date: 2026-09-20

@@ -1,4 +1,5 @@
 ---
+id: crowdsec-appsec-openresty-retour-experience
 tags: crowdsec, waf, appsec, openresty, nginx, lua, docker, devsecops, securite
 title: "CrowdSec et WAF AppSec devant OpenResty : ce qui est bloqué, ce qui ne l'est pas"
 date: 2026-10-14

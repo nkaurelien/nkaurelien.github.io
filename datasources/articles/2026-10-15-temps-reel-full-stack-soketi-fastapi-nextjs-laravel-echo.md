@@ -1,4 +1,5 @@
 ---
+id: temps-reel-full-stack-soketi-fastapi-nextjs-laravel-echo
 tags: soketi, websocket, temps-reel, pusher, laravel-echo, fastapi, nextjs, notifications, web-push, docker
 title: "Temps réel full stack avec Soketi : notifier deux portails Next.js depuis FastAPI, à la manière de Laravel"
 date: 2026-10-15

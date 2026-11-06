@@ -1,4 +1,5 @@
 ---
+id: architecture-homelab-docker-traefik-ofelia-umami-ntfy
 tags: docker, traefik, ofelia, umami, ntfy, self-hosted, devops, homelab, automation
 title: "Architecture Homelab Docker : Reverse Proxy Traefik v3, Planificateur Ofelia, Analytics Umami & Push Ntfy"
 date: 2026-09-16

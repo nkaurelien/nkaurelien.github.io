@@ -1,4 +1,5 @@
 ---
+id: hsts-csp-en-tetes-securite-nginx-nextjs
 tags: hsts, csp, securite, nginx, openresty, nextjs, angular, headers, xss, clickjacking, devsecops
 title: "HSTS et CSP : deux en-têtes, deux lignes, et tout ce qu'il faut savoir avant de les poser"
 date: 2026-10-17

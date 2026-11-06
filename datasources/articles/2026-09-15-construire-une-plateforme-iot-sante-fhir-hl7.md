@@ -1,4 +1,5 @@
 ---
+id: construire-une-plateforme-iot-sante-fhir-hl7
 tags: iot, fhir, hl7, fastapi, nextjs, e-sante, websockets, logstash
 title: "Construire une plateforme IoT de santé conforme FHIR/HL7 : du capteur au temps réel"
 date: 2026-09-15

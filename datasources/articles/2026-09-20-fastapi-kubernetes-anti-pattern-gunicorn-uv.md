@@ -1,4 +1,5 @@
 ---
+id: fastapi-kubernetes-anti-pattern-gunicorn-uv
 tags: fastapi, kubernetes, python, uv, docker, devops, architecture, microservices
 title: "FastAPI en Production Kubernetes : L'Anti-Pattern Gunicorn et le Modèle Cloud-Native avec UV"
 date: 2026-09-20

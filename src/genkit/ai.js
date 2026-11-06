@@ -1,6 +1,9 @@
 import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/google-genai';
 import { anthropic } from '@genkit-ai/anthropic';
+import { enableFirebaseTelemetry } from '@genkit-ai/firebase';
+
+enableFirebaseTelemetry();
 
 // Lecture directe de process.env (et non @/env) pour rester utilisable AUSSI en
 // standalone (genkit start -- tsx src/genkit/dev.mjs), hors du runtime Next.
