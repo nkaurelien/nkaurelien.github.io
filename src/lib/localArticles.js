@@ -8,7 +8,7 @@ import matter from 'gray-matter';
 // fichier sert de fallback si le front matter n'en donne pas).
 //
 // Front matter (tout est optionnel) :
-//   id, status ('published' | 'unlisted' | 'draft'), listed (bool), visible (bool),
+//   id, status ('published' | 'unlisted' | 'hidden' | 'draft'),
 //   title, date, categories: [..], excerpt, thumbnail, medium: <url si migré>, author
 
 const ARTICLES_DIR = path.join(process.cwd(), 'datasources', 'articles');
@@ -18,11 +18,10 @@ const ARTICLES_DIR = path.join(process.cwd(), 'datasources', 'articles');
 const FILE_RE = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
 
 /**
- * Détermine la visibilité d'un article à partir de son front matter :
- * - status: 'published' (défaut) -> affiché dans la liste (/blog) ET accessible par URL (/blog/[slug])
- * - status: 'unlisted'           -> masqué de la liste (/blog), MAIS accessible par URL directe
- * - status: 'draft' | 'private' | 'archived' | 'hidden' -> masqué de la liste ET inaccessible (404)
- * Peut aussi être piloté finement via `listed: boolean` et `visible: boolean`.
+ * Détermine la visibilité d'un article à partir de son attribut `status` :
+ * - 'published' (défaut) -> affiché dans la liste (/blog) ET accessible par URL (/blog/[slug])
+ * - 'unlisted'           -> masqué de la liste (/blog), MAIS accessible par URL directe
+ * - 'hidden' | 'draft'   -> masqué de la liste ET inaccessible (404)
  */
 export function resolveArticleVisibility(data = {}) {
   const rawStatus = String(data.status || 'published').trim().toLowerCase();
@@ -30,18 +29,8 @@ export function resolveArticleVisibility(data = {}) {
     ? rawStatus
     : 'published';
 
-  const visible =
-    typeof data.visible === 'boolean'
-      ? data.visible
-      : typeof data.published === 'boolean'
-        ? data.published
-        : status === 'published' || status === 'unlisted';
-
-  const listed = !visible
-    ? false
-    : typeof data.listed === 'boolean'
-      ? data.listed
-      : status === 'published';
+  const visible = status === 'published' || status === 'unlisted';
+  const listed = status === 'published';
 
   return { status, visible, listed };
 }

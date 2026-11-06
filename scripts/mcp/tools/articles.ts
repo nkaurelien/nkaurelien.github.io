@@ -18,18 +18,8 @@ function resolveVisibility(data: Record<string, unknown> = {}): { status: string
     ? rawStatus
     : 'published';
 
-  const visible =
-    typeof data.visible === 'boolean'
-      ? data.visible
-      : typeof data.published === 'boolean'
-      ? data.published
-      : status === 'published' || status === 'unlisted';
-
-  const listed = !visible
-    ? false
-    : typeof data.listed === 'boolean'
-    ? data.listed
-    : status === 'published';
+  const visible = status === 'published' || status === 'unlisted';
+  const listed = status === 'published';
 
   return { status, visible, listed };
 }

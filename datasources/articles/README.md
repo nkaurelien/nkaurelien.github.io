@@ -21,15 +21,15 @@ lang: fr
 ---
 ```
 
-### Statuts et visibilité (`status`, `listed`, `visible`)
+### Statut et visibilité (`status`)
+
+Un seul attribut `status` pilote à la fois la présence dans la liste et l'accès à la page :
 
 | Valeur de `status` | Affiché dans la liste (`/blog` & Jamila) | Accessible via l'URL (`/blog/[slug]`) | Indexation moteurs (`robots`) |
 | :--- | :---: | :---: | :---: |
-| **`published`** *(défaut)* | ✅ Oui (`listed: true`) | ✅ Oui (`visible: true`) | `index, follow` |
-| **`unlisted`** | ❌ Non (`listed: false`) | ✅ Oui (`visible: true`) | `noindex, nofollow` |
-| **`draft`** *(ou `private`, `hidden`, `archived`)* | ❌ Non (`listed: false`) | ❌ Non (`404 Not Found`) | — |
-
-> Vous pouvez également surcharger finement ces comportements avec les booléens explicites `listed: true|false` et `visible: true|false` dans le front matter.
+| **`published`** *(défaut)* | ✅ Oui | ✅ Oui | `index, follow` |
+| **`unlisted`** | ❌ Non | ✅ Oui | `noindex, nofollow` |
+| **`hidden`** *(ou `draft`, `private`, `archived`)* | ❌ Non | ❌ Non (`404 Not Found`) | — |
 
 ---
 
